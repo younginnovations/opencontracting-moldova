@@ -1,2 +1,7 @@
-/vendor
+vendor
+/node_modules
+Homestead.yaml
+Homestead.json
 .env
+/.idea
+.DS_STORE
