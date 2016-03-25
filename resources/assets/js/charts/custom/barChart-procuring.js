@@ -173,6 +173,6 @@ chart.selectAll("text.name")
 //     });
 };
 
-createBarChartProcuring(data1,"barChart-procuring");
-createBarChartProcuring(data2,"barChart-contractors");
-createBarChartProcuring(data2,"barChart-goods");
+//createBarChartProcuring(data1,"barChart-procuring");
+//createBarChartProcuring(data2,"barChart-contractors");
+//createBarChartProcuring(data2,"barChart-goods");

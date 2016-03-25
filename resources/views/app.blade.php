@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
 <div class="title-bar burger-menu-button" data-responsive-toggle="main-menu" data-hide-for="medium">
     <button class="menu-icon" type="button" data-toggle></button>
 </div>
@@ -23,38 +24,38 @@
                 <div class="second-section">DATA VISUALISATION</div>
             </div>
         </div>
-        <div class="top-bar-right" id="main-menu">
-            <ul class="menu dropdown">
-                <li><a href="#" class="active">One</a></li>
-                <li><a href="#">Two</a></li>
-                <li><a href="#">Three</a></li>
-                <li><a href="#">Four</a></li>
+
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contracts</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-<body>
-    <div class="main-content">
-        @yield('content')
-
-        <footer class="clearfix">
-            <div class="row">
-                <div class="top-bar-left">
-                    <div class="project-logo">
-                        <div class="first-section">MOLDOVA CONTRACT</div>
-                        <div class="second-section">DATA VISUALISATION</div>
-                    </div>
-                </div>
+<section class="main-content">
+    @yield('content')
+</section>
+<footer class="clearfix">
+    <div class="row">
+        <div class="top-bar-left">
+            <div class="project-logo">
+                <div class="first-section">MOLDOVA CONTRACT</div>
+                <div class="second-section">DATA VISUALISATION</div>
             </div>
-        </footer>
+        </div>
     </div>
+</footer>
+<script src="{{url('js/vendors.min.js')}}"></script>
+<script src="{{url('js/app.min.js')}}"></script>
 
-    @yield('script')
-    <script src="{{url('js/vendors.min.js')}}"></script>
-    <script src="{{url('js/app.min.js')}}"></script>
-    <script>
-        $(document).foundation();
-    </script>
+@yield('script')
+<script>
+    $(document).foundation();
+</script>
+</body>
 
 </html>

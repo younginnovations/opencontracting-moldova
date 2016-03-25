@@ -50,13 +50,14 @@ input::-webkit-search-cancel-button {
 input[type=search],input[type=search]:focus,input[type=search]:active,input[type=search]:hover {
   background: rgba(255,255,255,0.3);
   border: none;
-  padding: 32px 37px;
+  padding: 25px 37px;
   width: 100%;
   box-sizing : border-box;
   border-radius: 10em;
   transition: all .5s;
   box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.50);
   border-radius: 51px;
+  height: auto;
 }
 
 input:-moz-placeholder {
