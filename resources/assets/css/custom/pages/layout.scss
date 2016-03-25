@@ -1,0 +1,65 @@
+header{
+  z-index: 9999;
+  &.top-bar{
+    background-color: #0042B1;
+  }
+}
+
+.fixed-header{
+  position: fixed;
+  width: 100%;
+}
+
+.project-logo{
+  text-transform: uppercase;
+  .first-section{
+    color: #fff;
+  }
+
+  .second-section{
+    color: rgba(255,255,255,0.5);
+  }
+}
+
+.main-content{
+  z-index: 1;
+  padding-top: 58px;
+}
+
+.top-bar-right{
+
+  .menu{
+    background: none;
+    margin-top: -0.5rem;
+    margin-bottom: -0.5rem;
+  }
+
+  li a{
+    color: rgba(255,255,255,0.5);
+    border-top: solid 4px transparent;
+
+    &:hover{
+      border-top: solid 4px $deep-yellow-color;
+    }
+
+    &.active{
+      color: #fff;
+    }
+
+  }
+}
+
+footer{
+  background-color: $light-grey-color;
+  padding: 25px 30px;
+  .top-bar-right{
+    .first-section{
+
+    }
+
+    .second-section{
+      color: rgba(255,255,255,0.5);
+    }
+  }
+}
+

@@ -16,3 +16,7 @@
 //});
 
 $app->get('/', 'ExampleController@index');
+
+$app->get('/home',function() use ($app){
+    return view('landing-page');
+});
