@@ -11,6 +11,8 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
-});
+//$app->get('/', function () use ($app) {
+//    return dd(config('database.default'));
+//});
+
+$app->get('/', 'ExampleController@index');
