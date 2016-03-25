@@ -11,12 +11,14 @@ var gulp = require('gulp'),
     rename = require('gulp-rename');
 
 var vendor_js = [
-    './resources/assets/js/vendor/jquery-2.2.0.min.js',
+    './resources/assets/js/vendor/jquery-2.2.2.min.js',
     './resources/assets/js/vendor/foundation.min.js',
+    './resources/assets/js/vendor/responsive-tables.js',
 ];
 
 var vendor_css = [
     './resources/assets/css/vendor/foundation.min.css',
+    './resources/assets/css/vendor/responsive-tables.css',
 ];
 
 var custom_js = [

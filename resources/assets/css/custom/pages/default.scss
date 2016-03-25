@@ -1,7 +1,46 @@
-h1{
-  font-size: 32px;
+$deep-blue-color: #0042B1;
+$deep-yellow-color: #FFD400;
+$grey-yellow-color: #756200;
+$dark-grey-yellow-color: #756200;
+$light-grey-color: #484848;
+$dark-grey-color: #5A5A5A;
+$tender-color: #0042B1;
+$contract-color: #CE0029;
+
+$font-path: "/fonts/";
+$img-path: "/images";
+
+/* ---- common styles ----- */
+@font-face {
+  font-family: "Ubuntu-regular";
+  font-style: normal;
+  font-weight: 500;
+  src: url("#{$font-path}/Ubuntu regular.ttf") format("ttf")
 }
 
-h2{
-  font-size: 12px;
+@font-face {
+  font-family: "Ubuntu-light";
+  src: url("#{$font-path}/Ubuntu 300.ttf") format("ttf")
+}
+
+@font-face {
+  font-family: "Ubuntu-bold";
+  src: url("#{$font-path}/Ubuntu 700.ttf") format("ttf")
+}
+
+@font-face {
+  font-family: "MyriadPro-regular";
+  src: url("#{$font-path}/MyriadPro-Refular.otf") format("otf")
+}
+
+body{
+  font-family: Ubuntu-regular;
+  font-size: 14px;
+  color: $light-grey-color;
+}
+
+@mixin small-title() {
+  font-size: 16px;
+  color: $dark-grey-color;
+  font-family: Ubuntu-bold;
 }
