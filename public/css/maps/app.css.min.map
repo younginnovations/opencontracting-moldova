@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/default.scss"],"names":[],"mappings":"AAAA;EACE,gBAAgB,EACjB;;AAED;EACE,gBAAgB,EACjB","file":"app.css","sourcesContent":["h1{\n  font-size: 32px;\n}\n\nh2{\n  font-size: 12px;\n}"],"sourceRoot":"/source/"}
