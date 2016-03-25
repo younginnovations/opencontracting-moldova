@@ -94,11 +94,13 @@ input::-webkit-input-placeholder {
       width: calc(100% - 145px);
       float: left;
       @include  small-title();
+      margin-bottom: 25px;
     }
 
     .right-section{
       width: 145px;
       select{
+        margin-bottom: 0;
         border-radius: 15px;
         border: solid 1px #484848;
         padding: 4px 12px;
@@ -114,7 +116,6 @@ input::-webkit-input-placeholder {
   }
 
   .chart-wrap{
-    border: solid 1px #aaa;
     min-height: 150px;
   }
 }
@@ -127,6 +128,10 @@ input::-webkit-input-placeholder {
 
 .chart-section-wrap{
   margin-bottom: 50px;
+
+  ul.breadcrumbs{
+      margin-bottom: 0;
+  }
 
   .breadcrumbs{
     li:not(:last-child)::after{

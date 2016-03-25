@@ -25,6 +25,15 @@ var custom_js = [
 
 ];
 
+var custom_chartJs = [
+    './resources/assets/js/charts/custom/lineChart-homepage.js',
+    './resources/assets/js/charts/custom/barChart-procuring.js',
+];
+
+var vendor_chartJs = [
+    './resources/assets/js/charts/vendor/d3.min.js',
+];
+
 gulp.task('compress-vendorJs', function () {
     return gulp.src(vendor_js)
         .pipe(concat('vendors.js'))
@@ -32,6 +41,15 @@ gulp.task('compress-vendorJs', function () {
         .pipe(uglify())
         .pipe(gulp.dest('./public/js'))
         .pipe(notify({message: 'Vendor javascript files successfully compressed.'}));
+});
+
+gulp.task('compress-vendorChartJs', function () {
+    return gulp.src(vendor_chartJs)
+        .pipe(concat('vendorChart.js'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(uglify())
+        .pipe(gulp.dest('./public/js'))
+        .pipe(notify({message: 'Vendor chartJS successfully compressed.'}));
 });
 
 gulp.task('compress-vendorCSS', function () {
@@ -69,6 +87,15 @@ gulp.task('js', function () {
         .pipe(notify({message: 'Custom javascripts successfully compressed.'}));
 });
 
+gulp.task('chartJs', function () {
+    return gulp.src(custom_chartJs)
+        .pipe(concat('customChart.js'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(uglify())
+        .pipe(gulp.dest('./public/js'))
+        .pipe(notify({message: 'Custom charts successfully compressed.'}));
+});
+
 /*
  * Watch scss files for changes & recompile
  */
@@ -81,9 +108,13 @@ gulp.task('watch-sass', function () {
  */
 gulp.task('watch-js', function () {
     gulp.watch('./resources/assets/js/**/*.js', ['js']);
+    gulp.watch('./resources/assets/js/**/**/*.js', ['chartJs']);
 });
 
+gulp.task('watch-chartJs', function () {
+    gulp.watch('./resources/assets/js/**/**/*.js', ['chartJs']);
+});
 /*
  * Default task, running just `gulp` will compile the sass,
  */
-gulp.task('default', ['sass', 'js', 'watch-sass', 'watch-js']);
+gulp.task('default', ['sass', 'js', 'watch-sass', 'watch-js', 'watch-chartJs']);
