@@ -7,6 +7,8 @@ use App\Moldova\Repositories\Tenders\TendersRepositoryInterface;
 
 class Tenders
 {
+    protected $tender;
+
     public function __construct(TendersRepositoryInterface $tender)
     {
         $this->tender = $tender;

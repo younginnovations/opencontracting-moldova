@@ -3,30 +3,31 @@ var widthOfParent = element.parent().width();
 
 var width = widthOfParent;
 var height = 200;
-var data =  [
-	{
-	    "xValue": "2012",
-	    "chart1": "200",
-	    "chart2": "200"
-	},
-	{
-	    "xValue": "2013",
-	    "chart1": "1100",
-	    "chart2": "1800"
-	},
-	{
-	    "xValue": "2014",
-	    "chart1": "2900",
-	    "chart2": "5000"
-	},
-    {
-	    "xValue": "2015",
-	    "chart1": "2900",
-	    "chart2": "4000"
-	}
-];
+//var data =  [
+//	{
+//	    "xValue": "2012",
+//	    "chart1": "200",
+//	    "chart2": "200"
+//	},
+//	{
+//	    "xValue": "2013",
+//	    "chart1": "1100",
+//	    "chart2": "1800"
+//	},
+//	{
+//	    "xValue": "2014",
+//	    "chart1": "2900",
+//	    "chart2": "5000"
+//	},
+//    {
+//	    "xValue": "2015",
+//	    "chart1": "2900",
+//	    "chart2": "4000"
+//	}
+//];
 
 var createLineChart = function(data){
+
     var svg = d3.select("#linechart-homepage")
                 .append("svg")
                 .attr("width", width)
@@ -160,4 +161,4 @@ var createLineChart = function(data){
 };
 
 // Calling the function that creates the linechart
-createLineChart(data);
+//createLineChart(data);

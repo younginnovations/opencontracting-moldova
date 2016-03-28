@@ -15,8 +15,6 @@
 //    return dd(config('database.default'));
 //});
 
-$app->get('/', 'ExampleController@index');
-
 $app->get('/home',function() use ($app){
     return view('landing-page');
 });
@@ -24,3 +22,5 @@ $app->get('/home',function() use ($app){
 $app->get('/contractDetail',function() use ($app){
     return view('contract-detail');
 });
+
+$app->get('/', 'HomeController@index');
