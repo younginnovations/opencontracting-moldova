@@ -7,15 +7,18 @@ $dark-grey-color: #5A5A5A;
 $tender-color: #0042B1;
 $contract-color: #CE0029;
 
-$font-path: "/fonts/";
+$font-path: "/../fonts";
 $img-path: "/images";
 
 /* ---- common styles ----- */
+
+
+
 @font-face {
   font-family: "Ubuntu-regular";
   font-style: normal;
-  font-weight: 500;
-  src: url("#{$font-path}/Ubuntu regular.ttf") format("ttf")
+  font-weight: 400;
+  src: url("#{$font-path}/Ubuntu-regular.ttf");
 }
 
 @font-face {
@@ -33,14 +36,104 @@ $img-path: "/images";
   src: url("#{$font-path}/MyriadPro-Refular.otf") format("otf")
 }
 
+*:focus{
+  outline: none;
+}
+
 body{
-  font-family: Ubuntu-regular;
+  font-family:  "Ubuntu-regular";
   font-size: 14px;
   color: $light-grey-color;
+  background-color: #fff;
+}
+
+h2{
+  font-size: 32px;
+  line-height: 38px;
+  margin-bottom: 30px;
+  color: $light-grey-color;
+  font-family: Ubuntu-bold;
+  display: block;
+
+  span{
+    font-family: ubunto-regular;
+    font-size: 25px;
+    line-height: 38px;
+    color: rgba(72,72,72,0.4);
+    margin-left: 10px;
+  }
+
+  @media (max-width: 600px) {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
 }
 
 @mixin small-title() {
   font-size: 16px;
-  color: $dark-grey-color;
+  color: $light-grey-color;
   font-family: Ubuntu-bold;
 }
+
+.block{
+  padding: 25px 25px;
+
+  @media (max-width: 600px) {
+    padding: 20px 20px;
+  }
+
+}
+
+.header-block{
+  border-bottom: solid 1px #D5D5D5;
+
+  h2{
+    margin-bottom: 0;
+  }
+}
+
+.name-value-wrap{
+  .name{
+    font-size: 17px;
+    line-height: 21px;
+    margin-bottom: 8px;
+    color: rgba(72,72,72,0.7);
+  }
+
+  .value{
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+/*style for table*/
+
+@media (min-width:768px){
+  tfoot,thead,tbody{
+    border: none;
+  }
+}
+
+.custom-table {
+  font-size: 14px;
+  color: $light-grey-color;
+  margin-bottom: 30px;
+  width: 100%;
+
+  tr{
+    th{
+      font-family: Ubuntu-bold;
+      border-bottom: solid 1px #d8d8d8;
+    }
+
+    &:nth-child(even){
+      background: none;
+    }
+
+    &:nth-child(odd):not(:first-of-type){
+      background: #f7f7f7;
+    }
+
+  }
+}
+

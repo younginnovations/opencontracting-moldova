@@ -69,26 +69,9 @@ input::-webkit-input-placeholder {
 /*style for chart container*/
 
 .each-chart-section{
-  min-height: 300px;
-  padding: 45px 45px 20px;
+  //min-height: 300px;
+  padding: 45px 45px 25px;
   background: #f7f7f7;
-  //border: solid 1px blue;
-  &:nth-child(1){
-    background: #F1F1F1;
-  }
-
-  &:nth-child(4){
-    background: #F1F1F1;
-  }
-
-  &:nth-child(5){
-    background: #F1F1F1;
-  }
-
-  &:nth-child(7){
-    background: #F1F1F1;
-  }
-
   .section-header{
     h3{
       width: calc(100% - 145px);
@@ -115,8 +98,35 @@ input::-webkit-input-placeholder {
     }
   }
 
-  .chart-wrap{
-    min-height: 150px;
+  .chart-wrap {
+    //min-height: 150px;
+  }
+}
+
+.chart-section-wrap{
+  .inner-wrap{
+    &:nth-child(odd){
+      .each-chart-section:nth-child(odd){
+        background: #F1F1F1;
+      }
+    }
+
+    @media (min-width: 40em) {
+      &:nth-child(even){
+        .each-chart-section:nth-child(even) {
+          background: #F1F1F1;
+        }
+      }
+    }
+
+    @media (max-width: 40em) {
+      &:nth-child(even){
+        .each-chart-section:nth-child(odd){
+          background: #F1F1F1;
+        }
+      }
+    }
+
   }
 }
 
@@ -176,8 +186,3 @@ input::-webkit-input-placeholder {
   }
 }
 
-/* ------ style for table ------- */
-.custom-table {
-  margin-bottom: 30px;
-  width: 100%;
-}

@@ -39,44 +39,77 @@
         </form>
     </div>
 </div>
-<div class="row chart-section-wrap">
-    <div class="medium-up-2 small-up-1">
-        <div class="columns each-chart-section">
-            <ul class="breadcrumbs">
-                <li><span href="#" class="indicator tender">Tender</span></li>
-                <li><span href="#" class="indicator contracts">Contracts</span></li>
-            </ul>
-            <div class="chart-wrap">
-                <div id="linechart-homepage"></div>
-            </div>
-        </div>
 
-        <div class="columns each-chart-section">
-            <div class="section-header clearfix">
-                <h3>Top 5 procuring agencies</h3>
-                <div class="top-bar-right right-section">
-                    <form>
-                        <div class="columns">
-                            <label>
-                                <select>
-                                    <option value="husker">Husker</option>
-                                    <option value="starbuck">Starbuck</option>
-                                    <option value="hotdog">Hot Dog</option>
-                                    <option value="apollo">Apollo</option>
-                                </select>
-                            </label>
+    <div class="row chart-section-wrap" >
+        {{-- ----- div for each two chart starts ------- --}}
+
+        <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
+            <div data-equalizer="equal-header" >
+
+                <div class="medium-6 small-12 columns each-chart-section">
+                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <ul class="breadcrumbs">
+                            <li><span href="#" class="indicator tender">Tender</span></li>
+                            <li><span href="#" class="indicator contracts">Contracts</span></li>
+                        </ul>
+                    </div>
+                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div id="linechart-homepage"></div>
+                    </div>
+                </div>
+
+                <div class="medium-6 small-12 columns each-chart-section">
+                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <h3>Top 5 procuring agencies</h3>
+                        <div class="top-bar-right right-section">
+                            <form>
+                                <div class="columns">
+                                    <label>
+                                        <select>
+                                            <option value="husker">Husker</option>
+                                            <option value="starbuck">Starbuck</option>
+                                            <option value="hotdog">Hot Dog</option>
+                                            <option value="apollo">Apollo</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div id="barChart-procuring"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {{-- ----- div for each two chart ends ------- --}}
+
+        <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
+            <div data-equalizer="equal-header" >
+
+                <div class="medium-6 small-12 columns each-chart-section">
+                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <h3>Top 5 contractors</h3>
+                    </div>
+
+                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div id="barChart-contractors"></div>
+                    </div>
+                </div>
+
+                <div class="medium-6 small-12 columns each-chart-section">
+                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <h3>Top 5 goods & services procured</h3>
+                    </div>
+
+                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div id="barChart-goods"></div>
+                    </div>
                 </div>
             </div>
-                <div class="chart-wrap">
-                    <div id="barChart-procuring"></div>
-                </div>
         </div>
-        <div class="columns each-chart-section"><div id="barChart-contractors"></div></div>
-        <div class="columns each-chart-section"><div id="barChart-goods"></div></div>
     </div>
-</div>
 
 <div class="row table-wrapper">
     <table class="responsive hover custom-table">
@@ -176,6 +209,9 @@
 <script src="{{url('js/app.min.js')}}"></script>
 <script src="{{url('js/vendorChart.min.js')}}"></script>
 <script src="{{url('js/customChart.min.js')}}"></script>
+<script>
+    $(document).foundation();
+</script>
 </body>
 
 </html>

@@ -20,3 +20,7 @@ $app->get('/', 'ExampleController@index');
 $app->get('/home',function() use ($app){
     return view('landing-page');
 });
+
+$app->get('/contractDetail',function() use ($app){
+    return view('contract-detail');
+});

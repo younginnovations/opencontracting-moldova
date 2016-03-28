@@ -1,7 +1,18 @@
-header{
+.burger-menu-button{
   z-index: 9999;
+  position: fixed;
+  top: 9px;
+  z-index: 9999;
+  right: 20px;
+  background: #0a0a0a;
+
+}
+
+header{
+  z-index: 8888;
   &.top-bar{
     background-color: #0042B1;
+    border-bottom: solid 7px #FFD400;
   }
 }
 
@@ -32,6 +43,15 @@ header{
     background: none;
     margin-top: -0.5rem;
     margin-bottom: -0.5rem;
+
+    li{
+      margin-left: 2px;
+      display: inline-block;
+    }
+  }
+
+  .menu>li:not(.menu-text)>a{
+    padding: 18px 1rem .7rem;
   }
 
   li a{
@@ -44,6 +64,7 @@ header{
 
     &.active{
       color: #fff;
+      border-top: solid 4px $deep-yellow-color;
     }
 
   }
