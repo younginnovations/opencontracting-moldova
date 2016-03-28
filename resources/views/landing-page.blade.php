@@ -47,7 +47,7 @@
                 <li><span href="#" class="indicator contracts">Contracts</span></li>
             </ul>
             <div class="chart-wrap">
-
+                <div id="linechart-homepage"></div>
             </div>
         </div>
 
@@ -70,11 +70,11 @@
                 </div>
             </div>
                 <div class="chart-wrap">
-
+                    <div id="barChart-procuring"></div>
                 </div>
         </div>
-        <div class="columns each-chart-section">column3</div>
-        <div class="columns each-chart-section">column4</div>
+        <div class="columns each-chart-section"><div id="barChart-contractors"></div></div>
+        <div class="columns each-chart-section"><div id="barChart-goods"></div></div>
     </div>
 </div>
 
@@ -174,6 +174,8 @@
 </footer>
 <script src="{{url('js/vendors.min.js')}}"></script>
 <script src="{{url('js/app.min.js')}}"></script>
+<script src="{{url('js/vendorChart.min.js')}}"></script>
+<script src="{{url('js/customChart.min.js')}}"></script>
 </body>
 
 </html>

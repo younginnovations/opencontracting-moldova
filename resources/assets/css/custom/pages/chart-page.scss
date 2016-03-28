@@ -1,0 +1,35 @@
+// style for line chart in homepage
+.axis path {
+        fill: none;
+        stroke: lightgrey;
+        shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: Lato;
+    font-size: 13px;
+}
+.line {
+    stroke: #993300;
+    fill: none;
+    stroke-width: 0.75px;
+}
+.line.line5 {
+    stroke:red;
+}
+.grid .tick {
+stroke: lightgrey;
+opacity: 0.7;
+}
+.grid{
+  stroke-width: 0.4px;
+}
+
+// styling for barchart of procuring
+.chart rect {
+  fill: #cebbaa;
+}
+
+.chart text {
+  fill: $light-grey-color;
+  font-size: 11px;
+}
