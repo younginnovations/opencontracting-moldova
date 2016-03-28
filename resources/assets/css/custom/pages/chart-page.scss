@@ -27,9 +27,11 @@ opacity: 0.7;
 // styling for barchart of procuring
 .chart rect {
   fill: #cebbaa;
+  cursor: pointer;
 }
 
 .chart text {
   fill: $light-grey-color;
   font-size: 11px;
+  cursor: pointer;
 }

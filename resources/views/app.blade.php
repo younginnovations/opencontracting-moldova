@@ -27,7 +27,7 @@
 
         <div class="top-bar-right">
             <ul class="menu">
-                <li><a href="#" class="active">Home</a></li>
+                <li><a href="{{ route('/') }}" class="active">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contracts</a></li>
                 <li><a href="#">Contact</a></li>

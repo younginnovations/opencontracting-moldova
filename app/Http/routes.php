@@ -15,12 +15,22 @@
 //    return dd(config('database.default'));
 //});
 
-$app->get('/home',function() use ($app){
+$app->get('/home', function () use ($app) {
     return view('landing-page');
 });
 
-$app->get('/contractDetail',function() use ($app){
+$app->get('/contractDetail', function () use ($app) {
     return view('contract-detail');
 });
 
-$app->get('/', 'HomeController@index');
+$app->get(
+    '/',
+    ['as' => '/', 'uses' => 'HomeController@index']
+);
+$app->get(
+    '/contractor/{name}',
+    [
+        'as'   => 'contractor',
+        'uses' => 'ContractController@show'
+    ]
+);

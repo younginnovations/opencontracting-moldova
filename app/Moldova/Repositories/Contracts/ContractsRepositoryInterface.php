@@ -17,9 +17,10 @@ interface ContractsRepositoryInterface
      * Get Procuring Agency by amount/count according to type and by limit given
      * @param $type
      * @param $limit
+     * @param $condition
      * @return mixed
      */
-    public function getProcuringAgency($type, $limit);
+    public function getProcuringAgency($type, $limit, $condition);
 
     /**
      * Get Contracts by amount/count according to type and by limit given
@@ -41,7 +42,19 @@ interface ContractsRepositoryInterface
      * @param $limit
      * @return mixed
      */
-    public function getGoodsAndServices($type, $limit);
+    public function getGoodsAndServices($type, $limit, $condition);
 
+    /**
+     * Get list of contracts
+     * @param $limit
+     * @return mixed
+     */
     public function getContractsList($limit);
+
+    /**
+     * Get detail of Contractor by name
+     * @param $contractor
+     * @return mixed
+     */
+    public function getContractorInfo($contractor);
 }

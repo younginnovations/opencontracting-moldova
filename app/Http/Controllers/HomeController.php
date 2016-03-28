@@ -27,9 +27,9 @@ class HomeController extends Controller
         $tendersTrends       = $this->tenders->getTendersByOpenYear();
         $contractsTrends     = $contracts->getContractsByOpenYear();
         $trends              = $this->mergeContractAndTenderTrends($tendersTrends, $contractsTrends);
-        $procuringAgency     = $this->encodeToJson($contracts->getProcuringAgency('amount', 5));
-        $contractors         = $this->encodeToJson($contracts->getContractors('amount', 5));
-        $goodsAndServices    = $this->encodeToJson($contracts->getGoodsAndServices('amount', 5));
+        $procuringAgency     = $contracts->getProcuringAgency('amount', 5);
+        $contractors         = $contracts->getContractors('amount', 5);
+        $goodsAndServices    = $contracts->getGoodsAndServices('amount', 5);
         $contractsList       = $contracts->getContractsList(10);
 
         return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices', 'contractsList'));
@@ -48,17 +48,5 @@ class HomeController extends Controller
         }
 
         return json_encode($trends);
-    }
-
-    private function encodeToJson($data)
-    {
-        $jsonData = [];
-
-        foreach ($data['result'] as $key => $val) {
-            $jsonData[$key]['name']  = $val['_id'];
-            $jsonData[$key]['value'] = $val['amount'];
-        }
-
-        return json_encode($jsonData);
     }
 }

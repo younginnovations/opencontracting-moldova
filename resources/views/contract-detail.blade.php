@@ -2,7 +2,7 @@
 @section('content')
     <div class="block header-block">
         <div class="row">
-            <h2>  Lusmecon S.A.<span>(Administratia de Stat a Drumurilor)</span>    </h2>
+            <h2> {{ $contractor }}<span>({{ json_decode($procuringAgency)[0]->name }})</span></h2>
         </div>
     </div>
 
@@ -13,7 +13,7 @@
                     Total contracts
                 </div>
                 <div class="value">
-                    10
+                    {{ count($contractorDetail) }}
                 </div>
             </div>
 
@@ -22,27 +22,47 @@
                     Total contract amount
                 </div>
                 <div class="value">
-                    355,742,708.8 leu
+                    {{number_format($totalAmount)}} leu
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row chart-section-wrap" >
+    <div class="row chart-section-wrap">
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
-            <div data-equalizer="equal-header" >
+            <div data-equalizer="equal-header">
+                <div class="medium-6 small-12 columns each-chart-section">
+                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <h3>No. of contracts</h3>
+                    </div>
+                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div id="linechart-homepage"></div>
+                    </div>
+                </div>
+                <div class="medium-6 small-12 columns each-chart-section">
+                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <h3>Contract value</h3>
+                    </div>
+                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div id="barChart-amount"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
+            <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
                         <h3>Top 5 procuring agencies</h3>
+
                         <div class="top-bar-right right-section">
                             <form>
                                 <div class="columns">
                                     <label>
                                         <select>
-                                            <option value="husker">Husker</option>
-                                            <option value="starbuck">Starbuck</option>
-                                            <option value="hotdog">Hot Dog</option>
-                                            <option value="apollo">Apollo</option>
+                                            <option value="husker">Based on value<</option>
+                                            <option value="starbuck">Based on count<</option>
                                         </select>
                                     </label>
                                 </div>
@@ -50,37 +70,21 @@
                         </div>
                     </div>
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div id="barChart-procuring"></div>
                     </div>
                 </div>
+
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>Top 5 procuring agencies</h3>
-                    </div>
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus modi numquam rem repellendus voluptatibus. Autem blanditiis consectetur cumque eius eos harum impedit minus possimus reiciendis, rem repellat tempora tempore ut?
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores dolore eius error exercitationem expedita libero porro quisquam, tempora totam? Consectetur deleniti dolores fugiat mollitia rem temporibus? Accusamus, ipsa, quam.
-                        </p>
+                        <h3>Top 5 Goods and Services procured</h3>
 
-                    </div>
-                </div>
-            </div>
-       </div>
-
-        <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
-            <div data-equalizer="equal-header" >
-                <div class="medium-6 small-12 columns each-chart-section">
-                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>Top 5 procuring agencies</h3>
                         <div class="top-bar-right right-section">
                             <form>
                                 <div class="columns">
                                     <label>
                                         <select>
-                                            <option value="husker">Husker</option>
-                                            <option value="starbuck">Starbuck</option>
-                                            <option value="hotdog">Hot Dog</option>
-                                            <option value="apollo">Apollo</option>
+                                            <option value="husker">Based on value<</option>
+                                            <option value="starbuck">Based on count<</option>
                                         </select>
                                     </label>
                                 </div>
@@ -88,19 +92,7 @@
                         </div>
                     </div>
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                    </div>
-                </div>
-
-                <div class="medium-6 small-12 columns each-chart-section">
-                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>Top 5 procuring agencies</h3>
-                    </div>
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus modi numquam rem repellendus voluptatibus. Autem blanditiis consectetur cumque eius eos harum impedit minus possimus reiciendis, rem repellat tempora tempore ut?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores dolore eius error exercitationem expedita libero porro quisquam, tempora totam? Consectetur deleniti dolores fugiat mollitia rem temporibus? Accusamus, ipsa, quam.
-                        </p>
-
+                        <div id="barChart-goods"></div>
                     </div>
                 </div>
             </div>
@@ -108,9 +100,57 @@
 
         </div>
 
-        <div class="inner-wrap clearfix">
-            <div class="medium-6 small-12 columns each-chart-section">column4</div>
-        </div>
+    </div>
+    <div class="row table-wrapper">
+        <table class="responsive hover custom-table">
+            <tbody>
+            <tr>
+                <th>Contract Number</th>
+                <th>Goods</th>
+                <th>Contract Date</th>
+                <th>Final Date</th>
+                <th>Amount</th>
+            </tr>
+
+            @forelse($contractorDetail as $key => $contract)
+                @if($key < 10)
+                    <tr>
+                        <td>{{ $contract['contractNumber'] }}</td>
+                        <td>{{ $contract['goods']['mdValue'] }}</td>
+                        <td class="dt">{{ $contract['contractDate'] }}</td>
+                        <td class="dt">{{ $contract['finalDate'] }}</td>
+                        <td>{{ number_format($contract['amount']) }}</td>
+                    </tr>
+                @endif
+            @empty
+            @endforelse
+
+
+            </tbody>
+        </table>
     </div>
 
 @stop
+@section('script')
+    <script src="{{url('js/vendorChart.min.js')}}"></script>
+    <script src="{{url('js/customChart.min.js')}}"></script>
+    <script>
+        var contracts = '{!! $contractTrend  !!}';
+        var amountTrend = '{!! $amountTrend !!}';
+        var procuringAgencies = '{!! $procuringAgency  !!}';
+        var goodsAndServices = '{!! $goodsAndServices  !!}';
+
+        createLineChart(JSON.parse(contracts));
+        createBarChartProcuring(JSON.parse(amountTrend), "barChart-amount");
+        createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency");
+        createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods");
+
+        $('.dt').each(function () {
+            var dt = $(this).text().split(".");
+            dt = dt[1] + '/' + dt[0] + '/' + dt[2];
+            var formatted = moment(dt).format('ll');
+            $(this).text(formatted);
+        });
+
+    </script>
+@endsection

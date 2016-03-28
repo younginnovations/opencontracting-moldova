@@ -18,7 +18,6 @@ class Contracts
      */
     public function __construct(ContractsRepositoryInterface $contracts)
     {
-
         $this->contracts = $contracts;
     }
 
@@ -27,7 +26,12 @@ class Contracts
      */
     public function getContractsByOpenYear()
     {
-        $contracts           = $this->contracts->getContractsByOpenYear();
+        return $this->aggregateContracts($this->contracts->getContractsByOpenYear());
+
+    }
+
+    public function aggregateContracts($contracts, $type = '')
+    {
         $contractsByOpenYear = [];
 
         foreach ($contracts as $contract) {
@@ -35,9 +39,9 @@ class Contracts
             $year = explode(".", $contract['contractDate']);
 
             if (array_key_exists($year[2], $contractsByOpenYear)) {
-                $contractsByOpenYear[$year[2]] += 1;
+                $contractsByOpenYear[$year[2]] += ('amount' == $type) ? $contract['amount'] : 1;
             } else {
-                $contractsByOpenYear[$year[2]] = 1;
+                $contractsByOpenYear[$year[2]] = ('amount' == $type) ? $contract['amount'] : 1;
             }
 
         }
@@ -47,13 +51,14 @@ class Contracts
 
     /**
      * Get Procuring Agency by amount/count according to type and by limit given
-     * @param $type
-     * @param $limit
+     * @param        $type
+     * @param        $limit
+     * @param string $condition
      * @return mixed
      */
-    public function getProcuringAgency($type, $limit)
+    public function getProcuringAgency($type, $limit, $condition = '')
     {
-        return $this->contracts->getProcuringAgency($type, $limit);
+        return $this->encodeToJson($this->contracts->getProcuringAgency($type, $limit, $condition));
     }
 
     /**
@@ -64,7 +69,7 @@ class Contracts
      */
     public function getContractors($type, $limit)
     {
-        return $this->contracts->getContractors($type, $limit);
+        return $this->encodeToJson($this->contracts->getContractors($type, $limit));
     }
 
     /**
@@ -78,17 +83,52 @@ class Contracts
 
     /**
      * Get Goods And Services by amount/count according to type and by limit given
-     * @param $type
+     * @param        $type
+     * @param        $limit
+     * @param string $condition
+     * @return mixed
+     */
+    public function getGoodsAndServices($type, $limit, $condition = '')
+    {
+        return $this->encodeToJson($this->contracts->getGoodsAndServices($type, $limit, $condition));
+    }
+
+    /**
      * @param $limit
      * @return mixed
      */
-    public function getGoodsAndServices($type, $limit)
-    {
-        return $this->contracts->getGoodsAndServices($type, $limit);
-    }
-
     public function getContractsList($limit)
     {
         return $this->contracts->getContractsList($limit);
+    }
+
+    /**
+     * @param $contractor
+     * @return mixed
+     */
+    public function getContractorInfo($contractor)
+    {
+        return $this->contracts->getContractorInfo($contractor);
+    }
+
+    /**
+     * @param        $data
+     * @param        $type
+     * @return string
+     */
+    public function encodeToJson($data, $type = '')
+    {
+        $jsonData = [];
+        $count    = 0;
+        $data     = ('trend' == $type) ? $data : $data['result'];
+
+        ksort($data);
+        foreach ($data as $key => $val) {
+            $jsonData[$count]['name']  = ('trend' == $type) ? $key : $val['_id'];
+            $jsonData[$count]['value'] = ('trend' == $type) ? $val : $val['amount'];
+            $count ++;
+        }
+
+        return json_encode($jsonData);
     }
 }
