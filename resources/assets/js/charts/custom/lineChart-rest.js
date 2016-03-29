@@ -1,24 +1,23 @@
-var element = $("#linechart-homepage");
-var widthOfParent = element.parent().width();
+var element1 = $("#linechart-rest");
+var widthOfParent1 = element1.parent().width();
 
-var width = widthOfParent;
-var height = 200;
-
-var createLineChart = function(data){
-
-    var svg = d3.select("#linechart-homepage")
+var width1 = widthOfParent1;
+var height1 = 250;
+var createLineChartRest = function(data){
+    console.log(data);
+    var svg = d3.select("#linechart-rest")
                 .append("svg")
-                .attr("width", width)
-                .attr("height", height)
+                .attr("width", width1)
+                .attr("height", height1)
                 .attr("id", "visualization");
     var vis = d3.select("#visualization"),
                 margin = {
                     top: 20, right:20, bottom:20, left: 50
                 };
 
-    var xScale = d3.scale.ordinal().rangeRoundBands([0,width - 50], 0);
+    var xScale = d3.scale.ordinal().rangeRoundBands([0,width1-50], 0);
     var yScale = d3.scale.linear()
-                .range([height - margin.top, margin.bottom]);
+                .range([height1 - margin.top, margin.bottom]);
     var xAxis = d3.svg.axis()
                     .orient("bottom")
                     .scale(xScale)
@@ -51,16 +50,20 @@ var createLineChart = function(data){
 
         vis.append("svg:g")
             .attr("class","axis")
-            .attr("transform", "translate(" + (margin.left) + "," + (height - margin.bottom)+ ")")
+            .attr("transform", "translate(" + (margin.left) + "," + (height1 - margin.bottom)+ ")")
             .call(xAxis);
 
+            // for the vertical grids
+            // ==============================================================
         // vis.append("svg:g")
         // 	.attr("class","grid")
-        // 	.attr("transform", "translate(" + (margin.left) + "," + (height - margin.bottom)+ ")")
+        // 	.attr("transform", "translate(" + (margin.left) + "," + (height1 - margin.bottom)+ ")")
         // 	.call(make_x_axis()
-        // 			.tickSize(-height+margin.top, 0 ,0 )
+        // 			.tickSize(-height1, 0 ,0 )
         // 			.tickFormat("")
         // 		)
+        // =====================================================================
+
         vis.append("svg:g")
             .attr("class","axis")
             .attr("transform", "translate(" + margin.left + ",0)")
@@ -70,26 +73,11 @@ var createLineChart = function(data){
             .attr("class","grid")
             .attr("transform", "translate(" + margin.left + ",0)")
             .call(make_y_axis()
-                    .tickSize(-width,0,0)
+                    .tickSize(-width1,0,0)
                     .tickFormat("")
                 )
 
-        var lineGen1 = d3.svg.line()
-                    .x(function (d) {
-                        return xScale(d.xValue);
-                    })
-                    .y(function (d) {
-                        return yScale(d.chart1);
-                    });
-                    // .interpolate("basis");
-        vis.append('svg:path')
-            .attr('d', lineGen1(data))
-            .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
-            .attr("stroke", "grey")
-            .attr("stroke-width", 2)
-            .attr("fill", "none");
-
-        var lineGen2 = d3.svg.line()
+        var lineGen = d3.svg.line()
                     .x(function (d) {
                         return xScale(d.xValue);
                     })
@@ -98,7 +86,7 @@ var createLineChart = function(data){
                     });
 
         vis.append('svg:path')
-            .attr('d', lineGen2(data))
+            .attr('d', lineGen(data))
             .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
             .attr("stroke", "#ccc")
             .attr("stroke-width", 2)
@@ -109,26 +97,11 @@ var createLineChart = function(data){
             .enter()
             .append("circle")
             .filter(function (d) {
-                return d.chart1;
-            })
-            .attr("r", 3)
-            .attr("fill", "blue")
-            .attr("cx", function (d){
-                return xScale(d.xValue) + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left);
-            })
-            .attr("cy", function (d){
-                return yScale(d.chart1);
-            });
-
-        vis.selectAll("dot")
-            .data(data)
-            .enter()
-            .append("circle")
-            .filter(function (d) {
                 return d.chart2;
             })
             .attr("r", 3)
             .attr("fill", "red")
+            // .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
             .attr("cx", function (d){
                 return xScale(d.xValue) + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left);
             })
@@ -137,6 +110,3 @@ var createLineChart = function(data){
             });
 
 };
-
-// Calling the function that creates the linechart
-//createLineChart(data);

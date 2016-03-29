@@ -28,7 +28,9 @@ var custom_js = [
 
 var custom_chartJs = [
     './resources/assets/js/charts/custom/lineChart-homepage.js',
+    './resources/assets/js/charts/custom/lineChart-rest.js',
     './resources/assets/js/charts/custom/barChart-procuring.js',
+    './resources/assets/js/charts/custom/barChart-contract.js',
 ];
 
 var vendor_chartJs = [
