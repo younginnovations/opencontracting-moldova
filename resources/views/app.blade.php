@@ -55,6 +55,12 @@
 @yield('script')
 <script>
     $(document).foundation();
+    $('.dt').each(function () {
+        var dt = $(this).text().split(".");
+        dt = dt[1] + '/' + dt[0] + '/' + dt[2];
+        var formatted = moment(dt).format('ll');
+        $(this).text(formatted);
+    });
 </script>
 </body>
 

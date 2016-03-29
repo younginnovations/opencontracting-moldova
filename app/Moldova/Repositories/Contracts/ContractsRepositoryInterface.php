@@ -58,9 +58,9 @@ interface ContractsRepositoryInterface
 
     /**
      * Get detail of Contractor or Procuring Agency by name
-     * @param $contractor
+     * @param $parameter
      * @param $column
      * @return mixed
      */
-    public function getDetailInfo($contractor, $column);
+    public function getDetailInfo($parameter, $column);
 }

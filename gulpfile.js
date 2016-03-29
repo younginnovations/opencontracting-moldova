@@ -23,7 +23,7 @@ var vendor_css = [
 ];
 
 var custom_js = [
-
+    './resources/assets/js/custom/api.js'
 ];
 
 var custom_chartJs = [

@@ -58,11 +58,11 @@
 
                         <div class="top-bar-right right-section">
                             <form>
-                                <div class="columns">
+                                <div>
                                     <label>
-                                        <select>
-                                            <option value="husker">Based on value<</option>
-                                            <option value="starbuck">Based on count<</option>
+                                        <select id="select-contractor" data-for="agency" data="{{ $procuringAgency }}">
+                                            <option value="amount">Based on value</option>
+                                            <option value="count">Based on count</option>
                                         </select>
                                     </label>
                                 </div>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="barChart-contractor"></div>
+                        <div id="barChart-contractors"></div>
                     </div>
                 </div>
 
@@ -80,11 +80,11 @@
 
                         <div class="top-bar-right right-section">
                             <form>
-                                <div class="columns">
+                                <div>
                                     <label>
-                                        <select>
-                                            <option value="husker">Based on value<</option>
-                                            <option value="starbuck">Based on count<</option>
+                                        <select id="select-goods" data-for="agency" data="{{ $procuringAgency }}">
+                                            <option value="amount">Based on value</option>
+                                            <option value="count">Based on count</option>
                                         </select>
                                     </label>
                                 </div>
@@ -135,6 +135,7 @@
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
+        var route = '{{ route("filter") }}';
         var contracts = '{!! $contractTrend  !!}';
         var amountTrend = '{!! $amountTrend !!}';
         var contractors = '{!! $contractors  !!}';
@@ -142,15 +143,8 @@
 
         createLineChartRest(JSON.parse(contracts));
         createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
-        createBarChartProcuring(JSON.parse(contractors), "barChart-contractor", "contractor");
+        createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor");
         createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods");
-
-        $('.dt').each(function () {
-            var dt = $(this).text().split(".");
-            dt = dt[1] + '/' + dt[0] + '/' + dt[2];
-            var formatted = moment(dt).format('ll');
-            $(this).text(formatted);
-        });
 
     </script>
 @endsection

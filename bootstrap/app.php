@@ -1,5 +1,7 @@
 <?php
 
+use Monolog\Handler\LogglyHandler;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
@@ -107,5 +109,13 @@ if (getenv('APP_ENV') == "local") {
 }
 
 $app->configure('database');
+
+if (getenv('APP_ENV') != "local") {
+    $app->configureMonologUsing(function ($monolog) {
+        $monolog->pushHandler(new LogglyHandler(getenv('LOGGLY_TOKEN')));
+
+        return $monolog;
+    });
+}
 
 return $app;

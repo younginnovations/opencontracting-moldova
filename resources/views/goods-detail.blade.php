@@ -2,7 +2,7 @@
 @section('content')
     <div class="block header-block">
         <div class="row">
-            <h2> {{ $contractor }}</h2>
+            <h2> {{ $goods }}</h2>
         </div>
     </div>
 
@@ -13,7 +13,7 @@
                     Total contracts
                 </div>
                 <div class="value">
-                    {{ count($contractorDetail) }}
+                    {{ count($goodsDetail) }}
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                         <h3>No. of contracts</h3>
                     </div>
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="linechart-rest"></div>
+                        <div id="linechart-homepage"></div>
                     </div>
                 </div>
                 <div class="medium-6 small-12 columns each-chart-section">
@@ -54,13 +54,35 @@
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>Top 5 procuring agencies</h3>
+                        <h3>Top 5 contractors</h3>
 
                         <div class="top-bar-right right-section">
                             <form>
                                 <div>
                                     <label>
-                                        <select id="select-agency" data-for="contractor" data="{{ $contractor }}">
+                                        <select id="select-contractor" data-for="goods" data="{{ $goods }}">
+                                            <option value="amount">Based on value</option>
+                                            <option value="count">Based on count</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div id="barChart-contractors"></div>
+                    </div>
+                </div>
+
+                <div class="medium-6 small-12 columns each-chart-section">
+                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <h3>Top 5 procuring agency</h3>
+
+                        <div class="top-bar-right right-section">
+                            <form>
+                                <div>
+                                    <label>
+                                        <select id="select-agency" data-for="goods" data="{{ $goods }}">
                                             <option value="amount">Based on value</option>
                                             <option value="count">Based on count</option>
                                         </select>
@@ -71,28 +93,6 @@
                     </div>
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
                         <div id="barChart-procuring"></div>
-                    </div>
-                </div>
-
-                <div class="medium-6 small-12 columns each-chart-section">
-                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>Top 5 Goods and Services procured</h3>
-
-                        <div class="top-bar-right right-section">
-                            <form>
-                                <div>
-                                    <label>
-                                        <select id="select-goods" data-for="contractor" data="{{ $contractor }}">
-                                            <option value="amount">Based on value</option>
-                                            <option value="count">Based on count</option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="barChart-goods"></div>
                     </div>
                 </div>
             </div>
@@ -106,20 +106,20 @@
             <tbody>
             <tr>
                 <th>Contract Number</th>
-                <th>Goods</th>
+                <th>Contractor</th>
                 <th>Contract Date</th>
                 <th>Final Date</th>
                 <th>Amount</th>
             </tr>
 
-            @forelse($contractorDetail as $key => $contract)
+            @forelse($goodsDetail as $key => $goods)
                 @if($key < 10)
                     <tr>
-                        <td>{{ $contract['contractNumber'] }}</td>
-                        <td>{{ $contract['goods']['mdValue'] }}</td>
-                        <td class="dt">{{ $contract['contractDate'] }}</td>
-                        <td class="dt">{{ $contract['finalDate'] }}</td>
-                        <td>{{ number_format($contract['amount']) }}</td>
+                        <td>{{ $goods['contractNumber'] }}</td>
+                        <td>{{ $goods['participant']['fullName'] }}</td>
+                        <td class="dt">{{ $goods['contractDate'] }}</td>
+                        <td class="dt">{{ $goods['finalDate'] }}</td>
+                        <td>{{ number_format($goods['amount']) }}</td>
                     </tr>
                 @endif
             @empty
@@ -138,13 +138,13 @@
         var route = '{{ route("filter") }}';
         var contracts = '{!! $contractTrend  !!}';
         var amountTrend = '{!! $amountTrend !!}';
-        var procuringAgencies = '{!! $procuringAgency  !!}';
-        var goodsAndServices = '{!! $goodsAndServices  !!}';
+        var contractors = '{!! $contractors  !!}';
+        var procuringAgency = '{!! $procuringAgency  !!}';
 
-        createLineChartRest(JSON.parse(contracts));
+        createLineChart(JSON.parse(contracts));
         createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
-        createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency");
-        createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods");
+        createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor");
+        createBarChartProcuring(JSON.parse(procuringAgency), "barChart-procuring", "goods");
 
     </script>
 @endsection

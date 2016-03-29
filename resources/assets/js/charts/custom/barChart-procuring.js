@@ -106,7 +106,7 @@ var createBarChartProcuring = function (data, definedId, url) {
                 }
             }
             else {
-                return (String(d.name).slice(0, 20));
+                return ('N/A');
             }
         })
         .attr("y", function (d, i) {

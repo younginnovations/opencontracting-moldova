@@ -38,9 +38,9 @@
                         <div class="top-bar-right right-section">
                             <form>
                                 <label>
-                                    <select>
-                                        <option value="husker">Based on value</option>
-                                        <option value="starbuck">Based on count</option>
+                                    <select id="select-agency">
+                                        <option value="amount">Based on value</option>
+                                        <option value="count">Based on count</option>
                                     </select>
                                 </label>
                             </form>
@@ -65,9 +65,9 @@
                         <div class="top-bar-right right-section">
                             <form>
                                 <label>
-                                    <select>
-                                        <option value="husker">Based on value</option>
-                                        <option value="starbuck">Based on count</option>
+                                    <select id="select-contractor">
+                                        <option value="amount">Based on value</option>
+                                        <option value="count">Based on count</option>
                                     </select>
                                 </label>
                             </form>
@@ -86,9 +86,9 @@
                         <div class="top-bar-right right-section">
                             <form>
                                 <label>
-                                    <select>
-                                        <option value="husker">Based on value</option>
-                                        <option value="starbuck">Based on count</option>
+                                    <select id="select-goods">
+                                        <option value="amount">Based on value</option>
+                                        <option value="count">Based on count</option>
                                     </select>
                                 </label>
                             </form>
@@ -137,6 +137,8 @@
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
+
+        var route ='{{ route("filter") }}';
         var trends = '{!! $trends  !!}';
         var procuringAgencies = '{!! $procuringAgency  !!}';
         var contractors = '{!! $contractors  !!}';
@@ -147,11 +149,5 @@
         createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor");
         createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods");
 
-        $('.dt').each(function () {
-            var dt = $(this).text().split(".");
-            dt = dt[1] + '/' + dt[0] + '/' + dt[2];
-            var formatted = moment(dt).format('ll');
-            $(this).text(formatted);
-        });
     </script>
 @endsection
