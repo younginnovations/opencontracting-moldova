@@ -193,12 +193,12 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getDetailInfo($contractor, $column)
+    public function getDetailInfo($parameter, $column)
     {
-        $result = Contracts::raw(function ($collection) use ($contractor, $column) {
+        $result = Contracts::raw(function ($collection) use ($parameter, $column) {
 
             return $collection->find(
-                [$column => $contractor],
+                [$column => $parameter],
                 [
                     "contractNumber"          => 1,
                     "contractDate"            => 1,

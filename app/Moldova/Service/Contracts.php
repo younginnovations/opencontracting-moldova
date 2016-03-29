@@ -59,7 +59,7 @@ class Contracts
      */
     public function getProcuringAgency($type, $limit, $condition = '', $column = '')
     {
-        return $this->encodeToJson($this->contracts->getProcuringAgency($type, $limit, $condition, $column));
+        return $this->encodeToJson($this->contracts->getProcuringAgency($type, $limit, $condition, $column), $type);
     }
 
     /**
@@ -72,7 +72,7 @@ class Contracts
      */
     public function getContractors($type, $limit, $condition = '', $column = '')
     {
-        return $this->encodeToJson($this->contracts->getContractors($type, $limit, $condition, $column));
+        return $this->encodeToJson($this->contracts->getContractors($type, $limit, $condition, $column), $type);
     }
 
     /**
@@ -85,7 +85,7 @@ class Contracts
      */
     public function getGoodsAndServices($type, $limit, $condition = '', $column = '')
     {
-        return $this->encodeToJson($this->contracts->getGoodsAndServices($type, $limit, $condition, $column));
+        return $this->encodeToJson($this->contracts->getGoodsAndServices($type, $limit, $condition, $column), $type);
     }
 
     /**
@@ -129,9 +129,10 @@ class Contracts
         $data     = ('trend' == $type) ? $data : $data['result'];
 
         ksort($data);
+
         foreach ($data as $key => $val) {
             $jsonData[$count]['name']  = ('trend' == $type) ? $key : $val['_id'];
-            $jsonData[$count]['value'] = ('trend' == $type) ? $val : $val['amount'];
+            $jsonData[$count]['value'] = ('trend' == $type) ? $val : $val[$type];
             $count ++;
         }
 

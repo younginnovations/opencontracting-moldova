@@ -42,3 +42,19 @@ $app->get(
         'uses' => 'ProcuringAgencyController@show'
     ]
 );
+
+$app->get(
+    '/goods/{name}',
+    [
+        'as'   => 'goods',
+        'uses' => 'GoodsController@show'
+    ]
+);
+
+$app->get(
+    '/filter',
+    [
+        'as'   => 'filter',
+        'uses' => 'HomeController@filter'
+    ]
+);
