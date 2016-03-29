@@ -34,3 +34,11 @@ $app->get(
         'uses' => 'ContractController@show'
     ]
 );
+
+$app->get(
+    '/procuring-agency/{name}',
+    [
+        'as'   => 'procuring-agency',
+        'uses' => 'ProcuringAgencyController@show'
+    ]
+);

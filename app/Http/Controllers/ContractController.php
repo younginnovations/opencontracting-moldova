@@ -25,14 +25,14 @@ class ContractController extends Controller
     public function show($contractor)
     {
         $contractor       = urldecode($contractor);
-        $contractorDetail = $this->contracts->getContractorInfo($contractor);
+        $contractorDetail = $this->contracts->getDetailInfo($contractor, 'participant.fullName');
         $totalAmount      = $this->getTotalAmount($contractorDetail);
         $contractTrend    = $this->getTrend($this->contracts->aggregateContracts($contractorDetail));
         $amountTrend      = $this->contracts->encodeToJson($this->contracts->aggregateContracts($contractorDetail, 'amount'), 'trend');
-        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, $contractor);
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, $contractor);
+        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, $contractor,'participant.fullName');
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, $contractor,'participant.fullName');
 
-        return view('contract-detail', compact('contractor','contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices'));
+        return view('contract-detail', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices'));
     }
 
     private function getTotalAmount($contracts)

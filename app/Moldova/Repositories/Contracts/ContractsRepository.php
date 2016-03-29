@@ -40,7 +40,7 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getProcuringAgency($type, $limit, $condition)
+    public function getProcuringAgency($type, $limit, $condition, $column)
     {
         $query  = [];
         $filter = [];
@@ -48,7 +48,7 @@ class ContractsRepository implements ContractsRepositoryInterface
         if ($condition !== '') {
             $filter = [
                 '$match' => [
-                    'participant.fullName' => $condition
+                    $column => $condition
                 ]
             ];
         }
@@ -81,22 +81,40 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getContractors($type, $limit)
+    public function getContractors($type, $limit, $condition, $column)
     {
-        $groupBy = [
+        $query  = [];
+        $filter = [];
+
+        if ($condition !== '') {
+            $filter = [
+                '$match' => [
+                    $column => $condition
+                ]
+            ];
+        }
+
+        if (!empty($filter)) {
+            array_push($query, $filter);
+        }
+
+        $groupBy =
             [
                 '$group' => [
                     '_id'    => '$participant.fullName',
                     'count'  => ['$sum' => 1],
                     'amount' => ['$sum' => '$amount']
                 ]
-            ],
-            ['$sort' => [$type => - 1]],
-            ['$limit' => $limit]
-        ];
+            ];
 
-        $result = Contracts::raw(function ($collection) use ($groupBy) {
-            return $collection->aggregate($groupBy);
+        array_push($query, $groupBy);
+        $sort = ['$sort' => [$type => - 1]];
+        array_push($query, $sort);
+        $limit = ['$limit' => $limit];
+        array_push($query, $limit);
+
+        $result = Contracts::raw(function ($collection) use ($query) {
+            return $collection->aggregate($query);
         });
 
         return ($result);
@@ -113,7 +131,7 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getGoodsAndServices($type, $limit, $condition)
+    public function getGoodsAndServices($type, $limit, $condition, $column)
     {
         $query  = [];
         $filter = [];
@@ -121,7 +139,7 @@ class ContractsRepository implements ContractsRepositoryInterface
         if ($condition !== '') {
             $filter = [
                 '$match' => [
-                    'participant.fullName' => $condition
+                    $column => $condition
                 ]
             ];
         }
@@ -175,19 +193,20 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getContractorInfo($contractor)
+    public function getDetailInfo($contractor, $column)
     {
-        $result = Contracts::raw(function ($collection) use ($contractor) {
+        $result = Contracts::raw(function ($collection) use ($contractor, $column) {
 
             return $collection->find(
-                ["participant.fullName" => $contractor],
+                [$column => $contractor],
                 [
-                    "contractNumber"       => 1,
-                    "contractDate"         => 1,
-                    "finalDate"            => 1,
-                    "amount"               => 1,
-                    "goods.mdValue"        => 1,
-                    "participant.fullName" => 1,
+                    "contractNumber"          => 1,
+                    "contractDate"            => 1,
+                    "finalDate"               => 1,
+                    "amount"                  => 1,
+                    "goods.mdValue"           => 1,
+                    "participant.fullName"    => 1,
+                    "tender.stateOrg.orgName" => 1
 
                 ]);
         });

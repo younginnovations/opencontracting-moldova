@@ -54,22 +54,38 @@ class Contracts
      * @param        $type
      * @param        $limit
      * @param string $condition
+     * @param        $column
      * @return mixed
      */
-    public function getProcuringAgency($type, $limit, $condition = '')
+    public function getProcuringAgency($type, $limit, $condition = '', $column = '')
     {
-        return $this->encodeToJson($this->contracts->getProcuringAgency($type, $limit, $condition));
+        return $this->encodeToJson($this->contracts->getProcuringAgency($type, $limit, $condition, $column));
     }
 
     /**
      * Get Contractors by amount/count according to type and by limit given
-     * @param $type
-     * @param $limit
+     * @param        $type
+     * @param        $limit
+     * @param string $condition
+     * @param        $column
      * @return mixed
      */
-    public function getContractors($type, $limit)
+    public function getContractors($type, $limit, $condition = '', $column = '')
     {
-        return $this->encodeToJson($this->contracts->getContractors($type, $limit));
+        return $this->encodeToJson($this->contracts->getContractors($type, $limit, $condition, $column));
+    }
+
+    /**
+     * Get Goods And Services by amount/count according to type and by limit given
+     * @param        $type
+     * @param        $limit
+     * @param string $condition
+     * @param        $column
+     * @return mixed
+     */
+    public function getGoodsAndServices($type, $limit, $condition = '', $column = '')
+    {
+        return $this->encodeToJson($this->contracts->getGoodsAndServices($type, $limit, $condition, $column));
     }
 
     /**
@@ -82,18 +98,6 @@ class Contracts
     }
 
     /**
-     * Get Goods And Services by amount/count according to type and by limit given
-     * @param        $type
-     * @param        $limit
-     * @param string $condition
-     * @return mixed
-     */
-    public function getGoodsAndServices($type, $limit, $condition = '')
-    {
-        return $this->encodeToJson($this->contracts->getGoodsAndServices($type, $limit, $condition));
-    }
-
-    /**
      * @param $limit
      * @return mixed
      */
@@ -103,12 +107,14 @@ class Contracts
     }
 
     /**
-     * @param $contractor
+     * Find Contractor or Procuring Agency Info according to params provided
+     * @param $parameter
+     * @param $column
      * @return mixed
      */
-    public function getContractorInfo($contractor)
+    public function getDetailInfo($parameter, $column)
     {
-        return $this->contracts->getContractorInfo($contractor);
+        return $this->contracts->getDetailInfo($parameter, $column);
     }
 
     /**
