@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Monolog\Handler\LogglyHandler;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $log =$this->app['log'];
+        $handler = new LogglyHandler(getenv('LOGGLY_TOKEN'));
+        $handler->setTag('Moldocds' .strtolower(app()->environment()));
+        $log->pushHandler($handler);
     }
 }

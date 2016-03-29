@@ -80,10 +80,11 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
- $app->register(App\Providers\RepositoryServiceProvider::class);
+$app->register(App\Providers\RepositoryServiceProvider::class);
+$app->register(App\Providers\DevelopmentServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -98,7 +99,12 @@ $app->singleton(
 
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__ . '/../app/Http/routes.php';
+
 });
+
+if (getenv('APP_ENV') == "local") {
+    $app->get('logs', 'Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+}
 
 $app->configure('database');
 
