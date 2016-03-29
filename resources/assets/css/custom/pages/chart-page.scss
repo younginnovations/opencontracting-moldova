@@ -1,5 +1,5 @@
 // style for line chart in homepage
-.axis path {
+.axis path, .axis line {
         fill: none;
         stroke: lightgrey;
         shape-rendering: crispEdges;
@@ -23,9 +23,11 @@ opacity: 0.7;
 .grid{
   stroke-width: 0.4px;
 }
-
+.top{
+    z-index: 1000;
+}
 // styling for barchart of procuring
-.chart rect {
+.chart rect, rect {
   fill: #cebbaa;
   cursor: pointer;
 }
