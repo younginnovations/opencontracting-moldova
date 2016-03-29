@@ -29,7 +29,7 @@ class ContractsRepository implements ContractsRepositoryInterface
         $result = Contracts::raw(function ($collection) {
             return $collection->find([], [
                     "contractDate" => 1,
-                    "_id"              => 1
+                    "_id"          => 1
                 ]
             );
         });
@@ -40,25 +40,42 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getProcuringAgency($type, $limit)
+    public function getProcuringAgency($type, $limit, $condition)
     {
-        $groupBy = [
-            [
-                '$group' => [
-                    '_id'    => '$tender.stateOrg.orgName',
-                    'count'  => ['$sum' => 1],
-                    'amount' => ['$sum' => '$amount']
+        $query  = [];
+        $filter = [];
+
+        if ($condition !== '') {
+            $filter = [
+                '$match' => [
+                    'participant.fullName' => $condition
                 ]
-            ],
-            ['$sort' => [$type => - 1]],
-            ['$limit' => $limit]
+            ];
+        }
+
+        if (!empty($filter)) {
+            array_push($query, $filter);
+        }
+
+        $groupBy = [
+            '$group' => [
+                '_id'    => '$tender.stateOrg.orgName',
+                'count'  => ['$sum' => 1],
+                'amount' => ['$sum' => '$amount']
+            ]
         ];
 
-        $result = Contracts::raw(function ($collection) use ($groupBy) {
-            return $collection->aggregate($groupBy);
+        array_push($query, $groupBy);
+        $sort = ['$sort' => [$type => - 1]];
+        array_push($query, $sort);
+        $limit = ['$limit' => $limit];
+        array_push($query, $limit);
+
+        $result = Contracts::raw(function ($collection) use ($query) {
+            return $collection->aggregate($query);
         });
 
-        return $result;
+        return ($result);
     }
 
     /**
@@ -96,27 +113,48 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getGoodsAndServices($type, $limit)
+    public function getGoodsAndServices($type, $limit, $condition)
     {
-        $groupBy = [
+        $query  = [];
+        $filter = [];
+
+        if ($condition !== '') {
+            $filter = [
+                '$match' => [
+                    'participant.fullName' => $condition
+                ]
+            ];
+        }
+
+        if (!empty($filter)) {
+            array_push($query, $filter);
+        }
+
+        $groupBy =
             [
                 '$group' => [
                     '_id'    => '$goods.mdValue',
                     'count'  => ['$sum' => 1],
                     'amount' => ['$sum' => '$amount']
                 ]
-            ],
-            ['$sort' => [$type => - 1]],
-            ['$limit' => $limit]
-        ];
+            ];
 
-        $result = Contracts::raw(function ($collection) use ($groupBy) {
-            return $collection->aggregate($groupBy);
+        array_push($query, $groupBy);
+        $sort = ['$sort' => [$type => - 1]];
+        array_push($query, $sort);
+        $limit = ['$limit' => $limit];
+        array_push($query, $limit);
+
+        $result = Contracts::raw(function ($collection) use ($query) {
+            return $collection->aggregate($query);
         });
 
         return ($result);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getContractsList($limit)
     {
 
@@ -129,6 +167,29 @@ class ContractsRepository implements ContractsRepositoryInterface
                     "goods.mdValue"  => 1
                 ]
             )->limit($limit);
+        });
+
+        return ($result);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getContractorInfo($contractor)
+    {
+        $result = Contracts::raw(function ($collection) use ($contractor) {
+
+            return $collection->find(
+                ["participant.fullName" => $contractor],
+                [
+                    "contractNumber"       => 1,
+                    "contractDate"         => 1,
+                    "finalDate"            => 1,
+                    "amount"               => 1,
+                    "goods.mdValue"        => 1,
+                    "participant.fullName" => 1,
+
+                ]);
         });
 
         return ($result);

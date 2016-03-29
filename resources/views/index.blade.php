@@ -13,11 +13,11 @@
         </div>
     </div>
 
-    <div class="row chart-section-wrap" >
+    <div class="row chart-section-wrap">
         {{-- ----- div for each two chart starts ------- --}}
 
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
-            <div data-equalizer="equal-header" >
+            <div data-equalizer="equal-header">
 
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
@@ -34,6 +34,7 @@
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
                         <h3>Top 5 procuring agencies</h3>
+
                         <div class="top-bar-right right-section">
                             <form>
                                 <label>
@@ -55,11 +56,22 @@
         {{-- ----- div for each two chart ends ------- --}}
 
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
-            <div data-equalizer="equal-header" >
+            <div data-equalizer="equal-header">
 
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
                         <h3>Top 5 contractors</h3>
+
+                        <div class="top-bar-right right-section">
+                            <form>
+                                <label>
+                                    <select>
+                                        <option value="husker">Based on value</option>
+                                        <option value="starbuck">Based on count</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
@@ -70,6 +82,17 @@
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
                         <h3>Top 5 goods & services procured</h3>
+
+                        <div class="top-bar-right right-section">
+                            <form>
+                                <label>
+                                    <select>
+                                        <option value="husker">Based on value</option>
+                                        <option value="starbuck">Based on count</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
@@ -120,13 +143,13 @@
         var goodsAndServices = '{!! $goodsAndServices  !!}';
 
         createLineChart(JSON.parse(trends));
-        createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring");
-        createBarChartProcuring(JSON.parse(contractors), "barChart-contractors");
-        createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods");
+        createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency");
+        createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor");
+        createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods");
 
         $('.dt').each(function () {
             var dt = $(this).text().split(".");
-            dt=dt[1]+'/'+dt[0]+'/'+dt[2];
+            dt = dt[1] + '/' + dt[0] + '/' + dt[2];
             var formatted = moment(dt).format('ll');
             $(this).text(formatted);
         });
