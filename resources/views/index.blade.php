@@ -104,8 +104,8 @@
     </div>
 
     <div class="row table-wrapper">
-        <table class="responsive hover custom-table">
-            <tbody>
+        <table id="table_id" class="hover custom-table display">
+        <thead>
             <tr>
                 <th>Contract Number</th>
                 <th>Goods</th>
@@ -113,27 +113,28 @@
                 <th>Final Date</th>
                 <th>Amount</th>
             </tr>
-
-            @forelse($contractsList as $key => $contract)
-                @if($key < 10)
-                    <tr>
-                        <td>{{ $contract['contractNumber'] }}</td>
-                        <td>{{ $contract['goods']['mdValue'] }}</td>
-                        <td class="dt">{{ $contract['contractDate'] }}</td>
-                        <td class="dt">{{ $contract['finalDate'] }}</td>
-                        <td>{{ number_format($contract['amount']) }}</td>
-                    </tr>
-                @endif
-            @empty
-            @endforelse
-
-
+        </thead>
+        <tbody>
             </tbody>
         </table>
     </div>
 @endsection
 
 @section('script')
+    <script type="text/javascript" class="init">
+        $('#table_id').DataTable({
+            "processing": true,
+            "ajax": '/api/data',
+            "ajaxDataProp": '',
+            "columns": [
+                { 'data': 'contractNumber'},
+                { 'data': 'goods.mdValue'},
+                { 'data': 'contractDate'},
+                { 'data': 'finalDate'},
+                { 'data': 'amount'}
+            ]
+        });
+    </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>

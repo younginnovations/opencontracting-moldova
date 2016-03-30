@@ -27,6 +27,12 @@ $app->get(
     '/',
     ['as' => '/', 'uses' => 'HomeController@index']
 );
+
+$app->get(
+    '/datatable',
+    ['as' => '/datatable', 'uses' => 'HomeController@datatable']
+);
+
 $app->get(
     '/contractor/{name}',
     [
@@ -56,5 +62,13 @@ $app->get(
     [
         'as'   => 'filter',
         'uses' => 'HomeController@filter'
+    ]
+);
+
+$app->get(
+    '/api/data',
+    [
+        'as' => 'api.data',
+        'uses' => 'HomeController@getdata'
     ]
 );
