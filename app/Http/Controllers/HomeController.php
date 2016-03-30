@@ -55,6 +55,16 @@ class HomeController extends Controller
         return view('dataTable');
     }
 
+    public function getdata()
+    {
+        return $this->contracts->getContractsList(1000);
+    }
+
+    public function datatable()
+    {
+        return view('dataTable');
+    }
+
     protected function mergeContractAndTenderTrends($tendersTrends, $contractsTrends)
     {
         $trends = [];

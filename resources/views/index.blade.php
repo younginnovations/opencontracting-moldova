@@ -139,7 +139,6 @@
         }
         });
 
-    </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
