@@ -6,24 +6,22 @@
         </div>
     </div>
 
-    <div class="block">
-        <div class="row medium-up-2 small-up-1">
-            <div class="name-value-wrap columns">
-                <div class="name">
-                    Total contracts
-                </div>
-                <div class="value">
-                    {{ count($procuringAgencyDetail) }}
-                </div>
+    <div class="row medium-up-2 small-up-1">
+        <div class="block name-value-wrap columns">
+            <div class="name">
+                Total contracts
             </div>
+            <div class="value">
+                {{ count($procuringAgencyDetail) }}
+            </div>
+        </div>
 
-            <div class="name-value-wrap columns">
-                <div class="name">
-                    Total contract amount
-                </div>
-                <div class="value">
-                    {{number_format($totalAmount)}} leu
-                </div>
+        <div class="block name-value-wrap columns">
+            <div class="name">
+                Total contract amount
+            </div>
+            <div class="value">
+                {{number_format($totalAmount)}} leu
             </div>
         </div>
     </div>

@@ -12,8 +12,10 @@
 
 <body>
 
-<div class="title-bar burger-menu-button" data-responsive-toggle="main-menu" data-hide-for="medium">
-    <button class="menu-icon" type="button" data-toggle></button>
+<div class="title-bar burger-menu-button">
+    <button class= "burger-menu" type="button">
+        <div class="burger"></div>
+    </button>
 </div>
 
 <header class="top-bar fixed-header">

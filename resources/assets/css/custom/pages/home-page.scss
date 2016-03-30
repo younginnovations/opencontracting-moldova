@@ -1,6 +1,6 @@
 .callout.banner-section{
   background-color: $deep-yellow-color;
-  padding: 100px 20px 75px 20px;
+  padding: 6.25rem 20px 4.688rem 20px;
   margin: 0;
 }
 
@@ -10,14 +10,14 @@
 }
 
 .banner-text{
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 2rem;
+  line-height: 2.375rem;
   color: $grey-yellow-color;
   margin-bottom: 35px;
 
   .amount{
-    font-size: 43px;
-    line-height: 49px;
+    font-size: 2.688rem;
+    line-height: 3.125rem;
     color: #897400;
   }
 }
@@ -25,47 +25,46 @@
 /* ------- style for search form --------- */
 
 .search-form{
+  input[type=text],
+  input[type=password] {
+    box-sizing : border-box;
+  }
+
+  input {
+    outline: none;
+  }
+  input[type=search] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+    font-family: inherit;
+    font-size: 100%;
+  }
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  input[type=search],input[type=search]:focus,input[type=search]:active,input[type=search]:hover {
+    background: rgba(255,255,255,0.3);
+    border: none;
+    padding: 1.5rem 2.25rem;
+    width: 100%;
+    box-sizing : border-box;
+    transition: all .5s;
+    box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.50);
+    border-radius: 3.125rem;
+    height: auto;
+  }
+
+  input:-moz-placeholder {
+    color: #756200;
+  }
+  input::-webkit-input-placeholder {
+    color: #756200;
+  }
 
 }
 
-input[type=text],
-input[type=password] {
-  box-sizing : border-box;
-}
-
-input {
-  outline: none;
-}
-input[type=search] {
-  -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box;
-  font-family: inherit;
-  font-size: 100%;
-}
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
-  display: none;
-}
-
-input[type=search],input[type=search]:focus,input[type=search]:active,input[type=search]:hover {
-  background: rgba(255,255,255,0.3);
-  border: none;
-  padding: 25px 37px;
-  width: 100%;
-  box-sizing : border-box;
-  border-radius: 10em;
-  transition: all .5s;
-  box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.50);
-  border-radius: 51px;
-  height: auto;
-}
-
-input:-moz-placeholder {
-  color: #756200;
-}
-input::-webkit-input-placeholder {
-  color: #756200;
-}
 
 /*style for chart container*/
 

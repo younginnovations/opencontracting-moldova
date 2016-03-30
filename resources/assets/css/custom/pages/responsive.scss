@@ -1,16 +1,52 @@
-@media (max-width:40em){
+@media (max-width: 75rem) {
+  header.top-bar{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 
-  /*navigation responsive*/
+@media (max-width:39.9375em){
+  html{
+    font-size: 80%;
+  }
+
+  /* ---------- navigation responsive --------- */
+  .burger-menu-button{
+    display: block;
+  }
 
   #main-menu {
     .menu{
+      display: none;
+      clear: both;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      top: 100%;
+      text-align: center;
+      background-color: #005AF5;;
+
       li {
         display: block;
+        float: left;
+        width: 50%;
+
+        a{
+          padding: 1.5rem 1rem;
+          color: #fff;
+          &:hover{
+            background: #004BCC;
+          }
+        }
       }
     }
   }
 
+  /* ------- responsive for banner section ------ */
   .each-chart-section{
+    padding: 20px 20px;
     .section-header,.chart-wrap{
       height:auto !important;
     }
