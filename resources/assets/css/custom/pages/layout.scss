@@ -37,39 +37,41 @@ header{
   padding-top: 58px;
 }
 
-.top-bar-right{
 
-  .menu{
-    background: none;
-    margin-top: -0.5rem;
-    margin-bottom: -0.5rem;
+@media (min-width: 40em) {
+  .top-bar-right {
 
-    li{
-      margin-left: 2px;
-      display: inline-block;
-    }
-  }
+    .menu {
+      background: none;
+      margin-top: -0.5rem;
+      margin-bottom: -0.5rem;
 
-  .menu>li:not(.menu-text)>a{
-    padding: 18px 1rem .7rem;
-  }
-
-  li a{
-    color: rgba(255,255,255,0.5);
-    border-top: solid 4px transparent;
-
-    &:hover{
-      border-top: solid 4px $deep-yellow-color;
+      li {
+        margin-left: 2px;
+        display: inline-block;
+      }
     }
 
-    &.active{
-      color: #fff;
-      border-top: solid 4px $deep-yellow-color;
+    .menu > li:not(.menu-text) > a {
+      padding: 18px 1rem .7rem;
     }
 
+    li a {
+      color: rgba(255, 255, 255, 0.5);
+      border-top: solid 4px transparent;
+
+      &:hover {
+        border-top: solid 4px $deep-yellow-color;
+      }
+
+      &.active {
+        color: #fff;
+        border-top: solid 4px $deep-yellow-color;
+      }
+
+    }
   }
 }
-
 footer{
   background-color: $light-grey-color;
   padding: 25px 30px;

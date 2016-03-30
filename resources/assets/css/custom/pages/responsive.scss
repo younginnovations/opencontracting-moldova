@@ -1,7 +1,19 @@
 @media (max-width:40em){
+
+  /*navigation responsive*/
+
+  #main-menu {
+    .menu{
+      li {
+        display: block;
+      }
+    }
+  }
+
   .each-chart-section{
     .section-header,.chart-wrap{
       height:auto !important;
     }
   }
 }
+
