@@ -15,15 +15,17 @@ var vendor_js = [
     './resources/assets/js/vendor/foundation.min.js',
     './resources/assets/js/vendor/responsive-tables.js',
     './resources/assets/js/vendor/moment.min.js',
+    './resources/assets/js/datatable/jquery.dataTables.min.js',
 ];
 
 var vendor_css = [
     './resources/assets/css/vendor/foundation.min.css',
     './resources/assets/css/vendor/responsive-tables.css',
+    './resources/assets/css/vendor/jquery.dataTables.min.css',
 ];
 
 var custom_js = [
-    './resources/assets/js/custom/api.js'
+    './resources/assets/js/custom/api.js',
 ];
 
 var custom_chartJs = [
