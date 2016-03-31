@@ -47,27 +47,28 @@ body{
   background-color: #fff;
 }
 
-h2{
-  font-size: 32px;
-  line-height: 38px;
+h2 {
+  font-size: 2rem;
+  line-height: 2.375rem;
   margin-bottom: 30px;
   color: $light-grey-color;
-  font-family: Ubuntu-bold;
+  //font-family: Ubuntu-bold;
   display: block;
 
-  span{
+  span {
     font-family: ubunto-regular;
     font-size: 25px;
     line-height: 38px;
-    color: rgba(72,72,72,0.4);
+    color: rgba(72, 72, 72, 0.4);
     margin-left: 10px;
   }
 
   @media (max-width: 600px) {
     margin-bottom: 20px;
-    font-size: 18px;
+    //font-size: 18px; effect on big header in detail page
   }
 }
+
 
 @mixin small-title() {
   font-size: 16px;
@@ -101,8 +102,8 @@ h2{
   }
 
   .value{
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 2rem;
+    line-height: 2.375rem;
   }
 }
 

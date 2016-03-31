@@ -1,11 +1,12 @@
 .burger-menu-button{
   z-index: 9999;
   position: fixed;
-  top: 9px;
+  top: 0;
   z-index: 9999;
   right: 20px;
-  background: #0a0a0a;
-
+  background: transparent;
+  padding: 0;
+  display: none;
 }
 
 header{
@@ -23,6 +24,7 @@ header{
 
 .project-logo{
   text-transform: uppercase;
+  margin-left: 1rem;
   .first-section{
     color: #fff;
   }
@@ -37,37 +39,95 @@ header{
   padding-top: 58px;
 }
 
-.top-bar-right{
 
-  .menu{
-    background: none;
-    margin-top: -0.5rem;
-    margin-bottom: -0.5rem;
+@media (min-width: 40em) {
+  .top-bar-right {
 
-    li{
-      margin-left: 2px;
-      display: inline-block;
-    }
-  }
+    .menu {
+      display: block !important;
+      background: none;
+      margin-top: -0.5rem;
+      margin-bottom: -0.5rem;
 
-  .menu>li:not(.menu-text)>a{
-    padding: 18px 1rem .7rem;
-  }
-
-  li a{
-    color: rgba(255,255,255,0.5);
-    border-top: solid 4px transparent;
-
-    &:hover{
-      border-top: solid 4px $deep-yellow-color;
+      li {
+        margin-left: 2px;
+        display: inline-block;
+      }
     }
 
-    &.active{
-      color: #fff;
-      border-top: solid 4px $deep-yellow-color;
+    .menu > li:not(.menu-text) > a {
+      padding: 18px 1rem .7rem;
     }
 
+    li a {
+      color: rgba(255, 255, 255, 0.5);
+      border-top: solid 4px transparent;
+
+      &:hover {
+        border-top: solid 4px $deep-yellow-color;
+      }
+
+      &.active {
+        color: #fff;
+        border-top: solid 4px $deep-yellow-color;
+      }
+
+    }
   }
+}
+
+/*style for burger menu*/
+
+.burger-menu {
+  position: relative;
+  height: 58px;
+  width: 50px;
+  cursor: pointer;
+  padding: 0;
+}
+.burger {
+  position: absolute;
+  background: #fff;
+  width: 30px;
+  height: 3px;
+  top: 27px;
+  right: 9px;
+  opacity: 1;
+}
+.burger::before {
+  position: absolute;
+  background: #fff;
+  width: 30px;
+  height: 3px;
+  top: 10px;
+  content: "";
+  display: block;
+}
+.burger::after {
+  position: absolute;
+  background: #fff;
+  width: 30px;
+  height: 3px;
+  bottom: 10px;
+  content: "";
+  display: block;
+}
+.burger::after, .burger::before, .burger {
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+.burger-menu.menu-on .burger::after{
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  bottom: 0px;
+}
+.burger-menu.menu-on .burger::before{
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  top: 0px;
+}
+.burger-menu.menu-on .burger{
+  background: rgba(111,111,111,.0);
 }
 
 footer{
