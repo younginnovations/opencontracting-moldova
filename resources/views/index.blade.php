@@ -122,18 +122,23 @@
 
 @section('script')
     <script type="text/javascript" class="init">
-        $('#table_id').DataTable({
-            "processing": true,
-            "ajax": '/api/data',
-            "ajaxDataProp": '',
-            "columns": [
-                { 'data': 'contractNumber'},
-                { 'data': 'goods.mdValue'},
-                { 'data': 'contractDate'},
-                { 'data': 'finalDate'},
-                { 'data': 'amount'}
-            ]
+    $('#table_id').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": '/api/data',
+        "ajaxDataProp": '',
+        "columns": [
+            { 'data': 'contractNumber'},
+            { 'data': 'goods.mdValue'},
+            { 'data': 'contractDate', 'className': 'dt'},
+            { 'data': 'finalDate', 'className': 'dt'},
+            { 'data': 'amount'}
+        ],
+        "fnDrawCallback": function() {
+            changeDateFormat();
+        }
         });
+
     </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>

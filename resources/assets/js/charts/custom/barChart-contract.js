@@ -74,7 +74,7 @@ var createBarChartContract = function (data, definedId, url) {
       .attr("y", height)
       .attr("height", 0)
       .transition()
-        .duration(700)
+        .duration(900)
         .ease("linear")
         .attr("height", function(d) { return height - y(d.value); })
         .attr("y", function(d){ return y(d.value)});

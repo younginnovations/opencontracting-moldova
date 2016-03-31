@@ -21,6 +21,7 @@
     <script type="text/javascript" class="init">
         $('#table_id').DataTable({
             "processing": true,
+            "serverSide": true,
             "ajax": '/api/data',
             "ajaxDataProp": '',
             "columns": [

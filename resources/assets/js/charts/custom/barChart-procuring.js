@@ -41,9 +41,6 @@ var createBarChartProcuring = function (data, definedId, url) {
         .attr("height", barHeight - 12)
         .on("click", function (d) {
             return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
-        })
-        .attr("id", function (d, i) {
-            return d.name;
         });
     //    .on("mousemove",function(d){
     //         var absoluteMousePos = d3.mouse(bodyNode);
@@ -135,7 +132,3 @@ var createBarChartProcuring = function (data, definedId, url) {
 //         d3.select("#tooltip").classed("hidden", true);
 //     });
 };
-
-//createBarChartProcuring(data1,"barChart-procuring");
-//createBarChartProcuring(data2,"barChart-contractors");
-//createBarChartProcuring(data2,"barChart-goods");

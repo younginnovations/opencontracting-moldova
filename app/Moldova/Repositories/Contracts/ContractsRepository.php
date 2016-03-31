@@ -175,19 +175,33 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getContractsList($limit)
     {
+        $orderIndex = $limit['order'][0]['column'];
+        $ordDir = $limit['order'][0]['dir'];
+        $column = $limit['columns'][$orderIndex]['data'];
+        $strtFrom = $limit['start'];
+        $ordDir = (strtolower($ordDir) == 'asc')?1:-1;
 
-        $result = Contracts::raw(function ($collection) use ($limit) {
-            return $collection->find([], [
-                    "contractNumber" => 1,
-                    "contractDate"   => 1,
-                    "finalDate"      => 1,
-                    "amount"         => 1,
-                    "goods.mdValue"  => 1
-                ]
-            )->limit($limit);
+        $result = Contracts::raw(function ($collection) use ($limit,$strtFrom,$column,$ordDir) {
+            return $collection->find(
+            [],
+            [
+                "contractNumber"          => 1,
+                "contractDate"            => 1,
+                "finalDate"               => 1,
+                "amount"                  => 1,
+                "goods.mdValue"           => 1
+            ]
+        )
+        ->limit($limit['length'])
+        ->skip($strtFrom)
+        ->sort([$column=> $ordDir]);
         });
-
-        return ($result);
+        return $result;
+        // return $this->contracts->select(['contractNumber','contractDate','finalDate','amount','goods.mdValue'])
+        //                     ->take($limit['length'])
+        //                     ->skip($strtFrom)
+        //                     ->orderBy($column,$ordDir)
+        //                     ->get();
     }
 
     /**
