@@ -82,7 +82,6 @@ h2 {
   @media (max-width: 600px) {
     padding: 20px 20px;
   }
-
 }
 
 .header-block{
@@ -104,37 +103,6 @@ h2 {
   .value{
     font-size: 2rem;
     line-height: 2.375rem;
-  }
-}
-
-/*style for table*/
-
-@media (min-width:768px){
-  tfoot,thead,tbody{
-    border: none;
-  }
-}
-
-.custom-table {
-  font-size: 14px;
-  color: $light-grey-color;
-  margin-bottom: 30px;
-  width: 100%;
-
-  tr{
-    th{
-      font-family: Ubuntu-bold;
-      border-bottom: solid 1px #d8d8d8;
-    }
-
-    &:nth-child(even){
-      background: none;
-    }
-
-    &:nth-child(odd):not(:first-of-type){
-      background: #f7f7f7;
-    }
-
   }
 }
 

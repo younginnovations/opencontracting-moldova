@@ -5,11 +5,11 @@
   }
 }
 
-@media (max-width:39.9375em){
-  html{
+@media (max-width:39.9375em) {
+  html {
     font-size: 80%;
   }
-
+}
   /* ---------- navigation responsive --------- */
   .burger-menu-button{
     display: block;
@@ -45,10 +45,66 @@
   }
 
   /* ------- responsive for banner section ------ */
+@media only screen and (max-width: 767px){
+  div.table-wrapper {
+    border-right: none;
+  }
+}
+
+@media (min-width:40em){
+  .table-wrapper{
+    tr th:first-of-type,
+    tr td:first-of-type,
+    .dataTables_length{
+      padding-left: 40px;
+    }
+
+    tr th:last-of-type,
+    tr td:last-of-type,
+    .dataTables_filter{
+      padding-right: 40px;
+    }
+  }
+}
+
+@media (max-width:40em){
   .each-chart-section{
     padding: 20px 20px;
     .section-header,.chart-wrap{
       height:auto !important;
+    }
+  }
+
+  /*responsive for table*/
+
+  .table-wrapper{
+    tr th:first-of-type,
+    tr td:first-of-type,
+    .dataTables_length{
+      padding-left: 20px;
+    }
+
+    tr th:last-of-type,
+    tr td:last-of-type,
+    .dataTables_filter{
+      padding-right: 20px;
+    }
+  }
+
+}
+
+@media (max-width: 35em) {
+  .dataTables_length{
+    display: none;
+  }
+  .dataTables_filter{
+    margin: 0 auto;
+    float: none;
+    padding-left: 20px;
+    width: 100%;
+    input{
+      float: none;
+      width: 100%;
     }
   }
 }

@@ -104,13 +104,13 @@
     </div>
 
     <div class="row table-wrapper">
-        <table id="table_id" class="hover custom-table display">
+        <table id="table_id" class="responsive hover custom-table display">
         <thead>
             <tr>
-                <th>Contract Number</th>
+                <th class="contract-number" >Contract Number</th>
                 <th>Goods</th>
-                <th>Contract Date</th>
-                <th>Final Date</th>
+                <th width="142px">Contract Date</th>
+                <th width="142px">Final Date</th>
                 <th>Amount</th>
             </tr>
         </thead>

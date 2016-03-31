@@ -20,8 +20,8 @@ var vendor_js = [
 
 var vendor_css = [
     './resources/assets/css/vendor/foundation.min.css',
-    './resources/assets/css/vendor/responsive-tables.css',
     './resources/assets/css/vendor/jquery.dataTables.min.css',
+    './resources/assets/css/vendor/responsive-tables.css',
 ];
 
 var custom_js = [
