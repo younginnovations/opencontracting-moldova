@@ -36,9 +36,23 @@ class HomeController extends Controller
         $procuringAgency     = $this->contracts->getProcuringAgency('amount', 5);
         $contractors         = $this->contracts->getContractors('amount', 5);
         $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5);
-        $contractsList       = $this->contracts->getContractsList(10);
+        // $contractsList       = $this->contracts->getContractsList(10);
 
-        return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices', 'contractsList'));
+        return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices'));
+    }
+
+    public function getdata(Request $request)
+    {
+        $input = $request->all();
+
+        // return $input['columns'][$input['order'][0]['column']]['data'];
+        //return $input['order'][0]['column'];
+        return $this->contracts->getContractsList($input);
+    }
+
+    public function datatable()
+    {
+        return view('dataTable');
     }
 
     protected function mergeContractAndTenderTrends($tendersTrends, $contractsTrends)

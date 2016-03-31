@@ -7,7 +7,7 @@ var createLineChartRest = function(data){
     console.log(data);
     var svg = d3.select("#linechart-rest")
                 .append("svg")
-                .attr("width", width1)
+                .attr("width", width1 + 1)
                 .attr("height", height1)
                 .attr("id", "visualization");
     var vis = d3.select("#visualization"),

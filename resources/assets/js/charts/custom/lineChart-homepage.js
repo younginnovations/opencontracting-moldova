@@ -8,7 +8,7 @@ var createLineChart = function(data){
 
     var svg = d3.select("#linechart-homepage")
                 .append("svg")
-                .attr("width", width)
+                .attr("width", width + 1)
                 .attr("height", height)
                 .attr("id", "visualization");
     var vis = d3.select("#visualization"),

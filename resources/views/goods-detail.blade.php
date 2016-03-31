@@ -34,7 +34,7 @@
                         <h3>No. of contracts</h3>
                     </div>
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="linechart-homepage"></div>
+                        <div id="linechart-rest"></div>
                     </div>
                 </div>
                 <div class="medium-6 small-12 columns each-chart-section">
@@ -139,7 +139,7 @@
         var contractors = '{!! $contractors  !!}';
         var procuringAgency = '{!! $procuringAgency  !!}';
 
-        createLineChart(JSON.parse(contracts));
+        createLineChartRest(JSON.parse(contracts));
         createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
         createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor");
         createBarChartProcuring(JSON.parse(procuringAgency), "barChart-procuring", "goods");
