@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Moldova\Service\Contracts;
 use App\Moldova\Service\Tenders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -36,24 +38,22 @@ class HomeController extends Controller
         $procuringAgency     = $this->contracts->getProcuringAgency('amount', 5);
         $contractors         = $this->contracts->getContractors('amount', 5);
         $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5);
+
         // $contractsList       = $this->contracts->getContractsList(10);
 
         return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices'));
     }
 
-    public function getdata(Request $request)
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function getData(Request $request)
     {
         $input = $request->all();
 
-        // return $input['columns'][$input['order'][0]['column']]['data'];
-        //return $input['order'][0]['column'];
         return $this->contracts->getContractsList($input);
 
-    }
-
-    public function datatable()
-    {
-        return view('dataTable');
     }
 
     protected function mergeContractAndTenderTrends($tendersTrends, $contractsTrends)
@@ -121,5 +121,14 @@ class HomeController extends Controller
         }
 
         return $column;
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('q');
+
+        $contracts = $this->contracts->search($search);
+
+        return view('search', compact('contracts'));
     }
 }

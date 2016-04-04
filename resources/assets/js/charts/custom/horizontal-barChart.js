@@ -44,7 +44,9 @@ var createBarChartProcuring = function (data, definedId, url, widthParent) {
         })
         .attr("height", barHeight - marginBottom)
         .on("click", function (d) {
-            return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
+            if(d.name !== null) {
+                return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
+            }
         })
         .attr("width",0)
         .transition()
@@ -83,7 +85,9 @@ var createBarChartProcuring = function (data, definedId, url, widthParent) {
         .attr("dy", barHeight - y1)
         .attr("class", "value")
         .on("click", function (d) {
-            return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
+            if(d.name !== null) {
+                return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
+            }
         })
         .attr("id", function (d, i) {
             return d.name;
@@ -126,7 +130,9 @@ var createBarChartProcuring = function (data, definedId, url, widthParent) {
         .attr("dy", barHeight - y1)
         .attr("class", "name")
         .on("click", function (d) {
-            return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
+            if(d.name !== null) {
+                return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
+            }
         })
         .attr("id", function (d, i) {
             return d.name;

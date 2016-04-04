@@ -7,8 +7,8 @@
                 Leu
                 worth of contracts</p>
 
-            <form class="search-form">
-                <input type="search" placeholder="Type a contract name ...">
+            <form action="{{ route('search') }}" method="get" class="search-form">
+                <input name="q" type="search" placeholder="Search for contractor, procuring agency and goods and services procured">
             </form>
         </div>
     </div>
@@ -105,16 +105,17 @@
 
     <div class="row table-wrapper">
         <table id="table_id" class="responsive hover custom-table display">
-        <thead>
+            <thead>
             <tr>
-                <th class="contract-number" >Contract Number</th>
-                <th>Goods</th>
-                <th width="142px">Contract Date</th>
-                <th width="142px">Final Date</th>
+                <th class="contract-number">Contract number</th>
+                <th class="hide">Contract ID</th>
+                <th>Goods and services contracted</th>
+                <th width="150px">Contract start date</th>
+                <th width="150px">Final end date</th>
                 <th>Amount</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             </tbody>
         </table>
     </div>
@@ -122,27 +123,53 @@
 
 @section('script')
     <script type="text/javascript" class="init">
-    $('#table_id').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": '/api/data',
-        "ajaxDataProp": '',
-        "columns": [
-            { 'data': 'contractNumber'},
-            { 'data': 'goods.mdValue'},
-            { 'data': 'contractDate', 'className': 'dt'},
-            { 'data': 'finalDate', 'className': 'dt'},
-            { 'data': 'amount'}
-        ],
-        "fnDrawCallback": function() {
-            changeDateFormat();
-        }
-        });
+
+        $('#table_id').DataTable({
+            "language": {
+                'searchPlaceholder': "Search by goods",
+                "lengthMenu": "Show _MENU_ Contracts"
+            },
+            "processing": true,
+            "serverSide": true,
+            "ajax": '/api/data',
+            "ajaxDataProp": '',
+            "columns": [
+                {'data': 'contractNumber'},
+                {'data': 'id', 'className': 'hide'},
+                {'data': 'goods.mdValue', "defaultContent": "-"},
+                {'data': 'contractDate', 'className': 'dt'},
+                {'data': 'finalDate', 'className': 'dt'},
+                {'data': 'amount', "className":'numeric-data' }
+            ],
+            "fnDrawCallback": function () {
+                changeDateFormat();
+                numericFormat();
+                createLinks();
+                if ($('#table_id tr').length < 10) {
+                    $('.dataTables_paginate').hide();
+                }else{
+                    $('.dataTables_paginate').show();
+                }
+            }
+        });
+
+        var createLinks = function () {
+
+            $('#table_id tbody tr').each(function () {
+                $(this).css('cursor', 'pointer');
+                $(this).click(function () {
+                    var contractId = $(this).find("td:nth-child(2)").text();
+                    return window.location.assign(window.location.origin + "/contract/" + contractId);
+                });
+
+            });
+        };
+
     </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
-        var route ='{{ route("filter") }}';
+        var route = '{{ route("filter") }}';
         var trends = '{!! $trends  !!}';
         var procuringAgencies = '{!! $procuringAgency  !!}';
         var contractors = '{!! $contractors  !!}';
@@ -154,11 +181,12 @@
             createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency",widthOfParent);
             createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor",widthOfParent);
             createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods",widthOfParent);
+
         };
 
         makeCharts();
 
-        $(window).resize(function(){
+        $(window).resize(function () {
             $("#linechart-homepage").empty();
             makeCharts();
         });

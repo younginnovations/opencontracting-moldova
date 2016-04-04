@@ -29,8 +29,8 @@ $app->get(
 );
 
 $app->get(
-    '/datatable',
-    ['as' => '/datatable', 'uses' => 'HomeController@datatable']
+    '/contracts',
+    ['as' => 'contracts', 'uses' => 'ContractController@index']
 );
 
 $app->get(
@@ -39,6 +39,11 @@ $app->get(
         'as'   => 'contractor',
         'uses' => 'ContractController@show'
     ]
+);
+
+$app->get(
+    '/contract/{id}',
+    ['as' => 'contract.view', 'uses' => 'ContractController@view']
 );
 
 $app->get(
@@ -68,7 +73,23 @@ $app->get(
 $app->get(
     '/api/data',
     [
-        'as' => 'api.data',
-        'uses' => 'HomeController@getdata'
+        'as'   => 'api.data',
+        'uses' => 'HomeController@getData'
+    ]
+);
+
+//$app->post(
+//    '/search',
+//    [
+//        'as'   => 'search',
+//        'uses' => 'HomeController@search'
+//    ]
+//);
+
+$app->get(
+    '/search',
+    [
+        'as'   => 'search',
+        'uses' => 'HomeController@search'
     ]
 );
