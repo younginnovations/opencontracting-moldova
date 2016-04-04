@@ -1,0 +1,254 @@
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate,.paginate_button{
+  color: $light-grey-color;
+}
+
+.dataTables_wrapper .dataTables_filter input{
+  margin-left: 0;
+}
+
+.dataTables_length{
+  width: 50%;
+  float: left;
+  font-size: 14px;
+  label{
+    color: $light-grey-color;
+  }
+
+  select{
+    color: $light-grey-color;
+    display: inline-block;
+    width: 65px;
+    border-radius: 8px;
+    border: solid 1px #FFD400;
+    margin: 0 0.25rem;
+    cursor: pointer;
+  }
+}
+
+.dataTables_filter{
+  width: 50%;
+  float: left;
+  label{
+    font-size: 0;
+  }
+
+  input{
+    float: right;
+    width: 285px;
+    background: url("#{$img-path}/ic_search.png") 12px center no-repeat;
+    border: solid 1px #FFD400;
+    border-radius: 24px;
+    padding: 12px 24px 12px 38px;
+    height: auto;
+    font-size: 14px;
+    margin: 0  0 1.5rem;
+    color: $light-grey-color;
+    &:focus,&:active,&:hover{
+      border: solid 1px #FFD400;
+      box-shadow: none;
+    }
+  }
+
+  input:-moz-placeholder {
+    color: #756200;
+  }
+  input::-webkit-input-placeholder {
+    color: #756200;
+  }
+
+}
+
+.dataTables_wrapper .dataTables_info{
+  display: none;
+  width: 50%;
+  float: left;
+  margin-top: 1.5rem;
+  padding-left: 20px;
+  color: rgba(72, 72, 72, 0.8);
+}
+
+.dataTables_wrapper .dataTables_paginate {
+  width: 300px;
+  margin: 1.5rem auto;
+  background: #F7F7F7;
+  border-radius: 17px;
+  padding-top: 4px;
+}
+
+.paginate_button{
+  box-sizing: border-box;
+  padding: 5px 6px;
+  font-size: 14px;
+  display: inline-block;
+  color: $light-grey-color;
+}
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: $light-grey-color !important;
+  border: none;
+  background: transparent;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+  .paginate_button:hover{
+    background: none;
+    color: #484848 !important;
+    border: none;
+    transform: scale(1.25);
+  }
+
+  .paginate_button.next:hover{
+    transform: scale(1.15);
+  }
+
+  .paginate_button.previous:hover{
+    transform: scale(1.15);
+  }
+
+}
+
+.dataTables_paginate{
+  padding-left: 12px;
+  padding-right: 12px;
+  text-transform: lowercase;
+  border: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.dataTables_wrapper .dataTables_paginate  .paginate_button{
+  padding: 5px 6px 8px;
+  font-size: 14px;
+  &.current {
+    position: relative;
+    &:before {
+      content: " ";
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      margin-left: -3px;
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      background-color: #FFD400;
+    }
+  }
+}
+
+/*style for table*/
+
+@media (min-width:768px){
+  tfoot,thead,tbody{
+    border: none;
+  }
+}
+
+thead {
+  background: none;
+}
+
+.dataTable{
+  width: 100% !important;
+}
+
+.table-wrapper{
+  margin-bottom: 30px;
+  width: 100%;
+
+  .table-wrapper{
+    margin-bottom: 0 !important;
+  }
+}
+
+.custom-table{
+  font-size: 14px;
+  color: $light-grey-color;
+  margin-bottom: 0;
+  width: 100%;
+
+  /* ------- style for thead -------- */
+
+  thead{
+    background: none;
+    tr:hover{
+      background: none;
+    }
+    th{
+      font-family: Ubuntu-bold;
+      border-bottom: solid 1px #d8d8d8;
+      color: rgba(72,72,72,0.7);
+    }
+  }
+
+  tr{
+    &:nth-child(odd){
+      background: none;
+    }
+
+    &:nth-child(even):not(:first-of-type){
+      background: #f7f7f7;
+    }
+  }
+
+  /* ------- style for thead ends -------- */
+
+  th{
+    padding: 9px 10px 9px 14px;
+  }
+
+  td{
+    padding: 10px 10px;
+  }
+}
+
+.sorting{
+  background: transparent url("#{$img-path}/ic_sort.png") 4px center no-repeat;
+}
+
+.sorting_desc{
+  background: transparent url("#{$img-path}/ic_desc.png") 4px center no-repeat;
+}
+
+.sorting_asc{
+  background: transparent url("#{$img-path}/ic_asc.png") 4px center no-repeat;
+}
+
+@media (min-width: 40em) {
+  th:first-of-type{
+    &.sorting{
+      background: transparent url("#{$img-path}/ic_sort.png") 28px center no-repeat;
+    }
+
+    &.sorting_desc{
+      background: transparent url("#{$img-path}/ic_desc.png") 28px center no-repeat;
+    }
+
+    &.sorting_asc{
+      background: transparent url("#{$img-path}/ic_asc.png") 28px center no-repeat;
+    }
+  }
+}
+
+/*style for fixed th*/
+
+.contract-number{
+  width: 150px !important;
+}
+
+/* ------- add faded shadow in scrollable part of table ----------- */
+
+div.scrollable{
+  &:after{
+      content:"";
+      position:absolute;
+      top: 0;
+      left: 100%;
+      width: 50px;
+      height: 100%;
+      border-radius: 10px 0 0 10px / 50% 0 0 50%;
+      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.25);
+      content: '';
+  }
+}
+

@@ -1,10 +1,11 @@
-var element1 = $("#linechart-rest");
-var widthOfParent1 = element1.parent().width();
-
-var width1 = widthOfParent1;
-var height1 = 250;
-var createLineChartRest = function(data){
-    console.log(data);
+var createLineChartRest = function(data,widthParent){
+    if($(window).width() < 768){
+        var height1 = 200;
+    }
+    else {
+        var height1 = 300;
+    }
+    var width1 = widthParent;
     var svg = d3.select("#linechart-rest")
                 .append("svg")
                 .attr("width", width1 + 1)
@@ -12,7 +13,7 @@ var createLineChartRest = function(data){
                 .attr("id", "visualization");
     var vis = d3.select("#visualization"),
                 margin = {
-                    top: 20, right:20, bottom:20, left: 50
+                    top: 20, right:20, bottom:20, left: 34
                 };
 
     var xScale = d3.scale.ordinal().rangeRoundBands([0,width1-50], 0);
@@ -31,13 +32,13 @@ var createLineChartRest = function(data){
         return d3.svg.axis()
                 .scale(xScale)
                 .orient("bottom")
-                .ticks(5)
+                .ticks(6)
     }
     function make_y_axis(){
         return d3.svg.axis()
                 .scale(yScale)
                 .orient("left")
-                .ticks(5)
+                .ticks(6)
     }
         data.forEach(function (d){
             d.xValue = d.xValue;

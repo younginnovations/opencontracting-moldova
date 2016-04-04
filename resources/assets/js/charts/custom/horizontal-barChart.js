@@ -1,17 +1,24 @@
-var createBarChartProcuring = function (data, definedId, url) {
+var createBarChartProcuring = function (data, definedId, url, widthParent) {
+    if($(window).width() < 768){
+        var marginBottom = 12,
+            barHeight = 37,
+            y1 = 21;
+    }
+    else {
+
+        var marginBottom = 20,
+            barHeight = 55,
+            y1 = 32;
+    }
+
     var dataRange = d3.max(data, function (d) {
         return d.value;
     });
     var divId = "#" + definedId;
-    var widthOfParent = $(divId).parent().width();
-
-    var width = widthOfParent;
+    var width = widthParent;
     var chart,
-        barHeight = 37,
         height = barHeight * data.length;
     var x, y;
-
-
     var bodyNode = d3.select("#main").node();
 
     $(divId).html('');
@@ -31,14 +38,14 @@ var createBarChartProcuring = function (data, definedId, url) {
         .data(data)
         .enter()
         .append("rect")
-        .attr("x", 150)
+        .attr("x", 170)
         .attr("y", function (d, i) {
             return i * (height / data.length);
         })
         .attr("width", function (d) {
             return x(d.value);
         })
-        .attr("height", barHeight - 12)
+        .attr("height", barHeight - marginBottom)
         .on("click", function (d) {
             return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
         });
@@ -66,8 +73,8 @@ var createBarChartProcuring = function (data, definedId, url) {
         .attr("y", function (d, i) {
             return i * (height / data.length);
         })
-        .attr("dx", 153)
-        .attr("dy", barHeight - 21)
+        .attr("dx", 173)
+        .attr("dy", barHeight - y1)
         .attr("class", "value")
         .on("click", function (d) {
             return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
@@ -96,10 +103,10 @@ var createBarChartProcuring = function (data, definedId, url) {
         .text(function (d) {
             if ((d.name) != null) {
                 if ((d.name).length > 20) {
-                    return (String(d.name).slice(0, 20) + "...");
+                    return (String(d.name).slice(0, 21) + "...");
                 }
                 else {
-                    return (String(d.name).slice(0, 20));
+                    return (String(d.name).slice(0, 21));
                 }
             }
             else {
@@ -110,7 +117,7 @@ var createBarChartProcuring = function (data, definedId, url) {
             return i * (height / data.length);
         })
         .attr("dx", 0)
-        .attr("dy", barHeight - 21)
+        .attr("dy", barHeight - y1)
         .attr("class", "name")
         .on("click", function (d) {
             return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
@@ -132,3 +139,6 @@ var createBarChartProcuring = function (data, definedId, url) {
 //         d3.select("#tooltip").classed("hidden", true);
 //     });
 };
+
+
+

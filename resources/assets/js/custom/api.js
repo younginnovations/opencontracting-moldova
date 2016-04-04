@@ -23,6 +23,8 @@ var API = {
     }
 };
 
+var widthOfParent = $('.chart-wrap').width();
+
 $('#select-contractor').change(function () {
     var val = $(this).val();
     var dataFor = $(this).attr('data-for');
@@ -30,7 +32,7 @@ $('#select-contractor').change(function () {
     var data = {filter: val, type: 'contractor', dataFor: dataFor, param: param};
     API.get(route, data).success(function (response) {
         $('#barChart-contractors').empty();
-        createBarChartProcuring(JSON.parse(response), "barChart-contractors", "contractor");
+        createBarChartProcuring(JSON.parse(response), "barChart-contractors", "contractor",widthOfParent);
     });
 });
 
@@ -41,7 +43,7 @@ $('#select-agency').change(function () {
     var data = {filter: val, type: 'agency', dataFor: dataFor, param: param};
     API.get(route, data).success(function (response) {
         $('#barChart-procuring').empty();
-        createBarChartProcuring(JSON.parse(response), "barChart-procuring", "procuring-agency");
+        createBarChartProcuring(JSON.parse(response), "barChart-procuring", "procuring-agency",widthOfParent);
     });
 });
 
@@ -52,6 +54,6 @@ $('#select-goods').change(function () {
     var data = {filter: val, type: 'goods', dataFor: dataFor, param: param};
     API.get(route, data).success(function (response) {
         $('#barChart-goods').empty();
-        createBarChartProcuring(JSON.parse(response), "barChart-goods", "goods");
+        createBarChartProcuring(JSON.parse(response), "barChart-goods", "goods",widthOfParent);
     });
 });
