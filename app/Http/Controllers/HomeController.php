@@ -48,16 +48,7 @@ class HomeController extends Controller
         // return $input['columns'][$input['order'][0]['column']]['data'];
         //return $input['order'][0]['column'];
         return $this->contracts->getContractsList($input);
-    }
 
-    public function datatable()
-    {
-        return view('dataTable');
-    }
-
-    public function getdata()
-    {
-        return $this->contracts->getContractsList(1000);
     }
 
     public function datatable()

@@ -4,7 +4,9 @@ $(document).ready(function() {
     if (($(window).width() < 767) && !switched ){
       switched = true;
       $("table.responsive").each(function(i, element) {
-        splitTable($(element));
+          setTimeout(function(){
+              splitTable($(element));
+          },10);
       });
       return true;
     }
@@ -23,7 +25,8 @@ $(document).ready(function() {
 	
 	function splitTable(original)
 	{
-		original.wrap("<div class='table-wrapper' />");
+        console.log("inside splitTable");
+        original.wrap("<div class='table-wrapper' />");
 		
 		var copy = original.clone();
 		copy.find("td:not(:first-child), th:not(:first-child)").css("display", "none");
@@ -31,6 +34,8 @@ $(document).ready(function() {
 		
 		original.closest(".table-wrapper").append(copy);
 		copy.wrap("<div class='pinned' />");
+
+        console.log(copy);
 		original.wrap("<div class='scrollable' />");
 
     setCellHeights(original, copy);
