@@ -2,9 +2,9 @@
 <html class="no-js" lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Moldova</title>
     <link href="{{url('css/vendors.min.css')}}" rel="stylesheet">
     <link href="{{url('css/app.min.css')}}" rel="stylesheet">
@@ -13,7 +13,7 @@
 <body>
 
 <div class="title-bar burger-menu-button">
-    <button class= "burger-menu" type="button">
+    <button class="burger-menu" type="button">
         <div class="burger"></div>
     </button>
 </div>
@@ -52,16 +52,14 @@
     </div>
 </footer>
 <script src="{{url('js/vendors.min.js')}}"></script>
+<script src="{{url('js/vendorChart.min.js')}}"></script>
+<script src="{{url('js/customChart.min.js')}}"></script>
 <script src="{{url('js/app.min.js')}}"></script>
-
-@yield('script')
 <script>
-    $(document).foundation();
-
-    var changeDateFormat=function(){
+    var changeDateFormat = function () {
         $('.dt').each(function () {
             var dt = $(this).text().split(".");
-            if(dt[1]){
+            if (dt[1]) {
                 dt = dt[1] + '/' + dt[0] + '/' + dt[2];
                 var formatted = moment(dt).format('ll');
                 $(this).text(formatted);
@@ -69,7 +67,13 @@
 
         });
     };
-changeDateFormat();
+    changeDateFormat();
+</script>
+
+
+@yield('script')
+<script>
+    $(document).foundation();
 </script>
 </body>
 

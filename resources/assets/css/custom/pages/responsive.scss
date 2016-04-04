@@ -9,14 +9,14 @@
   html {
     font-size: 80%;
   }
-}
+
   /* ---------- navigation responsive --------- */
-  .burger-menu-button{
+  .burger-menu-button {
     display: block;
   }
 
   #main-menu {
-    .menu{
+    .menu {
       display: none;
       clear: both;
       overflow: hidden;
@@ -33,17 +33,17 @@
         float: left;
         width: 50%;
 
-        a{
+        a {
           padding: 1.5rem 1rem;
           color: #fff;
-          &:hover{
+          &:hover {
             background: #004BCC;
           }
         }
       }
     }
   }
-
+}
   /* ------- responsive for banner section ------ */
 @media only screen and (max-width: 767px){
   div.table-wrapper {

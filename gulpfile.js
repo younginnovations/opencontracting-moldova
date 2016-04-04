@@ -13,9 +13,9 @@ var gulp = require('gulp'),
 var vendor_js = [
     './resources/assets/js/vendor/jquery-2.2.2.min.js',
     './resources/assets/js/vendor/foundation.min.js',
+    './resources/assets/js/datatable/jquery.dataTables.min.js',
     './resources/assets/js/vendor/responsive-tables.js',
     './resources/assets/js/vendor/moment.min.js',
-    './resources/assets/js/datatable/jquery.dataTables.min.js',
 ];
 
 var vendor_css = [
@@ -32,7 +32,7 @@ var custom_js = [
 var custom_chartJs = [
     './resources/assets/js/charts/custom/lineChart-homepage.js',
     './resources/assets/js/charts/custom/lineChart-rest.js',
-    './resources/assets/js/charts/custom/barChart-procuring.js',
+    './resources/assets/js/charts/custom/horizontal-barChart.js',
     './resources/assets/js/charts/custom/barChart-contract.js',
 ];
 

@@ -1,9 +1,16 @@
 var createBarChartContract = function (data, definedId, url) {
+    if($(window).width() < 768){
+        var heightContainer = 200;
+    }
+    else {
+        var heightContainer = 300;
+    }
+
     var divId = "#" + definedId;
     var widthOfParent = $(divId).parent().width();
-    var margin = {top: 20, right: 20, bottom: 70, left: 100},
+    var margin = {top: 20, right: 20, bottom: 20, left: 100},
         width = widthOfParent - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+        height = heightContainer - margin.top - margin.bottom;
 
     var x = d3.scale.ordinal().rangeRoundBands([0, width], .35);
 
@@ -61,7 +68,7 @@ var createBarChartContract = function (data, definedId, url) {
         .attr("class","grid")
         .attr("transform", "translate(0,0)")
         .call(make_y_axis()
-                .tickSize(-width1,0,0)
+                .tickSize(-width,0,0)
                 .tickFormat("")
             )
 

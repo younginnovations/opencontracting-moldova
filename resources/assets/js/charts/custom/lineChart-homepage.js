@@ -1,11 +1,13 @@
-var element = $("#linechart-homepage");
-var widthOfParent = element.parent().width();
+var createLineChart = function(data,parentWidth){
 
-var width = widthOfParent;
-var height = 200;
+    if($(window).width() < 768){
+        var height = 200;
+    }
+    else {
+        var height = 300;
+    }
 
-var createLineChart = function(data){
-
+    var  width = parentWidth;
     var svg = d3.select("#linechart-homepage")
                 .append("svg")
                 .attr("width", width + 1)

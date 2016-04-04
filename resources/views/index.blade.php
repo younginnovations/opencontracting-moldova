@@ -138,21 +138,30 @@
             changeDateFormat();
         }
         });
-
+    </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
-
         var route ='{{ route("filter") }}';
         var trends = '{!! $trends  !!}';
         var procuringAgencies = '{!! $procuringAgency  !!}';
         var contractors = '{!! $contractors  !!}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';
 
-        createLineChart(JSON.parse(trends));
-        createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency");
-        createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor");
-        createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods");
+        var makeCharts = function(){
+            var widthofParent = $('.chart-wrap').width();
+            createLineChart(JSON.parse(trends),widthofParent);
+            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency",widthofParent);
+            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor",widthofParent);
+            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods",widthofParent);
+        };
+
+        makeCharts();
+
+        $(window).resize(function(){
+            $("#linechart-homepage").empty();
+            makeCharts();
+        });
 
     </script>
 @endsection
