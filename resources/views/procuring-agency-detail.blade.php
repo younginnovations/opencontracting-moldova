@@ -31,7 +31,10 @@
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>No. of contracts</h3>
+                        <ul class="breadcrumbs">
+                            <li><span href="#" class="indicator tender">Tender published</span></li>
+                            <li><span href="#" class="indicator contracts">Contracts issued</span></li>
+                        </ul>
                     </div>
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
                         <div id="linechart-rest"></div>
