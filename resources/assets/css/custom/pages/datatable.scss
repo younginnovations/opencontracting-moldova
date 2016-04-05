@@ -7,11 +7,15 @@
 }
 
 .dataTables_length{
-  width: 50%;
-  float: left;
   font-size: 14px;
+  width: auto;
+  width: auto;
+  display: inline-block;
+  margin-left: 15px;
   label{
     color: $light-grey-color;
+    width: auto;
+    display: inline-block;
   }
 
   select{
@@ -26,7 +30,7 @@
 }
 
 .dataTables_filter{
-  width: 50%;
+  width: auto;
   float: left;
   label{
     font-size: 0;
@@ -133,6 +137,11 @@
       border-radius: 50%;
       background-color: #FFD400;
     }
+    &:hover{
+      &:before{
+        top: -3px;
+      }
+    }
   }
 }
 
@@ -177,6 +186,7 @@ thead {
     th{
       font-family: Ubuntu-bold;
       border-bottom: solid 1px #d8d8d8;
+      border-top: solid 1px #d8d8d8;
       color: rgba(72,72,72,0.7);
     }
   }
