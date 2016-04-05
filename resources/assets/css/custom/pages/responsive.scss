@@ -55,13 +55,13 @@
   .table-wrapper{
     tr th:first-of-type,
     tr td:first-of-type,
-    .dataTables_length{
+    //.dataTables_length,
+    .dataTables_filter{
       padding-left: 40px;
     }
 
     tr th:last-of-type,
-    tr td:last-of-type,
-    .dataTables_filter{
+    tr td:last-of-type{
       padding-right: 40px;
     }
   }
