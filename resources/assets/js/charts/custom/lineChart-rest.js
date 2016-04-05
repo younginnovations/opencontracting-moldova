@@ -86,12 +86,22 @@ var createLineChartRest = function(data,widthParent){
                         return yScale(d.chart2);
                     });
 
-        vis.append('svg:path')
+    var linePath = vis.append('svg:path')
             .attr('d', lineGen(data))
             .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
-            .attr("stroke", "#ccc")
+            .attr("stroke", "#C0C0C0")
             .attr("stroke-width", 2)
             .attr("fill", "none");
+
+    var totalLength = linePath.node().getTotalLength();
+
+    linePath
+        .attr("stroke-dasharray", totalLength + " " + totalLength)
+        .attr("stroke-dashoffset", totalLength)
+        .transition()
+        .duration(1000)
+        .ease("linear")
+        .attr("stroke-dashoffset", 0);
 
         vis.selectAll("dot")
             .data(data)
@@ -100,8 +110,8 @@ var createLineChartRest = function(data,widthParent){
             .filter(function (d) {
                 return d.chart2;
             })
-            .attr("r", 3)
-            .attr("fill", "red")
+            .attr("r", 4)
+            .attr("fill", "#CE0029")
             // .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
             .attr("cx", function (d){
                 return xScale(d.xValue) + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left);
