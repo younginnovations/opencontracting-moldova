@@ -149,11 +149,11 @@
         var goodsAndServices = '{!! $goodsAndServices  !!}';
 
         var makeCharts = function(){
-            var widthofParent = $('.chart-wrap').width();
-            createLineChart(JSON.parse(trends),widthofParent);
-            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency",widthofParent);
-            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor",widthofParent);
-            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods",widthofParent);
+            var widthOfParent = $('.chart-wrap').width();
+            createLineChart(JSON.parse(trends),widthOfParent);
+            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency",widthOfParent);
+            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor",widthOfParent);
+            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods",widthOfParent);
         };
 
         makeCharts();

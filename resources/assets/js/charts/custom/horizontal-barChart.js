@@ -42,13 +42,19 @@ var createBarChartProcuring = function (data, definedId, url, widthParent) {
         .attr("y", function (d, i) {
             return i * (height / data.length);
         })
-        .attr("width", function (d) {
-            return x(d.value);
-        })
         .attr("height", barHeight - marginBottom)
         .on("click", function (d) {
             return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
-        });
+        })
+        .attr("width",0)
+        .transition()
+        .duration(900)
+        .ease("linear")
+        .attr("width", function (d) {
+            return x(d.value);
+        })
+        .attr("x",170);
+
     //    .on("mousemove",function(d){
     //         var absoluteMousePos = d3.mouse(bodyNode);
     //         d3.select("#tooltip")
