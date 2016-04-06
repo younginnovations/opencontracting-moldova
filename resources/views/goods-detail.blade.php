@@ -2,7 +2,9 @@
 @section('content')
     <div class="block header-block">
         <div class="row header-with-icon">
-            <span><img src="{{url('images/ic_goods.png')}}"/></span><h2> {{ $goods }}</h2>
+            <span><img src="{{url('images/ic_goods.png')}}"/></span>
+
+            <h2> {{ $goods }}</h2>
         </div>
     </div>
 
@@ -59,7 +61,7 @@
                                 <div>
                                     <label>
                                         <select id="select-contractor" data-for="goods" data="{{ $goods }}">
-                                            <option value="amount">Based on value</option>
+                                            <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
                                         </select>
                                     </label>
@@ -81,7 +83,7 @@
                                 <div>
                                     <label>
                                         <select id="select-agency" data-for="goods" data="{{ $goods }}">
-                                            <option value="amount">Based on value</option>
+                                            <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
                                         </select>
                                     </label>
@@ -104,7 +106,7 @@
             <tbody>
             <tr>
                 <th>Contract number</th>
-                <th>Goods and services contracted</th>
+                <th>Contractor</th>
                 <th width="150px">Contract start date</th>
                 <th width="150px">Final end date</th>
                 <th>Amount</th>
@@ -139,17 +141,17 @@
         var contractors = '{!! $contractors  !!}';
         var procuringAgency = '{!! $procuringAgency  !!}';
 
-        var makeCharts = function(){
+        var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();
-            createLineChartRest(JSON.parse(contracts),widthofParent);
+            createLineChartRest(JSON.parse(contracts), widthofParent);
             createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
-            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor",widthofParent);
-            createBarChartProcuring(JSON.parse(procuringAgency), "barChart-procuring", "goods",widthofParent);
+            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthofParent, 'amount');
+            createBarChartProcuring(JSON.parse(procuringAgency), "barChart-procuring", "goods", widthofParent, 'amount');
         };
 
         makeCharts();
 
-        $(window).resize(function(){
+        $(window).resize(function () {
             $("#linechart-rest").empty();
             $("#barChart-amount").empty();
             makeCharts();

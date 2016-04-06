@@ -1,4 +1,4 @@
-var createBarChartProcuring = function (data, definedId, url, widthParent) {
+var createBarChartProcuring = function (data, definedId, url, widthParent, type) {
     if($(window).width() < 768){
         var marginBottom = 12,
             barHeight = 37,
@@ -42,6 +42,11 @@ var createBarChartProcuring = function (data, definedId, url, widthParent) {
         .attr("y", function (d, i) {
             return i * (height / data.length);
         })
+        .attr("class", function(d){
+            if(d.name !== null) {
+                return "name";
+            }
+        })
         .attr("height", barHeight - marginBottom)
         .on("click", function (d) {
             if(d.name !== null) {
@@ -76,14 +81,18 @@ var createBarChartProcuring = function (data, definedId, url, widthParent) {
         .enter()
         .append("text")
         .text(function (d) {
-            return d3.format(",")(Math.round(d.value));
+            if(type === 'amount') {
+                return d3.format(",")(Math.round(d.value)) + ' leu';
+            }else{
+                return d3.format(",")(Math.round(d.value));
+            }
         })
         .attr("y", function (d, i) {
             return i * (height / data.length);
         })
         .attr("dx", 173)
         .attr("dy", barHeight - y1)
-        .attr("class", "value")
+        .attr("class","value")
         .on("click", function (d) {
             if(d.name !== null) {
                 return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
@@ -128,7 +137,11 @@ var createBarChartProcuring = function (data, definedId, url, widthParent) {
         })
         .attr("dx", 0)
         .attr("dy", barHeight - y1)
-        .attr("class", "name")
+        .attr("class", function(d){
+            if(d.name !== null) {
+                return "name";
+            }
+        })
         .on("click", function (d) {
             if(d.name !== null) {
                 return window.location.assign(window.location.origin + "/" + url + "/" + d.name);

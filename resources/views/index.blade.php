@@ -8,7 +8,8 @@
                 worth of contracts</p>
 
             <form action="{{ route('search') }}" method="get" class="search-form">
-                <input name="q" type="search" placeholder="Search for contractor, procuring agency and goods and services procured">
+                <input name="q" type="search"
+                       placeholder="Search for contractor, procuring agency and goods and services procured">
             </form>
         </div>
     </div>
@@ -22,7 +23,7 @@
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
                         <ul class="breadcrumbs">
-                            <li><span href="#" class="indicator tender">Tender published</span></li>
+                            <li><span href="#" class="indicator tender">Tenders published</span></li>
                             <li><span href="#" class="indicator contracts">Contracts issued</span></li>
                         </ul>
                     </div>
@@ -39,7 +40,7 @@
                             <form>
                                 <label>
                                     <select id="select-agency">
-                                        <option value="amount">Based on value</option>
+                                        <option value="amount" selected>Based on value</option>
                                         <option value="count">Based on count</option>
                                     </select>
                                 </label>
@@ -66,7 +67,7 @@
                             <form>
                                 <label>
                                     <select id="select-contractor">
-                                        <option value="amount">Based on value</option>
+                                        <option value="amount" selected>Based on value</option>
                                         <option value="count">Based on count</option>
                                     </select>
                                 </label>
@@ -87,7 +88,7 @@
                             <form>
                                 <label>
                                     <select id="select-goods">
-                                        <option value="amount">Based on value</option>
+                                        <option value="amount" selected>Based on value</option>
                                         <option value="count">Based on count</option>
                                     </select>
                                 </label>
@@ -126,7 +127,7 @@
 
         $('#table_id').DataTable({
             "language": {
-                'searchPlaceholder': "Search by goods",
+                'searchPlaceholder': "Search by goods and services",
                 "lengthMenu": "Show _MENU_ Contracts"
             },
             "processing": true,
@@ -139,7 +140,7 @@
                 {'data': 'goods.mdValue', "defaultContent": "-"},
                 {'data': 'contractDate', 'className': 'dt'},
                 {'data': 'finalDate', 'className': 'dt'},
-                {'data': 'amount', "className":'numeric-data' }
+                {'data': 'amount', "className": 'numeric-data'}
             ],
             "fnDrawCallback": function () {
                 changeDateFormat();
@@ -147,7 +148,7 @@
                 createLinks();
                 if ($('#table_id tr').length < 10) {
                     $('.dataTables_paginate').hide();
-                }else{
+                } else {
                     $('.dataTables_paginate').show();
                 }
             }
@@ -175,12 +176,12 @@
         var contractors = '{!! $contractors  !!}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';
 
-        var makeCharts = function(){
+        var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
-            createLineChart(JSON.parse(trends),widthOfParent);
-            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency",widthOfParent);
-            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor",widthOfParent);
-            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods",widthOfParent);
+            createLineChart(JSON.parse(trends), widthOfParent);
+            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');
+            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthOfParent, 'amount');
+            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthOfParent, 'amount');
 
         };
 
