@@ -76,6 +76,14 @@ h2 {
   }
 }
 
+.left-content{
+  float: left;
+}
+
+.right-content{
+  float: right;
+}
+
 .header-with-icon {
   span {
     vertical-align: middle;
@@ -109,6 +117,27 @@ h2 {
   h2 {
     margin-bottom: 0;
   }
+}
+
+.header-with-bg{
+  background-color: $deep-yellow-color;
+  border: none;
+
+  h2{
+    color: $grey-yellow-color;
+    font-family: "Ubuntu-regular";
+  }
+}
+
+.small-button{
+  padding: 6px 15px;
+  border-radius: 16px;
+}
+
+.grey-yellow-btn{
+  background-color: $grey-yellow-color;
+  font-size: 15px;
+  color: #fff;
 }
 
 .name-value-wrap {
