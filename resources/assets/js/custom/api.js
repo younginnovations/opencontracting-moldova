@@ -32,7 +32,7 @@ $('#select-contractor').change(function () {
     var data = {filter: val, type: 'contractor', dataFor: dataFor, param: param};
     API.get(route, data).success(function (response) {
         $('#barChart-contractors').empty();
-        createBarChartProcuring(JSON.parse(response), "barChart-contractors", "contractor",widthOfParent);
+        createBarChartProcuring(JSON.parse(response), "barChart-contractors", "contracts/contractor", widthOfParent, val);
     });
 });
 
@@ -43,7 +43,7 @@ $('#select-agency').change(function () {
     var data = {filter: val, type: 'agency', dataFor: dataFor, param: param};
     API.get(route, data).success(function (response) {
         $('#barChart-procuring').empty();
-        createBarChartProcuring(JSON.parse(response), "barChart-procuring", "procuring-agency",widthOfParent);
+        createBarChartProcuring(JSON.parse(response), "barChart-procuring", "procuring-agency", widthOfParent, val);
     });
 });
 
@@ -54,6 +54,6 @@ $('#select-goods').change(function () {
     var data = {filter: val, type: 'goods', dataFor: dataFor, param: param};
     API.get(route, data).success(function (response) {
         $('#barChart-goods').empty();
-        createBarChartProcuring(JSON.parse(response), "barChart-goods", "goods",widthOfParent);
+        createBarChartProcuring(JSON.parse(response), "barChart-goods", "goods", widthOfParent, val);
     });
 });

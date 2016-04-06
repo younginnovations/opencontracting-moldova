@@ -29,9 +29,16 @@
 
         <div class="top-bar-right" id="main-menu">
             <ul class="menu">
-                <li><a href="{{ route('/') }}" class="active">Home</a></li>
+                <li><a href="{{ route('/') }}" class="{{ (\Request::segment(1) === null)?'active':'' }}">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="{{ route('contracts') }}">Contracts</a></li>
+                <li><a href="{{ route('contracts') }}" class="{{ (Request::segment(1) === 'tender')?'active':'' }}">Tenders</a>
+                </li>
+                <li><a href="{{ route('contracts') }}" class="{{ (Request::segment(1) === 'contracts')?'active':'' }}">Contracts</a>
+                </li>
+                <li><a href="{{ route('contracts') }}"
+                       class="{{ (Request::segment(1) === 'procuring-agency')?'active':'' }}">Agencies</a></li>
+                <li><a href="{{ route('contracts') }}"
+                       class="{{ (Request::segment(1) === 'goods')?'active':'' }}">Goods</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>

@@ -2,7 +2,9 @@
 @section('content')
     <div class="block header-block">
         <div class="row header-with-icon">
-            <span><img src="{{url('images/ic_procuringagency.png')}}"/></span><h2> {{ $procuringAgency }}</h2>
+            <span><img src="{{url('images/ic_procuringagency.png')}}"/></span>
+
+            <h2> {{ $procuringAgency }}</h2>
         </div>
     </div>
 
@@ -32,7 +34,7 @@
                 <div class="medium-6 small-12 columns each-chart-section">
                     <div class="section-header clearfix" data-equalizer-watch="equal-header">
                         <ul class="breadcrumbs">
-                            <li><span href="#" class="indicator tender">Tender published</span></li>
+                            <li><span href="#" class="indicator tender">Tenders published</span></li>
                             <li><span href="#" class="indicator contracts">Contracts issued</span></li>
                         </ul>
                     </div>
@@ -62,7 +64,7 @@
                                 <div>
                                     <label>
                                         <select id="select-contractor" data-for="agency" data="{{ $procuringAgency }}">
-                                            <option value="amount">Based on value</option>
+                                            <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
                                         </select>
                                     </label>
@@ -84,7 +86,7 @@
                                 <div>
                                     <label>
                                         <select id="select-goods" data-for="agency" data="{{ $procuringAgency }}">
-                                            <option value="amount">Based on value</option>
+                                            <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
                                         </select>
                                     </label>
@@ -141,13 +143,13 @@
         var amountTrend = '{!! $amountTrend !!}';
         var contractors = '{!! $contractors  !!}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';
-            console.log(trends);
+        console.log(trends);
         var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();
             createLineChart(JSON.parse(trends), widthofParent);
-            createBarChartContract(JSON.parse(amountTrend), "barChart-amount", widthofParent);
-            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor", widthofParent);
-            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthofParent);
+            createBarChartContract(JSON.parse(amountTrend), "barChart-amount", widthofParent, 'amount');
+            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthofParent, 'amount');
+            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthofParent, 'amount');
         };
 
         makeCharts();

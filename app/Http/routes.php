@@ -34,9 +34,9 @@ $app->get(
 );
 
 $app->get(
-    '/contractor/{name}',
+    '/contracts/contractor/{name}',
     [
-        'as'   => 'contractor',
+        'as'   => 'contracts.contractor',
         'uses' => 'ContractController@show'
     ]
 );
@@ -77,14 +77,6 @@ $app->get(
         'uses' => 'HomeController@getData'
     ]
 );
-
-//$app->post(
-//    '/search',
-//    [
-//        'as'   => 'search',
-//        'uses' => 'HomeController@search'
-//    ]
-//);
 
 $app->get(
     '/search',

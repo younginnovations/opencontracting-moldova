@@ -28,6 +28,7 @@ $app = new Laravel\Lumen\Application(
 $app->register('Jenssegers\Mongodb\MongodbServiceProvider');
 
 $app->withFacades();
+class_alias('Illuminate\Support\Facades\Request', 'Request');
 
 $app->withEloquent();
 
@@ -117,5 +118,10 @@ if (getenv('APP_ENV') != "local") {
         return $monolog;
     });
 }
+
+//function request()
+//{
+//    return app('request');
+//}
 
 return $app;
