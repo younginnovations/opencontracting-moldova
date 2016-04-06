@@ -9,7 +9,7 @@
                 <th class="hide">Contract ID</th>
                 <th>Goods and services contracted</th>
                 <th width="150px">Contract start date</th>
-                <th width="150px">Final end date</th>
+                <th width="150px">Contract end date</th>
                 <th>Amount</th>
             </tr>
             </thead>

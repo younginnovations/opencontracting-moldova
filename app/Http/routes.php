@@ -42,8 +42,8 @@ $app->get(
 );
 
 $app->get(
-    '/contract/{id}',
-    ['as' => 'contract.view', 'uses' => 'ContractController@view']
+    '/contracts/{id}',
+    ['as' => 'contracts.view', 'uses' => 'ContractController@view']
 );
 
 $app->get(
@@ -83,5 +83,21 @@ $app->get(
     [
         'as'   => 'search',
         'uses' => 'HomeController@search'
+    ]
+);
+
+$app->get(
+    '/tenders',
+    [
+        'as'   => 'tenders.index',
+        'uses' => 'TenderController@index'
+    ]
+);
+
+$app->get(
+    '/tenders/{tender}',
+    [
+        'as'   => 'tenders.show',
+        'uses' => 'TenderController@show'
     ]
 );

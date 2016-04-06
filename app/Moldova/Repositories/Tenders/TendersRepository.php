@@ -3,17 +3,25 @@
 namespace App\Moldova\Repositories\Tenders;
 
 
+use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Entities\Tenders;
 
 class TendersRepository implements TendersRepositoryInterface
 {
     /**
-     * TendersRepository constructor.
-     * @param Tenders $tenders
+     * @var OcdsRelease
      */
-    public function __construct(Tenders $tenders)
+    private $ocdsRelease;
+
+    /**
+     * TendersRepository constructor.
+     * @param Tenders     $tenders
+     * @param OcdsRelease $ocdsRelease
+     */
+    public function __construct(Tenders $tenders, OcdsRelease $ocdsRelease)
     {
-        $this->tenders = $tenders;
+        $this->tenders     = $tenders;
+        $this->ocdsRelease = $ocdsRelease;
     }
 
     /**
@@ -43,5 +51,24 @@ class TendersRepository implements TendersRepositoryInterface
         });
 
         return $result;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAllTenders()
+    {
+        $result = $this->ocdsRelease->paginate(20, ['tender']);
+
+        return $result;
+    }
+
+    /**
+     * @param $tenderID
+     * @return mixed
+     */
+    public function getTenderDetailByID($tenderID)
+    {
+        return ($this->ocdsRelease->where('tender.id','=',(int) $tenderID)->first());
     }
 }
