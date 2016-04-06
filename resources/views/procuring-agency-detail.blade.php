@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
     <div class="block header-block">
-        <div class="row">
-            <h2> {{ $procuringAgency }}</h2>
+        <div class="row header-with-icon">
+            <span><img src="{{url('images/ic_procuringagency.png')}}"/></span><h2> {{ $procuringAgency }}</h2>
         </div>
     </div>
 
@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="linechart-rest"></div>
+                        <div id="linechart-homepage"></div>
                     </div>
                 </div>
                 <div class="medium-6 small-12 columns each-chart-section">
@@ -106,10 +106,10 @@
         <table class="responsive hover custom-table">
             <tbody>
             <tr>
-                <th>Contract Number</th>
-                <th>Goods</th>
-                <th>Contract Date</th>
-                <th>Final Date</th>
+                <th>Contract number</th>
+                <th>Goods and services contracted</th>
+                <th width="150px">Contract start date</th>
+                <th width="150px">Final end date</th>
                 <th>Amount</th>
             </tr>
 
@@ -137,22 +137,22 @@
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
         var route = '{{ route("filter") }}';
-        var contracts = '{!! $contractTrend  !!}';
+        var trends = '{!! $trends  !!}';
         var amountTrend = '{!! $amountTrend !!}';
         var contractors = '{!! $contractors  !!}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';
-
-        var makeCharts = function(){
+            console.log(trends);
+        var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();
-            createLineChartRest(JSON.parse(contracts),widthofParent);
-            createBarChartContract(JSON.parse(amountTrend), "barChart-amount",widthofParent);
-            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor",widthofParent);
-            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods",widthofParent);
+            createLineChart(JSON.parse(trends), widthofParent);
+            createBarChartContract(JSON.parse(amountTrend), "barChart-amount", widthofParent);
+            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contractor", widthofParent);
+            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthofParent);
         };
 
         makeCharts();
 
-        $(window).resize(function(){
+        $(window).resize(function () {
             $("#linechart-rest").empty();
             $("#barChart-amount").empty();
             makeCharts();

@@ -31,4 +31,17 @@ class TendersRepository implements TendersRepositoryInterface
 
         return $result;
     }
+
+    public function getProcuringAgencyTenderByOpenYear($procuringAgency)
+    {
+        $result = Tenders::raw(function ($collection) use ($procuringAgency) {
+            return $collection->find(['stateOrg.orgName' => $procuringAgency], [
+                    "refTendeOpenDate" => 1,
+                    "_id"              => 1
+                ]
+            );
+        });
+
+        return $result;
+    }
 }

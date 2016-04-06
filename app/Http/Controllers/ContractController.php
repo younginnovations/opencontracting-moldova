@@ -22,6 +22,11 @@ class ContractController extends Controller
         $this->contracts = $contracts;
     }
 
+    public function index()
+    {
+        return view('contracts');
+    }
+
     public function show($contractor)
     {
         $contractor       = urldecode($contractor);
@@ -29,8 +34,8 @@ class ContractController extends Controller
         $totalAmount      = $this->getTotalAmount($contractorDetail);
         $contractTrend    = $this->getTrend($this->contracts->aggregateContracts($contractorDetail));
         $amountTrend      = $this->contracts->encodeToJson($this->contracts->aggregateContracts($contractorDetail, 'amount'), 'trend');
-        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, $contractor,'participant.fullName');
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, $contractor,'participant.fullName');
+        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, $contractor, 'participant.fullName');
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, $contractor, 'participant.fullName');
 
         return view('contract-detail', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices'));
     }
@@ -60,5 +65,16 @@ class ContractController extends Controller
         }
 
         return json_encode($trends);
+    }
+
+    /**
+     * @param $contractId
+     * @return \Illuminate\View\View
+     */
+    public function view($contractId)
+    {
+        $contractDetail = $this->contracts->getContractDetailById($contractId);
+
+        return view('contract-view',compact('contractDetail'));
     }
 }

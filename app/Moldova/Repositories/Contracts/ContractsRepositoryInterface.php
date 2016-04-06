@@ -51,10 +51,10 @@ interface ContractsRepositoryInterface
 
     /**
      * Get list of contracts
-     * @param $limit
+     * @param $params
      * @return mixed
      */
-    public function getContractsList($limit);
+    public function getContractsList($params);
 
     /**
      * Get detail of Contractor or Procuring Agency by name
@@ -63,4 +63,16 @@ interface ContractsRepositoryInterface
      * @return mixed
      */
     public function getDetailInfo($parameter, $column);
+
+    /**
+     * @param $contractId
+     * @return mixed
+     */
+    public function getContractDetailById($contractId);
+
+    /**
+     * @param $search
+     * @return mixed
+     */
+    public function search($search);
 }

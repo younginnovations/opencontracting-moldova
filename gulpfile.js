@@ -16,6 +16,7 @@ var vendor_js = [
     './resources/assets/js/datatable/jquery.dataTables.min.js',
     './resources/assets/js/vendor/responsive-tables.js',
     './resources/assets/js/vendor/moment.min.js',
+    './resources/assets/js/vendor/number-format.js',
 ];
 
 var vendor_css = [

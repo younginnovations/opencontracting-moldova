@@ -21,17 +21,17 @@
 <header class="top-bar fixed-header">
     <div class="row">
         <div class="top-bar-left">
-            <div class="project-logo">
+            <a href="{{ route('/') }}" class="project-logo">
                 <div class="first-section">MOLDOVA CONTRACT</div>
                 <div class="second-section">DATA VISUALISATION</div>
-            </div>
+            </a>
         </div>
 
         <div class="top-bar-right" id="main-menu">
             <ul class="menu">
                 <li><a href="{{ route('/') }}" class="active">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Contracts</a></li>
+                <li><a href="{{ route('contracts') }}">Contracts</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
@@ -67,9 +67,18 @@
 
         });
     };
+
+    var numericFormat = function () {
+        $('.numeric-data').each(function () {
+            if (parseInt($(this).text())) {
+                var formatted = number_format($(this).text());
+                $(this).text(formatted);
+            }
+        });
+    }
+    numericFormat();
     changeDateFormat();
 </script>
-
 
 @yield('script')
 <script>

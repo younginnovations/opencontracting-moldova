@@ -98,12 +98,12 @@ class Contracts
     }
 
     /**
-     * @param $limit
+     * @param $params
      * @return mixed
      */
-    public function getContractsList($limit)
+    public function getContractsList($params)
     {
-        return $this->contracts->getContractsList($limit);
+        return $this->contracts->getContractsList($params);
     }
 
     /**
@@ -137,5 +137,15 @@ class Contracts
         }
 
         return json_encode($jsonData);
+    }
+
+    public function getContractDetailById($contractId)
+    {
+        return $this->contracts->getContractDetailById($contractId);
+    }
+
+    public function search($search)
+    {
+        return $this->contracts->search($search);
     }
 }

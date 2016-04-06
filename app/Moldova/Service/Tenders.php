@@ -19,7 +19,16 @@ class Tenders
      */
     public function getTendersByOpenYear()
     {
-        $tenders          = $this->tender->getTendersByOpenYear();
+        return $this->filterByYear($this->tender->getTendersByOpenYear());
+
+    }
+
+    /**
+     * @param $tenders
+     * @return array
+     */
+    protected function filterByYear($tenders)
+    {
         $tenderByOpenYear = [];
 
         foreach ($tenders as $tender) {
@@ -34,6 +43,15 @@ class Tenders
         }
 
         return $tenderByOpenYear;
+    }
+
+    /**
+     * @param $procuringAgency
+     * @return array
+     */
+    public function getProcuringAgencyTenderByOpenYear($procuringAgency)
+    {
+        return $this->filterByYear($this->tender->getProcuringAgencyTenderByOpenYear($procuringAgency));
     }
 
 }

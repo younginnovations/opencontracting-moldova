@@ -4,6 +4,7 @@ namespace App\Moldova\Repositories\Contracts;
 
 
 use App\Moldova\Entities\Contracts;
+use App\Moldova\Entities\OcdsRelease;
 
 class ContractsRepository implements ContractsRepositoryInterface
 {
@@ -11,14 +12,20 @@ class ContractsRepository implements ContractsRepositoryInterface
      * @var Contracts
      */
     private $contracts;
+    /**
+     * @var OcdsRelease
+     */
+    private $ocdsRelease;
 
     /**
      * ContractsRepository constructor.
-     * @param Contracts $contracts
+     * @param Contracts   $contracts
+     * @param OcdsRelease $ocdsRelease
      */
-    public function __construct(Contracts $contracts)
+    public function __construct(Contracts $contracts, OcdsRelease $ocdsRelease)
     {
-        $this->contracts = $contracts;
+        $this->contracts   = $contracts;
+        $this->ocdsRelease = $ocdsRelease;
     }
 
     /**
@@ -173,35 +180,29 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getContractsList($limit)
+    public function getContractsList($params)
     {
-        $orderIndex = $limit['order'][0]['column'];
-        $ordDir = $limit['order'][0]['dir'];
-        $column = $limit['columns'][$orderIndex]['data'];
-        $strtFrom = $limit['start'];
-        $ordDir = (strtolower($ordDir) == 'asc')?1:-1;
+        $orderIndex = $params['order'][0]['column'];
+        $ordDir     = $params['order'][0]['dir'];
+        $column     = $params['columns'][$orderIndex]['data'];
+        $startFrom  = $params['start'];
+        $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : - 1;
+        $search     = $params['search']['value'];
 
-        $result = Contracts::raw(function ($collection) use ($limit,$strtFrom,$column,$ordDir) {
-            return $collection->find(
-            [],
-            [
-                "contractNumber"          => 1,
-                "contractDate"            => 1,
-                "finalDate"               => 1,
-                "amount"                  => 1,
-                "goods.mdValue"           => 1
-            ]
-        )
-        ->limit($limit['length'])
-        ->skip($strtFrom)
-        ->sort([$column=> $ordDir]);
-        });
-        return $result;
-        // return $this->contracts->select(['contractNumber','contractDate','finalDate','amount','goods.mdValue'])
-        //                     ->take($limit['length'])
-        //                     ->skip($strtFrom)
-        //                     ->orderBy($column,$ordDir)
-        //                     ->get();
+        return $this->contracts
+            ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue'])
+            ->where(function ($query) use ($search) {
+
+                if (!empty($search)) {
+                    return $query->where('goods.mdValue', 'like', '%' . $search . '%');
+                }
+
+                return $query;
+            })
+            ->take($params['length'])
+            ->skip($startFrom)
+            ->orderBy($column, $ordDir)
+            ->get();
     }
 
     /**
@@ -226,5 +227,37 @@ class ContractsRepository implements ContractsRepositoryInterface
         });
 
         return ($result);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getContractDetailById($contractId)
+    {
+        //$contractId = (int) $contractId;
+        $result = $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1])->first();
+
+        $result = ($result['contract'][0]);
+
+        return $result;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function search($search)
+    {
+        return $this->contracts
+            ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue'])
+            ->where(function ($query) use ($search) {
+
+                if (!empty($search)) {
+                    return $query->where('goods.mdValue', 'like', '%' . $search . '%')
+                        ->orWhere('participant.fullName', 'like', '%' . $search . '%')
+                        ->orWhere('tender.stateOrg.orgName', 'like', '%' . $search . '%');
+                }
+
+                return $query;
+            })->get();
     }
 }

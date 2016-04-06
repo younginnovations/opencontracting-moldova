@@ -12,4 +12,6 @@ interface TendersRepositoryInterface
      * @return Tenders
      */
     public function getTendersByOpenYear();
+
+    public function getProcuringAgencyTenderByOpenYear($procuringAgency);
 }

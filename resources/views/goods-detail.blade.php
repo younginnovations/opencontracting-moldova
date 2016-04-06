@@ -1,8 +1,8 @@
 @extends('app')
 @section('content')
     <div class="block header-block">
-        <div class="row">
-            <h2> {{ $goods }}</h2>
+        <div class="row header-with-icon">
+            <span><img src="{{url('images/ic_goods.png')}}"/></span><h2> {{ $goods }}</h2>
         </div>
     </div>
 
@@ -103,10 +103,10 @@
         <table class="responsive hover custom-table">
             <tbody>
             <tr>
-                <th>Contract Number</th>
-                <th>Contractor</th>
-                <th>Contract Date</th>
-                <th>Final Date</th>
+                <th>Contract number</th>
+                <th>Goods and services contracted</th>
+                <th width="150px">Contract start date</th>
+                <th width="150px">Final end date</th>
                 <th>Amount</th>
             </tr>
 
