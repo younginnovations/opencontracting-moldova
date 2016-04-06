@@ -70,7 +70,6 @@
 /*style for chart container*/
 
 .each-chart-section{
-  //min-height: 300px;
   padding: 45px 45px 25px;
   background: #f7f7f7;
   .section-header{
@@ -93,14 +92,14 @@
         color: rgba(72,72,72,0.7);
         height: auto;
         font-weight: normal;
-        font-family: Ubuntu-regular !important;
+        font-family: 'Ubuntu-regular';
         text-transform: lowercase;
       }
     }
   }
 
   .chart-wrap {
-    //min-height: 150px;
+    margin-bottom: 15px;
   }
 }
 

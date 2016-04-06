@@ -246,6 +246,21 @@ thead {
   width: 150px !important;
 }
 
+/* ------- style for overlay while processing --------- */
+
+.dataTables_wrapper{
+  position: relative;
+}
+
+.dataTables_processing{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
 /* ------- add faded shadow in scrollable part of table ----------- */
 
 div.scrollable{

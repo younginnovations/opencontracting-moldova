@@ -6,8 +6,7 @@ $light-grey-color: #484848;
 $dark-grey-color: #5A5A5A;
 $tender-color: #0042B1;
 $contract-color: #CE0029;
-
-$font-path: "/../fonts";
+$font-path: "/fonts";
 $img-path: "/images";
 
 /* ---- common styles ----- */
@@ -16,25 +15,29 @@ $img-path: "/images";
   font-family: "Ubuntu-regular";
   font-style: normal;
   font-weight: 400;
-  src: url("#{$font-path}/Ubuntu-regular.ttf");
+  src: url("#{$font-path}/Ubuntu-regular.ttf") format("truetype"),
+        url("#{$font-path}/Ubuntu-regular.eot") format("eot"),
+        url("#{$font-path}/Ubuntu.woff") format("wff"),
+        url("#{$font-path}/Ubuntu.svg") format("svg");
 }
 
 @font-face {
   font-family: "Ubuntu-light";
-  src: url("#{$font-path}/Ubuntu 300.ttf") format("ttf")
+  src: url("#{$font-path}/Ubuntu 300.ttf") format("ttf");
 }
 
 @font-face {
   font-family: "Ubuntu-bold";
-  src: url("#{$font-path}/Ubuntu-700.ttf") format("ttf")
+  src: url("#{$font-path}/Ubuntu-Bold.ttf") format("truetype"),
+        url("#{$font-path}/Ubuntu-Bold.svg") format("svg"),
+        url("#{$font-path}/Ubuntu-700.woff") format("woff"),
+        url("#{$font-path}/Ubuntu-eot") format("eot");
 }
 
 @font-face {
   font-family: "MyriadPro-regular";
   src: url("#{$font-path}/MyriadPro-Refular.otf") format("otf")
 }
-
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
 
 *:focus {
   outline: none;
@@ -45,7 +48,7 @@ a {
 }
 
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu-regular';
   font-size: 14px;
   color: $light-grey-color;
   background-color: #fff;
@@ -60,7 +63,7 @@ h2 {
   display: block;
 
   span {
-    font-family: Ubuntu-regular;
+    font-family: 'Ubuntu-regular';
     font-size: 25px;
     line-height: 38px;
     color: rgba(72, 72, 72, 0.4);
@@ -88,8 +91,8 @@ h2 {
 @mixin small-title() {
   font-size: 16px;
   color: $light-grey-color;
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: bold;
+  font-family: 'Ubuntu-bold';
+  //font-weight: bold;
 }
 
 .block {
@@ -122,4 +125,37 @@ h2 {
   }
 }
 
+.button{
+  color: #000;
+  padding: 1em 1.429em;
+  background: transparent;
+  overflow: hidden;
+  &.yellow-button{
+    border: solid 2px $deep-yellow-color;
+    border-radius: 22px;
+  }
+  &:hover,&:active,&:focus{
+    background: transparent;
+    color: $dark-grey-yellow-color;
+  }
+}
+
+/* --------- style for sticky footer ----------- */
+
+html {
+  min-height: 100%;
+}
+body {
+  position: relative;
+  min-height: 100%;
+  height: auto;
+  padding: 0 0 92px; /* bottom = footer height */
+}
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 92px;
+  width: 100%;
+}
 
