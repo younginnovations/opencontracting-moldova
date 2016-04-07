@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <div class="block header-block header-with-bg">
+    <div class="header-block header-with-bg">
         <div class="row clearfix">
             <div class="left-content">
                 <h2> {{ $contractDetail['title'] }}
@@ -13,7 +13,6 @@
                     <span>{{ $contractDetail['status'] }}</span>
                 </button>
             </div>
-
         </div>
     </div>
 
@@ -71,7 +70,7 @@
             </span>
         </div>
 
-        <div class="name-value-section medium-6 small-12 columns">
+        <div class="name-value-section medium-6 small-12 columns end">
             <span class="icon relatedtender">icon</span>
             <span class="each-detail">
                  <div class="name  columns">RELATED TENDER</div>
@@ -80,7 +79,6 @@
                 </div>
             </span>
         </div>
-
     </div>
 
 @endsection

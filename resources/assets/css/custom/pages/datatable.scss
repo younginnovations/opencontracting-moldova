@@ -164,6 +164,7 @@ thead {
 .table-wrapper{
   margin-bottom: 30px;
   width: 100%;
+  margin-top: 40px;
 
   .table-wrapper{
     margin-bottom: 0 !important;
@@ -188,10 +189,12 @@ thead {
       border-bottom: solid 1px #d8d8d8;
       border-top: solid 1px #d8d8d8;
       color: rgba(72,72,72,0.7);
+      cursor: pointer;
     }
   }
 
   tr{
+    transition: background-color 0.3s ease-in-out;
     &:nth-child(odd){
       background: none;
     }
@@ -210,6 +213,16 @@ thead {
   td{
     padding: 10px 10px;
   }
+}
+
+.custom-table.hover tbody{
+  tr,tr:nth-of-type(even):hover {
+    &:hover {
+      transition: background-color 0.3s ease-in-out;
+      background-color: rgba(255, 212, 0, 0.4);
+    }
+  }
+
 }
 
 .sorting{

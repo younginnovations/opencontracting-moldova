@@ -1,7 +1,19 @@
+/*
+.header-with-bg{
+  .left-content{
+    width: 80%;
+  }
+}
+*/
+
 .name-value-section{
   border-bottom: solid 1px #D5D5D5;
   padding: 30px;
   color: $dark-grey-color;
+
+  &.end{
+    border-bottom: none;
+  }
 
   .icon{
     width: 50px;
@@ -12,37 +24,31 @@
     overflow: hidden;
 
     &.contract-signed{
-      width: 32px;
-      background: url(#{$img-path}/ic_contract-signed.png) center center no-repeat;
+      background: url(#{$img-path}/ic_contract-signed.png) center right no-repeat;
     }
 
     &.contract-period{
-      width: 28px;
-      background: url(#{$img-path}/ic_contract-period.png) center center no-repeat;
+      background: url(#{$img-path}/ic_contract-period.png) center right no-repeat;
     }
 
     &.contract-value{
-      width: 32px;
-      background: url(#{$img-path}/ic_contract-value.png) center center no-repeat;
+      background: url(#{$img-path}/ic_contract-value.png) center right no-repeat;
     }
 
     &.contract-goods-service{
-      width: 32px;
-      background: url(#{$img-path}/ic_goods-sevice.png) center center no-repeat;
+      background: url(#{$img-path}/ic_goods-sevice.png) center right no-repeat;
     }
 
     &.contractor{
-      width: 43px;
-      background: url(#{$img-path}/ic_contractor.png) center center no-repeat;
+      background: url(#{$img-path}/ic_contractor.png) center right no-repeat;
     }
 
     &.relatedtender{
-      width: 32px;
-      background: url(#{$img-path}/ic_relatedtender.png) center center no-repeat;
+      background: url(#{$img-path}/ic_relatedtender.png) center right no-repeat;
     }
 
     &.procuring-agency{
-      background: url(#{$img-path}/ic_procuring-agency.png) center center no-repeat;
+      background: url(#{$img-path}/ic_procuring-agency.png) center right no-repeat;
     }
 
   }
@@ -58,6 +64,7 @@
 
   .name{
     font-size: 14px;
+    text-transform: uppercase;
     color: rgba(72,72,72,0.7);
   }
 
@@ -67,11 +74,20 @@
 }
 
 .description-summary{
-  margin-bottom: 20px;
+  //margin-bottom: 20px;
   background-color: #f7f7f7;
 
+  .icon{
+    margin-left: 10px;
+  }
+  
   .name-value-section{
     border: none;
+  }
+
+  .value{
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .icon{
@@ -79,18 +95,25 @@
     height: 30px;
 
     &.procuring-agency{
-      background: url(#{$img-path}/ic_procuring-agency-small.png) center center no-repeat;
+      background: url(#{$img-path}/ic_procuring-agency-small.png) center right no-repeat;
     }
 
     &.tender-period{
-      width: 32px;
-      background: url(#{$img-path}/ic_procuring-period-small.png) center center no-repeat;
+      background: url(#{$img-path}/ic_procuring-period-small.png) center right no-repeat;
     }
 
     &.procurement-method{
-      width: 25px;
-      background: url(#{$img-path}/ic_procurement-method-small.png) center center no-repeat;
+      background: url(#{$img-path}/ic_procurement-method-small.png) center right no-repeat;
     }
+  }
 
+  .each-detail{
+    margin-top: 6px;
+  }
+}
+
+#status{
+  button{
+    margin-top: 10px;
   }
 }

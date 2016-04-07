@@ -75,7 +75,7 @@
                     <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
                         <div id="barChart-contractors"></div>
                     </div>
-                    <button class="button yellow-button hvr-sweep-to-right">test the button</button>
+                    {{--<button class="button yellow-button hvr-sweep-to-right">test the button</button>--}}
                 </div>
 
                 <div class="medium-6 small-12 columns each-chart-section">

@@ -6,6 +6,7 @@ $light-grey-color: #484848;
 $dark-grey-color: #5A5A5A;
 $tender-color: #0042B1;
 $contract-color: #CE0029;
+$red-color: #CC092F;
 $font-path: "/fonts";
 $img-path: "/images";
 
@@ -45,6 +46,7 @@ $img-path: "/images";
 
 a {
   text-decoration: none;
+  color: $deep-blue-color;
 }
 
 body {
@@ -113,15 +115,19 @@ h2 {
 
 .header-block {
   border-bottom: solid 1px #D5D5D5;
-
+  padding: 40px;
   h2 {
     margin-bottom: 0;
   }
 }
 
 .header-with-bg{
-  background-color: $deep-yellow-color;
+  background: transparent url(#{$img-path}/header-bg.png) 0 center repeat;
   border: none;
+  .block{
+    padding-top: 38px;
+    padding-bottom: 38px;
+  }
 
   h2{
     color: $grey-yellow-color;

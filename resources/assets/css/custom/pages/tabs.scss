@@ -1,0 +1,52 @@
+.table-with-tab{
+  padding-top: 15px;
+  background-color: #E6E6E6;
+}
+
+.tabs{
+  background: none;
+}
+
+.tabs-panel{
+  .table-wrapper{
+    margin-top: 25;
+  }
+}
+
+.tabs, .tabs-content {
+  border: none;
+}
+
+
+.tabs-title{
+  span{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  a{
+    padding: 13px;
+    border-radius: 8px 8px 0 0;
+    margin-right: 8px;
+    background-color: #fff;
+    color: $dark-grey-color;
+    width: 300px;
+  }
+}
+
+.tabs-title>a:focus,
+.tabs-title>a:hover,
+.tabs-title>a[aria-selected=true] {
+  background: #D8D8D8;
+}
+
+.tab-indicator{
+  margin-right: 8px;
+  background: $red-color;
+  font-size: 14px;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  padding-top: 8px;
+}
