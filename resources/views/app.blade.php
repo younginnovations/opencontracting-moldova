@@ -8,6 +8,7 @@
     <title>Moldova</title>
     <link href="{{url('css/vendors.min.css')}}" rel="stylesheet">
     <link href="{{url('css/app.min.css')}}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -44,9 +45,6 @@
         </div>
     </div>
 </header>
-<div id="tooltip">
-    <span id="name"></span>
-</div>
 <section class="main-content">
     @yield('content')
 </section>
@@ -92,6 +90,11 @@
 @yield('script')
 <script>
     $(document).foundation();
+    (function() {
+        [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+            new SelectFx(el);
+        } );
+    })();
 </script>
 </body>
 

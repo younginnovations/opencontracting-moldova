@@ -1,17 +1,9 @@
-/*
-.header-with-bg{
-  .left-content{
-    width: 80%;
-  }
-}
-*/
-
 .name-value-section{
   border-bottom: solid 1px #D5D5D5;
   padding: 30px;
   color: $dark-grey-color;
 
-  &.end{
+  &:last-of-type{
     border-bottom: none;
   }
 
@@ -36,7 +28,7 @@
     }
 
     &.contract-goods-service{
-      background: url(#{$img-path}/ic_goods-sevice.png) center right no-repeat;
+      background: url(#{$img-path}/ic_goods-service.png) center right no-repeat;
     }
 
     &.contractor{
@@ -56,6 +48,7 @@
   .each-detail{
     width: calc(100% - 60px);
     float: left;
+    margin-top: 6px;
     >div{
       padding: 0;
     }
@@ -66,10 +59,15 @@
     font-size: 14px;
     text-transform: uppercase;
     color: rgba(72,72,72,0.7);
+    margin-bottom: 6px;
   }
 
   .value{
     font-size: 18px;
+    margin-bottom: 6px;
+    a{
+      font-size: inherit;
+    }
   }
 }
 
@@ -107,9 +105,6 @@
     }
   }
 
-  .each-detail{
-    margin-top: 6px;
-  }
 }
 
 #status{

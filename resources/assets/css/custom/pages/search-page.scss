@@ -1,0 +1,112 @@
+.search-wrap input{
+  float: left;
+  width: 300px;
+  background: url("#{$img-path}/ic_search-blue.svg") 12px center no-repeat;
+  border: solid 2px rgba(0,66,177,0.7);
+  border-radius: 4px;
+  padding: 12px 24px 12px 38px;
+  height: auto;
+  font-size: 14px;
+  margin: 0 0 1.5rem;
+  color: #484848;
+
+  &:hover,&:focus,&:active{
+    border: solid 2px rgba(0,66,177,0.7);
+  }
+
+}
+
+.filter-wrap {
+  position: relative;
+
+  .filter-toggler {
+    margin: 10px 15px;
+    display: inline-block;
+    a {
+      color: $deep-blue-color;
+      padding-right: 20px;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        right: 0;
+        height: 8px;
+        width: 16px;;
+        background: transparent url(#{$img-path}/ic_arrow_down-blue.svg) center no-repeat;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &.active {
+        &:after {
+          background: transparent url(#{$img-path}/ic_arrow_down-blue.svg) center no-repeat;
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+  }
+}
+
+
+
+.advance-search-wrap{
+  display: none;
+  background: rgba(255,212,0,0.7);
+  padding: 40px 20px;
+  margin-bottom: 20px;
+}
+
+.search-result-wrap{
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+
+  .title{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid 1px #ccc;
+    font-size: 1rem;
+  }
+
+  .negative-result{
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+    color: #888888;
+    margin: -10px;
+  }
+
+}
+
+.search-token{
+  span{
+    padding: 6px 10px;
+    background: #D8D8d8;
+    border-radius: 4px;
+    margin: 5px 5px 5px 0;
+    display: inline-block;
+
+  }
+}
+
+.blue-button{
+  background: hsl(218, 100%, 35%);
+  color: #fff;
+  width: 100%;
+  padding: 1em;
+  font-size: 16px;
+
+  &:hover,&:active,&:focus{
+    background: hsl(218, 100%, 35%);
+    color: #fff;
+  }
+}
+
+.cs-select span{
+  color: $grey-yellow-color;
+}
+
+
