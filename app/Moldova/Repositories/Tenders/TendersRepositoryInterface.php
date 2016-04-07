@@ -13,5 +13,20 @@ interface TendersRepositoryInterface
      */
     public function getTendersByOpenYear();
 
+    /**
+     * @param $procuringAgency
+     * @return mixed
+     */
     public function getProcuringAgencyTenderByOpenYear($procuringAgency);
+
+    /**
+     * @return mixed
+     */
+    public function getAllTenders();
+
+    /**
+     * @param $tenderID
+     * @return mixed
+     */
+    public function getTenderDetailByID($tenderID);
 }

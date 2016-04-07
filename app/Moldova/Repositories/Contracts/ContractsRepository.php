@@ -235,11 +235,22 @@ class ContractsRepository implements ContractsRepositoryInterface
     public function getContractDetailById($contractId)
     {
         //$contractId = (int) $contractId;
-        $result = $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1])->first();
+        $result = $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1, 'award' => 1, 'tender.id' => 1, 'tender.title' => 1, 'buyer.name' => 1])->first();
 
-        $result = ($result['contract'][0]);
+        $contract                    = ($result['contract'][0]);
+        $contract['tender_title']    = $result['tender']['title'];
+        $contract['tender_id']       = $result['tender']['id'];
+        $contract['procuringAgency'] = $result['buyer']['name'];
 
-        return $result;
+        foreach ($result['award'] as $award) {
+            if ($award['id'] === $contract['awardID']) {
+                $contract['goods']      = $award['items'][0]['classification']['description'];
+                $contract['contractor'] = $award['title'];
+                break;
+            }
+        }
+
+        return $contract;
     }
 
     /**
@@ -253,8 +264,8 @@ class ContractsRepository implements ContractsRepositoryInterface
 
                 if (!empty($search)) {
                     return $query->where('goods.mdValue', 'like', '%' . $search . '%')
-                        ->orWhere('participant.fullName', 'like', '%' . $search . '%')
-                        ->orWhere('tender.stateOrg.orgName', 'like', '%' . $search . '%');
+                                 ->orWhere('participant.fullName', 'like', '%' . $search . '%')
+                                 ->orWhere('tender.stateOrg.orgName', 'like', '%' . $search . '%');
                 }
 
                 return $query;

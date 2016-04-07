@@ -54,4 +54,17 @@ class Tenders
         return $this->filterByYear($this->tender->getProcuringAgencyTenderByOpenYear($procuringAgency));
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAllTenders()
+    {
+        return $this->tender->getAllTenders();
+    }
+
+    public function getTenderDetailByID($tenderID)
+    {
+        return $this->tender->getTenderDetailByID($tenderID);
+    }
+
 }
