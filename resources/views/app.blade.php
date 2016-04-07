@@ -44,7 +44,9 @@
         </div>
     </div>
 </header>
-
+<div id="tooltip">
+    <span id="name"></span>
+</div>
 <section class="main-content">
     @yield('content')
 </section>
