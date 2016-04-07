@@ -4,6 +4,17 @@ $(document).ready(function(){
         $(this).toggleClass("menu-on");
     });
 
+    var headerElementsAlign = function(){
+        var statusButtonWidth1 = $("#status").width(),
+            statusButtonWidth = statusButtonWidth1 + 40;
+        headerWidth = $("#status").parents(".row").width() - statusButtonWidth;
+        console.log(statusButtonWidth);
+        console.log(headerWidth);
+        $("#left-header").width(headerWidth);
+    };
+
+    headerElementsAlign();
+
     var windowResize = {
         menuDisappear: function () {
             if ($(window).width() < 639) {
@@ -22,6 +33,7 @@ $(document).ready(function(){
     windowResize.menuDisappear();
 
     $(window).resize(function(){
+        headerElementsAlign();
         windowResize.menuDisappear();
     });
 });
