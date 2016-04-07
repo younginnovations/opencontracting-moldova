@@ -55,11 +55,12 @@ class Tenders
     }
 
     /**
+     * @param $params
      * @return mixed
      */
-    public function getAllTenders()
+    public function getAllTenders($params)
     {
-        return $this->tender->getAllTenders();
+        return $this->tender->getAllTenders($params);
     }
 
     public function getTenderDetailByID($tenderID)

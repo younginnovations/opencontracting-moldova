@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Moldova\Service\Contracts;
+use Illuminate\Http\Request;
 
 class GoodsController extends Controller
 {
@@ -25,6 +26,12 @@ class GoodsController extends Controller
     {
         $this->contracts = $contracts;
     }
+
+    public function index()
+    {
+        return view('goods-index');
+    }
+
 
     /**
      * @param $goods

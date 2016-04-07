@@ -194,7 +194,7 @@ thead {
       border-bottom: solid 1px #d8d8d8;
       border-top: solid 1px #d8d8d8;
       color: rgba(72,72,72,0.7);
-      cursor: pointer;
+
     }
   }
 
@@ -228,6 +228,12 @@ thead {
     }
   }
 
+}
+
+th{
+  &.sorting{
+    cursor: pointer;
+  }
 }
 
 .sorting{

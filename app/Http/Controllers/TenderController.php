@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Moldova\Service\Tenders;
+use Illuminate\Http\Request;
 
 class TenderController
 {
@@ -18,11 +19,24 @@ class TenderController
         $this->tenders = $tenders;
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
-        $tenders = $this->tenders->getAllTenders();
 
-        return view('tender-index', compact('tenders'));
+        return view('tender-index');
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function getTenders(Request $request)
+    {
+        $input = $request->all();
+
+        return $this->tenders->getAllTenders($input);
     }
 
 
