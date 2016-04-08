@@ -23,7 +23,7 @@
             <div class="name-value-section  medium-4 small-12 columns">
                 <span class="icon procuring-agency">icon</span>
             <span class="each-detail">
-                 <div class="name columns">PROCURING AGENCY</div>
+                 <div class="name columns">Procuring agency</div>
                 <div class="value columns">
                     <a href="{{ route('procuring-agency',['name'=>$tenderDetail['buyer']['name']]) }}">
                         {{ $tenderDetail['buyer']['name'] }}
@@ -34,7 +34,7 @@
             <div class="name-value-section  medium-4 small-12 columns">
                 <span class="icon tender-period">icon</span>
             <span class="each-detail">
-                 <div class="name columns">TENDER PERIOD</div>
+                 <div class="name columns">Tender period</div>
                 <div class="value columns"><span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['startDate'] }}</span>
                     - <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['endDate'] }}</span></div>
             </span>
@@ -42,7 +42,7 @@
             <div class="name-value-section  medium-4 small-12 columns">
                 <span class="icon procurement-method">icon</span>
             <span class="each-detail">
-                 <div class="name columns">PROCUREMENT METHOD</div>
+                 <div class="name columns">Procurement method</div>
                 <div class="value columns">{{ $tenderDetail['tender']['procuringAgency']['identifier']['scheme'] }}</div>
             </span>
             </div>
@@ -53,13 +53,13 @@
             <ul class="tabs" data-tabs id="example-tabs">
                 <li class="tabs-title is-active">
                     <a href="#panel1" aria-selected="true">
-                        <span class="tab-indicator">7</span>
+                        <span class="tab-indicator">{{ count($tenderDetail['tender']['items'])  }}</span>
                         <span>Goods/ Services under this tender</span>
                     </a>
                 </li>
                 <li class="tabs-title">
                     <a href="#panel2">
-                        <span class="tab-indicator">20</span>
+                        <span class="tab-indicator">{{ count($tenderDetail['contract']) }}</span>
                         <span>Contracts related to this tender</span>
                     </a>
                 </li>
@@ -69,24 +69,23 @@
         <div class="tabs-content" data-tabs-content="example-tabs">
             <div class="tabs-panel is-active" id="panel1">
                 <div class="row table-wrapper">
-                    <table class="responsive hover custom-table">
+                    <table id="table_id" class="responsive hover custom-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>CPV code</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                        <tr>
-                            <th>Contract number</th>
-                            <th>Goods and services contracted</th>
-                            <th width="150px">Contract start date</th>
-                            <th width="150px">Contract end date</th>
-                            <th>Amount</th>
-                        </tr>
-
-                        @forelse($tenderDetail['contract'] as $key => $contract)
+                        @forelse($tenderDetail['tender']['items'] as $key => $goods)
                             @if($key < 10)
-                                <tr>
-                                    <td>{{ $contract['id'] }}</td>
-                                    <td>{{ $tenderDetail['award'][$key]['title'] }}</td>
-                                    <td class="dt">{{ (!empty($contract['period']['startDate']))?$contract['period']['startDate']:'-' }}</td>
-                                    <td class="dt">{{ $contract['period']['endDate'] }}</td>
-                                    <td>{{ number_format($contract['value']) }}</td>
+                                <tr href="/goods/{{ $goods['classification']['description'] }}">
+                                    <td>{{ $goods['classification']['description'] }}</td>
+                                    <td>{{ $goods['classification']['id'] }}</td>
+                                    <td>{{ $goods['quantity']}}</td>
+                                    <td>{{ $goods['unit']['name'] }}</td>
                                 </tr>
                             @endif
                         @empty
@@ -99,19 +98,20 @@
             </div>
             <div class="tabs-panel" id="panel2">
                 <div class="row table-wrapper">
-                    <table class="responsive hover custom-table">
+                    <table  id="table_id" class="responsive hover custom-table">
+                        <thead>
+                            <tr>
+                                <th>Contract number</th>
+                                <th>Goods and services contracted</th>
+                                <th width="150px">Contract start date</th>
+                                <th width="150px">Contract end date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                        <tr>
-                            <th>Contract number</th>
-                            <th>Goods and services contracted</th>
-                            <th width="150px">Contract start date</th>
-                            <th width="150px">Contract end date</th>
-                            <th>Amount</th>
-                        </tr>
-
                         @forelse($tenderDetail['contract'] as $key => $contract)
                             @if($key < 10)
-                                <tr>
+                                <tr href="/contracts/contractor/{{$tenderDetail['award'][$key]['title']}}">
                                     <td>{{ $contract['id'] }}</td>
                                     <td>{{ $tenderDetail['award'][$key]['title'] }}</td>
                                     <td class="dt">{{ (!empty($contract['period']['startDate']))?$contract['period']['startDate']:'-' }}</td>
@@ -131,4 +131,21 @@
     </div>
 
 
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $('.custom-table tbody tr').click(function () {
+                if($(this).attr('href')) {
+                    window.location = $(this).attr('href');
+                }
+                return false;
+            });
+        });
+    </script>
+    <style>
+        .custom-table tbody tr {
+            cursor: pointer;
+        }
+    </style>
 @endsection

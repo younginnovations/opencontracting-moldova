@@ -49,8 +49,24 @@ $app->get(
 $app->get(
     '/procuring-agency/{name}',
     [
-        'as'   => 'procuring-agency',
+        'as'   => 'procuring-agency.show',
         'uses' => 'ProcuringAgencyController@show'
+    ]
+);
+
+$app->get(
+    '/procuring-agency',
+    [
+        'as'   => 'procuring-agency.index',
+        'uses' => 'ProcuringAgencyController@index'
+    ]
+);
+
+$app->get(
+    '/api/procuring-agency',
+    [
+        'as'   => 'procuring-agency.api',
+        'uses' => 'ProcuringAgencyController@getProcuringAgency'
     ]
 );
 
@@ -91,6 +107,14 @@ $app->get(
     [
         'as'   => 'tenders.index',
         'uses' => 'TenderController@index'
+    ]
+);
+
+$app->get(
+    '/api/tenders',
+    [
+        'as'   => 'tenders.api',
+        'uses' => 'TenderController@getTenders'
     ]
 );
 

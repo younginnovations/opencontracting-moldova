@@ -32,11 +32,12 @@
             <ul class="menu">
                 <li><a href="{{ route('/') }}" class="{{ (\Request::segment(1) === null)?'active':'' }}">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="{{ route('tenders.index') }}" class="{{ (Request::segment(1) === 'tenders')?'active':'' }}">Tenders</a>
+                <li><a href="{{ route('tenders.index') }}"
+                       class="{{ (Request::segment(1) === 'tenders')?'active':'' }}">Tenders</a>
                 </li>
                 <li><a href="{{ route('contracts') }}" class="{{ (Request::segment(1) === 'contracts')?'active':'' }}">Contracts</a>
                 </li>
-                <li><a href="{{ route('contracts') }}"
+                <li><a href="{{ route('procuring-agency.index') }}"
                        class="{{ (Request::segment(1) === 'procuring-agency')?'active':'' }}">Agencies</a></li>
                 <li><a href="{{ route('contracts') }}"
                        class="{{ (Request::segment(1) === 'goods')?'active':'' }}">Goods</a></li>

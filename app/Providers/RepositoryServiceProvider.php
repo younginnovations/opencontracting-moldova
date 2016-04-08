@@ -7,10 +7,12 @@ use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected $repositories = [
-        'App\Moldova\Repositories\Tenders\TendersRepositoryInterface' =>
+        'App\Moldova\Repositories\Tenders\TendersRepositoryInterface'                 =>
             'App\Moldova\Repositories\Tenders\TendersRepository',
-        'App\Moldova\Repositories\Contracts\ContractsRepositoryInterface' =>
-            'App\Moldova\Repositories\Contracts\ContractsRepository'
+        'App\Moldova\Repositories\Contracts\ContractsRepositoryInterface'             =>
+            'App\Moldova\Repositories\Contracts\ContractsRepository',
+        'App\Moldova\Repositories\ProcuringAgency\ProcuringAgencyRepositoryInterface' =>
+            'App\Moldova\Repositories\ProcuringAgency\ProcuringAgencyRepository'
     ];
 
     /**

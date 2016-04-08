@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Moldova\Service\Contracts;
+use App\Moldova\Service\ProcuringAgency;
 use App\Moldova\Service\Tenders;
+use Illuminate\Http\Request;
 
 class ProcuringAgencyController extends Controller
 {
@@ -16,16 +18,42 @@ class ProcuringAgencyController extends Controller
      * @var Tenders
      */
     private $tenders;
+    /**
+     * @var ProcuringAgency
+     */
+    private $procuringAgency;
 
     /**
      * ContractController constructor.
-     * @param Contracts $contracts
-     * @param Tenders   $tenders
+     * @param Contracts       $contracts
+     * @param Tenders         $tenders
+     * @param ProcuringAgency $procuringAgency
      */
-    public function __construct(Contracts $contracts, Tenders $tenders)
+    public function __construct(Contracts $contracts, Tenders $tenders, ProcuringAgency $procuringAgency)
     {
-        $this->contracts = $contracts;
-        $this->tenders   = $tenders;
+        $this->contracts       = $contracts;
+        $this->tenders         = $tenders;
+        $this->procuringAgency = $procuringAgency;
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+
+        return view('procuring-agency-index');
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function getProcuringAgency(Request $request)
+    {
+        $input = $request->all();
+
+        return $this->procuringAgency->getAllProcuringAgency($input);
     }
 
     public function show($procuringAgency)

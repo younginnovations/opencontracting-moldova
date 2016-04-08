@@ -54,21 +54,39 @@ class TendersRepository implements TendersRepositoryInterface
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
-    public function getAllTenders()
+    public function getAllTenders($params)
     {
-        $result = $this->ocdsRelease->paginate(20, ['tender']);
+        $orderIndex = $params['order'][0]['column'];
+        $ordDir     = $params['order'][0]['dir'];
+        $column     = $params['columns'][$orderIndex]['data'];
+        $startFrom  = $params['start'];
+        $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : - 1;
+        $search     = $params['search']['value'];
 
-        return $result;
+        return $this->ocdsRelease
+            ->select(['tender'])
+            ->where(function ($query) use ($search) {
+
+                if (!empty($search)) {
+                    return $query->where('tender.title', 'like', '%' . $search . '%');
+                }
+
+                return $query;
+            })
+            ->take($params['length'])
+            ->skip($startFrom)
+            ->orderBy($column, $ordDir)
+            ->get();
+
     }
 
     /**
-     * @param $tenderID
-     * @return mixed
+     * {@inheritdoc}
      */
     public function getTenderDetailByID($tenderID)
     {
-        return ($this->ocdsRelease->where('tender.id','=',(int) $tenderID)->first());
+        return ($this->ocdsRelease->where('tender.id', '=', (int) $tenderID)->first());
     }
 }
