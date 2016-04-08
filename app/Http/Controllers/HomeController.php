@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Moldova\Service\Contracts;
+use App\Moldova\Service\ProcuringAgency;
 use App\Moldova\Service\Tenders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -14,16 +15,22 @@ class HomeController extends Controller
      * @var Contracts
      */
     private $contracts;
+    /**
+     * @var ProcuringAgency
+     */
+    private $procuringAgency;
 
     /**
      * ExampleController constructor.
-     * @param Tenders   $tenders
-     * @param Contracts $contracts
+     * @param Tenders         $tenders
+     * @param Contracts       $contracts
+     * @param ProcuringAgency $procuringAgency
      */
-    public function __construct(Tenders $tenders, Contracts $contracts)
+    public function __construct(Tenders $tenders, Contracts $contracts, ProcuringAgency $procuringAgency)
     {
-        $this->tenders   = $tenders;
-        $this->contracts = $contracts;
+        $this->tenders         = $tenders;
+        $this->contracts       = $contracts;
+        $this->procuringAgency = $procuringAgency;
     }
 
     /**
@@ -125,10 +132,23 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->get('q');
+        $contractTitles    = $this->contracts->getAllContractTitle();
+        $procuringAgencies = $this->procuringAgency->getAllProcuringAgencyTitle();
 
-        $contracts = $this->contracts->search($search);
+//        $search     = $request->get('q');
+//        $contractor = $request->get('contractor');
+//        $agency     = $request->get('agency');
+//        $range      = $request->get('amount');
 
-        return view('search', compact('contracts'));
+        $contracts = [];
+        $params    = $request->all();
+        if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount'))) {
+            //$params = $request->all();
+
+            $contracts = $this->contracts->search($params);
+        }
+
+
+        return view('search', compact('contracts', 'contractTitles', 'procuringAgencies', 'params'));
     }
 }

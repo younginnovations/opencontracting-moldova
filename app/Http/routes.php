@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,7 +11,6 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
 //$app->get('/', function () use ($app) {
 //    return dd(config('database.default'));
 //});
@@ -30,7 +30,10 @@ $app->get(
 
 $app->get(
     '/contracts',
-    ['as' => 'contracts', 'uses' => 'ContractController@index']
+    [
+        'as'   => 'contracts',
+        'uses' => 'ContractController@index'
+    ]
 );
 
 $app->get(
@@ -43,7 +46,10 @@ $app->get(
 
 $app->get(
     '/contracts/{id}',
-    ['as' => 'contracts.view', 'uses' => 'ContractController@view']
+    [
+        'as'   => 'contracts.view',
+        'uses' => 'ContractController@view'
+    ]
 );
 
 $app->get(

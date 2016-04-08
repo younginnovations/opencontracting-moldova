@@ -245,7 +245,7 @@ class ContractsRepository implements ContractsRepositoryInterface
         foreach ($result['award'] as $award) {
             if ($award['id'] === $contract['awardID']) {
                 $contract['goods']      = $award['items'][0]['classification']['description'];
-                $contract['contractor'] = $award['title'];
+                $contract['contractor'] = $award['suppliers'][0]['name'];
                 break;
             }
         }
@@ -258,17 +258,55 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function search($search)
     {
-        return $this->contracts
-            ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue'])
-            ->where(function ($query) use ($search) {
+        //dd($search);
+        $q          = (!empty($search['q'])) ? $search['q'] : '';
+        $contractor = (!empty($search['contractor'])) ? $search['contractor'] : '';
+        $agency     = (!empty($search['agency'])) ? $search['agency'] : '';
+        $range      = (!empty($search['amount'])) ? explode("-", $search['amount']) : '';
 
-                if (!empty($search)) {
-                    return $query->where('goods.mdValue', 'like', '%' . $search . '%')
-                                 ->orWhere('participant.fullName', 'like', '%' . $search . '%')
-                                 ->orWhere('tender.stateOrg.orgName', 'like', '%' . $search . '%');
+        return ($this->contracts
+            ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue'])
+            ->where(function ($query) use ($q, $contractor, $range, $agency) {
+
+                if (!empty($q)) {
+                    $query->where('goods.mdValue', 'like', '%' . $q . '%')
+                          ->orWhere('participant.fullName', 'like', '%' . $q . '%')
+                          ->orWhere('tender.stateOrg.orgName', 'like', '%' . $q . '%');
+                }
+                if (!empty($contractor)) {
+                    $query->where('participant.fullName', "=", $contractor);
                 }
 
+                if (!empty($agency)) {
+                    $query->where('tender.stateOrg.orgName', "=", $agency);
+                }
+
+                if (!empty($search['amount']) && $range[1] != 'Above') {
+
+                    $query->whereBetween('amount', $range);
+                }
+
+
                 return $query;
-            })->get();
+            })->get());
+    }
+
+    public function getAllContractTitle()
+    {
+        $groupBy =
+            [
+                '$group' => [
+                    '_id'   => '$participant.fullName',
+                    'count' => ['$sum' => 1]
+                ]
+            ];
+
+
+        $result = Contracts::raw(function ($collection) use ($groupBy) {
+            return $collection->aggregate($groupBy);
+        });
+
+        return ($result['result']);
+
     }
 }

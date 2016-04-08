@@ -25,7 +25,7 @@
             <span class="each-detail">
                  <div class="name columns">Procuring agency</div>
                 <div class="value columns">
-                    <a href="{{ route('procuring-agency',['name'=>$tenderDetail['buyer']['name']]) }}">
+                    <a href="{{ route('procuring-agency.show',['name'=>$tenderDetail['buyer']['name']]) }}">
                         {{ $tenderDetail['buyer']['name'] }}
                     </a>
                 </div>
@@ -111,12 +111,12 @@
                         <tbody>
                         @forelse($tenderDetail['contract'] as $key => $contract)
                             @if($key < 10)
-                                <tr href="/contracts/contractor/{{$tenderDetail['award'][$key]['title']}}">
-                                    <td>{{ $contract['id'] }}</td>
-                                    <td>{{ $tenderDetail['award'][$key]['title'] }}</td>
+                                <tr href="/contracts/{{$contract['id']}}">
+                                    <td>{{ getContractInfo($tenderDetail['contract'][$key]['title'],'id') }}</td>
+                                    <td>{{ $tenderDetail['award'][$key]['items'][0]['classification']['description'] }}</td>
                                     <td class="dt">{{ (!empty($contract['period']['startDate']))?$contract['period']['startDate']:'-' }}</td>
                                     <td class="dt">{{ $contract['period']['endDate'] }}</td>
-                                    <td>{{ number_format($contract['value']) }}</td>
+                                    <td>{{ number_format($contract['value']['amount']) }}</td>
                                 </tr>
                             @endif
                         @empty

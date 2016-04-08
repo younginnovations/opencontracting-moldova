@@ -11,4 +11,9 @@ interface ProcuringAgencyRepositoryInterface
      * @return mixed
      */
     public function getAllProcuringAgency($params);
+
+    /**
+     * @return mixed
+     */
+    public function getAllProcuringAgencyTitle();
 }

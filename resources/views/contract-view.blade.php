@@ -23,7 +23,7 @@
                     <span class="each-detail">
                          <div class="name columns">Procuring Agency</div>
                         <div class="value columns">
-                            <a href="{{ route('procuring-agency',['name'=>$contractDetail['procuringAgency']]) }}">{{ $contractDetail['procuringAgency'] }}</a>
+                            <a href="{{ route('procuring-agency.show',['name'=>$contractDetail['procuringAgency']]) }}">{{ $contractDetail['procuringAgency'] }}</a>
                         </div>
                     </span>
             </div>
@@ -46,7 +46,7 @@
                 <span class="icon contract-value">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">Contract value:</div>
-                        <div class="value columns">{{ number_format($contractDetail['value']) }} leu</div>
+                        <div class="value columns">{{ number_format($contractDetail['value']['amount']) }} leu</div>
                     </span>
             </div>
 
@@ -66,7 +66,11 @@
                 <span class="icon contract-period">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">Contractor</div>
-                        <div class="value columns">{{ $contractDetail['contractor'] }}</div>
+                        <div class="value columns">
+                            <a href="{{route('contracts.contractor',['name'=>urlencode($contractDetail['contractor'])]) }}  ">
+                                {{ $contractDetail['contractor'] }}
+                            </a>
+                        </div>
                     </span>
             </div>
 
