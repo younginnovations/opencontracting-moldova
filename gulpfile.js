@@ -17,12 +17,16 @@ var vendor_js = [
     './resources/assets/js/vendor/responsive-tables.js',
     './resources/assets/js/vendor/moment.min.js',
     './resources/assets/js/vendor/number-format.js',
+    './resources/assets/js/vendor/classie.js',
+    './resources/assets/js/vendor/selectFx.js'
 ];
 
 var vendor_css = [
     './resources/assets/css/vendor/foundation.min.css',
     './resources/assets/css/vendor/jquery.dataTables.min.css',
     './resources/assets/css/vendor/responsive-tables.css',
+    './resources/assets/css/vendor/cs-skin-elastic.css',
+    './resources/assets/css/vendor/cs-select.css',
 ];
 
 var custom_js = [
@@ -78,9 +82,9 @@ gulp.task('sass', function () {
         .pipe(sass())
         .pipe(postcss([autoprefixer({browsers: ['last 30 versions', '> 1%', 'ie 8', 'ie 7']})]))
         .pipe(sourcemaps.write('./maps'))
-        /*.pipe(uglifycss({
+        .pipe(uglifycss({
             "max-line-len": 80
-        }))*/
+        }))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./public/css/'));
 });

@@ -8,12 +8,24 @@ $(document).ready(function(){
         var statusButtonWidth1 = $("#status").width(),
             statusButtonWidth = statusButtonWidth1 + 40;
         headerWidth = $("#status").parents(".row").width() - statusButtonWidth;
-        console.log(statusButtonWidth);
-        console.log(headerWidth);
         $("#left-header").width(headerWidth);
     };
 
     headerElementsAlign();
+   /* toggle filter section*/
+
+    $(".show-filter").click(function(){
+       /* $(this).removeClass('active');
+        $(".hide-filter").addClass('active');*/
+        $(".advance-search-wrap").slideToggle();
+        $(".filter-toggler a").toggleClass("active");
+    });
+
+    /*$(".hide-filter").click(function(){
+        $(this).removeClass('active');
+        $(".show-filter").addClass('active');
+        $(".advance-search-wrap").slideUp(300);
+    });*/
 
     var windowResize = {
         menuDisappear: function () {

@@ -103,6 +103,10 @@
     transform: scale(1.25);
   }
 
+  .paginate_button.next{
+    float: right;
+  }
+
   .paginate_button.next:hover{
     transform: scale(1.15);
   }
@@ -181,11 +185,12 @@ thead {
 
   thead{
     background: none;
+    font-family: Ubuntu-bold;
     tr:hover{
       background: none;
     }
     th{
-      font-family: Ubuntu-bold;
+      font-family: inherit;
       border-bottom: solid 1px #d8d8d8;
       border-top: solid 1px #d8d8d8;
       color: rgba(72,72,72,0.7);
@@ -207,11 +212,11 @@ thead {
   /* ------- style for thead ends -------- */
 
   th{
-    padding: 9px 10px 9px 14px;
+    padding: 15px 10px 15px 15px;
   }
 
   td{
-    padding: 10px 10px;
+    padding: 15px 10px;
   }
 }
 
@@ -256,6 +261,10 @@ thead {
 /*style for fixed th*/
 
 .contract-number{
+  width: 160px !important;
+}
+
+.long-th{
   width: 150px !important;
 }
 
@@ -290,3 +299,6 @@ div.scrollable{
   }
 }
 
+tfoot td, tfoot th, thead td, thead th{
+  font-weight: normal;
+}

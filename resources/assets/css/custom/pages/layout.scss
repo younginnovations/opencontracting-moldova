@@ -24,7 +24,7 @@ header{
 
 .project-logo{
   text-transform: uppercase;
-  margin-left: 1rem;
+  margin: 0.5rem 1rem;
   display: block;
   .first-section{
     color: #fff;
@@ -37,7 +37,7 @@ header{
 
 .main-content{
   z-index: 1;
-  padding-top: 58px;
+  padding-top: 65px;
 }
 
 
@@ -57,7 +57,7 @@ header{
     }
 
     .menu > li:not(.menu-text) > a {
-      padding: 18px 1rem .7rem;
+      padding: 18px 1.5rem;
     }
 
     li a {
