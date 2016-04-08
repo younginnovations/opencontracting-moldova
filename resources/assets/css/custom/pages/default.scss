@@ -132,11 +132,12 @@ h2 {
 .header-with-icon {
   span {
     vertical-align: middle;
-    margin-right: 15px;
+    margin-right: 10px;
+    display: inline-block;
   }
   h2 {
     display: inline-block;
-    line-height: 1.7rem;
+    line-height: 2.375rem;
     vertical-align: bottom;
   }
 }
@@ -155,9 +156,20 @@ h2 {
   }
 }
 
+.block-with-margin{
+  margin: 0 25px 25px;
+  @media (max-width: 600px) {
+    margin: 0 20px 20px;
+  }
+}
+
 .header-block {
   border-bottom: solid 1px #D5D5D5;
-  padding: 40px;
+
+  @media (min-width:39.9375em) {
+    padding: 40px;
+  }
+
   h2 {
     margin-bottom: 0;
   }
@@ -228,7 +240,11 @@ h2 {
 }
 
 .buffer-top{
-  margin-top: 40px;
+  margin-top: 20px;
+}
+
+.highlight{
+  background: #000 !important;
 }
 
 /* --------- style for sticky footer ----------- */

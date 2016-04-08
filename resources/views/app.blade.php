@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Moldova</title>
     <link href="{{url('css/vendors.min.css')}}" rel="stylesheet">
-    <link href="{{url('css/app.min.css')}}" rel="stylesheet">
+    {{--<link href="{{url('css/app.min.css')}}" rel="stylesheet">--}}
+    <link href="{{url('css/app.css')}}" rel="stylesheet">
+
 
 </head>
 
@@ -96,6 +98,21 @@
             new SelectFx(el);
         } );
     })();
+
+    /* ------ hover on table ------- */
+   /* var $trs = $('table tr');
+    console.log($('table tr'));
+    $trs.hover(
+        function() {
+            var i = $(this).index() + 1;
+            console.log("hovered");
+            $trs.filter(':nth-child(' + i + ')').addClass('highlight');
+        },
+        function() {
+            var i = $(this).index() + 1;
+            $trs.filter(':nth-child(' + i + ')').removeClass('highlight');
+        }
+    );*/
 </script>
 </body>
 

@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <div class="header-block header-with-bg">
+    <div class="block header-block header-with-bg">
         <div class="row clearfix">
             <div class="left-content" id="left-header">
                 <h2> {{ $contractDetail['title'] }}
@@ -18,7 +18,7 @@
 
     <div class="name-value-section each-row clearfix">
         <div class="row">
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon procuring-agency">icon</span>
                     <span class="each-detail">
                          <div class="name columns">Procuring Agency</div>
@@ -28,7 +28,7 @@
                     </span>
             </div>
 
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-period">icon</span>
 
                 <div class="each-detail">
@@ -42,7 +42,7 @@
 
     <div class="name-value-section each-row clearfix">
         <div class="row">
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-value">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">Contract value:</div>
@@ -50,7 +50,7 @@
                     </span>
             </div>
 
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-signed">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">Contract Signed:</div>
@@ -62,7 +62,7 @@
 
     <div class="name-value-section each-row clearfix">
         <div class="row">
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-period">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">Contractor</div>
@@ -74,7 +74,7 @@
                     </span>
             </div>
 
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-goods-service">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">Goods/ Service</div>
@@ -86,7 +86,7 @@
 
     <div class="name-value-section each-row clearfix">
         <div class="row">
-            <div class="medium-6 small-12 columns end">
+            <div class="medium-6 small-12 columns each-detail-wrap end">
                 <span class="icon relatedtender">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">RELATED TENDER</div>

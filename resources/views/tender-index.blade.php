@@ -1,16 +1,15 @@
 @extends('app')
 
 @section('content')
-    <div class="block header-block">
+    <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
             <span><img src="{{url('images/ic_relatedtender.png')}}"/></span>
-
             <h2>Tenders</h2>
         </div>
     </div>
 
     <div class="row table-wrapper">
-        <table id="table_id" class="hover custom-table display">
+        <table id="table_id" class="responsive hover custom-table display">
             <thead>
             <tr>
                 <th>Tender ID</th>

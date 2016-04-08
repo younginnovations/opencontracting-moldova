@@ -66,3 +66,37 @@
   color: #fff;
   padding-top: 6px;
 }
+
+.tabs-content{
+  .title{
+    @include small-title();
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width:700px) {
+  .tabs-content{
+    .title{
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 700px){
+  .tabs-panel{
+    padding: 0;
+  }
+  .tabs-content{
+    margin-top: 20px;
+
+    .title{
+      padding: 0 40px;
+    }
+  }
+}
+
+@media (max-width: 40em) {
+  .tabs-content .title{
+    padding: 0 20px;
+  }
+}
