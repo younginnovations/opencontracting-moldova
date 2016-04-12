@@ -79,4 +79,15 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
 
         return ['tenderCount' => count($buyer), 'contractCount' => $count, 'amount' => $amount];
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAllProcuringAgencyTitle()
+    {
+        return $this->ocdsRelease
+            ->distinct('buyer.name')
+            ->orderBy('buyer.name', 'ASC')
+            ->get();
+    }
 }

@@ -148,4 +148,9 @@ class Contracts
     {
         return $this->contracts->search($search);
     }
+
+    public function getAllContractTitle()
+    {
+        return $this->contracts->getAllContractTitle();
+    }
 }

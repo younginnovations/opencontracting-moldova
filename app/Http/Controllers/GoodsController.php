@@ -1,15 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: owner
- * Date: 29/03/2016
- * Time: 7:05 PM
- */
 
 namespace App\Http\Controllers;
 
 use App\Moldova\Service\Contracts;
-use Illuminate\Http\Request;
+
 
 class GoodsController extends Controller
 {

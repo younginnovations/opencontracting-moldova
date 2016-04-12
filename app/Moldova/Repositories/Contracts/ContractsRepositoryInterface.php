@@ -75,4 +75,6 @@ interface ContractsRepositoryInterface
      * @return mixed
      */
     public function search($search);
+
+    public function getAllContractTitle();
 }
