@@ -41,7 +41,7 @@
                 </li>
                 <li><a href="{{ route('procuring-agency.index') }}"
                        class="{{ (Request::segment(1) === 'procuring-agency')?'active':'' }}">Agencies</a></li>
-                <li><a href="{{ route('contracts') }}"
+                <li><a href="{{ route('goods.index') }}"
                        class="{{ (Request::segment(1) === 'goods')?'active':'' }}">Goods</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>

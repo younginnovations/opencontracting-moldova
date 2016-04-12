@@ -85,6 +85,14 @@ $app->get(
 );
 
 $app->get(
+    '/goods',
+    [
+        'as'   => 'goods.index',
+        'uses' => 'GoodsController@index'
+    ]
+);
+
+$app->get(
     '/filter',
     [
         'as'   => 'filter',
@@ -129,5 +137,13 @@ $app->get(
     [
         'as'   => 'tenders.show',
         'uses' => 'TenderController@show'
+    ]
+);
+
+$app->get(
+    '/api/goods',
+    [
+        'as'   => 'goods.api',
+        'uses' => 'GoodsController@getAllGoods'
     ]
 );
