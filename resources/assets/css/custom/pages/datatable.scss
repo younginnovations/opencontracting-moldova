@@ -72,7 +72,8 @@
 }
 
 .dataTables_wrapper .dataTables_paginate {
-  width: 300px;
+  width: auto;
+  display: table;
   margin: 1.5rem auto;
   background: #F7F7F7;
   border-radius: 17px;
@@ -237,29 +238,29 @@ th{
 }
 
 .sorting{
-  background: transparent url("#{$img-path}/ic_sort.png") 4px center no-repeat;
+  background: transparent url("#{$img-path}/ic_sort.png") 4px 18px no-repeat;
 }
 
 .sorting_desc{
-  background: transparent url("#{$img-path}/ic_desc.png") 4px center no-repeat;
+  background: transparent url("#{$img-path}/ic_desc.png") 4px 21px no-repeat;
 }
 
 .sorting_asc{
-  background: transparent url("#{$img-path}/ic_asc.png") 4px center no-repeat;
+  background: transparent url("#{$img-path}/ic_asc.png") 4px 21px no-repeat;
 }
 
 @media (min-width: 40em) {
   th:first-of-type{
     &.sorting{
-      background: transparent url("#{$img-path}/ic_sort.png") 28px center no-repeat;
+      background: transparent url("#{$img-path}/ic_sort.png") 28px 18px no-repeat;
     }
 
     &.sorting_desc{
-      background: transparent url("#{$img-path}/ic_desc.png") 28px center no-repeat;
+      background: transparent url("#{$img-path}/ic_desc.png") 28px 21px no-repeat;
     }
 
     &.sorting_asc{
-      background: transparent url("#{$img-path}/ic_asc.png") 28px center no-repeat;
+      background: transparent url("#{$img-path}/ic_asc.png") 28px 21px no-repeat;
     }
   }
 }

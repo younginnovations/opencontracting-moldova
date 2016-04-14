@@ -1,10 +1,9 @@
 @extends('app')
 
 @section('content')
-    <div class="block header-block">
-        <div class="row header-with-icon">
+    <div class="block header-block header-with-bg">
+        <div class="row header-with-icon ">
             <span><img src="{{url('images/ic_procuring-agency.png')}}"/></span>
-
             <h2>Procuring Agencies</h2>
         </div>
     </div>

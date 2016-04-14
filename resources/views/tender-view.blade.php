@@ -3,7 +3,7 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row clearfix">
-            <div class="left-content" id = "left-header">
+            <div class="left-content" id="left-header">
                 <h2> {{ $tenderDetail['tender']['title'] }}
                     Servicii de tratament sanatorial
                 </h2>
@@ -19,34 +19,38 @@
     </div>
 
     <div class="description-summary clearfix">
-        <div class="row">
-            <div class="name-value-section  medium-4 small-12 columns">
+        <div class="row name-value-section">
+            <div class="each-detail-wrap  medium-4 small-12 columns">
                 <span class="icon procuring-agency">icon</span>
-            <span class="each-detail">
-                 <div class="name columns">Procuring agency</div>
-                <div class="value columns">
-                    <a href="{{ route('procuring-agency.show',['name'=>$tenderDetail['buyer']['name']]) }}">
-                        {{ $tenderDetail['buyer']['name'] }}
-                    </a>
-                </div>
-            </span>
+                <span class="each-detail">
+                     <div class="name columns">Procuring agency</div>
+                    <div class="value columns">
+                        <a href="{{ route('procuring-agency.show',['name'=>$tenderDetail['buyer']['name']]) }}">
+                            {{ $tenderDetail['buyer']['name'] }}
+                        </a>
+                    </div>
+                </span>
             </div>
-            <div class="name-value-section  medium-4 small-12 columns">
+
+            <div class="each-detail-wrap  medium-4 small-12 columns">
                 <span class="icon tender-period">icon</span>
-            <span class="each-detail">
-                 <div class="name columns">Tender period</div>
-                <div class="value columns"><span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['startDate'] }}</span>
-                    - <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['endDate'] }}</span></div>
-            </span>
+                <span class="each-detail">
+                     <div class="name columns">Tender period</div>
+                    <div class="value columns"><span
+                                class="dt">{{ $tenderDetail['tender']['tenderPeriod']['startDate'] }}</span>
+                        - <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['endDate'] }}</span></div>
+                </span>
             </div>
-            <div class="name-value-section  medium-4 small-12 columns">
+
+            <div class="each-detail-wrap  medium-4 small-12 columns">
                 <span class="icon procurement-method">icon</span>
-            <span class="each-detail">
-                 <div class="name columns">Procurement method</div>
-                <div class="value columns">{{ $tenderDetail['tender']['procuringAgency']['identifier']['scheme'] }}</div>
-            </span>
+                <span class="each-detail">
+                     <div class="name columns">Procurement method</div>
+                    <div class="value columns">{{ $tenderDetail['tender']['procuringAgency']['identifier']['scheme'] }}</div>
+                </span>
             </div>
         </div>
+
     </div>
     <div class="table-with-tab">
         <div class="row">
@@ -68,15 +72,16 @@
 
         <div class="tabs-content" data-tabs-content="example-tabs">
             <div class="tabs-panel is-active" id="panel1">
+                <div class="title">Goods/ Services under this tender</div>
                 <div class="row table-wrapper">
                     <table id="table_id" class="responsive hover custom-table">
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>CPV code</th>
-                                <th>Quantity</th>
-                                <th>Unit</th>
-                            </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>CPV code</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
                         </thead>
                         <tbody>
                         @forelse($tenderDetail['tender']['items'] as $key => $goods)
@@ -89,24 +94,24 @@
                                 </tr>
                             @endif
                         @empty
+
                         @endforelse
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="tabs-panel" id="panel2">
+                <div class="title">Contracts related to this tender</div>
                 <div class="row table-wrapper">
-                    <table  id="table_id" class="responsive hover custom-table">
+                    <table id="table_id" class="responsive hover custom-table">
                         <thead>
-                            <tr>
-                                <th>Contract number</th>
-                                <th>Goods and services contracted</th>
-                                <th width="150px">Contract start date</th>
-                                <th width="150px">Contract end date</th>
-                                <th>Amount</th>
-                            </tr>
+                        <tr>
+                            <th>Contract number</th>
+                            <th>Goods and services contracted</th>
+                            <th width="150px">Contract start date</th>
+                            <th width="150px">Contract end date</th>
+                            <th>Amount</th>
+                        </tr>
                         </thead>
                         <tbody>
                         @forelse($tenderDetail['contract'] as $key => $contract)
@@ -122,7 +127,6 @@
                         @empty
                         @endforelse
 
-
                         </tbody>
                     </table>
                 </div>
@@ -136,7 +140,7 @@
     <script>
         $(document).ready(function () {
             $('.custom-table tbody tr').click(function () {
-                if($(this).attr('href')) {
+                if ($(this).attr('href')) {
                     window.location = $(this).attr('href');
                 }
                 return false;

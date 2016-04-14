@@ -24,7 +24,7 @@ header{
 
 .project-logo{
   text-transform: uppercase;
-  margin: 0.5rem 1rem;
+  margin: 0.5rem 1rem;;
   display: block;
   .first-section{
     color: #fff;
@@ -37,11 +37,16 @@ header{
 
 .main-content{
   z-index: 1;
-  padding-top: 65px;
+  padding-top: 67px;
 }
 
+@media (max-width: 40em){
+  .main-content {
+    padding-top: 61px;
+  }
+}
 
-@media (min-width: 40em) {
+@media (min-width: 768px) {
   .top-bar-right {
 
     .menu {
@@ -54,10 +59,6 @@ header{
         margin-left: 2px;
         display: inline-block;
       }
-    }
-
-    .menu > li:not(.menu-text) > a {
-      padding: 18px 1.5rem;
     }
 
     li a {
@@ -76,6 +77,22 @@ header{
     }
   }
 }
+
+@media (min-width: 40em){
+  .menu > li:not(.menu-text) > a {
+    padding: 15px 0.8rem;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@media (min-width: 60em) {
+  .menu > li:not(.menu-text) > a {
+    padding: 18px 1.5rem;
+  }
+}
+
+
+
 
 /*style for burger menu*/
 

@@ -10,6 +10,28 @@
     font-size: 80%;
   }
 
+  /* ----------- detail page each section responsive ------------- */
+
+  .name-value-section{
+    border-bottom: none;
+    padding: 0;
+
+    .each-detail-wrap{
+      padding: 20px 20px;
+      border-bottom: solid 1px #D5D5D5;
+    }
+
+    &:last-of-type{
+      .each-detail-wrap:last-of-type{
+        border-bottom: none;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+
   /* ---------- navigation responsive --------- */
   .burger-menu-button {
     display: block;
@@ -31,19 +53,51 @@
       li {
         display: block;
         float: left;
-        width: 50%;
+        width: 49.5%;
+
+        &:nth-child(even){
+          margin-left: 1px;
+        }
 
         a {
           padding: 1.5rem 1rem;
           color: #fff;
-          &:hover {
+          margin-bottom: 1px;
+
+          &:hover,&.active {
             background: #004BCC;
           }
         }
       }
     }
   }
+
+  /* -------- tab responsive -------- */
+
+  .tabs-title a{
+    width: 286px;
+  }
+
 }
+
+
+@media (max-width: 700px){
+  .table-with-tab{
+    background: red;
+    background: transparent;
+    padding: 0;
+
+    .table-wrapper{
+      margin-top: 0;
+    }
+
+  }
+
+  .tabs{
+    display: none;
+  }
+}
+
   /* ------- responsive for banner section ------ */
 @media only screen and (max-width: 767px){
   div.table-wrapper {
@@ -95,6 +149,23 @@
     tr td:last-of-type,
     .dataTables_filter{
       padding-right: 20px;
+    }
+  }
+
+  /* ------- responsive for header -------- */
+
+  .header-block{
+    #left-header{
+      width: 100% !important;
+      margin-bottom: 20px;
+      float: none;
+    }
+
+    #status{
+      float: none;
+      button{
+        margin-top: 0;
+      }
     }
   }
 

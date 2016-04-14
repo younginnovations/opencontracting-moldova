@@ -7,13 +7,19 @@
   padding: 12px 24px 12px 38px;
   height: auto;
   font-size: 14px;
-  margin: 0 0 1.5rem;
+  margin: 0;
   color: #484848;
 
   &:hover,&:focus,&:active{
     border: solid 2px rgba(0,66,177,0.7);
   }
 
+}
+
+@media (max-width: 340px) {
+  .search-wrap input{
+    width: 100%;
+  }
 }
 
 .filter-wrap {
@@ -49,20 +55,18 @@
   }
 }
 
-
-
 .advance-search-wrap{
   display: none;
   background: rgba(255,212,0,0.7);
   padding: 40px 20px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 4px;
 }
 
 .search-result-wrap{
   background: #f7f7f7;
   padding: 20px;
   border-radius: 8px;
-  margin-bottom: 30px;
 
   .title{
     padding-bottom: 10px;
@@ -103,7 +107,7 @@
     background: hsl(218, 100%, 35%);
     color: #fff;
   }
-}
+}¬
 
 .cs-select span{
   color: $grey-yellow-color;
