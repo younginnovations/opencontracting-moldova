@@ -65,6 +65,10 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
         return $buyers;
     }
 
+    /**
+     * @param $buyerName
+     * @return array
+     */
     protected function getBuyerDetails($buyerName)
     {
         $buyer  = $this->ocdsRelease->where('buyer.name', '=', $buyerName)->get(['contract']);
@@ -81,7 +85,7 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
     public function getAllProcuringAgencyTitle()
     {

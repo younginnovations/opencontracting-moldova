@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Moldova\Service\Contracts;
+use App\Moldova\Service\Goods;
+use Illuminate\Http\Request;
 
 
 class GoodsController extends Controller
@@ -11,19 +13,37 @@ class GoodsController extends Controller
      * @var Contracts
      */
     private $contracts;
+    /**
+     * @var Goods
+     */
+    private $goods;
 
     /**
      * ContractController constructor.
      * @param Contracts $contracts
+     * @param Goods     $goods
      */
-    public function __construct(Contracts $contracts)
+    public function __construct(Contracts $contracts,Goods $goods)
     {
         $this->contracts = $contracts;
+        $this->goods = $goods;
     }
 
     public function index()
     {
         return view('goods-index');
+    }
+
+    /**
+     * Fetch all Goods
+     * @param Request $request
+     * @return mixed
+     */
+    public function getAllGoods(Request $request)
+    {
+        $input = $request->all();
+
+        return $this->goods->getAllGoods($input);
     }
 
 
