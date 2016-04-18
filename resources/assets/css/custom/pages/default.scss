@@ -1,11 +1,15 @@
 $deep-blue-color: #0042B1;
-$deep-yellow-color: #FFD400;
+$link-color-blue: #0046AE;
+$link-hover-color: #0c05ae;
+$deep-yellow-color: #FFD200;
 $grey-yellow-color: #756200;
 $dark-grey-yellow-color: #756200;
 $light-grey-color: #484848;
+$lighter-grey-color: rgba(55,55,55,0.4);
 $dark-grey-color: #5A5A5A;
-$tender-color: #0042B1;
-$contract-color: #CE0029;
+$darker-grey-color: #4A4A4A;
+$tender-color: #B8E986;
+$contract-color: #50E3C2;
 $red-color: #CC092F;
 $font-path: "/fonts";
 $img-path: "/images";
@@ -56,26 +60,21 @@ table {
 /* ---- common styles ----- */
 
 @font-face {
-  font-family: "Ubuntu-regular";
+  font-family: "RobotoCondensed-regular";
   font-style: normal;
   font-weight: 400;
-  src: url("#{$font-path}/Ubuntu-regular.ttf") format("truetype"),
-        url("#{$font-path}/Ubuntu-regular.eot") format("eot"),
-        url("#{$font-path}/Ubuntu.woff") format("wff"),
-        url("#{$font-path}/Ubuntu.svg") format("svg");
+  src: url("#{$font-path}/RobotoCondensed-regular.ttf") format("truetype"),
+        url("#{$font-path}/RobotoCondensed-regular.eot") format("eot"),
+        url("#{$font-path}/RobotoCondensed-regular.woff") format("wff"),
+        url("#{$font-path}/RobotoCondensed-regular.svg") format("svg");
 }
 
 @font-face {
-  font-family: "Ubuntu-light";
-  src: url("#{$font-path}/Ubuntu 300.ttf") format("ttf");
-}
-
-@font-face {
-  font-family: "Ubuntu-bold";
-  src: url("#{$font-path}/Ubuntu-Bold.ttf") format("truetype"),
-        url("#{$font-path}/Ubuntu-Bold.svg") format("svg"),
-        url("#{$font-path}/Ubuntu-700.woff") format("woff"),
-        url("#{$font-path}/Ubuntu-eot") format("eot");
+  font-family: "RobotoCondensed-bold";
+  src: url("#{$font-path}/RobotoCondensed-bold.ttf") format("truetype"),
+        url("#{$font-path}/RobotoCondensed-bold.svg") format("svg"),
+        url("#{$font-path}/RobotoCondensed-bold.woff") format("woff"),
+        url("#{$font-path}/RobotoCondensed-bold-eot") format("eot");
 }
 
 @font-face {
@@ -89,14 +88,20 @@ table {
 
 a {
   text-decoration: none;
-  color: $deep-blue-color;
+  color: $link-color-blue;
+  transition: all 0.2s ease-in-out;
+
+  &:hover{
+    color: $link-hover-color;
+  }
 }
 
 body {
-  font-family: 'Ubuntu-regular';
-  font-size: 14px;
-  color: $light-grey-color;
-  background-color: #fff;
+  font-family: 'RobotoCondensed-regular';
+  font-size: 1rem;
+  line-height: 1.375rem;
+  color: $darker-grey-color;
+  background-color: #ececec;
 }
 
 h2 {
@@ -104,11 +109,10 @@ h2 {
   line-height: 2.375rem;
   margin-bottom: 30px;
   color: $light-grey-color;
-  //font-family: Ubuntu-bold;
   display: block;
 
   span {
-    font-family: 'Ubuntu-regular';
+    font-family: 'RobotoCondensed-regular';
     font-size: 25px;
     line-height: 38px;
     color: rgba(72, 72, 72, 0.4);
@@ -142,10 +146,36 @@ h2 {
   }
 }
 
+@mixin  big-title(){
+  font-size: 2.375rem;
+  line-height: 2.75rem;
+}
+
 @mixin small-title() {
-  font-size: 16px;
+  font-size: 1.5rem;
+  line-height: 1.875rem;
   color: $dark-grey-color;
-  font-family: 'Ubuntu-bold';
+}
+
+@mixin inner-title(){
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(74,74,74,0.7);
+}
+
+@mixin anchor(){
+  font-size: 1rem;
+  line-height: 1.375rem;
+  color: $link-color-blue;
+  font-family: RobotoCondensed-bold;
+
+  &:hover{
+    color: $link-hover-color;
+  }
+}
+
+.anchor{
+  @include anchor();
 }
 
 .block {
@@ -176,16 +206,19 @@ h2 {
 }
 
 .header-with-bg{
-  background: transparent url(#{$img-path}/header-bg.png) 0 center repeat;
+  background: transparent url(#{$img-path}/yellow_background.png) 0 center repeat;
   border: none;
+  min-height: 31vh;
+  padding: 50px 40px 40px;
   .block{
     padding-top: 38px;
     padding-bottom: 38px;
   }
 
   h2{
-    color: $grey-yellow-color;
-    font-family: "Ubuntu-regular";
+    display: block;
+    margin-bottom: 25px;
+    text-align: center;
   }
 
   .row{
@@ -199,9 +232,13 @@ h2 {
 }
 
 .grey-yellow-btn{
-  background-color: $grey-yellow-color;
-  font-size: 15px;
-  color: #fff;
+  background-color: rgba(237,254,255,0.3);
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 auto;
+  display: table;
+  padding: 6px 16px;
+  min-width: 215px;
 }
 
 .name-value-wrap {
@@ -245,6 +282,14 @@ h2 {
 
 .highlight{
   background: #000 !important;
+}
+
+.push-up-block{
+  background-color: #fff;
+  border-radius: 4px;
+  margin-top: -13vh;
+  margin-bottom: 3.75em;
+  box-shadow: 0px 0px 20px rgba(8, 8, 8, 0.11);
 }
 
 /* --------- style for sticky footer ----------- */

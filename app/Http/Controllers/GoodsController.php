@@ -31,7 +31,7 @@ class GoodsController extends Controller
 
     public function index()
     {
-        return view('goods-index');
+        return view('goods.index');
     }
 
     /**
@@ -61,7 +61,7 @@ class GoodsController extends Controller
         $contractors     = $this->contracts->getContractors('amount', 5, $goods, "goods.mdValue");
         $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, $goods, 'goods.mdValue');
 
-        return view('goods-detail', compact('goods', 'goodsDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'contractors', 'procuringAgency'));
+        return view('goods.view', compact('goods', 'goodsDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'contractors', 'procuringAgency'));
     }
 
     /**

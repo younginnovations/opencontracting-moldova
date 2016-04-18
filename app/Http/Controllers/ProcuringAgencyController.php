@@ -42,7 +42,7 @@ class ProcuringAgencyController extends Controller
     public function index()
     {
 
-        return view('procuring-agency-index');
+        return view('agency.index');
     }
 
     /**
@@ -67,7 +67,7 @@ class ProcuringAgencyController extends Controller
         $contractors           = $this->contracts->getContractors('amount', 5, $procuringAgency, "tender.stateOrg.orgName");
         $goodsAndServices      = $this->contracts->getGoodsAndServices('amount', 5, $procuringAgency, "tender.stateOrg.orgName");
 
-        return view('procuring-agency-detail', compact('procuringAgency', 'procuringAgencyDetail', 'totalAmount', 'trends', 'amountTrend', 'contractors', 'goodsAndServices'));
+        return view('agency.view', compact('procuringAgency', 'procuringAgencyDetail', 'totalAmount', 'trends', 'amountTrend', 'contractors', 'goodsAndServices'));
     }
 
     private function getTotalAmount($contracts)

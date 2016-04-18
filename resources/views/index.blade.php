@@ -1,57 +1,50 @@
 @extends('app')
 
 @section('content')
-    <div class="callout banner-section">
-        <div class="row column text-center banner-inner">
-            <p class="banner-text">Search through <span class="amount">{{ number_format($totalContractAmount) }} </span>
-                Leu
-                worth of contracts</p>
-
-            <form action="{{ route('search') }}" method="get" class="search-form">
-                <input name="q" type="search"
-                       placeholder="Search for contractor, procuring agency and goods and services procured">
-            </form>
-        </div>
-    </div>
-
     <div class="row chart-section-wrap">
         {{-- ----- div for each two chart starts ------- --}}
 
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
 
-                <div class="medium-6 small-12 columns each-chart-section">
-                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <ul class="breadcrumbs">
-                            <li><span href="#" class="indicator tender">Tenders published</span></li>
-                            <li><span href="#" class="indicator contracts">Contracts issued</span></li>
-                        </ul>
-                    </div>
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="linechart-homepage"></div>
-                    </div>
-                </div>
-
-                <div class="medium-6 small-12 columns each-chart-section">
-                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>Top 5 procuring agencies</h3>
-
-                        <div class="top-bar-right right-section">
-                            <form>
-                                <label>
-                                    <select id="select-agency">
-                                        <option value="amount" selected>Based on value</option>
-                                        <option value="count">Based on count</option>
-                                    </select>
-                                </label>
-                            </form>
+                <div class="medium-6 small-12 columns">
+                    <div class="each-chart-section">
+                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <ul class="breadcrumbs">
+                                <li><span href="#" class="indicator tender">Tenders</span> &nbsp; published</li>
+                                <li> &nbsp; vs. &nbsp;</li>
+                                <li><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued</li>
+                            </ul>
+                        </div>
+                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                            <div id="linechart-homepage"></div>
                         </div>
                     </div>
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="barChart-procuring"></div>
-                    </div>
                 </div>
 
+                <div class="medium-6 small-12 columns">
+                    <div class="each-chart-section">
+                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <h3>Top 5 procuring agencies</h3>
+                        </div>
+
+                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                            <div class="filter-section">
+                                <form>
+                                    <label>
+                                        <span class="inner-title">Showing procuring agencies</span>
+                                        <select id="select-agency">
+                                            <option value="amount" selected>Based on value</option>
+                                            <option value="count">Based on count</option>
+                                        </select>
+                                    </label>
+                                </form>
+                            </div>
+                            <div id="barChart-procuring"></div>
+                        </div>
+                        <a href="#" class="anchor">View all procuring agencies <span>  &rarr; </span></a>
+                    </div>
+                </div>
             </div>
         </div>
         {{-- ----- div for each two chart ends ------- --}}
@@ -59,45 +52,52 @@
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
 
-                <div class="medium-6 small-12 columns each-chart-section">
-                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>Top 5 contractors</h3>
-
-                        <div class="top-bar-right right-section">
-                            <form>
-                                <label>
-                                    <select id="select-contractor">
-                                        <option value="amount" selected>Based on value</option>
-                                        <option value="count">Based on count</option>
-                                    </select>
-                                </label>
-                            </form>
+                <div class="medium-6 small-12 columns ">
+                    <div class="each-chart-section">
+                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <h3>Top 5 contractors</h3>
                         </div>
-                    </div>
 
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="barChart-contractors"></div>
+                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                            <div class="filter-section">
+                                <form>
+                                    <label>
+                                        <span class="inner-title">Showing contractors</span>
+                                        <select id="select-contractor">
+                                            <option value="amount" selected>Based on value</option>
+                                            <option value="count">Based on count</option>
+                                        </select>
+                                    </label>
+                                </form>
+                            </div>
+                            <div id="barChart-contractors"></div>
+                        </div>
+                        <a href="#" class="anchor">View all contractors <span>  &rarr; </span></a>
                     </div>
                 </div>
 
-                <div class="medium-6 small-12 columns each-chart-section">
-                    <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                        <h3>Top 5 goods & services procured</h3>
-
-                        <div class="top-bar-right right-section">
-                            <form>
-                                <label>
-                                    <select id="select-goods">
-                                        <option value="amount" selected>Based on value</option>
-                                        <option value="count">Based on count</option>
-                                    </select>
-                                </label>
-                            </form>
+                <div class="medium-6 small-12 columns ">
+                    <div class="each-chart-section">
+                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <h3>Top 5 goods & services procured</h3>
                         </div>
-                    </div>
 
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="barChart-goods"></div>
+                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                            <div class="filter-section">
+                                <form>
+                                    <label>
+                                        <span class="inner-title">Showing goods / services</span>
+                                        <select id="select-goods">
+                                            <option value="amount" selected>Based on value</option>
+                                            <option value="count">Based on count</option>
+                                        </select>
+                                    </label>
+                                </form>
+                            </div>
+                            <div id="barChart-goods"></div>
+                        </div>
+                        <a href="#" class="anchor">View all goods / services <span>  &rarr; </span></a>
+
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
 
         $('#table_id').DataTable({
             "language": {
-                'searchPlaceholder': "Search by goods and services",
+                'searchPlaceholder': "Search by goods / services",
                 "lengthMenu": "Show _MENU_ Contracts"
             },
             "processing": true,
