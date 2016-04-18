@@ -56,14 +56,13 @@
 
 
   .name{
-    font-size: 14px;
-    color: rgba(72,72,72,0.7);
     margin-bottom: 6px;
   }
 
   .value{
-    font-size: 18px;
-    margin-bottom: 6px;
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 7px;
     a{
       font-size: inherit;
     }
@@ -71,20 +70,9 @@
 }
 
 .description-summary{
-  //margin-bottom: 20px;
-  background-color: #f7f7f7;
 
   .icon{
     margin-left: 10px;
-  }
-  
-  .name-value-section{
-    border: none;
-  }
-
-  .value{
-    font-size: 14px;
-    line-height: 20px;
   }
 
   .icon{
@@ -106,8 +94,48 @@
 
 }
 
-#status{
-  button{
-    margin-top: 10px;
+.wide-header{
+  .each-chart-section{
+    box-shadow: none;
+    padding: 30px 20px 0;
+  }
+
+  .breadcrumbs{
+    margin-bottom: 10px;
+     p{
+       @include inner-title();
+       display: block;
+       float: right;
+     }
+  }
+
+  .indicator.tender{
+    border-bottom: solid 2px #B8E986;
+  }
+
+  .indicator.contracts{
+    border-bottom: solid 2px $contract-color;
+  }
+
+}
+
+.header-description{
+  padding: 30px 20px 25px;
+}
+
+.big-header{
+  margin-bottom: 15px;
+  .big-title{
+    @include big-title();
+  }
+  .number{
+    font-size: 4.5rem;
+    line-height: 4.875rem;
+    font-family: RobotoCondensed-bold;
+  }
+  p{
+    @include inner-title();
+    margin: 0 0 10px;
   }
 }
+

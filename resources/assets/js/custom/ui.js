@@ -4,6 +4,21 @@ $(document).ready(function(){
         $(this).toggleClass("menu-on");
     });
 
+   /* make background of navigation blue after scrolling image banner*/
+
+    $(window).scroll(function() { // check if scroll event happened
+        var heightOfBanner = $(".header-banner").outerHeight() - 68;
+        if ($(document).scrollTop() > heightOfBanner) {
+            $("header.top-bar").css("background-color", "#0046AE");
+        } else {
+            if ($(document).scrollTop() > 67) {
+                $("header.top-bar").css("background-color", "rgba(0,66,177,0.8)");
+            }else{
+                $("header.top-bar").css("background-color", "transparent");
+            }
+        }
+    });
+
     /* --------- make right and left section in header align properly --------- */
 
     var headerElementsAlign = function(){
@@ -16,7 +31,7 @@ $(document).ready(function(){
     };
 
     headerElementsAlign();
-   /* -------- toggle filter section ------- */
+   /* toggle filter section*/
 
     $(".show-filter").click(function(){
         $(".advance-search-wrap").slideToggle();

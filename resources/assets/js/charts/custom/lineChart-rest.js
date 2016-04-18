@@ -5,6 +5,7 @@ var createLineChartRest = function(data,widthParent){
     else {
         var height1 = 300;
     }
+    var divNode = d3.select("#main-content").node();
     var width1 = widthParent;
     var svg = d3.select("#linechart-rest")
                 .append("svg")
@@ -89,7 +90,7 @@ var createLineChartRest = function(data,widthParent){
     var linePath = vis.append('svg:path')
             .attr('d', lineGen(data))
             .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
-            .attr("stroke", "#C0C0C0")
+            .attr("stroke", "#B8E986")
             .attr("stroke-width", 2)
             .attr("fill", "none");
 
@@ -111,13 +112,27 @@ var createLineChartRest = function(data,widthParent){
                 return d.chart2;
             })
             .attr("r", 4)
-            .attr("fill", "#CE0029")
+            .attr("fill", "#B8E986")
             // .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
             .attr("cx", function (d){
                 return xScale(d.xValue) + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left);
             })
             .attr("cy", function (d){
                 return yScale(d.chart2);
+            })
+            .on("mouseover", function(d){
+                var mousePos = d3.mouse(divNode);
+                d3.select("#tooltip-wrap")
+                    .style("left",mousePos[0] + "px")
+                    .style("top",mousePos[1] + "px")
+                    .select("#value")
+                    .attr("text-anchor","middle")
+                    .html(d.chart2);
+
+                d3.select("#tooltip-wrap").classed("hide", false);
+            })
+            .on("mouseout",function(d){
+                d3.select("#tooltip-wrap").classed("hide", true);
             });
 
 };

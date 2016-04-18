@@ -1,3 +1,16 @@
+@media (max-width: 1260px) {
+  .main-content{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .header-with-bg{
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+}
+
 @media (max-width: 75rem) {
   header.top-bar{
     padding-left: 20px;
@@ -108,9 +121,7 @@
 @media (min-width:40em){
   .table-wrapper{
     tr th:first-of-type,
-    tr td:first-of-type,
-    //.dataTables_length,
-    .dataTables_filter{
+    tr td:first-of-type{
       padding-left: 40px;
     }
 

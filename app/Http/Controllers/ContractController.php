@@ -24,7 +24,7 @@ class ContractController extends Controller
 
     public function index()
     {
-        return view('contracts');
+        return view('contracts.index');
     }
 
     public function show($contractor)
@@ -37,7 +37,7 @@ class ContractController extends Controller
         $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, $contractor, 'participant.fullName');
         $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, $contractor, 'participant.fullName');
 
-        return view('contract-detail', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices'));
+        return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices'));
     }
 
     private function getTotalAmount($contracts)
@@ -75,6 +75,6 @@ class ContractController extends Controller
     {
         $contractDetail = $this->contracts->getContractDetailById($contractId);
 
-        return view('contract-view',compact('contractDetail'));
+        return view('contracts.view',compact('contractDetail'));
     }
 }

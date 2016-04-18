@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Moldova</title>
     <link href="{{url('css/vendors.min.css')}}" rel="stylesheet">
-    {{--<link href="{{url('css/app.min.css')}}" rel="stylesheet">--}}
-    <link href="{{url('css/app.css')}}" rel="stylesheet">
+    <link href="{{url('css/app.min.css')}}" rel="stylesheet">
+    {{--<link href="{{url('css/app.css')}}" rel="stylesheet">--}}
 
 
 </head>
@@ -21,34 +21,33 @@
     </button>
 </div>
 
-<header class="top-bar fixed-header">
-    <div class="row">
-        <div class="top-bar-left">
-            <a href="{{ route('/') }}" class="project-logo">
-                <div class="first-section">MOLDOVA CONTRACT</div>
-                <div class="second-section">DATA VISUALISATION</div>
-            </a>
-        </div>
-
-        <div class="top-bar-right" id="main-menu">
-            <ul class="menu">
-                <li><a href="{{ route('/') }}" class="{{ (\Request::segment(1) === null)?'active':'' }}">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="{{ route('tenders.index') }}"
-                       class="{{ (Request::segment(1) === 'tenders')?'active':'' }}">Tenders</a>
-                </li>
-                <li><a href="{{ route('contracts') }}" class="{{ (Request::segment(1) === 'contracts')?'active':'' }}">Contracts</a>
-                </li>
-                <li><a href="{{ route('procuring-agency.index') }}"
-                       class="{{ (Request::segment(1) === 'procuring-agency')?'active':'' }}">Agencies</a></li>
-                <li><a href="{{ route('goods.index') }}"
-                       class="{{ (Request::segment(1) === 'goods')?'active':'' }}">Goods</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+@if(\Request::segment(1) === null)
+    <div class="header-banner clearfix">
+        @include("partials/main-menu")
+        <div class="callout banner-section">
+            <div class="row banner-inner">
+                <p class="banner-text medium-4 small-12 columns">Search through
+                    <span class="amount">{{ number_format($totalContractAmount) }} </span>
+                    Leu
+                    worth of contracts
+                </p>
+                <form action="{{ route('search') }}" method="get" class="search-form medium-8 small-12 columns
+                ">
+                    <input name="q" type="search"
+                           placeholder="Type a contractor, procuring agency or goods & services ...">
+                </form>
+            </div>
         </div>
     </div>
-</header>
-<section class="main-content">
+@else
+    @include("partials/main-menu")
+@endif
+<section id = "main-content" class="main-content">
+    <div id="tooltip-wrap" class="hide">
+        <p>
+            <span id="value"></span>
+        </p>
+    </div>
     @yield('content')
 </section>
 <footer class="clearfix">
@@ -93,10 +92,10 @@
 @yield('script')
 <script>
     $(document).foundation();
-    (function() {
-        [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+    (function () {
+        [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
             new SelectFx(el);
-        } );
+        });
     })();
 
     /* ------ hover on table ------- */

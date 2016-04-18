@@ -13,18 +13,19 @@ header{
   z-index: 8888;
   &.top-bar{
     background-color: #0042B1;
-    border-bottom: solid 7px #FFD400;
   }
 }
 
 .fixed-header{
   position: fixed;
   width: 100%;
+  top: 0;
 }
 
 .project-logo{
   text-transform: uppercase;
   margin: 0.5rem 1rem;;
+  //margin: 0.25rem 1rem;
   display: block;
   .first-section{
     color: #fff;
@@ -59,6 +60,10 @@ header{
         margin-left: 2px;
         display: inline-block;
       }
+    }
+
+    .menu > li:not(.menu-text) > a {
+      padding: 24px 0.5rem;
     }
 
     li a {

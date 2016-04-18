@@ -25,7 +25,7 @@ class TenderController
     public function index()
     {
 
-        return view('tender-index');
+        return view('tender.index');
     }
 
     /**
@@ -48,7 +48,7 @@ class TenderController
     {
         $tenderDetail = $this->tenders->getTenderDetailByID($tenderID);
 
-        return view('tender-view', compact('tenderDetail'));
+        return view('tender.view', compact('tenderDetail'));
 
     }
 

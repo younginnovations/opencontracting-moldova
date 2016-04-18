@@ -7,7 +7,8 @@ var createLineChart = function(data,parentWidth){
         var height = 300;
     }
 
-    var  width = parentWidth;
+    var divNode = d3.select("#main-content").node(),
+        width = parentWidth;
     var svg = d3.select("#linechart-homepage")
                 .append("svg")
                 .attr("width", width + 1)
@@ -89,7 +90,7 @@ var createLineChart = function(data,parentWidth){
         var linePath1 = vis.append('svg:path')
             .attr('d', lineGen1(data))
             .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
-            .attr("stroke", "#E5E5E5")
+            .attr("stroke", "#B8E986")
             .attr("stroke-width", 2)
             .attr("fill", "none");
 
@@ -114,7 +115,7 @@ var createLineChart = function(data,parentWidth){
         var linePath2 = vis.append('svg:path')
             .attr('d', lineGen2(data))
             .attr("transform", "translate(" + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left) + ",0)")
-            .attr("stroke", "#ccc")
+            .attr("stroke", "#50E3C2")
             .attr("stroke-width", 2)
             .attr("fill", "none");
 
@@ -136,13 +137,27 @@ var createLineChart = function(data,parentWidth){
                 return d.chart1;
             })
             .attr("r", 4)
-            .attr("fill", "#0042B1")
+            .attr("fill", "#B8E986")
             .attr("cx", function (d){
                 return xScale(d.xValue) + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left);
             })
             .attr("cy", function (d){
                 return yScale(d.chart1);
-            });
+            })
+        .on("mouseover", function(d){
+            var mousePos = d3.mouse(divNode);
+            d3.select("#tooltip-wrap")
+                .style("left",mousePos[0] + "px")
+                .style("top",mousePos[1] + "px")
+                .select("#value")
+                .attr("text-anchor","middle")
+                .html(d.chart1);
+
+            d3.select("#tooltip-wrap").classed("hide", false);
+        })
+        .on("mouseout",function(d){
+            d3.select("#tooltip-wrap").classed("hide", true);
+        });
 
         vis.selectAll("dot")
             .data(data)
@@ -152,12 +167,26 @@ var createLineChart = function(data,parentWidth){
                 return d.chart2;
             })
             .attr("r", 4)
-            .attr("fill", "#CE0029")
+            .attr("fill", "#50E3C2")
             .attr("cx", function (d){
                 return xScale(d.xValue) + (((xScale(data[0].xValue)+xScale(data[1].xValue))/2) + margin.left);
             })
             .attr("cy", function (d){
                 return yScale(d.chart2);
+            })
+            .on("mouseover", function(d){
+                var mousePos = d3.mouse(divNode);
+                d3.select("#tooltip-wrap")
+                    .style("left",mousePos[0] + "px")
+                    .style("top",mousePos[1] + "px")
+                    .select("#value")
+                    .attr("text-anchor","middle")
+                    .html(d.chart2);
+
+                d3.select("#tooltip-wrap").classed("hide", false);
+            })
+            .on("mouseout",function(d){
+                d3.select("#tooltip-wrap").classed("hide", true);
             });
 
 };

@@ -1,5 +1,5 @@
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate,.paginate_button{
-  color: $light-grey-color;
+  color: $darker-grey-color;
 }
 
 .dataTables_wrapper .dataTables_filter input{
@@ -7,11 +7,12 @@
 }
 
 .dataTables_length{
+  float: right;
   font-size: 14px;
-  width: auto;
   width: auto;
   display: inline-block;
   margin-left: 15px;
+  margin-top: 18px;
   label{
     color: $light-grey-color;
     width: auto;
@@ -20,17 +21,19 @@
 
   select{
     color: $light-grey-color;
+    width: auto;
     display: inline-block;
-    width: 65px;
-    border-radius: 8px;
-    border: solid 1px #FFD400;
+    border-radius: 4px;
+    border: solid 4px #2B3440;
     margin: 0 0.25rem;
     cursor: pointer;
+    background-color: #FFD400;
+    padding-right: 20px;
   }
 }
 
 .dataTables_filter{
-  width: auto;
+  width: 80%;
   float: left;
   label{
     font-size: 0;
@@ -38,26 +41,34 @@
 
   input{
     float: right;
-    width: 285px;
-    background: url("#{$img-path}/ic_search.png") 12px center no-repeat;
-    border: solid 1px #FFD400;
-    border-radius: 24px;
-    padding: 12px 24px 12px 38px;
+    width: 100%;
+    background: transparent url("#{$img-path}/ic_search-grey.svg") 0 center no-repeat;
+    box-shadow: none;
+    color: #4A4A4A;
+    border: none;
+    border-bottom: solid 6px #4A4A4A;
+    border-radius: 0;
+    padding: 12px 24px 12px 36px;
     height: auto;
-    font-size: 14px;
+    font-size: 1rem;
     margin: 0  0 1.5rem;
-    color: $light-grey-color;
+    font-size: 1.4375rem;
+    line-height: 1.8125rem;
     &:focus,&:active,&:hover{
-      border: solid 1px #FFD400;
+      border: none;
+      border-bottom: solid 6px #4A4A4A;
       box-shadow: none;
+      background: transparent url("#{$img-path}/ic_search-grey.svg") 0 center no-repeat;
     }
   }
 
   input:-moz-placeholder {
-    color: #756200;
+    color: #4A4A4A;
+    font-family: RobotoCondensed-bold;
   }
   input::-webkit-input-placeholder {
-    color: #756200;
+    color: #4A4A4A;
+    font-family: RobotoCondensed-bold;
   }
 
 }
@@ -75,23 +86,21 @@
   width: auto;
   display: table;
   margin: 1.5rem auto;
-  background: #F7F7F7;
-  border-radius: 17px;
-  padding-top: 4px;
 }
 
 .paginate_button{
   box-sizing: border-box;
   padding: 5px 6px;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 22px;
   display: inline-block;
-  color: $light-grey-color;
+  color: #0046AE;
 }
 
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  color: $light-grey-color !important;
+  color: #5C5C5C !important;
   border: none;
   background: transparent;
 }
@@ -126,28 +135,8 @@
   transition: all 0.1s ease-in-out;
 }
 
-.dataTables_wrapper .dataTables_paginate  .paginate_button{
+.dataTables_wrapper .dataTables_paginate  .paginate_button {
   padding: 5px 6px 8px;
-  font-size: 14px;
-  &.current {
-    position: relative;
-    &:before {
-      content: " ";
-      position: absolute;
-      top: -7px;
-      left: 50%;
-      margin-left: -3px;
-      height: 6px;
-      width: 6px;
-      border-radius: 50%;
-      background-color: #FFD400;
-    }
-    &:hover{
-      &:before{
-        top: -3px;
-      }
-    }
-  }
 }
 
 /*style for table*/
@@ -155,8 +144,11 @@
 @media (min-width:768px){
   tfoot,thead,tbody{
     border: none;
+    background: transparent;
   }
 }
+
+
 
 thead {
   background: none;
@@ -169,7 +161,7 @@ thead {
 .table-wrapper{
   margin-bottom: 30px;
   width: 100%;
-  margin-top: 40px;
+  //margin-top: 40px;
 
   .table-wrapper{
     margin-bottom: 0 !important;
@@ -178,35 +170,68 @@ thead {
 
 .custom-table{
   font-size: 14px;
-  color: $light-grey-color;
+  color: rgba(255,255,255,0.5);
   margin-bottom: 0;
   width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  z-index: 5;
 
+  &:before{
+    width: 100%;
+    height: 100%;
+    background: transparent url(#{$img-path}/main_background.svg) center top no-repeat;
+    background-size: cover;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -6;
+  }
+
+  &:after{
+    z-index: -5;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.89;
+    height: 100%;
+    width: 100%;
+    background-color: #0046AE;
+  }
+
+  tr{
+    z-index: 10;
+  }
   /* ------- style for thead -------- */
 
   thead{
     background: none;
-    font-family: Ubuntu-bold;
+    font-family: RobotoCondensed-bold;
     tr:hover{
       background: none;
     }
     th{
       font-family: inherit;
-      border-bottom: solid 1px #d8d8d8;
-      border-top: solid 1px #d8d8d8;
-      color: rgba(72,72,72,0.7);
-
+      color: rgba(255,255,255,0.5);
+    }
+    tr{
+      border-bottom: solid 1px rgba(237,234,255,0.2);
     }
   }
 
   tr{
     transition: background-color 0.3s ease-in-out;
+    border-bottom: solid 1px rgba(237,234,255,0.05);
     &:nth-child(odd){
       background: none;
     }
 
-    &:nth-child(even):not(:first-of-type){
-      background: #f7f7f7;
+    &:nth-child(even){
+      background: none;
     }
   }
 
@@ -238,29 +263,29 @@ th{
 }
 
 .sorting{
-  background: transparent url("#{$img-path}/ic_sort.png") 4px 18px no-repeat;
+  background: transparent url("#{$img-path}/ic_sort.svg") 4px 22px no-repeat;
 }
 
 .sorting_desc{
-  background: transparent url("#{$img-path}/ic_desc.png") 4px 21px no-repeat;
+  background: transparent url("#{$img-path}/ic_desc.svg") 4px 24px no-repeat;
 }
 
 .sorting_asc{
-  background: transparent url("#{$img-path}/ic_asc.png") 4px 21px no-repeat;
+  background: transparent url("#{$img-path}/ic_asc.svg") 4px 24px no-repeat;
 }
 
 @media (min-width: 40em) {
   th:first-of-type{
     &.sorting{
-      background: transparent url("#{$img-path}/ic_sort.png") 28px 18px no-repeat;
+      background: transparent url("#{$img-path}/ic_sort.svg") 28px 18px no-repeat;
     }
 
     &.sorting_desc{
-      background: transparent url("#{$img-path}/ic_desc.png") 28px 21px no-repeat;
+      background: transparent url("#{$img-path}/ic_desc.svg") 28px 21px no-repeat;
     }
 
     &.sorting_asc{
-      background: transparent url("#{$img-path}/ic_asc.png") 28px 21px no-repeat;
+      background: transparent url("#{$img-path}/ic_asc.svg") 28px 21px no-repeat;
     }
   }
 }
@@ -288,6 +313,7 @@ th{
   background: rgba(255,255,255,0.5);
   text-indent: -9999px;
   overflow: hidden;
+  z-index: 90;
 }
 
 /* ------- add faded shadow in scrollable part of table ----------- */
