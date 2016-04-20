@@ -22,7 +22,7 @@
         <div class="description-summary clearfix">
 
             <div class="name-value-section each-row clearfix">
-                <div class="medium-6 small-12 columns">
+                <div class="medium-6 small-12 columns each-detail-wrap">
                     <span class="icon procuring-agency">icon</span>
                      <span class="each-detail">
                          <div class="name columns">Procuring agency</div>
@@ -34,7 +34,7 @@
                     </span>
                 </div>
 
-                <div class="medium-6 small-12 columns">
+                <div class="medium-6 small-12 columns each-detail-wrap">
                     <span class="icon tender-period">icon</span>
                     <span class="each-detail">
                          <div class="name columns">Tender period</div>
@@ -46,7 +46,7 @@
             </div>
 
             <div class="name-value-section each-row clearfix">
-                <div class="medium-6 small-12 columns end">
+                <div class="medium-6 small-12 columns each-detail-wrap end">
                     <span class="icon procurement-method">icon</span>
                     <span class="each-detail">
                          <div class="name columns">Procurement method</div>
@@ -76,6 +76,11 @@
             </ul>
             <div class="tabs-content" data-tabs-content="example-tabs">
                 <div class="tabs-panel is-active" id="panel1">
+                    <div class="title-section">
+                        <span class="title">Goods/ Services under this tender
+                            <span class="tab-indicator"> ({{count($tenderDetail['tender']['items'])}})</span>
+                        </span>
+                    </div>
                     <div class="table-wrapper">
                         <table id="table_id" class="responsive hover custom-table">
                             <thead>
@@ -105,7 +110,12 @@
                     </div>
                 </div>
                 <div class="tabs-panel" id="panel2">
-                    <div class="row table-wrapper">
+                    <div class="table-wrapper">
+                        <div class="title-section">
+                            <span class="title">Contracts related to this tender
+                                <span class="tab-indicator">({{count($tenderDetail['contract'])}})</span>
+                            </span>
+                        </div>
                         <table id="table_id" class="responsive hover custom-table">
                             <thead>
                             <tr>
@@ -134,7 +144,6 @@
                             </tbody>
                         </table>
                     </div>
->>>>>>> MO-52 redesign implementation
                 </div>
             </div>
 

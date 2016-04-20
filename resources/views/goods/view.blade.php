@@ -2,13 +2,13 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2>  <span><img src="{{url('images/ic_goods.png')}}"/></span>
+            <h2>  <span><img src="{{url('images/ic_good_service.svg')}}"/></span>
             {{ $goods }}</h2>
         </div>
     </div>
 
-    <div class="row medium-up-2 small-up-1">
-        <div class="block name-value-wrap columns">
+    <div class="row medium-up-2 small-up-1 push-up-block name-value-section">
+        <div class="name-value-wrap columns each-detail-wrap">
             <div class="name">
                 Total contracts
             </div>
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="block name-value-wrap columns">
+        <div class="name-value-wrap columns each-detail-wrap">
             <div class="name">
                 Total contract amount
             </div>
@@ -57,7 +57,7 @@
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns">
-                    <div class="each-chart-section">
+                    <div class="each-chart-section ">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 contractors</h3>
                         </div>
@@ -152,6 +152,10 @@
         var amountTrend = '{!! $amountTrend !!}';
         var contractors = '{!! $contractors  !!}';
         var procuringAgency = '{!! $procuringAgency  !!}';
+
+       /* if(contracts == []){
+            $(".each-chart-section").empty();
+        }*/
 
         var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();

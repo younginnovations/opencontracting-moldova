@@ -11,6 +11,12 @@
 
 }
 
+@media (max-width: 1024px) {
+  .dataTables_filter{
+    width: 75%;
+  }
+}
+
 @media (max-width: 75rem) {
   header.top-bar{
     padding-left: 20px;
@@ -20,7 +26,7 @@
 
 @media (max-width:39.9375em) {
   html {
-    font-size: 80%;
+    font-size: 87.5%;
   }
 
   /* ----------- detail page each section responsive ------------- */
@@ -29,7 +35,8 @@
     border-bottom: none;
     padding: 0;
 
-    .each-detail-wrap{
+    .each-detail-wrap.columns,
+    .each-detail-wrap.column{
       padding: 20px 20px;
       border-bottom: solid 1px #D5D5D5;
     }
@@ -85,18 +92,53 @@
     }
   }
 
+/* -----  responsive of banner section --------- */
+
+  .callout.banner-section{
+    margin: 113px 20px 40px;
+    padding: 0;
+  }
+
+  .banner-text,.search-form {
+    display: block;
+    width: 100%;
+    float: none;
+    position: relative;
+  }
+
+  .banner-text{
+    margin-bottom: 25px;
+  }
+
   /* -------- tab responsive -------- */
 
   .tabs-title a{
     width: 286px;
   }
 
+  /*responive of chart section*/
+
+  .chart-section-wrap .inner-wrap{
+    .medium-6{
+      width: 100%;
+      float: none;
+    }
+  }
+
+  .section-header,.chart-wrap{
+    height:auto !important;
+  }
+
+ /* responsive for table*/
+  .dataTables_filter{
+    width: 60%;
+  }
+
 }
 
 
-@media (max-width: 700px){
+@media (max-width: 775px){
   .table-with-tab{
-    background: red;
     background: transparent;
     padding: 0;
 
@@ -111,7 +153,62 @@
   }
 }
 
-  /* ------- responsive for banner section ------ */
+
+/*space between container and divs reduction for small screen*/
+
+@media (max-width: 768px){
+  .banner-section,.chart-section-wrap,.push-up-block {
+    .columns,.column{
+      padding: 0;
+    }
+  }
+
+  .chart-section-wrap .inner-wrap > div .columns:nth-child(odd),
+  .chart-section-wrap .inner-wrap > div .columns:nth-child(even){
+    padding: 0;
+  }
+
+  .project-logo{
+    margin: 0.5rem 0rem;
+  }
+
+  .chart-section-wrap{
+    margin-bottom: 10px;
+  }
+
+  .header-with-bg{
+    min-height: 0;
+  }
+
+  .push-up-block{
+    .header-description,.each-chart-section{
+      padding: 20px;
+    }
+
+    .wide-header .section-header{
+      margin-bottom: 0;
+    }
+  }
+
+
+}
+
+@media (max-width: 945px) {
+
+  /* ---------  header banner responsive ----------- */
+
+  .banner-text{
+    font-size: 2rem;
+    line-height: 2.375rem;
+  }
+
+  .search-form input[type=search]{
+    font-size: 1.1rem;
+    line-height: 1.438rem;
+  }
+}
+
+
 @media only screen and (max-width: 767px){
   div.table-wrapper {
     border-right: none;
@@ -135,9 +232,7 @@
 @media (max-width:40em){
   .each-chart-section{
     padding: 20px 20px;
-    .section-header,.chart-wrap{
-      height:auto !important;
-    }
+
     .chart-wrap{
       margin-bottom: 10px;
     }
@@ -151,16 +246,19 @@
 
   .table-wrapper{
     tr th:first-of-type,
-    tr td:first-of-type,
-    .dataTables_length{
+    tr td:first-of-type{
       padding-left: 20px;
     }
 
     tr th:last-of-type,
-    tr td:last-of-type,
-    .dataTables_filter{
+    tr td:last-of-type{
       padding-right: 20px;
     }
+
+    .dataTables_filter{
+      padding: 0;
+    }
+
   }
 
   /* ------- responsive for header -------- */

@@ -3,7 +3,7 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2> <span><img src="{{url('images/ic_contractor.png')}}"/></span>
+            <h2> <span><img src="{{url('images/ic_contractor.svg')}}"/></span>
 
             Contracts</h2>
         </div>
@@ -18,7 +18,7 @@
                     <div class="big-title">Contract issued</div>
                 </div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur, consequatur culpa dicta dolorem dolores harum laboriosam, nam obcaecati odio possimus provident reprehenderit tempore. Architecto atque consectetur delectus facere iure.
+                    Tenders are to invite bids for a project, or to accept a formal offer such as a takeover bid. Tender usually refers to the process whereby governments and financial institutions invite bids for large projects that must be submitted within a finite deadline.
                 </p>
             </div>
         </div>
@@ -27,22 +27,31 @@
             <div class="chart-section-wrap">
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
-                        <ul class="breadcrumbs">
+                        <form class="left-content">
+                            <label>
+                                <select id="select-contractor">
+                                    <option value="amount" selected>Based on value</option>
+                                    <option value="count">Based on count</option>
+                                </select>
+                            </label>
+                        </form>
+                        <ul class="breadcrumbs right-content">
                             <p><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued over the years</p>
                         </ul>
                     </div>
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                    <div class="chart-wrap">
+                        <div id="header-linechart"></div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
     <div class="row table-wrapper">
         <table id="table_id" class="responsive hover custom-table display">
             <thead>
             <tr>
-                <th>Contract number</th>
+                <th class="contract-number">Contract number</th>
                 <th class="hide">Contract ID</th>
                 <th>Goods and services contracted</th>
                 <th width="150px">Contract start date</th>
@@ -92,5 +101,29 @@
 
             });
         };
+    </script>
+    <script src="{{url('js/vendorChart.min.js')}}"></script>
+    <script src="{{url('js/customChart.min.js')}}"></script>
+    <script>
+        var route = '{{ route("filter") }}';
+        var trends = '{!! $contractsTrends  !!}';
+            var total = 0;
+            var newTrends = JSON.parse(trends);
+            for(var i = 0; i < newTrends.length; i++){
+                total +=newTrends[i].chart2;
+            }
+            $(".number").html(total.toLocaleString());
+        var makeCharts = function () {
+            var widthOfParent = $('.chart-wrap').width();
+            createLineChartONHeader(JSON.parse(trends), widthOfParent, "#50E3C2");
+        };
+
+        makeCharts();
+
+        $(window).resize(function () {
+            $("#header-linechart").empty();
+            makeCharts();
+        });
+
     </script>
 @endsection

@@ -3,8 +3,8 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2> <span><img src="{{url('images/ic_relatedtender.png')}}"/></span>
-            Tenders</h2>
+            <h2><span><img src="{{url('images/ic_tender.svg')}}"/></span>
+                Tenders</h2>
         </div>
     </div>
 
@@ -13,11 +13,13 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number"> 8,312 </div>
-                    <div class="big-title">Contract issued</div>
+                    <div class="number"></div>
+                    <div class="big-title">Tenders published</div>
                 </div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur, consequatur culpa dicta dolorem dolores harum laboriosam, nam obcaecati odio possimus provident reprehenderit tempore. Architecto atque consectetur delectus facere iure.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur, consequatur culpa dicta
+                    dolorem dolores harum laboriosam, nam obcaecati odio possimus provident reprehenderit tempore.
+                    Architecto atque consectetur delectus facere iure.
                 </p>
             </div>
         </div>
@@ -27,11 +29,12 @@
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
                         <ul class="breadcrumbs">
-                            <p><span href="#" class="indicator contracts">Tenders</span> &nbsp; published over the years</p>
+                            <p><span href="#" class="indicator tender">Tenders</span> &nbsp; published over the years
+                            </p>
                         </ul>
                     </div>
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-
+                    <div class="chart-wrap">
+                        <div id="header-linechart"></div>
                     </div>
                 </div>
             </div>
@@ -42,9 +45,9 @@
         <table id="table_id" class="responsive hover custom-table display">
             <thead>
             <tr>
-                <th>Tender ID</th>
+                <th class="tender-id">Tender ID</th>
                 <th>Tender Title</th>
-                <th>Tender Status</th>
+                <th class="tender-status">Tender Status</th>
                 <th>Procuring Agency</th>
                 <th>Tender start date</th>
                 <th>Tender end date</th>
@@ -99,16 +102,27 @@
             });
         };
 
-        //        $(document).ready(function () {
-        //            $('#table_id tbody tr').click(function () {
-        //                window.location = $(this).attr('href');
-        //                return false;
-        //            });
-        //        });
     </script>
-    {{--<style>--}}
-    {{--table tr {--}}
-    {{--cursor: pointer;--}}
-    {{--}--}}
-    {{--</style>--}}
+
+    <script>
+        var route = '{{ route("filter") }}';
+        var trends = '{!! $tendersTrends  !!}';
+        var total = 0;
+        var newTrends = JSON.parse(trends);
+        for(var i = 0; i < newTrends.length; i++){
+            total +=newTrends[i].chart2;
+        }
+        $(".number").html(total.toLocaleString());
+        var makeCharts = function () {
+            var widthOfParent = $('.chart-wrap').width();
+            createLineChartONHeader(JSON.parse(trends), widthOfParent,"#B8E986");
+        };
+
+        makeCharts();
+
+        $(window).resize(function () {
+            $("#header-linechart").empty();
+            makeCharts();
+        });
+    </script>
 @endsection

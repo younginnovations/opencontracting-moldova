@@ -17,7 +17,7 @@
 
     <div class="push-up-block row">
         <div class="name-value-section each-row clearfix">
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon procuring-agency">icon</span>
                     <span class="each-detail">
                          <div class="name columns">Procuring Agency</div>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="name-value-section each-row clearfix">
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-value">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">Contract value:</div>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="name-value-section each-row clearfix">
-            <div class="medium-6 small-12 columns">
+            <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-period">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">Contractor</div>
@@ -79,7 +79,7 @@
         </div>
 
         <div class="name-value-section each-row clearfix">
-            <div class="medium-6 small-12 columns end">
+            <div class="medium-6 small-12 columns each-detail-wrap end">
                 <span class="icon relatedtender">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">RELATED TENDER</div>

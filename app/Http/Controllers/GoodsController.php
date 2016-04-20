@@ -31,7 +31,8 @@ class GoodsController extends Controller
 
     public function index()
     {
-        return view('goods.index');
+        $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5);
+        return view('goods.index',compact('goodsAndServices'));
     }
 
     /**

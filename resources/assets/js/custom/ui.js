@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $(".burger-menu").click(function () {
         $("#main-menu .menu").slideToggle(300);
+        $(".header-banner .fixed-header").toggleClass("add-background");
         $(this).toggleClass("menu-on");
     });
 
@@ -40,7 +41,7 @@ $(document).ready(function(){
 
    /* remove tab layout in small device*/
     var tabResponsive = function () {
-        if($(window).width() < 700){
+        if($(window).width() < 775){
             $(".tabs-content .tabs-panel").addClass("is-active");
         }else{
             $("#panel2").removeClass("is-active");
