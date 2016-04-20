@@ -11,6 +11,13 @@
   }
 }
 
+.header-banner{
+  .fixed-header.add-background{
+    background-color: $deep-blue-color !important;
+  }
+}
+
+
 .header-banner ~ .main-content{
   padding-top: 0;
 }
@@ -58,7 +65,11 @@
     display: none;
   }
 
-  input[type=search],input[type=search]:focus,input[type=search]:active,input[type=search]:hover {
+  input[type=search]{
+
+  }
+
+  input[type=search]{
     background: transparent;
     border: none;
     border-bottom: solid 4px #fff;
@@ -73,6 +84,11 @@
     padding: 12px 0;
     color: #fff;
     font-family: RobotoCondensed-bold;
+  }
+
+  input[type=search]:focus,
+  input[type=search]:active,input[type=search]:hover{
+
   }
 
   input:-moz-placeholder {
@@ -118,21 +134,6 @@
         @include inner-title();
       }
 
-      select{
-        width: 145px;
-        margin-bottom: 0;
-        border: solid 2px #2B3440;
-        border-radius: 22px;
-        padding: 4px 15px;
-        @include inner-title();
-        color: #fff;
-        height: auto;
-        font-weight: normal;
-        font-family: 'RobotoCondensed-regular';
-        display: inline-block;
-        background: $darker-grey-color url(#{$img-path}/ic_dropdown.svg) right 15px center no-repeat;
-        cursor: pointer;
-      }
     }
 
     //style for anchor section
@@ -151,6 +152,52 @@
 
     }
 
+  }
+}
+
+/*style for empty chart section*/
+
+.each-chart-section.empty{
+  position: relative;
+  &:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    border-radius: 4px;
+
+  }
+
+  &:after{
+    content: "No data";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #1B1414;
+    font-size: 22px;
+  }
+}
+
+.chart-wrap,.section-header{
+  select{
+    width: 145px;
+    margin-bottom: 0;
+    border: solid 2px #2B3440;
+    border-radius: 22px;
+    padding: 4px 15px;
+    @include inner-title();
+    color: #fff;
+    height: auto;
+    font-weight: normal;
+    font-family: 'RobotoCondensed-regular';
+    display: inline-block;
+    background: $darker-grey-color url(#{$img-path}/ic_dropdown.svg) right 15px center no-repeat;
+    cursor: pointer;
   }
 }
 

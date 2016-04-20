@@ -2,62 +2,12 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2> <span><img src="{{url('images/ic_procuringagency.png')}}"/></span>
+            <h2> <span><img src="{{url('images/ic_agency.svg')}}"/></span>
                 {{ $procuringAgency }}
             </h2>
         </div>
     </div>
-    <div class="push-up-block  wide-header row">
-
-        <div class="columns medium-6 small-12">
-            <div class="header-description">
-                <div class="big-header">
-                    <div class="number"> 8,312 </div>
-                    <div class="big-title">Contract issued</div>
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur, consequatur culpa dicta dolorem dolores harum laboriosam, nam obcaecati odio possimus provident reprehenderit tempore. Architecto atque consectetur delectus facere iure.
-                </p>
-            </div>
-        </div>
-
-        <div class="columns medium-6 small-12">
-            <div class="chart-section-wrap">
-                <div class="each-chart-section">
-                    <div class="section-header clearfix">
-                        <ul class="breadcrumbs">
-                            <p><span href="#" class="indicator tender">Tenders</span> &nbsp; published over the years</p>
-                        </ul>
-                    </div>
-                    <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
-                        <div id="linechart-homepage"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        {{--<div class="row medium-up-2 small-up-1">
-            <div class="block name-value-wrap columns">
-                <div class="name">
-                    Total contracts
-                </div>
-                <div class="value">
-                    {{ count($procuringAgencyDetail) }}
-                </div>
-            </div>
-
-            <div class="block name-value-wrap columns">
-                <div class="name">
-                    Total contract amount
-                </div>
-                <div class="value">
-                    {{number_format($totalAmount)}} leu
-                </div>
-            </div>
-        </div>--}}
-    </div>
-    <div class="row chart-section-wrap">
+    <div class="row chart-section-wrap push-up-block">
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
 
             <div data-equalizer="equal-header">
@@ -145,16 +95,16 @@
 
     </div>
     <div class="row table-wrapper">
-        <table class="responsive hover custom-table">
-            <tbody>
-            <tr>
+        <table table id="table_id" class="responsive hover custom-table">
+
+            <thead>
                 <th>Contract number</th>
                 <th>Goods and services contracted</th>
                 <th width="150px">Contract start date</th>
                 <th width="150px">Contract end date</th>
                 <th>Amount</th>
-            </tr>
-
+            </thead>
+            <tbody>
             @forelse($procuringAgencyDetail as $key => $agency)
                 @if($key < 10)
                     <tr>

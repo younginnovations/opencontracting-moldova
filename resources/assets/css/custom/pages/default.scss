@@ -209,7 +209,7 @@ h2 {
   background: transparent url(#{$img-path}/yellow_background.png) 0 center repeat;
   border: none;
   min-height: 31vh;
-  padding: 50px 40px 40px;
+  padding: 50px 40px 125px;
   .block{
     padding-top: 38px;
     padding-bottom: 38px;
@@ -235,7 +235,7 @@ h2 {
   background-color: rgba(237,254,255,0.3);
   font-size: 14px;
   line-height: 20px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   display: table;
   padding: 6px 16px;
   min-width: 215px;
@@ -280,17 +280,19 @@ h2 {
   margin-top: 20px;
 }
 
-.highlight{
-  background: #000 !important;
-}
-
-.push-up-block{
+.push-up-block {
   background-color: #fff;
   border-radius: 4px;
-  margin-top: -13vh;
+  margin-top: -125px;
   margin-bottom: 3.75em;
   box-shadow: 0px 0px 20px rgba(8, 8, 8, 0.11);
+
+  &.name-value-section{
+    margin-top: -80px;
+  }
+
 }
+
 
 /* --------- style for sticky footer ----------- */
 

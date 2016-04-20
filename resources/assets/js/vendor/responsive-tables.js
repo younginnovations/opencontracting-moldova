@@ -6,6 +6,7 @@ $(document).ready(function () {
             $("table.responsive").each(function (i, element) {
                 setTimeout(function () {
                     splitTable($(element));
+                    hoverRow();
                 }, 10);
             });
             return true;
@@ -69,7 +70,7 @@ $(document).ready(function () {
                 tx = self.find('th, td');
 
             tx.each(function () {
-                var height = $(this).outerHeight(true);
+                var height = $(this).outerHeight(true) - 1;
                 heights[index] = heights[index] || 0;
                 if (height > heights[index]) heights[index] = height;
             });
@@ -81,4 +82,19 @@ $(document).ready(function () {
         });
     }
 
+
+    function hoverRow(){
+        var $trs = $('#table_id tbody tr');
+        $trs.hover(
+            function() {
+                var i = $(this).index() + 1;
+                console.log("hovered");
+                $trs.filter(':nth-child(' + i + ')').addClass('highlight');
+            },
+            function() {
+                var i = $(this).index() + 1;
+                $trs.filter(':nth-child(' + i + ')').removeClass('highlight');
+            }
+        );
+    }
 });

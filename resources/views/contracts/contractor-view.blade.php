@@ -2,13 +2,13 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2> <span><img src="{{url('images/ic_contractor.png')}}"/></span>
+            <h2> <span><img src="{{url('images/ic_contractor.svg')}}"/></span>
              {{ $contractor }}</h2>
         </div>
     </div>
 
 
-    <div class="row medium-up-2 small-up-1">
+    <div class="row medium-up-2 small-up-1 push-up-block small-push-up-block">
         <div class="block name-value-wrap columns">
             <div class="name">
                 Total contracts

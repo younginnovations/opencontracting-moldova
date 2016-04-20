@@ -22,10 +22,12 @@ class TenderController
     /**
      * @return \Illuminate\View\View
      */
+
     public function index()
     {
+        $tendersTrends = $this->getTrend($this->tenders->getTendersByOpenYear());
 
-        return view('tender.index');
+        return view('tender.index', compact('tendersTrends'));
     }
 
     /**
@@ -50,6 +52,22 @@ class TenderController
 
         return view('tender.view', compact('tenderDetail'));
 
+    }
+
+    private function getTrend($tenders)
+    {
+        $trends = [];
+        $count  = 0;
+        ksort($tenders);
+
+        foreach ($tenders as $key => $trend) {
+            $trends[$count]['xValue'] = $key;
+            $trends[$count]['chart1'] = 0;
+            $trends[$count]['chart2'] = $trend;
+            $count++;
+        }
+
+        return json_encode($trends);
     }
 
 }

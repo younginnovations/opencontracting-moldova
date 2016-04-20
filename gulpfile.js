@@ -39,6 +39,7 @@ var custom_chartJs = [
     './resources/assets/js/charts/custom/lineChart-rest.js',
     './resources/assets/js/charts/custom/horizontal-barChart.js',
     './resources/assets/js/charts/custom/barChart-contract.js',
+    './resources/assets/js/charts/custom/lineChart-header.js',
 ];
 
 var vendor_chartJs = [

@@ -18,13 +18,13 @@ class ContractController extends Controller
      */
     public function __construct(Contracts $contracts)
     {
-
         $this->contracts = $contracts;
     }
 
     public function index()
     {
-        return view('contracts.index');
+        $contractsTrends     = $this->getTrend($this->contracts->getContractsByOpenYear());
+        return view('contracts.index',compact('contractsTrends'));
     }
 
     public function show($contractor)

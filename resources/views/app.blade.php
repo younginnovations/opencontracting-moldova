@@ -98,20 +98,6 @@
         });
     })();
 
-    /* ------ hover on table ------- */
-   /* var $trs = $('table tr');
-    console.log($('table tr'));
-    $trs.hover(
-        function() {
-            var i = $(this).index() + 1;
-            console.log("hovered");
-            $trs.filter(':nth-child(' + i + ')').addClass('highlight');
-        },
-        function() {
-            var i = $(this).index() + 1;
-            $trs.filter(':nth-child(' + i + ')').removeClass('highlight');
-        }
-    );*/
 </script>
 </body>
 

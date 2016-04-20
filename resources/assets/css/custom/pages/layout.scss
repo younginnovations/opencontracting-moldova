@@ -104,7 +104,8 @@ header{
 .burger-menu {
   position: relative;
   height: 58px;
-  width: 50px;
+  //width: 50px;
+  width: 36px;
   cursor: pointer;
   padding: 0;
 }
@@ -114,7 +115,8 @@ header{
   width: 30px;
   height: 3px;
   top: 27px;
-  right: 9px;
+  //right: 9px;
+  right: 0;
   opacity: 1;
 }
 .burger::before {
