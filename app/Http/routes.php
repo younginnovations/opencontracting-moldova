@@ -147,3 +147,11 @@ $app->get(
         'uses' => 'GoodsController@getAllGoods'
     ]
 );
+
+$app->get('/about',function(){
+    return view('about');
+});
+
+$app->get('/contact',function(){
+    return view('contact');
+});

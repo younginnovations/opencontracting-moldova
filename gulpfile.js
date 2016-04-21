@@ -83,10 +83,10 @@ gulp.task('sass', function () {
         .pipe(sass())
         .pipe(postcss([autoprefixer({browsers: ['last 30 versions', '> 1%', 'ie 8', 'ie 7']})]))
         .pipe(sourcemaps.write('./maps'))
-       .pipe(uglifycss({
+       /*.pipe(uglifycss({
             "max-line-len": 80
         }))
-        .pipe(rename({suffix: '.min'}))
+        .pipe(rename({suffix: '.min'}))*/
         .pipe(gulp.dest('./public/css/'));
 });
 

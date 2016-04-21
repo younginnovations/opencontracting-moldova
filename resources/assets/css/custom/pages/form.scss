@@ -29,3 +29,14 @@
     margin-bottom: 0;
   }
 }
+
+.inner-wrap-static{
+  .form-group{
+    .control-label{
+      color: $light-grey-color;
+    }
+    .form-control{
+      border: none;
+    }
+  }
+}

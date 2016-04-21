@@ -41,8 +41,8 @@
                                 </form>
                             </div>
                             <div id="barChart-procuring"></div>
+                            <a href="#" class="anchor">View all procuring agencies <span>  &rarr; </span></a>
                         </div>
-                        <a href="#" class="anchor">View all procuring agencies <span>  &rarr; </span></a>
                     </div>
                 </div>
             </div>
@@ -71,8 +71,8 @@
                                 </form>
                             </div>
                             <div id="barChart-contractors"></div>
+                            <a href="#" class="anchor">View all contractors <span>  &rarr; </span></a>
                         </div>
-                        <a href="#" class="anchor">View all contractors <span>  &rarr; </span></a>
                     </div>
                 </div>
 
@@ -95,9 +95,8 @@
                                 </form>
                             </div>
                             <div id="barChart-goods"></div>
+                            <a href="#" class="anchor">View all goods / services <span>  &rarr; </span></a>
                         </div>
-                        <a href="#" class="anchor">View all goods / services <span>  &rarr; </span></a>
-
                     </div>
                 </div>
             </div>

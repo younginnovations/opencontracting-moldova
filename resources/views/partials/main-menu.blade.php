@@ -10,7 +10,7 @@
         <div class="top-bar-right" id="main-menu">
             <ul class="menu">
                 <li><a href="{{ route('/') }}" class="{{ (\Request::segment(1) === null)?'active':'' }}">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/about" class="{{ (Request::segment(1) === 'about')?'active':'' }}">About</a></li>
                 <li><a href="{{ route('tenders.index') }}"
                        class="{{ (Request::segment(1) === 'tenders')?'active':'' }}">Tenders</a>
                 </li>
@@ -20,7 +20,7 @@
                        class="{{ (Request::segment(1) === 'procuring-agency')?'active':'' }}">Agencies</a></li>
                 <li><a href="{{ route('goods.index') }}"
                        class="{{ (Request::segment(1) === 'goods')?'active':'' }}">Goods</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/contact" class="{{ (Request::segment(1) === 'contact')?'active':'' }}">Contact</a></li>
             </ul>
         </div>
     </div>
