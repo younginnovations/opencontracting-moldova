@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Moldova\Service\Contracts;
+use App\Moldova\Service\Email;
 use App\Moldova\Service\ProcuringAgency;
 use App\Moldova\Service\Tenders;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use ReCaptcha\Captcha;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+
 
 class HomeController extends Controller
 {
@@ -150,5 +154,36 @@ class HomeController extends Controller
 
 
         return view('search', compact('contracts', 'contractTitles', 'procuringAgencies', 'params'));
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkCaptcha($request,$client)
+    {
+        $params = ['body' => ['secret' => env('RE_CAP_SECRET'), 'response' => $request->get('g-recaptcha-response'), 'remoteip' => $request->ip()]];
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', $params);
+        $response = ($response->json());
+
+        if($response['success'] === true){
+            return true;
+        }
+
+        return false;
+    }
+
+    public function sendMessage(Request $request, Email $email, Client $client)
+    {
+        if($this->checkCaptcha($request, $client)){
+
+            $email->sendMessage($request->all());
+
+            if($email){
+                return view('contact')->withSuccess('Your message has been sent. Will be in touch with you soon.');
+            }
+
+            return view('contact')->withErrors("Sorry your email can't be sent at the moment, please try again later");
+        }
+        return view('contact')->withErrors("Please verify the captcha");
     }
 }

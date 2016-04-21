@@ -2,31 +2,34 @@
 @section('content')
     <div class="row contact-page">
         <div class="inner-wrap-static">
-            <h2>Contact Us</h2>
             <div class="buffer-top clearfix">
-                <form class="custom-form medium-6 columns">
-                    <div class="form-group">
-                        {{--<label class="control-label">Input Label</label>--}}
-                        <input class="form-control" type="text" placeholder="Enter name">
-                    </div>
-                    <div class="form-group">
-                        {{--<label class="control-label">Input Label</label>--}}
-                        <input class="form-control" type="text" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        {{-- <label class="control-label">
-                         What books did you read over summer break?</label>--}}
-                        <textarea class="form-control" placeholder="Enter message"></textarea>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="medium-4">
-                            <input class="button blue-button" type="submit" value="Submit" rows="5">
+                <div class="medium-5 columns background">
+                    <form class="custom-form" action="{{route('home.contact')}}" method="post">
+                        <div class="formBox">
+                            <div class="contactTitle"><span class="bold">Contact</span> Us</div>
+                            <div class="form-group">
+                                {{--<label class="control-label">Input Label</label>--}}
+                                <input class="form-control" type="text" name="fullname" placeholder="YOUR NAME" required>
+                            </div>
+                            <div class="form-group">
+                                {{--<label class="control-label">Input Label</label>--}}
+                                <input class="form-control" type="email" name="email" placeholder="YOUR EMAIL" required>
+                            </div>
+                            <div class="form-group">
+                                {{-- <label class="control-label">
+                                 What books did you read over summer break?</label>--}}
+                                <textarea class="form-control" placeholder="YOUR MESSAGE" name="message" required></textarea>
+                            </div>
+                            <div class="g-recaptcha captcha-wrap" data-sitekey="{{ env('RE_CAP_SITE') }}"></div>
                         </div>
-                    </div>
-                </form>
-
+                                <button class="button" type="submit" value="SEND MESSAGE" rows="20">SEND MESSAGE</button>
+                    </form>
+                </div>
                 <div class="medium-6 columns">
-                    <p>If you have any suggestions or queries, Please contact us at <a href="mailto:info@yipl.com.np">info@yipl.com.np</a></p>
+                    <div class="ocdsAddress">
+                        <div class="ad">Chisinau, Moldova</div>
+                        <div class="ph">+373-xx-xx-xx-xx</div>
+                    </div>
                 </div>
             </div>
 
@@ -34,4 +37,7 @@
         </div>
     </div>
 
-@stop
+@endsection
+@section('script')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+@endsection

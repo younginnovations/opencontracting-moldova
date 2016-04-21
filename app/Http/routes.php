@@ -155,3 +155,11 @@ $app->get('/about',function(){
 $app->get('/contact',function(){
     return view('contact');
 });
+
+$app->post(
+    '/contact',
+    [
+        'as'   => 'home.contact',
+        'uses' => 'HomeController@sendMessage'
+    ]
+);
