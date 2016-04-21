@@ -153,4 +153,9 @@ class Contracts
     {
         return $this->contracts->getAllContractTitle();
     }
+
+    public function getContractDataForJson($contractId)
+    {
+        return $this->contracts->getContractDataForJson($contractId);
+    }
 }

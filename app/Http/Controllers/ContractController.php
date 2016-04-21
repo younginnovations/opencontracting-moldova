@@ -74,7 +74,8 @@ class ContractController extends Controller
     public function view($contractId)
     {
         $contractDetail = $this->contracts->getContractDetailById($contractId);
+        $contractData = $this->contracts->getContractDataForJson($contractId);
 
-        return view('contracts.view',compact('contractDetail'));
+        return view('contracts.view',compact('contractDetail','contractData'));
     }
 }
