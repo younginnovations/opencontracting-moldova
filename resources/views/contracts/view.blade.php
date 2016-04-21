@@ -98,4 +98,14 @@
             <span class="switch-inactive" aria-hidden="true">Tabular view</span>
         </label>
     </div>
+
+    <pre id="json-viewer"></pre>
+@endsection
+
+@section('script')
+    <script>
+        var input = {!! $contractData !!};
+        
+        $('#json-viewer').jsonViewer(input, {collapsed: true});
+    </script>
 @endsection

@@ -76,5 +76,14 @@ interface ContractsRepositoryInterface
      */
     public function search($search);
 
+    /**
+     * @return mixed
+     */
     public function getAllContractTitle();
+
+    /**
+     * @param $contractId
+     * @return mixed
+     */
+    public function getContractDataForJson($contractId);
 }

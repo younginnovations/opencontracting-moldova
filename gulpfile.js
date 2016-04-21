@@ -18,7 +18,8 @@ var vendor_js = [
     './resources/assets/js/vendor/moment.min.js',
     './resources/assets/js/vendor/number-format.js',
     './resources/assets/js/vendor/classie.js',
-    './resources/assets/js/vendor/selectFx.js'
+    './resources/assets/js/vendor/selectFx.js',
+    './resources/assets/js/vendor/jquery.json-viewer.js'
 ];
 
 var vendor_css = [
@@ -27,6 +28,7 @@ var vendor_css = [
     './resources/assets/css/vendor/responsive-tables.css',
     './resources/assets/css/vendor/cs-skin-elastic.css',
     './resources/assets/css/vendor/cs-select.css',
+    './resources/assets/css/vendor/jquery.json-viewer.css',
 ];
 
 var custom_js = [
