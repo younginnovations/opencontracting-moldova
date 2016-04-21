@@ -187,10 +187,7 @@ h2 {
 }
 
 .block-with-margin{
-  margin: 0 25px 25px;
-  @media (max-width: 600px) {
-    margin: 0 20px 20px;
-  }
+  margin: 0 0 25px;
 }
 
 .header-block {
@@ -260,6 +257,7 @@ h2 {
   padding: 1em 1.429em;
   background: transparent;
   overflow: hidden;
+  border-radius: 4px;
   &.yellow-button{
     border: solid 2px $deep-yellow-color;
     border-radius: 22px;
@@ -277,7 +275,7 @@ h2 {
 }
 
 .buffer-top{
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .push-up-block {
@@ -291,8 +289,9 @@ h2 {
     margin-top: -80px;
   }
 
-}
 
+
+}
 
 /* --------- style for sticky footer ----------- */
 

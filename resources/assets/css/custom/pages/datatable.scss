@@ -17,6 +17,7 @@
     color: $light-grey-color;
     width: auto;
     display: inline-block;
+    margin-bottom: 20px;
   }
 
   select{
@@ -38,6 +39,8 @@
   float: left;
   label{
     font-size: 0;
+    clear: both;
+    overflow: hidden;
   }
 
   input{

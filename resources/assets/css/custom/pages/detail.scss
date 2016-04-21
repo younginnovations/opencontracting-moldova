@@ -167,11 +167,22 @@
   }
 }
 
-/*@media (max-width: 39.9375em){
-  .name-value-section .each-detail-wrap {
-    padding: 20px 20px;
-    border-bottom: solid 1px #D5D5D5;
-  }
-}*/
+/*style for switch*/
 
+.switch.large .switch-paddle{
+  width: 134px;
+  background: #2199e8;
+}
+
+.switch-active{
+  left: 10px;
+}
+
+.switch-inactive{
+  right: 10px;
+}
+
+.switch.large input:checked~.switch-paddle:after{
+  left: 97px
+}
 

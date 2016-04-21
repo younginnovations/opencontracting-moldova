@@ -8,9 +8,9 @@
                 </h2>
             </div>
             <div>
-                <button class="small-button grey-yellow-btn"><span>Status:</span>
+                <div class="small-button grey-yellow-btn"><span>Status:</span>
                     <span>{{ $contractDetail['status'] }}</span>
-                </button>
+                </div>
             </div>
         </div>
     </div>
@@ -89,5 +89,13 @@
                     </span>
             </div>
         </div>
+    </div>
+
+    <div class="switch large">
+        <input class="switch-input" id="json-table" type="checkbox" name="exampleSwitch">
+        <label class="switch-paddle" for="json-table">
+            <span class="switch-active" aria-hidden="true">Json view</span>
+            <span class="switch-inactive" aria-hidden="true">Tabular view</span>
+        </label>
     </div>
 @endsection
