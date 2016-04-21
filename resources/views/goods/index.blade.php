@@ -13,7 +13,7 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number">8,132</div>
+                    <div class="number big-amount">8,132</div>
                     <div class="big-title">Goods / services</div>
                 </div>
                 <p>

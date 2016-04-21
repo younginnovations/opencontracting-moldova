@@ -90,22 +90,23 @@
             </div>
         </div>
     </div>
+    <div class="row clearfix">
+        <div class="cusotm-switch clearfix">
+            <a href="#" class="toggle-switch toggle--on"></a>
 
-    <div class="switch large">
-        <input class="switch-input" id="json-table" type="checkbox" name="exampleSwitch">
-        <label class="switch-paddle" for="json-table">
-            <span class="switch-active" aria-hidden="true">Json view</span>
-            <span class="switch-inactive" aria-hidden="true">Tabular view</span>
-        </label>
+            <div class="custom-switch-content block">
+                <div class="json-view"> <pre id="json-viewer"></pre></div>
+                <div class="table-view text-center">Table view is not available for now.</div>
+            </div>
+        </div>
     </div>
 
-    <pre id="json-viewer"></pre>
+
 @endsection
 
 @section('script')
     <script>
         var input = {!! $contractData !!};
-        
-        $('#json-viewer').jsonViewer(input, {collapsed: true});
+        $('#json-viewer').jsonViewer(input, {collapsed: false});
     </script>
 @endsection

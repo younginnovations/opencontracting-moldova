@@ -1,3 +1,14 @@
+/*style for persist header for table*/
+
+.floatingHeader {
+  position: fixed;
+  display: table;
+  top: 76px;
+  z-index: 66;
+  background: #fff;
+  width: 100%;
+}
+
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate,.paginate_button{
   color: $darker-grey-color;
 }
@@ -143,6 +154,10 @@
   padding: 5px 6px 8px;
 }
 
+tbody, tfoot, thead{
+  background: none;
+}
+
 /*style for table*/
 
 @media (min-width:768px){
@@ -179,7 +194,7 @@ thead {
   border-radius: 4px;
   overflow: hidden;
   position: relative;
-  background: url(#{$img-path}/main_background.svg) center top no-repeat;
+  background: url(#{$img-path}/main_background_table.jpg) center top no-repeat;
   background-size: cover;
   z-index: 5;
 
@@ -240,17 +255,17 @@ thead {
   tr,tr:nth-of-type(even):hover{
     &:hover {
       transition: background-color 0.3s ease-in-out;
-      background-color: rgba(255, 212, 0, 0.6);
-      color: #4a4a4a;
+      color: #fff;
+      background: rgba(0, 70, 174, 1);
     }
   }
 
 }
 
 .highlight{
-  transition: background-color 0.3s ease-in-out !important;
-  background-color: rgba(255, 212, 0, 0.6) !important;
-  color: #4a4a4a !important;
+  transition: all 0.3s ease-in-out !important;
+  color: #fff !important;
+  background: rgba(0, 70, 174, 1) !important;
 }
 
 th{
@@ -259,22 +274,51 @@ th{
   }
 }
 
-.sorting{
-  background: transparent url("#{$img-path}/ic_sort.svg") 4px 22px no-repeat;
-}
+@media (max-width: 40em) {
+  .sorting{
+    background: transparent url("#{$img-path}/ic_sort.svg") 4px 20px no-repeat;
+  }
 
-.sorting_desc{
-  background: transparent url("#{$img-path}/ic_desc.svg") 4px 24px no-repeat;
-}
+  .sorting_desc{
+    background: transparent url("#{$img-path}/ic_desc.svg") 4px 22px no-repeat;
+  }
 
-.sorting_asc{
-  background: transparent url("#{$img-path}/ic_asc.svg") 4px 24px no-repeat;
+  .sorting_asc{
+    background: transparent url("#{$img-path}/ic_asc.svg") 4px 22px no-repeat;
+  }
+
+  th:first-of-type{
+    &.sorting{
+      background: transparent url("#{$img-path}/ic_sort.svg") 8px 20px no-repeat;
+    }
+
+    &.sorting_desc{
+      background: transparent url("#{$img-path}/ic_desc.svg") 8px 22px no-repeat;
+    }
+
+    &.sorting_asc{
+      background: transparent url("#{$img-path}/ic_asc.svg") 8px 22px no-repeat;
+    }
+  }
 }
 
 @media (min-width: 40em) {
+
+  .sorting{
+    background: transparent url("#{$img-path}/ic_sort.svg") 4px 22px no-repeat;
+  }
+
+  .sorting_desc{
+    background: transparent url("#{$img-path}/ic_desc.svg") 4px 24px no-repeat;
+  }
+
+  .sorting_asc{
+    background: transparent url("#{$img-path}/ic_asc.svg") 4px 24px no-repeat;
+  }
+
   th:first-of-type{
     &.sorting{
-      background: transparent url("#{$img-path}/ic_sort.svg") 28px 18px no-repeat;
+      background: transparent url("#{$img-path}/ic_sort.svg") 28px 22px no-repeat;
     }
 
     &.sorting_desc{
@@ -347,14 +391,18 @@ tfoot td, tfoot th, thead td, thead th{
 
 @media (max-width: 768px) {
 
-  .table-wrapper  .table-wrapper{
-    background: url(#{$img-path}/main_background.svg) center top no-repeat;
-    background-size: cover;
+  .custom-table{
+    background: none;
     border-radius: 4px;
   }
 
-  .custom-table{
-    background: none;
-    border-radius: 0;
+  .table-wrapper  .table-wrapper{
+    background: url(#{$img-path}/main_background_table.jpg) center top no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+    .custom-table{
+      border-radius: 0;
+    }
   }
+
 }

@@ -77,7 +77,7 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
         foreach ($buyer as $item) {
             $count = $count + count($item['contract']);
             foreach ($item['contract'] as $contract) {
-                $amount = $amount + $contract['value'];
+                $amount = floatval($amount)+ floatval($contract['value']);
             }
         }
 

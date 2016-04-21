@@ -184,6 +184,27 @@ h2 {
   @media (max-width: 600px) {
     padding: 20px 20px;
   }
+
+}
+
+.push-up-block.small-push-up-block{
+  margin-top: -77px;
+}
+
+@media (max-width: 768px) {
+  .small-push-up-block{
+    .block.columns{
+      padding: 40px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .small-push-up-block{
+    .block.columns{
+      padding: 20px;
+    }
+  }
 }
 
 .block-with-margin{

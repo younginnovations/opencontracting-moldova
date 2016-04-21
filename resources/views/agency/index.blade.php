@@ -13,7 +13,7 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number"></div>
+                    <div class="number big-amount"></div>
                     <div class="big-title">Agencies</div>
                 </div>
                 <p>
@@ -78,7 +78,7 @@
                 {'data': 'buyer'},
                 {'data': 'tender'},
                 {'data': 'contract'},
-                {'data': 'contract_value'},
+                {'data': 'contract_value', "className": 'numeric-data'}
             ],
             "fnDrawCallback": function () {
                 createLinks();
@@ -113,7 +113,7 @@
         for(var i = 0; i < newProcuringAgencies.length; i++){
             total +=newProcuringAgencies[i].value;
         }
-        $(".number").html(Math.ceil(total).toLocaleString());
+        $(".number").html(Math.ceil(total));
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');

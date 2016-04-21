@@ -27,7 +27,7 @@
         <div class="callout banner-section">
             <div class="row banner-inner">
                 <p class="banner-text medium-4 small-12 columns">Search through
-                    <span class="amount">{{ number_format($totalContractAmount) }} </span>
+                    <span class="amount big-amount">{{ $totalContractAmount }} </span>
                     Leu
                     worth of contracts
                 </p>
@@ -88,6 +88,7 @@
     }
     numericFormat();
     changeDateFormat();
+
 </script>
 
 @yield('script')
@@ -98,7 +99,13 @@
             new SelectFx(el);
         });
     })();
+    /* -------- convert the amount to kilo and milllion --------- */
 
+
+    $(".big-amount").each(function(){
+        var formatted = number_format($(this).text());
+        $(this).text(formatted);
+    });
 </script>
 </body>
 

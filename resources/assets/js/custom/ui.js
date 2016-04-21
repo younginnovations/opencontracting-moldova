@@ -5,6 +5,35 @@ $(document).ready(function(){
         $(this).toggleClass("menu-on");
     });
 
+   /* create animation effect for global search*/
+    $('.search-button').click(function(){
+        if($(window).width() > 768){
+            $(this).parent().toggleClass('open');
+            $(".fixed-header .menu").toggleClass('toggle-visibility');
+        }
+        else{
+            $(this).parent().toggleClass('open');
+            $(".fixed-header .top-bar-left").toggleClass('toggle-visibility-small');
+            $(".burger-menu-button").toggleClass('toggle-visibility-small');
+        }
+
+    });
+
+    $(document).mouseup(function (e)
+    {
+        var container = $(".search");
+
+        if (!container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            container.removeClass('open');
+            $(".fixed-header .menu").removeClass('toggle-visibility');
+            $(".fixed-header .top-bar-left").removeClass('toggle-visibility-small');
+            $(".burger-menu-button").removeClass('toggle-visibility-small');
+        }
+    });
+
+
    /* make background of navigation blue after scrolling image banner*/
 
     $(window).scroll(function() { // check if scroll event happened
@@ -39,6 +68,20 @@ $(document).ready(function(){
         $(".filter-toggler a").toggleClass("active");
     });
 
+    $('.toggle-switch').click(function(e) {
+        var toggle = this;
+
+        e.preventDefault();
+
+        $(toggle).toggleClass('toggle--on')
+            .toggleClass('toggle--off')
+            .addClass('toggle--moving');
+
+        setTimeout(function() {
+            $(toggle).removeClass('toggle--moving');
+        }, 200)
+    });
+
    /* remove tab layout in small device*/
     var tabResponsive = function () {
         if($(window).width() < 775){
@@ -67,9 +110,54 @@ $(document).ready(function(){
 
     menuDisappear();
 
+    /* ------------ sticky header in tables ---------------- */
+
+    /*var fixHeader = function(){
+        if($(window).width() > 768){
+            $(".persist-area").each(function() {
+
+                var el             = $(this),
+                    offset         = el.offset(),
+                    scrollTop      = $(window).scrollTop() + 76,
+                    elementHeight = el.height(),
+                    elementWidth = el.width();
+
+                if ((scrollTop > offset.top) && (scrollTop < offset.top + elementHeight)) {
+                    $(".persist-header").addClass("floatingHeader");
+                } else {
+                    $(".persist-header").removeClass("floatingHeader");
+                };
+
+                $(".floatingHeader").width(elementWidth);
+            });
+        }
+    }
+    $(window).scroll(function(){
+        fixHeader();
+    });*/
+
+  /*  $('.chart-wrap').each(function(){
+        var el = $(this).find('svg');
+        if($('el').length == 0){
+            $(this).addClass('default-view');
+            $(this).find(".filter-section").hide();
+            $(this).find(".anchor").hide();
+            $(".default-view").parents(".each-chart-section").css("height","400px");
+        }else{
+            $(this).removeClass('default-view');
+            $(this).find(".filter-section").show();
+            $(this).find(".anchor").show();
+            $(".default-view").parents(".each-chart-section").css("height","auto");
+        }
+    });*/
+
+
+    /* ------------ end of sticky header for table --------------- */
+
     $(window).resize(function(){
         headerElementsAlign();
         tabResponsive();
         menuDisappear();
+        //fixHeader();
     });
 });
