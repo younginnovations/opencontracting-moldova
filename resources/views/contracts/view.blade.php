@@ -95,8 +95,13 @@
             <a href="#" class="toggle-switch toggle--on"></a>
 
             <div class="custom-switch-content block">
-                <div class="json-view"> <pre id="json-viewer"></pre></div>
-                <div class="table-view text-center">Table view is not available for now.</div>
+                <div class="json-view">
+                    <pre id="json-viewer"></pre>
+                </div>
+                <div class="table-view text-center">
+                    <div id="json-table"></div>
+                    Table view is not available for now.
+                </div>
             </div>
         </div>
     </div>
@@ -107,6 +112,44 @@
 @section('script')
     <script>
         var input = {!! $contractData !!};
-        $('#json-viewer').jsonViewer(input, {collapsed: false});
+        delete input['_id'];
+        $('#json-viewer').jsonViewer(input, {collapsed: true});
+
+
+        var showJsonTable = function () {
+            var parent = $("#json-table");
+
+            console.log(parent);
+            var table = $('<table>', {
+                class: "jTable"
+            });
+
+            for (var key in input) {
+                if (typeof input[key] === 'string') {
+                    table.append('<tr><td>' + key + '</td><td>' + input[key] + '</td></tr>');
+                } else {
+                    table.append('<tr><td>' + key + '</td></tr>');
+                    showArray('<td></td>', table, input[key]);
+                }
+            }
+
+            parent.append(table);
+        }
+
+        var showArray = function (td, table, arr) {
+            for (var a in arr) {
+                if (typeof arr[a] != 'object') {
+                    var tr = '<tr>' + td + '<td>' + a + '</td><td>' + arr[a] + '</td></tr>';
+                    table.append(tr);
+                } else {
+                    table.append('<tr>' + td + '<td>' + a + '</td></tr>');
+                    td = td + '<td></td>';
+                    showArray(td, table, arr[a]);
+                }
+
+            }
+        }
+
+        showJsonTable();
     </script>
 @endsection
