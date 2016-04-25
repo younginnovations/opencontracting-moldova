@@ -316,6 +316,6 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getContractDataForJson($contractId)
     {
-        return $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1, 'award' => 1, 'tender.id' => 1, 'tender.title' => 1, 'buyer.name' => 1])->first();
+        return $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1, 'award' => 1, 'tender.id' => 1, 'tender.title' => 1, 'buyer' => 1])->first();
     }
 }
