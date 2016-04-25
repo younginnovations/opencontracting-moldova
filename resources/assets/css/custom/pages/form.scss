@@ -81,9 +81,27 @@
     box-shadow: none;
   }
 }
+
 .ocdsAddress {
-  padding-left: 50px;
-  padding-top: 60px;
-  font-size: 20px;
-  text-transform: uppercase;
+   padding-left: 50px;
+   padding-top: 60px;
+   font-size: 20px;
+   text-transform: uppercase;
+ }
+
+.inner-wrap-static{
+  .form-group{
+    .control-label{
+      color: $light-grey-color;
+    }
+    .form-control{
+      border: none;
+    }
+  }
+}
+
+.cs-skin-elastic.cs-active .cs-options ul li{
+  &:hover{
+    background-color: #f2f2f2;
+  }
 }

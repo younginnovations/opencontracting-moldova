@@ -9,6 +9,10 @@
   width: 100%;
 }
 
+.pinned{
+  background: none;
+}
+
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate,.paginate_button{
   color: $darker-grey-color;
 }
@@ -208,7 +212,7 @@ thead {
 
   tr{
     z-index: 10;
-    background-color: rgba(0,70,174,0.82);
+    background-color: rgba(0,70,174,0.9);
     transition: all 0.3s ease-in-out;
   }
   /* ------- style for thead -------- */
@@ -217,7 +221,7 @@ thead {
     background: none;
     font-family: RobotoCondensed-bold;
     tr:hover{
-      background-color: rgba(0,70,174,0.82);
+      background-color: rgba(0,70,174,0.9);
     }
     th{
       font-family: inherit;
@@ -232,11 +236,11 @@ thead {
     transition: background-color 0.3s ease-in-out;
     border-bottom: solid 1px rgba(237,234,255,0.05);
     &:nth-child(odd){
-      background: rgba(0,70,174,0.82);
+      background: rgba(0,70,174,0.9);
     }
 
     &:nth-child(even){
-      background: rgba(0,70,174,0.82);
+      background: rgba(0,70,174,0.9);
     }
   }
 
@@ -333,6 +337,7 @@ th{
 
 /*style for fixed th*/
 
+/*
 .contract-number{
   width: 160px !important;
 }
@@ -340,6 +345,7 @@ th{
 .long-th{
   width: 150px !important;
 }
+*/
 
 /* ------- style for overlay while processing --------- */
 

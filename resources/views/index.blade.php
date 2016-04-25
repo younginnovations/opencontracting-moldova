@@ -18,6 +18,16 @@
                         </div>
                         <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-homepage"></div>
+                            <div class="loader-text">
+                                <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -41,6 +51,16 @@
                                 </form>
                             </div>
                             <div id="barChart-procuring"></div>
+                            <div class="loader-text">
+                                <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                                </div>
+                            </div>
                             <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring agencies <span>  &rarr; </span></a>
                         </div>
                     </div>
@@ -71,6 +91,16 @@
                                 </form>
                             </div>
                             <div id="barChart-contractors"></div>
+                            <div class="loader-text">
+                                <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                                </div>
+                            </div>
                             <a href="{{ route('contracts') }}" class="anchor">View all contractors <span>  &rarr; </span></a>
                         </div>
                     </div>
@@ -95,6 +125,16 @@
                                 </form>
                             </div>
                             <div id="barChart-goods"></div>
+                            <div class="loader-text">
+                                <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                                </div>
+                            </div>
                             <a href="{{ route('goods.index') }}" class="anchor">View all goods / services <span>  &rarr; </span></a>
                         </div>
                     </div>
@@ -103,9 +143,9 @@
         </div>
     </div>
 
-    <div class="row table-wrapper">
+    <div class="row table-wrapper persist-area">
         <table id="table_id" class="responsive hover custom-table display">
-            <thead>
+            <thead class="persist-header">
             <tr>
                 <th class="contract-number">Contract number</th>
                 <th class="hide">Contract ID</th>
@@ -122,6 +162,7 @@
 @endsection
 
 @section('script')
+    <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script type="text/javascript" class="init">
 
         $('#table_id').DataTable({
@@ -145,6 +186,7 @@
                 changeDateFormat();
                 numericFormat();
                 createLinks();
+                updateTables();
                 if ($('#table_id tr').length < 10) {
                     $('.dataTables_paginate').hide();
                 } else {
@@ -164,7 +206,7 @@
 
             });
         };
-
+//updateTables();
     </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>

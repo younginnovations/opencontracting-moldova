@@ -156,37 +156,53 @@
   }
 }
 
-.default-view {
-  #linechart-homepage, #header-linechart,
-  #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
-  #barChart-amount {
+
+
+
+.each-chart-section {
+  position: relative;
+  .loader-text {
+    display: none;
+    position: absolute;
     width: 100%;
-    min-width: 100%;
-    min-height: 300px;
-    position: relative;
-    &:before{
-      content: "Fetching data...";
-      position: absolute;
-      top: 50%;
-      width: 100%;
+    top: 50%;
+    margin-left: -20px;
+    .text{
       text-align: center;
       font-size: 22px;
       line-height: 28px;
       color: rgba(72,72,72,0.4);
     }
 
+    span{
+      position: absolute;
+      bottom: 10px;
+      margin-left: 6px;
+    }
   }
 
-  #linechart-homepage, #header-linechart, #linechart-rest {
-    background: url(#{$img-path}/greyscale_lineChart.svg) center center no-repeat;
+  .default-view {
 
-  }
+    #linechart-homepage, #header-linechart,
+    #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
+    #barChart-amount {
+      width: 100%;
+      min-width: 100%;
+      min-height: 300px;
+      position: relative;
+    }
 
-  #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
-  #barChart-amount {
-    margin-top: -30px;
-    background: url(#{$img-path}/greyscale_barChart.svg) center center no-repeat;
+    #linechart-homepage, #header-linechart, #linechart-rest {
+      background: url(#{$img-path}/greyscale_lineChart.svg) center center no-repeat;
 
+    }
+
+    #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
+    #barChart-amount {
+      margin-top: -30px;
+      background: url(#{$img-path}/greyscale_barChart.svg) center center no-repeat;
+
+    }
   }
 }
 

@@ -37,6 +37,16 @@
                         </div>
                         <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-rest"></div>
+                            <div class="loader-text">
+                                <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,6 +58,16 @@
                         </div>
                         <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
+                            <div class="loader-text">
+                                <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -77,8 +97,18 @@
                             </div>
 
                             <div id="barChart-contractors"></div>
+                            <div class="loader-text">
+                                <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                                </div>
+                            </div>
+                            <a href="#" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
                         </div>
-                        <a href="#" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
                     </div>
                 </div>
 
@@ -103,8 +133,18 @@
                             </div>
 
                             <div id="barChart-procuring"></div>
+                            <div class="loader-text">
+                                <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                                </div>
+                            </div>
+                            <a href="#" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
                         </div>
-                        <a href="#" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
                     </div>
                 </div>
             </div>
@@ -145,7 +185,13 @@
 @stop
 @section('script')
     <script src="{{url('js/vendorChart.min.js')}}"></script>
+    <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
+    <script>
+        (document).ready(function(){
+            updateTables();
+        })
+    </script>
     <script>
         var route = '{{ route("filter") }}';
         var contracts = '{!! $contractTrend  !!}';

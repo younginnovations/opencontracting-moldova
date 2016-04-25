@@ -112,7 +112,7 @@ $(document).ready(function(){
 
     /* ------------ sticky header in tables ---------------- */
 
-    /*var fixHeader = function(){
+  /*  var fixHeader = function(){
         if($(window).width() > 768){
             $(".persist-area").each(function() {
 
@@ -136,20 +136,27 @@ $(document).ready(function(){
         fixHeader();
     });*/
 
-  /*  $('.chart-wrap').each(function(){
+    $('.chart-wrap').each(function(){
         var el = $(this).find('svg');
-        if($('el').length == 0){
+        if(el.length == 0){
             $(this).addClass('default-view');
             $(this).find(".filter-section").hide();
-            $(this).find(".anchor").hide();
+            $(this).find(".loader-text").show();
             $(".default-view").parents(".each-chart-section").css("height","400px");
-        }else{
-            $(this).removeClass('default-view');
-            $(this).find(".filter-section").show();
-            $(this).find(".anchor").show();
-            $(".default-view").parents(".each-chart-section").css("height","auto");
         }
-    });*/
+    });
+
+    $(document).ready(function(){
+        $('.chart-wrap').each(function() {
+            var el = $(this).find('svg');
+            if(el.length != 0) {
+                $(this).removeClass('default-view');
+                $(this).find(".filter-section").show();
+                $(this).find(".loader-text").hide();
+                $(".default-view").parents(".each-chart-section").css("height", "auto");
+            }
+        });
+    });
 
 
     /* ------------ end of sticky header for table --------------- */

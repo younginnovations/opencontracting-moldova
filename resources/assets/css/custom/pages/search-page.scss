@@ -104,7 +104,7 @@
   font-size: 16px;
 
   &:hover,&:active,&:focus{
-    background: hsl(218, 100%, 35%);
+    background: $link-hover-color;
     color: #fff;
   }
 }
