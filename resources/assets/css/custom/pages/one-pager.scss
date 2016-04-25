@@ -2,6 +2,9 @@
   background: transparent url(#{$img-path}/main_background.png) center top no-repeat;
   -o-background-size: cover;
   background-size: cover;
+  position: fixed;
+  min-height: 100vh;
+  width: 100vw;
   color: #fff;
 
   .top-bar.fixed-header{
@@ -10,6 +13,7 @@
 
   .inner-wrap-static{
     width: auto;
+    margin-bottom: 40px;
   }
 
   .title{

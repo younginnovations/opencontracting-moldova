@@ -370,8 +370,7 @@ footer {
 
 .header-banner {
   background: transparent url(/images/main_background.jpg) center top no-repeat;
-  -o-background-size: cover;
-     background-size: cover;
+  background-size: cover;
   color: #fff;
   border-bottom: solid 2.125rem #FFD200;
   margin-bottom: 28px; }
@@ -843,8 +842,7 @@ thead {
   overflow: hidden;
   position: relative;
   background: url(/images/main_background_table.jpg) center top no-repeat;
-  -o-background-size: cover;
-     background-size: cover;
+  background-size: cover;
   z-index: 5;
   /* ------- style for thead -------- */
   /* ------- style for thead ends -------- */ }
@@ -979,8 +977,7 @@ tfoot td, tfoot th, thead td, thead th {
             border-radius: 4px; }
   .table-wrapper .table-wrapper {
     background: url(/images/main_background_table.jpg) center top no-repeat;
-    -o-background-size: cover;
-       background-size: cover;
+    background-size: cover;
     -webkit-border-radius: 4px;
             border-radius: 4px; }
     .table-wrapper .table-wrapper .custom-table {
@@ -1318,39 +1315,88 @@ tfoot td, tfoot th, thead td, thead th {
 .table-view {
   display: none; }
 
+.background {
+  background-color: rgba(62, 106, 255, 0.7);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.5); }
+  .background .form-group .form-control {
+    color: #fff;
+    text-align: left;
+    border-bottom: 3px solid #fff;
+    padding-left: 0;
+    height: auto;
+    background: transparent !important; }
+  .background .button {
+    background: rgba(20, 83, 179, 0.65);
+    display: block;
+    width: 50%;
+    font-size: 13px;
+    color: #fff;
+    -webkit-border-radius: 0;
+            border-radius: 0;
+    padding: 15px 10px;
+    margin: 0 auto 20px auto;
+    border-bottom: 2px solid #ffd200; }
+    .background .button:hover {
+      color: #fff;
+      background: rgba(37, 70, 130, 0.76); }
+
+.formBox {
+  width: 81%;
+  margin: 0 auto;
+  margin-bottom: 20px; }
+
+.captcha-wrap {
+  width: 100%; }
+
+.rc-anchor-normal .rc-anchor-content {
+  width: 60% !important; }
+
+.rc-anchor-normal-footer {
+  width: 38% !important; }
+
+.bold {
+  font-weight: bold; }
+
+.contactTitle {
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 20px;
+  padding-top: 60px;
+  padding-bottom: 30px; }
+
 .form-group {
   margin-bottom: 20px;
-  position: relative; }
+  position: relative;
+  outline: 0; }
   .form-group ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: #999; }
+    color: #fff; }
   .form-group ::-moz-placeholder {
     /* Firefox 19+ */
-    color: #999; }
+    color: #fff; }
   .form-group :-ms-input-placeholder {
     /* IE 10+ */
-    color: #999; }
+    color: #fff; }
   .form-group :-moz-placeholder {
     /* Firefox 18- */
-    color: #999; }
+    color: #fff; }
   .form-group .control-label {
     color: rgba(0, 0, 0, 0.7);
     line-height: 18px;
     margin-bottom: 6px; }
   .form-group .form-control {
-    -webkit-border-radius: 4px;
-            border-radius: 4px;
-    border: solid 2px #FFD400;
-    -webkit-border-radius: 4px;
-            border-radius: 4px;
+    border: none;
     font-size: 13px;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none; }
 
-.inner-wrap-static .form-group .control-label {
-  color: #484848; }
-
-.inner-wrap-static .form-group .form-control {
-  border: none; }
+.ocdsAddress {
+  padding-left: 50px;
+  padding-top: 60px;
+  font-size: 20px;
+  text-transform: uppercase; }
 
 .search-wrap input {
   float: left;
@@ -1523,13 +1569,16 @@ tfoot td, tfoot th, thead td, thead th {
 
 .one-pager {
   background: transparent url(/images/main_background.png) center top no-repeat;
-  -o-background-size: cover;
   background-size: cover;
+  position: fixed;
+  min-height: 100vh;
+  width: 100vw;
   color: #fff; }
   .one-pager .top-bar.fixed-header {
     background: none; }
   .one-pager .inner-wrap-static {
-    width: auto; }
+    width: auto;
+    margin-bottom: 40px; }
   .one-pager .title {
     font-size: 1.5rem;
     line-height: 1.875rem;

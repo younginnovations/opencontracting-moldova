@@ -12,7 +12,9 @@
     "php": ">=5.5.9",
     "laravel/lumen-framework": "5.2.*",
     "vlucas/phpdotenv": "~2.2",
-    "jenssegers/mongodb": "2.3.*"
+    "jenssegers/mongodb": "2.3.*",
+    "guzzlehttp/guzzle": "5.3",
+    "godpod/sendgrid": "2.2.0.1"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
