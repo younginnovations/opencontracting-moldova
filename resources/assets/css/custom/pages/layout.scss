@@ -41,6 +41,16 @@ header{
   padding-top: 76px;
 }
 
+.top-bar-right{
+  .menu{
+    padding-right: 50px;
+  }
+}
+
+.toggle-visibility,.toggle-visibility-small{
+  visibility: hidden;
+}
+
 @media (max-width: 40em){
   .main-content {
     padding-top: 61px;
@@ -81,6 +91,7 @@ header{
 
     }
   }
+
 }
 
 @media (min-width: 40em){

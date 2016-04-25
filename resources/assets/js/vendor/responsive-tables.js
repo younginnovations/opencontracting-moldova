@@ -20,7 +20,6 @@ $(document).ready(function () {
 
         /* ------ hover on table ------- */
         var $trs = $('table tr:not(:first-child)');
-        console.log($trs);
         $trs.hover(
             function() {
                 var i = $(this).index() + 1;

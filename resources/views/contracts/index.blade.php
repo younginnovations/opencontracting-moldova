@@ -14,7 +14,7 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number"> 8,312 </div>
+                    <div class="number big-amount"> 8,312 </div>
                     <div class="big-title">Contract issued</div>
                 </div>
                 <p>
@@ -27,14 +27,6 @@
             <div class="chart-section-wrap">
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
-                        <form class="left-content">
-                            <label>
-                                <select id="select-contractor">
-                                    <option value="amount" selected>Based on value</option>
-                                    <option value="count">Based on count</option>
-                                </select>
-                            </label>
-                        </form>
                         <ul class="breadcrumbs right-content">
                             <p><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued over the years</p>
                         </ul>
@@ -47,9 +39,9 @@
         </div>
     </div>
 
-    <div class="row table-wrapper">
+    <div class="row table-wrapper persist-area">
         <table id="table_id" class="responsive hover custom-table display">
-            <thead>
+            <thead class="persist-header">
             <tr>
                 <th class="contract-number">Contract number</th>
                 <th class="hide">Contract ID</th>
@@ -112,8 +104,8 @@
             for(var i = 0; i < newTrends.length; i++){
                 total +=newTrends[i].chart2;
             }
-            $(".number").html(total.toLocaleString());
-        var makeCharts = function () {
+            $(".number").html(total);
+            var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createLineChartONHeader(JSON.parse(trends), widthOfParent, "#50E3C2");
         };

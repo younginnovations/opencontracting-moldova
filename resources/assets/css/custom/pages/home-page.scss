@@ -1,5 +1,5 @@
 .header-banner{
-  background: transparent url(#{$img-path}/main_background.png) center top no-repeat;
+  background: transparent url(#{$img-path}/main_background.jpg) center top no-repeat;
   background-size: cover;
   color: #fff;
   border-bottom: solid 2.125rem #FFD200;
@@ -118,6 +118,7 @@
 
   .chart-wrap {
     margin-bottom: 15px;
+    min-height: 200px;
 
     .filter-section{
       margin-right: -20px;
@@ -151,6 +152,40 @@
       }
 
     }
+
+  }
+}
+
+.default-view {
+  #linechart-homepage, #header-linechart,
+  #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
+  #barChart-amount {
+    width: 100%;
+    min-width: 100%;
+    min-height: 300px;
+    position: relative;
+    &:before{
+      content: "Fetching data...";
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      font-size: 22px;
+      line-height: 28px;
+      color: rgba(72,72,72,0.4);
+    }
+
+  }
+
+  #linechart-homepage, #header-linechart, #linechart-rest {
+    background: url(#{$img-path}/greyscale_lineChart.svg) center center no-repeat;
+
+  }
+
+  #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
+  #barChart-amount {
+    margin-top: -30px;
+    background: url(#{$img-path}/greyscale_barChart.svg) center center no-repeat;
 
   }
 }
