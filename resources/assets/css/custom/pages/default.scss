@@ -157,6 +157,10 @@ h2 {
   color: $dark-grey-color;
 }
 
+.small-title{
+  @include small-title();
+}
+
 @mixin inner-title(){
   font-size: 14px;
   line-height: 20px;
@@ -235,7 +239,7 @@ h2 {
 
   h2{
     display: block;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     text-align: center;
   }
 
@@ -257,6 +261,7 @@ h2 {
   display: table;
   padding: 6px 16px;
   min-width: 215px;
+  text-align: center;
 }
 
 .name-value-wrap {
@@ -280,14 +285,20 @@ h2 {
   overflow: hidden;
   border-radius: 4px;
   &.yellow-button{
-    border: solid 2px $deep-yellow-color;
-    border-radius: 22px;
-  }
-  &:hover,&:active,&:focus{
-    background: transparent;
-    color: $dark-grey-yellow-color;
+    background-color: #ffd200;
+    color: $darker-grey-color;
+    &:hover{
+      background: #e5bd00;
+    }
   }
 }
+
+.advance-search-wrap{
+  .yellow-button{
+    width: 100%;
+  }
+}
+
 
 .filled-button{
   padding: 10px 20px;
@@ -310,7 +321,17 @@ h2 {
     margin-top: -80px;
   }
 
+}
 
+.disabled-text{
+  padding: 10px 0;
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: -20px;
+  color: rgba(74,74,74,0.7);
+}
+
+.chart-wrap .disabled-text{
 
 }
 

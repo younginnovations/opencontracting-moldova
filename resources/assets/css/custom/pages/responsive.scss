@@ -1,7 +1,12 @@
 @media (max-width: 1260px) {
-  .main-content{
+  body:not(.one-pager) .main-content{
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  .one-pager .main-content{
+     padding-left: 20px;
+     padding-right: 20px;
   }
 
   .header-with-bg{
@@ -161,6 +166,11 @@
     .columns,.column{
       padding: 0;
     }
+  }
+
+  .advance-search-wrap .columns{
+    padding-left: .625rem;
+    padding-right: .625rem;
   }
 
   .chart-section-wrap .inner-wrap > div .columns:nth-child(odd),

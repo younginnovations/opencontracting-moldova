@@ -48,8 +48,8 @@
         </div>
     </div>
 
-    <div class="row table-wrapper persist-area">
-        <table id="table_id" class="responsive hover custom-table display">
+    <div class="row table-wrapper ">
+        <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
                 <th class="contract-number">Contract number</th>

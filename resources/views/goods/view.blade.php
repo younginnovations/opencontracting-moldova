@@ -95,7 +95,7 @@
                                     </div>
                                 </form>
                             </div>
-
+                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                             <div id="barChart-contractors"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -131,7 +131,7 @@
                                     </div>
                                 </form>
                             </div>
-
+                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                             <div id="barChart-procuring"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -154,9 +154,9 @@
 
     </div>
     <div class="row table-wrapper">
-        <table id="table_id" class="responsive hover custom-table">
+        <table id="table_id" class="responsive hover custom-table persist-area">
 
-            <thead>
+            <thead class="persist-header">
                 <th>Contract number</th>
                 <th class="hide">Contract ID</th>
                 <th>Contractor</th>

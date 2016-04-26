@@ -185,30 +185,14 @@
   }
 }
 
-/*style for switch*/
+/*style for custom switch*/
 
-/*
-.switch{
-  float: right;
+.custom-switch-wrap{
+  .small-title{
+    float: left;
+    padding-top: 8px;
+  }
 }
-
-.switch.large .switch-paddle{
-  width: 134px;
-  background: #2199e8;
-}
-
-.switch-active{
-  left: 10px;
-}
-
-.switch-inactive{
-  right: 10px;
-}
-
-.switch.large input:checked~.switch-paddle:after{
-  left: 97px
-}
-*/
 
 .toggle-switch {
   float: right;
@@ -227,11 +211,7 @@
   &:active {
     background-color: darken($deep-blue-color, 5%);
   }
-  /*&:hover:not(.toggle--moving) {
-    &:after {
-      background-color: lighten($deep-blue-color, 5%);
-    }
-  }*/
+
   &:after {
     display: block;
     position: absolute;
@@ -268,7 +248,6 @@
 .toggle--on {
   &:after {
     content: 'Json View';
-    //border-radius: 50px 5px 5px 50px;
     border-radius: 4px;
   }
 
@@ -306,26 +285,8 @@
   }
 }
 
-.toggle--on + .custom-switch-content .json-view{
-  display: block;
-}
-
-.toggle--on + .custom-switch-content .table-view{
-  display: none;
-}
-
-.toggle--off + .custom-switch-content .json-view{
-  display: none;
-}
-
-.toggle--off + .custom-switch-content .table-view{
-  display: block;
-}
-
-
-
 .custom-switch-content{
-  margin-top: 60px;
+  margin-top: 30px;
   margin-bottom: 20px;
   background-color: #fff;
   border-radius: 4px;
@@ -338,3 +299,95 @@
   display: none;
 }
 
+/* -------------- style for tooltip ------------- */
+
+.detail-info-wrap{
+  position: relative;
+
+  .detail-anchor{
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto 20px auto;
+    span{
+      font-family: Garamond;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: bold;
+      background: #333;
+      color: #eee;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+  }
+}
+
+.detail-info{
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  width: 400px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 50%;
+  z-index: 88;
+  margin-left: -150px;
+  transition: all 0.4s ease-in-out;
+
+  @media (max-width: 480px) {
+    width: 300px;
+    margin-left: -90px;
+  }
+
+  .name-value-wrap{
+    clear: both;
+    overflow: hidden;
+    .name{
+      width: 80px;
+      float: left;
+    }
+
+    .value{
+      font-size: 16px;
+      width: calc(100% - 120px);
+      line-height: 22px;
+      float: left;
+      padding-left: 8px;
+    }
+
+  }
+
+}
+
+/* ---------- add traingle above tooltip ------------- */
+
+.detail-info{
+  visibility: hidden;
+  opacity: 0;
+  &:after {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    margin-left: -6px;
+    width: 0;
+    border-bottom: 10px solid #fff;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+  }
+}
+
+//show tooltip when hover in anchor
+
+.detail-anchor:hover + .detail-info{
+  opacity: 1;
+  visibility: visible;
+  margin-left: -200px;
+  @media (max-width: 480px) {
+    margin-left: -150px;
+  }
+}

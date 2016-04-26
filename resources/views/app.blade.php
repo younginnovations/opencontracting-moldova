@@ -36,7 +36,7 @@
                         <input name="q" type="search"
                                placeholder="Type a contractor, procuring agency or goods & services ...">
                     </form>
-                    <div class="filter-wrap">
+                    <div class="filter-wrap columns">
                         <div class="row">
                             <div class="filter-inner clearfix">
                      <span class="filter-toggler">
@@ -77,7 +77,7 @@
 
                                 <div class="input-group-button medium-12 clearfix">
                                     <div class="medium-4 columns">
-                                        <input type="submit" class="button blue-button" value="Submit">
+                                        <input type="submit" class="button yellow-button" value="Submit">
                                     </div>
                                 </div>
                             </form>
