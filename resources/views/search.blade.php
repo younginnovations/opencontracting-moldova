@@ -87,6 +87,7 @@
                     <th class="contract-number">Contract number</th>
                     <th class="hide">Contract ID</th>
                     <th>Goods and services contracted</th>
+                    <th>Contract status</th>
                     <th width="150px">Contract start date</th>
                     <th width="150px">Contract end date</th>
                     <th>Amount</th>
@@ -98,6 +99,7 @@
                         <td>{{ $contract->contractNumber }}</td>
                         <td class="hide">{{ $contract->id }}</td>
                         <td>{{ $contract->goods['mdValue'] }}</td>
+                        <td>{{ $contract->status['mdValue'] }}</td>
                         <td class="dt">{{ $contract->contractDate }}</td>
                         <td class="dt">{{ $contract->finalDate }}</td>
                         <td class="numeric-data">{{ $contract->amount }}</td>
@@ -114,6 +116,17 @@
 
 @section('script')
     <script>
+        var createLinks = function () {
+            $('#table_id tbody tr').each(function () {
+                $(this).css('cursor', 'pointer');
+                $(this).click(function () {
+                    var contractId = $(this).find("td:nth-child(2)").text();
+                    return window.location.assign(window.location.origin + "/contracts/" + contractId);
+                });
+
+            });
+        };
+
         $("#table_id").DataTable({
             "language": {
                 "lengthMenu": "Show _MENU_ Contracts"
@@ -121,6 +134,7 @@
             "bFilter": false,
             "fnDrawCallback": function () {
                 changeDateFormat();
+                createLinks();
                 if ($('#table_id tr').length < 10 && $('a.current').text() === "1") {
                     $('.dataTables_paginate').hide();
                 } else {
@@ -128,5 +142,7 @@
                 }
             }
         });
+
+        createLinks();
     </script>
 @endsection

@@ -43,7 +43,7 @@ class ProcuringAgencyController extends Controller
     {
         $procuringAgency = $this->contracts->getProcuringAgency('amount', 5);
 
-        return view('agency.index',compact('procuringAgency'));
+        return view('agency.index', compact('procuringAgency'));
     }
 
     /**
@@ -60,41 +60,19 @@ class ProcuringAgencyController extends Controller
     public function show($procuringAgency)
     {
         $procuringAgency       = urldecode($procuringAgency);
+        $agencyData            = $this->procuringAgency->getAgencyData($procuringAgency);
+        //dd($agencyData->buyer['contactPoint']);
         $procuringAgencyDetail = $this->contracts->getDetailInfo($procuringAgency, "tender.stateOrg.orgName");
         $totalAmount           = $this->getTotalAmount($procuringAgencyDetail);
         $tenderTrends          = $this->tenders->getProcuringAgencyTenderByOpenYear($procuringAgency);
-        $trends                = $this->mergeContractAndTenderTrends(
-            $tenderTrends,
-            $this->contracts->aggregateContracts($procuringAgencyDetail)
-        );
-        $amountTrend           = $this->contracts->encodeToJson(
-            $this->contracts->aggregateContracts($procuringAgencyDetail, 'amount'),
-            'trend'
-        );
-        $contractors           = $this->contracts->getContractors(
-            'amount',
-            5,
-            $procuringAgency,
-            "tender.stateOrg.orgName"
-        );
-        $goodsAndServices      = $this->contracts->getGoodsAndServices(
-            'amount',
-            5,
-            $procuringAgency,
-            "tender.stateOrg.orgName"
-        );
+        $trends                = $this->mergeContractAndTenderTrends($tenderTrends, $this->contracts->aggregateContracts($procuringAgencyDetail));
+        $amountTrend           = $this->contracts->encodeToJson($this->contracts->aggregateContracts($procuringAgencyDetail, 'amount'), 'trend');
+        $contractors           = $this->contracts->getContractors('amount', 5, $procuringAgency, "tender.stateOrg.orgName");
+        $goodsAndServices      = $this->contracts->getGoodsAndServices('amount', 5, $procuringAgency, "tender.stateOrg.orgName");
 
         return view(
             'agency.view',
-            compact(
-                'procuringAgency',
-                'procuringAgencyDetail',
-                'totalAmount',
-                'trends',
-                'amountTrend',
-                'contractors',
-                'goodsAndServices'
-            )
+            compact('agencyData', 'procuringAgency', 'procuringAgencyDetail', 'totalAmount', 'trends', 'amountTrend', 'contractors', 'goodsAndServices')
         );
     }
 
@@ -118,7 +96,7 @@ class ProcuringAgencyController extends Controller
             $trends[$count]['xValue'] = $key;
             $trends[$count]['chart1'] = $tender;
             $trends[$count]['chart2'] = $contractsTrends[$key];
-            $count++;
+            $count ++;
         }
 
         return json_encode($trends);

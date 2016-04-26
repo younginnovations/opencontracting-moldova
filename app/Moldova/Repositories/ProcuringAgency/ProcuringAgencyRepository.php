@@ -94,4 +94,16 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
             ->orderBy('buyer.name', 'ASC')
             ->get();
     }
+
+    /**
+     * @param $procuringAgency
+     * @return mixed
+     */
+    public function getAgencyData($procuringAgency)
+    {
+        return $this->ocdsRelease
+            ->select(['buyer'])
+            ->where('buyer.name','=',$procuringAgency)
+            ->first();
+    }
 }

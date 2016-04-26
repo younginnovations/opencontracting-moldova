@@ -155,11 +155,12 @@
 
     </div>
     <div class="row table-wrapper">
-        <table class="responsive hover custom-table">
+        <table table id="table_id" class="responsive hover custom-table">
             <tbody>
             <tr>
                 <th>Contract number</th>
                 <th>Goods and services contracted</th>
+                <th>Contract status</th>
                 <th width="150px">Contract start date</th>
                 <th width="150px">Contract end date</th>
                 <th>Amount</th>
@@ -170,6 +171,7 @@
                     <tr>
                         <td>{{ $contract['contractNumber'] }}</td>
                         <td>{{ $contract['goods']['mdValue'] }}</td>
+                        <td>{{ $contract['status']['mdValue'] }}</td>
                         <td class="dt">{{ $contract['contractDate'] }}</td>
                         <td class="dt">{{ $contract['finalDate'] }}</td>
                         <td>{{ number_format($contract['amount']) }}</td>
@@ -192,6 +194,36 @@
         $(document).ready(function(){
             updateTables();
         })
+    </script>
+    <script src="{{url('js/responsive-tables.min.js')}}"></script>
+    <script>
+
+        var createLinks = function () {
+
+            $('#table_id tbody tr').each(function () {
+                $(this).css('cursor', 'pointer');
+                $(this).click(function () {
+                    var contractId = $(this).find("td:nth-child(2)").text();
+                    return window.location.assign(window.location.origin + "/contracts/" + contractId);
+                });
+
+            });
+        };
+
+        $("#table_id").DataTable({
+            "bFilter": false,
+            "fnDrawCallback": function () {
+                changeDateFormat();
+                createLinks();
+                if ($('#table_id tr').length < 10 && $('a.current').text() === "1") {
+                    $('.dataTables_paginate').hide();
+                } else {
+                    $('.dataTables_paginate').show();
+                }
+            }
+        });
+
+        createLinks();
     </script>
     <script>
         var route = '{{ route("filter") }}';

@@ -48,19 +48,19 @@
                                     <div class="form-group medium-4 columns end">
                                         <select name="contractor" class="cs-select cs-skin-elastic">
                                             <option value="" disabled selected>Select a contractor</option>
-                                          {{--  @forelse($contractTitles as $contractTitle)
+                                            @forelse($contractTitles as $contractTitle)
                                                 <option value="{{ $contractTitle['_id'] }}">{{ $contractTitle['_id'] }}</option>
                                             @empty
-                                            @endforelse--}}
+                                            @endforelse
                                         </select>
                                     </div>
                                     <div class="form-group medium-4 columns end">
                                         <select name="agency" class="cs-select cs-skin-elastic">
                                             <option value="" disabled selected>Select a buyer</option>
-                                           {{-- @forelse($procuringAgencies as $procuringAgency)
+                                            @forelse($procuringAgencies as $procuringAgency)
                                                 <option value="{{ $procuringAgency[0] }}">{{ $procuringAgency[0] }}</option>
                                             @empty
-                                            @endforelse--}}
+                                            @endforelse
                                         </select>
                                     </div>
                                     <div class="form-group medium-4 columns end">
