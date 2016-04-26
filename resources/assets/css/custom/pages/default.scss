@@ -354,3 +354,19 @@ footer {
   width: 100%;
 }
 
+//style for modal
+
+.alert{
+  padding: 10px;
+  border-radius: 3px;
+  text-align: center;
+  color: #fff;
+}
+.success{
+  border:1px solid #157539;
+  background-color:#43AC6A;
+}
+.errors{
+  border: 1px solid #881f0e;
+  background-color: #F04124;
+}

@@ -31,7 +31,7 @@ class Email
         $email = new \SendGrid\Email();
 
         $email
-            ->addTo('moldova@yipl.com.np    ')
+            ->addTo('moldova@yipl.com.np')
             ->setFrom($fromEmailId)
             ->setSubject($subject)
             ->setHtml($message);
@@ -45,7 +45,12 @@ class Email
             return null;
         }
 
-        $message = $messageData['fullname']. " has sent an email, '" .$messageData['message']."'";
+        if(!isset($messageData['id'])){
+            $message = $messageData['fullname']. " has sent an email, <br /><br />".$messageData['message'];
+        }
+        else{
+            $message = $messageData['fullname']. " has sent an email, <br /><br />".$messageData['message']."<br />Contract ID: ".$messageData['id']."<br />Contract Title: ".$messageData['title']."<br />URL : ".url('/contracts/')."/".$messageData['id'];
+        }
         $emailFrom = $messageData['email'];
         $subject = "About Moldova OCDS";
         return $this->makeEmail($subject, $message, $emailFrom);

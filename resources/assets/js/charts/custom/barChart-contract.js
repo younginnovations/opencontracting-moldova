@@ -96,8 +96,10 @@ var createBarChartContract = function (data, definedId, url) {
         .on("mousemove", function(d){
             var mousePos = d3.mouse(divNode);
             d3.select("#tooltip-wrap")
-                .style("left",mousePos[0] + "px")
                 .style("top",mousePos[1] + "px")
+                .style("top", function(d){
+                    d.value + "px";
+                })
                 .select("#value")
                 .attr("text-anchor","middle")
                 .html(d.value);

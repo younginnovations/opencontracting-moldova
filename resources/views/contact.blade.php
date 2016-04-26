@@ -4,21 +4,22 @@
         <div class="inner-wrap-static">
             <div class="buffer-top clearfix">
                 <div class="medium-5 columns background">
-                    <form class="custom-form clearfix" action="{{route('home.contact')}}" method="post">
+                    <form class="custom-form clearfix">
                         <div class="formBox">
                             <div class="contactTitle"><span class="bold">Contact</span> Us</div>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="fullname" placeholder="YOUR NAME" required>
+                                <input class="form-control" type="text" id="fullname" name="fullname" placeholder="YOUR NAME" required>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="email" name="email" placeholder="YOUR EMAIL" required>
+                                <input class="form-control" type="email" id="email" name="email" placeholder="YOUR EMAIL" required>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="YOUR MESSAGE" name="message" required></textarea>
+                                <textarea class="form-control" placeholder="YOUR MESSAGE" id="message" name="message" required></textarea>
                             </div>
-                            <div class="g-recaptcha captcha-wrap" data-sitekey="{{ env('RE_CAP_SITE') }}" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+                            <div class="g-recaptcha captcha-wrap" id="captcha" data-sitekey="{{ env('RE_CAP_SITE') }}" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
                         </div>
-                                <button class="button" type="submit" value="SEND MESSAGE" rows="20">SEND MESSAGE</button>
+                        <div id="ajaxResponse"></div>
+                        <button class="button" id="submit" type="submit" value="SEND MESSAGE" rows="20">SEND MESSAGE</button>
                     </form>
                 </div>
                 <div class="medium-7 columns ocdsAddress">
@@ -51,5 +52,32 @@
     </style>
 @endsection
 @section('script')
+    <script>
+        $(document).ready(function(){
+            $('#submit').on('click',function(e){
+                var route = '{{ route('home.contact') }}';
+                e.preventDefault();
+                var name  = $('#fullname').val();
+                var email  = $('#email').val();
+                var message = $('#message').val();
+                var g_recaptcha_response = $("#g-recaptcha-response").val();
+                var data = {fullname: name, email: email,message:message,'g-recaptcha-response':g_recaptcha_response};
+                $.ajax({
+                    type: "POST",
+                    url: route,
+                    data: data,
+                    success: function(data){
+                        if(data.status == "success"){
+                            $('#fullname').val("");
+                            $('#email').val('');
+                            $('#message').val('');
+                        }
+
+                        $("#ajaxResponse").html(data.msg);
+                    }
+                });
+            });
+        });
+    </script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection
