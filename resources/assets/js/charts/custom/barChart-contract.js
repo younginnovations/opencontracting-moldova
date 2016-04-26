@@ -92,19 +92,19 @@ var createBarChartContract = function (data, definedId, url) {
             else
             return height - y(d.value); });
 
-    //svg.selectAll("rect")
-    //    .on("mouseover", function(d){
-    //        var mousePos = d3.mouse(divNode);
-    //        d3.select("#tooltip-wrap")
-    //            .style("left",mousePos[0] + "px")
-    //            .style("top",mousePos[1] + "px")
-    //            .select("#value")
-    //            .attr("text-anchor","middle")
-    //            .html(d.value);
-    //
-    //        d3.select("#tooltip-wrap").classed("hide", false);
-    //    })
-    //    .on("mouseout",function(d){
-    //        d3.select("#tooltip-wrap").classed("hide", true);
-    //    });
+    svg.selectAll("rect")
+        .on("mousemove", function(d){
+            var mousePos = d3.mouse(divNode);
+            d3.select("#tooltip-wrap")
+                .style("left",mousePos[0] + "px")
+                .style("top",mousePos[1] + "px")
+                .select("#value")
+                .attr("text-anchor","middle")
+                .html(d.value);
+
+            d3.select("#tooltip-wrap").classed("hide", false);
+        })
+        .on("mouseout",function(d){
+            d3.select("#tooltip-wrap").classed("hide", true);
+        });
 };

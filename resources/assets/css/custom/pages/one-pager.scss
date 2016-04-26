@@ -1,8 +1,7 @@
 .one-pager {
   background: transparent url(#{$img-path}/main_background.png) center top no-repeat;
-  -o-background-size: cover;
   background-size: cover;
-  position: fixed;
+  background-attachment: fixed;
   min-height: 100vh;
   width: 100vw;
   color: #fff;

@@ -31,11 +31,60 @@
                     Leu
                     worth of contracts
                 </p>
-                <form action="{{ route('search') }}" method="get" class="search-form medium-8 small-12 columns
-                ">
-                    <input name="q" type="search"
-                           placeholder="Type a contractor, procuring agency or goods & services ...">
-                </form>
+                <div class="multiple-search-wrap medium-8 small-12 columns">
+                    <form action="{{ route('search') }}" method="get" class="search-form">
+                        <input name="q" type="search"
+                               placeholder="Type a contractor, procuring agency or goods & services ...">
+                    </form>
+                    <div class="filter-wrap">
+                        <div class="row">
+                            <div class="filter-inner clearfix">
+                     <span class="filter-toggler">
+                        <a class="show-filter" id="home-show-filter">advance-filter</a>
+                    </span>
+                            </div>
+                            <form action="{{ route('search') }}" method="get" class="custom-form advance-search-wrap">
+                                <div class="form-inner clearfix">
+                                    <div class="form-group medium-4 columns end">
+                                        <select name="contractor" class="cs-select cs-skin-elastic">
+                                            <option value="" disabled selected>Select a contractor</option>
+                                          {{--  @forelse($contractTitles as $contractTitle)
+                                                <option value="{{ $contractTitle['_id'] }}">{{ $contractTitle['_id'] }}</option>
+                                            @empty
+                                            @endforelse--}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group medium-4 columns end">
+                                        <select name="agency" class="cs-select cs-skin-elastic">
+                                            <option value="" disabled selected>Select a buyer</option>
+                                           {{-- @forelse($procuringAgencies as $procuringAgency)
+                                                <option value="{{ $procuringAgency[0] }}">{{ $procuringAgency[0] }}</option>
+                                            @empty
+                                            @endforelse--}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group medium-4 columns end">
+                                        <select name="amount" class="cs-select cs-skin-elastic">
+                                            <option value="" disabled selected>Select a range</option>
+                                            <option value="0-10000">0-10000</option>
+                                            <option value="10000-200000">10000-200000</option>
+                                            <option value="200000-500000">200000-500000</option>
+                                            <option value="500000-1000000">500000-1000000</option>
+                                            <option value="1000000-Above">1000000-Above</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="input-group-button medium-12 clearfix">
+                                    <div class="medium-4 columns">
+                                        <input type="submit" class="button blue-button" value="Submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

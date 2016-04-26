@@ -193,6 +193,40 @@
 
 }
 
+.search{
+  input:-moz-placeholder {
+    color: rgba(255,255,255,0.3);
+  }
+  input::-webkit-input-placeholder {
+    color: rgba(255,255,255,0.3);
+  }
+
+}
+
+/* ---------- style for advance search in homepage ---------- */
+
+.multiple-search-wrap{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  float: left;
+
+  .filter-wrap .filter-toggler a{
+    color: #fff;
+  }
+
+  .filter-wrap .filter-toggler{
+    float: right;
+    margin: 0 15px;
+
+    a:after{
+      background: transparent url(#{$img-path}/ic_arrow_down-white.svg) center no-repeat;
+    }
+  }
+}
+
+
+
 @media (max-width: 768px){
 
   .top-bar-right .menu{

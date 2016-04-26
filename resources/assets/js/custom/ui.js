@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     $(document).mouseup(function (e)
     {
-        var container = $(".search");
+        var container = $(".search,.filter-toggler,.advance-search-wrap");
 
         if (!container.is(e.target) // if the target of the click isn't the container...
             && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -30,6 +30,10 @@ $(document).ready(function(){
             $(".fixed-header .menu").removeClass('toggle-visibility');
             $(".fixed-header .top-bar-left").removeClass('toggle-visibility-small');
             $(".burger-menu-button").removeClass('toggle-visibility-small');
+
+            $(".advance-search-wrap").slideUp();
+            $(".filter-toggler a").removeClass("active");
+            $(".multiple-search-wrap .search-form").show();
         }
     });
 
@@ -64,9 +68,17 @@ $(document).ready(function(){
    /* toggle filter section*/
 
     $(".show-filter").click(function(){
+        var element = $(this);
         $(".advance-search-wrap").slideToggle();
         $(".filter-toggler a").toggleClass("active");
+
+        if($(window).width() > 768 ){
+           $(".multiple-search-wrap .search-form").toggle();
+        }
+
     });
+
+
 
     $('.toggle-switch').click(function(e) {
         var toggle = this;
