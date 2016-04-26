@@ -41,6 +41,16 @@
                     </div>
                     <div class="chart-wrap">
                         <div id="barChart-goods"></div>
+                        <div class="loader-text">
+                            <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,7 +58,7 @@
     </div>
 
     <div class="row table-wrapper">
-        <table id="table_id" class="hover custom-table display">
+        <table id="table_id" class="hover responsive custom-table display">
             <thead>
             <tr>
                 <th>Name</th>
@@ -63,6 +73,7 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script>
         $('#table_id').DataTable({
             "language": {
@@ -81,6 +92,7 @@
             ],
             "fnDrawCallback": function () {
                 createLinks();
+                updateTables();
                 if ($('#table_id tr').length < 10) {
                     $('.dataTables_paginate').hide();
                 } else {
@@ -102,7 +114,6 @@
         };
 
     </script>
-
     <script>
         var route = '{{ route("filter") }}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';

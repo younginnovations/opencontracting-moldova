@@ -1,6 +1,12 @@
 .background{
-  background-color: rgba(62,106,255,0.7);
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 4px;
   box-shadow: 0 0 3px rgba(0,0,0,0.5);
+
+  .custom-form{
+    padding-bottom: 40px;
+  }
+
   .form-group .form-control {
     color: #fff;
     text-align: left;
@@ -26,20 +32,7 @@
   }
 }
 .formBox{
-  width: 81%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
-.captcha-wrap{
-  width:100%;
-}
-
-.rc-anchor-normal .rc-anchor-content{
-  width: 60% !important;
-}
-
-.rc-anchor-normal-footer{
-  width:38% !important;
+  margin: 40px 20px 20px;
 }
 
 .bold{
@@ -49,7 +42,6 @@
   text-transform: uppercase;
   text-align: left;
   font-size: 20px;
-  padding-top: 60px;
   padding-bottom: 30px;
 }
 .form-group {
@@ -81,9 +73,31 @@
     box-shadow: none;
   }
 }
+
 .ocdsAddress {
-  padding-left: 50px;
-  padding-top: 60px;
-  font-size: 20px;
-  text-transform: uppercase;
+   padding-left: 50px;
+   padding-top: 60px;
+   font-size: 20px;
+   text-transform: uppercase;
+ }
+
+.cs-skin-elastic.cs-active .cs-options ul li{
+  &:hover{
+    background-color: #f2f2f2;
+  }
+}
+
+
+@media (max-width: 768px){
+  .background{
+    &.medium-5 {
+      width: 100%;
+      float: none;
+    }
+  }
+
+  .ocdsAddress.medium-7{
+    width: 100%;
+    float: none;
+  }
 }

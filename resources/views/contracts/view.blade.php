@@ -152,4 +152,10 @@
 
         showJsonTable();
     </script>
+    <script src="{{url('js/responsive-tables.min.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            updateTables();
+        })
+    </script>
 @endsection

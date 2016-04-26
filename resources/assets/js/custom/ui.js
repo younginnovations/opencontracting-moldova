@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     $(document).mouseup(function (e)
     {
-        var container = $(".search");
+        var container = $(".search,.filter-toggler,.advance-search-wrap");
 
         if (!container.is(e.target) // if the target of the click isn't the container...
             && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -30,6 +30,10 @@ $(document).ready(function(){
             $(".fixed-header .menu").removeClass('toggle-visibility');
             $(".fixed-header .top-bar-left").removeClass('toggle-visibility-small');
             $(".burger-menu-button").removeClass('toggle-visibility-small');
+
+            $(".advance-search-wrap").slideUp();
+            $(".filter-toggler a").removeClass("active");
+            $(".multiple-search-wrap .search-form").show();
         }
     });
 
@@ -64,9 +68,17 @@ $(document).ready(function(){
    /* toggle filter section*/
 
     $(".show-filter").click(function(){
+        var element = $(this);
         $(".advance-search-wrap").slideToggle();
         $(".filter-toggler a").toggleClass("active");
+
+        if($(window).width() > 768 ){
+           $(".multiple-search-wrap .search-form").toggle();
+        }
+
     });
+
+
 
     $('.toggle-switch').click(function(e) {
         var toggle = this;
@@ -112,7 +124,7 @@ $(document).ready(function(){
 
     /* ------------ sticky header in tables ---------------- */
 
-    /*var fixHeader = function(){
+  /*  var fixHeader = function(){
         if($(window).width() > 768){
             $(".persist-area").each(function() {
 
@@ -136,20 +148,27 @@ $(document).ready(function(){
         fixHeader();
     });*/
 
-  /*  $('.chart-wrap').each(function(){
+    $('.chart-wrap').each(function(){
         var el = $(this).find('svg');
-        if($('el').length == 0){
+        if(el.length == 0){
             $(this).addClass('default-view');
             $(this).find(".filter-section").hide();
-            $(this).find(".anchor").hide();
+            $(this).find(".loader-text").show();
             $(".default-view").parents(".each-chart-section").css("height","400px");
-        }else{
-            $(this).removeClass('default-view');
-            $(this).find(".filter-section").show();
-            $(this).find(".anchor").show();
-            $(".default-view").parents(".each-chart-section").css("height","auto");
         }
-    });*/
+    });
+
+    $(document).ready(function(){
+        $('.chart-wrap').each(function() {
+            var el = $(this).find('svg');
+            if(el.length != 0) {
+                $(this).removeClass('default-view');
+                $(this).find(".filter-section").show();
+                $(this).find(".loader-text").hide();
+                $(".default-view").parents(".each-chart-section").css("height", "auto");
+            }
+        });
+    });
 
 
     /* ------------ end of sticky header for table --------------- */
