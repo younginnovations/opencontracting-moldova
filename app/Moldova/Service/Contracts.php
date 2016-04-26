@@ -30,6 +30,12 @@ class Contracts
 
     }
 
+    public function getContractorsByOpenYear()
+    {
+        return $this->contracts->getContractorsByOpenYear();
+
+    }
+
     public function aggregateContracts($contracts, $type = '')
     {
         $contractsByOpenYear = [];
@@ -106,6 +112,11 @@ class Contracts
         return $this->contracts->getContractsList($params);
     }
 
+    public function getContractorsList($params)
+    {
+        return $this->contracts->getContractorsList($params);
+    }
+
     /**
      * Find Contractor or Procuring Agency Info according to params provided
      * @param $parameter
@@ -153,7 +164,7 @@ class Contracts
     {
         return $this->contracts->getAllContractTitle();
     }
-
+    
     public function getContractDataForJson($contractId)
     {
         return $this->contracts->getContractDataForJson($contractId);

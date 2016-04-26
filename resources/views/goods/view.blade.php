@@ -192,6 +192,19 @@
         $(document).ready(function(){
             updateTables();
         });
+
+        var createLinks = function () {
+
+            $('#table_id tbody tr').each(function () {
+                $(this).css('cursor', 'pointer');
+                $(this).click(function () {
+                    var contractId = $(this).find("td:nth-child(2)").text();
+                    return window.location.assign(window.location.origin + "/contracts/" + contractId);
+                });
+
+            });
+        };
+
         $("#table_id").DataTable({
             "bFilter": false,
             "fnDrawCallback": function () {
@@ -205,17 +218,7 @@
             }
         });
 
-        var createLinks = function () {
-
-            $('#table_id tbody tr').each(function () {
-                $(this).css('cursor', 'pointer');
-                $(this).click(function () {
-                    var contractId = $(this).find("td:nth-child(2)").text();
-                    return window.location.assign(window.location.origin + "/contracts/" + contractId);
-                });
-
-            });
-        };
+        createLinks();
     </script>
     <script>
         var route = '{{ route("filter") }}';

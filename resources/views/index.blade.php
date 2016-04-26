@@ -101,7 +101,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('contracts') }}" class="anchor">View all contractors <span>  &rarr; </span></a>
+                            <a href="{{ route('contracts.contractorIndex') }}" class="anchor">View all contractors <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>

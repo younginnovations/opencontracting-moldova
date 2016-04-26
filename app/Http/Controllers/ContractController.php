@@ -21,12 +21,33 @@ class ContractController extends Controller
         $this->contracts = $contracts;
     }
 
+    /**
+     * Contracts Index Function
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
-        $contractsTrends     = $this->getTrend($this->contracts->getContractsByOpenYear());
-        return view('contracts.index',compact('contractsTrends'));
+        $contractsTrends = $this->getTrend($this->contracts->getContractsByOpenYear());
+
+        return view('contracts.index', compact('contractsTrends'));
     }
 
+    /**
+     * Contractors Index function
+     * @return \Illuminate\View\View
+     */
+    public function contractorIndex()
+    {
+        $contractorsTrends = $this->contracts->getContractors('amount', 5);
+        $contractors       = $this->contracts->getContractorsByOpenYear();
+
+        return view('contracts.contractor-index', compact('contractorsTrends', 'contractors'));
+    }
+
+    /**
+     * @param $contractor
+     * @return \Illuminate\View\View
+     */
     public function show($contractor)
     {
         $contractor       = urldecode($contractor);
@@ -40,6 +61,10 @@ class ContractController extends Controller
         return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices'));
     }
 
+    /**
+     * @param $contracts
+     * @return int
+     */
     private function getTotalAmount($contracts)
     {
         $total = 0;
@@ -51,6 +76,10 @@ class ContractController extends Controller
         return ($total);
     }
 
+    /**
+     * @param $contracts
+     * @return string
+     */
     private function getTrend($contracts)
     {
         $trends = [];
@@ -67,6 +96,7 @@ class ContractController extends Controller
         return json_encode($trends);
     }
 
+
     /**
      * @param $contractId
      * @return \Illuminate\View\View
@@ -74,8 +104,8 @@ class ContractController extends Controller
     public function view($contractId)
     {
         $contractDetail = $this->contracts->getContractDetailById($contractId);
-        $contractData = $this->contracts->getContractDataForJson($contractId);
+        $contractData   = $this->contracts->getContractDataForJson($contractId);
 
-        return view('contracts.view',compact('contractDetail','contractData'));
+        return view('contracts.view', compact('contractDetail', 'contractData'));
     }
 }

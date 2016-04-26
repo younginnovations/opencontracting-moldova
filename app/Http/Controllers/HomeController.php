@@ -69,6 +69,14 @@ class HomeController extends Controller
 
     }
 
+    public function getContractorData(Request $request)
+    {
+        $input = $request->all();
+
+        return $this->contracts->getContractorsList($input);
+
+    }
+
     protected function mergeContractAndTenderTrends($tendersTrends, $contractsTrends)
     {
         $trends = [];
@@ -162,6 +170,7 @@ class HomeController extends Controller
         $response = ($response->json());
 
         if ($response['success'] === true) {
+
             return true;
         }
 
@@ -175,6 +184,7 @@ class HomeController extends Controller
             $email->sendMessage($request->all());
 
             if ($email) {
+
                 return view('contact')->withSuccess('Your message has been sent. Will be in touch with you soon.');
             }
 

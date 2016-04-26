@@ -144,7 +144,7 @@
 
     </div>
     <div class="row table-wrapper">
-        <table table id="table_id" class="responsive hover custom-table">
+        <table id="table_id" class="responsive hover custom-table">
 
             <thead>
             <th class="contract-number">Contract number</th>
@@ -168,7 +168,6 @@
                 </tr>
             @empty
             @endforelse
-
 
             </tbody>
         </table>

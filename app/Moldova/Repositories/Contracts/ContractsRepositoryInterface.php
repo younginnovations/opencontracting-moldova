@@ -57,11 +57,20 @@ interface ContractsRepositoryInterface
     public function getContractsList($params);
 
     /**
+     * Get list of contractors
+     * @param $params
+     * @return mixed
+     */
+    public function getContractorsList($params);
+
+
+    /**
      * Get detail of Contractor or Procuring Agency by name
      * @param $parameter
      * @param $column
      * @return mixed
      */
+
     public function getDetailInfo($parameter, $column);
 
     /**
