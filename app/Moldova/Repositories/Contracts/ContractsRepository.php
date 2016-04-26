@@ -216,9 +216,11 @@ class ContractsRepository implements ContractsRepositoryInterface
                 [$column => $parameter],
                 [
                     "contractNumber"          => 1,
+                    "id"                      => 1,
                     "contractDate"            => 1,
                     "finalDate"               => 1,
                     "amount"                  => 1,
+                    "status.mdValue"          => 1,
                     "goods.mdValue"           => 1,
                     "participant.fullName"    => 1,
                     "tender.stateOrg.orgName" => 1
@@ -243,7 +245,7 @@ class ContractsRepository implements ContractsRepositoryInterface
         $contract['procuringAgency'] = $result['buyer']['name'];
 
         foreach ($result['award'] as $award) {
-            if ($award['id'] === $contract['awardID']) {
+            if ($award['id'] === $contract['awardID'] && !empty($award['items'])) {
                 $contract['goods']      = $award['items'][0]['classification']['description'];
                 $contract['contractor'] = $award['suppliers'][0]['name'];
                 break;
@@ -265,7 +267,7 @@ class ContractsRepository implements ContractsRepositoryInterface
         $range      = (!empty($search['amount'])) ? explode("-", $search['amount']) : '';
 
         return ($this->contracts
-            ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue'])
+            ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue','status.mdValue'])
             ->where(function ($query) use ($q, $contractor, $range, $agency) {
 
                 if (!empty($q)) {

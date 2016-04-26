@@ -34,4 +34,9 @@ class ProcuringAgency
     {
         return $this->procuringAgency->getAllProcuringAgencyTitle();
     }
+
+    public function getAgencyData($procuringAgency)
+    {
+        return $this->procuringAgency->getAgencyData($procuringAgency);
+    }
 }

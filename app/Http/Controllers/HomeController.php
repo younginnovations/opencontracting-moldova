@@ -49,10 +49,12 @@ class HomeController extends Controller
         $procuringAgency     = $this->contracts->getProcuringAgency('amount', 5);
         $contractors         = $this->contracts->getContractors('amount', 5);
         $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5);
+        $contractTitles    = $this->contracts->getAllContractTitle();
+        $procuringAgencies = $this->procuringAgency->getAllProcuringAgencyTitle();
 
         // $contractsList       = $this->contracts->getContractsList(10);
 
-        return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices'));
+        return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices','contractTitles','procuringAgencies'));
     }
 
     /**
@@ -138,20 +140,14 @@ class HomeController extends Controller
     {
         $contractTitles    = $this->contracts->getAllContractTitle();
         $procuringAgencies = $this->procuringAgency->getAllProcuringAgencyTitle();
+        $contracts         = [];
+        $params            = $request->all();
 
-//        $search     = $request->get('q');
-//        $contractor = $request->get('contractor');
-//        $agency     = $request->get('agency');
-//        $range      = $request->get('amount');
-
-        $contracts = [];
-        $params    = $request->all();
         if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount'))) {
             //$params = $request->all();
 
             $contracts = $this->contracts->search($params);
         }
-
 
         return view('search', compact('contracts', 'contractTitles', 'procuringAgencies', 'params'));
     }
@@ -159,13 +155,13 @@ class HomeController extends Controller
     /**
      * @return bool
      */
-    public function checkCaptcha($request,$client)
+    public function checkCaptcha($request, $client)
     {
-        $params = ['body' => ['secret' => env('RE_CAP_SECRET'), 'response' => $request->get('g-recaptcha-response'), 'remoteip' => $request->ip()]];
+        $params   = ['body' => ['secret' => env('RE_CAP_SECRET'), 'response' => $request->get('g-recaptcha-response'), 'remoteip' => $request->ip()]];
         $response = $client->post('https://www.google.com/recaptcha/api/siteverify', $params);
         $response = ($response->json());
 
-        if($response['success'] === true){
+        if ($response['success'] === true) {
             return true;
         }
 
@@ -174,16 +170,17 @@ class HomeController extends Controller
 
     public function sendMessage(Request $request, Email $email, Client $client)
     {
-        if($this->checkCaptcha($request, $client)){
+        if ($this->checkCaptcha($request, $client)) {
 
             $email->sendMessage($request->all());
 
-            if($email){
+            if ($email) {
                 return view('contact')->withSuccess('Your message has been sent. Will be in touch with you soon.');
             }
 
             return view('contact')->withErrors("Sorry your email can't be sent at the moment, please try again later");
         }
+
         return view('contact')->withErrors("Please verify the captcha");
     }
 }

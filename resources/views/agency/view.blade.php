@@ -2,9 +2,18 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2> <span><img src="{{url('images/ic_agency.svg')}}"/></span>
+            <h2><span><img src="{{url('images/ic_agency.svg')}}"/></span>
                 {{ $procuringAgency }}
             </h2>
+
+            <div class="detail-info">
+                <span>{{ $agencyData->buyer['address']['streetAddress'] }}</span>
+                <span>{{ $agencyData->buyer['contactPoint']['email'] }}</span>
+                <span>{{ $agencyData->buyer['contactPoint']['telephone'] }}</span>
+                <span>{{ $agencyData->buyer['contactPoint']['faxNumber'] }}</span>
+                <span>{{ $agencyData->buyer['contactPoint']['url'] }}</span>
+            </div>
+
         </div>
     </div>
     <div class="row chart-section-wrap push-up-block">
@@ -138,23 +147,25 @@
         <table table id="table_id" class="responsive hover custom-table">
 
             <thead>
-                <th>Contract number</th>
-                <th>Goods and services contracted</th>
-                <th width="150px">Contract start date</th>
-                <th width="150px">Contract end date</th>
-                <th>Amount</th>
+            <th class="contract-number">Contract number</th>
+            <th class="hide">Contract ID</th>
+            <th>Goods and services contracted</th>
+            <th>Contract status</th>
+            <th class="long-th">Contract start date</th>
+            <th class="long-th">Contract end date</th>
+            <th>Amount</th>
             </thead>
             <tbody>
             @forelse($procuringAgencyDetail as $key => $agency)
-                @if($key < 10)
-                    <tr>
-                        <td>{{ $agency['contractNumber'] }}</td>
-                        <td>{{ $agency['goods']['mdValue'] }}</td>
-                        <td class="dt">{{ $agency['contractDate'] }}</td>
-                        <td class="dt">{{ $agency['finalDate'] }}</td>
-                        <td>{{ number_format($agency['amount']) }}</td>
-                    </tr>
-                @endif
+                <tr>
+                    <td>{{ $agency['contractNumber'] }}</td>
+                    <td class="hide">{{ $agency['id'] }}</td>
+                    <td>{{ $agency['goods']['mdValue'] }}</td>
+                    <td>{{ $agency['status']['mdValue'] }}</td>
+                    <td class="dt">{{ $agency['contractDate'] }}</td>
+                    <td class="dt">{{ $agency['finalDate'] }}</td>
+                    <td>{{ number_format($agency['amount']) }}</td>
+                </tr>
             @empty
             @endforelse
 
@@ -169,10 +180,41 @@
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             updateTables();
-        })
+        });
     </script>
+    <script src="{{url('js/responsive-tables.min.js')}}"></script>
+    <script>
+
+        var createLinks = function () {
+
+            $('#table_id tbody tr').each(function () {
+                $(this).css('cursor', 'pointer');
+                $(this).click(function () {
+                    var contractId = $(this).find("td:nth-child(2)").text();
+                    return window.location.assign(window.location.origin + "/contracts/" + contractId);
+                });
+
+            });
+        };
+
+        $("#table_id").DataTable({
+            "bFilter": false,
+            "fnDrawCallback": function () {
+                changeDateFormat();
+                createLinks();
+                if ($('#table_id tr').length < 10 && $('a.current').text() === "1") {
+                    $('.dataTables_paginate').hide();
+                } else {
+                    $('.dataTables_paginate').show();
+                }
+            }
+        });
+
+        createLinks();
+    </script>
+
     <script>
         var route = '{{ route("filter") }}';
         var trends = '{!! $trends  !!}';

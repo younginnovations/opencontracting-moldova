@@ -154,29 +154,30 @@
 
     </div>
     <div class="row table-wrapper">
-        <table class="responsive hover custom-table">
-            <tbody>
-            <tr>
+        <table id="table_id" class="responsive hover custom-table">
+
+            <thead>
                 <th>Contract number</th>
+                <th class="hide">Contract ID</th>
                 <th>Contractor</th>
+                <th>Contract status</th>
                 <th width="150px">Contract start date</th>
                 <th width="150px">Contract end date</th>
                 <th>Amount</th>
-            </tr>
-
+            </thead>
+            <tbody>
             @forelse($goodsDetail as $key => $goods)
-                @if($key < 10)
                     <tr>
                         <td>{{ $goods['contractNumber'] }}</td>
+                        <td class="hide">{{ $goods['id'] }}</td>
                         <td>{{ $goods['participant']['fullName'] }}</td>
+                        <td class="dt">{{ $goods['status']['mdValue'] }}</td>
                         <td class="dt">{{ $goods['contractDate'] }}</td>
                         <td class="dt">{{ $goods['finalDate'] }}</td>
                         <td>{{ number_format($goods['amount']) }}</td>
                     </tr>
-                @endif
             @empty
             @endforelse
-
 
             </tbody>
         </table>
@@ -188,9 +189,33 @@
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
-        (document).ready(function(){
+        $(document).ready(function(){
             updateTables();
-        })
+        });
+        $("#table_id").DataTable({
+            "bFilter": false,
+            "fnDrawCallback": function () {
+                changeDateFormat();
+                createLinks();
+                if ($('#table_id tr').length < 10 && $('a.current').text() === "1") {
+                    $('.dataTables_paginate').hide();
+                } else {
+                    $('.dataTables_paginate').show();
+                }
+            }
+        });
+
+        var createLinks = function () {
+
+            $('#table_id tbody tr').each(function () {
+                $(this).css('cursor', 'pointer');
+                $(this).click(function () {
+                    var contractId = $(this).find("td:nth-child(2)").text();
+                    return window.location.assign(window.location.origin + "/contracts/" + contractId);
+                });
+
+            });
+        };
     </script>
     <script>
         var route = '{{ route("filter") }}';
