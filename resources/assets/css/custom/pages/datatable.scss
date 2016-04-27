@@ -9,33 +9,33 @@
   visibility: hidden;
 }
 
-.pinned{
+.pinned {
   background: none;
 }
 
-.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate,.paginate_button{
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate, .paginate_button {
   color: $darker-grey-color;
 }
 
-.dataTables_wrapper .dataTables_filter input{
+.dataTables_wrapper .dataTables_filter input {
   margin-left: 0;
 }
 
-.dataTables_length{
+.dataTables_length {
   float: right;
   font-size: 14px;
   width: auto;
   display: inline-block;
   margin-left: 15px;
   margin-top: 18px;
-  label{
+  label {
     color: $light-grey-color;
     width: auto;
     display: inline-block;
     margin-bottom: 20px;
   }
 
-  select{
+  select {
     color: $light-grey-color;
     width: auto;
     display: inline-block;
@@ -49,16 +49,16 @@
   }
 }
 
-.dataTables_filter{
+.dataTables_filter {
   width: 80%;
   float: left;
-  label{
+  label {
     font-size: 0;
     clear: both;
     overflow: hidden;
   }
 
-  input{
+  input {
     float: right;
     width: 100%;
     background: transparent url("#{$img-path}/ic_search-grey.svg") 0 center no-repeat;
@@ -70,10 +70,10 @@
     padding: 12px 24px 12px 36px;
     height: auto;
     font-size: 1rem;
-    margin: 0  0 1.5rem;
+    margin: 0 0 1.5rem;
     font-size: 1.4375rem;
     line-height: 1.8125rem;
-    &:focus,&:active,&:hover{
+    &:focus, &:active, &:hover {
       border: none;
       border-bottom: solid 6px #4A4A4A;
       box-shadow: none;
@@ -92,7 +92,7 @@
 
 }
 
-.dataTables_wrapper .dataTables_info{
+.dataTables_wrapper .dataTables_info {
   display: none;
   width: 50%;
   float: left;
@@ -107,7 +107,7 @@
   margin: 1.5rem auto;
 }
 
-.paginate_button{
+.paginate_button {
   box-sizing: border-box;
   padding: 5px 6px;
   font-size: 16px;
@@ -115,7 +115,6 @@
   display: inline-block;
   color: #0046AE;
 }
-
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
@@ -125,28 +124,28 @@
 }
 
 .dataTables_wrapper .dataTables_paginate {
-  .paginate_button:hover{
+  .paginate_button:hover {
     background: none;
     color: #484848 !important;
     border: none;
     transform: scale(1.25);
   }
 
-  .paginate_button.next{
+  .paginate_button.next {
     float: right;
   }
 
-  .paginate_button.next:hover{
+  .paginate_button.next:hover {
     transform: scale(1.15);
   }
 
-  .paginate_button.previous:hover{
+  .paginate_button.previous:hover {
     transform: scale(1.15);
   }
 
 }
 
-.dataTables_paginate{
+.dataTables_paginate {
   padding-left: 12px;
   padding-right: 12px;
   text-transform: lowercase;
@@ -154,45 +153,43 @@
   transition: all 0.1s ease-in-out;
 }
 
-.dataTables_wrapper .dataTables_paginate  .paginate_button {
+.dataTables_wrapper .dataTables_paginate .paginate_button {
   padding: 5px 6px 8px;
 }
 
-tbody, tfoot, thead{
+tbody, tfoot, thead {
   background: none;
 }
 
 /*style for table*/
 
-@media (min-width:768px){
-  tfoot,thead,tbody{
+@media (min-width: 768px) {
+  tfoot, thead, tbody {
     border: none;
     background: transparent;
   }
 }
 
-
-
 thead {
   background: none;
 }
 
-.dataTable{
+.dataTable {
   width: 100% !important;
 }
 
-.table-wrapper{
+.table-wrapper {
   margin-bottom: 30px;
   width: 100%;
-  
-  .table-wrapper{
+
+  .table-wrapper {
     margin-bottom: 0 !important;
   }
 }
 
-.custom-table{
+.custom-table {
   font-size: 14px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 0;
   width: 100%;
   border-radius: 4px;
@@ -212,53 +209,53 @@ thead {
   }
   */
 
-  tr{
+  tr {
     z-index: 10;
-    background-color: rgba(0,70,174,0.9);
+    background-color: rgba(0, 70, 174, 0.9);
     transition: all 0.3s ease-in-out;
   }
   /* ------- style for thead -------- */
 
-  thead{
+  thead {
     background: none;
     font-family: RobotoCondensed-bold;
-    tr:hover{
-      background-color: rgba(0,70,174,0.9);
+    tr:hover {
+      background-color: rgba(0, 70, 174, 0.9);
     }
-    th{
+    th {
       font-family: inherit;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
     }
-    tr{
-      border-bottom: solid 1px rgba(237,234,255,0.2);
+    tr {
+      border-bottom: solid 1px rgba(237, 234, 255, 0.2);
     }
   }
 
-  tbody tr{
+  tbody tr {
     transition: background-color 0.3s ease-in-out;
-    border-bottom: solid 1px rgba(237,234,255,0.05);
-    &:nth-child(odd){
-      background: rgba(0,70,174,0.9);
+    border-bottom: solid 1px rgba(237, 234, 255, 0.05);
+    &:nth-child(odd) {
+      background: rgba(0, 70, 174, 0.9);
     }
 
-    &:nth-child(even){
-      background: rgba(0,70,174,0.9);
+    &:nth-child(even) {
+      background: rgba(0, 70, 174, 0.9);
     }
   }
 
   /* ------- style for thead ends -------- */
 
-  th{
+  th {
     padding: 15px 10px 15px 15px;
   }
 
-  td{
+  td {
     padding: 15px 10px;
   }
 }
 
-.custom-table.hover tbody{
-  tr,tr:nth-of-type(even):hover{
+.custom-table.hover tbody {
+  tr, tr:nth-of-type(even):hover {
     &:hover {
       transition: background-color 0.3s ease-in-out;
       color: #fff;
@@ -268,41 +265,41 @@ thead {
 
 }
 
-.highlight{
+.highlight {
   transition: all 0.3s ease-in-out !important;
   color: #fff !important;
   background: rgba(0, 70, 174, 1) !important;
 }
 
-th{
-  &.sorting{
+th {
+  &.sorting {
     cursor: pointer;
   }
 }
 
 @media (max-width: 40em) {
-  .sorting{
+  .sorting {
     background: transparent url("#{$img-path}/ic_sort.svg") 4px 20px no-repeat;
   }
 
-  .sorting_desc{
+  .sorting_desc {
     background: transparent url("#{$img-path}/ic_desc.svg") 4px 22px no-repeat;
   }
 
-  .sorting_asc{
+  .sorting_asc {
     background: transparent url("#{$img-path}/ic_asc.svg") 4px 22px no-repeat;
   }
 
-  th:first-of-type{
-    &.sorting{
+  th:first-of-type {
+    &.sorting {
       background: transparent url("#{$img-path}/ic_sort.svg") 8px 20px no-repeat;
     }
 
-    &.sorting_desc{
+    &.sorting_desc {
       background: transparent url("#{$img-path}/ic_desc.svg") 8px 22px no-repeat;
     }
 
-    &.sorting_asc{
+    &.sorting_asc {
       background: transparent url("#{$img-path}/ic_asc.svg") 8px 22px no-repeat;
     }
   }
@@ -310,28 +307,28 @@ th{
 
 @media (min-width: 40em) {
 
-  .sorting{
+  .sorting {
     background: transparent url("#{$img-path}/ic_sort.svg") 4px 22px no-repeat;
   }
 
-  .sorting_desc{
+  .sorting_desc {
     background: transparent url("#{$img-path}/ic_desc.svg") 4px 24px no-repeat;
   }
 
-  .sorting_asc{
+  .sorting_asc {
     background: transparent url("#{$img-path}/ic_asc.svg") 4px 24px no-repeat;
   }
 
-  th:first-of-type{
-    &.sorting{
+  th:first-of-type {
+    &.sorting {
       background: transparent url("#{$img-path}/ic_sort.svg") 28px 22px no-repeat;
     }
 
-    &.sorting_desc{
+    &.sorting_desc {
       background: transparent url("#{$img-path}/ic_desc.svg") 28px 24px no-repeat;
     }
 
-    &.sorting_asc{
+    &.sorting_asc {
       background: transparent url("#{$img-path}/ic_asc.svg") 28px 24px no-repeat;
     }
   }
@@ -351,18 +348,18 @@ th{
 
 /* ------- style for overlay while processing --------- */
 
-.dataTables_wrapper{
+.dataTables_wrapper {
   position: relative;
-  tbody tr{
+  tbody tr {
     cursor: pointer;
   }
 }
 
-.dataTables_processing{
+.dataTables_processing {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.5);
   text-indent: -9999px;
   overflow: hidden;
   z-index: 90;
@@ -370,28 +367,28 @@ th{
 
 /*style for data not found in datatable*/
 
-.dataTables_empty{
+.dataTables_empty {
   width: 100%;
   text-align: center;
 }
 
 /* ------- add faded shadow in scrollable part of table ----------- */
 
-div.scrollable{
-  &:after{
-      content:"";
-      position:absolute;
-      top: 0;
-      left: 100%;
-      width: 50px;
-      height: 100%;
-      border-radius: 10px 0 0 10px / 50% 0 0 50%;
-      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.25);
-      content: '';
+div.scrollable {
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 50px;
+    height: 100%;
+    border-radius: 10px 0 0 10px / 50% 0 0 50%;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.25);
+    content: '';
   }
 }
 
-tfoot td, tfoot th, thead td, thead th{
+tfoot td, tfoot th, thead td, thead th {
   font-weight: normal;
 }
 
@@ -399,16 +396,16 @@ tfoot td, tfoot th, thead td, thead th{
 
 @media (max-width: 768px) {
 
-  .custom-table{
+  .custom-table {
     background: none;
     border-radius: 4px;
   }
 
-  .table-wrapper  .table-wrapper{
+  .table-wrapper .table-wrapper {
     background: url(#{$img-path}/main_background_table.jpg) center top no-repeat;
     background-size: cover;
     border-radius: 4px;
-    .custom-table{
+    .custom-table {
       border-radius: 0;
     }
   }
@@ -417,29 +414,52 @@ tfoot td, tfoot th, thead td, thead th{
 
 /* ------- style for jason table ------- */
 
-#json-table{
+#json-table {
   width: 100%;
   overflow: scroll;
 }
 
-.jTable{
+.jTable {
   width: 100%;
-  td,th{
+  td, th {
     border: solid 1px #ccc;
   }
 }
 
-.main-title-wrap{
+.main-title-wrap {
   background: transparent !important;
   border-bottom: solid 1px #ccc;
   text-transform: uppercase;
   color: $light-grey-color !important;
 }
 
-.main-title{
+.main-title {
 
 }
 
-.sub-title{
+.sub-title {
   //background: red;
+}
+
+/* -------- add export section ------------ */
+
+.table-wrapper{
+  position: relative;
+  .export{
+    position: absolute;
+    top: 17px;
+    right: 161px;
+    margin: 0 10px;
+    background: $link-color-blue;
+    border-radius: 4px;
+    color: #fff;
+    padding: 10px 10px 10px 36px;
+    cursor: pointer;
+    z-index: 88;
+    transition: all 0.3s ease-in-out;
+      &hover, &:focus, &:active{
+       background: $link-hover-color;
+      }
+
+  }
 }

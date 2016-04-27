@@ -150,21 +150,36 @@ class Contracts
         return json_encode($jsonData);
     }
 
+    /**
+     * @param $contractId
+     * @return mixed
+     */
     public function getContractDetailById($contractId)
     {
         return $this->contracts->getContractDetailById($contractId);
     }
 
+    /**
+     * @param $search
+     * @return mixed
+     */
     public function search($search)
     {
         return $this->contracts->search($search);
     }
 
+    /**
+     * @return mixed
+     */
     public function getAllContractTitle()
     {
         return $this->contracts->getAllContractTitle();
     }
-    
+
+    /**
+     * @param $contractId
+     * @return mixed
+     */
     public function getContractDataForJson($contractId)
     {
         return $this->contracts->getContractDataForJson($contractId);

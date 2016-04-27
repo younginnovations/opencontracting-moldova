@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Moldova\Service\Contracts;
 use App\Moldova\Service\ProcuringAgency;
+use App\Moldova\Service\StreamExporter;
 use App\Moldova\Service\Tenders;
 use Illuminate\Http\Request;
 
@@ -22,18 +23,24 @@ class ProcuringAgencyController extends Controller
      * @var ProcuringAgency
      */
     private $procuringAgency;
+    /**
+     * @var StreamExporter
+     */
+    private $exporter;
 
     /**
      * ContractController constructor.
      * @param Contracts       $contracts
      * @param Tenders         $tenders
      * @param ProcuringAgency $procuringAgency
+     * @param StreamExporter  $exporter
      */
-    public function __construct(Contracts $contracts, Tenders $tenders, ProcuringAgency $procuringAgency)
+    public function __construct(Contracts $contracts, Tenders $tenders, ProcuringAgency $procuringAgency,StreamExporter $exporter)
     {
         $this->contracts       = $contracts;
         $this->tenders         = $tenders;
         $this->procuringAgency = $procuringAgency;
+        $this->exporter = $exporter;
     }
 
     /**
@@ -59,8 +66,8 @@ class ProcuringAgencyController extends Controller
 
     public function show($procuringAgency)
     {
-        $procuringAgency       = urldecode($procuringAgency);
-        $agencyData            = $this->procuringAgency->getAgencyData($procuringAgency);
+        $procuringAgency = urldecode($procuringAgency);
+        $agencyData      = $this->procuringAgency->getAgencyData($procuringAgency);
         //dd($agencyData->buyer['contactPoint']);
         $procuringAgencyDetail = $this->contracts->getDetailInfo($procuringAgency, "tender.stateOrg.orgName");
         $totalAmount           = $this->getTotalAmount($procuringAgencyDetail);
@@ -100,5 +107,19 @@ class ProcuringAgencyController extends Controller
         }
 
         return json_encode($trends);
+    }
+
+    /**
+     * @param                $agencyId
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function agencyDetailExport( $agencyId)
+    {
+        return $this->exporter->getContractorDetailForExport(urldecode($agencyId), 'buyer.name');
+    }
+
+    public function exportAgencies()
+    {
+        return $this->exporter->fetchAgencies();
     }
 }

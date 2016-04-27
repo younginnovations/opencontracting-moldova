@@ -282,28 +282,9 @@ class ContractsRepository implements ContractsRepositoryInterface
             ->select(['id', 'contractNumber', 'contractDate', 'status.mdValue', 'finalDate', 'amount', 'goods.mdValue', 'participant.fullName', 'tender.stateOrg.orgName'])
             ->where($column, '=', $parameter)
             ->get();
-//        $result = Contracts::raw(function ($collection) use ($parameter, $column) {
-//
-//            return $collection->find(
-//                [$column => $parameter],
-//                [
-//                    "contractNumber"          => 1,
-//                    "id"                      => 1,
-//                    "contractDate"            => 1,
-//                    "finalDate"               => 1,
-//                    "amount"                  => 1,
-//                    "status.mdValue"          => 1,
-//                    "goods.mdValue"           => 1,
-//                    "participant.fullName"    => 1,
-//                    "tender.stateOrg.orgName" => 1
-//
-//                ]);
-//        });
-//
-//        return ($result);
     }
 
-    /**a
+    /**
      * {@inheritdoc}
      */
     public function getContractDetailById($contractId)
@@ -317,12 +298,12 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         foreach ($result['award'] as $award) {
             if ($award['id'] === $contract['awardID']) {
-                $contract['goods']      = (!empty($award['items']))?$award['items'][0]['classification']['description']:"-";
-                $contract['contractor'] = (!empty($award['suppliers']))?$award['suppliers'][0]['name']:"-";
+                $contract['goods']      = (!empty($award['items'])) ? $award['items'][0]['classification']['description'] : "-";
+                $contract['contractor'] = (!empty($award['suppliers'])) ? $award['suppliers'][0]['name'] : "-";
                 break;
             }
         }
-//dd( $contract);
+
         return $contract;
     }
 
@@ -338,16 +319,16 @@ class ContractsRepository implements ContractsRepositoryInterface
         $range      = (!empty($search['amount'])) ? explode("-", $search['amount']) : '';
 
         return ($this->contracts
-            ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods . mdValue', 'status . mdValue'])
+            ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue', 'status.mdValue'])
             ->where(function ($query) use ($q, $contractor, $range, $agency) {
 
                 if (!empty($q)) {
-                    $query->where('goods.mdValue', 'like', ' % ' . $q . ' % ')
-                          ->orWhere('participant.fullName', 'like', ' % ' . $q . ' % ')
-                          ->orWhere('tender.stateOrg.orgName', 'like', ' % ' . $q . ' % ');
+                    $query->where('goods.mdValue', 'like', '%' . $q . '%')
+                          ->orWhere('participant.fullName', 'like', '%' . $q . '%')
+                          ->orWhere('tender.stateOrg.orgName', 'like', '%' . $q . '%');
                 }
                 if (!empty($contractor)) {
-                    $query->where('participant . fullName', "=", $contractor);
+                    $query->where('participant.fullName', "=", $contractor);
                 }
 
                 if (!empty($agency)) {
@@ -364,6 +345,9 @@ class ContractsRepository implements ContractsRepositoryInterface
             })->get());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getAllContractTitle()
     {
         $groupBy =
@@ -384,11 +368,11 @@ class ContractsRepository implements ContractsRepositoryInterface
     }
 
     /**
-     * @param $contractId
-     * @return mixed
+     * {@inheritdoc}
      */
     public function getContractDataForJson($contractId)
     {
         return $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1, 'award' => 1, 'tender.id' => 1, 'tender.title' => 1, 'buyer' => 1])->first();
     }
+
 }

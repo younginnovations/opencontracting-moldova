@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Moldova\Service\Contracts;
 use App\Moldova\Service\Email;
 use App\Moldova\Service\ProcuringAgency;
+use App\Moldova\Service\StreamExporter;
 use App\Moldova\Service\Tenders;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use ReCaptcha\Captcha;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -49,12 +51,12 @@ class HomeController extends Controller
         $procuringAgency     = $this->contracts->getProcuringAgency('amount', 5);
         $contractors         = $this->contracts->getContractors('amount', 5);
         $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5);
-        $contractTitles    = $this->contracts->getAllContractTitle();
-        $procuringAgencies = $this->procuringAgency->getAllProcuringAgencyTitle();
+        $contractTitles      = $this->contracts->getAllContractTitle();
+        $procuringAgencies   = $this->procuringAgency->getAllProcuringAgencyTitle();
 
         // $contractsList       = $this->contracts->getContractsList(10);
 
-        return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices','contractTitles','procuringAgencies'));
+        return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices', 'contractTitles', 'procuringAgencies'));
     }
 
     /**
@@ -69,6 +71,10 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function getContractorData(Request $request)
     {
         $input = $request->all();
@@ -144,6 +150,10 @@ class HomeController extends Controller
         return $column;
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
     public function search(Request $request)
     {
         $contractTitles    = $this->contracts->getAllContractTitle();
@@ -172,30 +182,49 @@ class HomeController extends Controller
         if ($response['success'] === true) {
             return true;
         }
+
         return false;
     }
 
+    /**
+     * @param Request $request
+     * @param Email   $email
+     * @param Client  $client
+     * @return $this
+     */
     public function sendMessage(Request $request, Email $email, Client $client)
     {
+        $msg    = 'Please verify the captcha';
+        $status = 'Error';
+
         if ($this->checkCaptcha($request, $client)) {
-            $msg = 'Please verify the captcha';
-            $status = 'Error';
             $email->sendMessage($request->all());
 
             if ($email) {
                 $status = 'success';
-                $msg = "Email sent successfully";
-            }
-            else{
+                $msg    = "Email sent successfully";
+            } else {
                 $status = 'error';
-                $msg = "Email sending failed";
+                $msg    = "Email sending failed";
             }
         }
+
         $response = array(
             'status' => $status,
-            'msg' => $msg,
+            'msg'    => $msg,
         );
 
-        return  $response;
+        return $response;
+    }
+
+
+    /**
+     * @param StreamExporter $exporter
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function export(StreamExporter $exporter)
+    {
+        return $exporter->getAllContracts();
+
     }
 }

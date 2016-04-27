@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Moldova\Service\Contracts;
 use App\Moldova\Service\Goods;
+use App\Moldova\Service\StreamExporter;
 use Illuminate\Http\Request;
 
 
@@ -17,22 +18,29 @@ class GoodsController extends Controller
      * @var Goods
      */
     private $goods;
+    /**
+     * @var StreamExporter
+     */
+    private $exporter;
 
     /**
      * ContractController constructor.
-     * @param Contracts $contracts
-     * @param Goods     $goods
+     * @param Contracts      $contracts
+     * @param Goods          $goods
+     * @param StreamExporter $exporter
      */
-    public function __construct(Contracts $contracts,Goods $goods)
+    public function __construct(Contracts $contracts, Goods $goods, StreamExporter $exporter)
     {
         $this->contracts = $contracts;
-        $this->goods = $goods;
+        $this->goods     = $goods;
+        $this->exporter  = $exporter;
     }
 
     public function index()
     {
-        $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5);
-        return view('goods.index',compact('goodsAndServices'));
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5);
+
+        return view('goods.index', compact('goodsAndServices'));
     }
 
     /**
@@ -98,5 +106,19 @@ class GoodsController extends Controller
         }
 
         return json_encode($trends);
+    }
+
+    /**
+     * @param                $goodsId
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function goodsDetailExport($goodsId)
+    {
+        return $this->exporter->getContractorDetailForExport(urldecode($goodsId), 'award.items.classification.description');
+    }
+
+    public function exportGoods()
+    {
+        return $this->exporter->fetchGoods();
     }
 }

@@ -85,14 +85,6 @@ $app->get(
 );
 
 $app->get(
-    '/goods/{name}',
-    [
-        'as'   => 'goods',
-        'uses' => 'GoodsController@show'
-    ]
-);
-
-$app->get(
     '/goods',
     [
         'as'   => 'goods.index',
@@ -164,11 +156,11 @@ $app->get(
     ]
 );
 
-$app->get('/about',function(){
+$app->get('/about', function () {
     return view('about');
 });
 
-$app->get('/contact',function(){
+$app->get('/contact', function () {
     return view('contact');
 });
 
@@ -185,5 +177,24 @@ $app->post(
     [
         'as'   => 'contracts.feedback',
         'uses' => 'ContractController@sendMessage'
+    ]
+);
+$app->get('/export', ['as' => 'home.export', 'uses' => 'HomeController@export']);
+$app->get('contractor-detail/export/{name}', ['as' => 'contractorDetail.export', 'uses' => 'ContractController@contractorDetailExport']);
+$app->get('agency-detail/export/{name}', ['as' => 'agencyDetail.export', 'uses' => 'ProcuringAgencyController@agencyDetailExport']);
+$app->get('goods-detail/export/{name}', ['as' => 'goodsDetail.export', 'uses' => 'GoodsController@goodsDetailExport']);
+
+$app->get('goods/export', ['as' => 'goods.export', 'uses' => 'GoodsController@exportGoods']);
+$app->get('agency/export', ['as' => 'agency.export', 'uses' => 'ProcuringAgencyController@exportAgencies']);
+$app->get('contractor/export', ['as' => 'contractor.export', 'uses' => 'ContractController@exportContractors']);
+$app->get('tender/export', ['as' => 'tender.export', 'uses' => 'TenderController@exportTenders']);
+$app->get('tender-goods/export/{id}', ['as' => 'tenderGoods.export', 'uses' => 'TenderController@exportTenderGoods']);
+$app->get('tender-contracts/export/{id}', ['as' => 'tenderContracts.export', 'uses' => 'TenderController@exportTenderContracts']);
+
+$app->get(
+    '/goods/{name}',
+    [
+        'as'   => 'goods',
+        'uses' => 'GoodsController@show'
     ]
 );
