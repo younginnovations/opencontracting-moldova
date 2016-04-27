@@ -90,9 +90,11 @@
             </div>
         </div>
     </div>
-    <div class="row clearfix">
-        <div class="cusotm-switch clearfix">
-            <a href="#" class="toggle-switch toggle--on"></a>
+    <div class="row custom-switch-wrap">
+       <div class="clearfix">
+           <div class="small-title">Contract data in ocds format</div>
+           <a href="#" class="toggle-switch toggle--on"></a>
+       </div>
 
             <div class="custom-switch-content block">
                 <div class="json-view">
@@ -100,10 +102,9 @@
                 </div>
                 <div class="table-view text-center">
                     <div id="json-table"></div>
-                    Table view is not available for now.
+                    {{--Table view is not available for now.--}}
                 </div>
             </div>
-        </div>
     </div>
 
 
@@ -126,9 +127,9 @@
 
             for (var key in input) {
                 if (typeof input[key] === 'string') {
-                    table.append('<tr><td>' + key + '</td><td>' + input[key] + '</td></tr>');
+                    table.append('<tr><td class="main-title" colspan="100%">' + key + '</td><td>' + input[key] + '</td></tr>');
                 } else {
-                    table.append('<tr><td>' + key + '</td></tr>');
+                    table.append('<tr><td class="main-title" colspan="100%">' + key + '</td></tr>');
                     showArray('<td></td>', table, input[key]);
                 }
             }
@@ -142,7 +143,7 @@
                     var tr = '<tr>' + td + '<td>' + a + '</td><td>' + arr[a] + '</td></tr>';
                     table.append(tr);
                 } else {
-                    table.append('<tr>' + td + '<td>' + a + '</td></tr>');
+                    table.append('<tr>' + td + '<td class="sub-title" colspan="100%">' + a + '</td></tr>');
                     td = td + '<td></td>';
                     showArray(td, table, arr[a]);
                 }

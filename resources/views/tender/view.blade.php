@@ -82,8 +82,8 @@
                         </span>
                     </div>
                     <div class="table-wrapper">
-                        <table id="table_id" class="responsive hover custom-table">
-                            <thead>
+                        <table id="table_id" class="responsive hover custom-table persist-area">
+                            <thead class="persist-header">
                             <tr>
                                 <th>Name</th>
                                 <th>CPV code</th>
@@ -116,8 +116,8 @@
                                 <span class="tab-indicator">({{count($tenderDetail['contract'])}})</span>
                             </span>
                         </div>
-                        <table id="table_id" class="responsive hover custom-table">
-                            <thead>
+                        <table id="table_id" class="responsive hover custom-table persist-area">
+                            <thead class="persist-header">
                             <tr>
                                 <th>Contract number</th>
                                 <th>Goods and services contracted</th>

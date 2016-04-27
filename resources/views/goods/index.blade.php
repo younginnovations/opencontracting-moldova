@@ -39,6 +39,7 @@
                             </p>
                         </ul>
                     </div>
+                    <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                     <div class="chart-wrap">
                         <div id="barChart-goods"></div>
                         <div class="loader-text">
@@ -58,8 +59,8 @@
     </div>
 
     <div class="row table-wrapper">
-        <table id="table_id" class="hover responsive custom-table display">
-            <thead>
+        <table id="table_id" class="hover responsive custom-table display persist-area">
+            <thead class="persist-header">
             <tr>
                 <th>Name</th>
                 <th>CPV code</th>

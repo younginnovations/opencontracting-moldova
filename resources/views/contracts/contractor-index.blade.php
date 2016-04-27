@@ -42,6 +42,7 @@
                             </p>
                         </ul>
                     </div>
+                    <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                     <div class="chart-wrap">
                         <div id="barChart-contractors"></div>
                     </div>
@@ -56,8 +57,8 @@
     </div>
     </div>
 
-    <div class="row table-wrapper persist-area">
-        <table id="table_id" class="responsive hover custom-table display">
+    <div class="row table-wrapper ">
+        <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
                 <th>Name</th>

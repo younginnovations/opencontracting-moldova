@@ -48,7 +48,7 @@
 
                     <div class="input-group-button medium-12 clearfix">
                         <div class="medium-4 columns">
-                            <input type="submit" class="button blue-button" value="Submit">
+                            <input type="submit" class="button yellow-button" value="Submit">
                         </div>
                     </div>
                 </form>

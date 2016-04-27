@@ -39,6 +39,7 @@
                             </p>
                         </ul>
                     </div>
+                    <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                     <div class="chart-wrap">
                         <div id="barChart-procuring"></div>
                         <div class="loader-text">
@@ -57,9 +58,9 @@
         </div>
     </div>
 
-    <div class="row table-wrapper">
+    <div class="row table-wrapper persist-area">
         <table id="table_id" class="hover responsive custom-table display">
-            <thead>
+            <thead class="persist-header">
                 <tr>
                     <th>Procuring Agency Title</th>
                     <th>Tenders</th>

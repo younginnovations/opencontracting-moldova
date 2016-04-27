@@ -52,8 +52,8 @@
     </div>
 
     <div class="row table-wrapper">
-        <table id="table_id" class="responsive hover custom-table display">
-            <thead>
+        <table id="table_id" class="responsive hover custom-table display persist-area">
+            <thead class="persist-header">
             <tr>
                 <th class="tender-id">Tender ID</th>
                 <th>Tender Title</th>

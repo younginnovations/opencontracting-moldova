@@ -2,11 +2,11 @@
 
 .floatingHeader {
   position: fixed;
-  display: table;
   top: 76px;
   z-index: 66;
   background: #fff;
   width: 100%;
+  visibility: hidden;
 }
 
 .pinned{
@@ -202,6 +202,7 @@ thead {
   background-size: cover;
   z-index: 5;
 
+  /*
   .dt{
     width: 156px !important;
   }
@@ -209,6 +210,7 @@ thead {
   .tender-id,.tender-status{
     width: 110px !important;
   }
+  */
 
   tr{
     z-index: 10;
@@ -411,4 +413,33 @@ tfoot td, tfoot th, thead td, thead th{
     }
   }
 
+}
+
+/* ------- style for jason table ------- */
+
+#json-table{
+  width: 100%;
+  overflow: scroll;
+}
+
+.jTable{
+  width: 100%;
+  td,th{
+    border: solid 1px #ccc;
+  }
+}
+
+.main-title-wrap{
+  background: transparent !important;
+  border-bottom: solid 1px #ccc;
+  text-transform: uppercase;
+  color: $light-grey-color !important;
+}
+
+.main-title{
+
+}
+
+.sub-title{
+  //background: red;
 }

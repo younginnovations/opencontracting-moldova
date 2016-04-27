@@ -33,7 +33,7 @@ $(document).ready(function(){
 
             $(".advance-search-wrap").slideUp();
             $(".filter-toggler a").removeClass("active");
-            $(".multiple-search-wrap .search-form").show();
+            $(".multiple-search-wrap").removeClass("position");
         }
     });
 
@@ -73,7 +73,7 @@ $(document).ready(function(){
         $(".filter-toggler a").toggleClass("active");
 
         if($(window).width() > 768 ){
-           $(".multiple-search-wrap .search-form").toggle();
+            $(".multiple-search-wrap").toggleClass("position");
         }
 
     });
@@ -91,7 +91,12 @@ $(document).ready(function(){
 
         setTimeout(function() {
             $(toggle).removeClass('toggle--moving');
-        }, 200)
+        }, 200);
+
+        $(".toggle--on").parents(".custom-switch-wrap").find(".json-view").show();
+        $(".toggle--on").parents(".custom-switch-wrap").find(".table-view").hide();
+        $(".toggle--off").parents(".custom-switch-wrap").find(".json-view").hide();
+        $(".toggle--off").parents(".custom-switch-wrap").find(".table-view").show();
     });
 
    /* remove tab layout in small device*/
@@ -124,29 +129,52 @@ $(document).ready(function(){
 
     /* ------------ sticky header in tables ---------------- */
 
-  /*  var fixHeader = function(){
+    function UpdateTableHeaders() {
         if($(window).width() > 768){
             $(".persist-area").each(function() {
 
                 var el             = $(this),
                     offset         = el.offset(),
-                    scrollTop      = $(window).scrollTop() + 76,
-                    elementHeight = el.height(),
-                    elementWidth = el.width();
+                    scrollTop      = $(window).scrollTop(),
+                    floatingHeader = $(".floatingHeader", this)
 
-                if ((scrollTop > offset.top) && (scrollTop < offset.top + elementHeight)) {
-                    $(".persist-header").addClass("floatingHeader");
+                if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
+                    floatingHeader.css({
+                        "visibility": "visible"
+                    });
+                    var clonedHeader = $(".floatingHeader");
+                    var realHeader = clonedHeader.siblings('.persist-header');
+                    $('th', realHeader).each(function(index) {
+                        $('th', clonedHeader).eq(index).css('width', $(this).outerWidth());
+                    });
                 } else {
-                    $(".persist-header").removeClass("floatingHeader");
+                    floatingHeader.css({
+                        "visibility": "hidden"
+                    });
                 };
-
-                $(".floatingHeader").width(elementWidth);
             });
         }
     }
-    $(window).scroll(function(){
-        fixHeader();
-    });*/
+
+// DOM Ready
+    $(function() {
+        var clonedHeaderRow;
+
+        $(".persist-area").each(function() {
+            clonedHeaderRow = $(".persist-header", this);
+            clonedHeaderRow
+                .before(clonedHeaderRow.clone())
+                .css("width", clonedHeaderRow.width())
+                .addClass("floatingHeader");
+
+        });
+
+        $(window)
+            .scroll(UpdateTableHeaders)
+            .trigger("scroll");
+
+    });
+
 
     $('.chart-wrap').each(function(){
         var el = $(this).find('svg');
@@ -170,6 +198,10 @@ $(document).ready(function(){
         });
     });
 
+  /* ------  script for json table  ----- */
+    $(".jTable .main-title").each(function(){
+        $(this).parent().addClass("main-title-wrap");
+    })
 
     /* ------------ end of sticky header for table --------------- */
 

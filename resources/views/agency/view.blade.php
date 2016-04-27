@@ -6,14 +6,32 @@
                 {{ $procuringAgency }}
             </h2>
 
-            <div class="detail-info">
-                <span>{{ $agencyData->buyer['address']['streetAddress'] }}</span>
-                <span>{{ $agencyData->buyer['contactPoint']['email'] }}</span>
-                <span>{{ $agencyData->buyer['contactPoint']['telephone'] }}</span>
-                <span>{{ $agencyData->buyer['contactPoint']['faxNumber'] }}</span>
-                <span>{{ $agencyData->buyer['contactPoint']['url'] }}</span>
-            </div>
+            <div class="detail-info-wrap">
+                <div class="detail-anchor small-button grey-yellow-btn"><span>i</span>view info</div>
 
+                <div class="detail-info">
+                    <div class="name-value-wrap">
+                        <div class="name">Address: </div>
+                        <div class="value">{{ $agencyData->buyer['address']['streetAddress'] }} </div>
+                    </div>
+                    <div class="name-value-wrap">
+                        <div class="name">Email: </div>
+                        <div class="value">{{ $agencyData->buyer['contactPoint']['email'] }} </div>
+                    </div>
+                    <div class="name-value-wrap">
+                        <div class="name">Phone: </div>
+                        <div class="value">{{ $agencyData->buyer['contactPoint']['telephone'] }} </div>
+                    </div>
+                    <div class="name-value-wrap">
+                        <div class="name">Fax: </div>
+                        <div class="value">{{ $agencyData->buyer['contactPoint']['faxNumber'] }} </div>
+                    </div>
+                    <div class="name-value-wrap">
+                        <div class="name">Url: </div>
+                        <div class="value">{{ $agencyData->buyer['contactPoint']['url'] }} </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row chart-section-wrap push-up-block">
@@ -88,6 +106,7 @@
                                     </label>
                                 </form>
                             </div>
+                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                             <div id="barChart-contractors"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -122,6 +141,7 @@
                                     </label>
                                 </form>
                             </div>
+                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                             <div id="barChart-goods"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -144,9 +164,9 @@
 
     </div>
     <div class="row table-wrapper">
-        <table id="table_id" class="responsive hover custom-table">
+        <table id="table_id" class="responsive hover custom-table persist-area">
 
-            <thead>
+            <thead class="persist-header">
             <th class="contract-number">Contract number</th>
             <th class="hide">Contract ID</th>
             <th>Goods and services contracted</th>

@@ -50,6 +50,7 @@
                                     </label>
                                 </form>
                             </div>
+                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                             <div id="barChart-procuring"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -90,6 +91,7 @@
                                     </label>
                                 </form>
                             </div>
+                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                             <div id="barChart-contractors"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -124,6 +126,7 @@
                                     </label>
                                 </form>
                             </div>
+                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
                             <div id="barChart-goods"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
