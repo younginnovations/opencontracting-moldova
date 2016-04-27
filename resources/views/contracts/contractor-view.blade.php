@@ -2,8 +2,8 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2> <span><img src="{{url('images/ic_contractor.svg')}}"/></span>
-             {{ $contractor }}</h2>
+            <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
+                {{ $contractor }}</h2>
         </div>
     </div>
 
@@ -155,31 +155,30 @@
 
     </div>
     <div class="row table-wrapper">
-        <table table id="table_id" class="responsive hover custom-table">
-            <tbody>
-            <tr>
-                <th>Contract number</th>
-                <th>Goods and services contracted</th>
-                <th>Contract status</th>
-                <th width="150px">Contract start date</th>
-                <th width="150px">Contract end date</th>
-                <th>Amount</th>
-            </tr>
+        <table id="table_id" class="responsive hover custom-table">
 
+            <thead>
+            <th>Contract number</th>
+            <th class="hide">Contract ID</th>
+            <th>Goods and services contracted</th>
+            <th>Contract status</th>
+            <th width="150px">Contract start date</th>
+            <th width="150px">Contract end date</th>
+            <th>Amount</th>
+            </thead>
+            <tbody>
             @forelse($contractorDetail as $key => $contract)
-                @if($key < 10)
-                    <tr>
-                        <td>{{ $contract['contractNumber'] }}</td>
-                        <td>{{ $contract['goods']['mdValue'] }}</td>
-                        <td>{{ $contract['status']['mdValue'] }}</td>
-                        <td class="dt">{{ $contract['contractDate'] }}</td>
-                        <td class="dt">{{ $contract['finalDate'] }}</td>
-                        <td>{{ number_format($contract['amount']) }}</td>
-                    </tr>
-                @endif
+                <tr>
+                    <td>{{ $contract['contractNumber'] }}</td>
+                    <td class="hide">{{ $contract['id'] }}</td>
+                    <td>{{ $contract['goods']['mdValue'] }}</td>
+                    <td>{{ $contract['status']['mdValue'] }}</td>
+                    <td class="dt">{{ $contract['contractDate'] }}</td>
+                    <td class="dt">{{ $contract['finalDate'] }}</td>
+                    <td>{{ number_format($contract['amount']) }}</td>
+                </tr>
             @empty
             @endforelse
-
 
             </tbody>
         </table>
@@ -191,7 +190,7 @@
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             updateTables();
         })
     </script>

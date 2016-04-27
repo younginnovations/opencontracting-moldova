@@ -37,6 +37,14 @@ $app->get(
 );
 
 $app->get(
+    '/contracts/contractor',
+    [
+        'as'   => 'contracts.contractorIndex',
+        'uses' => 'ContractController@contractorIndex'
+    ]
+);
+
+$app->get(
     '/contracts/contractor/{name}',
     [
         'as'   => 'contracts.contractor',
@@ -105,6 +113,14 @@ $app->get(
     [
         'as'   => 'api.data',
         'uses' => 'HomeController@getData'
+    ]
+);
+
+$app->get(
+    '/api/contactorData',
+    [
+        'as'   => 'api.contactorData',
+        'uses' => 'HomeController@getContractorData'
     ]
 );
 
