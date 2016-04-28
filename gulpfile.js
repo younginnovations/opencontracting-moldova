@@ -4,11 +4,16 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     merge = require('merge-stream'),
+
+
     uglify = require('gulp-uglify'),
     uglifycss = require('gulp-uglifycss'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant');
 
 var vendor_js = [
     './resources/assets/js/vendor/jquery-2.2.2.min.js',
@@ -91,6 +96,16 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./public/css/'));
 });
 
+gulp.task('compress-img', function() {
+    return gulp.src('./resources/assets/images/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            //use: [pngquant()]
+        }))
+        .pipe(gulp.dest('./public/images'));
+});
+
 gulp.task('js', function () {
     return gulp.src(custom_js)
         .pipe(concat('app.js'))
@@ -130,4 +145,4 @@ gulp.task('watch-chartJs', function () {
 /*
  * Default task, running just `gulp` will compile the sass,
  */
-gulp.task('default', ['sass', 'js', 'watch-sass', 'watch-js', 'watch-chartJs']);
+gulp.task('default', ['sass', 'compress-img', 'js', 'watch-sass', 'watch-js', 'watch-chartJs']);

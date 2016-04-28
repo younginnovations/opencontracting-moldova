@@ -11,23 +11,23 @@
 
                 <div class="detail-info">
                     <div class="name-value-wrap">
-                        <div class="name">Address:</div>
+                        <div class="name address">Address: </div>
                         <div class="value">{{ $agencyData->buyer['address']['streetAddress'] }} </div>
                     </div>
                     <div class="name-value-wrap">
-                        <div class="name">Email:</div>
+                        <div class="name email">Email: </div>
                         <div class="value">{{ $agencyData->buyer['contactPoint']['email'] }} </div>
                     </div>
                     <div class="name-value-wrap">
-                        <div class="name">Phone:</div>
+                        <div class="name phone">Phone: </div>
                         <div class="value">{{ $agencyData->buyer['contactPoint']['telephone'] }} </div>
                     </div>
                     <div class="name-value-wrap">
-                        <div class="name">Fax:</div>
+                        <div class="name fax">Fax: </div>
                         <div class="value">{{ $agencyData->buyer['contactPoint']['faxNumber'] }} </div>
                     </div>
                     <div class="name-value-wrap">
-                        <div class="name">Url:</div>
+                        <div class="name url">Url: </div>
                         <div class="value">{{ $agencyData->buyer['contactPoint']['url'] }} </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                                 <li><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued</li>
                             </ul>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-homepage"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -68,7 +68,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Contract value</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -94,7 +94,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 contractors</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -129,7 +129,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 Goods and Services procured</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>

@@ -5,6 +5,12 @@
   background: transparent url(#{$img-path}/main_background.png) center top no-repeat;
   background-size: cover;
   background-attachment: fixed;
+
+  .social-share{
+    .small-title{
+      color: #fff;
+    }
+  }
 }
 
 body.one-pager {

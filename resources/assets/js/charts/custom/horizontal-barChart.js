@@ -11,6 +11,8 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
             y1 = 32;
     }
 
+    console.log("test");
+
     //var divNode = d3.select("#main-content").node();
 
     var dataRange = d3.max(data, function (d) {

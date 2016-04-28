@@ -1,4 +1,4 @@
-var createBarChartContract = function (data, definedId, url) {
+    var createBarChartContract = function (data, definedId, url) {
     if($(window).width() < 768){
         var heightContainer = 200;
     }
@@ -73,6 +73,18 @@ var createBarChartContract = function (data, definedId, url) {
             .tickFormat("")
         )
 
+
+  /*  // chart title
+
+    svg.selectAll("text.bar")
+        .data(data)
+        .enter().append("text")
+        .attr("class", "verticalBar-value numeric-data")
+        .attr("text-anchor", "middle")
+        .attr("x", function(d) { return x(d.name) + x.rangeBand()/2; })
+        .attr("y", function(d) { return y(d.value) - 5; })
+        .html(function(d) { return d.value; });*/
+
     svg.selectAll("bar")
         .data(data)
         .enter().append("rect")
@@ -95,18 +107,17 @@ var createBarChartContract = function (data, definedId, url) {
     svg.selectAll("rect")
         .on("mousemove", function(d){
             var mousePos = d3.mouse(divNode);
-            d3.select("#tooltip-wrap")
+            d3.select("#tooltip-no-tip")
+                .style("left",mousePos[0] + "px")
                 .style("top",mousePos[1] + "px")
-                .style("top", function(d){
-                    d.value + "px";
-                })
                 .select("#value")
                 .attr("text-anchor","middle")
                 .html(d.value);
 
-            d3.select("#tooltip-wrap").classed("hide", false);
+            d3.select("#tooltip-no-tip").classed("hide", false);
         })
         .on("mouseout",function(d){
-            d3.select("#tooltip-wrap").classed("hide", true);
+            d3.select("#tooltip-no-tip").classed("hide", true);
         });
+
 };

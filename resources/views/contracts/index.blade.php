@@ -30,7 +30,7 @@
                             <p><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued over the years</p>
                         </ul>
                     </div>
-                    <div class="chart-wrap">
+                    <div class="chart-wrap default-view">
                         <div id="header-linechart"></div>
                         <div class="loader-text">
                             <div class="text">Fetching data

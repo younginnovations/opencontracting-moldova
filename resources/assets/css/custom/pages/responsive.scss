@@ -16,12 +16,6 @@
 
 }
 
-@media (max-width: 1024px) {
-  .dataTables_filter{
-    width: 75%;
-  }
-}
-
 @media (max-width: 75rem) {
   header.top-bar{
     padding-left: 20px;
@@ -132,11 +126,6 @@
 
   .section-header,.chart-wrap{
     height:auto !important;
-  }
-
- /* responsive for table*/
-  .dataTables_filter{
-    width: 60%;
   }
 
 }
@@ -297,19 +286,40 @@
 
 }
 
-@media (max-width: 35em) {
+@media (max-width: 768px) {
   .dataTables_length{
     display: none;
   }
   .dataTables_filter{
-    margin: 0 auto;
-    float: none;
-    padding-left: 20px;
-    width: 100%;
+    width: calc(100% - 152px);
     input{
       float: none;
       width: 100%;
     }
   }
+
+  .table-wrapper .export{
+    margin: 0;
+    top: 39px;
+    right: 0;
+  }
+
+}
+
+@media (max-width: 480px){
+  .table-wrapper .export{
+    display: none;
+  }
+
+  .dataTables_filter{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    input{
+      float: none;
+      width: 100%;
+    }
+  }
+
 }
 

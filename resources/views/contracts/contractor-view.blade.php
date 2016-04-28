@@ -36,7 +36,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>No. of contracts</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-rest"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -57,7 +57,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Contract value</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -83,7 +83,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 procuring agencies</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
@@ -120,7 +120,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 Goods / Services procured</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>

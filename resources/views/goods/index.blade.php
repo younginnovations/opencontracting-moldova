@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                     <div class="disabled-text">Click on label or graph bar to view in detail.</div>
-                    <div class="chart-wrap">
+                    <div class="chart-wrap default-view">
                         <div id="barChart-goods"></div>
                         <div class="loader-text">
                             <div class="text">Fetching data
@@ -75,7 +75,9 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
+    <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
         $('#table_id').DataTable({
             "language": {
@@ -129,7 +131,6 @@
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthOfParent, 'amount');
-
         };
 
         makeCharts();

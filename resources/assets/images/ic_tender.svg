@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="45px" viewBox="0 0 20 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_Tender</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-6" transform="translate(-30.000000, -459.000000)">
+            <g id="ic_Tender" transform="translate(30.000000, 459.000000)">
+                <g id="Layer_1">
+                    <g id="Group">
+                        <g id="Shape">
+                            <path d="M19.938,1.048 L18.126,0 L0,10.465 L1.813,11.513 L19.938,1.048 Z" fill="#888889"></path>
+                            <path d="M1.813,45 L0,43.952 L0,10.465 L1.813,11.513 L1.813,45 Z" fill="#505051"></path>
+                            <path d="M1.813,11.513 L19.938,1.048 L19.938,34.535 L1.813,45 L1.813,11.513 Z" fill="#DCDBDB"></path>
+                        </g>
+                        <path d="M12.685,3.141 L12.688,2.083 L15.424,3.654 L15.424,4.632 L12.685,3.141 Z" id="Shape" fill="#505051"></path>
+                        <path d="M16.313,0.128 L12.688,2.083 L15.424,3.654 L19.151,1.629 L16.313,0.128 Z" id="Shape" fill="#6C6C6D"></path>
+                        <path d="M19.151,1.629 L19.162,2.63 L15.424,4.632 L15.424,3.654 L19.151,1.629 Z" id="Shape" fill="#939598"></path>
+                        <path d="M19.162,2.63 L19.162,13.157 L18.127,10.465 L15.424,15.184 L15.424,4.632 L19.162,2.63 Z" id="Shape" fill="#939598"></path>
+                        <path d="M14.5,4.13 L14.5,14.651 L15.424,15.184 L15.424,4.632 L14.5,4.13 Z" id="Shape" fill="#505051"></path>
+                        <path d="M19.162,13.157 L17.156,11.967 L18.127,10.465 L19.162,13.157 Z" id="Shape" fill="#6C6C6D"></path>
+                        <g transform="translate(5.000000, 17.000000)" id="Shape">
+                            <path d="M0.438,7.07 L11.313,0.79 L11.313,2.884 L0.438,9.162 L0.438,7.07 Z" fill="#939598"></path>
+                            <path d="M11.313,2.884 L9.5,1.837 L0.438,7.07 L0.438,9.162 L11.313,2.884 Z" fill="#505051"></path>
+                        </g>
+                        <g transform="translate(5.000000, 24.000000)" id="Shape">
+                            <path d="M0.438,6.349 L11.313,0.07 L11.313,2.163 L0.438,8.441 L0.438,6.349 Z" fill="#939598"></path>
+                            <path d="M11.313,2.163 L9.5,1.116 L0.438,6.349 L0.438,8.441 L11.313,2.163 Z" fill="#505051"></path>
+                        </g>
+                        <g transform="translate(5.000000, 30.000000)" id="Shape">
+                            <path d="M0.438,6.628 L11.313,0.349 L11.313,2.442 L0.438,8.721 L0.438,6.628 Z" fill="#939598"></path>
+                            <path d="M11.313,2.442 L9.5,1.395 L0.438,6.628 L0.438,8.721 L11.313,2.442 Z" fill="#505051"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
