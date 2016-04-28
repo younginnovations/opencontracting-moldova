@@ -9,7 +9,19 @@
   visibility: hidden;
 }
 
-.pinned {
+.main-title-wrap{
+  .floatingHeader {
+    top: 82px;
+    background: #4a4a4a;
+    color: #fff;
+    box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+    border: none;
+    transform: translateY(-8px);
+    transition: visibility 0.8s ease-in-out,transform 0.3s ease-in-out;
+  }
+}
+
+.pinned{
   background: none;
 }
 
@@ -49,8 +61,9 @@
   }
 }
 
-.dataTables_filter {
-  width: 80%;
+
+.dataTables_filter{
+  width: 70%;
   float: left;
   label {
     font-size: 0;
@@ -73,6 +86,11 @@
     margin: 0 0 1.5rem;
     font-size: 1.4375rem;
     line-height: 1.8125rem;
+
+    @media (max-width: 1146px){
+      width: calc(100% - 324px);
+    }
+
     &:focus, &:active, &:hover {
       border: none;
       border-bottom: solid 6px #4A4A4A;
@@ -451,15 +469,27 @@ tfoot td, tfoot th, thead td, thead th {
     right: 161px;
     margin: 0 10px;
     background: $link-color-blue;
+    overflow: hidden;
     border-radius: 4px;
     color: #fff;
     padding: 10px 10px 10px 36px;
     cursor: pointer;
     z-index: 88;
     transition: all 0.3s ease-in-out;
-      &hover, &:focus, &:active{
-       background: $link-hover-color;
-      }
+    &:hover,&:focus,&:active{
+      background: $link-hover-color;
+    }
 
+    &:before{
+      content: "";
+      background: transparent url(#{$img-path}/ic_sprite.svg) -152px 0 no-repeat;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      position: absolute;
+      left: 10px;
+    }
   }
+
 }
+

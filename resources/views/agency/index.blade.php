@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                     <div class="disabled-text">Click on label or graph bar to view in detail.</div>
-                    <div class="chart-wrap">
+                    <div class="chart-wrap default-view">
                         <div id="barChart-procuring"></div>
                         <div class="loader-text">
                             <div class="text">Fetching data
@@ -76,7 +76,9 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
+    <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
         $('#table_id').DataTable({
             "language": {

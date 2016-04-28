@@ -158,7 +158,6 @@
 .each-chart-section {
   position: relative;
   .loader-text {
-    display: none;
     position: absolute;
     width: 100%;
     top: 50%;
@@ -189,14 +188,14 @@
     }
 
     #linechart-homepage, #header-linechart, #linechart-rest {
-      background: url(#{$img-path}/greyscale_lineChart.svg) center center no-repeat;
+      background: url(#{$img-path}/greyscale_lineChart.svg) 0 center no-repeat;
 
     }
 
     #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
     #barChart-amount {
       margin-top: -30px;
-      background: url(#{$img-path}/greyscale_barChart.svg) center center no-repeat;
+      background: url(#{$img-path}/greyscale_barChart.svg) 0 center no-repeat;
 
     }
   }

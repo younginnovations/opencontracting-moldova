@@ -43,8 +43,18 @@
                         </ul>
                     </div>
                     <div class="disabled-text">Click on label or graph bar to view in detail.</div>
-                    <div class="chart-wrap">
+                    <div class="chart-wrap default-view">
                         <div id="barChart-contractors"></div>
+                        <div class="loader-text">
+                            <div class="text">Fetching data
+                                     <span>
+                                    <div class="dot dot1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="dot dot4"></div>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
