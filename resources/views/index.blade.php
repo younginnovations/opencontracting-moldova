@@ -13,7 +13,7 @@
                             <ul class="breadcrumbs">
                                 <li><span href="#" class="indicator tender">Tenders</span> &nbsp; published</li>
                                 <li> &nbsp; vs. &nbsp;</li>
-                                <li><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued</li>
+                                <li><span href="#" class="indicators">Contracts</span> &nbsp; issued</li>
                             </ul>
                         </div>
                         <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">

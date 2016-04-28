@@ -179,3 +179,11 @@ $app->post(
         'uses' => 'HomeController@sendMessage'
     ]
 );
+
+$app->post(
+    '/contracts',
+    [
+        'as'   => 'contracts.feedback',
+        'uses' => 'ContractController@sendMessage'
+    ]
+);

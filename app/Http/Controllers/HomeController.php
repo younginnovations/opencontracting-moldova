@@ -170,27 +170,32 @@ class HomeController extends Controller
         $response = ($response->json());
 
         if ($response['success'] === true) {
-
             return true;
         }
-
         return false;
     }
 
     public function sendMessage(Request $request, Email $email, Client $client)
     {
         if ($this->checkCaptcha($request, $client)) {
-
+            $msg = 'Please verify the captcha';
+            $status = 'Error';
             $email->sendMessage($request->all());
 
             if ($email) {
-
-                return view('contact')->withSuccess('Your message has been sent. Will be in touch with you soon.');
+                $status = 'success';
+                $msg = "Email sent successfully";
             }
-
-            return view('contact')->withErrors("Sorry your email can't be sent at the moment, please try again later");
+            else{
+                $status = 'error';
+                $msg = "Email sending failed";
+            }
         }
+        $response = array(
+            'status' => $status,
+            'msg' => $msg,
+        );
 
-        return view('contact')->withErrors("Please verify the captcha");
+        return  $response;
     }
 }

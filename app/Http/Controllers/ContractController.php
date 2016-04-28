@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Moldova\Service\Contracts;
+use App\Moldova\Service\Email;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
+use Illuminate\Http\Response;
 
 class ContractController extends Controller
 {
@@ -102,10 +107,59 @@ class ContractController extends Controller
      * @return \Illuminate\View\View
      */
     public function view($contractId)
-    {
+    {//dd($contractId);
         $contractDetail = $this->contracts->getContractDetailById($contractId);
         $contractData   = $this->contracts->getContractDataForJson($contractId);
 
         return view('contracts.view', compact('contractDetail', 'contractData'));
+    }
+
+    /**
+     * @param $request
+     * @param $client
+     * @return bool
+     */
+    public function checkFeedbackCaptcha($request, $client)
+    {
+        $params   = ['body' => ['secret' => env('RE_CAP_SECRET'), 'response' => $request->get('g-recaptcha-response'), 'remoteip' => $request->ip()]];
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', $params);
+        $response = ($response->json());
+
+        if ($response['success'] === true) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param Request $request
+     * @param Email $email
+     * @param Client $client
+     * @return $this
+     */
+    public function sendMessage(Request $request, Email $email, Client $client)
+    {
+        $input = $request->all();
+        $id = $input['id'];
+        $msg = 'Please verify the captcha';
+        $status = 'Error';
+        if ($this->checkFeedbackCaptcha($request, $client)) {
+
+            $email->sendMessage($request->all());
+            if ($email) {
+                $status = 'success';
+                $msg = "Email sent successfully";
+            }else{
+                $status = 'error';
+                $msg = "Email sending failed";
+            }
+        }
+        $response = array(
+            'status' => $status,
+            'msg' => $msg,
+        );
+
+        return  $response;
+//        return redirect()->route('contracts.view', ['id' => $id]);
     }
 }

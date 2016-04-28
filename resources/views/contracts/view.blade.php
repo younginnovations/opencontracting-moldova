@@ -42,7 +42,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-value">icon</span>
                     <span class="each-detail">
-                         <div class="name  columns">Contract value:</div>
+                         <div class="name  columns">Contract Value</div>
                         <div class="value columns">{{ number_format($contractDetail['value']['amount']) }} leu</div>
                     </span>
             </div>
@@ -50,7 +50,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-signed">icon</span>
                     <span class="each-detail">
-                         <div class="name  columns">Contract Signed:</div>
+                         <div class="name  columns">Contract Signed</div>
                         <div class="value columns dt">{{ $contractDetail['dateSigned'] }}</div>
                     </span>
             </div>
@@ -82,7 +82,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap end">
                 <span class="icon relatedtender">icon</span>
                     <span class="each-detail">
-                         <div class="name  columns">RELATED TENDER</div>
+                         <div class="name  columns">Related Tender</div>
                         <div class="value columns">
                             <a href="{{ route('tenders.show',['tender'=>$contractDetail['tender_id']]) }}">{{ $contractDetail['tender_title'] }}</a>
                         </div>
@@ -90,11 +90,63 @@
             </div>
         </div>
     </div>
-    <div class="row custom-switch-wrap">
-       <div class="clearfix">
-           <div class="small-title">Contract data in ocds format</div>
-           <a href="#" class="toggle-switch toggle--on"></a>
-       </div>
+
+    <div class="row">
+        <div class="demo-btns">
+            <div class="info">
+                <div class="buttons">
+                    <p>
+                        <a href="" data-modal="#modal" class="modal__trigger">Send a feedback for this contract</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
+            <div class="modal__dialog">
+                <div class="modal__content">
+                    <div class="background">
+                        <form class="custom-form">
+                            <div class="formBox" style="">
+                                {{--<div class="contactTitle"><span class="bold">Contact</span> Us</div>--}}
+                                <input type="hidden" id="contract_id" name="id" value="{{$contractDetail['id']}}">
+                                <input type="hidden" id="contract_title" name="title"
+                                       value="{{$contractDetail['title']}}">
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" id="fullname" name="fullname"
+                                           placeholder="YOUR NAME" required>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="email" id="email" name="email"
+                                           placeholder="YOUR EMAIL" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="YOUR MESSAGE" id="message"
+                                              name="message" required></textarea>
+                                </div>
+                                <div class="g-recaptcha captcha-wrap" id="captcha"
+                                     data-sitekey="{{ env('RE_CAP_SITE') }}"></div>
+                            </div>
+                            <button class="button" id="submit" value="SEND MESSAGE" rows="20">SEND MESSAGE</button>
+                        </form>
+                    </div>
+
+                    <!-- modal close button -->
+                    {{--<a href="" class="modal__close demo-close">--}}
+                    {{--<svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/><path d="M0 0h24v24h-24z" fill="none"/></svg>--}}
+                    {{--</a>--}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ajaxResponse"></div>
+    <div class="row clearfix">
+        <div class="cusotm-switch clearfix">
+            <a href="#" class="toggle-switch toggle--on"></a>
 
             <div class="custom-switch-content block">
                 <div class="json-view">
@@ -105,12 +157,56 @@
                     {{--Table view is not available for now.--}}
                 </div>
             </div>
+        </div>
     </div>
 
 
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function () {
+            $('#submit').on('click', function (e) {
+                var route = '{{ route('contracts.feedback') }}';
+                e.preventDefault();
+                var id = $('#contract_id').val();
+                var title = $('#contract_title').val();
+                var name = $('#fullname').val();
+                var email = $('#email').val();
+                var message = $('#message').val();
+                var g_recaptcha_response = $("#g-recaptcha-response").val();//grecaptcha.getResponse();
+                var data = {
+                    id: id,
+                    title: title,
+                    fullname: name,
+                    email: email,
+                    message: message,
+                    'g-recaptcha-response': g_recaptcha_response
+                };
+                $.ajax({
+                    type: "POST",
+                    url: route,
+                    data: data,
+                    success: function (data) {
+                        $(".demo-btns").remove();
+                        $("#modal").remove();
+
+                        if (data.status == "success") {
+                            setInterval(function () {
+                                $("#ajaxResponse").addClass('alert success');
+                            }, 3000);
+                        } else {
+                            setInterval(function () {
+                                $("#ajaxResponse").addClass('alert error');
+                            }, 3000);
+                        }
+
+                        $("#ajaxResponse").html(data.msg);
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         var input = {!! $contractData !!};
         delete input['_id'];
@@ -120,7 +216,6 @@
         var showJsonTable = function () {
             var parent = $("#json-table");
 
-            console.log(parent);
             var table = $('<table>', {
                 class: "jTable"
             });
@@ -153,9 +248,10 @@
 
         showJsonTable();
     </script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             updateTables();
         })
     </script>
