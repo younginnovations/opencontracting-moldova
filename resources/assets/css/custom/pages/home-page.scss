@@ -305,5 +305,30 @@
   }
 
 }
+.social-share{
+  margin: 10px 0 20px 0;
+  overflow: hidden;
+  float: right;
+  li{
+    float: left;
+    display: inline-block;
+    margin-top: 5px;
+    &:first-child{
+      margin-top: 0;
+      margin-right: 15px;
+    }
+  }
+
+}
+
+.sharing-title{
+  color: #4A4A4A;
+  font-size: 1.5rem;
+  height: auto;
+  font-weight: bold;
+  vertical-align: middle;
+  line-height: 2.8125rem;
+}
+
 
 

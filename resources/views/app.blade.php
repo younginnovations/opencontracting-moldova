@@ -98,6 +98,18 @@
         </p>
     </div>
     @yield('content')
+        <div class="row">
+            <div class="small-12 text-right sharing-title columns">
+                <ul class="social-share">
+                    <li><span class="text">Share this contract in</span></li>
+                    <li><span class='st_facebook_large' displayText='Facebook'></span></li>
+                    <li><span class='st_twitter_large' displayText='Tweet'></span></li>
+                    <li><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
+                    <li><span class='st_googleplus_large' displayText='Google +'></span></li>
+                </ul>
+            </div>
+        </div>
+
 </section>
 
 <footer class="clearfix">
@@ -114,6 +126,9 @@
 <script src="{{url('js/vendorChart.min.js')}}"></script>
 <script src="{{url('js/customChart.min.js')}}"></script>
 <script src="{{url('js/app.min.js')}}"></script>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "edd8f686-154a-4ba0-a97f-a17a0410077d", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <script>
     var changeDateFormat = function () {
         $('.dt').each(function () {
