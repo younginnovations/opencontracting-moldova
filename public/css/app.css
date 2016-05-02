@@ -250,15 +250,14 @@ footer {
   -webkit-border-radius: 3px;
           border-radius: 3px;
   text-align: center;
-  color: #fff; }
-
-.success {
-  border: 1px solid #157539;
-  background-color: #43AC6A; }
-
-.errors {
-  border: 1px solid #881f0e;
-  background-color: #F04124; }
+  color: #fff;
+  margin-bottom: 15px; }
+  .alert.success {
+    border: 1px solid #157539;
+    background-color: #43AC6A; }
+  .alert.error {
+    border: 1px solid #881f0e;
+    background-color: #F04124; }
 
 .burger-menu-button {
   z-index: 9999;
@@ -1788,136 +1787,50 @@ body.one-pager {
   .one-pager .inner-wrap-static {
     margin: 20px 0; } }
 
-/**
- * Material Modal CSS
- */
 .modal {
-  will-change: visibility, opacity;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: -moz-box;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  -moz-box-align: center;
-       align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  -moz-box-pack: center;
-       justify-content: center;
+  display: none;
+  /* Hidden by default */
   position: fixed;
-  top: 0;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
   left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  z-index: 1000;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  -o-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  -webkit-transition-delay: 0.3s;
-       -o-transition-delay: 0.3s;
-          transition-delay: 0.3s; }
-  .modal .background {
-    padding-top: 40px;
-    padding-bottom: 40px; }
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Black w/ opacity */ }
 
-.modal--active {
-  visibility: visible;
-  opacity: 1; }
+.modal-content {
+  width: 400px;
+  margin: 0 auto;
+  background: rgba(0, 66, 177, 0.66); }
 
-.modal--align-top {
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  -moz-box-align: start;
-        -ms-grid-row-align: flex-start;
-       align-items: flex-start; }
+.modal__content .custom-form {
+  padding-top: 20px; }
 
-.modal__bg {
-  background: rgba(0, 0, 0, 0.7); }
+/* The Close Button */
+.close {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-right: 15px; }
 
-.modal__dialog {
-  width: 500px; }
-
-.modal__content {
-  will-change: transform, opacity;
-  position: relative;
-  background-clip: padding-box;
-  -webkit-box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
-          box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
-  opacity: 0;
-  -webkit-transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-  -o-transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1); }
-
-.modal__content--active {
-  opacity: 1; }
-
-.modal__close {
-  z-index: 1100;
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
   cursor: pointer; }
-  .modal__close svg {
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: 12px;
-    right: 15px; }
-
-.modal__trigger {
-  position: relative;
-  display: inline-block;
-  padding: 1.2rem 2.4rem;
-  color: rgba(0, 0, 0, 0.7);
-  line-height: 1;
-  cursor: pointer;
-  background: #ffebee;
-  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  -o-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
-
-.modal__trigger--active {
-  z-index: 10; }
-
-.modal__trigger:hover {
-  background: #e5d3d6; }
-
-#modal__temp {
-  will-change: transform, opacity;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #ffebee;
-  -webkit-transform: none;
-  -ms-transform: none;
-   -o-transform: none;
-      transform: none;
-  opacity: 1;
-  -webkit-transition: opacity 0.1s ease-out, -webkit-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: opacity 0.1s ease-out, -webkit-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  -o-transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), -o-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), -o-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transition: opacity 0.1s ease-out, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
-
-@media (max-width: 600px) {
-  .modal__dialog {
-    width: 300px; } }
 
 @media (max-width: 1260px) {
   body:not(.one-pager) .main-content {

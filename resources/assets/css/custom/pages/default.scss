@@ -356,17 +356,19 @@ footer {
 
 //style for modal
 
-.alert{
+.alert {
   padding: 10px;
   border-radius: 3px;
   text-align: center;
   color: #fff;
-}
-.success{
-  border:1px solid #157539;
-  background-color:#43AC6A;
-}
-.errors{
-  border: 1px solid #881f0e;
-  background-color: #F04124;
+  margin-bottom: 15px;
+
+  &.success {
+    border: 1px solid #157539;
+    background-color: #43AC6A;
+  }
+  &.error {
+    border: 1px solid #881f0e;
+    background-color: #F04124;
+  }
 }

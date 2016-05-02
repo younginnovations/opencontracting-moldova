@@ -91,24 +91,21 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="demo-btns">
-            <div class="info">
-                <div class="buttons">
-                    <p>
-                        <a href="" data-modal="#modal" class="modal__trigger">Send a feedback for this contract</a>
-                    </p>
-                </div>
-            </div>
-        </div>
 
-        <!-- Modal -->
-        <div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
-            <div class="modal__dialog">
+    <div class="row">
+        <!-- Trigger/Open The Modal -->
+        <button id= "myBtn" class="button blue-button" style="width: auto;">Send a feedback for this contract</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">×</span>
                 <div class="modal__content">
                     <div class="background">
                         <form class="custom-form">
                             <div class="formBox" style="">
+                                <div id="ajaxResponse"></div>
                                 {{--<div class="contactTitle"><span class="bold">Contact</span> Us</div>--}}
                                 <input type="hidden" id="contract_id" name="id" value="{{$contractDetail['id']}}">
                                 <input type="hidden" id="contract_title" name="title"
@@ -123,8 +120,8 @@
                                            placeholder="YOUR EMAIL" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="YOUR MESSAGE" id="message"
-                                              name="message" required></textarea>
+                                <textarea class="form-control" placeholder="YOUR MESSAGE" id="message"
+                                          name="message" required></textarea>
                                 </div>
                                 <div class="g-recaptcha captcha-wrap" id="captcha"
                                      data-sitekey="{{ env('RE_CAP_SITE') }}"></div>
@@ -133,18 +130,13 @@
                         </form>
                     </div>
 
-                    <!-- modal close button -->
-                    {{--<a href="" class="modal__close demo-close">--}}
-                    {{--<svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/><path d="M0 0h24v24h-24z" fill="none"/></svg>--}}
-                    {{--</a>--}}
-
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div id="ajaxResponse"></div>
-    <div class="row custom-switch-wrap">
+        </div>
+
+    </div>
+    <div class="custom-switch-wrap row">
         <div class="clearfix">
             <div class="small-title">Contract data in ocds format</div>
             <a href="#" class="toggle-switch toggle--on"></a>
@@ -235,11 +227,11 @@
                     url: route,
                     data: data,
                     success: function (data) {
-                        $(".demo-btns").remove();
-                        $("#modal").remove();
-
                         if (data.status == "success") {
                             setInterval(function () {
+                                $('#fullname').val('');
+                                $('#email').val('');
+                                $('#message').val('');
                                 $("#ajaxResponse").addClass('alert success');
                             }, 3000);
                         } else {

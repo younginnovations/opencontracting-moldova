@@ -26,12 +26,10 @@ $app = new Laravel\Lumen\Application(
 );
 
 $app->register('Jenssegers\Mongodb\MongodbServiceProvider');
-//$app->register('Maatwebsite\Excel\ExcelServiceProvider');
 
 $app->withFacades();
 class_alias('Illuminate\Support\Facades\Request', 'Request');
 class_alias('Illuminate\Support\Facades\Response', 'Response');
-class_alias('Maatwebsite\Excel\Facades\Excel', 'Excel');
 
 
 $app->withEloquent();
@@ -92,8 +90,6 @@ $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(App\Providers\DevelopmentServiceProvider::class);
-$app->register(Maatwebsite\Excel\ExcelServiceProvider::class);
-
 
 /*
 |--------------------------------------------------------------------------
