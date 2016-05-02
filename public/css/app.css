@@ -399,8 +399,7 @@ footer {
 
 .header-banner {
   background: transparent url(/images/main_background.jpg) center top no-repeat;
-  -o-background-size: cover;
-     background-size: cover;
+  background-size: cover;
   color: #fff;
   border-bottom: solid 2.125rem #FFD200;
   margin-bottom: 28px; }
@@ -621,6 +620,26 @@ footer {
     border-bottom: solid 5px #B8E986; }
   .indicator.contracts {
     border-bottom: solid 5px #50E3C2; }
+
+.social-share {
+  margin: 10px 0 20px 0;
+  overflow: hidden;
+  float: right; }
+  .social-share li {
+    float: left;
+    display: inline-block;
+    margin-top: 5px; }
+    .social-share li:first-child {
+      margin-top: 0;
+      margin-right: 15px; }
+
+.sharing-title {
+  color: #4A4A4A;
+  font-size: 1.5rem;
+  height: auto;
+  font-weight: bold;
+  vertical-align: middle;
+  line-height: 2.8125rem; }
 
 .axis path, .axis line {
   fill: none;
@@ -886,8 +905,7 @@ thead {
   overflow: hidden;
   position: relative;
   background: url(/images/main_background_table.jpg) center top no-repeat;
-  -o-background-size: cover;
-     background-size: cover;
+  background-size: cover;
   z-index: 5;
   /*
   .dt{
@@ -1030,8 +1048,7 @@ tfoot td, tfoot th, thead td, thead th {
             border-radius: 4px; }
   .table-wrapper .table-wrapper {
     background: url(/images/main_background_table.jpg) center top no-repeat;
-    -o-background-size: cover;
-       background-size: cover;
+    background-size: cover;
     -webkit-border-radius: 4px;
             border-radius: 4px; }
     .table-wrapper .table-wrapper .custom-table {
@@ -1716,8 +1733,7 @@ tfoot td, tfoot th, thead td, thead th {
   min-height: calc(100vh - 92px);
   overflow-y: scroll;
   background: transparent url(/images/main_background.png) center top no-repeat;
-  -o-background-size: cover;
-     background-size: cover;
+  background-size: cover;
   background-attachment: fixed; }
 
 body.one-pager {
@@ -1812,8 +1828,7 @@ body.one-pager {
 .modal__content {
   will-change: transform, opacity;
   position: relative;
-  -o-background-clip: padding-box;
-     background-clip: padding-box;
+  background-clip: padding-box;
   -webkit-box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
   opacity: 0;
