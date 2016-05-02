@@ -156,7 +156,15 @@ $app->get(
     ]
 );
 
-$app->get('/about', function () {
+$app->post(
+    '/subscriptions/add',
+    [
+        'as'   => 'subscriptions.add',
+        'uses' => 'SubscriptionsController@add'
+    ]
+);
+
+$app->get('/about',function(){
     return view('about');
 });
 

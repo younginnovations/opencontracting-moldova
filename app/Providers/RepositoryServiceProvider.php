@@ -14,7 +14,9 @@ class RepositoryServiceProvider extends ServiceProvider
         'App\Moldova\Repositories\ProcuringAgency\ProcuringAgencyRepositoryInterface' =>
             'App\Moldova\Repositories\ProcuringAgency\ProcuringAgencyRepository',
         'App\Moldova\Repositories\Goods\GoodsRepositoryInterface'                     =>
-            'App\Moldova\Repositories\Goods\GoodsRepository'
+            'App\Moldova\Repositories\Goods\GoodsRepository',
+        'App\Moldova\Repositories\Subscriptions\SubscriptionsRepositoryInterface'                     =>
+            'App\Moldova\Repositories\Subscriptions\SubscriptionsRepository'
     ];
 
     /**
