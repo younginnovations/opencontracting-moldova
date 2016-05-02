@@ -82,7 +82,10 @@
                         </span>
                     </div>
                     <div class="table-wrapper">
-                        <table id="table_id" class="responsive hover custom-table persist-area">
+                        <a target="_blank" class="export"
+                           href="{{route('tenderGoods.export',['id'=>$tenderDetail['tender']['id']])}}">Export as
+                            CSV</a>
+                        <table id="table_items" class="responsive hover custom-table persist-area">
                             <thead class="persist-header">
                             <tr>
                                 <th>Name</th>
@@ -93,14 +96,14 @@
                             </thead>
                             <tbody>
                             @forelse($tenderDetail['tender']['items'] as $key => $goods)
-                                @if($key < 10)
-                                    <tr href="/goods/{{ $goods['classification']['description'] }}">
-                                        <td>{{ $goods['classification']['description'] }}</td>
-                                        <td>{{ $goods['classification']['id'] }}</td>
-                                        <td>{{ $goods['quantity']}}</td>
-                                        <td>{{ $goods['unit']['name'] }}</td>
-                                    </tr>
-                                @endif
+                                {{--@if($key < 10)--}}
+                                <tr href="/goods/{{ $goods['classification']['description'] }}">
+                                    <td>{{ $goods['classification']['description'] }}</td>
+                                    <td>{{ $goods['classification']['id'] }}</td>
+                                    <td>{{ $goods['quantity']}}</td>
+                                    <td>{{ $goods['unit']['name'] }}</td>
+                                </tr>
+                                {{--@endif--}}
                             @empty
                             @endforelse
 
@@ -110,13 +113,17 @@
                     </div>
                 </div>
                 <div class="tabs-panel" id="panel2">
+
                     <div class="table-wrapper">
                         <div class="title-section">
                             <span class="title">Contracts related to this tender
                                 <span class="tab-indicator">({{count($tenderDetail['contract'])}})</span>
                             </span>
                         </div>
-                        <table id="table_id" class="responsive hover custom-table persist-area">
+                        <a target="_blank" class="export"
+                           href="{{route('tenderContracts.export',['id'=>$tenderDetail['tender']['id']])}}">Export as
+                            CSV</a>
+                        <table id="table_contracts" class="responsive hover custom-table persist-area">
                             <thead class="persist-header">
                             <tr>
                                 <th>Contract number</th>
@@ -128,15 +135,15 @@
                             </thead>
                             <tbody>
                             @forelse($tenderDetail['contract'] as $key => $contract)
-                                @if($key < 10)
-                                    <tr href="/contracts/{{$contract['id']}}">
-                                        <td>{{ getContractInfo($tenderDetail['contract'][$key]['title'],'id') }}</td>
-                                        <td>{{ $tenderDetail['award'][$key]['items'][0]['classification']['description'] }}</td>
-                                        <td class="dt">{{ (!empty($contract['period']['startDate']))?$contract['period']['startDate']:'-' }}</td>
-                                        <td class="dt">{{ $contract['period']['endDate'] }}</td>
-                                        <td>{{ number_format($contract['value']['amount']) }}</td>
-                                    </tr>
-                                @endif
+                                {{--@if($key < 10)--}}
+                                <tr href="/contracts/{{$contract['id']}}">
+                                    <td>{{ getContractInfo($tenderDetail['contract'][$key]['title'],'id') }}</td>
+                                    <td>{{ ($tenderDetail['award'][$key]['items'])?$tenderDetail['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
+                                    <td class="dt">{{ (!empty($contract['period']['startDate']))?$contract['period']['startDate']:'-' }}</td>
+                                    <td class="dt">{{ $contract['period']['endDate'] }}</td>
+                                    <td>{{ number_format($contract['value']['amount']) }}</td>
+                                </tr>
+                                {{--@endif--}}
                             @empty
                             @endforelse
 
@@ -162,6 +169,9 @@
                 return false;
             });
         });
+
+        $("#table_items").DataTable({"bFilter": false});
+        $("#table_contracts").DataTable({"bFilter": false});
     </script>
     <style>
         .custom-table tbody tr {

@@ -52,6 +52,7 @@
     </div>
 
     <div class="row table-wrapper">
+        <a target="_blank" class="export" href="{{route('tender.export')}}">Export as CSV</a>
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>

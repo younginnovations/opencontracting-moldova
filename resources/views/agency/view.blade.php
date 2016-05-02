@@ -11,23 +11,23 @@
 
                 <div class="detail-info">
                     <div class="name-value-wrap">
-                        <div class="name">Address: </div>
+                        <div class="name">Address:</div>
                         <div class="value">{{ $agencyData->buyer['address']['streetAddress'] }} </div>
                     </div>
                     <div class="name-value-wrap">
-                        <div class="name">Email: </div>
+                        <div class="name">Email:</div>
                         <div class="value">{{ $agencyData->buyer['contactPoint']['email'] }} </div>
                     </div>
                     <div class="name-value-wrap">
-                        <div class="name">Phone: </div>
+                        <div class="name">Phone:</div>
                         <div class="value">{{ $agencyData->buyer['contactPoint']['telephone'] }} </div>
                     </div>
                     <div class="name-value-wrap">
-                        <div class="name">Fax: </div>
+                        <div class="name">Fax:</div>
                         <div class="value">{{ $agencyData->buyer['contactPoint']['faxNumber'] }} </div>
                     </div>
                     <div class="name-value-wrap">
-                        <div class="name">Url: </div>
+                        <div class="name">Url:</div>
                         <div class="value">{{ $agencyData->buyer['contactPoint']['url'] }} </div>
                     </div>
                 </div>
@@ -164,8 +164,8 @@
 
     </div>
     <div class="row table-wrapper">
+        <a target="_blank" class="export" href="{{route('agencyDetail.export',['name'=>$procuringAgency])}}">Export as CSV</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
-
             <thead class="persist-header">
             <th class="contract-number">Contract number</th>
             <th class="hide">Contract ID</th>

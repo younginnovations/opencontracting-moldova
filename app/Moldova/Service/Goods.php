@@ -29,6 +29,6 @@ class Goods
      */
     public function getAllGoods($params)
     {
-        return $this->goods->getAllTenders($params);
+        return $this->goods->getAllGoods($params);
     }
 }

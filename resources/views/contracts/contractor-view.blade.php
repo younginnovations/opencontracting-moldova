@@ -156,6 +156,7 @@
 
     </div>
     <div class="row table-wrapper">
+        <a target="_blank" class="export" href="{{route('contractorDetail.export',['name'=>$contractor])}}">Export as CSV</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
 
             <thead class="persist-header">

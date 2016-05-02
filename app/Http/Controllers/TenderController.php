@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Moldova\Service\StreamExporter;
 use App\Moldova\Service\Tenders;
 use Illuminate\Http\Request;
 
@@ -12,11 +13,21 @@ class TenderController
      * @var Tenders
      */
     private $tenders;
+    /**
+     * @var StreamExporter
+     */
+    private $exporter;
 
-    public function __construct(Tenders $tenders)
+    /**
+     * TenderController constructor.
+     * @param Tenders        $tenders
+     * @param StreamExporter $exporter
+     */
+    public function __construct(Tenders $tenders, StreamExporter $exporter)
     {
 
-        $this->tenders = $tenders;
+        $this->tenders  = $tenders;
+        $this->exporter = $exporter;
     }
 
     /**
@@ -54,6 +65,10 @@ class TenderController
 
     }
 
+    /**
+     * @param $tenders
+     * @return string
+     */
     private function getTrend($tenders)
     {
         $trends = [];
@@ -64,10 +79,36 @@ class TenderController
             $trends[$count]['xValue'] = $key;
             $trends[$count]['chart1'] = 0;
             $trends[$count]['chart2'] = $trend;
-            $count++;
+            $count ++;
         }
 
         return json_encode($trends);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function exportTenders()
+    {
+        return $this->exporter->fetchTenders();
+    }
+
+    /**
+     * @param $tenderId
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function exportTenderGoods($tenderId)
+    {
+        return $this->exporter->fetchTenderGoods($tenderId);
+    }
+
+    /**
+     * @param $tenderId
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function exportTenderContracts($tenderId)
+    {
+        return $this->exporter->fetchTenderContracts($tenderId);
     }
 
 }

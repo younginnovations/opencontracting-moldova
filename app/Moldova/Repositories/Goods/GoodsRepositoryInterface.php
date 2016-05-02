@@ -11,5 +11,5 @@ interface GoodsRepositoryInterface
      * @param $params
      * @return mixed
      */
-    public function getAllTenders($params);
+    public function getAllGoods($params);
 }

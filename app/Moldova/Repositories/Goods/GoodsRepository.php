@@ -25,7 +25,7 @@ class GoodsRepository implements GoodsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getAllTenders($params)
+    public function getAllGoods($params)
     {
         $orderIndex  = $params['order'][0]['column'];
         $ordDir      = $params['order'][0]['dir'];

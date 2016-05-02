@@ -7,8 +7,7 @@ use App\Moldova\Service\Contracts;
 use App\Moldova\Service\Email;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Laracasts\Flash\Flash;
-use Illuminate\Http\Response;
+use App\Moldova\Service\StreamExporter;
 
 class ContractController extends Controller
 {
@@ -16,14 +15,20 @@ class ContractController extends Controller
      * @var Contracts
      */
     private $contracts;
+    /**
+     * @var StreamExporter
+     */
+    private $exporter;
 
     /**
      * ContractController constructor.
-     * @param Contracts $contracts
+     * @param Contracts      $contracts
+     * @param StreamExporter $exporter
      */
-    public function __construct(Contracts $contracts)
+    public function __construct(Contracts $contracts, StreamExporter $exporter)
     {
         $this->contracts = $contracts;
+        $this->exporter  = $exporter;
     }
 
     /**
@@ -107,7 +112,7 @@ class ContractController extends Controller
      * @return \Illuminate\View\View
      */
     public function view($contractId)
-    {//dd($contractId);
+    {
         $contractDetail = $this->contracts->getContractDetailById($contractId);
         $contractData   = $this->contracts->getContractDataForJson($contractId);
 
@@ -128,38 +133,53 @@ class ContractController extends Controller
         if ($response['success'] === true) {
             return true;
         }
+
         return false;
     }
 
     /**
      * @param Request $request
-     * @param Email $email
-     * @param Client $client
+     * @param Email   $email
+     * @param Client  $client
      * @return $this
      */
     public function sendMessage(Request $request, Email $email, Client $client)
     {
-        $input = $request->all();
-        $id = $input['id'];
-        $msg = 'Please verify the captcha';
+        $input  = $request->all();
+        $id     = $input['id'];
+        $msg    = 'Please verify the captcha';
         $status = 'Error';
         if ($this->checkFeedbackCaptcha($request, $client)) {
 
             $email->sendMessage($request->all());
             if ($email) {
                 $status = 'success';
-                $msg = "Email sent successfully";
-            }else{
+                $msg    = "Email sent successfully";
+            } else {
                 $status = 'error';
-                $msg = "Email sending failed";
+                $msg    = "Email sending failed";
             }
         }
         $response = array(
             'status' => $status,
-            'msg' => $msg,
+            'msg'    => $msg,
         );
 
-        return  $response;
-//        return redirect()->route('contracts.view', ['id' => $id]);
+        return $response;
     }
+
+    /**
+     * @param $contractorId
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function contractorDetailExport($contractorId)
+    {
+        return $this->exporter->getContractorDetailForExport(urldecode($contractorId), 'award.suppliers.name');
+    }
+
+    public function exportContractors()
+    {
+        return $this->exporter->fetchContractors();
+    }
+
 }

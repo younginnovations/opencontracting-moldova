@@ -14,3 +14,17 @@ function getContractInfo($title, $returnValue)
 
     return implode(" ", $title);
 }
+
+if (!function_exists('config_path')) {
+    /**
+     *      * Get the configuration path.
+     *      *
+     *      * @param  string  $path
+     *      * @return string
+     *      */
+
+    function config_path($path = '')
+    {
+        return base_path().DIRECTORY_SEPARATOR.'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    }
+}

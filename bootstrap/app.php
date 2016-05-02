@@ -26,9 +26,13 @@ $app = new Laravel\Lumen\Application(
 );
 
 $app->register('Jenssegers\Mongodb\MongodbServiceProvider');
+//$app->register('Maatwebsite\Excel\ExcelServiceProvider');
 
 $app->withFacades();
 class_alias('Illuminate\Support\Facades\Request', 'Request');
+class_alias('Illuminate\Support\Facades\Response', 'Response');
+class_alias('Maatwebsite\Excel\Facades\Excel', 'Excel');
+
 
 $app->withEloquent();
 
@@ -88,6 +92,8 @@ $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(App\Providers\DevelopmentServiceProvider::class);
+$app->register(Maatwebsite\Excel\ExcelServiceProvider::class);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +114,7 @@ $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
 if (getenv('APP_ENV') == "local") {
     $app->get('logs', 'Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 }
+
 
 $app->configure('database');
 

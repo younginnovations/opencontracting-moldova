@@ -95,4 +95,5 @@ interface ContractsRepositoryInterface
      * @return mixed
      */
     public function getContractDataForJson($contractId);
+
 }

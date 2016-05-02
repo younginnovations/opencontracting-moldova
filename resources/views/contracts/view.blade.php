@@ -144,18 +144,19 @@
     </div>
 
     <div id="ajaxResponse"></div>
-    <div class="row clearfix">
-        <div class="cusotm-switch clearfix">
+    <div class="row custom-switch-wrap">
+        <div class="clearfix">
+            <div class="small-title">Contract data in ocds format</div>
             <a href="#" class="toggle-switch toggle--on"></a>
+        </div>
 
-            <div class="custom-switch-content block">
-                <div class="json-view">
-                    <pre id="json-viewer"></pre>
-                </div>
-                <div class="table-view text-center">
-                    <div id="json-table"></div>
-                    {{--Table view is not available for now.--}}
-                </div>
+        <div class="custom-switch-content block">
+            <div class="json-view">
+                <pre id="json-viewer"></pre>
+            </div>
+            <div class="table-view text-center">
+                <div id="json-table"></div>
+                {{--Table view is not available for now.--}}
             </div>
         </div>
     </div>
@@ -164,6 +165,52 @@
 @endsection
 
 @section('script')
+    <link rel="stylesheet" href="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.css"/>
+    <script type="text/javascript"
+            src="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.js"></script>
+
+    <style>
+        .level-1 {
+            padding-left: 30px;
+        }
+
+        .level-2 {
+            padding-left: 60px;
+        }
+
+        .level-3 {
+            padding-left: 90px;
+        }
+
+        .level-4 {
+            padding-left: 120px;
+        }
+
+        .level-5 {
+            padding-left: 150px;
+        }
+
+        .level-6 {
+            padding-left: 180px;
+        }
+
+        .level-7 {
+            padding-left: 210px;
+        }
+
+        .level-8 {
+            padding-left: 240px;
+        }
+
+        .level-9 {
+            padding-left: 240px;
+        }
+
+        .level-10 {
+            padding-left: 240px;
+        }
+
+    </style>
     <script>
         $(document).ready(function () {
             $('#submit').on('click', function (e) {
@@ -210,12 +257,12 @@
     <script>
         var input = {!! $contractData !!};
         delete input['_id'];
-        $('#json-viewer').jsonViewer(input, {collapsed: true});
 
+        $('#json-viewer').JSONView(input);
+        $('#json-viewer').JSONView('collapse');
 
         var showJsonTable = function () {
             var parent = $("#json-table");
-
             var table = $('<table>', {
                 class: "jTable"
             });
@@ -225,22 +272,22 @@
                     table.append('<tr><td class="main-title" colspan="100%">' + key + '</td><td>' + input[key] + '</td></tr>');
                 } else {
                     table.append('<tr><td class="main-title" colspan="100%">' + key + '</td></tr>');
-                    showArray('<td></td>', table, input[key]);
+                    showArray(table, input[key], 1);
                 }
             }
 
             parent.append(table);
         }
 
-        var showArray = function (td, table, arr) {
+        var showArray = function (table, arr, level) {
             for (var a in arr) {
                 if (typeof arr[a] != 'object') {
-                    var tr = '<tr>' + td + '<td>' + a + '</td><td>' + arr[a] + '</td></tr>';
+                    var tr = '<tr><td class="level-' + level + '">' + a + '</td><td>' + arr[a] + '</td></tr>';
                     table.append(tr);
                 } else {
-                    table.append('<tr>' + td + '<td class="sub-title" colspan="100%">' + a + '</td></tr>');
-                    td = td + '<td></td>';
-                    showArray(td, table, arr[a]);
+                    table.append('<tr><td class="level-' + level + '" colspan="100%">' + a + '</td></tr>');
+                    level = parseInt(level) + 1;
+                    showArray(table, arr[a], level);
                 }
 
             }
