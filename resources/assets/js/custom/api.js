@@ -57,3 +57,16 @@ $('#select-goods').change(function () {
         createBarChartProcuring(JSON.parse(response), "barChart-goods", "goods", widthOfParent, val);
     });
 });
+
+$('#subscribe').click(function () {
+    var email = $('input[name="email"]').val();
+    var data = {email: email};
+    API.post(subscribeRoute, data).success(function (response) {
+        $("#subscribeModal").css("display","block");
+        if(response == "true"){
+            $("#showMsg").html('Thank you for subscribing.')
+        }else{
+            $("#showMsg").html('This email has already been used.');
+        }
+    })
+});

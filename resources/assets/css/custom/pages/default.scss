@@ -431,3 +431,32 @@ padding-left:150px;
     }
   }
 }*/
+
+
+.suscribe-input{
+  width: calc(100% - 150px);
+  float: left;
+  margin-top: 0.5rem;
+
+  :-moz-placeholder {
+    color: rgba(72,72,72,0.6);
+  }
+  ::-webkit-input-placeholder {
+    color: rgba(72,72,72,0.6);
+  }
+}
+
+.form-group .subscribe.form-control {
+  margin-top: 0.5rem;
+  background: $deep-yellow-color;
+  color: #fff;
+  padding: 12px 10px 12px 10px;
+  max-height: 39px;
+  width: 150px;
+  float: left;
+  border-radius: 0;
+  font-size: 16px;
+  &:hover, &:focus, &:active {
+    background: #e0b900;
+  }
+}

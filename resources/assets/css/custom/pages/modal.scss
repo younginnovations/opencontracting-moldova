@@ -20,6 +20,7 @@
 }
 
 .modal-content{
+  min-height: 100px;
   width: 400px;
   margin: 0 auto;
   background: $deep-blue-color;
@@ -28,6 +29,20 @@
 .modal__content{
   .custom-form{
     padding-top: 20px;
+  }
+}
+
+.alert{
+  .modal-content{
+    background: #fff;
+    border-radius: 4px;
+  }
+  .modal__content{
+    padding: 30px;
+    color: $dark-grey-color;
+  }
+  .close{
+    color: #333;
   }
 }
 

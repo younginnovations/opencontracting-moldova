@@ -138,12 +138,16 @@ $(document).ready(function(){
         $("#myModal").css("display","none");
     });
 
+    $(".alert .close").click(function(){
+        $("#subscribeModal").css("display","none");
+    });
+
 // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == $('#myModal')) {
-            $("#myModal").css("display","none");
+    $(window).click(function(event) {
+        if (event.target.id === 'subscribeModal') {
+            $("#subscribeModal").css("display","none");
         }
-    }
+    });
 
     /* ------------ sticky header in tables ---------------- */
 

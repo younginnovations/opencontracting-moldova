@@ -29,6 +29,7 @@
                     Leu
                     worth of contracts
                 </p>
+
                 <div class="multiple-search-wrap medium-8 small-12 columns">
                     <form action="{{ route('search') }}" method="get" class="search-form">
                         <input name="q" type="search"
@@ -89,7 +90,7 @@
 @else
     @include("partials/main-menu")
 @endif
-<section id = "main-content" class="main-content">
+<section id="main-content" class="main-content">
     <div id="tooltip-wrap" class="hide">
         <p>
             <span id="value"></span>
@@ -101,37 +102,63 @@
         </p>
     </div>
     @yield('content')
-        <div class="row">
-            <div class="small-12 text-right sharing-title share-section columns">
-                <ul class="social-share">
-                    <li><span class="small-title">Share this contract in</span></li>
-                    <li><span class='st_facebook_large' displayText='Facebook'></span></li>
-                    <li><span class='st_twitter_large' displayText='Tweet'></span></li>
-                    <li><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
-                    <li><span class='st_googleplus_large' displayText='Google +'></span></li>
-                </ul>
-            </div>
+    <div class="row">
+        <div class="small-12 text-right sharing-title share-section columns">
+            <ul class="social-share">
+                <li><span class="small-title">Share this contract in</span></li>
+                <li><span class='st_facebook_large' displayText='Facebook'></span></li>
+                <li><span class='st_twitter_large' displayText='Tweet'></span></li>
+                <li><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
+                <li><span class='st_googleplus_large' displayText='Google +'></span></li>
+            </ul>
         </div>
+    </div>
 
 </section>
 
+<div id="subscribeModal" class="modal alert">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">×</span>
+        <div class="modal__content">
+          <i id="showMsg"></i>
+        </div>
+    </div>
+</div>
+
 <footer class="clearfix">
     <div class="row">
-        <div class="top-bar-left">
+        <div class="top-bar-left medium-7">
             <div class="project-logo">
                 <div class="first-section">MOLDOVA CONTRACT</div>
                 <div class="second-section">DATA VISUALISATION</div>
             </div>
         </div>
+        <form class="right-content custom-form medium-5">
+            <div class="form-group">
+                <div class="suscribe-input">
+                    <input class="form-control" required="true" type="text" name="email"
+                           placeholder="Please enter email"/>
+                </div>
+                <input class="button subscribe form-control" type="button" id="subscribe" name="subscribe" value="Subcribe"/>
+            </div>
+
+        </form>
     </div>
 </footer>
+<script>
+    var subscribeRoute = '{{ route("subscriptions.add") }}';
+</script>
 <script src="{{url('js/vendors.min.js')}}"></script>
-{{--<script src="{{url('js/vendorChart.min.js')}}"></script>--}}
-{{--<script src="{{url('js/customChart.min.js')}}"></script>--}}
 <script src="{{url('js/app.min.js')}}"></script>
-<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript">var switchTo5x = true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "edd8f686-154a-4ba0-a97f-a17a0410077d", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script type="text/javascript">stLight.options({
+        publisher: "edd8f686-154a-4ba0-a97f-a17a0410077d",
+        doNotHash: false,
+        doNotCopy: false,
+        hashAddressBar: false
+    });</script>
 <script>
     var changeDateFormat = function () {
         $('.dt').each(function () {
@@ -169,7 +196,7 @@
     /* -------- convert the amount to kilo and milllion --------- */
 
 
-    $(".big-amount").each(function(){
+    $(".big-amount").each(function () {
         var formatted = number_format($(this).text());
         $(this).text(formatted);
     });
