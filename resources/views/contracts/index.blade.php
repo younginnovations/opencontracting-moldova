@@ -69,7 +69,7 @@
 @section('script')
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script type="text/javascript" class="init">
-        $('#table_id').DataTable({
+        var makeTable = $('#table_id').DataTable({
             "language": {
                 'searchPlaceholder': "Search by goods",
                 "lengthMenu": "Show _MENU_ Contracts"
@@ -105,6 +105,14 @@
 
             });
         };
+    </script>
+    <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            if($(window).width() > 768){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            }
+        });
     </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>

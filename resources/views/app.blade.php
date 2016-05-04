@@ -186,8 +186,11 @@
 </script>
 
 @yield('script')
+<script src="{{url('js/foundation.min.js')}}"></script>
 <script>
     $(document).foundation();
+</script>
+<script>
     (function () {
         [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
             new SelectFx(el);

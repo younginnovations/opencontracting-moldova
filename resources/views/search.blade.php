@@ -80,9 +80,9 @@
         </div>
     @else
 
-        <div class="row table-wrapper">
+        <div class="row table-wrapper persist-area">
             <table id="table_id" class="responsive hover custom-table display">
-                <thead>
+                <thead class="persist-header">
                 <tr>
                     <th class="contract-number">Contract number</th>
                     <th class="hide">Contract ID</th>
@@ -115,6 +115,7 @@
 @endsection
 
 @section('script')
+    <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script>
         var createLinks = function () {
             $('#table_id tbody tr').each(function () {
@@ -127,7 +128,7 @@
             });
         };
 
-        $("#table_id").DataTable({
+        var makeTable = $("#table_id").DataTable({
             "language": {
                 "lengthMenu": "Show _MENU_ Contracts"
             },
@@ -144,5 +145,17 @@
         });
 
         createLinks();
+    </script>
+    <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            if($(window).width() > 768){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            }
+
+            $(window).resize(function(){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            });
+        });
     </script>
 @endsection

@@ -178,6 +178,11 @@
 
   .default-view {
 
+    &.chart-wrap .disabled-text,.filter-section{
+      visibility: hidden;
+      opacity: 0;
+    }
+
     #linechart-homepage, #header-linechart,
     #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
     #barChart-amount {
@@ -188,16 +193,19 @@
     }
 
     #linechart-homepage, #header-linechart, #linechart-rest {
-      background: url(#{$img-path}/greyscale_lineChart.svg) 0 center no-repeat;
+      background: url(#{$img-path}/greyscale_lineChart.svg) 0 0 no-repeat;
 
     }
 
-    #barChart-homepage, #barChart-procuring, #barChart-contractors, #barChart-goods,
-    #barChart-amount {
-      margin-top: -30px;
-      background: url(#{$img-path}/greyscale_barChart.svg) 0 center no-repeat;
-
+    &.default-barChart{
+      background: url(#{$img-path}/greyscale_barChart.svg) 0 0 no-repeat;
     }
+
+    #barChart-homepage,&.header-chart #barChart-contractors, &.header-chart #barChart-goods,
+    &.header-chart #barChart-amount,&.header-chart #barChart-procuring {
+      background: url(#{$img-path}/greyscale_barChart.svg) 0 0 no-repeat;
+    }
+
   }
 }
 

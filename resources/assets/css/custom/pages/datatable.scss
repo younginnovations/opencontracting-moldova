@@ -9,6 +9,25 @@
   visibility: hidden;
 }
 
+@media (max-width: 768px) {
+  .fixedHeader-floating{
+    display: none;
+  }
+
+  th.sorting{
+    background: none;
+  }
+} 
+
+.fixedHeader-floating{
+  position: fixed !important;
+  top: 76px !important;
+}
+
+.hide.sorting{
+  width: 0 !important;
+}
+
 .main-title-wrap{
   .floatingHeader {
     top: 82px;
@@ -65,6 +84,11 @@
 .dataTables_filter{
   width: 70%;
   float: left;
+
+  @media (max-width: 1146px){
+    width: calc(100% - 324px);
+  }
+
   label {
     font-size: 0;
     clear: both;
@@ -86,10 +110,6 @@
     margin: 0 0 1.5rem;
     font-size: 1.4375rem;
     line-height: 1.8125rem;
-
-    @media (max-width: 1146px){
-      width: calc(100% - 324px);
-    }
 
     &:focus, &:active, &:hover {
       border: none;
@@ -192,9 +212,9 @@ thead {
   background: none;
 }
 
-.dataTable {
+/*.dataTable {
   width: 100% !important;
-}
+}*/
 
 .table-wrapper {
   margin-bottom: 30px;

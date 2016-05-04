@@ -221,15 +221,23 @@
   }
 }
 
-@media (min-width:40em){
-  .table-wrapper{
-    tr th:first-of-type,
-    tr td:first-of-type{
+@media (min-width:40em) {
+  .table-wrapper {
+    tr td:first-of-type {
       padding-left: 40px;
     }
 
-    tr th:last-of-type,
-    tr td:last-of-type{
+    tr td:last-of-type {
+      padding-right: 40px;
+    }
+  }
+
+  .persist-header {
+    tr th:first-of-type {
+      padding-left: 40px;
+    }
+
+    tr th:last-of-type {
       padding-right: 40px;
     }
   }
@@ -251,12 +259,10 @@
   /*responsive for table*/
 
   .table-wrapper{
-    tr th:first-of-type,
     tr td:first-of-type{
       padding-left: 20px;
     }
 
-    tr th:last-of-type,
     tr td:last-of-type{
       padding-right: 20px;
     }
@@ -265,6 +271,16 @@
       padding: 0;
     }
 
+  }
+
+  .persist-header{
+    tr th:first-of-type{
+      padding-left: 20px;
+    }
+
+    tr th:last-of-type{
+      padding-right: 20px;
+    }
   }
 
   /* ------- responsive for header -------- */
