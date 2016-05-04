@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="420px" height="279px" viewBox="0 0 420 279" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.1 (28215) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Empty-states" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-1" transform="translate(-138.000000, -134.000000)">
+            <g id="Group-3" transform="translate(138.000000, 134.000000)">
+                <rect id="Rectangle-25" fill="#F5F5F5" x="0" y="0" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="0" y="52" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="0" y="102" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="0" y="152" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="0" y="202" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="0" y="254" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="63" y="272" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="169" y="272" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="279" y="272" width="33" height="7"></rect>
+                <rect id="Rectangle-25" fill="#F5F5F5" x="387" y="272" width="33" height="7"></rect>
+                <polyline id="Shape" stroke="#EEEEEE" stroke-dasharray="2" points="43 262 43 261 403 261 403 262"></polyline>
+                <path d="M42.8184732,159.174981 L402.818473,159.174981" id="Shape" stroke="#EEEEEE" stroke-dasharray="2"></path>
+                <path d="M43,207.174981 L403,207.174981" id="Shape" stroke="#EEEEEE" stroke-dasharray="2"></path>
+                <path d="M42.8184732,106.174981 L402.818473,106.174981" id="Shape" stroke="#EEEEEE" stroke-dasharray="2"></path>
+                <path d="M42.8184732,57.849961 L402.818473,57.849961" id="Shape" stroke="#EEEEEE" stroke-dasharray="2"></path>
+                <path d="M42.8184732,7.18745129 L402.818473,7.18745129" id="Shape" stroke="#EEEEEE" stroke-dasharray="2"></path>
+            </g>
+        </g>
+    </g>
+</svg>

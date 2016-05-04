@@ -11,12 +11,12 @@
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <ul class="breadcrumbs">
-                                <li><span href="#" class="indicator tender">Tenders</span> &nbsp; published</li>
+                                <li><span hre   f =  "#" class="indicator tender">Tenders</span> &nbsp; published</li>
                                 <li> &nbsp; vs. &nbsp;</li>
                                 <li><span href="#" class="indicators">Contracts</span> &nbsp; issued</li>
                             </ul>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-homepage"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -38,7 +38,7 @@
                             <h3>Top 5 procuring agencies</h3>
                         </div>
 
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -79,7 +79,7 @@
                             <h3>Top 5 contractors</h3>
                         </div>
 
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -114,7 +114,7 @@
                             <h3>Top 5 goods & services procured</h3>
                         </div>
 
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>

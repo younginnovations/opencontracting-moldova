@@ -67,12 +67,12 @@ circle{
   position: relative;
 }
 
-#tooltip-wrap{
+#tooltip-wrap,#tooltip-no-tip{
   position: absolute;
 
 }
 
-#tooltip-wrap p{
+#tooltip-wrap p,#tooltip-no-tip p{
   margin-left: -50%;
   display: inline-block;
   top: -54px;
@@ -84,12 +84,14 @@ circle{
   border-radius: 5px;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
   pointer-events: none;
-  fill: #FF5722;
   color: #fff;
   z-index: 99;
   font-size: 14px;
   line-height: 20px;
 
+}
+
+#tooltip-wrap p{
   &:before{
     content: "";
     position: absolute;
@@ -99,10 +101,12 @@ circle{
     top: 100%;
     left: 50%;
     margin-left: -10px;
-    z-index: 99;
+        z-index: 99;
   }
 
 }
 
-
-
+.verticalBar-value{
+  //display: none;
+  fill: #4A4A4A;
+}

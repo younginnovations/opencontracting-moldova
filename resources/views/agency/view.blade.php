@@ -5,33 +5,44 @@
             <h2><span><img src="{{url('images/ic_agency.svg')}}"/></span>
                 {{ $procuringAgency }}
             </h2>
+            @if(!empty($agencyData->buyer['address']['streetAddress']) || !empty($agencyData->buyer['contactPoint']['email']) || !empty($agencyData->buyer['contactPoint']['telephone']) || !empty($agencyData->buyer['contactPoint']['faxNumber']) || !empty($agencyData->buyer['contactPoint']['url']))
+                <div class="detail-info-wrap">
+                    <div class="detail-anchor small-button grey-yellow-btn"><span>i</span>view info</div>
 
-            <div class="detail-info-wrap">
-                <div class="detail-anchor small-button grey-yellow-btn"><span>i</span>view info</div>
-
-                <div class="detail-info">
-                    <div class="name-value-wrap">
-                        <div class="name">Address:</div>
-                        <div class="value">{{ $agencyData->buyer['address']['streetAddress'] }} </div>
-                    </div>
-                    <div class="name-value-wrap">
-                        <div class="name">Email:</div>
-                        <div class="value">{{ $agencyData->buyer['contactPoint']['email'] }} </div>
-                    </div>
-                    <div class="name-value-wrap">
-                        <div class="name">Phone:</div>
-                        <div class="value">{{ $agencyData->buyer['contactPoint']['telephone'] }} </div>
-                    </div>
-                    <div class="name-value-wrap">
-                        <div class="name">Fax:</div>
-                        <div class="value">{{ $agencyData->buyer['contactPoint']['faxNumber'] }} </div>
-                    </div>
-                    <div class="name-value-wrap">
-                        <div class="name">Url:</div>
-                        <div class="value">{{ $agencyData->buyer['contactPoint']['url'] }} </div>
+                    <div class="detail-info">
+                        @if(!empty($agencyData->buyer['address']['streetAddress']))
+                            <div class="name-value-wrap">
+                                <div class="name address">Address:</div>
+                                <div class="value">{{ $agencyData->buyer['address']['streetAddress'] }} </div>
+                            </div>
+                        @endif
+                        @if(!empty($agencyData->buyer['contactPoint']['email']))
+                            <div class="name-value-wrap">
+                                <div class="name email">Email:</div>
+                                <div class="value">{{ $agencyData->buyer['contactPoint']['email'] }} </div>
+                            </div>
+                        @endif
+                        @if(!empty($agencyData->buyer['contactPoint']['telephone']))
+                            <div class="name-value-wrap">
+                                <div class="name phone">Phone:</div>
+                                <div class="value">{{ $agencyData->buyer['contactPoint']['telephone'] }} </div>
+                            </div>
+                        @endif
+                        @if(!empty($agencyData->buyer['contactPoint']['faxNumber']))
+                            <div class="name-value-wrap">
+                                <div class="name fax">Fax:</div>
+                                <div class="value">{{ $agencyData->buyer['contactPoint']['faxNumber'] }} </div>
+                            </div>
+                        @endif
+                        @if(!empty($agencyData->buyer['contactPoint']['url']))
+                            <div class="name-value-wrap">
+                                <div class="name url">Url:</div>
+                                <div class="value">{{ $agencyData->buyer['contactPoint']['url'] }} </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
     <div class="row chart-section-wrap push-up-block">
@@ -47,7 +58,7 @@
                                 <li><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued</li>
                             </ul>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-homepage"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -68,7 +79,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Contract value</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -94,7 +105,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 contractors</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -129,7 +140,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 Goods and Services procured</h3>
                         </div>
-                        <div class="chart-wrap" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -164,7 +175,8 @@
 
     </div>
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('agencyDetail.export',['name'=>$procuringAgency])}}">Export as CSV</a>
+        <a target="_blank" class="export" href="{{route('agencyDetail.export',['name'=>$procuringAgency])}}">Export as
+            CSV</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
             <thead class="persist-header">
             <th class="contract-number">Contract number</th>

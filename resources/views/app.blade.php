@@ -9,8 +9,6 @@
     <link href="{{url('css/vendors.min.css')}}" rel="stylesheet">
     {{--<link href="{{url('css/app.min.css')}}" rel="stylesheet">--}}
     <link href="{{url('css/app.css')}}" rel="stylesheet">
-
-
 </head>
 
 <body class="{{(\Request::segment(1) === "about" || \Request::segment(1) === "contact")?'one-pager':''}}">
@@ -97,11 +95,16 @@
             <span id="value"></span>
         </p>
     </div>
+    <div id="tooltip-no-tip" class="hide">
+        <p>
+            <span id="value"></span>
+        </p>
+    </div>
     @yield('content')
         <div class="row">
-            <div class="small-12 text-right sharing-title columns">
+            <div class="small-12 text-right sharing-title share-section columns">
                 <ul class="social-share">
-                    <li><span class="text">Share this contract in</span></li>
+                    <li><span class="small-title">Share this contract in</span></li>
                     <li><span class='st_facebook_large' displayText='Facebook'></span></li>
                     <li><span class='st_twitter_large' displayText='Tweet'></span></li>
                     <li><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
@@ -123,8 +126,8 @@
     </div>
 </footer>
 <script src="{{url('js/vendors.min.js')}}"></script>
-<script src="{{url('js/vendorChart.min.js')}}"></script>
-<script src="{{url('js/customChart.min.js')}}"></script>
+{{--<script src="{{url('js/vendorChart.min.js')}}"></script>--}}
+{{--<script src="{{url('js/customChart.min.js')}}"></script>--}}
 <script src="{{url('js/app.min.js')}}"></script>
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>

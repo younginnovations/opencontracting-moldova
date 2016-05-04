@@ -1,6 +1,6 @@
 $deep-blue-color: #0042B1;
 $link-color-blue: #0046AE;
-$link-hover-color: #0c05ae;
+$link-hover-color: #003179;
 $deep-yellow-color: #FFD200;
 $grey-yellow-color: #756200;
 $dark-grey-yellow-color: #756200;
@@ -372,3 +372,62 @@ footer {
     background-color: #F04124;
   }
 }
+
+.level-1{
+padding-left:30px;
+}
+.level-2{
+padding-left:60px;
+}
+.level-3{
+padding-left:90px;
+}
+.level-4{
+padding-left:120px;
+}
+.level-5{
+padding-left:150px;
+}
+.level-6{
+  padding-left:180px;
+}
+.level-7{
+  padding-left:210px;
+}
+.level-8{
+  padding-left:240px;
+}
+.level-9{
+   padding-left:240px;
+}
+.level-10{
+  padding-left:240px;
+}
+
+/*style for share section*/
+
+.share-section{
+  .small-title{
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+/*.stButton .stLarge{
+  border-radius: 50%;
+}*/
+
+/*.social-share{
+  max-width: 500px;
+  overflow: hidden;
+  span.text{
+    text-indent: -999px;
+    &:before{
+      content: "";
+      background: url(#{img-path}/ic_sprite.svg) -89px -340px no-repeat;
+      width: 30px;
+      height: 31px;
+      top: 0;
+    }
+  }
+}*/
