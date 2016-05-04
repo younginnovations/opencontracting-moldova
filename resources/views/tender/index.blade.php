@@ -75,7 +75,7 @@
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
-        $('#table_id').DataTable({
+        var makeTable = $('#table_id').DataTable({
             "language": {
                 'searchPlaceholder': "Search by tender title",
                 "lengthMenu": "Show _MENU_ Tenders"
@@ -117,6 +117,14 @@
             });
         };
 
+    </script>
+    <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            if($(window).width() > 768){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            }
+        });
     </script>
 
     <script>

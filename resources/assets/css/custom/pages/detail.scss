@@ -345,11 +345,15 @@
 
 .detail-info-wrap{
   position: relative;
+  width: auto;
+  display: table;
+  margin: 0 auto;
+  min-width: 215px;
 
   .detail-anchor{
     cursor: pointer;
     text-align: center;
-    margin: 0 auto 20px auto;
+    margin-bottom: 0;
     span{
       font-family: Garamond;
       font-style: italic;
@@ -439,7 +443,7 @@
 
 //show tooltip when hover in anchor
 
-.detail-anchor:hover + .detail-info{
+.detail-info-wrap:hover  .detail-info{
   opacity: 1;
   visibility: visible;
   margin-left: -200px;
@@ -456,22 +460,22 @@
 
 .detail-info{
   .address{
-    background: transparent url(#{$img-path}/ic_sprite.svg) -92px 0 no-repeat;
+    background: transparent url(#{$img-path}/ic_sprite.svg) -94px 0 no-repeat;
   }
 
   .url{
-    background: transparent url(#{$img-path}/ic_sprite.svg) -84px -71px no-repeat;
+    background: transparent url(#{$img-path}/ic_sprite.svg) -88px -61px no-repeat;
   }
 
   .phone{
-    background: transparent url(#{$img-path}/ic_sprite.svg) -87px -141px  no-repeat;
+    background: transparent url(#{$img-path}/ic_sprite.svg) -93px -130px  no-repeat;
   }
 
   .email{
-    background: transparent url(#{$img-path}/ic_sprite.svg) -87px -206px   no-repeat;
+    background: transparent url(#{$img-path}/ic_sprite.svg) -90px -190px   no-repeat;
   }
 
   .fax{
-    background: transparent url(#{$img-path}/ic_sprite.svg) -88px -270px  no-repeat;
+    background: transparent url(#{$img-path}/ic_sprite.svg) -85px -250px  no-repeat;
   }
 }

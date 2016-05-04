@@ -105,7 +105,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 contractors</h3>
                         </div>
-                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -140,7 +140,7 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 Goods and Services procured</h3>
                         </div>
-                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -230,7 +230,7 @@
             });
         };
 
-        $("#table_id").DataTable({
+        var makeTable = $("#table_id").DataTable({
             "bFilter": false,
             "fnDrawCallback": function () {
                 changeDateFormat();
@@ -244,6 +244,14 @@
         });
 
         createLinks();
+    </script>
+    <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            if($(window).width() > 768){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            }
+        });
     </script>
 
     <script>
