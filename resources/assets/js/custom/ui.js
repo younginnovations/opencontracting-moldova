@@ -151,7 +151,7 @@ $(document).ready(function(){
 
     /* ------------ sticky header in tables ---------------- */
 
-    function UpdateTableHeaders() {
+/*    function UpdateTableHeaders() {
         if($(window).width() > 768){
             $(".persist-area").each(function() {
 
@@ -194,7 +194,7 @@ $(document).ready(function(){
             .scroll(UpdateTableHeaders)
             .trigger("scroll");
 
-    });
+    });*/
 
     $(document).ready(function(){
         $('.chart-wrap').each(function() {
@@ -219,6 +219,8 @@ $(document).ready(function(){
         headerElementsAlign();
         tabResponsive();
         menuDisappear();
-        //fixHeader();
+        var tableWidth = $("#table_id_wrapper").width();
+        $(".persit-header").width(tableWidth);
+        $(".custom-table").width(tableWidth);
     });
 });

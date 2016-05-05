@@ -38,7 +38,7 @@
                             <h3>Top 5 procuring agencies</h3>
                         </div>
 
-                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -79,7 +79,7 @@
                             <h3>Top 5 contractors</h3>
                         </div>
 
-                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -114,7 +114,7 @@
                             <h3>Top 5 goods & services procured</h3>
                         </div>
 
-                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
@@ -169,35 +169,36 @@
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script type="text/javascript" class="init">
 
-        $('#table_id').DataTable({
-            "language": {
-                'searchPlaceholder': "Search by goods / services",
-                "lengthMenu": "Show _MENU_ Contracts"
-            },
-            "processing": true,
-            "serverSide": true,
-            "ajax": '/api/data',
-            "ajaxDataProp": '',
-            "columns": [
-                {'data': 'contractNumber'},
-                {'data': 'id', 'className': 'hide'},
-                {'data': 'goods.mdValue', "defaultContent": "-"},
-                {'data': 'contractDate', 'className': 'dt'},
-                {'data': 'finalDate', 'className': 'dt'},
-                {'data': 'amount', "className": 'numeric-data'}
-            ],
-            "fnDrawCallback": function () {
-                changeDateFormat();
-                numericFormat();
-                createLinks();
-                updateTables();
-                if ($('#table_id tr').length < 10) {
-                    $('.dataTables_paginate').hide();
-                } else {
-                    $('.dataTables_paginate').show();
-                }
-            }
-        });
+       var makeTable = $('#table_id').DataTable({
+               "language": {
+                   'searchPlaceholder': "Search by goods / services",
+                   "lengthMenu": "Show _MENU_ Contracts"
+               },
+               "processing": true,
+               "serverSide": true,
+               "ajax": '/api/data',
+               "ajaxDataProp": '',
+               "columns": [
+                   {'data': 'contractNumber'},
+                   {'data': 'id', 'className': 'hide'},
+                   {'data': 'goods.mdValue', "defaultContent": "-"},
+                   {'data': 'contractDate', 'className': 'dt'},
+                   {'data': 'finalDate', 'className': 'dt'},
+                   {'data': 'amount', "className": 'numeric-data'}
+               ],
+               "fnDrawCallback": function () {
+                   changeDateFormat();
+                   numericFormat();
+                   createLinks();
+                   updateTables();
+                   if ($('#table_id tr').length < 10) {
+                       $('.dataTables_paginate').hide();
+                   } else {
+                       $('.dataTables_paginate').show();
+                   }
+               }
+           });
+
 
         var createLinks = function () {
 
@@ -213,6 +214,18 @@
 //updateTables();
     </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
+    <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            if($(window).width() > 768){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            }
+
+            $(window).resize(function(){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            });
+        });
+    </script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
         var route = '{{ route("filter") }}';

@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                     <div class="disabled-text">Click on label or graph bar to view in detail.</div>
-                    <div class="chart-wrap default-view">
+                    <div class="chart-wrap default-view header-chart">
                         <div id="barChart-goods"></div>
                         <div class="loader-text">
                             <div class="text">Fetching data
@@ -79,7 +79,7 @@
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
-        $('#table_id').DataTable({
+        var makeTable = $('#table_id').DataTable({
             "language": {
                 'searchPlaceholder': "Search by tender title",
                 "lengthMenu": "Show _MENU_ Tenders"
@@ -117,6 +117,14 @@
             });
         };
 
+    </script>
+    <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            if($(window).width() > 768){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            }
+        });
     </script>
     <script>
         var route = '{{ route("filter") }}';

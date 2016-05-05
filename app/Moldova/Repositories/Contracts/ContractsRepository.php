@@ -5,6 +5,8 @@ namespace App\Moldova\Repositories\Contracts;
 
 use App\Moldova\Entities\Contracts;
 use App\Moldova\Entities\OcdsRelease;
+use App\Moldova\Service\StringUtil;
+use MongoRegex;
 
 class ContractsRepository implements ContractsRepositoryInterface
 {
@@ -318,15 +320,31 @@ class ContractsRepository implements ContractsRepositoryInterface
         $agency     = (!empty($search['agency'])) ? $search['agency'] : '';
         $range      = (!empty($search['amount'])) ? explode("-", $search['amount']) : '';
 
+
+
+        if (!empty($q)) {
+            $search = StringUtil::accentToRegex($q);
+            $query  = array('goods.mdValue' => new MongoRegex("/.*{$search}.*/i"));
+            $query2 = array('participant.fullName' => new MongoRegex("/.*{$search}.*/i"));
+            $query3 = array('tender.stateOrg.orgName' => new MongoRegex("/.*{$search}.*/i"));
+
+            $cursor = Contracts::raw(function ($collection) use ($query, $query2, $query3) {
+                return $collection->find([
+                    '$or' => [
+                        $query,
+                        $query2,
+                        $query3
+                    ]
+                ]);
+            });
+
+            return ($cursor);
+        }
+
+
         return ($this->contracts
             ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue', 'status.mdValue'])
-            ->where(function ($query) use ($q, $contractor, $range, $agency) {
-
-                if (!empty($q)) {
-                    $query->where('goods.mdValue', 'like', '%' . $q . '%')
-                          ->orWhere('participant.fullName', 'like', '%' . $q . '%')
-                          ->orWhere('tender.stateOrg.orgName', 'like', '%' . $q . '%');
-                }
+            ->where(function ($query) use ($contractor, $range, $agency) {
                 if (!empty($contractor)) {
                     $query->where('participant.fullName', "=", $contractor);
                 }
@@ -372,7 +390,7 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getContractDataForJson($contractId)
     {
-        return $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1, 'award' => 1, 'tender.id' => 1, 'tender.title' => 1, 'buyer' => 1])->first();
+        return $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1, 'award' => 1, 'tender' => 1, 'buyer' => 1])->first();
     }
 
 }

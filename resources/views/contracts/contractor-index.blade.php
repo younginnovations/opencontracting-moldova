@@ -43,7 +43,7 @@
                         </ul>
                     </div>
                     <div class="disabled-text">Click on label or graph bar to view in detail.</div>
-                    <div class="chart-wrap default-view">
+                    <div class="chart-wrap default-view header-chart">
                         <div id="barChart-contractors"></div>
                         <div class="loader-text">
                             <div class="text">Fetching data
@@ -80,7 +80,7 @@
 @endsection
 @section('script')
     <script type="text/javascript" class="init">
-        $('#table_id').DataTable({
+        var makeTable = $('#table_id').DataTable({
             "language": {
                 'searchPlaceholder': "Search by contractors",
                 "lengthMenu": "Show _MENU_ Contractors"
@@ -113,6 +113,16 @@
             });
         };
     </script>
+
+    <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            if($(window).width() > 768){
+                new $.fn.dataTable.FixedHeader( makeTable );
+            }
+        });
+    </script>
+
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
 
