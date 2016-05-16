@@ -228,8 +228,36 @@
                 var id = $('#contract_id').val();
                 var title = $('#contract_title').val();
                 var name = $('#fullname').val();
+                var trimmedName = $.trim(name);
                 var email = $('#email').val();
                 var message = $('#message').val();
+                var trimmedMessage = $.trim(message);
+                var atPos = email.indexOf("@");
+                var dotPos = email.lastIndexOf(".");
+                if(trimmedName == ""){
+                    $("#ajaxResponse").html("Please enter your name!");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#fullname").focus();
+                    return false;
+                }
+                if(email == ""){
+                    $("#ajaxResponse").html("Please enter your email address!");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#email").focus();
+                    return false;
+                }
+                if( atPos < 1 || dotPos < atPos+2 || dotPos+2>=email.length){
+                    $("#ajaxResponse").html("Please enter a valid email address!");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#email").css("border","1px solid #BB0303");
+                    return false;
+                }
+                if(trimmedMessage == ""){
+                    $("#ajaxResponse").html("Please enter your message!");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#message").focus();
+                    return false;
+                }
                 var g_recaptcha_response = $("#g-recaptcha-response").val();//grecaptcha.getResponse();
                 var data = {
                     id: id,
@@ -244,22 +272,28 @@
                     url: route,
                     data: data,
                     success: function (data) {
-                        $("#myModal").hide();
-
-                        if (data.status == "success") {
-                            setInterval(function () {
-                                $('#fullname').val('');
-                                $('#email').val('');
-                                $('#message').val('');
-                                $("#ajaxResponse").addClass('alert success');
-                            }, 3000);
-                        } else {
-                            setInterval(function () {
-                                $("#ajaxResponse").addClass('alert error');
-                            }, 3000);
+                        if(data.status != "success"){
+                            $("#ajaxResponse").html(data.msg);
+                            $("#ajaxResponse").css("color","#BB0505");
+                            return false;
                         }
+                        else{
+                            console.log("Email sent successfully");
+                            $("#ajaxResponse").html("Email sent successfully");
+                            $("#ajaxResponse").css("color","#04692A");
+                            setTimeout(function(){
+                                $("#myModal").hide();
+                                $('#fullname').val("");
+                                $("#ajaxResponse").empty();
+                                $("#ajaxResponse").css("color","#04692A");
+                                $('#email').val('');
+                                $("#email").css("border","1px solid #bbb");
+                                $("#email").css("background","#fff");
+                                $('#message').val('');
+                                grecaptcha.reset();
+                            }, 3000);
 
-                        $("#ajaxResponse").html(data.msg);
+                        }
                     }
                 });
             });

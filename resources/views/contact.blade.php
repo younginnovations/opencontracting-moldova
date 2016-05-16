@@ -7,6 +7,7 @@
                     <form class="custom-form clearfix">
                         <div class="formBox">
                             <div class="contactTitle"><span class="bold">Contact</span> Us</div>
+                            <div id="ajaxResponse"></div>
                             <div class="form-group">
                                 <input class="form-control" type="text" id="fullname" name="fullname" placeholder="YOUR NAME" required>
                             </div>
@@ -18,7 +19,6 @@
                             </div>
                             <div class="g-recaptcha captcha-wrap" id="captcha" data-sitekey="{{ env('RE_CAP_SITE') }}" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
                         </div>
-                        <div id="ajaxResponse"></div>
                         <button class="button" id="submit" type="submit" value="SEND MESSAGE" rows="20">SEND MESSAGE</button>
                     </form>
                 </div>
@@ -58,8 +58,36 @@
                 var route = '{{ route('home.contact') }}';
                 e.preventDefault();
                 var name  = $('#fullname').val();
+                var trimmedName = $.trim(name);
                 var email  = $('#email').val();
                 var message = $('#message').val();
+                var trimmedMessage = $.trim(message);
+                var atPos = email.indexOf("@");
+                var dotPos = email.lastIndexOf(".");
+                if(trimmedName == ""){
+                    $("#ajaxResponse").html("Please enter your name!");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#fullname").focus();
+                    return false;
+                }
+                if(email == ""){
+                    $("#ajaxResponse").html("Please enter your email address!");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#email").focus();
+                    return false;
+                }
+                if( atPos < 1 || dotPos < atPos+2 || dotPos+2>=email.length){
+                    $("#ajaxResponse").html("Please enter a valid email address!");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#email").css("border","1px solid #BB0303");
+                    return false;
+                }
+                if(trimmedMessage == ""){
+                    $("#ajaxResponse").html("Please enter your message!");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#message").focus();
+                    return false;
+                }
                 var g_recaptcha_response = $("#g-recaptcha-response").val();
                 var data = {fullname: name, email: email,message:message,'g-recaptcha-response':g_recaptcha_response};
                 $.ajax({
@@ -67,13 +95,22 @@
                     url: route,
                     data: data,
                     success: function(data){
-                        if(data.status == "success"){
-                            $('#fullname').val("");
-                            $('#email').val('');
-                            $('#message').val('');
+                        if(data.status != "success"){
+                            $("#ajaxResponse").html(data.msg);
+                            $("#ajaxResponse").css("color","#BB0505");
+                            return false;
                         }
-
-                        $("#ajaxResponse").html(data.msg);
+                        else{
+                            $('#fullname').val("");
+                            $("#ajaxResponse").html(data.msg);
+                            setInterval(function(){$("#ajaxResponse").empty(); }, 3000);
+                            $("#ajaxResponse").css("color","#04692A");
+                            $('#email').val('');
+                            $("#email").css("border","1px solid #bbb");
+                            $("#email").css("background","#fff");
+                            $('#message').val('');
+                            grecaptcha.reset();
+                        }
                     }
                 });
             });
