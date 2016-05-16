@@ -143,6 +143,8 @@
         </div>
 
         <div class="custom-switch-content block">
+            <button name="expand" onclick="expand()">expand</button>
+            <button name="collapse" onclick="collapse()">collapse</button>
             <div class="json-view">
                 <pre id="json-viewer"></pre>
             </div>
@@ -156,6 +158,22 @@
 @endsection
 
 @section('script')
+    <script>
+        function expand(){
+            var input = {!! $contractData !!};
+            delete input['_id'];
+
+            $('#json-viewer').JSONView(input);
+            $('#json-viewer').JSONView('expand');
+        }
+        function collapse(){
+            var input = {!! $contractData !!};
+            delete input['_id'];
+
+            $('#json-viewer').JSONView(input);
+            $('#json-viewer').JSONView('collapse');
+        }
+    </script>
     <link rel="stylesheet" href="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.css"/>
     <script type="text/javascript"
             src="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.js"></script>
@@ -298,63 +316,63 @@
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script>
 
-    $(document).ready(function () {
-        updateTables();
-        var titleOne, titleTwo, titleThree, titleFour;
+        $(document).ready(function () {
+            updateTables();
+            var titleOne, titleTwo, titleThree, titleFour;
 
-        $('.toggle-switch').click(function(e) {
-            titleOne = $('#title1').offset().top - 158, // 76 + 41 + 41 (fixed header + height of td)
-            titleTwo = $('#title2').offset().top - 158,
-            titleThree = $('#title3').offset().top - 158,
-            titleFour = $('#title4').offset().top - 158;
-        });
-
-        $(window).scroll(function () {
-
-            $("#json-table").each(function () {
-                var el = $(this),
-                        offset = el.offset(),
-                        scrollTop = $(window).scrollTop();
-
-                if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
-                    fixHeader();
-                }else{
-                    $(".main-title-wrap").each(function(){
-                        $("td").removeClass("floatingHeader");
-                    });
-                }
+            $('.toggle-switch').click(function(e) {
+                titleOne = $('#title1').offset().top - 158, // 76 + 41 + 41 (fixed header + height of td)
+                        titleTwo = $('#title2').offset().top - 158,
+                        titleThree = $('#title3').offset().top - 158,
+                        titleFour = $('#title4').offset().top - 158;
             });
-        });
 
-        var calcHeaderWidth = function(element){
-            var tableWidth = $(".jTable").width() - 21;
-            element.addClass("floatingHeader");
-            element.width(tableWidth);
-            element.css('visibility', 'visible');
-        }
+            $(window).scroll(function () {
 
-        var fixHeader = function () {
+                $("#json-table").each(function () {
+                    var el = $(this),
+                            offset = el.offset(),
+                            scrollTop = $(window).scrollTop();
 
-            var scrollTop = $(window).scrollTop();
+                    if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
+                        fixHeader();
+                    }else{
+                        $(".main-title-wrap").each(function(){
+                            $("td").removeClass("floatingHeader");
+                        });
+                    }
+                });
+            });
 
-            if (titleOne <= scrollTop && scrollTop < titleTwo ){
-                calcHeaderWidth($("#title1"));
-                $(".main-title").not('[id$="1"]').removeClass("floatingHeader");
-
-            } else if ( titleTwo <= scrollTop && scrollTop < titleThree ) {
-                calcHeaderWidth($("#title2"));
-                $(".main-title").not('[id$="2"]').removeClass("floatingHeader");
-
-            } else if (titleThree <= scrollTop && scrollTop < titleFour) {
-                calcHeaderWidth($("#title3"));
-                $(".main-title").not('[id$="3"]').removeClass("floatingHeader");
-
-            } else if (titleFour <= scrollTop) {
-                calcHeaderWidth($("#title4"));
-                $(".main-title").not('[id$="4"]').removeClass("floatingHeader");
+            var calcHeaderWidth = function(element){
+                var tableWidth = $(".jTable").width() - 21;
+                element.addClass("floatingHeader");
+                element.width(tableWidth);
+                element.css('visibility', 'visible');
             }
-        }
-    });
+
+            var fixHeader = function () {
+
+                var scrollTop = $(window).scrollTop();
+
+                if (titleOne <= scrollTop && scrollTop < titleTwo ){
+                    calcHeaderWidth($("#title1"));
+                    $(".main-title").not('[id$="1"]').removeClass("floatingHeader");
+
+                } else if ( titleTwo <= scrollTop && scrollTop < titleThree ) {
+                    calcHeaderWidth($("#title2"));
+                    $(".main-title").not('[id$="2"]').removeClass("floatingHeader");
+
+                } else if (titleThree <= scrollTop && scrollTop < titleFour) {
+                    calcHeaderWidth($("#title3"));
+                    $(".main-title").not('[id$="3"]').removeClass("floatingHeader");
+
+                } else if (titleFour <= scrollTop) {
+                    calcHeaderWidth($("#title4"));
+                    $(".main-title").not('[id$="4"]').removeClass("floatingHeader");
+                }
+            }
+        });
 
     </script>
 
