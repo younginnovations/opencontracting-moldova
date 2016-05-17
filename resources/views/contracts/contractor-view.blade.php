@@ -14,7 +14,7 @@
                 Total contracts
             </div>
             <div class="value">
-                {{ count($contractorDetail) }}
+                {{ $totalContract }}
             </div>
         </div>
 
@@ -109,7 +109,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="#" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="#" class="anchor">View all goods / services <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}" class="anchor">View all goods / services <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,8 @@
 
     </div>
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('contractorDetail.export',['name'=>$contractor])}}">Export as CSV</a>
+        <a target="_blank" class="export" href="{{route('contractorDetail.export',['name'=>$contractor])}}">Export as
+            CSV</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
 
             <thead class="persist-header">
@@ -169,16 +170,18 @@
             <th>Amount</th>
             </thead>
             <tbody>
-            @forelse($contractorDetail as $key => $contract)
-                <tr>
-                    <td>{{ $contract['contractNumber'] }}</td>
-                    <td class="hide">{{ $contract['id'] }}</td>
-                    <td>{{ $contract['goods']['mdValue'] }}</td>
-                    <td>{{ $contract['status']['mdValue'] }}</td>
-                    <td class="dt">{{ $contract['contractDate'] }}</td>
-                    <td class="dt">{{ $contract['finalDate'] }}</td>
-                    <td>{{ number_format($contract['amount']) }}</td>
-                </tr>
+            @forelse($contractorDetail as $key => $tender)
+                @foreach($tender['contract'] as $contract)
+                    <tr>
+                        <td>{{ getContractInfo($contract['title'],'id') }}</td>
+                        <td class="hide">{{ $contract['id'] }}</td>
+                        <td>{{ (!empty($tender['award'][$key]['items']))?$tender['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
+                        <td>{{ $contract['status'] }}</td>
+                        <td class="dt">{{ $contract['dateSigned'] }}</td>
+                        <td class="dt">{{ $contract['period']['endDate'] }}</td>
+                        <td>{{ number_format($contract['value']['amount']) }}</td>
+                    </tr>
+                @endforeach
             @empty
             @endforelse
 
@@ -228,9 +231,9 @@
     </script>
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
     <script>
-        $(document).ready(function() {
-            if($(window).width() > 768){
-                new $.fn.dataTable.FixedHeader( makeTable );
+        $(document).ready(function () {
+            if ($(window).width() > 768) {
+                new $.fn.dataTable.FixedHeader(makeTable);
             }
         });
     </script>

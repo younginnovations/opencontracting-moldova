@@ -20,7 +20,7 @@
                             <select name="contractor" class="cs-select cs-skin-elastic">
                                 <option value="" disabled selected>Select a contractor</option>
                                 @forelse($contractTitles as $contractTitle)
-                                    <option value="{{ $contractTitle['_id'] }}">{{ $contractTitle['_id'] }}</option>
+                                    <option value="{{ $contractTitle['_id'][0] }}">{{ $contractTitle['_id'][0] }}</option>
                                 @empty
                                 @endforelse
                             </select>
@@ -38,7 +38,8 @@
                             <select name="amount" class="cs-select cs-skin-elastic">
                                 <option value="" disabled selected>Select a range</option>
                                 <option value="0-10000">0-10000</option>
-                                <option value="10000-200000">10000-200000</option>
+                                <option value="10000-100000">10000-100000</option>
+                                <option value="100000-200000">100000-200000</option>
                                 <option value="200000-500000">200000-500000</option>
                                 <option value="500000-1000000">500000-1000000</option>
                                 <option value="1000000-Above">1000000-Above</option>
@@ -94,16 +95,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($contracts as $contract)
-                    <tr>
-                        <td>{{ $contract->contractNumber }}</td>
-                        <td class="hide">{{ $contract->id }}</td>
-                        <td>{{ $contract->goods['mdValue'] }}</td>
-                        <td>{{ $contract->status['mdValue'] }}</td>
-                        <td class="dt">{{ $contract->contractDate }}</td>
-                        <td class="dt">{{ $contract->finalDate }}</td>
-                        <td class="numeric-data">{{ $contract->amount }}</td>
-                    </tr>
+                @forelse($contracts as $tender)
+
+                    @foreach($tender['contract'] as $key => $contract)
+                        <tr>
+                            <td>{{ getContractInfo($contract['title'],'id') }}</td>
+                            <td class="hide">{{ $contract['id'] }}</td>
+                            <td>{{ ($tender['award'][$key]['items'])?$tender['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
+                            <td>{{ $contract['status'] }}</td>
+                            <td class="dt">{{ $contract['dateSigned'] }}</td>
+                            <td class="dt">{{ $contract['period']['endDate'] }}</td>
+                            <td class="numeric-data">{{ $contract['value']['amount'] }}</td>
+                        </tr>
+                    @endforeach
                 @empty
                     <span>No results found.</span>
                 @endforelse
@@ -149,13 +153,13 @@
     </script>
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
     <script>
-        $(document).ready(function() {
-            if($(window).width() > 768){
-                new $.fn.dataTable.FixedHeader( makeTable );
+        $(document).ready(function () {
+            if ($(window).width() > 768) {
+                new $.fn.dataTable.FixedHeader(makeTable);
             }
 
-            $(window).resize(function(){
-                new $.fn.dataTable.FixedHeader( makeTable );
+            $(window).resize(function () {
+                new $.fn.dataTable.FixedHeader(makeTable);
             });
         });
     </script>

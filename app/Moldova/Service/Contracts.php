@@ -30,26 +30,34 @@ class Contracts
 
     }
 
+    /**
+     * @return mixed
+     */
     public function getContractorsByOpenYear()
     {
         return $this->contracts->getContractorsByOpenYear();
 
     }
 
+    /**
+     * @param        $contracts
+     * @param string $type
+     * @return array
+     */
     public function aggregateContracts($contracts, $type = '')
     {
         $contractsByOpenYear = [];
 
-        foreach ($contracts as $contract) {
+        foreach ($contracts as $tender) {
+            foreach ($tender['contract'] as $contract) {
+                $year = explode(".", $contract['dateSigned']);
 
-            $year = explode(".", $contract['contractDate']);
-
-            if (array_key_exists($year[2], $contractsByOpenYear)) {
-                $contractsByOpenYear[$year[2]] += ('amount' == $type) ? $contract['amount'] : 1;
-            } else {
-                $contractsByOpenYear[$year[2]] = ('amount' == $type) ? $contract['amount'] : 1;
+                if (array_key_exists($year[2], $contractsByOpenYear)) {
+                    $contractsByOpenYear[$year[2]] += ('amount' == $type) ? $contract['value']['amount'] : 1;
+                } else {
+                    $contractsByOpenYear[$year[2]] = ('amount' == $type) ? $contract['value']['amount'] : 1;
+                }
             }
-
         }
 
         return $contractsByOpenYear;
@@ -100,7 +108,9 @@ class Contracts
      */
     public function getTotalContractAmount()
     {
-        return $this->contracts->getTotalContractAmount();
+        $total = $this->contracts->getTotalContractAmount();
+
+        return $total['result'][0]['amount'];
     }
 
     /**
@@ -109,9 +119,31 @@ class Contracts
      */
     public function getContractsList($params)
     {
-        return $this->contracts->getContractsList($params);
+        $tenders   = $this->contracts->getContractsList($params);
+        $contracts = [];
+        $count     = 0;
+
+        foreach ($tenders as $key => $tender) {
+            foreach ($tender['contract'] as $k => $contract) {
+                $contracts[$count]['id']             = $contract['id'];
+                $contracts[$count]['contractNumber'] = getContractInfo($contract['title'], 'id');
+                $contracts[$count]['contractDate']   = $contract['dateSigned'];
+                $contracts[$count]['finalDate']      = $contract['period']['endDate'];
+                $contracts[$count]['amount']         = $contract['value']['amount'];
+                $contracts[$count]['status']         = $contract['status'];
+                $contracts[$count]['goods']          = $tender['award'][$k]['items'][0]['classification']['description'];
+
+                $count ++;
+            }
+        }
+
+        return $contracts;
     }
 
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function getContractorsList($params)
     {
         return $this->contracts->getContractorsList($params);

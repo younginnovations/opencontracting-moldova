@@ -48,9 +48,10 @@ class ProcuringAgencyController extends Controller
      */
     public function index()
     {
-        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5);
+        $procuringAgency = $this->contracts->getProcuringAgency('count', 5);
+        $totalAgency = count($this->procuringAgency->getAllProcuringAgencyTitle());
 
-        return view('agency.index', compact('procuringAgency'));
+        return view('agency.index', compact('procuringAgency','totalAgency'));
     }
 
     /**
@@ -68,8 +69,7 @@ class ProcuringAgencyController extends Controller
     {
         $procuringAgency = urldecode($procuringAgency);
         $agencyData      = $this->procuringAgency->getAgencyData($procuringAgency);
-        //dd($agencyData->buyer['contactPoint']);
-        $procuringAgencyDetail = $this->contracts->getDetailInfo($procuringAgency, "tender.stateOrg.orgName");
+        $procuringAgencyDetail = $this->contracts->getDetailInfo($procuringAgency, "buyer.name");
         $totalAmount           = $this->getTotalAmount($procuringAgencyDetail);
         $tenderTrends          = $this->tenders->getProcuringAgencyTenderByOpenYear($procuringAgency);
         $trends                = $this->mergeContractAndTenderTrends($tenderTrends, $this->contracts->aggregateContracts($procuringAgencyDetail));
@@ -87,8 +87,10 @@ class ProcuringAgencyController extends Controller
     {
         $total = 0;
 
-        foreach ($contracts as $key => $contract) {
-            $total += $contract['amount'];
+        foreach ($contracts as $key => $tender) {
+            foreach($tender['contract'] as $contract) {
+                $total += $contract['value']['amount'];
+            }
         }
 
         return ($total);

@@ -63,12 +63,12 @@ class GoodsController extends Controller
     public function show($goods)
     {
         $goods           = urldecode($goods);
-        $goodsDetail     = $this->contracts->getDetailInfo($goods, "goods.mdValue");
+        $goodsDetail     = $this->contracts->getDetailInfo($goods, "award.items.classification.description");
         $totalAmount     = $this->getTotalAmount($goodsDetail);
         $contractTrend   = $this->getTrend($this->contracts->aggregateContracts($goodsDetail));
         $amountTrend     = $this->contracts->encodeToJson($this->contracts->aggregateContracts($goodsDetail, 'amount'), 'trend');
-        $contractors     = $this->contracts->getContractors('amount', 5, $goods, "goods.mdValue");
-        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, $goods, 'goods.mdValue');
+        $contractors     = $this->contracts->getContractors('amount', 5, $goods, "award.items.classification.description");
+        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, $goods, 'award.items.classification.description');
 
         return view('goods.view', compact('goods', 'goodsDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'contractors', 'procuringAgency'));
     }
@@ -81,8 +81,10 @@ class GoodsController extends Controller
     {
         $total = 0;
 
-        foreach ($contracts as $key => $contract) {
-            $total += $contract['amount'];
+        foreach ($contracts as $key => $tender) {
+            foreach($tender['contract'] as $contract) {
+                $total += $contract['value']['amount'];
+            }
         }
 
         return ($total);

@@ -48,7 +48,7 @@
                                         <select name="contractor" class="cs-select cs-skin-elastic">
                                             <option value="" disabled selected>Select a contractor</option>
                                             @forelse($contractTitles as $contractTitle)
-                                                <option value="{{ $contractTitle['_id'] }}">{{ $contractTitle['_id'] }}</option>
+                                                <option value="{{ $contractTitle['_id'][0] }}">{{ $contractTitle['_id'][0] }}</option>
                                             @empty
                                             @endforelse
                                         </select>

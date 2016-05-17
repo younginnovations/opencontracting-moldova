@@ -181,7 +181,7 @@
                "columns": [
                    {'data': 'contractNumber'},
                    {'data': 'id', 'className': 'hide'},
-                   {'data': 'goods.mdValue', "defaultContent": "-"},
+                   {'data': 'goods', "defaultContent": "-"},
                    {'data': 'contractDate', 'className': 'dt'},
                    {'data': 'finalDate', 'className': 'dt'},
                    {'data': 'amount', "className": 'numeric-data'}
