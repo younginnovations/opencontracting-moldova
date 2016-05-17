@@ -143,9 +143,9 @@
         </div>
 
         <div class="custom-switch-content block">
-            <button name="expand" onclick="expand()">expand</button>
-            <button name="collapse" onclick="collapse()">collapse</button>
             <div class="json-view">
+                <button name="expand" class="expand-btn button yellow-btn">Expand all</button>
+                <button name="collapse" class="collapse-btn button yellow-btn">Collapse all</button>
                 <pre id="json-viewer"></pre>
             </div>
             <div class="table-view text-center">

@@ -343,6 +343,34 @@
   display: none;
 }
 
+/* ------------- style for expand and collapse section ----------- */
+
+.collapse-btn{
+  display: none;
+}
+
+.button.collapse-btn,.button.expand-btn{
+  width: auto;
+  position: relative;
+  padding: 12px  calc(1rem + 20px) 12px 1rem;
+  &:after{
+    content: "";
+    background: transparent url(#{$img-path}/ic_arrow_down-blue.svg) center no-repeat;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    height: 8px;
+    width: 16px;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.collapse-btn{
+  &:after{
+    transform: rotate(180deg);
+  }
+}
+
 /* -------------- style for tooltip ------------- */
 
 .detail-info-wrap{

@@ -264,6 +264,19 @@ h2 {
   text-align: center;
 }
 
+.button.yellow-btn{
+  color: $light-grey-color;
+  background-color: #FFD200;
+  width: auto;
+  padding: 12px 1rem;
+  font-size: 16px;
+
+  &:hover,&:active,&:focus{
+    background: #e5bd00;
+    color: $light-grey-color;
+  }
+}
+
 .name-value-wrap {
   .name {
     font-size: 17px;
@@ -354,6 +367,16 @@ footer {
   width: 100%;
 }
 
+@media (max-width: 615px){
+  footer{
+    height: 126px;
+  }
+
+  body {
+    padding: 0 0 126px;
+  }
+}
+
 //style for modal
 
 .alert {
@@ -438,10 +461,10 @@ padding-left:150px;
   float: left;
   margin-top: 0.5rem;
 
-  :-moz-placeholder {
+  input:-moz-placeholder {
     color: rgba(72,72,72,0.6);
   }
-  ::-webkit-input-placeholder {
+  input::-webkit-input-placeholder {
     color: rgba(72,72,72,0.6);
   }
 }
