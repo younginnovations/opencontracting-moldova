@@ -76,12 +76,12 @@
             </ul>
             <div class="tabs-content" data-tabs-content="example-tabs">
                 <div class="tabs-panel is-active" id="panel1">
-                    <div class="title-section">
-                        <span class="title">Goods/ Services under this tender
-                            <span class="tab-indicator"> ({{count($tenderDetail['tender']['items'])}})</span>
-                        </span>
-                    </div>
                     <div class="table-wrapper">
+                        <div class="title-section">
+                            <span class="title">Goods/ Services under this tender
+                                <span class="tab-indicator"> ({{count($tenderDetail['tender']['items'])}})</span>
+                            </span>
+                        </div>
                         <a target="_blank" class="export"
                            href="{{route('tenderGoods.export',['id'=>$tenderDetail['tender']['id']])}}">Export as
                             CSV</a>

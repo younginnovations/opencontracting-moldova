@@ -213,6 +213,10 @@ $(document).ready(function(){
         $(this).parent().addClass("main-title-wrap");
     })
 
+   /* make table in tab full width*/
+
+    $(".custom-table").css("width","100%");
+
     /* ------------ end of sticky header for table --------------- */
 
     $(window).resize(function(){

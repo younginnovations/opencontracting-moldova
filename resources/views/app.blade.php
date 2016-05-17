@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Moldova</title>
     <link href="{{url('css/vendors.min.css')}}" rel="stylesheet">
-    {{--<link href="{{url('css/app.min.css')}}" rel="stylesheet">--}}
-    <link href="{{url('css/app.css')}}" rel="stylesheet">
+    <link href="{{url('css/app.min.css')}}" rel="stylesheet">
+    {{--<link href="{{url('css/app.css')}}" rel="stylesheet">--}}
 </head>
 
 <body class="{{(\Request::segment(1) === "about" || \Request::segment(1) === "contact")?'one-pager':''}}">

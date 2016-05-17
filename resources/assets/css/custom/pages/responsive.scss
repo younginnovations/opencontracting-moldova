@@ -339,3 +339,16 @@
 
 }
 
+@media (max-width: 390px){
+  .social-share{
+    float: none;
+
+    li:first-child{
+      display: block;
+      float: none;
+      text-align: left;
+    }
+  }
+
+}
+

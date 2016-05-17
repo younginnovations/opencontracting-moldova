@@ -17,8 +17,6 @@ var gulp = require('gulp'),
 
 var vendor_js = [
     './resources/assets/js/vendor/jquery-2.2.2.min.js',
-    //'./resources/assets/js/vendor/foundation.min.js',
-    //'./resources/assets/js/datatable/jquery.dataTables.min.js',
     './resources/assets/js/vendor/moment.min.js',
     './resources/assets/js/vendor/number-format.js',
     './resources/assets/js/vendor/classie.js',
@@ -89,10 +87,10 @@ gulp.task('sass', function () {
         .pipe(sass())
         .pipe(postcss([autoprefixer({browsers: ['last 30 versions', '> 1%', 'ie 8', 'ie 7']})]))
         .pipe(sourcemaps.write('./maps'))
-       //.pipe(uglifycss({
-       //     "max-line-len": 80
-       // }))
-       // .pipe(rename({suffix: '.min'})
+        .pipe(uglifycss({
+            "max-line-len": 80
+        }))
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./public/css/'));
 });
 
