@@ -136,6 +136,7 @@
             "fnDrawCallback": function () {
                 changeDateFormat();
                 createLinks();
+                updateTables();
                 if ($('#table_id tr').length < 10 && $('a.current').text() === "1") {
                     $('.dataTables_paginate').hide();
                 } else {

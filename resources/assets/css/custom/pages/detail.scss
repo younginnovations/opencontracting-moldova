@@ -122,9 +122,11 @@
     }
 
     &.procurement-method{
-      background: url(#{$img-path}/ic_sprite.svg) -6px -591px no-repeat;
-      width: 36px;
-      margin-left: -18px;
+      &:before{
+        background: url(#{$img-path}/ic_sprite.svg) -6px -591px no-repeat;
+        width: 36px;
+        margin-left: -18px;
+      }
     }
   }
 
