@@ -61,6 +61,14 @@ $app->get(
 );
 
 $app->get(
+    '/contracts/{id}/json',
+    [
+        'as'   => 'contracts.jsonView',
+        'uses' => 'ContractController@jsonView'
+    ]
+);
+
+$app->get(
     '/procuring-agency/{name}',
     [
         'as'   => 'procuring-agency.show',
