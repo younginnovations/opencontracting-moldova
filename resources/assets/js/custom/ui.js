@@ -99,6 +99,20 @@ $(document).ready(function(){
         $(".toggle--off").parents(".custom-switch-wrap").find(".table-view").show();
     });
 
+   /* ------  toggle expand and collapse button ----- */
+
+    $(".expand-btn").on("click",function(){
+        $(".expand-btn").hide();
+        $(".collapse-btn").show();
+        expand();
+    });
+
+    $(".collapse-btn").on("click",function(){
+        $(".collapse-btn").hide();
+        $(".expand-btn").show();
+        collapse();
+    });
+
    /* remove tab layout in small device*/
     var tabResponsive = function () {
         if($(window).width() < 775){

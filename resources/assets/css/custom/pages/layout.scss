@@ -169,6 +169,11 @@ header{
 footer{
   background-color: $light-grey-color;
   padding: 25px 30px;
+
+  .project-logo {
+    margin: 0.5rem 0;
+  }
+
   .top-bar-right{
     .first-section{
 
@@ -176,6 +181,43 @@ footer{
 
     .second-section{
       color: rgba(255,255,255,0.5);
+    }
+  }
+
+  form{
+    min-width: 415px;
+  }
+}
+
+@media (max-width: 650px){
+  footer {
+    height: auto;
+    padding: 15px 20px;
+
+    form{
+      min-width: 100%;
+    }
+
+    .suscribe-input{
+      input{
+        min-height: 39px;
+      }
+    }
+
+    .left-content, .right-content {
+      float: none;
+      display: block;
+      width: 100%;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+      clear: both;
+      overflow: hidden;
+    }
+
+    .project-logo {
+      margin: 0rem 0rem;
     }
   }
 }

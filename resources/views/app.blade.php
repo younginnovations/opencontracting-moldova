@@ -128,12 +128,6 @@
 
 <footer class="clearfix">
     <div class="row">
-        <div class="top-bar-left medium-7">
-            <div class="project-logo">
-                <div class="first-section">MOLDOVA CONTRACT</div>
-                <div class="second-section">DATA VISUALISATION</div>
-            </div>
-        </div>
         <form class="right-content custom-form medium-5">
             <div class="form-group">
                 <div class="suscribe-input">
@@ -142,8 +136,13 @@
                 </div>
                 <input class="button subscribe form-control" type="button" id="subscribe" name="subscribe" value="Subcribe"/>
             </div>
-
         </form>
+        <div class="top-bar-left left-content">
+            <div class="project-logo">
+                <div class="first-section">MOLDOVA CONTRACT</div>
+                <div class="second-section">DATA VISUALISATION</div>
+            </div>
+        </div>
     </div>
 </footer>
 <script>
