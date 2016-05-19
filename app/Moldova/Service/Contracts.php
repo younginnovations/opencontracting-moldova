@@ -182,6 +182,9 @@ class Contracts
      */
     public function getContractDataForJson($contractId)
     {
-        return $this->contracts->getContractDataForJson($contractId);
+        $response = $this->contracts->getContractDataForJson($contractId);
+        unset($response['_id']);
+
+        return $response;
     }
 }

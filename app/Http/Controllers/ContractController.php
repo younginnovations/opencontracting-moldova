@@ -41,6 +41,16 @@ class ContractController extends Controller
 
         return view('contracts.index', compact('contractsTrends'));
     }
+    public function jsonView($contractId)
+    {
+        $contractJson = $this->contracts->getContractDataForJson($contractId);
+        $response = [
+            'code' => 200,
+            'status' => 'succcess',
+            'data' => $contractJson
+        ];
+        return response()->json($response,$response['code'])->header('Content-Type', 'application/json');
+    }
 
     /**
      * Contractors Index function
