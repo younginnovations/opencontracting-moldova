@@ -67,26 +67,28 @@ class Contracts
      * Get Procuring Agency by amount/count according to type and by limit given
      * @param        $type
      * @param        $limit
+     * @param        $year
      * @param string $condition
-     * @param        $column
+     * @param string $column
      * @return mixed
      */
-    public function getProcuringAgency($type, $limit, $condition = '', $column = '')
+    public function getProcuringAgency($type, $limit, $year, $condition = '', $column = '')
     {
-        return $this->encodeToJson($this->contracts->getProcuringAgency($type, $limit, $condition, $column), $type);
+        return $this->encodeToJson($this->contracts->getProcuringAgency($type, $limit, $year, $condition, $column), $type);
     }
 
     /**
      * Get Contractors by amount/count according to type and by limit given
      * @param        $type
      * @param        $limit
+     * @param        $year
      * @param string $condition
-     * @param        $column
+     * @param string $column
      * @return mixed
      */
-    public function getContractors($type, $limit, $condition = '', $column = '')
+    public function getContractors($type, $limit, $year, $condition = '', $column = '')
     {
-        return $this->encodeToJson($this->contracts->getContractors($type, $limit, $condition, $column), $type);
+        return $this->encodeToJson($this->contracts->getContractors($type, $limit, $year, $condition, $column), $type);
     }
 
     /**
@@ -97,9 +99,9 @@ class Contracts
      * @param        $column
      * @return mixed
      */
-    public function getGoodsAndServices($type, $limit, $condition = '', $column = '')
+    public function getGoodsAndServices($type, $limit, $year, $condition = '', $column = '')
     {
-        return $this->encodeToJson($this->contracts->getGoodsAndServices($type, $limit, $condition, $column), $type);
+        return $this->encodeToJson($this->contracts->getGoodsAndServices($type, $limit, $year, $condition, $column), $type);
     }
 
     /**
@@ -119,7 +121,10 @@ class Contracts
      */
     public function getContractsList($params)
     {
-        $tenders   = $this->contracts->getContractsList($params);
+        $tenders = $this->contracts->getContractsList($params);
+        if ($params === "") {
+            return $tenders;
+        }
         $contracts = [];
         $count     = 0;
 
@@ -131,7 +136,7 @@ class Contracts
                 $contracts[$count]['finalDate']      = $contract['period']['endDate'];
                 $contracts[$count]['amount']         = $contract['value']['amount'];
                 $contracts[$count]['status']         = $contract['status'];
-                $contracts[$count]['goods']          = $tender['award'][$k]['items'][0]['classification']['description'];
+                $contracts[$count]['goods']          = (!empty($tender['award'][$k]['items'])) ? $tender['award'][$k]['items'][0]['classification']['description'] : '-';
 
                 $count ++;
             }

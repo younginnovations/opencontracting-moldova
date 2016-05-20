@@ -53,18 +53,6 @@
   margin-bottom: 20px;
   position: relative;
   outline: 0;
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: #fff;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
-    color: #fff;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
-    color: #fff;
-  }
-  :-moz-placeholder { /* Firefox 18- */
-    color: #fff;
-  }
 
   .control-label {
     color: rgba(0, 0, 0, 0.7);
@@ -76,6 +64,21 @@
     font-size: 13px;
     margin-bottom: 0;
     box-shadow: none;
+  }
+}
+
+.background{
+  ::-webkit-input-placeholder {
+    color: #fff;
+  }
+  ::-moz-placeholder {
+    color: #fff;
+  }
+  :-ms-input-placeholder {
+    color: #fff;
+  }
+  :-moz-placeholder {
+    color: #fff;
   }
 }
 
@@ -110,4 +113,48 @@
     width: 100%;
     float: none;
   }
+}
+
+/* ---------- style for select2 section --------- */
+
+form{
+  .select2-container{
+    width: 100% !important;
+  }
+
+  .select2-container .select2-selection--single{
+    height: auto;
+  }
+
+  .select2-selection__rendered{
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  input[name = "startDate"], input[name = "endDate"]{
+    border-radius: 4px;
+    color: $light-grey-color;
+  }
+}
+
+.select2-results__option[aria-disabled="true"]{
+  display: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+  color: $light-grey-color;
+}
+
+
+/* --------- style for datepicker ------- */
+
+
+
+.fi-arrow-left:before{
+  content: "<";
+}
+
+.fi-arrow-right:before{
+  content: ">";
 }

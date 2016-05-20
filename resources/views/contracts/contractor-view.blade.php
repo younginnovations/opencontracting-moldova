@@ -89,6 +89,9 @@
                                     <div>
                                         <label>
                                             <span class="inner-title">Showing procuring agencies</span>
+                                            <select id="select-agency-year">
+                                                @include('selectYear')
+                                            </select>
                                             <select id="select-agency" data-for="contractor" data="{{ $contractor }}">
                                                 <option value="amount" selected>Based on value</option>
                                                 <option value="count">Based on count</option>
@@ -126,6 +129,9 @@
                                     <div>
                                         <label>
                                             <span class="inner-title">Showing goods / services</span>
+                                            <select id="select-goods-year">
+                                                @include('selectYear')
+                                            </select>
                                             <select id="select-goods" data-for="contractor" data="{{ $contractor }}">
                                                 <option value="amount" selected>Based on value</option>
                                                 <option value="count">Based on count</option>

@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     $(document).mouseup(function (e)
     {
-        var container = $(".search,.filter-toggler,.advance-search-wrap");
+        var container = $(".search,.advance-search-wrap");
 
         if (!container.is(e.target) // if the target of the click isn't the container...
             && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -31,9 +31,9 @@ $(document).ready(function(){
             $(".fixed-header .top-bar-left").removeClass('toggle-visibility-small');
             $(".burger-menu-button").removeClass('toggle-visibility-small');
 
-            $(".advance-search-wrap").slideUp();
-            $(".filter-toggler a").removeClass("active");
-            $(".multiple-search-wrap").removeClass("position");
+            //$(".advance-search-wrap").slideUp();
+            //$(".filter-toggler a").removeClass("active");
+            //$(".multiple-search-wrap").removeClass("position");
         }
     });
 

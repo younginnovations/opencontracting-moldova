@@ -31,7 +31,10 @@
                     <div class="section-header clearfix">
                         <form class="left-content">
                             <label>
-                                <select id="select-goods">
+                                <select id="select-contractor-year">
+                                    @include('selectYear')
+                                </select>
+                                <select id="select-contractor">
                                     <option value="amount" selected>Based on value</option>
                                     <option value="count">Based on count</option>
                                 </select>
@@ -127,6 +130,7 @@
     <script src="{{url('js/customChart.min.js')}}"></script>
 
     <script>
+        var route = '{{ route("filter") }}';
         var contractors = '{!! $contractorsTrends  !!}';
 
         var makeCharts = function () {

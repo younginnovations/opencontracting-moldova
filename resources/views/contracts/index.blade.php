@@ -3,8 +3,8 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2> <span><img src="{{url('images/ic_contractor.svg')}}"/></span>
-            Contracts</h2>
+            <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
+                Contracts</h2>
         </div>
     </div>
 
@@ -13,11 +13,13 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number big-amount"> 8,312 </div>
+                    <div class="number big-amount"> {{$totalContracts}} </div>
                     <div class="big-title">Contract issued</div>
                 </div>
                 <p>
-                    Tenders are to invite bids for a project, or to accept a formal offer such as a takeover bid. Tender usually refers to the process whereby governments and financial institutions invite bids for large projects that must be submitted within a finite deadline.
+                    Tenders are to invite bids for a project, or to accept a formal offer such as a takeover bid. Tender
+                    usually refers to the process whereby governments and financial institutions invite bids for large
+                    projects that must be submitted within a finite deadline.
                 </p>
             </div>
         </div>
@@ -27,7 +29,8 @@
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
                         <ul class="breadcrumbs right-content">
-                            <p><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued over the years</p>
+                            <p><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued over the years
+                            </p>
                         </ul>
                     </div>
                     <div class="chart-wrap default-view">
@@ -81,10 +84,10 @@
             "columns": [
                 {'data': 'contractNumber'},
                 {'data': 'id', 'className': 'hide'},
-                {'data': 'goods.mdValue', "defaultContent": "-"},
+                {'data': 'goods', "defaultContent": "-"},
                 {'data': 'contractDate', 'className': 'dt'},
                 {'data': 'finalDate', 'className': 'dt'},
-                {'data': 'amount', "className":'numeric-data' }
+                {'data': 'amount', "className": 'numeric-data'}
             ],
             "fnDrawCallback": function () {
                 changeDateFormat();
@@ -108,9 +111,9 @@
     </script>
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
     <script>
-        $(document).ready(function() {
-            if($(window).width() > 768){
-                new $.fn.dataTable.FixedHeader( makeTable );
+        $(document).ready(function () {
+            if ($(window).width() > 768) {
+                new $.fn.dataTable.FixedHeader(makeTable);
             }
         });
     </script>
@@ -119,13 +122,13 @@
     <script>
         var route = '{{ route("filter") }}';
         var trends = '{!! $contractsTrends  !!}';
-            var total = 0;
-            var newTrends = JSON.parse(trends);
-            for(var i = 0; i < newTrends.length; i++){
-                total +=newTrends[i].chart2;
-            }
-            $(".number").html(total);
-            var makeCharts = function () {
+        var total = 0;
+        var newTrends = JSON.parse(trends);
+        for (var i = 0; i < newTrends.length; i++) {
+            total += newTrends[i].chart2;
+        }
+        $(".number").html(total);
+        var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createLineChartONHeader(JSON.parse(trends), widthOfParent, "#50E3C2");
         };

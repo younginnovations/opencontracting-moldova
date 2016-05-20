@@ -28,6 +28,9 @@
                     <div class="section-header clearfix">
                         <form class="left-content">
                             <label>
+                                <select id="select-agency-year">
+                                    @include('selectYear')
+                                </select>
                                 <select id="select-agency">
                                     <option value="amount" selected>Based on value</option>
                                     <option value="count">Based on count</option>

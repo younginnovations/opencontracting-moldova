@@ -13,7 +13,7 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number big-amount">8,132</div>
+                    <div class="number big-amount">{{$totalGoods}}</div>
                     <div class="big-title">Goods / services</div>
                 </div>
                 <p>
@@ -28,6 +28,9 @@
                     <div class="section-header clearfix">
                         <form class="left-content">
                             <label>
+                                <select id="select-goods-year">
+                                    @include('selectYear')
+                                </select>
                                 <select id="select-goods">
                                     <option value="amount" selected>Based on value</option>
                                     <option value="count">Based on count</option>
@@ -65,7 +68,7 @@
             <tr>
                 <th>Name</th>
                 <th>CPV code</th>
-                <th>Unit</th>
+                <th>Scheme</th>
             </tr>
             </thead>
             <tbody>
@@ -90,9 +93,9 @@
             "ajaxDataProp": '',
             "pagingType": "full_numbers",
             "columns": [
-                {'data': '_id'},
-                {'data': 'cpv_value[0]'},
-                {'data': 'unit.0'}
+                {'data': 'good'},
+                {'data': 'cpv_value'},
+                {'data': 'scheme'}
             ],
             "fnDrawCallback": function () {
                 createLinks();
@@ -132,10 +135,6 @@
         var total = 0;
         var newGoodsAndServices = JSON.parse(goodsAndServices);
 
-        for(var i = 0; i < newGoodsAndServices.length; i++){
-            total +=newGoodsAndServices[i].value;
-        }
-        $(".number").html(Math.ceil(total).toLocaleString());
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthOfParent, 'amount');

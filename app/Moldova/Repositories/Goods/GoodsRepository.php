@@ -27,6 +27,10 @@ class GoodsRepository implements GoodsRepositoryInterface
      */
     public function getAllGoods($params)
     {
+        if ($params === "") {
+            return $this->getGoodsCount();
+        }
+
         $orderIndex  = $params['order'][0]['column'];
         $ordDir      = $params['order'][0]['dir'];
         $column      = $params['columns'][$orderIndex]['data'];
@@ -39,13 +43,13 @@ class GoodsRepository implements GoodsRepositoryInterface
         $filter = [];
 
         $unwind = [
-            '$unwind' => '$tender.items'
+            '$unwind' => '$award'
         ];
         array_push($query, $unwind);
 
         if ($search != '') {
             $filter = [
-                '$match' => ['tender.items.classification.description' => ['$gt' => $search]]
+                '$match' => ['award.items.classification.description' => ['$gt' => $search]]
             ];
         }
 
@@ -56,10 +60,11 @@ class GoodsRepository implements GoodsRepositoryInterface
         $groupBy =
             [
                 '$group' => [
-                    '_id'       => '$tender.items.classification.description',
+                    '_id'       => ['$award.items.classification.description'],
                     'count'     => ['$sum' => 1],
-                    'cpv_value' => ['$addToSet' => '$tender.items.classification.id'],
-                    'unit'      => ['$addToSet' => '$tender.items.unit.name']
+                    'goods'     => ['$addToSet' => '$award.items.classification.description'],
+                    'cpv_value' => ['$addToSet' => '$award.items.classification.id'],
+                    'unit'      => ['$addToSet' => '$award.items.classification.scheme']
                 ]
             ];
 
@@ -106,5 +111,32 @@ class GoodsRepository implements GoodsRepositoryInterface
 //        }
 //
 //        return $buyers;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getGoodsCount()
+    {
+        $query  = [];
+        $unwind = [
+            '$unwind' => '$award'
+        ];
+        array_push($query, $unwind);
+        $groupBy =
+            [
+                '$group' => [
+                    '_id'       => ['$award.items.classification.description'],
+                    'goods'     => ['$addToSet' => '$award.items.classification.description']
+                ]
+            ];
+
+        array_push($query, $groupBy);
+
+        $result = OcdsRelease::raw(function ($collection) use ($query) {
+            return $collection->aggregate($query);
+        });
+
+        return $result['result'];
     }
 }

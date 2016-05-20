@@ -87,6 +87,9 @@
                                     <div>
                                         <label>
                                             <span class="inner-title">Showing contractors</span>
+                                            <select id="select-contractor-year">
+                                                @include('selectYear')
+                                            </select>
                                             <select id="select-contractor" data-for="goods" data="{{ $goods }}">
                                                 <option value="amount" selected>Based on value</option>
                                                 <option value="count">Based on count</option>
@@ -107,7 +110,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{route('contracts.contractorIndex')}}" class="anchor">View all contractors<span>  &rarr; </span></a>
+                            <a href="{{route('contracts.contractorIndex')}}" class="anchor">View all
+                                contractors<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -123,6 +127,9 @@
                                     <div>
                                         <label>
                                             <span class="inner-title">Showing procuring agencies</span>
+                                            <select id="select-agency-year">
+                                                @include('selectYear')
+                                            </select>
                                             <select id="select-agency" data-for="goods" data="{{ $goods }}">
                                                 <option value="amount" selected>Based on value</option>
                                                 <option value="count">Based on count</option>
@@ -143,7 +150,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring
+                                agencies<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
