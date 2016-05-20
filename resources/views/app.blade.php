@@ -45,7 +45,7 @@
                             <form action="{{ route('search') }}" method="get" class="custom-form advance-search-wrap">
                                 <div class="form-inner clearfix">
                                     <div class="form-group medium-4 columns end">
-                                        <select name="contractor" class="cs-select cs-skin-elastic">
+                                        <select name="contractor" class="cs-select2 cs-skin-elastic">
                                             <option value="" disabled selected>Select a contractor</option>
                                             @forelse($contractTitles as $contractTitle)
                                                 <option value="{{ $contractTitle['_id'] }}">{{ $contractTitle['_id'] }}</option>
@@ -54,7 +54,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group medium-4 columns end">
-                                        <select name="agency" class="cs-select cs-skin-elastic">
+                                        <select name="agency" class="cs-select2 cs-skin-elastic">
                                             <option value="" disabled selected>Select a buyer</option>
                                             @forelse($procuringAgencies as $procuringAgency)
                                                 <option value="{{ $procuringAgency[0] }}">{{ $procuringAgency[0] }}</option>
@@ -63,7 +63,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group medium-4 columns end">
-                                        <select name="amount" class="cs-select cs-skin-elastic">
+                                        <select name="amount" class="cs-select2 cs-skin-elastic">
                                             <option value="" disabled selected>Select a range</option>
                                             <option value="0-10000">0-10000</option>
                                             <option value="10000-200000">10000-200000</option>
@@ -71,6 +71,12 @@
                                             <option value="500000-1000000">500000-1000000</option>
                                             <option value="1000000-Above">1000000-Above</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group medium-4 columns end">
+                                        <input name="startDate" type="text" id="dp1" placeholder="start-date"/>
+                                    </div>
+                                    <div class="form-group medium-4 columns end">
+                                        <input name="endDate" type="text" id="dp2" placeholder="end-date"/>
                                     </div>
                                 </div>
 
@@ -157,7 +163,43 @@
         doNotHash: false,
         doNotCopy: false,
         hashAddressBar: false
-    });</script>
+    });
+</script>
+<script src="{{url('js/foundation-datepicker.js')}}"></script>
+<link href="{{url('css/foundation-datepicker.css')}}" rel="stylesheet"/>
+<link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".cs-select2").select2();
+    });
+</script>
+<script>
+    $(function() {
+        $('#dp1').fdatepicker({
+            format: 'dd-mm-yyyy',
+            disableDblClickSelection: true
+        });
+        $('#dp2').fdatepicker({
+            format: 'dd-mm-yyyy',
+            disableDblClickSelection: true
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $(".custom-form").submit(function() {
+            if($("#dp1").val()=="") {
+                $("#dp1").remove();
+            }
+            if($("#dp2").val()=="") {
+                $("#dp2").remove();
+            }
+        });
+    });
+</script>
 <script>
     var changeDateFormat = function () {
         $('.dt').each(function () {

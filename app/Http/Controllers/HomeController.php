@@ -161,7 +161,7 @@ class HomeController extends Controller
         $contracts         = [];
         $params            = $request->all();
 
-        if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount'))) {
+        if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount')) || !empty($request->get('startDate')) || !empty($request->get('endDate'))) {
             //$params = $request->all();
 
             $contracts = $this->contracts->search($params);

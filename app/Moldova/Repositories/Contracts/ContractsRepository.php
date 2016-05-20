@@ -309,6 +309,12 @@ class ContractsRepository implements ContractsRepositoryInterface
         return $contract;
     }
 
+    protected function formatDate($dt){
+        $dt  = explode('-',$dt);
+        $dt = implode(".",$dt);
+        return $dt;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -319,21 +325,26 @@ class ContractsRepository implements ContractsRepositoryInterface
         $contractor = (!empty($search['contractor'])) ? $search['contractor'] : '';
         $agency     = (!empty($search['agency'])) ? $search['agency'] : '';
         $range      = (!empty($search['amount'])) ? explode("-", $search['amount']) : '';
-
-
+        $startDate  = (!empty($search['startDate'])) ? $this->formatDate($search['startDate']) : '';
+        $endDate    = (!empty($search['endDate'])) ? $this->formatDate($search['endDate']) : '';
 
         if (!empty($q)) {
             $search = StringUtil::accentToRegex($q);
             $query  = array('goods.mdValue' => new MongoRegex("/.*{$search}.*/i"));
             $query2 = array('participant.fullName' => new MongoRegex("/.*{$search}.*/i"));
             $query3 = array('tender.stateOrg.orgName' => new MongoRegex("/.*{$search}.*/i"));
+            $query4 = array('contractDate' => new MongoRegex("/.*{$search}.*/i"));
+            $query5 = array('finalDate' => new MongoRegex("/.*{$search}.*/i"));
 
-            $cursor = Contracts::raw(function ($collection) use ($query, $query2, $query3) {
+
+            $cursor = Contracts::raw(function ($collection) use ($query, $query2, $query3, $query4, $query5) {
                 return $collection->find([
                     '$or' => [
                         $query,
                         $query2,
-                        $query3
+                        $query3,
+                        $query4,
+                        $query5
                     ]
                 ]);
             });
@@ -344,7 +355,7 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         return ($this->contracts
             ->select(['id', 'contractNumber', 'contractDate', 'finalDate', 'amount', 'goods.mdValue', 'status.mdValue'])
-            ->where(function ($query) use ($contractor, $range, $agency) {
+            ->where(function ($query) use ($contractor, $range, $agency, $startDate, $endDate ) {
                 if (!empty($contractor)) {
                     $query->where('participant.fullName', "=", $contractor);
                 }
@@ -357,7 +368,12 @@ class ContractsRepository implements ContractsRepositoryInterface
 
                     $query->whereBetween('amount', $range);
                 }
-
+                if (!empty($startDate)) {
+                    $query->where('contractDate', "=", $startDate);
+                }
+                if (!empty($endDate)) {
+                    $query->where('finalDate', "=", $endDate);
+                }
 
                 return $query;
             })->get());
