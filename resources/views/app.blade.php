@@ -6,9 +6,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Moldova</title>
-    <link href="{{url('css/vendors.min.css')}}" rel="stylesheet">
+    {{--<link href="{{url('css/vendors.min.css')}}" rel="stylesheet">--}}
     <link href="{{url('css/app.min.css')}}" rel="stylesheet">
-    {{--<link href="{{url('css/app.css')}}" rel="stylesheet">--}}
+    <link href="{{url('css/app.css')}}" rel="stylesheet">
 </head>
 
 <body class="{{(\Request::segment(1) === "about" || \Request::segment(1) === "contact")?'one-pager':''}}">
@@ -158,7 +158,8 @@
 <script src="{{url('js/app.min.js')}}"></script>
 <script type="text/javascript">var switchTo5x = true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({
+<script type="text/javascript">
+    stLight.options({
         publisher: "edd8f686-154a-4ba0-a97f-a17a0410077d",
         doNotHash: false,
         doNotCopy: false,
@@ -167,8 +168,8 @@
 </script>
 <script src="{{url('js/foundation-datepicker.js')}}"></script>
 <link href="{{url('css/foundation-datepicker.css')}}" rel="stylesheet"/>
-<link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+{{--<link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">--}}
+{{--<link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">--}}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
 <script type="text/javascript">

@@ -460,13 +460,20 @@ padding-left:150px;
   width: calc(100% - 150px);
   float: left;
   margin-top: 0.5rem;
+}
 
-  input:-moz-placeholder {
-    color: rgba(72,72,72,0.6);
-  }
-  input::-webkit-input-placeholder {
-    color: rgba(72,72,72,0.6);
-  }
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color:rgba(72,72,72,0.6);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(72,72,72,0.6);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(72,72,72,0.6);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: rgba(72,72,72,0.6);
 }
 
 .form-group .subscribe.form-control {
