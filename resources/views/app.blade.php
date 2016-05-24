@@ -78,6 +78,9 @@
                                     <div class="medium-4 columns">
                                         <input type="submit" class="button yellow-button" value="Submit">
                                     </div>
+                                    <div class="medium-4 columns end">
+                                        <div class="button cancel-btn">Cancel</div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -102,12 +105,14 @@
         </p>
     </div>
     @yield('content')
-    <div class="row">
-        <div class="small-12 text-right sharing-title share-section columns">
+    <div class="share-wrap">
+        <div class="row">
+        <div class="text-right sharing-title share-section">
             <ul class="social-share">
                 <li><span class="small-title">Share this <span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> in</span></li>
                 <li><div class="addthis_sharing_toolbox"></div></li>
             </ul>
+        </div>
         </div>
     </div>
 

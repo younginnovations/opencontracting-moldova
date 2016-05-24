@@ -350,24 +350,29 @@
 }
 
 .button.collapse-btn,.button.expand-btn{
-  width: auto;
   position: relative;
-  padding: 12px  calc(1rem + 20px) 12px 1rem;
+  padding: 12px  1rem;
+  width: 128px;
+  text-align: left;
   &:after{
-    content: "";
-    background: transparent url(#{$img-path}/ic_arrow_down-blue.svg) center no-repeat;
     position: absolute;
-    top: 15px;
+    top: 6px;
     right: 10px;
     height: 8px;
     width: 16px;
+    font-size: 20px;
+    line-height: 26px;
     transition: all 0.3s ease-in-out;
   }
 }
 
+.expand-btn:after {
+  content: "+";
+}
+
 .collapse-btn{
   &:after{
-    transform: rotate(180deg);
+    content: "-";
   }
 }
 

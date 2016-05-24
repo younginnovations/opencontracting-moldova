@@ -300,6 +300,13 @@
     }
   }
 
+ /* add margin bottom for button in advance search */
+  .advance-search-wrap{
+    .yellow-button{
+      margin-bottom: 20px;
+    }
+  }
+
 }
 
 @media (max-width: 768px) {
