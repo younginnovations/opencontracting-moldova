@@ -13,7 +13,7 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number big-amount"></div>
+                    <div class="number big-amount">{{ $totalAgency }}</div>
                     <div class="big-title">Agencies</div>
                 </div>
                 <p>
@@ -132,12 +132,12 @@
         var route = '{{ route("filter") }}';
         var procuringAgencies = '{!! $procuringAgency  !!}';
         var total = 0;
-        var newProcuringAgencies = JSON.parse(procuringAgencies);
-        console.log(newProcuringAgencies);
-        for(var i = 0; i < newProcuringAgencies.length; i++){
-            total +=newProcuringAgencies[i].value;
-        }
-        $(".number").html(Math.ceil(total));
+//        var newProcuringAgencies = JSON.parse(procuringAgencies);
+//        console.log(newProcuringAgencies);
+//        for(var i = 0; i < newProcuringAgencies.length; i++){
+//            total +=newProcuringAgencies[i].value;
+//        }
+//        $(".number").html(Math.ceil(total));
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');

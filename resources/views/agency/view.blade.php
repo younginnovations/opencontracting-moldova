@@ -129,7 +129,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="#" class="anchor">View all contractors <span>  &rarr; </span></a>
+                            <a href="{{route('contracts.contractorIndex')}}" class="anchor">View all contractors <span>  &rarr; </span></a>
                         </div>
                         {{--<button class="button yellow-button hvr-sweep-to-right">test the button</button>--}}
                     </div>
@@ -164,7 +164,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="#" class="anchor">View all goods / services <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}" class="anchor">View all goods / services <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -188,16 +188,18 @@
             <th>Amount</th>
             </thead>
             <tbody>
-            @forelse($procuringAgencyDetail as $key => $agency)
-                <tr>
-                    <td>{{ $agency['contractNumber'] }}</td>
-                    <td class="hide">{{ $agency['id'] }}</td>
-                    <td>{{ $agency['goods']['mdValue'] }}</td>
-                    <td>{{ $agency['status']['mdValue'] }}</td>
-                    <td class="dt">{{ $agency['contractDate'] }}</td>
-                    <td class="dt">{{ $agency['finalDate'] }}</td>
-                    <td>{{ number_format($agency['amount']) }}</td>
-                </tr>
+            @forelse($procuringAgencyDetail as $tender)
+                @foreach($tender['contract'] as $key => $agency)
+                    <tr>
+                        <td>{{ getContractInfo($agency['title'],'id') }}</td>
+                        <td class="hide">{{ $agency['id'] }}</td>
+                        <td>{{ ($tender['award'][$key]['items'])?$tender['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
+                        <td>{{ $agency['status'] }}</td>
+                        <td class="dt">{{ $agency['dateSigned'] }}</td>
+                        <td class="dt">{{ $agency['period']['endDate'] }}</td>
+                        <td>{{ number_format($agency['value']['amount']) }}</td>
+                    </tr>
+                @endforeach
             @empty
             @endforelse
 
@@ -247,9 +249,9 @@
     </script>
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
     <script>
-        $(document).ready(function() {
-            if($(window).width() > 768){
-                new $.fn.dataTable.FixedHeader( makeTable );
+        $(document).ready(function () {
+            if ($(window).width() > 768) {
+                new $.fn.dataTable.FixedHeader(makeTable);
             }
         });
     </script>

@@ -71,27 +71,34 @@ class ContractController extends Controller
     public function show($contractor)
     {
         $contractor       = urldecode($contractor);
-        $contractorDetail = $this->contracts->getDetailInfo($contractor, 'participant.fullName');
-        $totalAmount      = $this->getTotalAmount($contractorDetail);
+        $contractorDetail = $this->contracts->getDetailInfo($contractor, 'award.suppliers.name');
+        $total            = $this->getTotal($contractorDetail);
+        $totalContract   = $total['totalContract'];
+        $totalAmount      = $total['totalAmount'];
         $contractTrend    = $this->getTrend($this->contracts->aggregateContracts($contractorDetail));
         $amountTrend      = $this->contracts->encodeToJson($this->contracts->aggregateContracts($contractorDetail, 'amount'), 'trend');
-        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, $contractor, 'participant.fullName');
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, $contractor, 'participant.fullName');
+        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, $contractor, 'award.suppliers.name');
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, $contractor, 'award.suppliers.name');
 
-        return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices'));
+        return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices', 'totalContract'));
     }
 
     /**
      * @param $contracts
      * @return int
      */
-    private function getTotalAmount($contracts)
+    private function getTotal($contracts)
     {
-        $total = 0;
+        $totalAmount   = 0;
+        $totalContract = 0;
 
-        foreach ($contracts as $key => $contract) {
-            $total += $contract['amount'];
+        foreach ($contracts as $key => $tender) {
+            foreach ($tender['contract'] as $contract) {
+                $totalContract ++;
+                $totalAmount += $contract['value']['amount'];
+            }
         }
+        $total = ['totalAmount' => $totalAmount, 'totalContract' => $totalContract];
 
         return ($total);
     }

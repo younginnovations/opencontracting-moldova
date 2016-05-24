@@ -2,8 +2,8 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2>  <span><img src="{{url('images/ic_good_service.svg')}}"/></span>
-            {{ $goods }}</h2>
+            <h2><span><img src="{{url('images/ic_good_service.svg')}}"/></span>
+                {{ $goods }}</h2>
         </div>
     </div>
 
@@ -107,7 +107,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="#" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
+                            <a href="{{route('contracts.contractorIndex')}}" class="anchor">View all contractors<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="#" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -158,25 +158,27 @@
         <table id="table_id" class="responsive hover custom-table persist-area">
 
             <thead class="persist-header">
-                <th>Contract number</th>
-                <th class="hide">Contract ID</th>
-                <th>Contractor</th>
-                <th>Contract status</th>
-                <th width="150px">Contract start date</th>
-                <th width="150px">Contract end date</th>
-                <th>Amount</th>
+            <th>Contract number</th>
+            <th class="hide">Contract ID</th>
+            <th>Contractor</th>
+            <th>Contract status</th>
+            <th width="150px">Contract start date</th>
+            <th width="150px">Contract end date</th>
+            <th>Amount</th>
             </thead>
             <tbody>
-            @forelse($goodsDetail as $key => $goods)
+            @forelse($goodsDetail as $tender)
+                @foreach($tender['contract'] as $key => $goods)
                     <tr>
-                        <td>{{ $goods['contractNumber'] }}</td>
+                        <td>{{ getContractInfo($goods['title'],'id') }}</td>
                         <td class="hide">{{ $goods['id'] }}</td>
-                        <td>{{ $goods['participant']['fullName'] }}</td>
-                        <td class="dt">{{ $goods['status']['mdValue'] }}</td>
-                        <td class="dt">{{ $goods['contractDate'] }}</td>
-                        <td class="dt">{{ $goods['finalDate'] }}</td>
-                        <td>{{ number_format($goods['amount']) }}</td>
+                        <td>{{ ($tender['award'][$key]['suppliers'])?$tender['award'][$key]['suppliers'][0]['name']:'-' }}</td>
+                        <td class="dt">{{ $goods['status'] }}</td>
+                        <td class="dt">{{ $goods['dateSigned'] }}</td>
+                        <td class="dt">{{ $goods['period']['endDate'] }}</td>
+                        <td>{{ number_format($goods['value']['amount']) }}</td>
                     </tr>
+                @endforeach
             @empty
             @endforelse
 
@@ -190,7 +192,7 @@
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             updateTables();
         });
 
@@ -223,9 +225,9 @@
     </script>
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
     <script>
-        $(document).ready(function() {
-            if($(window).width() > 768){
-                new $.fn.dataTable.FixedHeader( makeTable );
+        $(document).ready(function () {
+            if ($(window).width() > 768) {
+                new $.fn.dataTable.FixedHeader(makeTable);
             }
         });
     </script>
@@ -236,16 +238,16 @@
         var contractors = '{!! $contractors  !!}';
         var procuringAgency = '{!! $procuringAgency  !!}';
 
-       /* if(contracts == []){
-            $(".each-chart-section").empty();
-        }*/
+        /* if(contracts == []){
+         $(".each-chart-section").empty();
+         }*/
 
         var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();
             createLineChartRest(JSON.parse(contracts), widthofParent);
             createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
             createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthofParent, 'amount');
-            createBarChartProcuring(JSON.parse(procuringAgency), "barChart-procuring", "goods", widthofParent, 'amount');
+            createBarChartProcuring(JSON.parse(procuringAgency), "barChart-procuring", "procuring-agency", widthofParent, 'amount');
         };
 
         makeCharts();
