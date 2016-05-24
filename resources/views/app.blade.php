@@ -105,11 +105,8 @@
     <div class="row">
         <div class="small-12 text-right sharing-title share-section columns">
             <ul class="social-share">
-                <li><span class="small-title">Share this contract in</span></li>
-                <li><span class='st_facebook_large' displayText='Facebook'></span></li>
-                <li><span class='st_twitter_large' displayText='Tweet'></span></li>
-                <li><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
-                <li><span class='st_googleplus_large' displayText='Google +'></span></li>
+                <li><span class="small-title">Share this <span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> in</span></li>
+                <li><div class="addthis_sharing_toolbox"></div></li>
             </ul>
         </div>
     </div>
@@ -151,7 +148,12 @@
 <script src="{{url('js/vendors.min.js')}}"></script>
 <script src="{{url('js/app.min.js')}}"></script>
 <script type="text/javascript">var switchTo5x = true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5743e070a2fa5f67"></script>
+<script type="text/javascript">
+    var addthis_share = {
+        title: "Moldova OCDS"
+    }
+</script>
 <script type="text/javascript">stLight.options({
         publisher: "edd8f686-154a-4ba0-a97f-a17a0410077d",
         doNotHash: false,
