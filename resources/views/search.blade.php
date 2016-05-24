@@ -62,15 +62,14 @@
             <div class="search-result-wrap block">
                 <div class="title">Showing search result for:</div>
                 <div class="search-token">
-                    {!! (!empty($params['q']))?'<span>'.$params['q'].'</span>':'' !!}
-                    {!! (!empty($params['contractor'])) ?'<span>Contractor :  '.$params['contractor'].' </span>': ''!!}
-                    {!! (!empty($params['agency'])) ? '<span>Procuring Agency : '.$params['agency'].' </span>': '' !!}
-                    {!! (!empty($params['amount'])) ?'<span>Amount :  '.$params['amount'].' </span>' : '' !!}
+                    {!! (!empty($params['q']))?'<span><span class="cancel">x</span>'.$params['q'].'</span>':'' !!}
+                    {!! (!empty($params['contractor'])) ?'<span><span class="cancel">x</span>Contractor :  '.$params['contractor'].' </span>': ''!!}
+                    {!! (!empty($params['agency'])) ? '<span><span class="cancel">x</span>Procuring Agency : '.$params['agency'].' </span>': '' !!}
+                    {!! (!empty($params['amount'])) ?'<span><span class="cancel">x</span>Amount :  '.$params['amount'].' </span>' : '' !!}
                 </div>
             </div>
         </div>
     </div>
-
     @if(sizeof($contracts)==0)
         <div class="block-with-margin">
             <div class="row">
@@ -161,6 +160,17 @@
             $(window).resize(function () {
                 new $.fn.dataTable.FixedHeader(makeTable);
             });
+
+            $('.cancel').each(function(){
+                $(this).click(
+                function(e) {
+                    e.preventDefault(); // prevent the default action
+                    e.stopPropagation(); // stop the click from bubbling
+                    $(this).parent().addClass('hide');
+                });
+
+            });
+
         });
     </script>
 @endsection
