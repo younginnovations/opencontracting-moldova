@@ -51,6 +51,9 @@
                         <div class="medium-4 columns">
                             <input type="submit" class="button yellow-button" value="Submit">
                         </div>
+                        <div class="medium-4 columns end">
+                            <div class="button cancel-btn">Cancel</div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -66,6 +69,10 @@
                     {!! (!empty($params['contractor'])) ?'<span><span class="cancel">x</span>Contractor :  '.$params['contractor'].' </span>': ''!!}
                     {!! (!empty($params['agency'])) ? '<span><span class="cancel">x</span>Procuring Agency : '.$params['agency'].' </span>': '' !!}
                     {!! (!empty($params['amount'])) ?'<span><span class="cancel">x</span>Amount :  '.$params['amount'].' </span>' : '' !!}
+                </div>
+                <div class="button-group clearfix">
+                    <div class="button btn cancel-btn">Cancel</div>
+                    <div class="button btn reset-btn">Reset</div>
                 </div>
             </div>
         </div>

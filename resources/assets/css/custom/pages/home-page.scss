@@ -312,8 +312,21 @@
   }
 
 }
+
+.one-pager .share-wrap{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 30px;
+
+  @media (max-width: 650px){
+    padding: 0 20px;
+  }
+}
+
 .social-share{
-  margin: 10px 0 20px 0;
+  margin: 10px auto;
   overflow: hidden;
   float: right;
   li{
@@ -324,6 +337,10 @@
       margin-top: 0;
       margin-right: 15px;
     }
+  }
+
+  .at-icon-wrapper{
+    border-radius: 4px;
   }
 
 }
