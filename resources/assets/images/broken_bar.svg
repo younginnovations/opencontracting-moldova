@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="920px" height="434px" viewBox="0 0 920 434" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-1" transform="translate(-24.000000, -93.000000)">
+            <g id="Group" transform="translate(23.543735, 93.651106)">
+                <rect id="Rectangle-3" fill="#FFE366" x="279" y="144" width="64.822695" height="278.776413"></rect>
+                <rect id="Rectangle-4" fill="#FFE366" x="379" y="195" width="64.822695" height="227.304668"></rect>
+                <rect id="Rectangle-5" fill="#FFE366" x="479" y="121" width="64.822695" height="304.601398"></rect>
+                <rect id="Rectangle-7" fill="#FFE366" transform="translate(715.000402, 301.133052) rotate(45.000000) translate(-715.000402, -301.133052) " x="684.589054" y="154.959833" width="60.822695" height="292.346437"></rect>
+                <rect id="Rectangle-1" fill="#FFE366" x="80" y="48" width="64.822695" height="377.292383"></rect>
+                <rect id="Rectangle-2" fill="#FFE366" x="181" y="96.1326781" width="64.822695" height="328.751843"></rect>
+                <polyline id="Path-1" stroke="#E1B803" stroke-width="2" points="11 0 11 424.843039 919.981006 424.843039"></polyline>
+                <g id="Group-2" transform="translate(112.456265, 423.348894)" fill="#E1B803">
+                    <rect id="Rectangle-8" x="0" y="2" width="1" height="8"></rect>
+                    <rect id="Rectangle-8" x="199" y="0" width="1" height="8"></rect>
+                    <rect id="Rectangle-8" x="299" y="2" width="1" height="8"></rect>
+                    <rect id="Rectangle-8" x="399" y="2" width="1" height="8"></rect>
+                    <rect id="Rectangle-8" x="499" y="0" width="1" height="8"></rect>
+                    <rect id="Rectangle-8" x="101" y="2" width="1" height="8"></rect>
+                </g>
+                <g id="Group-2" transform="translate(5.456265, 157.348894) rotate(-90.000000) translate(-5.456265, -157.348894) translate(-144.543735, 152.348894)" fill="#E1B803">
+                    <rect id="Rectangle-8" x="0" y="2" width="1" height="8"></rect>
+                    <rect id="Rectangle-8" x="199" y="-3.33066907e-15" width="1" height="8"></rect>
+                    <rect id="Rectangle-8" x="299" y="2" width="1" height="8"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

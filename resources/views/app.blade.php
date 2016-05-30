@@ -123,16 +123,16 @@
     @yield('content')
     <div class="share-wrap">
         <div class="row">
-        <div class="text-right sharing-title share-section">
-            <ul class="social-share">
-                <li>
-                    <span class="small-title">Share this <span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> in</span>
-                </li>
-                <li>
-                    <div class="addthis_sharing_toolbox"></div>
-                </li>
-            </ul>
-        </div>
+            <div class="text-right sharing-title share-section">
+                <ul class="social-share">
+                    <li>
+                        <span class="small-title">Share this <span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> in</span>
+                    </li>
+                    <li>
+                        <div class="addthis_sharing_toolbox"></div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 

@@ -1,0 +1,85 @@
+//error page
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300,500,700,900,800,600);
+
+.fullpage-wrap {
+  width: 100%;
+  width: 100vw;
+  height: 100%;
+  height: 100vh;
+  font-family: 'Work Sans', sans-serif;
+  color: #fff;
+  text-align: center;
+  display: table;
+  padding: 0;
+  background: rgba(255,210,0,0.5);
+
+  .button{
+    display: inline-block;
+    width: auto;
+    padding: 10px 12px;
+  }
+}
+
+.centerize-wrap{
+  display: table-cell;
+  vertical-align: middle;
+  background: url(#{$img-path}/broken_bar.svg) center top 98px no-repeat
+}
+
+
+.fullpage-wrap h1 {
+  font-size: 200px;
+  line-height: 206px;
+  font-weight: 800;
+  overflow: visible;
+  margin-bottom: 130px;
+
+  text-shadow:rgb(224, 184, 4) 1px 1px,
+  rgb(224, 184, 4) 2px 2px,
+  rgb(224, 184, 4) 3px 3px,
+  rgb(224, 184, 4) 4px 4px,
+  rgb(224, 184, 4) 5px 5px,
+  rgb(224, 184, 4) 6px 6px,
+  rgb(224, 184, 4) 7px 7px,
+  rgb(224, 184, 4) 8px 8px,
+  rgb(225, 184, 4) 9px 9px,
+  rgb(225, 184, 4) 10px 10px,
+  rgb(228, 185, 4) 11px 11px,
+  rgb(228, 185, 5) 12px 12px,
+  rgb(229, 185, 5) 13px 13px,
+  rgb(229, 186, 4) 14px 14px,
+  rgb(231, 186, 4) 15px 15px,
+  rgb(232, 186, 5) 16px 16px,
+  rgb(233, 187, 5) 17px 17px,
+  rgb(234, 187, 5) 18px 18px,
+  rgb(235, 187, 5) 19px 19px,
+  rgb(236, 188, 8) 20px 20px,
+  rgb(237, 188, 8) 21px 21px,
+  rgb(238, 188, 8) 22px 22px,
+  rgb(239, 188, 9) 23px 23px
+}
+
+.error-body {
+font-family: 'RobotoCondensed-regular';
+font-size: 22px;
+line-height: 28px;
+color: $dark-grey-yellow-color;
+a{
+display: block;
+margin-top: 20px;
+padding-top: 20px;
+position: relative;
+
+&:before{
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background: #F9D75D;
+  top: 0;
+  left: 50%;
+  margin-left: -40px;
+}
+
+}
+}
