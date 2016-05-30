@@ -78,6 +78,17 @@ $(document).ready(function(){
 
     });
 
+  /*  hide advance search when cancel is clicked*/
+
+    $(".advance-search-wrap .cancel-btn").click(function(){
+        $(".advance-search-wrap").slideUp();
+        $(".filter-toggler a").removeClass("active");
+
+        if($(window).width() > 768 ){
+            $(".multiple-search-wrap").removeClass("position");
+        }
+    });
+
 
 
     $('.toggle-switch').click(function(e) {
