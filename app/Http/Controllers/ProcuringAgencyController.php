@@ -69,6 +69,11 @@ class ProcuringAgencyController extends Controller
     {
         $procuringAgency       = urldecode($procuringAgency);
         $agencyData            = $this->procuringAgency->getAgencyData($procuringAgency);
+
+        if (empty($agencyData)) {
+            return view('error_404');
+        }
+
         $procuringAgencyDetail = $this->contracts->getDetailInfo($procuringAgency, "buyer.name");
         $totalAmount           = $this->getTotalAmount($procuringAgencyDetail);
         $tenderTrends          = $this->tenders->getProcuringAgencyTenderByOpenYear($procuringAgency);

@@ -18,7 +18,6 @@ class Goods
      */
     public function __construct(GoodsRepositoryInterface $goods)
     {
-
         $this->goods = $goods;
     }
 
