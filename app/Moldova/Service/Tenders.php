@@ -32,7 +32,7 @@ class Tenders
         $tenderByOpenYear = [];
 
         foreach ($tenders as $tender) {
-            $year = explode(".", $tender['refTendeOpenDate']);
+            $year = explode(".", $tender['tender']['tenderPeriod']['startDate']);
 
             if (array_key_exists($year[2], $tenderByOpenYear)) {
                 $tenderByOpenYear[$year[2]] += 1;

@@ -35,12 +35,12 @@ class ProcuringAgencyController extends Controller
      * @param ProcuringAgency $procuringAgency
      * @param StreamExporter  $exporter
      */
-    public function __construct(Contracts $contracts, Tenders $tenders, ProcuringAgency $procuringAgency,StreamExporter $exporter)
+    public function __construct(Contracts $contracts, Tenders $tenders, ProcuringAgency $procuringAgency, StreamExporter $exporter)
     {
         $this->contracts       = $contracts;
         $this->tenders         = $tenders;
         $this->procuringAgency = $procuringAgency;
-        $this->exporter = $exporter;
+        $this->exporter        = $exporter;
     }
 
     /**
@@ -48,10 +48,10 @@ class ProcuringAgencyController extends Controller
      */
     public function index()
     {
-        $procuringAgency = $this->contracts->getProcuringAgency('count', 5);
-        $totalAgency = count($this->procuringAgency->getAllProcuringAgencyTitle());
+        $procuringAgency = $this->contracts->getProcuringAgency('count', 5, 2016);
+        $totalAgency     = count($this->procuringAgency->getAllProcuringAgencyTitle());
 
-        return view('agency.index', compact('procuringAgency','totalAgency'));
+        return view('agency.index', compact('procuringAgency', 'totalAgency'));
     }
 
     /**
@@ -67,15 +67,15 @@ class ProcuringAgencyController extends Controller
 
     public function show($procuringAgency)
     {
-        $procuringAgency = urldecode($procuringAgency);
-        $agencyData      = $this->procuringAgency->getAgencyData($procuringAgency);
+        $procuringAgency       = urldecode($procuringAgency);
+        $agencyData            = $this->procuringAgency->getAgencyData($procuringAgency);
         $procuringAgencyDetail = $this->contracts->getDetailInfo($procuringAgency, "buyer.name");
         $totalAmount           = $this->getTotalAmount($procuringAgencyDetail);
         $tenderTrends          = $this->tenders->getProcuringAgencyTenderByOpenYear($procuringAgency);
         $trends                = $this->mergeContractAndTenderTrends($tenderTrends, $this->contracts->aggregateContracts($procuringAgencyDetail));
         $amountTrend           = $this->contracts->encodeToJson($this->contracts->aggregateContracts($procuringAgencyDetail, 'amount'), 'trend');
-        $contractors           = $this->contracts->getContractors('amount', 5, $procuringAgency, "tender.stateOrg.orgName");
-        $goodsAndServices      = $this->contracts->getGoodsAndServices('amount', 5, $procuringAgency, "tender.stateOrg.orgName");
+        $contractors           = $this->contracts->getContractors('amount', 5, date('Y'), $procuringAgency, "tender.procuringAgency.name");
+        $goodsAndServices      = $this->contracts->getGoodsAndServices('amount', 5, date('Y'), $procuringAgency, "tender.stateOrg.orgName");
 
         return view(
             'agency.view',
@@ -88,7 +88,7 @@ class ProcuringAgencyController extends Controller
         $total = 0;
 
         foreach ($contracts as $key => $tender) {
-            foreach($tender['contract'] as $contract) {
+            foreach ($tender['contract'] as $contract) {
                 $total += $contract['value']['amount'];
             }
         }
@@ -115,7 +115,7 @@ class ProcuringAgencyController extends Controller
      * @param                $agencyId
      * @return \Symfony\Component\HttpFoundation\StreamedResponse
      */
-    public function agencyDetailExport( $agencyId)
+    public function agencyDetailExport($agencyId)
     {
         return $this->exporter->getContractorDetailForExport(urldecode($agencyId), 'buyer.name');
     }

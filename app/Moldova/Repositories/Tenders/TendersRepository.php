@@ -29,10 +29,10 @@ class TendersRepository implements TendersRepositoryInterface
      */
     public function getTendersByOpenYear()
     {
-        $result = Tenders::raw(function ($collection) {
+        $result = OcdsRelease::raw(function ($collection) {
             return $collection->find([], [
-                    "refTendeOpenDate" => 1,
-                    "_id"              => 1
+                    "tender.tenderPeriod.startDate" => 1,
+                    "_id"                           => 1
                 ]
             );
         });
@@ -42,10 +42,10 @@ class TendersRepository implements TendersRepositoryInterface
 
     public function getProcuringAgencyTenderByOpenYear($procuringAgency)
     {
-        $result = Tenders::raw(function ($collection) use ($procuringAgency) {
-            return $collection->find(['stateOrg.orgName' => $procuringAgency], [
-                    "refTendeOpenDate" => 1,
-                    "_id"              => 1
+        $result = OcdsRelease::raw(function ($collection) use ($procuringAgency) {
+            return $collection->find(['tender.procuringAgency.name' => $procuringAgency], [
+                    "tender.tenderPeriod.startDate" => 1,
+                    "_id"                           => 1
                 ]
             );
         });

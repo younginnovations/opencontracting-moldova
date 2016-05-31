@@ -21,7 +21,7 @@ interface ContractsRepositoryInterface
      * @param $column
      * @return mixed
      */
-    public function getProcuringAgency($type, $limit, $condition, $column);
+    public function getProcuringAgency($type, $limit, $year, $condition, $column);
 
     /**
      * Get Contracts by amount/count according to type and by limit given
@@ -31,7 +31,7 @@ interface ContractsRepositoryInterface
      * @param $column
      * @return mixed
      */
-    public function getContractors($type, $limit,$condition, $column);
+    public function getContractors($type, $limit, $year, $condition, $column);
 
     /**
      * Gets total amount of Contracts
@@ -47,7 +47,7 @@ interface ContractsRepositoryInterface
      * @param $column
      * @return mixed
      */
-    public function getGoodsAndServices($type, $limit, $condition, $column);
+    public function getGoodsAndServices($type, $limit, $year, $condition, $column);
 
     /**
      * Get list of contracts

@@ -17,7 +17,7 @@
                 <form action="{{ route('search') }}" method="get" class="custom-form advance-search-wrap">
                     <div class="form-inner clearfix">
                         <div class="form-group medium-4 columns end">
-                            <select name="contractor" class="cs-select cs-skin-elastic">
+                            <select name="contractor" class="cs-select2 cs-skin-elastic">
                                 <option value="" disabled selected>Select a contractor</option>
                                 @forelse($contractTitles as $contractTitle)
                                     <option value="{{ $contractTitle['_id'][0] }}">{{ $contractTitle['_id'][0] }}</option>
@@ -26,7 +26,7 @@
                             </select>
                         </div>
                         <div class="form-group medium-4 columns end">
-                            <select name="agency" class="cs-select cs-skin-elastic">
+                            <select name="agency" class="cs-select2 cs-skin-elastic">
                                 <option value="" disabled selected>Select a buyer</option>
                                 @forelse($procuringAgencies as $procuringAgency)
                                     <option value="{{ $procuringAgency[0] }}">{{ $procuringAgency[0] }}</option>
@@ -35,7 +35,7 @@
                             </select>
                         </div>
                         <div class="form-group medium-4 columns end">
-                            <select name="amount" class="cs-select cs-skin-elastic">
+                            <select name="amount" class="cs-select2 cs-skin-elastic">
                                 <option value="" disabled selected>Select a range</option>
                                 <option value="0-10000">0-10000</option>
                                 <option value="10000-100000">10000-100000</option>
@@ -43,6 +43,23 @@
                                 <option value="200000-500000">200000-500000</option>
                                 <option value="500000-1000000">500000-1000000</option>
                                 <option value="1000000-Above">1000000-Above</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group medium-4 columns end">
+                            <select name="startDate" class="cs-select2 cs-skin-elastic">
+                                @foreach(range(date('Y'), date('Y')-100) as $year)
+                                    <option value="" disabled selected>Select a year</option>
+                                    <option value="{{$year}}">{{$year}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group medium-4 columns end">
+                            <select name="endDate" class="cs-select2 cs-skin-elastic">
+                                @foreach(range(date('Y'), date('Y')-100) as $year)
+                                    <option value="" disabled selected>Select a year</option>
+                                    <option value="{{$year}}">{{$year}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -69,6 +86,8 @@
                     {!! (!empty($params['contractor'])) ?'<span><span class="cancel">x</span>Contractor :  '.$params['contractor'].' </span>': ''!!}
                     {!! (!empty($params['agency'])) ? '<span><span class="cancel">x</span>Procuring Agency : '.$params['agency'].' </span>': '' !!}
                     {!! (!empty($params['amount'])) ?'<span><span class="cancel">x</span>Amount :  '.$params['amount'].' </span>' : '' !!}
+                    {!! (!empty($params['startDate'])) ?'<span><span class="cancel">x</span>Start Date :  '.$params['startDate'].' </span>' : '' !!}
+                    {!! (!empty($params['endDate'])) ?'<span><span class="cancel">x</span>End Date :  '.$params['endDate'].' </span>' : '' !!}
                 </div>
                 <div class="button-group clearfix">
                     <div class="button btn cancel-btn">Cancel</div>
@@ -88,6 +107,7 @@
     @else
 
         <div class="row table-wrapper persist-area">
+            <a target="_blank" class="export" href="{{route('home.export')}}">Export as CSV</a>
             <table id="table_id" class="responsive hover custom-table display">
                 <thead class="persist-header">
                 <tr>
@@ -108,7 +128,7 @@
                             <td>{{ getContractInfo($contract['title'],'id') }}</td>
                             <td class="hide">{{ $contract['id'] }}</td>
                             <td>{{ ($tender['award'][$key]['items'])?$tender['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
-                            <td>{{ $contract['status'] }}</td>
+                            <td>{{ print_r($contract['status']) }}</td>
                             <td class="dt">{{ $contract['dateSigned'] }}</td>
                             <td class="dt">{{ $contract['period']['endDate'] }}</td>
                             <td class="numeric-data">{{ $contract['value']['amount'] }}</td>
@@ -126,6 +146,35 @@
 
 @section('script')
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
+    <script src="{{url('js/foundation-datepicker.js')}}"></script>
+    <link href="{{url('css/foundation-datepicker.css')}}" rel="stylesheet"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".cs-select2").select2();
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#dpMonths').fdatepicker();
+            $('#dpMonth').fdatepicker();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".custom-form").submit(function () {
+                if ($("input[name='startDate']").val() == "") {
+                    $("input[name='startDate']").remove();
+                }
+                if ($("input[name='endDate']").val() == "") {
+                    $("input[name='endDate']").remove();
+                }
+            });
+        });
+    </script>
     <script>
         var createLinks = function () {
             $('#table_id tbody tr').each(function () {

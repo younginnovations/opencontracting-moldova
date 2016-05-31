@@ -38,9 +38,10 @@ class GoodsController extends Controller
 
     public function index()
     {
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5);
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, date('Y'));
+        $totalGoods       = $this->goods->getAllGoods("");
 
-        return view('goods.index', compact('goodsAndServices'));
+        return view('goods.index', compact('goodsAndServices', 'totalGoods'));
     }
 
     /**
@@ -67,8 +68,8 @@ class GoodsController extends Controller
         $totalAmount     = $this->getTotalAmount($goodsDetail);
         $contractTrend   = $this->getTrend($this->contracts->aggregateContracts($goodsDetail));
         $amountTrend     = $this->contracts->encodeToJson($this->contracts->aggregateContracts($goodsDetail, 'amount'), 'trend');
-        $contractors     = $this->contracts->getContractors('amount', 5, $goods, "award.items.classification.description");
-        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, $goods, 'award.items.classification.description');
+        $contractors     = $this->contracts->getContractors('amount', 5, date('Y'), $goods, "award.items.classification.description");
+        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, date('Y'), $goods, 'award.items.classification.description');
 
         return view('goods.view', compact('goods', 'goodsDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'contractors', 'procuringAgency'));
     }
@@ -82,7 +83,7 @@ class GoodsController extends Controller
         $total = 0;
 
         foreach ($contracts as $key => $tender) {
-            foreach($tender['contract'] as $contract) {
+            foreach ($tender['contract'] as $contract) {
                 $total += $contract['value']['amount'];
             }
         }

@@ -48,13 +48,11 @@ class HomeController extends Controller
         $tendersTrends       = $this->tenders->getTendersByOpenYear();
         $contractsTrends     = $this->contracts->getContractsByOpenYear();
         $trends              = $this->mergeContractAndTenderTrends($tendersTrends, $contractsTrends);
-        $procuringAgency     = $this->contracts->getProcuringAgency('amount', 5);
-        $contractors         = $this->contracts->getContractors('amount', 5);
-        $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5);
+        $procuringAgency     = $this->contracts->getProcuringAgency('amount', 5, date('Y'));
+        $contractors         = $this->contracts->getContractors('amount', 5, date('Y'));
+        $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5, date('Y'));
         $contractTitles      = $this->contracts->getAllContractTitle();
         $procuringAgencies   = $this->procuringAgency->getAllProcuringAgencyTitle();
-
-        // $contractsList       = $this->contracts->getContractsList(10);
 
         return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices', 'contractTitles', 'procuringAgencies'));
     }
@@ -91,7 +89,7 @@ class HomeController extends Controller
         foreach ($tendersTrends as $key => $tender) {
             $trends[$count]['xValue'] = $key;
             $trends[$count]['chart1'] = $tender;
-            $trends[$count]['chart2'] = $contractsTrends[$key];
+            $trends[$count]['chart2'] = (!empty($contractsTrends[$key])) ? $contractsTrends[$key] : 0;
             $count ++;
         }
 
@@ -109,16 +107,17 @@ class HomeController extends Controller
         $type     = $request->get('type');
         $dataFor  = ($request->get('dataFor')) ? $this->getColumnName($request->get('dataFor')) : '';
         $param    = ($request->get('param')) ? $request->get('param') : '';
+        $year     = ($request->get('year')) ? $request->get('year') : date('Y');
 
         switch ($type) {
             case ('contractor'):
-                $data = $this->contracts->getContractors($filterBy, 5, $param, $dataFor);
+                $data = $this->contracts->getContractors($filterBy, 5, $year, $param, $dataFor);
                 break;
             case ('agency'):
-                $data = $this->contracts->getProcuringAgency($filterBy, 5, $param, $dataFor);
+                $data = $this->contracts->getProcuringAgency($filterBy, 5, $year, $param, $dataFor);
                 break;
             case ('goods'):
-                $data = $this->contracts->getGoodsAndServices($filterBy, 5, $param, $dataFor);
+                $data = $this->contracts->getGoodsAndServices($filterBy, 5, $year, $param, $dataFor);
                 break;
 
         }
@@ -137,13 +136,13 @@ class HomeController extends Controller
 
         switch ($type) {
             case ('contractor'):
-                $column = 'participant.fullName';
+                $column = 'award.suppliers.name';
                 break;
             case ('agency'):
-                $column = 'tender.stateOrg.orgName';
+                $column = 'tender.procuringAgency.name';
                 break;
             case ('goods'):
-                $column = 'goods.mdValue';
+                $column = 'award.items.classification.description';
                 break;
         }
 
@@ -161,7 +160,7 @@ class HomeController extends Controller
         $contracts         = [];
         $params            = $request->all();
 
-        if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount'))) {
+        if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount')) || !empty($request->get('startDate')) || !empty($request->get('endDate'))) {
             //$params = $request->all();
 
             $contracts = $this->contracts->search($params);

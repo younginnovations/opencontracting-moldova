@@ -110,6 +110,9 @@
                                 <form>
                                     <label>
                                         <span class="inner-title">Showing contractors</span>
+                                        <select id="select-contractor-year">
+                                            @include('selectYear')
+                                        </select>
                                         <select id="select-contractor" data-for="agency" data="{{ $procuringAgency }}">
                                             <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
@@ -145,6 +148,9 @@
                                 <form>
                                     <label>
                                         <span class="inner-title">Showing goods / services</span>
+                                        <select id="select-goods-year">
+                                            @include('selectYear')
+                                        </select>
                                         <select id="select-goods" data-for="agency" data="{{ $procuringAgency }}">
                                             <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
@@ -262,7 +268,7 @@
         var amountTrend = '{!! $amountTrend !!}';
         var contractors = '{!! $contractors  !!}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';
-        console.log(trends);
+
         var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();
             createLineChart(JSON.parse(trends), widthofParent);

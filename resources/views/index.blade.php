@@ -37,16 +37,20 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>Top 5 procuring agencies</h3>
                         </div>
-
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
                                         <span class="inner-title">Showing procuring agencies</span>
+                                        <select id="select-agency-year">
+                                            @include('selectYear')
+                                        </select>
+
                                         <select id="select-agency">
                                             <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
                                         </select>
+
                                     </label>
                                 </form>
                             </div>
@@ -84,6 +88,11 @@
                                 <form>
                                     <label>
                                         <span class="inner-title">Showing contractors</span>
+
+                                        <select id="select-contractor-year">
+                                            @include('selectYear')
+                                        </select>
+
                                         <select id="select-contractor">
                                             <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
@@ -119,6 +128,11 @@
                                 <form>
                                     <label>
                                         <span class="inner-title">Showing goods / services</span>
+
+                                        <select id="select-goods-year">
+                                            @include('selectYear')
+                                        </select>
+
                                         <select id="select-goods">
                                             <option value="amount" selected>Based on value</option>
                                             <option value="count">Based on count</option>
@@ -198,8 +212,6 @@
                    }
                }
            });
-
-
         var createLinks = function () {
 
             $('#table_id tbody tr').each(function () {

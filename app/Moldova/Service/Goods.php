@@ -29,6 +29,25 @@ class Goods
      */
     public function getAllGoods($params)
     {
-        return $this->goods->getAllGoods($params);
+        $data = $this->goods->getAllGoods($params);
+
+        $goods = [];
+        $count = 0;
+
+        if ($params === "" && !empty($data)) {
+            //dd($data[0]['goods']);
+            return count($data[0]['goods']);
+        }
+
+        if (!empty($data)) {
+            foreach ($data[0]['goods'] as $key => $good) {
+                $goods[$count]['good']      = (!empty($good))?$good[0]:'-';
+                $goods[$count]['cpv_value'] = (!empty($data[0]['cpv_value'][$key])) ? $data[0]['cpv_value'][$key][0] : '-';
+                $goods[$count]['scheme']    = 'CPV';
+                $count ++;
+            }
+        }
+
+        return $goods;
     }
 }

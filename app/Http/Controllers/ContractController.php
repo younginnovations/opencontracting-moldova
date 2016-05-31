@@ -38,18 +38,21 @@ class ContractController extends Controller
     public function index()
     {
         $contractsTrends = $this->getTrend($this->contracts->getContractsByOpenYear());
+        $totalContracts  = $this->contracts->getContractsList("");
 
-        return view('contracts.index', compact('contractsTrends'));
+        return view('contracts.index', compact('contractsTrends', 'totalContracts'));
     }
+
     public function jsonView($contractId)
     {
         $contractJson = $this->contracts->getContractDataForJson($contractId);
-        $response = [
-            'code' => 200,
+        $response     = [
+            'code'   => 200,
             'status' => 'succcess',
-            'data' => $contractJson
+            'data'   => $contractJson
         ];
-        return response()->json($response,$response['code'])->header('Content-Type', 'application/json');
+
+        return response()->json($response, $response['code'])->header('Content-Type', 'application/json');
     }
 
     /**
@@ -58,7 +61,7 @@ class ContractController extends Controller
      */
     public function contractorIndex()
     {
-        $contractorsTrends = $this->contracts->getContractors('amount', 5);
+        $contractorsTrends = $this->contracts->getContractors('amount', 5, date('Y'));
         $contractors       = $this->contracts->getContractorsByOpenYear();
 
         return view('contracts.contractor-index', compact('contractorsTrends', 'contractors'));
@@ -70,15 +73,15 @@ class ContractController extends Controller
      */
     public function show($contractor)
     {
-        $contractor       = urldecode($contractor);
+        $contractor       = trim(urldecode($contractor));
         $contractorDetail = $this->contracts->getDetailInfo($contractor, 'award.suppliers.name');
         $total            = $this->getTotal($contractorDetail);
-        $totalContract   = $total['totalContract'];
+        $totalContract    = $total['totalContract'];
         $totalAmount      = $total['totalAmount'];
         $contractTrend    = $this->getTrend($this->contracts->aggregateContracts($contractorDetail));
         $amountTrend      = $this->contracts->encodeToJson($this->contracts->aggregateContracts($contractorDetail, 'amount'), 'trend');
-        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, $contractor, 'award.suppliers.name');
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, $contractor, 'award.suppliers.name');
+        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, 2014, $contractor, 'award.suppliers.name');
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, 2014, $contractor, 'award.suppliers.name');
 
         return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices', 'totalContract'));
     }
