@@ -25,18 +25,24 @@ class HomeController extends Controller
      * @var ProcuringAgency
      */
     private $procuringAgency;
+    /**
+     * @var StreamExporter
+     */
+    private $exporter;
 
     /**
      * ExampleController constructor.
      * @param Tenders         $tenders
      * @param Contracts       $contracts
      * @param ProcuringAgency $procuringAgency
+     * @param StreamExporter  $exporter
      */
-    public function __construct(Tenders $tenders, Contracts $contracts, ProcuringAgency $procuringAgency)
+    public function __construct(Tenders $tenders, Contracts $contracts, ProcuringAgency $procuringAgency, StreamExporter $exporter)
     {
         $this->tenders         = $tenders;
         $this->contracts       = $contracts;
         $this->procuringAgency = $procuringAgency;
+        $this->exporter        = $exporter;
     }
 
     /**
@@ -53,6 +59,7 @@ class HomeController extends Controller
         $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5, date('Y'));
         $contractTitles      = $this->contracts->getAllContractTitle();
         $procuringAgencies   = $this->procuringAgency->getAllProcuringAgencyTitle();
+
         return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices', 'contractTitles', 'procuringAgencies'));
     }
 
@@ -92,6 +99,7 @@ class HomeController extends Controller
             $trends[$count]['chart2'] = (!empty($contractsTrends[$key])) ? $contractsTrends[$key] : 0;
             $count ++;
         }
+
         return json_encode($trends);
     }
 
@@ -160,9 +168,12 @@ class HomeController extends Controller
         $params            = $request->all();
 
         if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount')) || !empty($request->get('startDate')) || !empty($request->get('endDate'))) {
-            //$params = $request->all();
-
             $contracts = $this->contracts->search($params);
+
+            if ($request->get('export')) {
+                return $this->exporter->exportSearch($contracts);
+            }
+
         }
 
         return view('search', compact('contracts', 'contractTitles', 'procuringAgencies', 'params'));
@@ -217,12 +228,11 @@ class HomeController extends Controller
 
 
     /**
-     * @param StreamExporter $exporter
      * @return \Symfony\Component\HttpFoundation\StreamedResponse
      */
-    public function export(StreamExporter $exporter)
+    public function export()
     {
-        return $exporter->getAllContracts();
+        return $this->exporter->getAllContracts();
 
     }
 }

@@ -362,7 +362,7 @@ class StreamExporter
                         $data['id']                  = $contract['id'];
                         $data['title']               = $contract['title'];
                         $data['goods']               = (!empty($tender['award'][$key]['items'])) ? $tender['award'][$key]['items'][0]['classification']['description'] : '-';
-                        $data['contract_start_date'] = $contract['period']['startDate'];
+                        $data['contract_start_date'] = $contract['dateSigned'];
                         $data['contract_end_date']   = $contract['period']['endDate'];
                         $data['amount']              = $contract['value']['amount'];
 
@@ -375,6 +375,41 @@ class StreamExporter
         }, 200, [
             'Content-Type'        => 'text/csv',
             'Content-Disposition' => 'attachment; filename="tender_contracts.csv"',
+        ]);
+
+        return $response;
+    }
+
+    public function exportSearch($contracts)
+    {
+        $data     = [];
+        $response = new StreamedResponse(function () use ($data, $contracts) {
+            set_time_limit(0);
+            $handle = fopen('php://output', 'w');
+            fputcsv($handle, [
+                'id',
+                'title',
+                'goods',
+                'contract_start_date',
+                'contract_end_date',
+                'amount'
+            ]);
+            foreach ($contracts as $tender) {
+                foreach ($tender['contract'] as $key => $contract) {
+                    $data['id']                  = $contract['id'];
+                    $data['title']               = $contract['title'];
+                    $data['goods']               = (!empty($tender['award'][$key]['items'])) ? $tender['award'][$key]['items'][0]['classification']['description'] : '-';
+                    $data['contract_start_date'] = $contract['dateSigned'];
+                    $data['contract_end_date']   = $contract['period']['endDate'];
+                    $data['amount']              = $contract['value']['amount'];
+
+                    fputcsv($handle, $data);
+                }
+            }
+            fclose($handle);
+        }, 200, [
+            'Content-Type'        => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="search_contracts.csv"',
         ]);
 
         return $response;
