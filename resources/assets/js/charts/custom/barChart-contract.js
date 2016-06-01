@@ -89,7 +89,8 @@
         .data(data)
         .enter().append("rect")
         .attr("class","bars")
-        .attr("x", function(d) { return x(d.name); })
+        .attr("x", function(d) {
+            return x(d.name); })
         .attr("width", x.rangeBand())
             .attr("y", height)
             .attr("height", 0)

@@ -60,7 +60,7 @@ class GoodsRepository implements GoodsRepositoryInterface
         $groupBy =
             [
                 '$group' => [
-                    '_id'       => ['$award.items.classification.description'],
+                    '_id'       => '$award.items.classification.description',
                     'count'     => ['$sum' => 1],
                     'goods'     => ['$addToSet' => '$award.items.classification.description'],
                     'cpv_value' => ['$addToSet' => '$award.items.classification.id'],
@@ -126,7 +126,7 @@ class GoodsRepository implements GoodsRepositoryInterface
         $groupBy =
             [
                 '$group' => [
-                    '_id'       => ['$award.items.classification.description'],
+                    '_id'       => '$award.items.classification.description',
                     'goods'     => ['$addToSet' => '$award.items.classification.description']
                 ]
             ];
