@@ -59,7 +59,7 @@ class Contracts
                 }
             }
         }
-
+        ksort($contractsByOpenYear);
         return $contractsByOpenYear;
     }
 

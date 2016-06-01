@@ -41,7 +41,7 @@ class Tenders
             }
 
         }
-
+        ksort($tenderByOpenYear);
         return $tenderByOpenYear;
     }
 

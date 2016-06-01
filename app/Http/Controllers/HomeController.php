@@ -53,7 +53,6 @@ class HomeController extends Controller
         $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5, date('Y'));
         $contractTitles      = $this->contracts->getAllContractTitle();
         $procuringAgencies   = $this->procuringAgency->getAllProcuringAgencyTitle();
-
         return view('index', compact('totalContractAmount', 'trends', 'procuringAgency', 'contractors', 'goodsAndServices', 'contractTitles', 'procuringAgencies'));
     }
 
@@ -87,12 +86,12 @@ class HomeController extends Controller
         $count  = 0;
 
         foreach ($tendersTrends as $key => $tender) {
+
             $trends[$count]['xValue'] = $key;
             $trends[$count]['chart1'] = $tender;
             $trends[$count]['chart2'] = (!empty($contractsTrends[$key])) ? $contractsTrends[$key] : 0;
             $count ++;
         }
-
         return json_encode($trends);
     }
 

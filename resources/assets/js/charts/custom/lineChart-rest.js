@@ -17,6 +17,7 @@ var createLineChartRest = function(data,widthParent){
                     top: 20, right:20, bottom:20, left: 34
                 };
     var xScale = d3.scale.ordinal().rangeRoundBands([0,width1-50], 0);
+    var xDot = d3.scale.ordinal().rangeRoundBands([0, width1], 1.07);
     var yScale = d3.scale.linear()
                 .range([height1 - margin.top, margin.bottom]);
     var xAxis = d3.svg.axis()
@@ -48,6 +49,7 @@ var createLineChartRest = function(data,widthParent){
         var maxValue = d3.max(data, function(d){
             return d.chart2; });
         xScale.domain(data.map(function (d) {return d.xValue; }));
+        xDot.domain(data.map(function (d) {return d.xValue; }));
         yScale.domain([0,maxValue]);
 
         vis.append("svg:g")
@@ -135,23 +137,6 @@ var createLineChartRest = function(data,widthParent){
             });
     }
     else if(data.length ===1){
-        var linePath = vis.append('svg:path')
-            .attr('d', lineGen(data))
-            .attr("transform", "translate(" + (((xScale(data[0].xValue)+501)/2) + margin.left) + ",0)")
-            .attr("stroke", "#B8E986")
-            .attr("stroke-width", 2)
-            .attr("fill", "none");
-
-        var totalLength = linePath.node().getTotalLength();
-
-        linePath
-            .attr("stroke-dasharray", totalLength + " " + totalLength)
-            .attr("stroke-dashoffset", totalLength)
-            .transition()
-            .duration(1000)
-            .ease("linear")
-            .attr("stroke-dashoffset", 0);
-
         vis.selectAll("dot")
             .data(data)
             .enter()
@@ -162,7 +147,7 @@ var createLineChartRest = function(data,widthParent){
             .attr("r", 4)
             .attr("fill", "#B8E986")
             .attr("cx", function (d){
-                return xScale(d.xValue) + (((xScale(data[0].xValue)+501)/2) + margin.left);
+                return xDot(d.xValue);
             })
             .attr("cy", function (d){
                 return yScale(d.chart2);
@@ -183,23 +168,6 @@ var createLineChartRest = function(data,widthParent){
             });
     }
     else{
-        var linePath = vis.append('svg:path')
-            .attr('d', lineGen(data))
-            .attr("transform", "translate(" + (((501)/2) + margin.left) + ",0)")
-            .attr("stroke", "#B8E986")
-            .attr("stroke-width", 2)
-            .attr("fill", "none");
-
-        var totalLength = linePath.node().getTotalLength();
-
-        linePath
-            .attr("stroke-dasharray", totalLength + " " + totalLength)
-            .attr("stroke-dashoffset", totalLength)
-            .transition()
-            .duration(1000)
-            .ease("linear")
-            .attr("stroke-dashoffset", 0);
-
         vis.selectAll("dot")
             .data(data)
             .enter()
@@ -210,7 +178,7 @@ var createLineChartRest = function(data,widthParent){
             .attr("r", 4)
             .attr("fill", "#B8E986")
             .attr("cx", function (d){
-                return xScale(d.xValue) + (((501)/2) + margin.left);
+                return xDot(d.xValue);
             })
             .attr("cy", function (d){
                 return yScale(d.chart2);

@@ -32,18 +32,19 @@ var createLineChart = function(data,parentWidth){
                     .scale(yScale)
                     .ticks(6);
 
-    function make_x_axis(){
-        return d3.svg.axis()
-                .scale(xScale)
-                .orient("bottom")
-                .ticks(5)
-    }
+    //function make_x_axis(){
+    //    return d3.svg.axis()
+    //            .scale(xScale)
+    //            .orient("bottom")
+    //            .ticks(5)
+    //}
     function make_y_axis(){
         return d3.svg.axis()
                 .scale(yScale)
                 .orient("left")
                 .ticks(5)
     }
+
         data.forEach(function (d){
             d.xValue = d.xValue;
             d.chart1 = +d.chart1;
