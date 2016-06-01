@@ -75,6 +75,9 @@ class ContractController extends Controller
     {
         $contractor       = trim(urldecode($contractor));
         $contractorDetail = $this->contracts->getDetailInfo($contractor, 'award.suppliers.name');
+        if ($contractorDetail->isEmpty()) {
+            return view('error_404');
+        }
         $total            = $this->getTotal($contractorDetail);
         $totalContract    = $total['totalContract'];
         $totalAmount      = $total['totalAmount'];
@@ -134,6 +137,11 @@ class ContractController extends Controller
     public function view($contractId)
     {
         $contractDetail = $this->contracts->getContractDetailById($contractId);
+
+        if (!$contractDetail) {
+            return view('error_404');
+        }
+
         $contractData   = $this->contracts->getContractDataForJson($contractId);
 
         return view('contracts.view', compact('contractDetail', 'contractData'));

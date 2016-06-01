@@ -61,6 +61,10 @@ class TenderController
     {
         $tenderDetail = $this->tenders->getTenderDetailByID($tenderID);
 
+        if (empty($tenderDetail)) {
+            return view('error_404');
+        }
+
         return view('tender.view', compact('tenderDetail'));
 
     }

@@ -321,6 +321,10 @@ class ContractsRepository implements ContractsRepositoryInterface
     {
         $result = $this->ocdsRelease->where('contract.id', (int) $contractId)->project(['contract.$' => 1, 'award' => 1, 'tender.id' => 1, 'tender.title' => 1, 'buyer.name' => 1])->first();
 
+        if(empty($result)){
+            return null;
+        }
+
         $contract                    = ($result['contract'][0]);
         $contract['tender_title']    = $result['tender']['title'];
         $contract['tender_id']       = $result['tender']['id'];

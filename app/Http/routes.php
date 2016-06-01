@@ -176,6 +176,10 @@ $app->get('/about',function(){
     return view('about');
 });
 
+$app->get('/error',function(){
+    return view('error_404');
+});
+
 $app->get('/contact', function () {
     return view('contact');
 });

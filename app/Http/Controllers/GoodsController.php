@@ -63,8 +63,13 @@ class GoodsController extends Controller
      */
     public function show($goods)
     {
-        $goods           = urldecode($goods);
-        $goodsDetail     = $this->contracts->getDetailInfo($goods, "award.items.classification.description");
+        $goods       = urldecode($goods);
+        $goodsDetail = $this->contracts->getDetailInfo($goods, "award.items.classification.description");
+
+        if ($goodsDetail->isEmpty()) {
+            return view('error_404');
+        }
+
         $totalAmount     = $this->getTotalAmount($goodsDetail);
         $contractTrend   = $this->getTrend($this->contracts->aggregateContracts($goodsDetail));
         $amountTrend     = $this->contracts->encodeToJson($this->contracts->aggregateContracts($goodsDetail, 'amount'), 'trend');
