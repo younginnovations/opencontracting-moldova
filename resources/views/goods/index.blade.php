@@ -17,7 +17,7 @@
                     <div class="big-title">Goods / services</div>
                 </div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt fugit maxime nam nesciunt qui quia quo ut velit. Ad blanditiis commodi cupiditate distinctio ducimus inventore perferendis repellat ut vitae? Quam?
+
                 </p>
             </div>
         </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('goods.export')}}">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download/goods">Export as CSV</a>
         <table id="table_id" class="hover responsive custom-table display persist-area">
             <thead class="persist-header">
             <tr>
@@ -90,21 +90,15 @@
             "processing": true,
             "serverSide": true,
             "ajax": '/api/goods',
-            "ajaxDataProp": '',
-            "pagingType": "full_numbers",
-            "columns": [
-                {'data': 'good'},
-                {'data': 'cpv_value'},
-                {'data': 'scheme'}
-            ],
+//            "ajaxDataProp": '',
+//            "columns": [
+//                {'data': 'good'},
+//                {'data': 'cpv_value'},
+//                {'data': 'scheme'}
+//            ],
             "fnDrawCallback": function () {
                 createLinks();
                 updateTables();
-                if ($('#table_id tr').length < 10) {
-                    $('.dataTables_paginate').hide();
-                } else {
-                    $('.dataTables_paginate').show();
-                }
             }
         });
 

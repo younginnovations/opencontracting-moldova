@@ -218,3 +218,22 @@ $app->get(
         'uses' => 'GoodsController@show'
     ]
 );
+
+$app->get('/csv/download', function () {
+    return response()->download(base_path('public') . '/csv/contracts_csv.csv');
+});
+$app->get('/csv/download/tenders',function(){
+    return response()->download(base_path('public') . '/csv/tenders_csv.csv');
+});
+
+$app->get('/csv/download/goods',function(){
+    return response()->download(base_path('public') . '/csv/goods_csv.csv');
+});
+
+$app->get('/csv/download/agencies',function(){
+    return response()->download(base_path('public') . '/csv/agencies_csv.csv');
+});
+
+$app->get('/csv/download/contractors',function(){
+    return response()->download(base_path('public') . '/csv/contractors_csv.csv');
+});

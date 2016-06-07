@@ -17,9 +17,7 @@
                     <div class="big-title">Contract issued</div>
                 </div>
                 <p>
-                    Tenders are to invite bids for a project, or to accept a formal offer such as a takeover bid. Tender
-                    usually refers to the process whereby governments and financial institutions invite bids for large
-                    projects that must be submitted within a finite deadline.
+
                 </p>
             </div>
         </div>
@@ -52,7 +50,7 @@
     </div>
 
     <div class="row table-wrapper ">
-        <a target="_blank" class="export" href="{{route('home.export')}}">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download">Export as CSV</a>
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
@@ -80,14 +78,14 @@
             "processing": true,
             "serverSide": true,
             "ajax": '/api/data',
-            "ajaxDataProp": '',
+//            "ajaxDataProp": '',
             "columns": [
-                {'data': 'contractNumber'},
-                {'data': 'id', 'className': 'hide'},
-                {'data': 'goods', "defaultContent": "-"},
-                {'data': 'contractDate', 'className': 'dt'},
-                {'data': 'finalDate', 'className': 'dt'},
-                {'data': 'amount', "className": 'numeric-data'}
+                {'className': ''},
+                {'className': 'hide'},
+                {"defaultContent": "-"},
+                {'className': 'dt'},
+                {'className': 'dt'},
+                {"className": 'numeric-data'}
             ],
             "fnDrawCallback": function () {
                 changeDateFormat();

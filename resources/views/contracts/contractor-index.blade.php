@@ -14,13 +14,11 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number big-amount">{!! count($contractors)  !!}</div>
+                    <div class="number big-amount">{{ $contractorsCount }}</div>
                     <div class="big-title">Contractors</div>
                 </div>
                 <p>
-                    Tenders are to invite bids for a project, or to accept a formal offer such as a takeover bid. Tender
-                    usually refers to the process whereby governments and financial institutions invite bids for large
-                    projects that must be submitted within a finite deadline.
+
                 </p>
             </div>
         </div>
@@ -67,7 +65,7 @@
     </div>
 
     <div class="row table-wrapper ">
-        <a target="_blank" class="export" href="{{route('contractor.export')}}">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download/contractors">Export as CSV</a>
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>

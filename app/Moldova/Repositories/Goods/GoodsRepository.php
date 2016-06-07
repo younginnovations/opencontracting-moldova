@@ -33,12 +33,11 @@ class GoodsRepository implements GoodsRepositoryInterface
 
         $orderIndex  = $params['order'][0]['column'];
         $ordDir      = $params['order'][0]['dir'];
-        $column      = $params['columns'][$orderIndex]['data'];
+        $column      = $this->getColumn($params['columns'][$orderIndex]['data']);
         $startFrom   = $params['start'];
         $ordDir      = (strtolower($ordDir) == 'asc') ? 1 : - 1;
         $search      = $params['search']['value'];
         $limitResult = $params['length'];
-
         $query  = [];
         $filter = [];
 
@@ -113,6 +112,23 @@ class GoodsRepository implements GoodsRepositoryInterface
 //        return $buyers;
     }
 
+    protected function getColumn($column)
+    {
+        switch ($column) {
+            case(0):
+                $column = 'awards.items.classification.description';
+                break;
+            case(1):
+                $column = 'awards.items.classification.id';
+                break;
+            case(2):
+                $column = 'awards.items.classification.scheme';
+                break;
+        }
+
+        return $column;
+    }
+
     /**
      * @return mixed
      */
@@ -126,8 +142,8 @@ class GoodsRepository implements GoodsRepositoryInterface
         $groupBy =
             [
                 '$group' => [
-                    '_id'       => '$awards.items.classification.description',
-                    'goods'     => ['$addToSet' => '$awards.items.classification.description']
+                    '_id'   => '$awards.items.classification.description',
+                    'goods' => ['$addToSet' => '$awards.items.classification.description']
                 ]
             ];
 

@@ -17,7 +17,7 @@
                     <div class="big-title">Agencies</div>
                 </div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur, consequatur culpa dicta dolorem dolores harum laboriosam, nam obcaecati odio possimus provident reprehenderit tempore. Architecto atque consectetur delectus facere iure.
+
                 </p>
             </div>
         </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="row table-wrapper persist-area">
-        <a target="_blank" class="export" href="{{route('agency.export')}}">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download/agencies">Export as CSV</a>
         <table id="table_id" class="hover responsive custom-table display">
             <thead class="persist-header">
                 <tr>
@@ -91,7 +91,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": '/api/procuring-agency',
-            "ajaxDataProp": '',
+//            "ajaxDataProp": '',
             "columns": [
                 {'data': 'buyer'},
                 {'data': 'tender'},
@@ -100,11 +100,6 @@
             ],
             "fnDrawCallback": function () {
                 createLinks();
-                if ($('#table_id tr').length < 11) {
-                    $('.dataTables_paginate').hide();
-                } else {
-                    $('.dataTables_paginate').show();
-                }
                 updateTables();
             }
         });

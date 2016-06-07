@@ -6,3 +6,6 @@ python dumptenderitems.py
 cd ..
 mongo localhost:27017/etenders_stage mongojsscripts/map_to_ocds.js
 mongo localhost:27017/etenders mongojsscripts/rename.js
+mongo localhost:27017/etenders mongojsscripts/change_contracts_date.js
+
+sh ./createCsv.sh

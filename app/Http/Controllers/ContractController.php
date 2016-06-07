@@ -68,9 +68,9 @@ class ContractController extends Controller
     public function contractorIndex()
     {
         $contractorsTrends = $this->contracts->getContractors('amount', 5, date('Y'));
-        $contractors       = $this->contracts->getContractorsByOpenYear();
+        $contractorsCount  = $this->contracts->getContractorsCount();
 
-        return view('contracts.contractor-index', compact('contractorsTrends', 'contractors'));
+        return view('contracts.contractor-index', compact('contractorsTrends', 'contractorsCount'));
     }
 
     /**
