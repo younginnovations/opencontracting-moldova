@@ -47,12 +47,18 @@ class ContractController extends Controller
     {
         $contractJson = $this->contracts->getContractDataForJson($contractId);
         $response     = [
-            'code'   => 200,
-            'status' => 'succcess',
-            'data'   => $contractJson
+            "uri"           => url() . "/contracts/" . $contractId . "/json",
+            "publishedDate" => "2016-06-10T10:30:00Z",
+            "publisher"     => [
+                "scheme" => "MD-PPA",
+                "uid"    => "00000",
+                "name"   => "Moldova Public Procurement Agency",
+                "uri"    => "http://tender.gov.md/"
+            ],
+            'releases'      => [$contractJson]
         ];
 
-        return response()->json($response, $response['code'])->header('Content-Type', 'application/json');
+        return response()->json($response, 200)->header('Content-Type', 'application/json');
     }
 
     /**
@@ -74,17 +80,19 @@ class ContractController extends Controller
     public function show($contractor)
     {
         $contractor       = trim(urldecode($contractor));
-        $contractorDetail = $this->contracts->getDetailInfo($contractor, 'award.suppliers.name');
+        $contractorDetail = $this->contracts->getDetailInfo($contractor, 'awards.suppliers.name');
+
         if ($contractorDetail->isEmpty()) {
             return view('error_404');
         }
+
         $total            = $this->getTotal($contractorDetail);
         $totalContract    = $total['totalContract'];
         $totalAmount      = $total['totalAmount'];
         $contractTrend    = $this->getTrend($this->contracts->aggregateContracts($contractorDetail));
         $amountTrend      = $this->contracts->encodeToJson($this->contracts->aggregateContracts($contractorDetail, 'amount'), 'trend');
-        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, 2014, $contractor, 'award.suppliers.name');
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, 2014, $contractor, 'award.suppliers.name');
+        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, 2014, $contractor, 'awards.suppliers.name');
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, 2014, $contractor, 'awards.suppliers.name');
 
         return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices', 'totalContract'));
     }
@@ -99,7 +107,7 @@ class ContractController extends Controller
         $totalContract = 0;
 
         foreach ($contracts as $key => $tender) {
-            foreach ($tender['contract'] as $contract) {
+            foreach ($tender['contracts'] as $contract) {
                 $totalContract ++;
                 $totalAmount += $contract['value']['amount'];
             }
@@ -142,7 +150,7 @@ class ContractController extends Controller
             return view('error_404');
         }
 
-        $contractData   = $this->contracts->getContractDataForJson($contractId);
+        $contractData = $this->contracts->getContractDataForJson($contractId);
 
         return view('contracts.view', compact('contractDetail', 'contractData'));
     }
@@ -202,7 +210,7 @@ class ContractController extends Controller
      */
     public function contractorDetailExport($contractorId)
     {
-        return $this->exporter->getContractorDetailForExport(urldecode($contractorId), 'award.suppliers.name');
+        return $this->exporter->getContractorDetailForExport(urldecode($contractorId), 'awards.suppliers.name');
     }
 
     public function exportContractors()

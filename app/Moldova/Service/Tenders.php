@@ -32,16 +32,18 @@ class Tenders
         $tenderByOpenYear = [];
 
         foreach ($tenders as $tender) {
-            $year = explode(".", $tender['tender']['tenderPeriod']['startDate']);
+            //$year = explode(".", $tender['tender']['tenderPeriod']['startDate']);
+            $year = date('Y', strtotime($tender['tender']['tenderPeriod']['startDate']));
 
-            if (array_key_exists($year[2], $tenderByOpenYear)) {
-                $tenderByOpenYear[$year[2]] += 1;
+            if (array_key_exists($year, $tenderByOpenYear)) {
+                $tenderByOpenYear[$year] += 1;
             } else {
-                $tenderByOpenYear[$year[2]] = 1;
+                $tenderByOpenYear[$year] = 1;
             }
 
         }
         ksort($tenderByOpenYear);
+
         return $tenderByOpenYear;
     }
 

@@ -43,13 +43,13 @@ class GoodsRepository implements GoodsRepositoryInterface
         $filter = [];
 
         $unwind = [
-            '$unwind' => '$award'
+            '$unwind' => '$awards'
         ];
         array_push($query, $unwind);
 
         if ($search != '') {
             $filter = [
-                '$match' => ['award.items.classification.description' => ['$gt' => $search]]
+                '$match' => ['awards.items.classification.description' => ['$gt' => $search]]
             ];
         }
 
@@ -60,11 +60,11 @@ class GoodsRepository implements GoodsRepositoryInterface
         $groupBy =
             [
                 '$group' => [
-                    '_id'       => '$award.items.classification.description',
+                    '_id'       => '$awards.items.classification.description',
                     'count'     => ['$sum' => 1],
-                    'goods'     => ['$addToSet' => '$award.items.classification.description'],
-                    'cpv_value' => ['$addToSet' => '$award.items.classification.id'],
-                    'unit'      => ['$addToSet' => '$award.items.classification.scheme']
+                    'goods'     => ['$addToSet' => '$awards.items.classification.description'],
+                    'cpv_value' => ['$addToSet' => '$awards.items.classification.id'],
+                    'unit'      => ['$addToSet' => '$awards.items.classification.scheme']
                 ]
             ];
 
@@ -120,14 +120,14 @@ class GoodsRepository implements GoodsRepositoryInterface
     {
         $query  = [];
         $unwind = [
-            '$unwind' => '$award'
+            '$unwind' => '$awards'
         ];
         array_push($query, $unwind);
         $groupBy =
             [
                 '$group' => [
-                    '_id'       => '$award.items.classification.description',
-                    'goods'     => ['$addToSet' => '$award.items.classification.description']
+                    '_id'       => '$awards.items.classification.description',
+                    'goods'     => ['$addToSet' => '$awards.items.classification.description']
                 ]
             ];
 

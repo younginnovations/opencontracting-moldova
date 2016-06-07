@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="form-group medium-4 columns end">
                                         <select name="startDate" class="cs-select2 cs-skin-elastic">
-                                            @foreach(range(date('Y'), date('Y')-100) as $year)
+                                            @foreach(range(date('Y'), 2012) as $year)
                                                 <option value="" disabled selected>Select a year</option>
                                                 <option value="{{$year}}">{{$year}}</option>
                                             @endforeach
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="form-group medium-4 columns end">
                                         <select name="endDate" class="cs-select2 cs-skin-elastic">
-                                            @foreach(range(date('Y'), date('Y')-100) as $year)
+                                            @foreach(range(date('Y'), 2012) as $year)
                                                 <option value="" disabled selected>Select a year</option>
                                                 <option value="{{$year}}">{{$year}}</option>
                                             @endforeach
@@ -182,12 +182,12 @@
     }
 </script>
 {{--<script type="text/javascript">--}}
-    {{--stLight.options({--}}
-        {{--publisher: "edd8f686-154a-4ba0-a97f-a17a0410077d",--}}
-        {{--doNotHash: false,--}}
-        {{--doNotCopy: false,--}}
-        {{--hashAddressBar: false--}}
-    {{--});--}}
+{{--stLight.options({--}}
+{{--publisher: "edd8f686-154a-4ba0-a97f-a17a0410077d",--}}
+{{--doNotHash: false,--}}
+{{--doNotCopy: false,--}}
+{{--hashAddressBar: false--}}
+{{--});--}}
 {{--</script>--}}
 <script src="{{url('js/foundation-datepicker.js')}}"></script>
 <link href="{{url('css/foundation-datepicker.css')}}" rel="stylesheet"/>
@@ -227,9 +227,11 @@
 <script>
     var changeDateFormat = function () {
         $('.dt').each(function () {
-            var dt = $(this).text().split(".");
+            var dt = $(this).text().split("-");
             if (dt[1]) {
-                dt = dt[1] + '/' + dt[0] + '/' + dt[2];
+                dt[2] = dt[2].split('T');
+                dt[2] = dt[2][0];
+                dt = dt[0] + '/' + dt[1] + '/' + dt[2];
                 var formatted = moment(dt).format('ll');
                 $(this).text(formatted);
             }

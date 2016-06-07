@@ -61,7 +61,7 @@ $app->get(
 );
 
 $app->get(
-    '/contracts/{id}/json',
+    '/ocds/{id}/json',
     [
         'as'   => 'contracts.jsonView',
         'uses' => 'ContractController@jsonView'

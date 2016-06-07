@@ -245,7 +245,7 @@
         var procuringAgencies = '{!! $procuringAgency  !!}';
         var contractors = '{!! $contractors  !!}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';
-
+console.log(procuringAgencies);
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createLineChart(JSON.parse(trends), widthOfParent);

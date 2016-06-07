@@ -94,13 +94,14 @@
 
     <div class="row">
         <!-- Trigger/Open The Modal -->
-        <button id= "myBtn" class="button blue-button" style="width: auto;">Send a feedback for this contract</button>
+        <button id="myBtn" class="button blue-button" style="width: auto;">Send a feedback for this contract</button>
         <!-- The Modal -->
         <div id="myModal" class="modal">
 
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">×</span>
+
                 <div class="modal__content">
                     <div class="background">
                         <form class="custom-form">
@@ -138,7 +139,7 @@
 
     <div class="custom-switch-wrap row">
         <div class="clearfix">
-            <div class="small-title">Contract data in ocds format</div>
+            <div class="small-title">Data in ocds format</div>
             <a href="#" class="toggle-switch toggle--on"></a>
         </div>
 
@@ -146,7 +147,8 @@
             <div class="json-view">
                 <button name="expand" class="expand-btn button yellow-btn">Expand all</button>
                 <button name="collapse" class="collapse-btn button yellow-btn">Collapse all</button>
-                <a target="_blank" href="{{ route('contracts.jsonView',['id'=>$contractDetail['id']]) }}" class="btn-view-json">RAW JSON</a>
+                <a target="_blank" href="{{ route('contracts.jsonView',['id'=>$contractDetail['id']]) }}"
+                   class="btn-view-json">RAW JSON</a>
                 <pre id="json-viewer"></pre>
             </div>
             <div class="table-view text-center">
@@ -160,14 +162,14 @@
 
 @section('script')
     <script>
-        function expand(){
+        function expand() {
             var input = {!! $contractData !!};
             delete input['_id'];
 
             $('#json-viewer').JSONView(input);
             $('#json-viewer').JSONView('expand');
         }
-        function collapse(){
+        function collapse() {
             var input = {!! $contractData !!};
             delete input['_id'];
 
@@ -235,27 +237,27 @@
                 var trimmedMessage = $.trim(message);
                 var atPos = email.indexOf("@");
                 var dotPos = email.lastIndexOf(".");
-                if(trimmedName == ""){
+                if (trimmedName == "") {
                     $("#ajaxResponse").html("Please enter your name!");
-                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#ajaxResponse").css("color", "#BB0505");
                     $("#fullname").focus();
                     return false;
                 }
-                if(email == ""){
+                if (email == "") {
                     $("#ajaxResponse").html("Please enter your email address!");
-                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#ajaxResponse").css("color", "#BB0505");
                     $("#email").focus();
                     return false;
                 }
-                if( atPos < 1 || dotPos < atPos+2 || dotPos+2>=email.length){
+                if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= email.length) {
                     $("#ajaxResponse").html("Please enter a valid email address!");
-                    $("#ajaxResponse").css("color","#BB0505");
-                    $("#email").css("border","1px solid #BB0303");
+                    $("#ajaxResponse").css("color", "#BB0505");
+                    $("#email").css("border", "1px solid #BB0303");
                     return false;
                 }
-                if(trimmedMessage == ""){
+                if (trimmedMessage == "") {
                     $("#ajaxResponse").html("Please enter your message!");
-                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#ajaxResponse").css("color", "#BB0505");
                     $("#message").focus();
                     return false;
                 }
@@ -273,23 +275,23 @@
                     url: route,
                     data: data,
                     success: function (data) {
-                        if(data.status != "success"){
+                        if (data.status != "success") {
                             $("#ajaxResponse").html(data.msg);
-                            $("#ajaxResponse").css("color","#BB0505");
+                            $("#ajaxResponse").css("color", "#BB0505");
                             return false;
                         }
-                        else{
+                        else {
                             console.log("Email sent successfully");
                             $("#ajaxResponse").html("Email sent successfully");
-                            $("#ajaxResponse").css("color","#04692A");
-                            setTimeout(function(){
+                            $("#ajaxResponse").css("color", "#04692A");
+                            setTimeout(function () {
                                 $("#myModal").hide();
                                 $('#fullname').val("");
                                 $("#ajaxResponse").empty();
-                                $("#ajaxResponse").css("color","#04692A");
+                                $("#ajaxResponse").css("color", "#04692A");
                                 $('#email').val('');
-                                $("#email").css("border","1px solid #bbb");
-                                $("#email").css("background","#fff");
+                                $("#email").css("border", "1px solid #bbb");
+                                $("#email").css("background", "#fff");
                                 $('#message').val('');
                                 grecaptcha.reset();
                             }, 3000);
@@ -303,15 +305,27 @@
      
     <link rel="stylesheet" href="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.css"/>
         
-    <script type="text/javascript" src="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.js"></script>
+    <script type="text/javascript"
+            src="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.js"></script>
 
      
     <script>
+        var contractId = {!! $contractDetail['id'] !!};
         var input = {!! $contractData !!};
         delete input['_id'];
 
         $('#json-viewer').JSONView(input);
         $('#json-viewer').JSONView('collapse');
+
+        $('.collapser').click(function () {
+            console.log('here');
+            $('.num').each(function () {
+                if ($(this).text() == contractId) {
+                    console.log($(this).text());
+                    $(this).closest('.level2').css('background-color', '#eeeeee');
+                }
+            });
+        });
 
         var showJsonTable = function () {
             var parent = $("#json-table");
@@ -355,7 +369,7 @@
             updateTables();
             var titleOne, titleTwo, titleThree, titleFour;
 
-            $('.toggle-switch').click(function(e) {
+            $('.toggle-switch').click(function (e) {
                 titleOne = $('#title1').offset().top - 158, // 76 + 41 + 41 (fixed header + height of td)
                         titleTwo = $('#title2').offset().top - 158,
                         titleThree = $('#title3').offset().top - 158,
@@ -371,15 +385,15 @@
 
                     if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
                         fixHeader();
-                    }else{
-                        $(".main-title-wrap").each(function(){
+                    } else {
+                        $(".main-title-wrap").each(function () {
                             $("td").removeClass("floatingHeader");
                         });
                     }
                 });
             });
 
-            var calcHeaderWidth = function(element){
+            var calcHeaderWidth = function (element) {
                 var tableWidth = $(".jTable").width() - 21;
                 element.addClass("floatingHeader");
                 element.width(tableWidth);
@@ -390,11 +404,11 @@
 
                 var scrollTop = $(window).scrollTop();
 
-                if (titleOne <= scrollTop && scrollTop < titleTwo ){
+                if (titleOne <= scrollTop && scrollTop < titleTwo) {
                     calcHeaderWidth($("#title1"));
                     $(".main-title").not('[id$="1"]').removeClass("floatingHeader");
 
-                } else if ( titleTwo <= scrollTop && scrollTop < titleThree ) {
+                } else if (titleTwo <= scrollTop && scrollTop < titleThree) {
                     calcHeaderWidth($("#title2"));
                     $(".main-title").not('[id$="2"]').removeClass("floatingHeader");
 

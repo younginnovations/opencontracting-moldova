@@ -50,7 +50,7 @@
                     <span class="icon procurement-method">icon</span>
                     <span class="each-detail">
                          <div class="name columns">Procurement method</div>
-                        <div class="value columns">{{ $tenderDetail['tender']['procuringAgency']['identifier']['scheme'] }}</div>
+                        <div class="value columns">{{ $tenderDetail['tender']['procuringEntity']['identifier']['scheme'] }}</div>
                     </span>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <li class="tabs-title">
                     <a href="#panel2">
                         <span>Contracts related to this tender</span>
-                        <span class="tab-indicator">({{count($tenderDetail['contract'])}})</span>
+                        <span class="tab-indicator">({{count($tenderDetail['contracts'])}})</span>
 
                     </a>
                 </li>
@@ -134,11 +134,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($tenderDetail['contract'] as $key => $contract)
+                            @forelse($tenderDetail['contracts'] as $key => $contract)
                                 {{--@if($key < 10)--}}
                                 <tr href="/contracts/{{$contract['id']}}">
-                                    <td>{{ getContractInfo($tenderDetail['contract'][$key]['title'],'id') }}</td>
-                                    <td>{{ ($tenderDetail['award'][$key]['items'])?$tenderDetail['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
+                                    <td>{{ getContractInfo($tenderDetail['contracts'][$key]['title'],'id') }}</td>
+                                    <td>{{ ($tenderDetail['awards'][$key]['items'])?$tenderDetail['awards'][$key]['items'][0]['classification']['description']:'-' }}</td>
                                     <td class="dt">{{ (!empty($contract['period']['startDate']))?$contract['period']['startDate']:'-' }}</td>
                                     <td class="dt">{{ $contract['period']['endDate'] }}</td>
                                     <td>{{ number_format($contract['value']['amount']) }}</td>

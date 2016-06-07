@@ -45,15 +45,15 @@ class StreamExporter
                 'endDate',
                 'amount'
             ]);
-            $this->ocdsRelease->where($column, '=', $value)->project(['contract' => 1, 'award' => 1])->chunk(400, function ($contractors) use ($data, $handle) {
+            $this->ocdsRelease->where($column, '=', $value)->project(['contracts' => 1, 'awards' => 1])->chunk(400, function ($contractors) use ($data, $handle) {
                 foreach ($contractors as $contractor) {
-                    foreach ($contractor['contract'] as $key => $contract) {
+                    foreach ($contractor['contracts'] as $key => $contract) {
                         $data['id']          = $contract['id'];
                         $data['title']       = $contract['title'];
                         $data['description'] = $contract['description'];
                         $data['status']      = $contract['status'];
-                        $data['goods']       = (!empty($contractor['award'][0]['items'])) ? $contractor['award'][0]['items'][0]['classification']['description'] : "-";
-                        $data['contractor']  = (!empty($contractor['award'][0]['suppliers'])) ? $contractor['award'][0]['suppliers'][0]['name'] : "-";
+                        $data['goods']       = (!empty($contractor['awards'][0]['items'])) ? $contractor['awards'][0]['items'][0]['classification']['description'] : "-";
+                        $data['contractor']  = (!empty($contractor['awards'][0]['suppliers'])) ? $contractor['awards'][0]['suppliers'][0]['name'] : "-";
                         $data['startDate']   = $contract['period']['startDate'];
                         $data['endDate']     = $contract['period']['endDate'];
                         $data['amount']      = $contract['value']['amount'];
@@ -98,15 +98,15 @@ class StreamExporter
 
             OcdsRelease::chunk(400, function ($contracts) use ($data, $handle) {
                 foreach ($contracts as $key => $contract) {
-                    foreach ($contract['contract'] as $k => $c) {
+                    foreach ($contract['contracts'] as $k => $c) {
                         $award = $this->getContractAward($c['awardID']);
                         //dd($award['award']);
                         $data['id']          = $c['id'];
                         $data['title']       = $c['title'];
                         $data['description'] = $c['description'];
                         $data['status']      = $c['status'];
-                        $data['goods']       = (!empty($award['award'][0]['items'])) ? $award['award'][0]['items'][0]['classification']['description'] : "-";
-                        $data['contractor']  = (!empty($award['award'][0]['suppliers'])) ? $award['award'][0]['suppliers'][0]['name'] : "-";
+                        $data['goods']       = (!empty($award['awards'][0]['items'])) ? $award['awards'][0]['items'][0]['classification']['description'] : "-";
+                        $data['contractor']  = (!empty($award['awards'][0]['suppliers'])) ? $award['awards'][0]['suppliers'][0]['name'] : "-";
                         $data['startDate']   = $c['period']['startDate'];
                         $data['endDate']     = $c['period']['endDate'];
                         $data['amount']      = $c['value']['amount'];
@@ -133,7 +133,7 @@ class StreamExporter
      */
     protected function getContractAward($awardId)
     {
-        return ($this->ocdsRelease->where('award.id', $awardId)->project(['award.suppliers' => 1, 'award.items' => 1])->first());
+        return ($this->ocdsRelease->where('awards.id', $awardId)->project(['awards.suppliers' => 1, 'awards.items' => 1])->first());
     }
 
     /**
@@ -230,10 +230,10 @@ class StreamExporter
             fputcsv($handle, [
                 'name'
             ]);
-            $this->ocdsRelease->distinct('award.suppliers.name')->chunk(400, function ($contractors) use ($data, $handle) {
+            $this->ocdsRelease->distinct('awards.suppliers.name')->chunk(400, function ($contractors) use ($data, $handle) {
 
                 foreach ($contractors as $contractor) {
-                    foreach ($contractor['award'] as $sup) {
+                    foreach ($contractor['awards'] as $sup) {
                         $data['name'] = $sup['suppliers'][0]['name'];
                         fputcsv($handle, $data);
                     }
@@ -358,10 +358,10 @@ class StreamExporter
 
             $this->ocdsRelease->where('tender.id', '=', (int) $tenderId)->chunk(400, function ($tenders) use ($data, $handle) {
                 foreach ($tenders as $tender) {
-                    foreach ($tender['contract'] as $key => $contract) {
+                    foreach ($tender['contracts'] as $key => $contract) {
                         $data['id']                  = $contract['id'];
                         $data['title']               = $contract['title'];
-                        $data['goods']               = (!empty($tender['award'][$key]['items'])) ? $tender['award'][$key]['items'][0]['classification']['description'] : '-';
+                        $data['goods']               = (!empty($tender['awards'][$key]['items'])) ? $tender['awards'][$key]['items'][0]['classification']['description'] : '-';
                         $data['contract_start_date'] = $contract['dateSigned'];
                         $data['contract_end_date']   = $contract['period']['endDate'];
                         $data['amount']              = $contract['value']['amount'];
@@ -395,10 +395,10 @@ class StreamExporter
                 'amount'
             ]);
             foreach ($contracts as $tender) {
-                foreach ($tender['contract'] as $key => $contract) {
+                foreach ($tender['contracts'] as $key => $contract) {
                     $data['id']                  = $contract['id'];
                     $data['title']               = $contract['title'];
-                    $data['goods']               = (!empty($tender['award'][$key]['items'])) ? $tender['award'][$key]['items'][0]['classification']['description'] : '-';
+                    $data['goods']               = (!empty($tender['awards'][$key]['items'])) ? $tender['awards'][$key]['items'][0]['classification']['description'] : '-';
                     $data['contract_start_date'] = $contract['dateSigned'];
                     $data['contract_end_date']   = $contract['period']['endDate'];
                     $data['amount']              = $contract['value']['amount'];

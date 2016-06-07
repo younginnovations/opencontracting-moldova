@@ -177,11 +177,11 @@
             </thead>
             <tbody>
             @forelse($contractorDetail as $key => $tender)
-                @foreach($tender['contract'] as $contract)
+                @foreach($tender['contracts'] as $contract)
                     <tr>
                         <td>{{ getContractInfo($contract['title'],'id') }}</td>
                         <td class="hide">{{ $contract['id'] }}</td>
-                        <td>{{ (!empty($tender['award'][$key]['items']))?$tender['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
+                        <td>{{ (!empty($tender['awards'][$key]['items']))?$tender['awards'][$key]['items'][0]['classification']['description']:'-' }}</td>
                         <td>{{ $contract['status'] }}</td>
                         <td class="dt">{{ $contract['dateSigned'] }}</td>
                         <td class="dt">{{ $contract['period']['endDate'] }}</td>

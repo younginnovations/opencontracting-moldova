@@ -195,11 +195,11 @@
             </thead>
             <tbody>
             @forelse($procuringAgencyDetail as $tender)
-                @foreach($tender['contract'] as $key => $agency)
+                @foreach($tender['contracts'] as $key => $agency)
                     <tr>
                         <td>{{ getContractInfo($agency['title'],'id') }}</td>
                         <td class="hide">{{ $agency['id'] }}</td>
-                        <td>{{ ($tender['award'][$key]['items'])?$tender['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
+                        <td>{{ ($tender['awards'][$key]['items'])?$tender['awards'][$key]['items'][0]['classification']['description']:'-' }}</td>
                         <td>{{ $agency['status'] }}</td>
                         <td class="dt">{{ $agency['dateSigned'] }}</td>
                         <td class="dt">{{ $agency['period']['endDate'] }}</td>

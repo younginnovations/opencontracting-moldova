@@ -71,12 +71,12 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
      */
     protected function getBuyerDetails($buyerName)
     {
-        $buyer  = $this->ocdsRelease->where('buyer.name', '=', $buyerName)->get(['contract']);
+        $buyer  = $this->ocdsRelease->where('buyer.name', '=', $buyerName)->get(['contracts']);
         $count  = 0;
         $amount = 0;
         foreach ($buyer as $item) {
-            $count = $count + count($item['contract']);
-            foreach ($item['contract'] as $contract) {
+            $count = $count + count($item['contracts']);
+            foreach ($item['contracts'] as $contract) {
                 $amount = floatval($amount)+ floatval($contract['value']);
             }
         }
