@@ -146,6 +146,7 @@
             <div class="json-view">
                 <button name="expand" class="expand-btn button yellow-btn">Expand all</button>
                 <button name="collapse" class="collapse-btn button yellow-btn">Collapse all</button>
+                <a target="_blank" href="{{ route('contracts.jsonView',['id'=>$contractDetail['id']]) }}" class="btn-view-json">RAW JSON</a>
                 <pre id="json-viewer"></pre>
             </div>
             <div class="table-view text-center">

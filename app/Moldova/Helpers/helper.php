@@ -25,6 +25,11 @@ if (!function_exists('config_path')) {
 
     function config_path($path = '')
     {
-        return base_path().DIRECTORY_SEPARATOR.'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+        return base_path() . DIRECTORY_SEPARATOR . 'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
+}
+
+function getSearchExport()
+{
+    return app('request')->fullUrl().'&export=1';
 }

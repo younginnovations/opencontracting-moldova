@@ -514,3 +514,10 @@
     background: transparent url(#{$img-path}/ic_sprite.svg) -85px -250px  no-repeat;
   }
 }
+.btn-view-json {
+  padding: 12px 1rem;
+  background-color: #E6E0E0;
+  border-radius: 4px;
+  float: right;
+  color: #000;
+}

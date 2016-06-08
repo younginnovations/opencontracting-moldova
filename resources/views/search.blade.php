@@ -107,7 +107,7 @@
     @else
 
         <div class="row table-wrapper persist-area">
-            <a target="_blank" class="export" href="{{route('home.export')}}">Export as CSV</a>
+            <a target="_blank" class="export" href="{{ getSearchExport() }}">Export as CSV</a>
             <table id="table_id" class="responsive hover custom-table display">
                 <thead class="persist-header">
                 <tr>
