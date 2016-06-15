@@ -4,8 +4,7 @@
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_good_service.svg')}}"/></span>
-                Goods/Services/Work
-            </h2>
+                @lang('goods.goods_and_services')</h2>
         </div>
     </div>
 
@@ -15,10 +14,11 @@
             <div class="header-description">
                 <div class="big-header">
                     <div class="number big-amount">{{$totalGoods}}</div>
-                    <div class="big-title">Goods/Services/Work</div>
+                    {{--<div class="big-title">Goods/Services/Work</div>--}}
+                    <div class="big-title">@lang('goods.goods_services')</div>
                 </div>
                 <p>
-
+                    @lang('goods.goods_paragraph')
                 </p>
             </div>
         </div>
@@ -33,22 +33,23 @@
                                     @include('selectYear')
                                 </select>
                                 <select id="select-goods">
-                                    <option value="amount" selected>Based on value</option>
-                                    <option value="count">Based on count</option>
+                                    <option value="amount" selected>@lang('general.based_on_value')</option>
+                                    <option value="count">@lang('general.based_on_count')</option>
                                 </select>
                             </label>
                         </form>
                         <ul class="breadcrumbs right-content">
-                            <p>Top 5 &nbsp;<span href="#" class="indicator">goods / services</span>
+                            <p>@lang('general.top_5') &nbsp;<span href="#"
+                                                                  class="indicator">@lang('goods.goods_slash_services')</span>
                             </p>
                         </ul>
                     </div>
-                    <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                    <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                     <div class="chart-wrap default-view header-chart">
                         <div id="barChart-goods"></div>
                         <div class="loader-text">
-                            <div class="text">Fetching data
-                                     <span>
+                            <div class="text">@lang('general.fetching_data')
+                                <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
                                     <div class="dot dot3"></div>
@@ -63,13 +64,13 @@
     </div>
 
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="/csv/download/goods">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download/goods">@lang('general.export_as_csv')</a>
         <table id="table_id" class="hover responsive custom-table display persist-area">
             <thead class="persist-header">
             <tr>
-                <th>Name</th>
-                <th>CPV code</th>
-                <th>Scheme</th>
+                <th>@lang('general.name')</th>
+                <th>@lang('goods.cpv_code')</th>
+                <th>@lang('general.scheme')</th>
             </tr>
             </thead>
             <tbody>
@@ -118,9 +119,9 @@
     </script>
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
     <script>
-        $(document).ready(function() {
-            if($(window).width() > 768){
-                new $.fn.dataTable.FixedHeader( makeTable );
+        $(document).ready(function () {
+            if ($(window).width() > 768) {
+                new $.fn.dataTable.FixedHeader(makeTable);
             }
         });
     </script>

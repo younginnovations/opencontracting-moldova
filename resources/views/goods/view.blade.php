@@ -10,7 +10,7 @@
     <div class="row medium-up-2 small-up-1 push-up-block name-value-section">
         <div class="name-value-wrap columns each-detail-wrap">
             <div class="name">
-                Total contracts
+                @lang('goods.total_contract')
             </div>
             <div class="value">
                 {{ count($goodsDetail) }}
@@ -19,7 +19,7 @@
 
         <div class="name-value-wrap columns each-detail-wrap">
             <div class="name">
-                Total contract amount
+                @lang('goods.total_contract_amount')
             </div>
             <div class="value">
                 {{number_format($totalAmount)}} leu
@@ -33,12 +33,12 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>No. of contracts</h3>
+                            <h3>@lang('goods.no_of_contract')</h3>
                         </div>
                         <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-rest"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -54,12 +54,12 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Contract value</h3>
+                            <h3>@lang('goods.contract_value')</h3>
                         </div>
                         <div class="chart-wrap default-view default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -79,14 +79,14 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section ">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 contractors</h3>
+                            <h3>@lang('homepage.top_5_contractors')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
                                         <label>
-                                            <span class="inner-title">Showing contractors</span>
+                                            <span class="inner-title">@lang('homepage.showing_contractors')</span>
                                             <select id="select-contractor-year">
                                                 @include('selectYear')
                                             </select>
@@ -98,10 +98,10 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('homepage.click_on_label_or_graph')</div>
                             <div id="barChart-contractors"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -110,8 +110,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{route('contracts.contractorIndex')}}" class="anchor">View all
-                                contractors<span>  &rarr; </span></a>
+                            <a href="{{route('contracts.contractorIndex')}}" class="anchor">@lang('homepage.view_all_contractors')<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -119,14 +118,14 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 procuring agency</h3>
+                            <h3>@lang('general.top_5_procuring_agencies')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
                                         <label>
-                                            <span class="inner-title">Showing procuring agencies</span>
+                                            <span class="inner-title">@lang('general.showing_procuring_agencies')</span>
                                             <select id="select-agency-year">
                                                 @include('selectYear')
                                             </select>
@@ -138,10 +137,10 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-procuring"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -150,8 +149,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring
-                                agencies<span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}" class="anchor">@lang('general.view_all_procuring_agencies')<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -162,17 +160,17 @@
 
     </div>
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('goodsDetail.export',['name'=>$goods])}}">Export as CSV</a>
+        <a target="_blank" class="export" href="{{route('goodsDetail.export',['name'=>$goods])}}">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
 
             <thead class="persist-header">
-            <th>Contract number</th>
-            <th class="hide">Contract ID</th>
-            <th>Contractor</th>
-            <th>Contract status</th>
-            <th width="150px">Contract start date</th>
-            <th width="150px">Contract end date</th>
-            <th>Amount</th>
+            <th>@lang('general.contract_number')</th>
+            <th class="hide">@lang('general.contract_id')</th>
+            <th>@lang('general.contractor')</th>
+            <th>@lang('general.contract_status')</th>
+            <th width="150px">@lang('general.contract_start_date')</th>
+            <th width="150px">@lang('general.contract_end_date')</th>
+            <th>@lang('general.amount')</th>
             </thead>
             <tbody>
             @forelse($goodsDetail as $tender)

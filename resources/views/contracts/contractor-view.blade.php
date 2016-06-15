@@ -11,7 +11,7 @@
     <div class="row medium-up-2 small-up-1 push-up-block small-push-up-block">
         <div class="block name-value-wrap columns">
             <div class="name">
-                Total contracts
+                @lang('contracts.total_contracts')
             </div>
             <div class="value">
                 {{ $totalContract }}
@@ -20,7 +20,7 @@
 
         <div class="block name-value-wrap columns">
             <div class="name">
-                Total contract amount
+                @lang('contracts.total_contract_amount')
             </div>
             <div class="value">
                 {{number_format($totalAmount)}} leu
@@ -34,12 +34,12 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>No. of contracts</h3>
+                            <h3>@lang('contracts.number_of_contracts')</h3>
                         </div>
                         <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-rest"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -55,12 +55,12 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Contract value</h3>
+                            <h3>@lang('contracts.contract_value')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -81,26 +81,26 @@
                     <div class="each-chart-section">
 
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 procuring agencies</h3>
+                            <h3>@lang('general.top_5_procuring_agencies')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
                                         <label>
-                                            <span class="inner-title">Showing procuring agencies</span>
+                                            <span class="inner-title">@lang('general.showing_procuring_agencies')</span>
                                             <select id="select-agency-year">
                                                 @include('selectYear')
                                             </select>
                                             <select id="select-agency" data-for="contractor" data="{{ $contractor }}">
-                                                <option value="amount" selected>Based on value</option>
-                                                <option value="count">Based on count</option>
+                                                <option value="amount" selected>@lang('general.based_on_value')</option>
+                                                <option value="count">@lang('general.based_on_count')</option>
                                             </select>
                                         </label>
                                     </div>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-procuring"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
@@ -112,7 +112,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring agencies<span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}" class="anchor">@lang('general.view_all_procuring_agencies')<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -121,29 +121,29 @@
                     <div class="each-chart-section">
 
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 Goods / Services procured</h3>
+                            <h3>@lang('general.top_5_goods_&_services_procured')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
                                         <label>
-                                            <span class="inner-title">Showing goods / services</span>
+                                            <span class="inner-title">@lang('general.showing_goods_and_services')</span>
                                             <select id="select-goods-year">
                                                 @include('selectYear')
                                             </select>
                                             <select id="select-goods" data-for="contractor" data="{{ $contractor }}">
-                                                <option value="amount" selected>Based on value</option>
-                                                <option value="count">Based on count</option>
+                                                <option value="amount" selected>@lang('general.based_on_value')</option>
+                                                <option value="count">@lang('general.based_on_count')</option>
                                             </select>
                                         </label>
                                     </div>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-goods"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -152,7 +152,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('goods.index') }}" class="anchor">View all goods / services <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services') <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -162,18 +162,17 @@
 
     </div>
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('contractorDetail.export',['name'=>$contractor])}}">Export as
-            CSV</a>
+        <a target="_blank" class="export" href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
 
             <thead class="persist-header">
-            <th>Contract number</th>
-            <th class="hide">Contract ID</th>
-            <th>Goods and services contracted</th>
-            <th>Contract status</th>
-            <th width="150px">Contract start date</th>
-            <th width="150px">Contract end date</th>
-            <th>Amount</th>
+            <th>@lang('general.contract_number')</th>
+            <th class="hide">@lang('general.contract_id')</th>
+            <th>@lang('general.goods_and_services_contracted')</th>
+            <th>@lang('contracts.contract_status')</th>
+            <th width="150px">@lang('general.contract_start_date')</th>
+            <th width="150px">@lang('general.contract_end_date')</th>
+            <th>@lang('general.amount')</th>
             </thead>
             <tbody>
             @forelse($contractorDetail as $key => $tender)

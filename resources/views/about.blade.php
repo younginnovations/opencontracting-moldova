@@ -25,7 +25,6 @@
 
             <p>Open contracting: <a target="_blank" href="http://standard.open-contracting.org/">http://www.open-contracting.org/</a></p>
             <p>Open contracting data standard: <a target="_blank" href="http://standard.open-contracting.org/">http://standard.open-contracting.org/</a></p>
-
         </div>
     </div>
 @stop

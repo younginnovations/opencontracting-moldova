@@ -5,7 +5,7 @@
         <div class="row clearfix">
             <div class="full-header">
                 <h2> {{ $tenderDetail['tender']['title'] }}
-                    Servicii de tratament sanatorial
+                    @lang('tender.servicii_de_tratament_sanatorial')
                 </h2>
             </div>
 
@@ -25,7 +25,7 @@
                 <div class="medium-6 small-12 columns each-detail-wrap">
                     <span class="icon procuring-agency">icon</span>
                      <span class="each-detail">
-                         <div class="name columns">Procuring agency</div>
+                         <div class="name columns">@lang('tender.procuring_agency')</div>
                         <div class="value columns">
                             <a href="{{ route('procuring-agency.show',['name'=>$tenderDetail['buyer']['name']]) }}">
                                 {{ $tenderDetail['buyer']['name'] }}
@@ -37,7 +37,7 @@
                 <div class="medium-6 small-12 columns each-detail-wrap">
                     <span class="icon tender-period">icon</span>
                     <span class="each-detail">
-                         <div class="name columns">Tender period</div>
+                         <div class="name columns">@lang('tender.tender_period')</div>
                         <div class="value columns"><span
                                     class="dt">{{ $tenderDetail['tender']['tenderPeriod']['startDate'] }}</span>
                             - <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['endDate'] }}</span></div>
@@ -49,7 +49,7 @@
                 <div class="medium-6 small-12 columns each-detail-wrap end">
                     <span class="icon procurement-method">icon</span>
                     <span class="each-detail">
-                         <div class="name columns">Procurement method</div>
+                         <div class="name columns">@lang('tender.procurement_method')</div>
                         <div class="value columns">{{ $tenderDetail['tender']['procuringEntity']['identifier']['scheme'] }}</div>
                     </span>
                 </div>
@@ -62,15 +62,14 @@
             <ul class="tabs" data-tabs id="example-tabs">
                 <li class="tabs-title is-active">
                     <a href="#panel1" aria-selected="true">
-                        <span>Goods/ Services under this tender</span>
+                        <span>@lang('tender.goods_service_under_this_tender')</span>
                         <span class="tab-indicator"> ({{count($tenderDetail['tender']['items'])}})</span>
                     </a>
                 </li>
                 <li class="tabs-title">
                     <a href="#panel2">
-                        <span>Contracts related to this tender</span>
+                        <span>@lang('tender.contract_related_to_this_tender')</span>
                         <span class="tab-indicator">({{count($tenderDetail['contracts'])}})</span>
-
                     </a>
                 </li>
             </ul>
@@ -78,7 +77,7 @@
                 <div class="tabs-panel is-active" id="panel1">
                     <div class="table-wrapper">
                         <div class="title-section">
-                            <span class="title">Goods/ Services under this tender
+                            <span class="title">@lang('tender.goods_service_under_this_tender')
                                 <span class="tab-indicator"> ({{count($tenderDetail['tender']['items'])}})</span>
                             </span>
                         </div>
@@ -88,10 +87,10 @@
                         <table id="table_items" class="responsive hover custom-table persist-area">
                             <thead class="persist-header">
                             <tr>
-                                <th>Name</th>
-                                <th>CPV code</th>
-                                <th>Quantity</th>
-                                <th>Unit</th>
+                                <th>@lang('general.name')</th>
+                                <th>@lang('tender.cpv_code')</th>
+                                <th>@lang('tender.quantity')</th>
+                                <th>@lang('tender.unit')</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -116,21 +115,20 @@
 
                     <div class="table-wrapper">
                         <div class="title-section">
-                            <span class="title">Contracts related to this tender
-                                <span class="tab-indicator">({{count($tenderDetail['contract'])}})</span>
+                            <span class="title">@lang('tender.contract_related_to_this_tender')
+                                <span class="tab-indicator">({{count($tenderDetail['contracts'])}})</span>
                             </span>
                         </div>
                         <a target="_blank" class="export"
-                           href="{{route('tenderContracts.export',['id'=>$tenderDetail['tender']['id']])}}">Export as
-                            CSV</a>
+                           href="{{route('tenderContracts.export',['id'=>$tenderDetail['tender']['id']])}}">@lang('general.export_as_csv')</a>
                         <table id="table_contracts" class="responsive hover custom-table persist-area">
                             <thead class="persist-header">
                             <tr>
-                                <th>Contract number</th>
-                                <th>Goods and services contracted</th>
-                                <th width="150px">Contract start date</th>
-                                <th width="150px">Contract end date</th>
-                                <th>Amount</th>
+                                <th>@lang('general.contract_number')</th>
+                                <th>@lang('general.goods_and_services_contracted')</th>
+                                <th width="150px">@lang('general.contract_start_date')</th>
+                                <th width="150px">@lang('general.contract_end_date')</th>
+                                <th>@lang('general.amount')</th>
                             </tr>
                             </thead>
                             <tbody>

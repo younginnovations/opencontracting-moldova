@@ -4,7 +4,7 @@
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_tender.svg')}}"/></span>
-                Tenders</h2>
+                @lang('general.tenders')</h2>
         </div>
     </div>
 
@@ -14,12 +14,10 @@
             <div class="header-description">
                 <div class="big-header">
                     <div class="number"></div>
-                    <div class="big-title">Tenders published</div>
+                    <div class="big-title">@lang('tender.tenders_published')</div>
                 </div>
                 <p>
-                    Tenders are to invite bids for a project, or to accept a formal offer such as a takeover bid. Tender
-                    usually refers to the process whereby governments and financial institutions invite bids for large
-                    projects that must be submitted within a finite deadline.
+                    @lang('tender.tender_paragraph')
                 </p>
             </div>
         </div>
@@ -29,14 +27,14 @@
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
                         <ul class="breadcrumbs">
-                            <p><span href="#" class="indicator tender">Tenders</span> &nbsp; published over the years
+                            <p><span href="#" class="indicator tender">@lang('general.tenders')</span> &nbsp; @lang('tender.published_over_years')
                             </p>
                         </ul>
                     </div>
                     <div class="chart-wrap default-view">
                         <div id="header-linechart"></div>
                         <div class="loader-text">
-                            <div class="text">Fetching data
+                            <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -52,16 +50,16 @@
     </div>
 
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="/csv/download/tenders">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download/tenders">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
-                <th class="tender-id">Tender ID</th>
-                <th>Tender Title</th>
-                <th class="tender-status">Tender Status</th>
-                <th>Procuring Agency</th>
-                <th>Tender start date</th>
-                <th>Tender end date</th>
+                <th class="tender-id">@lang('tender.tender_id')</th>
+                <th>@lang('tender.tender_title')</th>
+                <th class="tender-status">@lang('tender.tender_status')</th>
+                <th>@lang('tender.procuring_agencies')</th>
+                <th>@lang('tender.tender_start_date')</th>
+                <th>@lang('tender.tender_end_date')</th>
             </tr>
             </thead>
             <tbody>
@@ -77,7 +75,7 @@
     <script>
         var makeTable = $('#table_id').DataTable({
             "language": {
-                'searchPlaceholder': "Search by tender title",
+                'searchPlaceholder': "@lang('tender.search_by_tender_title')",
                 "lengthMenu": "Show _MENU_ Tenders"
             },
             "processing": true,

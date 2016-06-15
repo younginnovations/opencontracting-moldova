@@ -12,31 +12,31 @@
                     <div class="detail-info">
                         @if(!empty($agencyData->buyer['address']['streetAddress']))
                             <div class="name-value-wrap">
-                                <div class="name address">Address:</div>
+                                <div class="name address">@lang('agency.address'):</div>
                                 <div class="value">{{ $agencyData->buyer['address']['streetAddress'] }} </div>
                             </div>
                         @endif
                         @if(!empty($agencyData->buyer['contactPoint']['email']))
                             <div class="name-value-wrap">
-                                <div class="name email">Email:</div>
+                                <div class="name email">@lang('agency.email'):</div>
                                 <div class="value">{{ $agencyData->buyer['contactPoint']['email'] }} </div>
                             </div>
                         @endif
                         @if(!empty($agencyData->buyer['contactPoint']['telephone']))
                             <div class="name-value-wrap">
-                                <div class="name phone">Phone:</div>
+                                <div class="name phone">@lang('agency.phone'):</div>
                                 <div class="value">{{ $agencyData->buyer['contactPoint']['telephone'] }} </div>
                             </div>
                         @endif
                         @if(!empty($agencyData->buyer['contactPoint']['faxNumber']))
                             <div class="name-value-wrap">
-                                <div class="name fax">Fax:</div>
+                                <div class="name fax">@lang('agency.fax'):</div>
                                 <div class="value">{{ $agencyData->buyer['contactPoint']['faxNumber'] }} </div>
                             </div>
                         @endif
                         @if(!empty($agencyData->buyer['contactPoint']['url']))
                             <div class="name-value-wrap">
-                                <div class="name url">Url:</div>
+                                <div class="name url">@lang('agency.url'):</div>
                                 <div class="value">{{ $agencyData->buyer['contactPoint']['url'] }} </div>
                             </div>
                         @endif
@@ -53,15 +53,15 @@
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <ul class="breadcrumbs">
-                                <li><span href="#" class="indicator tender">Tenders</span> &nbsp; published</li>
+                                <li><span href="#" class="indicator tender">@lang('general.tenders')</span> &nbsp; @lang('agency.published')</li>
                                 <li> &nbsp; vs. &nbsp;</li>
-                                <li><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued</li>
+                                <li><span href="#" class="indicator contracts">@lang('general.contracts')</span> &nbsp; @lang('agency.issued')</li>
                             </ul>
                         </div>
                         <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-homepage"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -77,12 +77,12 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Contract value</h3>
+                            <h3>@lang('general.contract_value')</h3>
                         </div>
                         <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -103,27 +103,27 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 contractors</h3>
+                            <h3>@lang('agency.top_5_contractor')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
-                                        <span class="inner-title">Showing contractors</span>
+                                        <span class="inner-title">@lang('agency.showing_contractors')</span>
                                         <select id="select-contractor-year">
                                             @include('selectYear')
                                         </select>
                                         <select id="select-contractor" data-for="agency" data="{{ $procuringAgency }}">
-                                            <option value="amount" selected>Based on value</option>
-                                            <option value="count">Based on count</option>
+                                            <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <option value="count">@lang('general.based_on_count')</option>
                                         </select>
                                     </label>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-contractors"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -132,7 +132,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{route('contracts.contractorIndex')}}" class="anchor">View all contractors <span>  &rarr; </span></a>
+                            <a href="{{route('contracts.contractorIndex')}}" class="anchor">@lang('agency.view_all_contractor') <span>  &rarr; </span></a>
                         </div>
                         {{--<button class="button yellow-button hvr-sweep-to-right">test the button</button>--}}
                     </div>
@@ -141,27 +141,27 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 Goods and Services procured</h3>
+                            <h3>@lang('general.top_5_goods_&_services_procured')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
-                                        <span class="inner-title">Showing goods / services</span>
+                                        <span class="inner-title">@lang('general.showing_goods_and_services')</span>
                                         <select id="select-goods-year">
                                             @include('selectYear')
                                         </select>
                                         <select id="select-goods" data-for="agency" data="{{ $procuringAgency }}">
-                                            <option value="amount" selected>Based on value</option>
-                                            <option value="count">Based on count</option>
+                                            <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <option value="count">@lang('general.based_on_count')</option>
                                         </select>
                                     </label>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-goods"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -170,7 +170,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('goods.index') }}" class="anchor">View all goods / services <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services') <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -181,17 +181,16 @@
 
     </div>
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('agencyDetail.export',['name'=>$procuringAgency])}}">Export as
-            CSV</a>
+        <a target="_blank" class="export" href="{{route('agencyDetail.export',['name'=>$procuringAgency])}}">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
             <thead class="persist-header">
-            <th class="contract-number">Contract number</th>
-            <th class="hide">Contract ID</th>
-            <th>Goods and services contracted</th>
-            <th>Contract status</th>
-            <th class="long-th">Contract start date</th>
-            <th class="long-th">Contract end date</th>
-            <th>Amount</th>
+            <th class="contract-number">@lang('general.contract_number')</th>
+            <th class="hide">@lang('general.contract_id')</th>
+            <th>@lang('general.goods_and_services_contracted')</th>
+            <th>@lang('general.contract_status')</th>
+            <th class="long-th">@lang('general.contract_start_date')</th>
+            <th class="long-th">@lang('general.contract_end_date')</th>
+            <th>@lang('general.amount')</th>
             </thead>
             <tbody>
             @forelse($procuringAgencyDetail as $tender)
