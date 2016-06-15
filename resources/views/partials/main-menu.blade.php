@@ -5,6 +5,7 @@
                 <div class="first-section">@lang('general.moldova_contract')</div>
                 <div class="second-section">@lang('general.data_visualization')</div>
             </a>
+            <a href="javascript:" onclick="changeLang('en')" style="color: #FFFFFF">English</a>/<a href="javascript:" onclick="changeLang('md')" style="color: #FFFFFF">Moldovian</a>
         </div>
 
         <div class="top-bar-right" id="main-menu">
@@ -30,9 +31,6 @@
                 <li>
                     <a href="/contact"
                        class="{{ (Request::segment(1) === 'contact')?'active':'' }}">@lang('general.contact')</a>
-                </li>
-                <li>
-                    <a href="javascript:" onclick="changeLang('en')" id="langEN" style="color: #FFFFFF">English</a>/<a href="javascript:" onclick="changeLang('md')"id="langMD" style="color: #FFFFFF">Moldovian</a>
                 </li>
             </ul>
 

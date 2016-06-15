@@ -53,5 +53,5 @@ return [
     'select_a_range' => 'Select a range',
     'select_a_year' => 'Select a year',
     'subscribe' => 'Subscribe',
-    'show' => 'Show',
+    'show' => 'Show'
 ];

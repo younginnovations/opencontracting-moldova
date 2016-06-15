@@ -54,4 +54,5 @@ return [
     'select_a_year' => 'Selectați un an',
     'subscribe' => 'subscrie',
     'show' => 'Spectacol',
+
 ];

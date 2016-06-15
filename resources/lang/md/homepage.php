@@ -9,4 +9,5 @@ return [
     'showing_contractors' => 'prezentarea operatorilor economici',
     'view_all_contractors' => 'vezi toți operatorii economici',
     'search_by_goods_services' => 'caută după bunurile / serviciile',
+
 ];

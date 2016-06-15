@@ -206,7 +206,11 @@
         $(".cs-select2").select2();
     });
 
-
+    var changeLang = function (lang) {
+        var route = window.location.origin;
+        console.log('Language :',lang);
+        console.log("Current window location is " + route);
+    };
     $(function () {
         $('#dp1').fdatepicker({
             format: 'dd-mm-yyyy',
