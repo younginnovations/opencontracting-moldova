@@ -4,7 +4,7 @@
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
-                Contracts</h2>
+                @lang('general.contracts')</h2>
         </div>
     </div>
 
@@ -14,10 +14,10 @@
             <div class="header-description">
                 <div class="big-header">
                     <div class="number big-amount"> {{$totalContracts}} </div>
-                    <div class="big-title">Contract issued</div>
+                    <div class="big-title">@lang('contracts.contract_issued')</div>
                 </div>
                 <p>
-
+                    @lang('contracts.contract_issued_paragraph')
                 </p>
             </div>
         </div>
@@ -27,14 +27,14 @@
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
                         <ul class="breadcrumbs right-content">
-                            <p><span href="#" class="indicator contracts">Contracts</span> &nbsp; issued over the years
+                            <p><span href="#" class="indicator contracts">@lang('general.contracts')</span> &nbsp; @lang('contracts.issued_over_the_years')
                             </p>
                         </ul>
                     </div>
                     <div class="chart-wrap default-view">
                         <div id="header-linechart"></div>
                         <div class="loader-text">
-                            <div class="text">Fetching data
+                            <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -50,16 +50,17 @@
     </div>
 
     <div class="row table-wrapper ">
-        <a target="_blank" class="export" href="/csv/download">Export as CSV</a>
+
+        <a target="_blank" class="export" href="/csv/download">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
-                <th class="contract-number">Contract number</th>
-                <th class="hide">Contract ID</th>
-                <th>Goods and services contracted</th>
-                <th width="150px">Contract start date</th>
-                <th width="150px">Contract end date</th>
-                <th>Amount</th>
+                <th class="contract-number">@lang('general.contract_number')</th>
+                <th class="hide">@lang('general.contract_id')</th>
+                <th>@lang('general.goods_and_services_contracted')</th>
+                <th width="150px">@lang('general.contract_start_date')</th>
+                <th width="150px">@lang('general.contract_end_date')</th>
+                <th>@lang('general.amount')</th>
             </tr>
             </thead>
             <tbody>
@@ -72,7 +73,7 @@
     <script type="text/javascript" class="init">
         var makeTable = $('#table_id').DataTable({
             "language": {
-                'searchPlaceholder': "Search by goods",
+                'searchPlaceholder': "@lang('contracts.search_by_goods')",
                 "lengthMenu": "Show _MENU_ Contracts"
             },
             "processing": true,

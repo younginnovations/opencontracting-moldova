@@ -5,7 +5,7 @@
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
 
-                Contractors</h2>
+                @lang('contracts.contractors')</h2>
         </div>
     </div>
 
@@ -14,11 +14,11 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
-                    <div class="number big-amount">{{ $contractorsCount }}</div>
-                    <div class="big-title">Contractors</div>
+ <div class="number big-amount">{!! count($contractors)  !!}</div>
+                    <div class="big-title">@lang('general.contractors')</div>
                 </div>
                 <p>
-
+                    @lang('contracts.contractor_index_paragraph')
                 </p>
             </div>
         </div>
@@ -33,21 +33,21 @@
                                     @include('selectYear')
                                 </select>
                                 <select id="select-contractor">
-                                    <option value="amount" selected>Based on value</option>
-                                    <option value="count">Based on count</option>
+                                    <option value="amount" selected>@lang('general.based_on_value')</option>
+                                    <option value="count">@lang('general.based_on_count')</option>
                                 </select>
                             </label>
                         </form>
                         <ul class="breadcrumbs right-content">
-                            <p>Top 5 &nbsp;<span href="#" class="indicator">contractors</span>
+                            <p>@lang('general.top_5') &nbsp;<span href="#" class="indicator">@lang('contracts.contractors')</span>
                             </p>
                         </ul>
                     </div>
-                    <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                    <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                     <div class="chart-wrap default-view header-chart">
                         <div id="barChart-contractors"></div>
                         <div class="loader-text">
-                            <div class="text">Fetching data
+                            <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -65,13 +65,13 @@
     </div>
 
     <div class="row table-wrapper ">
-        <a target="_blank" class="export" href="/csv/download/contractors">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download/contractors">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
-                <th>Name</th>
-                <th>Tenders</th>
-                <th>Scheme</th>
+                <th>@lang('general.name')</th>
+                <th>@lang('general.tenders')</th>
+                <th>@lang('general.scheme')</th>
             </tr>
             </thead>
             <tbody>
@@ -83,7 +83,7 @@
     <script type="text/javascript" class="init">
         var makeTable = $('#table_id').DataTable({
             "language": {
-                'searchPlaceholder': "Search by contractors",
+                'searchPlaceholder': "@lang('contracts.search_by_contractors')",
                 "lengthMenu": "Show _MENU_ Contractors"
             },
             "processing": true,

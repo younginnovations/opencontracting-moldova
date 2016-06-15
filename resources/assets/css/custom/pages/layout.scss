@@ -24,9 +24,11 @@ header{
 
 .project-logo{
   text-transform: uppercase;
-  margin: 0.5rem 1rem;;
+  margin: 0.5rem 1rem;
+  width: auto;
+  display: inline-block;
+
   //margin: 0.25rem 1rem;
-  display: block;
   .first-section{
     color: #fff;
   }
@@ -39,6 +41,10 @@ header{
 .main-content{
   z-index: 1;
   padding-top: 76px;
+}
+
+.top-bar-left{
+  min-width: 400px;
 }
 
 .top-bar-right{

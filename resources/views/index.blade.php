@@ -11,15 +11,15 @@
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <ul class="breadcrumbs">
-                                <li><span hre f="#" class="indicator tender">Tenders</span> &nbsp; published</li>
+                                <li><span hre   f =  "#" class="indicator tender">@lang('general.tenders')</span> &nbsp; @lang('homepage.published')</li>
                                 <li> &nbsp; vs. &nbsp;</li>
-                                <li><span href="#" class="indicators">Contracts</span> &nbsp; issued</li>
+                                <li><span href="#" class="indicators">@lang('general.contracts')</span> &nbsp; @lang('homepage.issued')</li>
                             </ul>
                         </div>
                         <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-homepage"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -35,29 +35,29 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 procuring agencies</h3>
+                            <h3>@lang('general.top_5_procuring_agencies')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
-                                        <span class="inner-title">Showing procuring agencies</span>
+                                        <span class="inner-title">@lang('general.showing_procuring_agencies')</span>
                                         <select id="select-agency-year">
                                             @include('selectYear')
                                         </select>
 
                                         <select id="select-agency">
-                                            <option value="amount" selected>Based on value</option>
-                                            <option value="count">Based on count</option>
+                                            <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <option value="count">@lang('general.based_on_count')</option>
                                         </select>
 
                                     </label>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-procuring"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -66,8 +66,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring agencies
-                                <span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}" class="anchor">@lang('general.view_all_procuring_agencies') <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -81,30 +80,30 @@
                 <div class="medium-6 small-12 columns ">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 contractors</h3>
+                            <h3>@lang('homepage.top_5_contractors')</h3>
                         </div>
 
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
-                                        <span class="inner-title">Showing contractors</span>
+                                        <span class="inner-title">@lang('homepage.showing_contractors')</span>
 
                                         <select id="select-contractor-year">
                                             @include('selectYear')
                                         </select>
 
                                         <select id="select-contractor">
-                                            <option value="amount" selected>Based on value</option>
-                                            <option value="count">Based on count</option>
+                                            <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <option value="count">@lang('general.based_on_count')</option>
                                         </select>
                                     </label>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-contractors"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -113,8 +112,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('contracts.contractorIndex') }}" class="anchor">View all contractors
-                                <span>  &rarr; </span></a>
+                            <a href="{{ route('contracts.contractorIndex') }}" class="anchor">@lang('homepage.view_all_contractors') <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -122,30 +120,30 @@
                 <div class="medium-6 small-12 columns ">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>Top 5 goods & services procured</h3>
+                            <h3>@lang('general.top_5_goods_&_services_procured')</h3>
                         </div>
 
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <label>
-                                        <span class="inner-title">Showing goods / services</span>
+                                        <span class="inner-title">@lang('general.showing_goods_and_services')</span>
 
                                         <select id="select-goods-year">
                                             @include('selectYear')
                                         </select>
 
                                         <select id="select-goods">
-                                            <option value="amount" selected>Based on value</option>
-                                            <option value="count">Based on count</option>
+                                            <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <option value="count">@lang('general.based_on_count')</option>
                                         </select>
                                     </label>
                                 </form>
                             </div>
-                            <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-goods"></div>
                             <div class="loader-text">
-                                <div class="text">Fetching data
+                                <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -154,8 +152,7 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('goods.index') }}" class="anchor">View all goods / services
-                                <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services') <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -164,17 +161,16 @@
     </div>
 
     <div class="row table-wrapper persist-area">
-        {{--<a target="_blank" class="export" href="{{route('home.export')}}">Export as CSV</a>--}}
-        <a target="_blank" class="export" href="/csv/download">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table display">
             <thead class="persist-header">
             <tr>
-                <th class="contract-number">Contract number</th>
-                <th class="">Contract ID</th>
-                <th>Goods and services contracted</th>
-                <th class="long-th">Contract start date</th>
-                <th class="long-th">Contract end date</th>
-                <th>Amount</th>
+                <th class="contract-number">@lang('general.contract_number')</th>
+                <th class="hide">@lang('general.contract_id')</th>
+                <th>@lang('general.goods_and_services_contracted')</th>
+                <th class="long-th">@lang('general.contract_start_date')</th>
+                <th class="long-th">@lang('general.contract_end_date')</th>
+                <th>@lang('general.amount')</th>
             </tr>
             </thead>
             <tbody>
@@ -188,8 +184,8 @@
     <script type="text/javascript" class="init">
         var makeTable = $('#table_id').DataTable({
             "language": {
-                'searchPlaceholder': "Search by goods / services",
-                "lengthMenu": "Show _MENU_ Contracts"
+                'searchPlaceholder': "@lang('homepage.search_by_goods_services')",
+                "lengthMenu": "@lang('general.show') _MENU_ @lang('general.contracts')"
             },
             "processing": true,
             "serverSide": true,

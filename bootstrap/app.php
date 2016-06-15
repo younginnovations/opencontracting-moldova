@@ -66,9 +66,9 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
+ $app->middleware([
+    App\Http\Middleware\Localization::class
+ ]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
@@ -121,6 +121,25 @@ if (getenv('APP_ENV') != "local") {
         return $monolog;
     });
 }
+
+
+config([
+    'language'=>[
+        'en'=>[
+            'code'      => 'en',
+            'name'      => 'English',
+            'country_code'=> 'us',
+            'dir' => 'ltr'
+        ],
+        'md'=>[
+            'code'      => 'md',
+            'name'      => 'Moldovian',
+            'country_code'=> 'md',
+            'dir'   => 'ltr'
+        ],
+        'localization'=>false
+    ]
+]);
 
 //function request()
 //{

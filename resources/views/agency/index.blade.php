@@ -4,7 +4,7 @@
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
             <h2>  <span><img src="{{url('images/ic_agency.svg')}}"/></span>
-           Procuring Agencies</h2>
+           @lang('agency.procuring_agencies')</h2>
         </div>
     </div>
 
@@ -14,10 +14,10 @@
             <div class="header-description">
                 <div class="big-header">
                     <div class="number big-amount">{{ $totalAgency }}</div>
-                    <div class="big-title">Agencies</div>
+                    <div class="big-title">@lang('general.agencies')</div>
                 </div>
                 <p>
-
+                    @lang('agency.agency_paragraph')
                 </p>
             </div>
         </div>
@@ -32,21 +32,21 @@
                                     @include('selectYear')
                                 </select>
                                 <select id="select-agency">
-                                    <option value="amount" selected>Based on value</option>
-                                    <option value="count">Based on count</option>
+                                    <option value="amount" selected>@lang('general.based_on_value')</option>
+                                    <option value="count">@lang('general.based_on_count')</option>
                                 </select>
                             </label>
                         </form>
                         <ul class="breadcrumbs right-content">
-                            <p>Top 5 &nbsp;<span href="#" class="indicator">agencies</span>
+                            <p>@lang('general.top_5') &nbsp;<span href="#" class="indicator">@lang('agency.agencies')</span>
                             </p>
                         </ul>
                     </div>
-                    <div class="disabled-text">Click on label or graph bar to view in detail.</div>
+                    <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                     <div class="chart-wrap default-view header-chart">
                         <div id="barChart-procuring"></div>
                         <div class="loader-text">
-                            <div class="text">Fetching data
+                            <div class="text">@lang('general.fetching_data')
                                      <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
@@ -62,14 +62,14 @@
     </div>
 
     <div class="row table-wrapper persist-area">
-        <a target="_blank" class="export" href="/csv/download/agencies">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download/agencies">@lang('general.export_as_csv')</a>
         <table id="table_id" class="hover responsive custom-table display">
             <thead class="persist-header">
                 <tr>
-                    <th>Procuring Agency Title</th>
-                    <th>Tenders</th>
-                    <th>Contracts</th>
-                    <th>Contract value</th>
+                    <th>@lang('agency.procuring_agency_title')</th>
+                    <th>@lang('general.tenders')</th>
+                    <th>@lang('general.contracts')</th>
+                    <th>@lang('general.contract_value')</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,7 +85,7 @@
     <script>
         var makeTable = $('#table_id').DataTable({
             "language": {
-                'searchPlaceholder': "Search by procuring agency name",
+                'searchPlaceholder': "@lang('agency.search_by_procuring_agency_name')",
                 "lengthMenu": "Show _MENU_ agency"
             },
             "processing": true,
