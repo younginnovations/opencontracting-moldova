@@ -64,7 +64,7 @@ class GoodsController extends Controller
     public function show($goods)
     {
         $goods       = urldecode($goods);
-        $goodsDetail = $this->contracts->getDetailInfo($goods, "award.items.classification.description");
+        $goodsDetail = $this->contracts->getDetailInfo($goods, "awards.items.classification.description");
 
         if ($goodsDetail->isEmpty()) {
             return view('error_404');
@@ -73,8 +73,8 @@ class GoodsController extends Controller
         $totalAmount     = $this->getTotalAmount($goodsDetail);
         $contractTrend   = $this->getTrend($this->contracts->aggregateContracts($goodsDetail));
         $amountTrend     = $this->contracts->encodeToJson($this->contracts->aggregateContracts($goodsDetail, 'amount'), 'trend');
-        $contractors     = $this->contracts->getContractors('amount', 5, date('Y'), $goods, "award.items.classification.description");
-        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, date('Y'), $goods, 'award.items.classification.description');
+        $contractors     = $this->contracts->getContractors('amount', 5, date('Y'), $goods, "awards.items.classification.description");
+        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, date('Y'), $goods, 'awards.items.classification.description');
 
         return view('goods.view', compact('goods', 'goodsDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'contractors', 'procuringAgency'));
     }
@@ -88,7 +88,7 @@ class GoodsController extends Controller
         $total = 0;
 
         foreach ($contracts as $key => $tender) {
-            foreach ($tender['contract'] as $contract) {
+            foreach ($tender['contracts'] as $contract) {
                 $total += $contract['value']['amount'];
             }
         }
@@ -122,7 +122,7 @@ class GoodsController extends Controller
      */
     public function goodsDetailExport($goodsId)
     {
-        return $this->exporter->getContractorDetailForExport(urldecode($goodsId), 'award.items.classification.description');
+        return $this->exporter->getContractorDetailForExport(urldecode($goodsId), 'awards.items.classification.description');
     }
 
     public function exportGoods()

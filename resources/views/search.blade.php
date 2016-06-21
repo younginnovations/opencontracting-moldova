@@ -48,7 +48,7 @@
 
                         <div class="form-group medium-4 columns end">
                             <select name="startDate" class="cs-select2 cs-skin-elastic">
-                                @foreach(range(date('Y'), date('Y')-100) as $year)
+                                @foreach(range(date('Y'), 2012) as $year)
                                     <option value="" disabled selected>Select a year</option>
                                     <option value="{{$year}}">{{$year}}</option>
                                 @endforeach
@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group medium-4 columns end">
                             <select name="endDate" class="cs-select2 cs-skin-elastic">
-                                @foreach(range(date('Y'), date('Y')-100) as $year)
+                                @foreach(range(date('Y'), 2012) as $year)
                                     <option value="" disabled selected>Select a year</option>
                                     <option value="{{$year}}">{{$year}}</option>
                                 @endforeach
@@ -123,11 +123,11 @@
                 <tbody>
                 @forelse($contracts as $tender)
 
-                    @foreach($tender['contract'] as $key => $contract)
+                    @foreach($tender['contracts'] as $key => $contract)
                         <tr>
                             <td>{{ getContractInfo($contract['title'],'id') }}</td>
                             <td class="hide">{{ $contract['id'] }}</td>
-                            <td>{{ ($tender['award'][$key]['items'])?$tender['award'][$key]['items'][0]['classification']['description']:'-' }}</td>
+                            <td>{{ ($tender['awards'][$key]['items'])?$tender['awards'][$key]['items'][0]['classification']['description']:'-' }}</td>
                             <td>{{ print_r($contract['status']) }}</td>
                             <td class="dt">{{ $contract['dateSigned'] }}</td>
                             <td class="dt">{{ $contract['period']['endDate'] }}</td>

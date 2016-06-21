@@ -141,6 +141,7 @@
 //            total +=newProcuringAgencies[i].value;
 //        }
 //        $(".number").html(Math.ceil(total));
+        console.log(procuringAgencies);
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');

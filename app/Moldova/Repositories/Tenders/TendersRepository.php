@@ -43,7 +43,7 @@ class TendersRepository implements TendersRepositoryInterface
     public function getProcuringAgencyTenderByOpenYear($procuringAgency)
     {
         $result = OcdsRelease::raw(function ($collection) use ($procuringAgency) {
-            return $collection->find(['tender.procuringAgency.name' => $procuringAgency], [
+            return $collection->find(['tender.procuringEntity.name' => $procuringAgency], [
                     "tender.tenderPeriod.startDate" => 1,
                     "_id"                           => 1
                 ]

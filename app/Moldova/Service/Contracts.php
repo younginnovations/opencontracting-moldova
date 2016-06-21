@@ -47,19 +47,20 @@ class Contracts
     public function aggregateContracts($contracts, $type = '')
     {
         $contractsByOpenYear = [];
-
         foreach ($contracts as $tender) {
-            foreach ($tender['contract'] as $contract) {
-                $year = explode(".", $contract['dateSigned']);
+            foreach ($tender['contracts'] as $contract) {
+//                $year = explode(".", $contract['dateSigned']);
+                $year = date("Y", strtotime($contract['dateSigned']));
 
-                if (array_key_exists($year[2], $contractsByOpenYear)) {
-                    $contractsByOpenYear[$year[2]] += ('amount' == $type) ? $contract['value']['amount'] : 1;
+                if (array_key_exists($year, $contractsByOpenYear)) {
+                    $contractsByOpenYear[$year] += ('amount' == $type) ? $contract['value']['amount'] : 1;
                 } else {
-                    $contractsByOpenYear[$year[2]] = ('amount' == $type) ? $contract['value']['amount'] : 1;
+                    $contractsByOpenYear[$year] = ('amount' == $type) ? $contract['value']['amount'] : 1;
                 }
             }
         }
         ksort($contractsByOpenYear);
+
         return $contractsByOpenYear;
     }
 
@@ -129,14 +130,14 @@ class Contracts
         $count     = 0;
 
         foreach ($tenders as $key => $tender) {
-            foreach ($tender['contract'] as $k => $contract) {
+            foreach ($tender['contracts'] as $k => $contract) {
                 $contracts[$count]['id']             = $contract['id'];
                 $contracts[$count]['contractNumber'] = getContractInfo($contract['title'], 'id');
                 $contracts[$count]['contractDate']   = $contract['dateSigned'];
                 $contracts[$count]['finalDate']      = $contract['period']['endDate'];
                 $contracts[$count]['amount']         = $contract['value']['amount'];
                 $contracts[$count]['status']         = $contract['status'];
-                $contracts[$count]['goods']          = (!empty($tender['award'][$k]['items'])) ? $tender['award'][$k]['items'][0]['classification']['description'] : '-';
+                $contracts[$count]['goods']          = (!empty($tender['awards'][$k]['items'])) ? $tender['awards'][$k]['items'][0]['classification']['description'] : '-';
 
                 $count ++;
             }

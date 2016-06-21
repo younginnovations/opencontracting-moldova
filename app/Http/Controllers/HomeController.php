@@ -143,13 +143,13 @@ class HomeController extends Controller
 
         switch ($type) {
             case ('contractor'):
-                $column = 'award.suppliers.name';
+                $column = 'awards.suppliers.name';
                 break;
             case ('agency'):
-                $column = 'tender.procuringAgency.name';
+                $column = 'tender.procuringEntity.name';
                 break;
             case ('goods'):
-                $column = 'award.items.classification.description';
+                $column = 'awards.items.classification.description';
                 break;
         }
 
