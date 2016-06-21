@@ -5,6 +5,7 @@ import codecs
 import json
 import requests
 import pulldata
+import os
 
 import myconfig
 

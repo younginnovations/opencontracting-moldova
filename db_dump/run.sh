@@ -4,7 +4,5 @@ python dumpdata.py
 python pulltenderitems.py
 python dumptenderitems.py
 cd ..
-mongo localhost:27017/etenders_staging mongojsscripts/map_to_ocds.js
-
-# mongodump -d etenders_staging -o mongodump
-# mongorestore -d etenders mongodump/old_db_name
+mongo localhost:27017/etenders_stage mongojsscripts/map_to_ocds.js
+mongo localhost:27017/etenders mongojsscripts/rename.js
