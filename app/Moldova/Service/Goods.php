@@ -34,19 +34,24 @@ class Goods
         $count = 0;
 
         if ($params === "" && !empty($data)) {
-            //dd($data[0]['goods']);
             return count($data);
         }
 
         if (!empty($data)) {
             foreach ($data as $key => $good) {
-                $goods[$count]['good'] = (!empty($good)) ? $good['_id'][0] : '-';
-                $goods[$count]['cpv_value'] = (!empty($good['cpv_value'][0])) ? $good['cpv_value'][0][0] : '-';
-                $goods[$count]['scheme'] = (!empty($good['unit'][0])) ? $good['unit'][0][0] : '-';
+                $goods[$count] = [];
+                array_push($goods[$count], (!empty($good)) ? $good['_id'][0] : '-');
+                array_push($goods[$count], (!empty($good['cpv_value'][0])) ? $good['cpv_value'][0][0] : '-');
+                array_push($goods[$count], (!empty($good['unit'][0])) ? $good['unit'][0][0] : '-');
                 $count ++;
             }
         }
 
-        return $goods;
+        return [
+            'draw'            => (int) $params['draw'],
+            'recordsTotal'    => count($this->goods->getAllGoods("")),
+            "recordsFiltered" => count($this->goods->getAllGoods("")),
+            "data"            => array_values($goods)
+        ];
     }
 }

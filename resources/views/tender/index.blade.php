@@ -17,9 +17,9 @@
                     <div class="big-title">Tenders published</div>
                 </div>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur, consequatur culpa dicta
-                    dolorem dolores harum laboriosam, nam obcaecati odio possimus provident reprehenderit tempore.
-                    Architecto atque consectetur delectus facere iure.
+                    Tenders are to invite bids for a project, or to accept a formal offer such as a takeover bid. Tender
+                    usually refers to the process whereby governments and financial institutions invite bids for large
+                    projects that must be submitted within a finite deadline.
                 </p>
             </div>
         </div>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('tender.export')}}">Export as CSV</a>
+        <a target="_blank" class="export" href="/csv/download/tenders">Export as CSV</a>
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
@@ -83,13 +83,12 @@
             "processing": true,
             "serverSide": true,
             "ajax": '/api/tenders',
-            "ajaxDataProp": '',
-            "pagingType": "full_numbers",
+            //"ajaxDataProp": '',
             "columns": [
                 {'data': 'tender.id'},
                 {'data': 'tender.title'},
                 {'data': 'tender.status'},
-                {'data': 'tender.procuringAgency.name'},
+                {'data': 'tender.procuringEntity.name'},
                 {'data': 'tender.tenderPeriod.startDate', 'className': 'dt'},
                 {'data': 'tender.tenderPeriod.endDate', 'className': 'dt'},
             ],

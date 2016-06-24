@@ -11,7 +11,7 @@
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <ul class="breadcrumbs">
-                                <li><span hre   f =  "#" class="indicator tender">Tenders</span> &nbsp; published</li>
+                                <li><span hre f="#" class="indicator tender">Tenders</span> &nbsp; published</li>
                                 <li> &nbsp; vs. &nbsp;</li>
                                 <li><span href="#" class="indicators">Contracts</span> &nbsp; issued</li>
                             </ul>
@@ -66,7 +66,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring agencies <span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}" class="anchor">View all procuring agencies
+                                <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -112,7 +113,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('contracts.contractorIndex') }}" class="anchor">View all contractors <span>  &rarr; </span></a>
+                            <a href="{{ route('contracts.contractorIndex') }}" class="anchor">View all contractors
+                                <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +154,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('goods.index') }}" class="anchor">View all goods / services <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}" class="anchor">View all goods / services
+                                <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -161,12 +164,13 @@
     </div>
 
     <div class="row table-wrapper persist-area">
-        <a target="_blank" class="export" href="{{route('home.export')}}">Export as CSV</a>
+        {{--<a target="_blank" class="export" href="{{route('home.export')}}">Export as CSV</a>--}}
+        <a target="_blank" class="export" href="/csv/download">Export as CSV</a>
         <table id="table_id" class="responsive hover custom-table display">
             <thead class="persist-header">
             <tr>
                 <th class="contract-number">Contract number</th>
-                <th class="hide">Contract ID</th>
+                <th class="">Contract ID</th>
                 <th>Goods and services contracted</th>
                 <th class="long-th">Contract start date</th>
                 <th class="long-th">Contract end date</th>
@@ -182,38 +186,44 @@
 @section('script')
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script type="text/javascript" class="init">
-
-       var makeTable = $('#table_id').DataTable({
-               "language": {
-                   'searchPlaceholder': "Search by goods / services",
-                   "lengthMenu": "Show _MENU_ Contracts"
-               },
-               "processing": true,
-               "serverSide": true,
-               "ajax": '/api/data',
-               "ajaxDataProp": '',
-               "columns": [
-                   {'data': 'contractNumber'},
-                   {'data': 'id', 'className': 'hide'},
-                   {'data': 'goods', "defaultContent": "-"},
-                   {'data': 'contractDate', 'className': 'dt'},
-                   {'data': 'finalDate', 'className': 'dt'},
-                   {'data': 'amount', "className": 'numeric-data'}
-               ],
-               "fnDrawCallback": function () {
-                   changeDateFormat();
-                   numericFormat();
-                   createLinks();
-                   updateTables();
-                   if ($('#table_id tr').length < 10) {
-                       $('.dataTables_paginate').hide();
-                   } else {
-                       $('.dataTables_paginate').show();
-                   }
-               }
-           });
+        var makeTable = $('#table_id').DataTable({
+            "language": {
+                'searchPlaceholder': "Search by goods / services",
+                "lengthMenu": "Show _MENU_ Contracts"
+            },
+            "processing": true,
+            "serverSide": true,
+            "ajax": '/api/data',
+//            "ajaxDataProp": '',
+//            "columns": [
+//                {'data': 'contractNumber'},
+//                {'data': 'id', 'className': 'hide'},
+//                {'data': 'goods.mdValue', "defaultContent": "-"},
+//                {'data': 'contractDate', 'className': 'dt'},
+//                {'data': 'finalDate', 'className': 'dt'},
+//                {'data': 'amount', "className": 'numeric-data'}
+//            ],
+            "columns": [
+                {'className': ''},
+                {'className': 'hide'},
+                {"defaultContent": "-"},
+                {'className': 'dt'},
+                {'className': 'dt'},
+                {"className": 'numeric-data'}
+            ],
+            "fnDrawCallback": function () {
+                changeDateFormat();
+                numericFormat();
+                createLinks();
+                updateTables();
+                if ($('#table_id tr').length < 10) {
+                    $('.dataTables_paginate').hide();
+                } else {
+                    $('.dataTables_paginate').show();
+                }
+            }
+        });
         var createLinks = function () {
-
             $('#table_id tbody tr').each(function () {
                 $(this).css('cursor', 'pointer');
                 $(this).click(function () {
@@ -223,19 +233,18 @@
 
             });
         };
-//updateTables();
+        //updateTables();
     </script>
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
     <script>
-        $(document).ready(function() {
-            if($(window).width() > 768){
-                new $.fn.dataTable.FixedHeader( makeTable );
+        $(document).ready(function () {
+            if ($(window).width() > 768) {
+                new $.fn.dataTable.FixedHeader(makeTable);
             }
-
-            $(window).resize(function(){
-                new $.fn.dataTable.FixedHeader( makeTable );
-            });
+//            $(window).resize(function(){
+//                new $.fn.dataTable.FixedHeader( makeTable );
+//            });
         });
     </script>
     <script src="{{url('js/customChart.min.js')}}"></script>
@@ -245,7 +254,6 @@
         var procuringAgencies = '{!! $procuringAgency  !!}';
         var contractors = '{!! $contractors  !!}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';
-console.log(procuringAgencies);
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createLineChart(JSON.parse(trends), widthOfParent);

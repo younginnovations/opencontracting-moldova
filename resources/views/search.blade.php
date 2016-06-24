@@ -213,9 +213,9 @@
                 new $.fn.dataTable.FixedHeader(makeTable);
             }
 
-            $(window).resize(function () {
-                new $.fn.dataTable.FixedHeader(makeTable);
-            });
+//            $(window).resize(function () {
+//                new $.fn.dataTable.FixedHeader(makeTable);
+//            });
 
             $('.cancel').each(function(){
                 $(this).click(

@@ -1,7 +1,9 @@
 /* 
-To run this script, run the following command in the cli
-# mongo localhost:27017/[dbname] join-etenders-collection.js
-*/
+ To run this script, run the following command in the cli
+ # mongo localhost:27017/etenders join-etenders-collection.js
+ */
+
+
 
 //remove ocds_release collection
 db.ocds_release.remove({})
@@ -12,10 +14,31 @@ db.contracts_collection.createIndex({"tender.id": 1});
 var start = new Date().getTime();
 print("starting Execution")
 db.tenders_collection.find({}).forEach(function(tender){
+
+    //change date to UTC date format
+    var changeToISO = function(dt){
+        if(dt!==''){
+            var newDt = dt.split('.');
+            var tm = newDt[2].split(' ');
+
+            if(tm.length >1){
+                newDt=tm[0]+'-'+newDt[1]+'-'+newDt[0]+'T'+tm[1]+':00Z';
+            }else{
+                newDt=newDt[2]+'-'+newDt[1]+'-'+newDt[0];
+            }
+
+            var isoDate = new Date(newDt).toISOString();
+            return isoDate;
+        }
+
+        return dt;
+
+    }
+
     //prepare tendor object
     var items = []
-    db.tender_items_collection.find({"fkTenderDataId": tender.tenderData.id}).forEach(function(item) {        
-        items.push({
+    db.tender_items_collection.find({"fkTenderDataId": tender.tenderData.id}).forEach(function(item) {
+        var itm = {
             "id": item.id,
             "description": item.goodsName + " " + item.description,
             "classification": {
@@ -25,25 +48,23 @@ db.tenders_collection.find({}).forEach(function(tender){
             },
             "additionalClassifications": [],
             "quantity": item.quantity,
-            "unit": {
-                "name": item.unitMeasure.mdValue
-            }
-        });
+            "unit":{"name":item.unitMeasure.mdValue}
+        }
+
+        items.push(itm);
     });
 
     var procuringAgency = {
         "identifier": {
             "scheme": "State Registration Chambers",
             "id": tender.stateOrg.code,
-            "legalName": tender.stateOrg.orgName,
-            "uri": ""
+            "legalName": tender.stateOrg.orgName
         },
-        "additionalIdentifiers": {
+        "additionalIdentifiers": [{
             "scheme": "eTenders",
             "id": tender.stateOrg.id,
-            "legalName": tender.stateOrg.orgName,
-            "uri": ""
-        },
+            "legalName": tender.stateOrg.orgName
+        }],
         "name": tender.stateOrg.orgName,
         "address": {
             "streetAddress": tender.stateOrg.address,
@@ -53,8 +74,7 @@ db.tenders_collection.find({}).forEach(function(tender){
             "name": "",
             "email": tender.stateOrg.email,
             "telephone": tender.stateOrg.phone,
-            "faxNumber": tender.stateOrg.fax,
-            "url": ""
+            "faxNumber": tender.stateOrg.fax
         }
     };
 
@@ -65,8 +85,6 @@ db.tenders_collection.find({}).forEach(function(tender){
         "status": tender.tenderStatus.mdValue,
         "procurementMethod": tender.tenderType.mdValue,
         "items": items,
-        "minValue": {},
-        "value": {},
         "procurementMethod":tender.tenderType.mdValue,
         "procurementMethodRationale":"",
         "awardCriteria":"",
@@ -74,19 +92,14 @@ db.tenders_collection.find({}).forEach(function(tender){
         "submissionMethod": ["written"],
         "submissionMethodDetails":"",
         "tenderPeriod": {
-            "startDate": tender.bulletin.publDate,
-            "endDate": tender.tenderData.openDateTime
+            "startDate": changeToISO(tender.bulletin.publDate),
+            "endDate": changeToISO(tender.tenderData.openDateTime)
         },
-        "enquiryPeriod": {},
-        "hasEnquiries": "",
         "eligibilityCriteria": "",
-        "awardPeriod": {},
-        "numberOfTenderers": "",
         "tenderers": [],
-        "procuringAgency": procuringAgency,
+        "procuringEntity": procuringAgency,
         "documents": [],
-        "milestones": [],
-        "amendment": {}
+        "milestones": []
     };
     var awardArray = [];
     var contractArray = [];
@@ -95,28 +108,24 @@ db.tenders_collection.find({}).forEach(function(tender){
             "id": "award-" + NumberLong(contract.id),
             "title": "Award for " + contract.tender.tenderData.goodsDescr,
             "description": "",
-            "status": "",
-            "date": "",
             "value": {
                 "amount": contract.amount,
                 "currency": "mdl"
             },
             "suppliers": [{
-                "identifier": {},
                 "additionalIdentifiers": [{
                     "scheme": "eTenders",
                     "id": contract.participant.id,
                     "legalName": contract.participant.fullName
-                }], 
+                }],
                 "name": contract.participant.fullName,
             }],
             "items": [],
             "contractPeriod": {
-                "startDate": contract.contractDate,
-                "endDate": contract.finalDate
+                "startDate": changeToISO(contract.contractDate),
+                "endDate": changeToISO(contract.finalDate)
             },
             "documents": [],
-            "amendment": {}
         };
         if(contract.goods) {
             award["items"] = [{
@@ -126,9 +135,7 @@ db.tenders_collection.find({}).forEach(function(tender){
                     "scheme": "CPV",
                     "id": contract.goods.code,
                     "description": contract.goods.mdValue
-                },
-                "quantity": "",
-                "unit": {}
+                }
             }];
         }
         awardArray.push(award);
@@ -140,30 +147,28 @@ db.tenders_collection.find({}).forEach(function(tender){
             "description": "",
             "status": contract.status.mdValue,
             "period": {
-                "startDate": "",
-                "endDate": contract.finalDate
+                "startDate": changeToISO(contract.contractDate),
+                "endDate": changeToISO(contract.finalDate)
             },
             "value": {
                 "amount": contract.amount,
                 "currency": "mdl"
             },
-            "items": {},
-            "dateSigned": contract.contractDate,
+            "dateSigned": changeToISO(contract.contractDate),
             "documents": [],
-            "amendment": {},
-            "implementations": {}
         };
         contractArray.push(contract);
     });
 
     db.ocds_release.insert({
-        "ocid": "test-ocid",
-        "date": "",
-        "id": NumberLong(tender.id),
+        "ocid": "ocds-ngfbwp-" + tender.id,
+        "date": tenderObj.tenderPeriod.startDate,
+        "id": (tender.id).toString(),
+        "tag":['tender','award','contract'],
         "initiationType": "tender",
         "tender": tenderObj,
-        "award": awardArray,
-        "contract": contractArray,
+        "awards": awardArray,
+        "contracts": contractArray,
         "buyer": procuringAgency,
         "language": "md"
     });
@@ -171,3 +176,5 @@ db.tenders_collection.find({}).forEach(function(tender){
 var end = new Date().getTime();
 var time = end - start;
 print("Execution Time (seconds) ", time/1000);
+
+// mongodump --db etenders --collection ocds_release

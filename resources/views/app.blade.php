@@ -249,7 +249,6 @@
     }
     numericFormat();
     changeDateFormat();
-
 </script>
 
 @yield('script')

@@ -13,6 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use ReCaptcha\Captcha;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use Yajra\Datatables\Facades\Datatables;
 
 
 class HomeController extends Controller
@@ -70,9 +71,9 @@ class HomeController extends Controller
     public function getData(Request $request)
     {
         $input = $request->all();
+        $data  = $this->contracts->getContractsList($input);
 
-        return $this->contracts->getContractsList($input);
-
+        return $data;
     }
 
     /**

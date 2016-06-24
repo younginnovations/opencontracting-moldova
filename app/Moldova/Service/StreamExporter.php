@@ -153,9 +153,9 @@ class StreamExporter
                 'unit'
             ]);
 
-            OcdsRelease::distinct('tender.items.classifications.description')->select(['tender.items'])->chunk(400, function ($goods) use ($data, $handle) {
+            OcdsRelease::distinct('awards.items.classifications.description')->select(['awards.items'])->chunk(400, function ($goods) use ($data, $handle) {
                 foreach ($goods as $good) {
-                    foreach ($good['tender']['items'] as $item) {
+                    foreach ($good['awards']['items'] as $item) {
                         $data['id']                 = $item['id'];
                         $data['goods_and_services'] = $item['classification']['description'];
                         //$data['description']        = $item['description'];
@@ -277,13 +277,14 @@ class StreamExporter
                     $data['id']                = $tender['tender']['id'];
                     $data['title']             = $tender['tender']['title'];
                     $data['description']       = $tender['tender']['description'];
-                    $data['procuringAgency']   = $tender['tender']['procuringAgency']['name'];
+                    $data['procuringAgency']   = $tender['tender']['procuringEntity']['name'];
                     $data['status']            = $tender['tender']['status'];
                     $data['procurementMethod'] = $tender['tender']['procurementMethod'];
                     $data['tender_start_date'] = $tender['tender']['tenderPeriod']['startDate'];
                     $data['tender_end_date']   = $tender['tender']['tenderPeriod']['endDate'];
                     fputcsv($handle, $data);
                 }
+
             });
 
             fclose($handle);
