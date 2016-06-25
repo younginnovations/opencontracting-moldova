@@ -1,21 +1,25 @@
-## Lumen PHP Framework
+## Moldova Open Contracting Data Visualisation Platform
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+This is the data visualisation portal of the tenders/contracts data from Moldova PPA eTenders System. The system is built using php based Lumen framework and MongoDb. The data are pulled from eTenders system, transformed to the OCDS standard and presented the visualisation to display the data in meaningful manner.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+### Run
+The app can be run following the steps below:
 
-## Official Documentation
+* Clone the repository
+* Install the application dependencies using command: composer install
+* Copy .env.example to .env and update your the database configurations
+* Give read/write permission to the storage folder using chmod -R 777 storage
+* Serve application using php artisan serve (append --port PORT_NUMBER to run in different port other than 8000)
+* Access localhost:8000
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+### Framework
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+The application is written in PHP based on the Lumen framework V5.2.
 
 ### License
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+The Platform is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+### TODO
+
+* Need to provide the test seed data for the installation
