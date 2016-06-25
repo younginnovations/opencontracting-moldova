@@ -4,7 +4,8 @@
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_good_service.svg')}}"/></span>
-            Goods and services</h2>
+                Goods/Services/Work
+            </h2>
         </div>
     </div>
 
@@ -14,7 +15,7 @@
             <div class="header-description">
                 <div class="big-header">
                     <div class="number big-amount">{{$totalGoods}}</div>
-                    <div class="big-title">Goods / services</div>
+                    <div class="big-title">Goods/Services/Work</div>
                 </div>
                 <p>
 
