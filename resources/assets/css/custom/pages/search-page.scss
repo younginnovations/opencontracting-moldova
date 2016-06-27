@@ -258,7 +258,7 @@
   }
 }
 
-@media (max-width: 768px){
+@media (max-width: 1270px){
 
   .top-bar-right .menu{
     padding-right: 0;
@@ -270,7 +270,7 @@
   #main-menu{
     position: static;
     .search{
-      right: 40px;
+      right: 150px;
       top: 2px;
       &.open{
         right: 0;
