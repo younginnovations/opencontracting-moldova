@@ -1,50 +1,60 @@
-.header-banner{
+.header-banner {
   background: transparent url(#{$img-path}/main_background.jpg) center top no-repeat;
   background-size: cover;
   color: #fff;
   border-bottom: solid 2.125rem #FFD200;
   margin-bottom: 28px;
 
-  header.top-bar{
+  header.top-bar {
     background: transparent;
     transition: all 0.3s ease-in-out;
   }
 }
 
-.header-banner{
-  .fixed-header.add-background{
+.header-banner {
+  .fixed-header.add-background {
     background-color: $deep-blue-color !important;
   }
 }
 
-
-.header-banner ~ .main-content{
+.header-banner ~ .main-content {
   padding-top: 0;
 }
 
-.callout.banner-section{
+.language-select {
+  display: inline-block;
+  width: 84px;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 4px;
+  padding: 6px 10px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.callout.banner-section {
   background: transparent;
   margin: 13.88em 20px 8.75em 20px;
   border: none;
 }
 
-.banner-text{
+.banner-text {
   font-size: 2.375rem;
   line-height: 2.75rem;
   color: #fff;
   font-family: RobotoCondensed-bold;
 }
 
-.banner-inner{
+.banner-inner {
   position: relative;
 }
 
 /* ------- style for search form --------- */
 
-.search-form{
+.search-form {
   input[type=text],
   input[type=password] {
-    box-sizing : border-box;
+    box-sizing: border-box;
   }
 
   input {
@@ -61,17 +71,17 @@
     display: none;
   }
 
-  input[type=search]{
+  input[type=search] {
 
   }
 
-  input[type=search]{
+  input[type=search] {
     background: transparent;
     border: none;
     border-bottom: solid 4px #fff;
     padding: 1.5rem 2.25rem;
     width: 100%;
-    box-sizing : border-box;
+    box-sizing: border-box;
     transition: all .5s;
     box-shadow: none;
     height: auto;
@@ -83,31 +93,30 @@
   }
 
   input[type=search]:focus,
-  input[type=search]:active,input[type=search]:hover{
+  input[type=search]:active, input[type=search]:hover {
 
   }
 
   input:-moz-placeholder {
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
   }
   input::-webkit-input-placeholder {
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
   }
 
 }
 
-
 /*style for chart container*/
 
-.each-chart-section{
+.each-chart-section {
   padding: 30px 20px 25px;
   background: #fff;
   border-radius: 4px;
   margin-bottom: 18px;
-  box-shadow: 0px 0px 20px rgba(8,8,8,0.11);
-  .section-header{
-    h3{
-      @include  small-title();
+  box-shadow: 0px 0px 20px rgba(8, 8, 8, 0.11);
+  .section-header {
+    h3 {
+      @include small-title();
       margin-bottom: 25px;
     }
   }
@@ -116,7 +125,7 @@
     margin-bottom: 15px;
     min-height: 200px;
 
-    .filter-section{
+    .filter-section {
       margin-right: -20px;
       margin-left: -20px;
       background-color: #F5F5F5;
@@ -125,7 +134,7 @@
       overflow: hidden;
       margin-bottom: 25px;
 
-      label span{
+      label span {
         margin-right: 6px;
         vertical-align: middle;
         @include inner-title();
@@ -135,14 +144,14 @@
 
     //style for anchor section
 
-    .anchor{
+    .anchor {
       margin-top: 25px;
-      span{
+      span {
         vertical-align: middle;
       }
 
-      &:hover{
-        span{
+      &:hover {
+        span {
           //margin-left: 6px;
         }
       }
@@ -152,9 +161,6 @@
   }
 }
 
-
-
-
 .each-chart-section {
   position: relative;
   .loader-text {
@@ -162,14 +168,14 @@
     width: 100%;
     top: 50%;
     margin-left: -20px;
-    .text{
+    .text {
       text-align: center;
       font-size: 22px;
       line-height: 28px;
-      color: rgba(72,72,72,0.4);
+      color: rgba(72, 72, 72, 0.4);
     }
 
-    span{
+    span {
       position: absolute;
       bottom: 10px;
       margin-left: 6px;
@@ -178,7 +184,7 @@
 
   .default-view {
 
-    &.chart-wrap .disabled-text,.filter-section{
+    &.chart-wrap .disabled-text, .filter-section {
       visibility: hidden;
       opacity: 0;
     }
@@ -197,12 +203,12 @@
 
     }
 
-    &.default-barChart{
+    &.default-barChart {
       background: url(#{$img-path}/greyscale_barChart.svg) 0 0 no-repeat;
     }
 
-    #barChart-homepage,&.header-chart #barChart-contractors, &.header-chart #barChart-goods,
-    &.header-chart #barChart-amount,&.header-chart #barChart-procuring {
+    #barChart-homepage, &.header-chart #barChart-contractors, &.header-chart #barChart-goods,
+    &.header-chart #barChart-amount, &.header-chart #barChart-procuring {
       background: url(#{$img-path}/greyscale_barChart.svg) 0 0 no-repeat;
     }
 
@@ -211,21 +217,21 @@
 
 /*style for empty chart section*/
 
-.each-chart-section.empty{
+.each-chart-section.empty {
   position: relative;
-  &:before{
+  &:before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 4px;
 
   }
 
-  &:after{
+  &:after {
     content: "No data";
     position: absolute;
     top: 50%;
@@ -237,8 +243,8 @@
   }
 }
 
-.chart-wrap,.section-header{
-  select{
+.chart-wrap, .section-header {
+  select {
     width: 145px;
     margin-bottom: 0;
     border: solid 2px #2B3440;
@@ -255,41 +261,41 @@
   }
 }
 
-@media screen and (min-width: 40em){
-  .chart-section-wrap .inner-wrap > div{
+@media screen and (min-width: 40em) {
+  .chart-section-wrap .inner-wrap > div {
     clear: both;
     overflow: hidden;
 
-      .columns:nth-child(even){
-        padding: 0 0 0 9px;
-      }
+    .columns:nth-child(even) {
+      padding: 0 0 0 9px;
+    }
 
-      .columns:nth-child(odd){
-        padding: 0 9px 0 0;
-      }
+    .columns:nth-child(odd) {
+      padding: 0 9px 0 0;
+    }
 
   }
 }
 
-.section-header{
+.section-header {
   @include small-title();
 }
 
 /* -------- style for chart section ----------- */
 
-.chart-section-wrap{
+.chart-section-wrap {
   margin-bottom: 50px;
 
-  ul.breadcrumbs{
-      margin-bottom: 0;
+  ul.breadcrumbs {
+    margin-bottom: 0;
   }
 
-  .breadcrumbs{
-    li:not(:last-child)::after{
+  .breadcrumbs {
+    li:not(:last-child)::after {
       content: none;
     }
 
-    li{
+    li {
       @include small-title();
       text-transform: capitalize;
       margin-bottom: 25px;
@@ -297,55 +303,54 @@
   }
 }
 
-
-.indicator{
+.indicator {
   color: $dark-grey-color;
   position: relative;
   color: $dark-grey-color;
 
-  &.tender{
+  &.tender {
     border-bottom: solid 5px $tender-color;
   }
 
-  &.contracts{
+  &.contracts {
     border-bottom: solid 5px $contract-color;
   }
 
 }
 
-.one-pager .share-wrap{
+.one-pager .share-wrap {
   position: absolute;
   bottom: 0;
   right: 0;
   width: 100%;
   padding: 0 30px;
 
-  @media (max-width: 650px){
+  @media (max-width: 650px) {
     padding: 0 20px;
   }
 }
 
-.social-share{
+.social-share {
   margin: 10px auto;
   overflow: hidden;
   float: right;
-  li{
+  li {
     float: left;
     display: inline-block;
     margin-top: 5px;
-    &:first-child{
+    &:first-child {
       margin-top: 0;
       margin-right: 15px;
     }
   }
 
-  .at-icon-wrapper{
+  .at-icon-wrapper {
     border-radius: 4px;
   }
 
 }
 
-.sharing-title{
+.sharing-title {
   color: #4A4A4A;
   font-size: 1.5rem;
   height: auto;
@@ -354,5 +359,51 @@
   line-height: 2.8125rem;
 }
 
+/*style for language selector*/
 
+html[lang='md'] {
+    .menu-wrap {
+    font-size: 14px;
+    line-height: 20px;
+  }
 
+  .top-bar-right .menu > li:not(.menu-text) > a{
+    padding: 24px .2rem !important;
+  }
+}
+
+.menu-wrap {
+  position: relative;
+  float: left;
+}
+
+.top-bar-right .menu {
+  float: left;
+}
+
+.language-selector {
+  float: left;
+  margin-left: 10px;
+    select {
+    border-radius: 4px;
+    width: 90px;
+    background: rgba(255, 255, 255, 0.2) url(#{$img-path}/ic-down-triangle.svg) no-repeat;
+    background-position: right 8px top 17px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 6px;
+    position: relative;
+        
+        option {
+      color: #fff;
+      display: block;
+      padding: 10px 20px 10px 26px;
+      position: relative;
+    }
+  }
+}

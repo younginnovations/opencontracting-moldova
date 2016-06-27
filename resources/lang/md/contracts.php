@@ -1,0 +1,28 @@
+<?php
+return [
+    'contract_issued' => 'Contract încheiat',
+    'contract_issued_paragraph' => '',
+    'issued_over_the_years' => 'emis de-a lungul anilor',
+    'search_by_goods' => 'căutare după bunuri',
+    'servicii_de_tratament_sanatorial' => 'Servicii de tratament sanatorial',
+    'status' => 'Statut',
+    'procuring_agency' => 'autoritate contractantă',
+    'contract_period' => 'perioada contractului',
+    'contract_value' => 'valoarea contractului',
+    'contract_signed' => 'contract semnat',
+    'contractors' => 'operatori economici',
+    'goods_services' => 'bunuri / servicii',
+    'related_tender' => 'procedură de achiziție conexă',
+    'send_a_feedback_for_this_contract' => 'trimite un feedback pentru acest contract',
+    'contract_data_in_ocds_format' => 'datele contractului în format OCDS',
+    'expand_all' => 'extinde tot',
+    'collapse_all' => 'restrînge tot',
+    'total_contracts' => 'Total contracte',
+    'total_contract_amount' => 'suma totală a contractelor',
+    'number_of_contracts' => 'numărul contractelor',
+    'contract_value' => 'valoarea contractului',
+    'contract_status' => 'statutul contractului',
+    'raw_json' => 'RAW JSON',
+    'search_by_contractors' => 'caută după operator economic',
+    'contractor_index_paragraph' => ''
+];

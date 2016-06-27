@@ -4,11 +4,11 @@
         <div class="row clearfix">
             <div class="full-header">
                 <h2> {{ $contractDetail['title'] }}
-                    Servicii de tratament sanatorial
+                    @lang('contracts.servicii_de_tratament_sanatorial')
                 </h2>
             </div>
             <div>
-                <div class="small-button grey-yellow-btn"><span>Status:</span>
+                <div class="small-button grey-yellow-btn"><span>@lang('contracts.status'):</span>
                     <span>{{ $contractDetail['status'] }}</span>
                 </div>
             </div>
@@ -20,7 +20,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon procuring-agency">icon</span>
                     <span class="each-detail">
-                         <div class="name columns">Procuring Agency</div>
+                         <div class="name columns">@lang('contracts.procuring_agency')</div>
                         <div class="value columns">
                             <a href="{{ route('procuring-agency.show',['name'=>$contractDetail['procuringAgency']]) }}">{{ $contractDetail['procuringAgency'] }}</a>
                         </div>
@@ -31,7 +31,7 @@
                 <span class="icon contract-period">icon</span>
 
                 <div class="each-detail">
-                    <div class="name  columns">Contract Period</div>
+                    <div class="name  columns">@lang('contracts.contract_period')</div>
                     <div class="value columns dt">{{ $contractDetail['period']['startDate'] }}</div>
                     <div class="value columns dt">{{ ($contractDetail['period']['endDate']) }}</div>
                 </div>
@@ -42,7 +42,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-value">icon</span>
                     <span class="each-detail">
-                         <div class="name  columns">Contract Value</div>
+                         <div class="name  columns">@lang('contracts.contract_value')</div>
                         <div class="value columns">{{ number_format($contractDetail['value']['amount']) }} leu</div>
                     </span>
             </div>
@@ -50,7 +50,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-signed">icon</span>
                     <span class="each-detail">
-                         <div class="name  columns">Contract Signed</div>
+                         <div class="name  columns">@lang('contracts.contract_signed')</div>
                         <div class="value columns dt">{{ $contractDetail['dateSigned'] }}</div>
                     </span>
             </div>
@@ -60,7 +60,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-period">icon</span>
                     <span class="each-detail">
-                         <div class="name  columns">Contractor</div>
+                         <div class="name  columns">@lang('general.contractor')</div>
                         <div class="value columns">
                             <a href="{{route('contracts.contractor',['name'=>urlencode($contractDetail['contractor'])]) }}  ">
                                 {{ $contractDetail['contractor'] }}
@@ -72,7 +72,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-goods-service">icon</span>
                     <span class="each-detail">
-                         <div class="name  columns">Goods/ Service</div>
+                         <div class="name  columns">@lang('contracts.goods_services')</div>
                         <div class="value columns">{{ $contractDetail['goods'] }}</div>
                     </span>
             </div>
@@ -82,7 +82,7 @@
             <div class="medium-6 small-12 columns each-detail-wrap end">
                 <span class="icon relatedtender">icon</span>
                     <span class="each-detail">
-                         <div class="name  columns">Related Tender</div>
+                         <div class="name  columns">@lang('contracts.related_tender')</div>
                         <div class="value columns">
                             <a href="{{ route('tenders.show',['tender'=>$contractDetail['tender_id']]) }}">{{ $contractDetail['tender_title'] }}</a>
                         </div>
@@ -94,7 +94,7 @@
 
     <div class="row">
         <!-- Trigger/Open The Modal -->
-        <button id="myBtn" class="button blue-button" style="width: auto;">Send a feedback for this contract</button>
+        <button id= "myBtn" class="button blue-button" style="width: auto;">@lang('contracts.send_a_feedback_for_this_contract')</button>
         <!-- The Modal -->
         <div id="myModal" class="modal">
 
@@ -114,20 +114,20 @@
 
                                 <div class="form-group">
                                     <input class="form-control" type="text" id="fullname" name="fullname"
-                                           placeholder="YOUR NAME" required>
+                                           placeholder="@lang('general.your_name')" required>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" type="email" id="email" name="email"
-                                           placeholder="YOUR EMAIL" required>
+                                           placeholder="@lang('general.your_email')" required>
                                 </div>
                                 <div class="form-group">
-                                <textarea class="form-control" placeholder="YOUR MESSAGE" id="message"
+                                <textarea class="form-control" placeholder="@lang('general.your_message')" id="message"
                                           name="message" required></textarea>
                                 </div>
                                 <div class="g-recaptcha captcha-wrap" id="captcha"
                                      data-sitekey="{{ env('RE_CAP_SITE') }}"></div>
                             </div>
-                            <button class="button" id="submit" value="SEND MESSAGE" rows="20">SEND MESSAGE</button>
+                            <button class="button" id="submit" value="SEND MESSAGE" rows="20">@lang('general.send_message')</button>
                         </form>
                     </div>
 
@@ -139,16 +139,16 @@
 
     <div class="custom-switch-wrap row">
         <div class="clearfix">
-            <div class="small-title">Data in ocds format</div>
+            <div class="small-title">@lang('contracts.contract_data_in_ocds_format')</div>
             <a href="#" class="toggle-switch toggle--on"></a>
         </div>
 
         <div class="custom-switch-content block">
             <div class="json-view">
-                <button name="expand" class="expand-btn button yellow-btn">Expand all</button>
-                <button name="collapse" class="collapse-btn button yellow-btn">Collapse all</button>
-                <a target="_blank" href="{{ route('contracts.jsonView',['id'=>$contractDetail['id']]) }}"
-                   class="btn-view-json">RAW JSON</a>
+                <button name="expand" class="expand-btn button yellow-btn">@lang('contracts.expand_all')</button>
+                <button name="collapse" class="collapse-btn button yellow-btn">@lang('contracts.collapse_all')</button>
+                <a target="_blank" href="{{ route('contracts.jsonView',['id'=>$contractDetail['id']]) }}" class="btn-view-json">@lang('contracts.raw_json')</a>
+
                 <pre id="json-viewer"></pre>
             </div>
             <div class="table-view text-center">
@@ -237,27 +237,28 @@
                 var trimmedMessage = $.trim(message);
                 var atPos = email.indexOf("@");
                 var dotPos = email.lastIndexOf(".");
-                if (trimmedName == "") {
-                    $("#ajaxResponse").html("Please enter your name!");
-                    $("#ajaxResponse").css("color", "#BB0505");
+
+                if(trimmedName == ""){
+                    $("#ajaxResponse").html("@lang('general.please_enter_your_name')");
+                    $("#ajaxResponse").css("color","#BB0505");
                     $("#fullname").focus();
                     return false;
                 }
-                if (email == "") {
-                    $("#ajaxResponse").html("Please enter your email address!");
-                    $("#ajaxResponse").css("color", "#BB0505");
+                if(email == ""){
+                    $("#ajaxResponse").html("@lang('general.enter_your_email')");
+                    $("#ajaxResponse").css("color","#BB0505");
                     $("#email").focus();
                     return false;
                 }
-                if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= email.length) {
-                    $("#ajaxResponse").html("Please enter a valid email address!");
-                    $("#ajaxResponse").css("color", "#BB0505");
-                    $("#email").css("border", "1px solid #BB0303");
+                if( atPos < 1 || dotPos < atPos+2 || dotPos+2>=email.length){
+                    $("#ajaxResponse").html("@lang('general.enter_valid_email')");
+                    $("#ajaxResponse").css("color","#BB0505");
+                    $("#email").css("border","1px solid #BB0303");
                     return false;
                 }
-                if (trimmedMessage == "") {
-                    $("#ajaxResponse").html("Please enter your message!");
-                    $("#ajaxResponse").css("color", "#BB0505");
+                if(trimmedMessage == ""){
+                    $("#ajaxResponse").html("@lang('general.enter_your_message')");
+                    $("#ajaxResponse").css("color","#BB0505");
                     $("#message").focus();
                     return false;
                 }
@@ -280,11 +281,10 @@
                             $("#ajaxResponse").css("color", "#BB0505");
                             return false;
                         }
-                        else {
-                            console.log("Email sent successfully");
-                            $("#ajaxResponse").html("Email sent successfully");
-                            $("#ajaxResponse").css("color", "#04692A");
-                            setTimeout(function () {
+                        else{
+                            $("#ajaxResponse").html("@lang('general.email_sent_successfully')");
+                            $("#ajaxResponse").css("color","#04692A");
+                            setTimeout(function(){
                                 $("#myModal").hide();
                                 $('#fullname').val("");
                                 $("#ajaxResponse").empty();

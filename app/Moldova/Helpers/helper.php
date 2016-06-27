@@ -31,5 +31,10 @@ if (!function_exists('config_path')) {
 
 function getSearchExport()
 {
-    return app('request')->fullUrl().'&export=1';
+    return app('request')->fullUrl() . '&export=1';
+}
+
+function getLocalLang()
+{
+    return app('translator')->getLocale();
 }
