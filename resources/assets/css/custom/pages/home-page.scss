@@ -365,5 +365,55 @@
   line-height: 2.8125rem;
 }
 
+/*style for language selector*/
+
+.menu-wrap{
+  position: relative;
+  float: left;
+}
+
+.top-bar-right .menu{
+  float: left;
+}
+
+.language-selector{
+  float: left;
+  margin-left: 10px;
+  select{
+    border-radius: 4px;
+    width: 100px;
+    background: rgba(255,255,255,0.6);
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-top: 6px;
+
+    option{
+      color: #fff;
+      display: block;
+      padding: 10px 20px 10px 26px;
+      position: relative;
+
+      &:before{
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border: solid 1px;
+        background: url(#{$img-path}/english-flag.svg.png) 0 0 no-repeat;
+      }
+    }
+
+    option.moldova{
+      &:before{
+        background: url(#{$img-path}/moldova-flag.svg.png) 0 0 no-repeat;
+      }
+    }
+
+  }
+}
 
 

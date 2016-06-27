@@ -4,10 +4,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-<<<<<<< ccf441c1619b0a36e19951fe91766ab7f8d2e20b
-=======
 @import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300,500,700,900,800,600);
->>>>>>> MO-80 theming of 404 error page
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -21,12 +18,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block; }
 
 body {
-<<<<<<< ccf441c1619b0a36e19951fe91766ab7f8d2e20b
-  line-height: 1; }
-=======
   line-height: 1;
   overflow-x: hidden; }
->>>>>>> MO-80 theming of 404 error page
 
 ol, ul {
   list-style: none; }
@@ -216,8 +209,37 @@ h2 {
     .button.yellow-button:hover {
       background: #e5bd00; }
 
-.advance-search-wrap .yellow-button {
+.advance-search-wrap .button {
   width: 100%; }
+
+.gray-button {
+  background: #d8d8d8; }
+
+.search-result-wrap .button-group {
+  margin-bottom: 0; }
+
+.search-result-wrap .btn {
+  padding: .85em 1em;
+  margin-left: 10px;
+  margin-bottom: 0;
+  float: right; }
+
+.advance-search-wrap .button {
+  margin-bottom: 0; }
+
+.reset-btn {
+  background: #FFD200;
+  color: #4a4a4a; }
+  .reset-btn:hover {
+    background: #e5bd00;
+    color: #4a4a4a; }
+
+.cancel-btn {
+  background: #e6e6e6;
+  color: #4a4a4a; }
+  .cancel-btn:hover {
+    background: #d6d6d6;
+    color: #4a4a4a; }
 
 .filled-button {
   padding: 10px 20px;
@@ -264,7 +286,7 @@ footer {
   height: 92px;
   width: 100%; }
 
-@media (max-width: 615px) {
+@media (max-width: 650px) {
   footer {
     height: 126px; }
   body {
@@ -341,7 +363,6 @@ footer {
   width: calc(100% - 150px);
   float: left;
   margin-top: 0.5rem; }
-<<<<<<< ccf441c1619b0a36e19951fe91766ab7f8d2e20b
 
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
@@ -358,26 +379,24 @@ footer {
 :-moz-placeholder {
   /* Firefox 18- */
   color: rgba(72, 72, 72, 0.6); }
-=======
-  .suscribe-input input:-moz-placeholder {
-    color: rgba(72, 72, 72, 0.6); }
-  .suscribe-input input::-webkit-input-placeholder {
-    color: rgba(72, 72, 72, 0.6); }
->>>>>>> MO-80 theming of 404 error page
 
 .form-group .subscribe.form-control {
   margin-top: 0.5rem;
   background: #FFD200;
-  color: #fff;
+  color: #4A4A4A;
   padding: 12px 10px 12px 10px;
   max-height: 39px;
   width: 150px;
   float: left;
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  -webkit-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0;
   font-size: 16px; }
   .form-group .subscribe.form-control:hover, .form-group .subscribe.form-control:focus, .form-group .subscribe.form-control:active {
     background: #e0b900; }
+
+.suscribe-input .form-control {
+  -webkit-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px; }
 
 .burger-menu-button {
   z-index: 9999;
@@ -402,7 +421,8 @@ header {
 .project-logo {
   text-transform: uppercase;
   margin: 0.5rem 1rem;
-  display: block; }
+  width: auto;
+  display: inline-block; }
   .project-logo .first-section {
     color: #fff; }
   .project-logo .second-section {
@@ -522,7 +542,6 @@ footer {
 
 @media (max-width: 650px) {
   footer {
-    height: auto;
     padding: 15px 20px; }
     footer form {
       min-width: 100%; }
@@ -557,6 +576,17 @@ footer {
 
 .header-banner ~ .main-content {
   padding-top: 0; }
+
+.language-select {
+  display: inline-block;
+  width: 84px;
+  font-size: 12px;
+  line-height: 18px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  padding: 6px 10px;
+  height: auto;
+  vertical-align: middle; }
 
 .callout.banner-section {
   background: transparent;
@@ -767,8 +797,18 @@ footer {
   .indicator.contracts {
     border-bottom: solid 5px #50E3C2; }
 
+.one-pager .share-wrap {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 30px; }
+  @media (max-width: 650px) {
+    .one-pager .share-wrap {
+      padding: 0 20px; } }
+
 .social-share {
-  margin: 10px 0 20px 0;
+  margin: 10px auto;
   overflow: hidden;
   float: right; }
   .social-share li {
@@ -778,6 +818,9 @@ footer {
     .social-share li:first-child {
       margin-top: 0;
       margin-right: 15px; }
+  .social-share .at-icon-wrapper {
+    -webkit-border-radius: 4px;
+            border-radius: 4px; }
 
 .sharing-title {
   color: #4A4A4A;
@@ -786,6 +829,45 @@ footer {
   font-weight: bold;
   vertical-align: middle;
   line-height: 2.8125rem; }
+
+/*style for language selector*/
+.menu-wrap {
+  position: relative;
+  float: left; }
+
+.top-bar-right .menu {
+  float: left; }
+
+.language-selector {
+  float: left;
+  margin-left: 10px; }
+  .language-selector select {
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    width: 100px;
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-top: 6px; }
+    .language-selector select option {
+      color: #fff;
+      display: block;
+      padding: 10px 20px 10px 26px;
+      position: relative; }
+      .language-selector select option:before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border: solid 1px;
+        background: url(/images/english-flag.svg.png) 0 0 no-repeat; }
+    .language-selector select option.moldova:before {
+      background: url(/images/moldova-flag.svg.png) 0 0 no-repeat; }
 
 .axis path, .axis line {
   fill: none;
@@ -932,7 +1014,8 @@ circle {
   width: auto;
   display: inline-block;
   margin-left: 15px;
-  margin-top: 18px; }
+  margin-top: 18px;
+  margin-right: 145px; }
   .dataTables_length label {
     color: #484848;
     width: auto;
@@ -1262,8 +1345,8 @@ tfoot td, tfoot th, thead td, thead th {
   .table-wrapper .export {
     position: absolute;
     top: 17px;
-    right: 161px;
-    margin: 0 10px;
+    right: 0;
+    margin-left: 10px;
     background: #0046AE;
     overflow: hidden;
     -webkit-border-radius: 4px;
@@ -1621,27 +1704,27 @@ tfoot td, tfoot th, thead td, thead th {
   display: none; }
 
 .button.collapse-btn, .button.expand-btn {
-  width: auto;
   position: relative;
-  padding: 12px -webkit-calc(1rem + 20px) 12px 1rem;
-  padding: 12px calc(1rem + 20px) 12px 1rem; }
+  padding: 12px  1rem;
+  width: 128px;
+  text-align: left; }
   .button.collapse-btn:after, .button.expand-btn:after {
-    content: "";
-    background: transparent url(/images/ic_arrow_down-blue.svg) center no-repeat;
     position: absolute;
-    top: 15px;
+    top: 6px;
     right: 10px;
     height: 8px;
     width: 16px;
+    font-size: 20px;
+    line-height: 26px;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }
 
+.expand-btn:after {
+  content: "+"; }
+
 .collapse-btn:after {
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-       -o-transform: rotate(180deg);
-          transform: rotate(180deg); }
+  content: "-"; }
 
 /* -------------- style for tooltip ------------- */
 .detail-info-wrap {
@@ -1764,6 +1847,14 @@ tfoot td, tfoot th, thead td, thead th {
 .detail-info .fax {
   background: transparent url(/images/ic_sprite.svg) -85px -250px no-repeat; }
 
+.btn-view-json {
+  padding: 12px 1rem;
+  background-color: #E6E0E0;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  float: right;
+  color: #000; }
+
 .background {
   background-color: rgba(255, 255, 255, 0.1);
   -webkit-border-radius: 4px;
@@ -1805,32 +1896,14 @@ tfoot td, tfoot th, thead td, thead th {
   font-size: 20px;
   padding-bottom: 30px; }
 
-<<<<<<< ccf441c1619b0a36e19951fe91766ab7f8d2e20b
-=======
 #ajaxResponse {
   text-align: center;
   margin-bottom: 20px; }
 
->>>>>>> MO-80 theming of 404 error page
 .form-group {
   margin-bottom: 20px;
   position: relative;
   outline: 0; }
-<<<<<<< ccf441c1619b0a36e19951fe91766ab7f8d2e20b
-=======
-  .form-group ::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    color: #fff; }
-  .form-group ::-moz-placeholder {
-    /* Firefox 19+ */
-    color: #fff; }
-  .form-group :-ms-input-placeholder {
-    /* IE 10+ */
-    color: #fff; }
-  .form-group :-moz-placeholder {
-    /* Firefox 18- */
-    color: #fff; }
->>>>>>> MO-80 theming of 404 error page
   .form-group .control-label {
     color: rgba(0, 0, 0, 0.7);
     line-height: 18px;
@@ -1842,7 +1915,6 @@ tfoot td, tfoot th, thead td, thead th {
     -webkit-box-shadow: none;
             box-shadow: none; }
 
-<<<<<<< ccf441c1619b0a36e19951fe91766ab7f8d2e20b
 .background ::-webkit-input-placeholder {
   color: #fff; }
 
@@ -1855,8 +1927,6 @@ tfoot td, tfoot th, thead td, thead th {
 .background :-moz-placeholder {
   color: #fff; }
 
-=======
->>>>>>> MO-80 theming of 404 error page
 .ocdsAddress {
   padding-left: 50px;
   padding-top: 60px;
@@ -1880,7 +1950,6 @@ tfoot td, tfoot th, thead td, thead th {
     width: 100%;
     float: none; } }
 
-<<<<<<< ccf441c1619b0a36e19951fe91766ab7f8d2e20b
 /* ---------- style for select2 section --------- */
 form .select2-container {
   width: 100% !important; }
@@ -1911,8 +1980,6 @@ form input[name="startDate"], form input[name="endDate"] {
 .fi-arrow-right:before {
   content: ">"; }
 
-=======
->>>>>>> MO-80 theming of 404 error page
 .search-wrap input {
   float: left;
   width: 300px;
@@ -1984,13 +2051,33 @@ form input[name="startDate"], form input[name="endDate"] {
     color: #888888;
     margin: -10px; }
 
-.search-token span {
-  padding: 6px 10px;
-  background: #D8D8d8;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
-  margin: 5px 5px 5px 0;
-  display: inline-block; }
+.search-token {
+  border-bottom: solid 1px #ccc;
+  margin-bottom: 15px;
+  padding-bottom: 5px; }
+  .search-token > span {
+    padding: 4px 10px 4px 32px;
+    background: #aaa;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: #fff;
+    position: relative; }
+  .search-token .cancel {
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 3px 8px;
+    background: #777;
+    -webkit-border-radius: 4px 0 0 4px;
+            border-radius: 4px 0 0 4px;
+    height: 100%; }
+    .search-token .cancel:hover {
+      background: #888; }
 
 .blue-button {
   background: #0041b3;
@@ -2039,7 +2126,7 @@ form input[name="startDate"], form input[name="endDate"] {
     border: none;
     background: transparent;
     color: #fff;
-    padding: 20px 42px 18px 12px;
+    padding: 8px 42px 8px 12px;
     font-size: 16px;
     line-height: 22px;
     background: transparent;
@@ -2151,6 +2238,15 @@ body.one-pager {
   .one-pager .inner-wrap-static {
     margin: 20px 0; } }
 
+body.one-pager .about-page .inner-wrap-static a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-shadow: none; }
+
+p.disabled {
+  font-size: 14px !important;
+  color: #aaa; }
+
 @media (max-width: 600px) {
   .modal__dialog {
     width: 300px; } }
@@ -2214,19 +2310,17 @@ body.one-pager {
   text-decoration: none;
   cursor: pointer; }
 
-<<<<<<< ccf441c1619b0a36e19951fe91766ab7f8d2e20b
-=======
 .fullpage-wrap {
   width: 100%;
   width: 100vw;
   height: 100%;
   height: 100vh;
   font-family: 'Work Sans', sans-serif;
-  background: rgba(255, 210, 0, 0.5);
   color: #fff;
   text-align: center;
   display: table;
-  padding: 0; }
+  padding: 0;
+  background: rgba(255, 210, 0, 0.5); }
   .fullpage-wrap .button {
     display: inline-block;
     width: auto;
@@ -2234,16 +2328,15 @@ body.one-pager {
 
 .centerize-wrap {
   display: table-cell;
-  vertical-align: middle; }
+  vertical-align: middle;
+  background: url(/images/broken_bar.svg) center top 98px no-repeat; }
 
 .fullpage-wrap h1 {
   font-size: 200px;
   line-height: 206px;
   font-weight: 800;
-  -webkit-transform: translateY(-50px);
-      -ms-transform: translateY(-50px);
-       -o-transform: translateY(-50px);
-          transform: translateY(-50px);
+  overflow: visible;
+  margin-bottom: 130px;
   text-shadow: #e0b804 1px 1px, #e0b804 2px 2px, #e0b804 3px 3px, #e0b804 4px 4px, #e0b804 5px 5px, #e0b804 6px 6px, #e0b804 7px 7px, #e0b804 8px 8px, #e1b804 9px 9px, #e1b804 10px 10px, #e4b904 11px 11px, #e4b905 12px 12px, #e5b905 13px 13px, #e5ba04 14px 14px, #e7ba04 15px 15px, #e8ba05 16px 16px, #e9bb05 17px 17px, #eabb05 18px 18px, #ebbb05 19px 19px, #ecbc08 20px 20px, #edbc08 21px 21px, #eebc08 22px 22px, #efbc09 23px 23px; }
 
 .error-body {
@@ -2266,7 +2359,6 @@ body.one-pager {
       left: 50%;
       margin-left: -40px; }
 
->>>>>>> MO-80 theming of 404 error page
 @media (max-width: 1260px) {
   body:not(.one-pager) .main-content {
     margin-left: 20px;
@@ -2428,7 +2520,10 @@ body.one-pager {
   .header-block #status {
     float: none; }
     .header-block #status button {
-      margin-top: 0; } }
+      margin-top: 0; }
+  /* add margin bottom for button in advance search */
+  .advance-search-wrap .yellow-button {
+    margin-bottom: 20px; } }
 
 @media (max-width: 768px) {
   .dataTables_length {
