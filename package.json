@@ -33,5 +33,8 @@
     "imagemin": "^5.0.0",
     "imagemin-pngquant": "^5.0.0",
     "merge-stream": "^1.0.0"
+  },
+  "dependencies": {
+    "gulp-install": "^0.6.0"
   }
 }

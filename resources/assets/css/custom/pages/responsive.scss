@@ -49,11 +49,23 @@
 
 }
 
-@media (max-width: 768px) {
-
+@media (max-width: 1270px){
   /* ---------- navigation responsive --------- */
+
+  .desktop-view{
+    display: none;
+  }
+
+  .mobile-view{
+    display: block;
+  }
+
   .burger-menu-button {
     display: block;
+  }
+
+  .top-bar-right{
+    float: none;
   }
 
   #main-menu {
@@ -90,7 +102,9 @@
       }
     }
   }
+}
 
+@media (max-width: 768px) {
 /* -----  responsive of banner section --------- */
 
   .callout.banner-section{
@@ -187,14 +201,6 @@
     .wide-header .section-header{
       margin-bottom: 0;
     }
-  }
-
-  .desktop-view{
-    display: none;
-  }
-
-  .mobile-view{
-    display: block;
   }
 
 }
@@ -309,6 +315,29 @@
 
 }
 
+@media (min-width: 768px) and (max-width: 950px){
+  .chart-wrap select{
+    &:last-child{
+      margin-left: 165px;
+      margin-top: 6px;
+    }
+  }
+
+  .chart-wrap select{
+    &#select-contractor{
+      margin-left: 123px;
+    }
+  }
+
+  .chart-wrap select{
+    &#select-goods{
+      margin-left: 151px;
+    }
+  }
+}
+
+
+
 @media (max-width: 768px) {
   .dataTables_length{
     display: none;
@@ -325,6 +354,12 @@
     margin: 0;
     top: 39px;
     right: 0;
+  }
+
+  .chart-wrap select{
+    &:first-child{
+      max-width: 90px;
+    }
   }
 
 }
@@ -344,6 +379,31 @@
     }
   }
 
+  .filter-section{
+    .inner-title{
+      display: block;
+      margin-bottom: 6px;
+    }
+  }
+
+  .chart-wrap select{
+    padding: 4px 10px;
+    min-width: 90px;
+    margin-bottom: 6px;
+    width: 48%;
+    max-width: 48% !important;
+    border-radius: 0;
+    border: none;
+    background: #4A4A4C url(/images/ic_dropdown.svg) right 10px center no-repeat;
+  }
+
+}
+
+@media (max-width: 320px){
+  .chart-wrap select{
+    width: 100%;
+    max-width: 100% !important;
+  }
 }
 
 @media (max-width: 390px){

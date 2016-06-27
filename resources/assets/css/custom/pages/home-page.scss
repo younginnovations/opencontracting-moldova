@@ -97,14 +97,29 @@
 
   }
 
-  input:-moz-placeholder {
-    color: rgba(255, 255, 255, 0.3);
+}
+
+.multiple-search-wrap,
+.search-form,
+.top-bar .search{
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(255,255,255,0.4);
   }
-  input::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.3);
+
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: rgba(255,255,255,0.4);
+  }
+
+  :-ms-input-placeholder { /* IE 10+ */
+    color: rgba(255,255,255,0.4);
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+    color: rgba(255,255,255,0.4);
   }
 
 }
+
 
 /*style for chart container*/
 
@@ -373,8 +388,10 @@ html[lang='md'] {
 }
 
 .menu-wrap {
-  position: relative;
-  float: left;
+  @media (min-width: 1270px){
+    position: relative;
+    float: left;
+  }
 }
 
 .top-bar-right .menu {
@@ -384,26 +401,42 @@ html[lang='md'] {
 .language-selector {
   float: left;
   margin-left: 10px;
-    select {
-    border-radius: 4px;
-    width: 90px;
-    background: rgba(255, 255, 255, 0.2) url(#{$img-path}/ic-down-triangle.svg) no-repeat;
-    background-position: right 8px top 17px;
-    border: none;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 20px;
-    margin-bottom: 0;
-    margin-top: 6px;
-    position: relative;
-        
-        option {
-      color: #fff;
-      display: block;
-      padding: 10px 20px 10px 26px;
-      position: relative;
-    }
+
+  @media (max-width: 1270px){
+    float: none;
+    margin-left: 0;
+    position: absolute;
+    right: 50px;
+    top: 0;
   }
 }
+
+#Language-select{
+  border-radius: 4px;
+  width: 90px;
+  background: rgba(255, 255, 255, 0.2) url(#{$img-path}/ic-down-triangle.svg) no-repeat;
+  background-position: right 8px top 17px;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 0;
+  margin-top: 6px;
+  position: relative;
+
+  option {
+    color: #fff;
+    display: block;
+    padding: 10px 20px 10px 26px;
+    position: relative;
+  }
+}
+
+.chart-wrap select{
+  &:nth-of-type(1) {
+    max-width: 90px;
+  }
+}
+

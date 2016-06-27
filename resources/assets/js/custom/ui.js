@@ -7,7 +7,7 @@ $(document).ready(function(){
 
    /* create animation effect for global search*/
     $('.search-button').click(function(){
-        if($(window).width() > 768){
+        if($(window).width() > 1270){
             $(this).parent().toggleClass('open');
             $(".fixed-header .menu").toggleClass('toggle-visibility');
         }
@@ -16,12 +16,13 @@ $(document).ready(function(){
             $(".fixed-header .top-bar-left").toggleClass('toggle-visibility-small');
             $(".burger-menu-button").toggleClass('toggle-visibility-small');
         }
+        $(".language-selector").toggleClass("toggle-visibility");
 
     });
 
     $(document).mouseup(function (e)
     {
-        var container = $(".search,.advance-search-wrap");
+        var container = $(".search,.advance-search-wrap,.language-selector");
 
         if (!container.is(e.target) // if the target of the click isn't the container...
             && container.has(e.target).length === 0) // ... nor a descendant of the container
@@ -30,6 +31,7 @@ $(document).ready(function(){
             $(".fixed-header .menu").removeClass('toggle-visibility');
             $(".fixed-header .top-bar-left").removeClass('toggle-visibility-small');
             $(".burger-menu-button").removeClass('toggle-visibility-small');
+            $(".language-selector").removeClass("toggle-visibility");
 
             //$(".advance-search-wrap").slideUp();
             //$(".filter-toggler a").removeClass("active");
@@ -139,10 +141,11 @@ $(document).ready(function(){
    /* --------  responsive navigation menu ------ */
 
     var menuDisappear = function(){
-        if ($(window).width() < 768) {
+        if ($(window).width() > 1270) {
             $(".main-content").removeClass("menu-on");
             $("#main-menu .menu").slideUp(300);
             $(".burger-menu").removeClass("menu-on");
+            $(".header-banner .fixed-header").removeClass("add-background");
         }
     }
 

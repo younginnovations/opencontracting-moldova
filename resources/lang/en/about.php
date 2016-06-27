@@ -25,7 +25,7 @@ return [
     'credit'=>'<p class="disabled">
                 The picture used in this site is attributed to Andrey from Russia (Chaprianu monastery. Moldova) [CC BY
                 2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons.<a
-                        href="url: https://commons.wikimedia.org/wiki/File%3AC%C4%83priana_monastery_in_Moldova.jpg">Here </a>
+                        href="url: https://commons.wikimedia.org/wiki/File%3AC%C4%83priana_monastery_in_Moldova.jpg"> Here </a>
                 is the source.
             </p>',
 ];
