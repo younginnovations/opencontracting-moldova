@@ -14,7 +14,7 @@
         <div class="columns medium-6 small-12">
             <div class="header-description">
                 <div class="big-header">
- <div class="number big-amount">{!! count($contractors)  !!}</div>
+ <div class="number big-amount">{{ $contractorsCount }}</div>
                     <div class="big-title">@lang('general.contractors')</div>
                 </div>
                 <p>

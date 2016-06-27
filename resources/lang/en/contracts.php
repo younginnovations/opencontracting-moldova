@@ -26,3 +26,5 @@ return [
     'search_by_contractors' => 'Search by contractors',
     'contractor_index_paragraph' => ''
 ];
+
+

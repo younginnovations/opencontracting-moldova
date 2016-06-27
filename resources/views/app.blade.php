@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="{{getLocalLang()}}">
 
 <head>
     <meta charset="utf-8"/>
@@ -205,12 +205,6 @@
     $(document).ready(function () {
         $(".cs-select2").select2();
     });
-
-    var changeLang = function (lang) {
-        var route = window.location.origin;
-        console.log('Language :',lang);
-        console.log("Current window location is " + route);
-    };
     $(function () {
         $('#dp1').fdatepicker({
             format: 'dd-mm-yyyy',
@@ -271,10 +265,16 @@
         var formatted = number_format($(this).text());
         $(this).text(formatted);
     });
-    var changeLang = function (lang) {
+
+    $("#Language-select").change(function () {
+        var lang = $(this).val();
         var route = window.location.origin + window.location.pathname;
         return window.location.replace(route + '?lang=' + lang);
-    }
+    });
+//    var changeLang = function (lang) {
+//        var route = window.location.origin + window.location.pathname;
+//        return window.location.replace(route + '?lang=' + lang);
+//    }
 </script>
 </body>
 
