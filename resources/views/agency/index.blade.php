@@ -93,9 +93,9 @@
             "ajax": '/api/procuring-agency',
 //            "ajaxDataProp": '',
             "columns": [
-                {'data': 'buyer'},
-                {'data': 'tender'},
-                {'data': 'contract'},
+                {'data': '_id'},
+                {'data': 'tenders'},
+                {'data': 'contracts_count'},
                 {'data': 'contract_value', "className": 'numeric-data'}
             ],
             "fnDrawCallback": function () {
@@ -129,14 +129,6 @@
     <script>
         var route = '{{ route("filter") }}';
         var procuringAgencies = '{!! $procuringAgency  !!}';
-        var total = 0;
-//        var newProcuringAgencies = JSON.parse(procuringAgencies);
-//        console.log(newProcuringAgencies);
-//        for(var i = 0; i < newProcuringAgencies.length; i++){
-//            total +=newProcuringAgencies[i].value;
-//        }
-//        $(".number").html(Math.ceil(total));
-        console.log(procuringAgencies);
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');
