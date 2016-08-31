@@ -28,60 +28,85 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
     public function getAllProcuringAgency($params)
     {
         $orderIndex  = $params['order'][0]['column'];
-        $ordDir      = $params['order'][0]['dir'];
-        $column      = $params['columns'][$orderIndex]['data'];
+        $ordDir      = (strtolower($params['order'][0]['dir']) == 'asc') ? 1 : - 1;
+        $column      = $this->getColumnTitle($params['columns'][$orderIndex]['data']);
         $startFrom   = $params['start'];
-        $ordDir      = (strtolower($ordDir) == 'asc') ? 1 : - 1;
         $search      = $params['search']['value'];
         $limitResult = $params['length'];
 
-        $agencies = $this->ocdsRelease
-            //->select(['buyer.name'])
-            ->where(function ($query) use ($search) {
-                if (!empty($search)) {
-                    return $query->where('buyer.name', 'like', '%' . $search . '%');
-                }
+        $query  = [];
+        $filter = [];
 
-                return $query;
-            })
-            //->skip($startFrom)
-            ->orderBy($column, $ordDir)
-            ->distinct()
-            ->get(['buyer.name']);
-        $agencies = ($agencies->splice($startFrom)->take($limitResult));
-
-        $buyers = [];
-        foreach ($agencies as $key => $agency) {
-
-            $buyer = $this->getBuyerDetails($agency[0]);
-
-            $buyers[$key]['buyer']          = $agency[0];
-            $buyers[$key]['tender']         = $buyer['tenderCount'];
-            $buyers[$key]['contract']       = $buyer['contractCount'];
-            $buyers[$key]['contract_value'] = $buyer['amount'];
-
+        if ($search != '') {
+            $filter = [
+                '$match' => ['buyer.name' => $search]
+            ];
         }
 
-        return $buyers;
+        if (!empty($filter)) {
+            array_push($query, $filter);
+        }
+
+        $groupBy =
+            [
+                '$group' => [
+                    '_id'             => '$buyer.name',
+                    'tenders'         => ['$sum' => 1],
+                    'contracts' => ['$addToSet' => '$contracts'],
+                    'contract_value'  => ['$sum' => ['$sum' => '$contracts.value.amount']]
+                ]
+            ];
+        array_push($query, $groupBy);
+
+        $unwind = [
+            '$unwind' => '$contracts'
+        ];
+        array_push($query, $unwind);
+
+        $groupBy =
+            [
+                '$group' => [
+                    '_id'             => '$_id',
+                    'tenders'         => ['$addToSet' => '$tenders'],
+                    'contracts_count' => ['$sum' => 1],
+                    'contract_value'  => ['$addToSet' => '$contract_value']
+                ]
+            ];
+        array_push($query, $groupBy);
+        $sort = ['$sort' => [$column => $ordDir]];
+        array_push($query, $sort);
+        $skip = ['$skip' => (int) $startFrom];
+        array_push($query, $skip);
+        $limit = ['$limit' => (int) $limitResult];
+        array_push($query, $limit);
+
+        $result = OcdsRelease::raw(function ($collection) use ($query) {
+            return $collection->aggregate($query);
+        });
+
+        return $result['result'];
     }
 
-    /**
-     * @param $buyerName
-     * @return array
-     */
-    protected function getBuyerDetails($buyerName)
+    protected function getColumnTitle($column)
     {
-        $buyer  = $this->ocdsRelease->where('buyer.name', '=', $buyerName)->get(['contracts']);
-        $count  = 0;
-        $amount = 0;
-        foreach ($buyer as $item) {
-            $count = $count + count($item['contracts']);
-            foreach ($item['contracts'] as $contract) {
-                $amount = floatval($amount)+ floatval($contract['value']);
-            }
+        switch ($column) {
+            case 0:
+                $column = '_id';
+                break;
+            case 1:
+                $column = 'tenders';
+                break;
+            case 2:
+                $column = 'contracts_count';
+                break;
+            case 3:
+                $column = 'contract_value';
+                break;
+            default:
+                break;
         }
 
-        return ['tenderCount' => count($buyer), 'contractCount' => $count, 'amount' => $amount];
+        return $column;
     }
 
     /**
@@ -103,7 +128,7 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
     {
         return $this->ocdsRelease
             ->select(['buyer'])
-            ->where('buyer.name','=',$procuringAgency)
+            ->where('buyer.name', '=', $procuringAgency)
             ->first();
     }
 }
