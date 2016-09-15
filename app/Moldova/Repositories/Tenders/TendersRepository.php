@@ -3,6 +3,7 @@
 namespace App\Moldova\Repositories\Tenders;
 
 
+use App\Moldova\Entities\CompanyFeedback;
 use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Entities\Tenders;
 
@@ -88,5 +89,12 @@ class TendersRepository implements TendersRepositoryInterface
     public function getTenderDetailByID($tenderID)
     {
         return ($this->ocdsRelease->where('tender.id', '=', (int) $tenderID)->first());
+    }
+
+    public function getTenderFeedback($ref)
+    {
+        $feedback = new CompanyFeedback();
+
+        return $feedback->where('procedure_no','=',$ref)->first();
     }
 }

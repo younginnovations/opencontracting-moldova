@@ -62,6 +62,18 @@ $('#select-goods, #select-goods-year').change(function () {
 });
 
 $('#subscribe').click(function () {
+    subscribe();
+});
+
+$("#subscribe-form").submit(function(e){
+
+        subscribe();
+
+    e.preventDefault();
+   return false;
+});
+
+function subscribe(){
     var email = $('input[name="email"]').val();
     if(!validateEmail(email)){
         $("#subscribeModal").css("display", "block");
@@ -78,7 +90,7 @@ $('#subscribe').click(function () {
         $("#subscribeModal").css("display", "block");
         $("#showMsg").html(error.responseJSON.message);
     });
-});
+}
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

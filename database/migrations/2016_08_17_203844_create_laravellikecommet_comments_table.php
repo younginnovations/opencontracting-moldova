@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 /**
  * Class CreateLaravellikecommetCommentsTable
  */
+
 class CreateLaravellikecommetCommentsTable extends Migration
 {
     /**

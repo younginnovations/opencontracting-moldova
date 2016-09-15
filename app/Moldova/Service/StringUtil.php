@@ -1,13 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: owner
- * Date: 5/05/2016
- * Time: 6:20 PM
- */
-
-namespace App\Moldova\Service;
-
+<?php namespace App\Moldova\Service;
 
 class StringUtil
 {

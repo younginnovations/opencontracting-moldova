@@ -3,8 +3,84 @@
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
-                {{ $contractor }}</h2>
+                {{ $contractor }}
+            </h2>
+
+            <div class="contract-info-wrap">
+                <div class="detail-info-wrap">
+                    <div class="detail-anchor">
+                        <div class="small-button grey-yellow-btn"><span>i</span>More information</div>
+                    </div>
+                    <div class="detail-info">
+                        <div class="description info-icon">
+                            <p>
+                                <strong>Disclaimer </strong> : These results are based on best match that
+                                we could find in the <a href="http://date.gov.md">date.gov.md</a>.
+                            </p>
+                        </div>
+                        @if(isset($companyData) && sizeof($companyData)>0)
+                            <div class="title="> {{ $companyData['full_name'] }} </div>
+                            <div class="name-value-wrap">
+                                <div class="name">Leaders:</div>
+                                <div class="value">{{ $companyData['leaders_list'] }} </div>
+                            </div>
+
+                            <div class="name-value-wrap">
+                                <div class="name">Founders:</div>
+                                <div class="value">{{ $companyData['list_of_founders'] }} </div>
+                            </div>
+                        @else
+                            No matching company informations were found.
+                        @endif
+                    </div>
+                </div>
+
+                <div class="detail-info-wrap">
+                    <div class="detail-anchor">
+                        <div class="small-button grey-yellow-btn balance-icon">Court cases</div>
+                    </div>
+                    <div class="detail-info">
+                        <div class="description balance-icon">
+                            <strong>Disclaimer </strong>: These results are based on best match that
+                            we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.Please
+                            click <a
+                                    href="{{ route('contracts.linkage',['name'=>$contractor,'type' => 'courtCase']) }}">here</a>
+                            for more matches.
+                            </p>
+                        </div>
+
+                        @forelse($courtCases as $case)
+                            <ul>
+                                <li>
+                                    <div class="title="><a href="{{  $case['link'] }}">{{ $case['title'] }}</a></div>
+                                    <div class="name-value-wrap">
+                                        <div class="name">Case type:</div>
+                                        <div class="value">{{ $case['case_type'] }} </div>
+                                    </div>
+
+                                    <div class="name-value-wrap">
+                                        <div class="name">Court name:</div>
+                                        <div class="value">{{ $case['court_name'] }} </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        @empty
+                        @endforelse
+                    </div>
+                </div>
+                @if($blacklist)
+                <div class="detail-info-wrap">
+                    <div class="detail-anchor">
+                        <div class="small-button grey-yellow-btn {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">Black listed</div>
+                    </div>
+                    {{--<div class="detail-info">--}}
+                        {{--<div class="description {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">This company is {{($blacklist)?'':'not'}} black listed.</div>--}}
+                    {{--</div>--}}
+                </div>
+                    @endif
+            </div>
         </div>
+
     </div>
 
 
@@ -23,11 +99,10 @@
                 @lang('contracts.total_contract_amount')
             </div>
             <div class="value">
-                {{number_format($totalAmount)}} leu
-            </div>
+{{number_format($totalAmount)}} leu
+</div>
         </div>
     </div>
-
     <div class="row chart-section-wrap">
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
@@ -40,12 +115,12 @@
                             <div id="linechart-rest"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
-                                    <div class="dot dot1"></div>
-                                    <div class="dot dot2"></div>
-                                    <div class="dot dot3"></div>
-                                    <div class="dot dot4"></div>
-                                </span>
+                                    <span>
+                <div class="dot dot1"></div>
+                <div class="dot dot2"></div>
+                <div class="dot dot3"></div>
+                <div class="dot dot4"></div>
+            </span>
                                 </div>
                             </div>
                         </div>
@@ -57,16 +132,17 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>@lang('contracts.contract_value')</h3>
                         </div>
-                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart"
+                             data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
-                                    <div class="dot dot1"></div>
-                                    <div class="dot dot2"></div>
-                                    <div class="dot dot3"></div>
-                                    <div class="dot dot4"></div>
-                                </span>
+                                    <span>
+                <div class="dot dot1"></div>
+                <div class="dot dot2"></div>
+                <div class="dot dot3"></div>
+                <div class="dot dot4"></div>
+            </span>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +150,6 @@
                 </div>
             </div>
         </div>
-
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns">
@@ -83,7 +158,8 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>@lang('general.top_5_procuring_agencies')</h3>
                         </div>
-                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart"
+                             data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
@@ -92,8 +168,10 @@
                                             <select id="select-agency-year">
                                                 @include('selectYear')
                                             </select>
-                                            <select id="select-agency" data-for="contractor" data="{{ $contractor }}">
-                                                <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <select id="select-agency" data-for="contractor"
+                                                    data="{{ $contractor }}">
+                                                <option value="amount"
+                                                        selected>@lang('general.based_on_value')</option>
                                                 <option value="count">@lang('general.based_on_count')</option>
                                             </select>
                                         </label>
@@ -104,15 +182,16 @@
                             <div id="barChart-procuring"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
-                                     <span>
-                                    <div class="dot dot1"></div>
-                                    <div class="dot dot2"></div>
-                                    <div class="dot dot3"></div>
-                                    <div class="dot dot4"></div>
-                                </span>
+                 <span>
+                <div class="dot dot1"></div>
+                <div class="dot dot2"></div>
+                <div class="dot dot3"></div>
+                <div class="dot dot4"></div>
+            </span>
                                 </div>
                             </div>
-                            <a href="{{ route('procuring-agency.index') }}" class="anchor">@lang('general.view_all_procuring_agencies')<span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}"
+                               class="anchor">@lang('general.view_all_procuring_agencies')<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +202,8 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>@lang('general.top_5_goods_&_services_procured')</h3>
                         </div>
-                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart"
+                             data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
@@ -132,8 +212,10 @@
                                             <select id="select-goods-year">
                                                 @include('selectYear')
                                             </select>
-                                            <select id="select-goods" data-for="contractor" data="{{ $contractor }}">
-                                                <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <select id="select-goods" data-for="contractor"
+                                                    data="{{ $contractor }}">
+                                                <option value="amount"
+                                                        selected>@lang('general.based_on_value')</option>
                                                 <option value="count">@lang('general.based_on_count')</option>
                                             </select>
                                         </label>
@@ -144,25 +226,27 @@
                             <div id="barChart-goods"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
-                                    <div class="dot dot1"></div>
-                                    <div class="dot dot2"></div>
-                                    <div class="dot dot3"></div>
-                                    <div class="dot dot4"></div>
-                                </span>
+                                    <span>
+                <div class="dot dot1"></div>
+                <div class="dot dot2"></div>
+                <div class="dot dot3"></div>
+                <div class="dot dot4"></div>
+            </span>
                                 </div>
                             </div>
-                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services') <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}"
+                               class="anchor">@lang('general.view_all_goods_services')
+                                <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-
     </div>
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>
+        <a target="_blank" class="export"
+           href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
 
             <thead class="persist-header">
@@ -193,7 +277,6 @@
             </tbody>
         </table>
     </div>
-
 @stop
 @section('script')
     <script src="{{url('js/vendorChart.min.js')}}"></script>

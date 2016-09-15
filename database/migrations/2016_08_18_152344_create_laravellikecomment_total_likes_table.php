@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 /**
  * Class CreateLaravellikecommentTotalLikesTable
  */
+
 class CreateLaravellikecommentTotalLikesTable extends Migration
 {
     /**

@@ -65,7 +65,9 @@ class TenderController extends Controller
             return view('error_404');
         }
 
-        return view('tender.view', compact('tenderDetail'));
+        $feedbackData = $this->tenders->getTenderFeedback($tenderDetail['tender']['title']);
+
+        return view('tender.view', compact('tenderDetail', 'feedbackData'));
 
     }
 

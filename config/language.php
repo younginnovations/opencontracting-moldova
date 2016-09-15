@@ -14,5 +14,4 @@ return [
         'dir'          => 'ltr'
     ],
     'localization' => false
-
 ];

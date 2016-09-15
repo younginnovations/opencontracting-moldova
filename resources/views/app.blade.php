@@ -163,7 +163,7 @@
             <div class="form-group">
                 <div class="suscribe-input">
                     {{csrf_field()}}
-                    <input class="form-control" required="true" type="email" name="email"
+                    <input class="form-control" id="subscriptionEmail" required="true" type="email" name="email"
                            placeholder="@lang('general.enter_your_email')"/>
                 </div>
                 <input class="button subscribe form-control" type="button" id="subscribe" name="subscribe"
