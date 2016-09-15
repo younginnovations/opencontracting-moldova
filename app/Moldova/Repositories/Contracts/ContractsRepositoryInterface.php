@@ -96,8 +96,20 @@ interface ContractsRepositoryInterface
      */
     public function getContractDataForJson($contractId);
 
+    /**
+     * @return mixed
+     */
     public function getContractorsByOpenYear();
 
+    /**
+     * @return mixed
+     */
     public function getContractorsCount();
+
+    /**
+     * @param $contractor
+     * @return mixed
+     */
+    public function getCompanyData($contractor);
 
 }

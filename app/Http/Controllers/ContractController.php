@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Moldova\Service\ContractorService;
 use App\Moldova\Service\Contracts;
 use App\Moldova\Service\Email;
 use GuzzleHttp\Client;
@@ -75,10 +76,11 @@ class ContractController extends Controller
     }
 
     /**
-     * @param $contractor
+     * @param ContractorService $contractorService
+     * @param                   $contractor
      * @return \Illuminate\View\View
      */
-    public function show($contractor)
+    public function show(ContractorService $contractorService, $contractor)
     {
         $contractor       = trim(urldecode($contractor));
         $contractorDetail = $this->contracts->getDetailInfo($contractor, 'awards.suppliers.name');
@@ -87,6 +89,7 @@ class ContractController extends Controller
             return view('error_404');
         }
 
+        $companyData      = $contractorService->fetchInfo($contractor);
         $total            = $this->getTotal($contractorDetail);
         $totalContract    = $total['totalContract'];
         $totalAmount      = $total['totalAmount'];
@@ -95,7 +98,7 @@ class ContractController extends Controller
         $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, 2014, $contractor, 'awards.suppliers.name');
         $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, 2014, $contractor, 'awards.suppliers.name');
 
-        return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices', 'totalContract'));
+        return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices', 'totalContract','companyData'));
     }
 
     /**

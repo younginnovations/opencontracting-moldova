@@ -3,7 +3,33 @@
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
-                {{ $contractor }}</h2>
+                {{ $contractor }}
+            </h2>
+
+            <div class="detail-info-wrap">
+                <div class="detail-anchor small-button grey-yellow-btn"><span>i</span>view info</div>
+                <div class="detail-info">
+                    <table id="company-info">
+                        <thead>
+                        <th>Company name</th>
+                        <th>Leaders</th>
+                        <th>Founders</th>
+                        </thead>
+                        <tbody>
+                        @forelse($companyData as $company)
+                            <tr>
+                                <td>{{ $company['full_name'] }}</td>
+                                <td>{{ $company['leaders_list'] }}</td>
+                                <td>{{ $company['list_of_founders'] }}</td>
+                            </tr>
+                        @empty
+                            No Data Found
+                        @endforelse
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
         </div>
     </div>
 
@@ -40,7 +66,7 @@
                             <div id="linechart-rest"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
+                                    <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
                                     <div class="dot dot3"></div>
@@ -61,7 +87,7 @@
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
+                                    <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
                                     <div class="dot dot3"></div>
@@ -112,7 +138,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('procuring-agency.index') }}" class="anchor">@lang('general.view_all_procuring_agencies')<span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}"
+                               class="anchor">@lang('general.view_all_procuring_agencies')<span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +171,7 @@
                             <div id="barChart-goods"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
+                                    <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
                                     <div class="dot dot3"></div>
@@ -152,7 +179,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services') <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services')
+                                <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -162,7 +190,8 @@
 
     </div>
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>
+        <a target="_blank" class="export"
+           href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>
         <table id="table_id" class="responsive hover custom-table persist-area">
 
             <thead class="persist-header">
@@ -193,7 +222,6 @@
             </tbody>
         </table>
     </div>
-
 @stop
 @section('script')
     <script src="{{url('js/vendorChart.min.js')}}"></script>
