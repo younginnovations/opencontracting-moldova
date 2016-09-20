@@ -1,7 +1,9 @@
 <?php namespace App\Moldova\Service;
 
 use App\Moldova\Entities\Contractors;
+use App\Moldova\Entities\CourtCases;
 use App\Moldova\Repositories\Contracts\ContractsRepositoryInterface;
+use GuzzleHttp\Client;
 
 
 class ContractorService
@@ -95,5 +97,44 @@ class ContractorService
         }
 
         return str_replace('-', ' ', trim($a));
+    }
+
+    /**
+     * API for fetching court cases of company
+     * @return string
+     */
+    public function storeCourtData()
+    {
+        $client = new Client();
+        $count  = $client->get('http://localhost:8081/getCasesCount');
+        $offset = 0;
+        $start  = date_create('Y-m-d H:i:s');
+
+        for ($i = 0; $i <= $count->json() / 10000; $i ++) {
+            $res = $client->get('http://localhost:8081/listCases/10000/' . $offset);
+
+            foreach ($res->json() as $key => $courtData) {
+                $courtCases = new CourtCases();
+                $courtCases->create($courtData);
+            }
+
+            echo "#";
+            $offset = $offset + 10000;
+        }
+        $end = date_create('Y-m-d H:i:s');
+
+        return "Data imported successfully. It took " . date_diff($start, $end);
+
+    }
+
+    /**
+     * @param $contractor
+     * @return mixed
+     */
+    public function fetchCourtData($contractor)
+    {
+        $contractor = $this->getTrimedCompanyName($contractor);
+
+        return ($this->contracts->getCourtCasesOfCompany($contractor));
     }
 }

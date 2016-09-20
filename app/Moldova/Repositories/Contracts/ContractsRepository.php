@@ -2,6 +2,7 @@
 
 use App\Moldova\Entities\Contractors;
 use App\Moldova\Entities\Contracts;
+use App\Moldova\Entities\CourtCases;
 use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Service\StringUtil;
 use MongoRegex;
@@ -20,18 +21,24 @@ class ContractsRepository implements ContractsRepositoryInterface
      * @var Contractors
      */
     private $contractors;
+    /**
+     * @var CourtCases
+     */
+    private $courtCases;
 
     /**
      * ContractsRepository constructor.
      * @param Contracts   $contracts
      * @param Contractors $contractors
      * @param OcdsRelease $ocdsRelease
+     * @param CourtCases  $courtCases
      */
-    public function __construct(Contracts $contracts, Contractors $contractors, OcdsRelease $ocdsRelease)
+    public function __construct(Contracts $contracts, Contractors $contractors, OcdsRelease $ocdsRelease, CourtCases $courtCases)
     {
         $this->contracts   = $contracts;
         $this->ocdsRelease = $ocdsRelease;
         $this->contractors = $contractors;
+        $this->courtCases  = $courtCases;
     }
 
     /**
@@ -520,26 +527,22 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getCompanyData($contractor)
     {
-//        $search = StringUtil::accentToRegex($contractor);
-//        $query  = array('full_name' => new MongoRegex("/.*{$search}.*/i"));
-//        $query2 = array('jurid_form' => new MongoRegex("/.*{$search}.*/i"));
-//        $query3 = array('list_of_founders' => new MongoRegex("/.*{$search}.*/i"));
-//        $query4 = array('leaders_list' => new MongoRegex("/.*{$search}.*/i"));
-//
-//        $cursor = $this->contractors->raw(function ($collection) use ($query, $query2, $query3, $query4) {
-//            return $collection->find([
-//                '$or' => [
-//                    $query,
-//                    $query2,
-//                    $query3,
-//                    $query4
-//                ]
-//            ]);
-//        });
+        return $this->contractors->raw(function ($collection) use ($contractor) {
+            $collection->createIndex(['$**' => "text"]);
 
-        return $this->contractors->raw(function ($collection) use($contractor) {
-             $collection->createIndex(['$**' => "text"]);
-            return $collection->find(['$text'=> ['$search'=> $contractor]], ['score'=> ['$meta'=> 'textScore']])->sort(['score'=>['$meta'=>'textScore']])->limit(5);
+            return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']])->limit(5);
+        });
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCourtCasesOfCompany($contractor)
+    {
+        return $this->courtCases->raw(function ($collection) use ($contractor) {
+            $collection->createIndex(['title' => "text"]);
+
+            return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']])->limit(50);
         });
     }
 }

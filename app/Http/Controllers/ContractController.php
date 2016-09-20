@@ -90,6 +90,7 @@ class ContractController extends Controller
         }
 
         $companyData      = $contractorService->fetchInfo($contractor);
+        $courtCases       = $contractorService->fetchCourtData($contractor);
         $total            = $this->getTotal($contractorDetail);
         $totalContract    = $total['totalContract'];
         $totalAmount      = $total['totalAmount'];
@@ -98,7 +99,7 @@ class ContractController extends Controller
         $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, 2014, $contractor, 'awards.suppliers.name');
         $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, 2014, $contractor, 'awards.suppliers.name');
 
-        return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices', 'totalContract','companyData'));
+        return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices', 'totalContract', 'companyData','courtCases'));
     }
 
     /**

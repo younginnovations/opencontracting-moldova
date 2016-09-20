@@ -222,6 +222,11 @@
             </tbody>
         </table>
     </div>
+
+    @forelse($courtCases as $case)
+{{$case->title}}<br>
+    @empty
+    @endforelse
 @stop
 @section('script')
     <script src="{{url('js/vendorChart.min.js')}}"></script>

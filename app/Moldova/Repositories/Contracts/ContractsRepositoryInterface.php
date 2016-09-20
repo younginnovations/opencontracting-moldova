@@ -112,4 +112,10 @@ interface ContractsRepositoryInterface
      */
     public function getCompanyData($contractor);
 
+    /**
+     * @param $contractor
+     * @return mixed
+     */
+    public function getCourtCasesOfCompany($contractor);
+
 }
