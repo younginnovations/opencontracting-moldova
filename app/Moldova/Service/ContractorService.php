@@ -1,5 +1,7 @@
 <?php namespace App\Moldova\Service;
 
+use App\Moldova\Entities\Blacklist;
+use App\Moldova\Entities\CompanyFeedback;
 use App\Moldova\Entities\Contractors;
 use App\Moldova\Entities\CourtCases;
 use App\Moldova\Repositories\Contracts\ContractsRepositoryInterface;
@@ -136,5 +138,64 @@ class ContractorService
         $contractor = $this->getTrimedCompanyName($contractor);
 
         return ($this->contracts->getCourtCasesOfCompany($contractor));
+    }
+
+    /**
+     * Reads the csv file of Company feedback and store to CompanyFeedback model.
+     * @return string
+     */
+    public function storeFeedbackData()
+    {
+        $reader = new \SpreadsheetReader(public_path('feedback.csv'));
+        $reader->ChangeSheet(0);
+        $feedback = new CompanyFeedback();
+
+        return $this->save($reader, $feedback, "Company Feedback");
+    }
+
+    /**
+     * Reads the csv file of Company blacklist and store to Blacklist model.
+     * @return string
+     */
+    public function storeBlacklistData()
+    {
+        $reader = new \SpreadsheetReader(public_path('blacklist.csv'));
+        $reader->ChangeSheet(0);
+        $blacklist = new Blacklist();
+
+        return $this->save($reader, $blacklist, "Blacklist");
+    }
+
+    /**
+     * @param $reader
+     * @param $model
+     * @param $title
+     * @return string
+     */
+    protected function save($reader, $model, $title)
+    {
+        echo "Data import started";
+        $start = date('Y-m-d H:i:s');
+
+        foreach ($reader as $key => $Row) {
+            if ($key == 0) {
+                continue;
+            }
+            $data = [];
+            foreach ($model->fillable as $index => $fill) {
+                $data[$fill] = ("clear_name" != $fill) ? utf8_encode($Row[$index]) : "";
+                $data['key'] = $key;
+            }
+            try {
+                $model->create($data);
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+            echo "#";
+        }
+
+        $end = date('Y-m-d H:i:s');
+
+        return 'Finished Importing ' . $title . ' Data within ' . $start . "=>" . $end;
     }
 }

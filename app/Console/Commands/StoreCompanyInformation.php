@@ -30,7 +30,9 @@ class StoreCompanyInformation extends Command
      */
     public function handle()
     {
-        $this->comment($this->contractorService->storeCourtData());
+        $this->comment($this->contractorService->storeBlacklistData());
+        $this->comment($this->contractorService->storeFeedbackData());
+//        $this->comment($this->contractorService->storeCourtData());
 //        $this->comment($this->contractorService->readExcel());
     }
 }
