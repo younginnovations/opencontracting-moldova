@@ -1,5 +1,6 @@
 <?php namespace App\Moldova\Repositories\Contracts;
 
+use App\Moldova\Entities\Blacklist;
 use App\Moldova\Entities\Contractors;
 use App\Moldova\Entities\Contracts;
 use App\Moldova\Entities\CourtCases;
@@ -525,10 +526,13 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getCompanyData($contractor)
+    public function getCompanyData($contractor, $limit)
     {
-        return $this->contractors->raw(function ($collection) use ($contractor) {
+        return $this->contractors->raw(function ($collection) use ($contractor, $limit) {
             $collection->createIndex(['$**' => "text"]);
+            if ('all' === $limit) {
+                return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']]);
+            }
 
             return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']])->limit(5);
         });
@@ -537,12 +541,23 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getCourtCasesOfCompany($contractor)
+    public function getCourtCasesOfCompany($contractor, $limit)
     {
-        return $this->courtCases->raw(function ($collection) use ($contractor) {
+        return $this->courtCases->raw(function ($collection) use ($contractor, $limit) {
             $collection->createIndex(['title' => "text"]);
+            if('all' === $limit){
+                return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']]);
+            }
+            return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']])->limit(5);
+        });
+    }
 
-            return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']])->limit(50);
+    public function getBlacklistCompany($contractor)
+    {
+        $blacklist = new Blacklist();
+        return $blacklist->raw(function ($collection) use ($contractor) {
+            $collection->createIndex(['organizationName' => "text"]);
+            return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']]);
         });
     }
 }

@@ -51,17 +51,18 @@ class ContractorService
     }
 
     /**
-     * @param $contractor
+     * @param        $contractor
+     * @param string $limit
      * @return mixed
      */
-    public function fetchInfo($contractor)
+    public function fetchInfo($contractor, $limit = '5')
     {
         ini_set('memory_limit', '8192M');
 //        $contractor  = 'A.I. NIKA-IMOBIL S.R.L.';
 //        $contractor  = 'Deleu-Delev';
 
         $contractor  = $this->getTrimedCompanyName($contractor);
-        $companyData = $this->contracts->getCompanyData($contractor);
+        $companyData = $this->contracts->getCompanyData($contractor,$limit);
 
 //        if (sizeof($companyData) == 0) {
 //            $companyData = [];
@@ -130,14 +131,15 @@ class ContractorService
     }
 
     /**
-     * @param $contractor
+     * @param        $contractor
+     * @param string $limit
      * @return mixed
      */
-    public function fetchCourtData($contractor)
+    public function fetchCourtData($contractor, $limit = '5')
     {
         $contractor = $this->getTrimedCompanyName($contractor);
 
-        return ($this->contracts->getCourtCasesOfCompany($contractor));
+        return ($this->contracts->getCourtCasesOfCompany($contractor,$limit));
     }
 
     /**
@@ -197,5 +199,12 @@ class ContractorService
         $end = date('Y-m-d H:i:s');
 
         return 'Finished Importing ' . $title . ' Data within ' . $start . "=>" . $end;
+    }
+
+    public function fetchBlacklist($contractor)
+    {
+        $contractor = $this->getTrimedCompanyName($contractor);
+
+        return ($this->contracts->getBlacklistCompany($contractor));
     }
 }

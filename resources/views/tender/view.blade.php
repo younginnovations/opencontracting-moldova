@@ -155,7 +155,12 @@
         </div>
     </div>
 
-
+    <div class="row">
+        @forelse($feedbackData->toArray() as $key => $feedback)
+            {{ $key.' => '.$feedback }} <br>
+        @empty
+        @endforelse
+    </div>
 @endsection
 @section('script')
     <script>

@@ -15,7 +15,6 @@
     "godpod/sendgrid": "2.2.0.1",
     "nuovo/spreadsheet-reader": "^0.5.11",
     "jenssegers/mongodb": "2.3.*"
-
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

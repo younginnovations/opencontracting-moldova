@@ -5,31 +5,6 @@
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
                 {{ $contractor }}
             </h2>
-
-            <div class="detail-info-wrap">
-                <div class="detail-anchor small-button grey-yellow-btn"><span>i</span>view info</div>
-                <div class="detail-info">
-                    <table id="company-info">
-                        <thead>
-                        <th>Company name</th>
-                        <th>Leaders</th>
-                        <th>Founders</th>
-                        </thead>
-                        <tbody>
-                        @forelse($companyData as $company)
-                            <tr>
-                                <td>{{ $company['full_name'] }}</td>
-                                <td>{{ $company['leaders_list'] }}</td>
-                                <td>{{ $company['list_of_founders'] }}</td>
-                            </tr>
-                        @empty
-                            No Data Found
-                        @endforelse
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
         </div>
     </div>
 
@@ -55,6 +30,77 @@
     </div>
 
     <div class="row chart-section-wrap">
+        <div class="inner-wrap" data-equalizer="equal-chart-wrap">
+            <div data-equalizer="equal-header">
+                <div class="medium-6 small-12 columns">
+                    <div class="each-chart-section">
+                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <h3>@lang('contracts.company_information')</h3>
+                        </div>
+                        <table id="company-info">
+                            <thead>
+                            <th>Company name</th>
+                            <th>Leaders</th>
+                            <th>Founders</th>
+                            <th>Search Weight</th>
+                            </thead>
+                            <tbody>
+                            @forelse($companyData as $company)
+                                <tr>
+                                    <td>{{ $company['full_name'] }}</td>
+                                    <td>{{ $company['leaders_list'] }}</td>
+                                    <td>{{ $company['list_of_founders'] }}</td>
+                                    <td>{{ number_format($company['score'],2) }}</td>
+                                </tr>
+                            @empty
+                                No Data Found
+                            @endforelse
+                            </tbody>
+                        </table>
+                        <div style="background-color: #d3d3d3;">Disclaimer: These results are based on best match that
+                            we could find in the <a href="http://date.gov.md">date.gov.md</a>.Please click <a
+                                    href="{{ route('contracts.linkage', ['type' => 'company','name' => $contractor]) }}">here</a>
+                            for more matches.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="medium-6 small-12 columns">
+                    <div class="each-chart-section">
+                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <h3>@lang('contracts.court_cases')</h3>
+                        </div>
+                        <table id="court-case-info">
+                            <thead>
+                            <th>Case type</th>
+                            <th>Title</th>
+                            <th>Court name</th>
+                            <th>Search Weight</th>
+                            </thead>
+                            <tbody>
+                            @forelse($courtCases as $case)
+                                <tr>
+                                    <td>{{ $case['case_type'] }}</td>
+                                    <td><a href="{{  $case['link'] }}">{{ $case['title'] }}</a></td>
+                                    <td>{{ $case['court_name'] }}</td>
+                                    <td>{{ number_format($case['score'],2) }}</td>
+                                </tr>
+                            @empty
+                                No Data Found
+                            @endforelse
+                            </tbody>
+                        </table>
+                        <div style="background-color: #d3d3d3;">Disclaimer: These results are based on best match that
+                            we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.Please
+                            click <a
+                                    href="{{ route('contracts.linkage',['name'=>$contractor,'type' => 'courtCase']) }}">here</a>
+                            for more matches.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns">
@@ -83,7 +129,8 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>@lang('contracts.contract_value')</h3>
                         </div>
-                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart"
+                             data-equalizer-watch="equal-chart-wrap">
                             <div id="barChart-amount"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
@@ -100,7 +147,6 @@
                 </div>
             </div>
         </div>
-
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns">
@@ -109,7 +155,8 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>@lang('general.top_5_procuring_agencies')</h3>
                         </div>
-                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart"
+                             data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
@@ -118,8 +165,10 @@
                                             <select id="select-agency-year">
                                                 @include('selectYear')
                                             </select>
-                                            <select id="select-agency" data-for="contractor" data="{{ $contractor }}">
-                                                <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <select id="select-agency" data-for="contractor"
+                                                    data="{{ $contractor }}">
+                                                <option value="amount"
+                                                        selected>@lang('general.based_on_value')</option>
                                                 <option value="count">@lang('general.based_on_count')</option>
                                             </select>
                                         </label>
@@ -150,7 +199,8 @@
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <h3>@lang('general.top_5_goods_&_services_procured')</h3>
                         </div>
-                        <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
+                        <div class="chart-wrap default-view default-barChart"
+                             data-equalizer-watch="equal-chart-wrap">
                             <div class="filter-section">
                                 <form>
                                     <div>
@@ -159,8 +209,10 @@
                                             <select id="select-goods-year">
                                                 @include('selectYear')
                                             </select>
-                                            <select id="select-goods" data-for="contractor" data="{{ $contractor }}">
-                                                <option value="amount" selected>@lang('general.based_on_value')</option>
+                                            <select id="select-goods" data-for="contractor"
+                                                    data="{{ $contractor }}">
+                                                <option value="amount"
+                                                        selected>@lang('general.based_on_value')</option>
                                                 <option value="count">@lang('general.based_on_count')</option>
                                             </select>
                                         </label>
@@ -179,7 +231,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services')
+                            <a href="{{ route('goods.index') }}"
+                               class="anchor">@lang('general.view_all_goods_services')
                                 <span>  &rarr; </span></a>
                         </div>
                     </div>
@@ -187,7 +240,6 @@
             </div>
 
         </div>
-
     </div>
     <div class="row table-wrapper">
         <a target="_blank" class="export"
@@ -222,11 +274,6 @@
             </tbody>
         </table>
     </div>
-
-    @forelse($courtCases as $case)
-{{$case->title}}<br>
-    @empty
-    @endforelse
 @stop
 @section('script')
     <script src="{{url('js/vendorChart.min.js')}}"></script>

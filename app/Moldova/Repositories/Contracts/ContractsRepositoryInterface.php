@@ -108,14 +108,18 @@ interface ContractsRepositoryInterface
 
     /**
      * @param $contractor
+     * @param $limit
      * @return mixed
      */
-    public function getCompanyData($contractor);
+    public function getCompanyData($contractor,$limit);
 
     /**
      * @param $contractor
+     * @param $limit
      * @return mixed
      */
-    public function getCourtCasesOfCompany($contractor);
+    public function getCourtCasesOfCompany($contractor, $limit);
+
+    public function getBlacklistCompany($contractor);
 
 }
