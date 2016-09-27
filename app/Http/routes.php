@@ -1,34 +1,26 @@
 <?php
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
 |
 */
-//$app->get('/', function () use ($app) {
-//    return dd(config('database.default'));
-//});
 
-$app->get('/home', function () use ($app) {
-    return view('landing-page');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-$app->get('/contractDetail', function () use ($app) {
-    return view('contract-detail');
-});
-
-$app->get(
+Route::get(
     '/',
     ['as' => '/', 'uses' => 'HomeController@index']
 );
 
-$app->get(
+Route::get(
     '/contracts',
     [
         'as'   => 'contracts',
@@ -36,7 +28,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/contracts/contractor',
     [
         'as'   => 'contracts.contractorIndex',
@@ -44,7 +36,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/contracts/contractor/{name}',
     [
         'as'   => 'contracts.contractor',
@@ -52,7 +44,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/contracts/{id}',
     [
         'as'   => 'contracts.view',
@@ -60,7 +52,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/ocds/{id}/json',
     [
         'as'   => 'contracts.jsonView',
@@ -68,7 +60,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/procuring-agency/{name}',
     [
         'as'   => 'procuring-agency.show',
@@ -76,7 +68,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/procuring-agency',
     [
         'as'   => 'procuring-agency.index',
@@ -84,7 +76,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/api/procuring-agency',
     [
         'as'   => 'procuring-agency.api',
@@ -92,7 +84,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/goods',
     [
         'as'   => 'goods.index',
@@ -100,7 +92,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/filter',
     [
         'as'   => 'filter',
@@ -108,7 +100,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/api/data',
     [
         'as'   => 'api.data',
@@ -116,7 +108,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/api/contactorData',
     [
         'as'   => 'api.contactorData',
@@ -124,7 +116,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/search',
     [
         'as'   => 'search',
@@ -132,7 +124,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/tenders',
     [
         'as'   => 'tenders.index',
@@ -140,7 +132,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/api/tenders',
     [
         'as'   => 'tenders.api',
@@ -148,7 +140,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/tenders/{tender}',
     [
         'as'   => 'tenders.show',
@@ -156,7 +148,7 @@ $app->get(
     ]
 );
 
-$app->get(
+Route::get(
     '/api/goods',
     [
         'as'   => 'goods.api',
@@ -164,7 +156,7 @@ $app->get(
     ]
 );
 
-$app->post(
+Route::post(
     '/subscriptions/add',
     [
         'as'   => 'subscriptions.add',
@@ -172,19 +164,19 @@ $app->post(
     ]
 );
 
-$app->get('/about',function(){
+Route::get('/about',function(){
     return view('about');
 });
 
-$app->get('/error',function(){
+Route::get('/error',function(){
     return view('error_404');
 });
 
-$app->get('/contact', function () {
+Route::get('/contact', function () {
     return view('contact');
 });
 
-$app->post(
+Route::post(
     '/contact',
     [
         'as'   => 'home.contact',
@@ -192,26 +184,26 @@ $app->post(
     ]
 );
 
-$app->post(
+Route::post(
     '/contracts',
     [
         'as'   => 'contracts.feedback',
         'uses' => 'ContractController@sendMessage'
     ]
 );
-$app->get('/export', ['as' => 'home.export', 'uses' => 'HomeController@export']);
-$app->get('contractor-detail/export/{name}', ['as' => 'contractorDetail.export', 'uses' => 'ContractController@contractorDetailExport']);
-$app->get('agency-detail/export/{name}', ['as' => 'agencyDetail.export', 'uses' => 'ProcuringAgencyController@agencyDetailExport']);
-$app->get('goods-detail/export/{name}', ['as' => 'goodsDetail.export', 'uses' => 'GoodsController@goodsDetailExport']);
+Route::get('/export', ['as' => 'home.export', 'uses' => 'HomeController@export']);
+Route::get('contractor-detail/export/{name}', ['as' => 'contractorDetail.export', 'uses' => 'ContractController@contractorDetailExport']);
+Route::get('agency-detail/export/{name}', ['as' => 'agencyDetail.export', 'uses' => 'ProcuringAgencyController@agencyDetailExport']);
+Route::get('goods-detail/export/{name}', ['as' => 'goodsDetail.export', 'uses' => 'GoodsController@goodsDetailExport']);
 
-$app->get('goods/export', ['as' => 'goods.export', 'uses' => 'GoodsController@exportGoods']);
-$app->get('agency/export', ['as' => 'agency.export', 'uses' => 'ProcuringAgencyController@exportAgencies']);
-$app->get('contractor/export', ['as' => 'contractor.export', 'uses' => 'ContractController@exportContractors']);
-$app->get('tender/export', ['as' => 'tender.export', 'uses' => 'TenderController@exportTenders']);
-$app->get('tender-goods/export/{id}', ['as' => 'tenderGoods.export', 'uses' => 'TenderController@exportTenderGoods']);
-$app->get('tender-contracts/export/{id}', ['as' => 'tenderContracts.export', 'uses' => 'TenderController@exportTenderContracts']);
+Route::get('goods/export', ['as' => 'goods.export', 'uses' => 'GoodsController@exportGoods']);
+Route::get('agency/export', ['as' => 'agency.export', 'uses' => 'ProcuringAgencyController@exportAgencies']);
+Route::get('contractor/export', ['as' => 'contractor.export', 'uses' => 'ContractController@exportContractors']);
+Route::get('tender/export', ['as' => 'tender.export', 'uses' => 'TenderController@exportTenders']);
+Route::get('tender-goods/export/{id}', ['as' => 'tenderGoods.export', 'uses' => 'TenderController@exportTenderGoods']);
+Route::get('tender-contracts/export/{id}', ['as' => 'tenderContracts.export', 'uses' => 'TenderController@exportTenderContracts']);
 
-$app->get(
+Route::get(
     '/goods/{name}',
     [
         'as'   => 'goods',
@@ -219,21 +211,21 @@ $app->get(
     ]
 );
 
-$app->get('/csv/download', function () {
+Route::get('/csv/download', function () {
     return response()->download(base_path('public') . '/csv/contracts_csv.csv');
 });
-$app->get('/csv/download/tenders',function(){
+Route::get('/csv/download/tenders',function(){
     return response()->download(base_path('public') . '/csv/tenders_csv.csv');
 });
 
-$app->get('/csv/download/goods',function(){
+Route::get('/csv/download/goods',function(){
     return response()->download(base_path('public') . '/csv/goods_csv.csv');
 });
 
-$app->get('/csv/download/agencies',function(){
+Route::get('/csv/download/agencies',function(){
     return response()->download(base_path('public') . '/csv/agencies_csv.csv');
 });
 
-$app->get('/csv/download/contractors',function(){
+Route::get('/csv/download/contractors',function(){
     return response()->download(base_path('public') . '/csv/contractors_csv.csv');
 });

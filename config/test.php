@@ -1,6 +1,0 @@
-<?php
-
-
-return [
-    'test' => 'hey'
-];

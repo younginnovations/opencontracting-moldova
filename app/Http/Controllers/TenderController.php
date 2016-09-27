@@ -6,8 +6,9 @@ namespace App\Http\Controllers;
 use App\Moldova\Service\StreamExporter;
 use App\Moldova\Service\Tenders;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class TenderController
+class TenderController extends Controller
 {
     /**
      * @var Tenders
@@ -103,7 +104,7 @@ class TenderController
      */
     public function exportTenderGoods($tenderId)
     {
-        return $this->exporter->fetchTenderGoods($tenderId);
+//        return $this->exporter->fetchTenderGoods($tenderId);
     }
 
     /**
@@ -112,7 +113,7 @@ class TenderController
      */
     public function exportTenderContracts($tenderId)
     {
-        return $this->exporter->fetchTenderContracts($tenderId);
+//        return $this->exporter->fetchTenderContracts($tenderId);
     }
 
 }

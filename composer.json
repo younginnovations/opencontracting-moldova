@@ -1,27 +1,33 @@
 {
-  "name": "laravel/lumen",
-  "description": "The Laravel Lumen Framework.",
+  "name": "laravel/laravel",
+  "description": "The Laravel Framework.",
   "keywords": [
     "framework",
-    "laravel",
-    "lumen"
+    "laravel"
   ],
   "license": "MIT",
   "type": "project",
   "require": {
     "php": ">=5.5.9",
-    "laravel/lumen-framework": "5.2.*",
+    "laravel/framework": "5.2.*",
     "vlucas/phpdotenv": "~2.2",
-    "jenssegers/mongodb": "2.3.*",
     "guzzlehttp/guzzle": "5.3",
-    "godpod/sendgrid": "2.2.0.1"
+    "godpod/sendgrid": "2.2.0.1",
+    "nuovo/spreadsheet-reader": "^0.5.11",
+    "jenssegers/mongodb": "2.3.*"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
+    "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~4.0",
-    "rap2hpoutre/laravel-log-viewer": "^0.6.0"
+    "symfony/css-selector": "2.8.*|3.0.*",
+    "symfony/dom-crawler": "2.8.*|3.0.*",
+    "rap2hpoutre/laravel-log-viewer": "^0.7.0"
   },
   "autoload": {
+    "classmap": [
+      "database"
+    ],
     "psr-4": {
       "App\\": "app/"
     },
@@ -31,8 +37,26 @@
   },
   "autoload-dev": {
     "classmap": [
-      "tests/",
-      "database/"
+      "tests/TestCase.php"
     ]
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "php -r \"copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "php artisan key:generate"
+    ],
+    "post-install-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postInstall",
+      "php artisan optimize"
+    ],
+    "post-update-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+      "php artisan optimize"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist"
   }
 }

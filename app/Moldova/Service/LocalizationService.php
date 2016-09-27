@@ -75,7 +75,7 @@ class LocalizationService
      */
     public function isValidLangCode($lang)
     {
-        $languages = config('language');
+        $languages = config('app.language');
 
         if (array_key_exists(strtolower($lang), $languages)) {
             return true;
