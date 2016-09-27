@@ -8,6 +8,7 @@ use App\Moldova\Service\Email;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Moldova\Service\StreamExporter;
+use Illuminate\Support\Facades\URL;
 
 class ContractController extends Controller
 {
@@ -47,7 +48,7 @@ class ContractController extends Controller
     {
         $contractJson = $this->contracts->getContractDataForJson($contractId);
         $response     = [
-            "uri"           => url() . "/contracts/" . $contractId . "/json",
+            "uri"           => URL::to('/') . "/contracts/" . $contractId . "/json",
             "publishedDate" => "2016-06-10T10:30:00Z",
             "publisher"     => [
                 "scheme" => "MD-PPA",

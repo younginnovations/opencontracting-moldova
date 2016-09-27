@@ -13,16 +13,16 @@ return [
 
     'about_open_contracting_in_moldova' => 'About Open Contracting in Moldova',
 
-    'about_second_paragraph'=>'<p> In 2015, the Government of Moldova began working with the World Bank to introduce open contracting in public procurement. Open contracting is any effort to increase transparency and participation of different stakeholders in contracting processes. As a result, we developed this website and PPA championed open contracting commitments in the Open Government Partnership National Action Plan (2016) of the Government.</p>',
+    'about_second_paragraph' => '<p> In 2015, the Government of Moldova began working with the World Bank to introduce open contracting in public procurement. Open contracting is any effort to increase transparency and participation of different stakeholders in contracting processes. As a result, we developed this website and PPA championed open contracting commitments in the Open Government Partnership National Action Plan (2016) of the Government.</p>',
 
-    'additional_resources_for_developers'=>'Additional resources for Developers',
-    'resources'=>' <p>Open contracting: <a target="_blank" href="http://standard.open-contracting.org/">http://www.open-contracting.org/</a>
+    'additional_resources_for_developers' => 'Additional resources for Developers',
+    'resources'                           => ' <p>Open contracting: <a target="_blank" href="http://standard.open-contracting.org/">http://www.open-contracting.org/</a>
             </p>
 
             <p>Open contracting data standard: <a target="_blank" href="http://standard.open-contracting.org/">http://standard.open-contracting.org/</a>
             </p>
 ',
-    'credit'=>'<p class="disabled">
+    'credit'                              => '<p class="disabled">
                 The picture used in this site is attributed to Andrey from Russia (Chaprianu monastery. Moldova) [CC BY
                 2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons.<a
                         href="url: https://commons.wikimedia.org/wiki/File%3AC%C4%83priana_monastery_in_Moldova.jpg">Here </a>

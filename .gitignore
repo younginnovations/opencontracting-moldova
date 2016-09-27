@@ -6,3 +6,7 @@ Homestead.json
 /.idea
 .DS_STORE
 /public/css/maps/
+/public/blacklist.csv
+/public/company08.xlsx
+/public/feedback.csv
+/public/newcompany.csv

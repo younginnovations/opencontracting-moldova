@@ -1,9 +1,9 @@
 ## Moldova Open Contracting Data Visualisation Platform
 
-This is the data visualisation portal of the tenders/contracts data from Moldova PPA eTenders System. The system is built using php based Lumen framework and MongoDb. The data are pulled from eTenders system, transformed to the OCDS standard and presented the visualisation to display the data in meaningful manner.
+This is the data visualisation portal of the tenders/contracts data from Moldova PPA eTenders System. The system is built using php based Laravel framework and MongoDb. The data are pulled from eTenders system, transformed to the OCDS standard and presented the visualisation to display the data in meaningful manner.
 
 ### Run
-The app can be run following the steps below:
+The app can be run following th e steps below:
 
 * Clone the repository
 * Install the application dependencies using command: composer install
@@ -14,7 +14,7 @@ The app can be run following the steps below:
 
 ### Framework
 
-The application is written in PHP based on the Lumen framework V5.2.
+The application is written in PHP based on the Laravel framework V5.2.
 
 ### License
 
