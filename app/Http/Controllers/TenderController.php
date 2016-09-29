@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Moldova\Service\StreamExporter;
 use App\Moldova\Service\Tenders;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class TenderController extends Controller
 {

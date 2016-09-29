@@ -169,6 +169,16 @@ namespace :vendor do
     end
 end
 
+namespace :generate do
+    desc 'Generate app key'
+    task :key do
+        on roles(:web) do
+            within release_path do
+            execute :php, "artisan key:generate"
+        end
+    end
+    end
+end
 namespace :hipchat do
 
     desc 'Notigy Hipchat'
@@ -233,6 +243,7 @@ namespace :deploy do
     ##after :updated, "moldova:optimize"
     after :updated, "environment:set_variables"
     after :published, "moldova:create_symlink"
+    after :published, "generate:key"
     after :finished, "hipchat:deployed"
     after :finished, "moldova:create_ver_txt"
 end

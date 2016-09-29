@@ -1,5 +1,20 @@
 <header class="top-bar fixed-header">
-    <div class="row">
+    @if(auth()->check())
+        <div class="login-bar">
+            <div class="row">
+                <ul class="dropdown menu user-menu" data-dropdown-menu>
+                    <li>
+                        <a title="user image" class="user-logo"></a>
+                        <ul class="menu logout">
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    @endif
+    <div class="main-menu-wrap">
+        <div class="row">
         <div class="top-bar-left">
             <a href="{{ route('/') }}" class="project-logo">
                 <div class="first-section">@lang('general.moldova_contract')</div>
@@ -51,7 +66,14 @@
             </div>
         </div>
 
+        <div class="title-bar burger-menu-button">
+            <button class="burger-menu" type="button">
+                <div class="burger"></div>
+            </button>
+        </div>
 
     </div>
+    </div>
+    @include('partials.notifications')
 </header>
 

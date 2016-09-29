@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Moldova\Service\Subscription;
 use Illuminate\Http\Request;
 
-class SubscriptionsController
+class SubscriptionsController extends Controller
 {
     private $subscription;
 
