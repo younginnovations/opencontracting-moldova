@@ -28,6 +28,10 @@ elixir(function(mix){
     ],'./public/js/app.js');
 
     mix.scripts([
+        './resources/assets/js/custom/contracts.js'
+    ],'./public/js/contracts.js');
+
+    mix.scripts([
         './resources/assets/js/charts/custom/lineChart-homepage.js',
         './resources/assets/js/charts/custom/lineChart-rest.js',
         './resources/assets/js/charts/custom/horizontal-barChart.js',

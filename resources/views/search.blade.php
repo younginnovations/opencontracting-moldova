@@ -90,7 +90,7 @@
                     {!! (!empty($params['endDate'])) ?'<span><span class="cancel">x</span>End Date :  '.$params['endDate'].' </span>' : '' !!}
                 </div>
                 <div class="button-group clearfix">
-                    <div class="button btn cancel-btn">@lang('general.showing_search_result_for')</div>
+                    <div class="button btn cancel-btn">@lang('general.cancel')</div>
                     <div class="button btn reset-btn">@lang('search.reset')</div>
                 </div>
             </div>

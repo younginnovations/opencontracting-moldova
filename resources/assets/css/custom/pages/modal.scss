@@ -41,13 +41,13 @@
     padding: 30px;
     color: $dark-grey-color;
   }
-  .close{
+  .close, .closeLoginModal{
     color: #333;
   }
 }
 
 /* The Close Button */
-.close {
+.close, .closeLoginModal {
   color: #fff;
   float: right;
   font-size: 28px;
@@ -57,7 +57,10 @@
 }
 
 .close:hover,
-.close:focus {
+.close:focus,
+.closeLoginModal:hover,
+.closeLoginModal:focus
+{
   color: #000;
   text-decoration: none;
   cursor: pointer;

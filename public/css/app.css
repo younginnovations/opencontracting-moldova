@@ -388,6 +388,46 @@ footer {
 .suscribe-input .form-control {
   border-radius: 4px 0 0 4px; }
 
+i.icon {
+  text-indent: 0;
+  float: none;
+  overflow: visible; }
+  i.icon:before {
+    left: 0; }
+
+a.item {
+  margin-right: 20px; }
+
+.level-1 {
+  padding-left: 30px; }
+
+.level-2 {
+  padding-left: 60px; }
+
+.level-3 {
+  padding-left: 90px; }
+
+.level-4 {
+  padding-left: 120px; }
+
+.level-5 {
+  padding-left: 150px; }
+
+.level-6 {
+  padding-left: 180px; }
+
+.level-7 {
+  padding-left: 210px; }
+
+.level-8 {
+  padding-left: 240px; }
+
+.level-9 {
+  padding-left: 240px; }
+
+.level-10 {
+  padding-left: 240px; }
+
 .burger-menu-button {
   z-index: 9999;
   position: fixed;
@@ -2223,11 +2263,11 @@ p.disabled {
   padding: 30px;
   color: #5A5A5A; }
 
-.alert .close {
+.alert .close, .alert .closeLoginModal {
   color: #333; }
 
 /* The Close Button */
-.close {
+.close, .closeLoginModal {
   color: #fff;
   float: right;
   font-size: 28px;
@@ -2236,7 +2276,9 @@ p.disabled {
   margin-right: 15px; }
 
 .close:hover,
-.close:focus {
+.close:focus,
+.closeLoginModal:hover,
+.closeLoginModal:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer; }

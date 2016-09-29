@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b588f617cec16fcd76df736703c5da97",
-    "content-hash": "279b928ce9334527f583c211d16918a1",
+    "hash": "312d4537e6a4e061d99f1daa929816b1",
+    "content-hash": "2398e79745b9f97e0e353bee300956cd",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1260,6 +1260,45 @@
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
             "time": "2016-05-03 17:50:52"
+        },
+        {
+            "name": "risul/laravel-like-comment",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/risul3/laravel-like-comment.git",
+                "reference": "a10ef5fd210aacfd3f2fb3e10c631a4b04a46c97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/risul3/laravel-like-comment/zipball/a10ef5fd210aacfd3f2fb3e10c631a4b04a46c97",
+                "reference": "a10ef5fd210aacfd3f2fb3e10c631a4b04a46c97",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "risul\\LaravelLikeComment\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "risul",
+                    "email": "risul321@gmail.com"
+                }
+            ],
+            "description": "Ajax based site wide like and comment system for laravel.",
+            "keywords": [
+                "ajax",
+                "comment",
+                "laravel",
+                "like"
+            ],
+            "time": "2016-09-27 04:42:05"
         },
         {
             "name": "sendgrid/smtpapi",

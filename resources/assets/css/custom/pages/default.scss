@@ -554,3 +554,56 @@ footer {
 .suscribe-input .form-control{
     border-radius: 4px 0 0 4px;
 }
+
+i.icon{
+  text-indent: 0;
+  float: none;
+  overflow: visible;
+  &:before{
+    left: 0;
+  }
+}
+
+a.item{
+  margin-right: 20px;
+}
+
+ .level-1 {
+   padding-left: 30px;
+ }
+
+.level-2 {
+  padding-left: 60px;
+}
+
+.level-3 {
+  padding-left: 90px;
+}
+
+.level-4 {
+  padding-left: 120px;
+}
+
+.level-5 {
+  padding-left: 150px;
+}
+
+.level-6 {
+  padding-left: 180px;
+}
+
+.level-7 {
+  padding-left: 210px;
+}
+
+.level-8 {
+  padding-left: 240px;
+}
+
+.level-9 {
+  padding-left: 240px;
+}
+
+.level-10 {
+  padding-left: 240px;
+}

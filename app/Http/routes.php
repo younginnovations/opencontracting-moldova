@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get(
     '/',
     ['as' => '/', 'uses' => 'HomeController@index']
@@ -245,3 +241,14 @@ Route::get('/csv/download/agencies',function(){
 Route::get('/csv/download/contractors',function(){
     return response()->download(base_path('public') . '/csv/contractors_csv.csv');
 });
+
+Route::group(['prefix'=>'laravellikecomment'], function (){
+//    Route::group(['middleware' => 'auth'], function (){
+        Route::get('/like/vote', 'LikeController@vote');
+        Route::get('/comment/add', 'CommentController@add');
+//    });
+});
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

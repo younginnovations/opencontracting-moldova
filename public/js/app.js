@@ -248,9 +248,19 @@ $(document).ready(function(){
         $("#myModal").css("display","block");
     });
 
+    $("#showLoginModal").click(function(){
+        console.log('here');
+        $("#loginModal").css("display","block");
+    });
+
+
 // When the user clicks on <span> (x), close the modal
     $(".close").click(function(){
         $("#myModal").css("display","none");
+    });
+
+    $(".closeLoginModal").click(function(){
+        $("#loginModal").css("display","none");
     });
 
     $(".alert .close").click(function(){
