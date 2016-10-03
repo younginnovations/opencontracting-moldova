@@ -171,8 +171,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \App\Providers\RepositoryServiceProvider::class,
-        Jenssegers\Mongodb\MongodbServiceProvider::class,
-        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Jenssegers\Mongodb\MongodbServiceProvider::class
 
     ],
 

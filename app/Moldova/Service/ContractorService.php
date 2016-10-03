@@ -21,7 +21,6 @@ class ContractorService
      */
     public function __construct(ContractsRepositoryInterface $contracts)
     {
-        $this->reader    = new \SpreadsheetReader(public_path('newcompany.csv'));
         $this->contracts = $contracts;
     }
 
@@ -30,7 +29,8 @@ class ContractorService
      */
     public function readExcel()
     {
-        $this->reader->ChangeSheet(0);
+        $reader    = new \SpreadsheetReader(public_path('newcompany.csv'));
+        $reader->ChangeSheet(0);
         $keys = [];
         echo date('Y-m-d H:i:s');
         foreach ($this->reader as $key => $Row) {

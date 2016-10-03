@@ -15,8 +15,8 @@ set :repo_diff_path,  :'web-apps/moldova_ocds/compare/master...'
 
 # Multistage Deployment #
 #####################################################################################
-set :stages,              %w(dev staging prod)
-set :default_stage,       "staging"
+set :stages,              %w(demo staging prod)
+set :default_stage,       "demo"
 
 # Other Options #
 #####################################################################################
