@@ -81,7 +81,11 @@ class Tenders
         $splitTenderRef = explode(" ", $tenderRef);
         $ref            = $splitTenderRef[2];
 
-        return $this->tender->getTenderFeedback($ref);
+        $feedback =  $this->tender->getTenderFeedback($ref);
+        if($feedback)
+            return $feedback->toArray();
+
+        return [];
     }
 
 }

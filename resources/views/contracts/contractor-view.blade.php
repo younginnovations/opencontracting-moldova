@@ -5,7 +5,81 @@
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
                 {{ $contractor }}
             </h2>
+
+            <div class="contract-info-wrap">
+                <div class="detail-info-wrap">
+                    <div class="detail-anchor">
+                        <div class="small-button grey-yellow-btn"><span>i</span>More information</div>
+                    </div>
+                    <div class="detail-info">
+                        <div class="description"><span>i</span><u>Disclaimer: These results are based on best match that
+                                we could find in the <a href="http://date.gov.md">date.gov.md</a>.Please click <a
+                                        href="{{ route('contracts.linkage', ['type' => 'company','name' => $contractor]) }}">here</a>
+                                for more matches.</u>
+                        </div>
+                        <ul>
+                            @forelse($companyData as $company)
+                                <li>
+                                    <div class="title="> {{ $company['full_name'] }} </div>
+                                    <div class="name-value-wrap">
+                                        <div class="name">Leaders:</div>
+                                        <div class="value">{{ $company['leaders_list'] }} </div>
+                                    </div>
+
+                                    <div class="name-value-wrap">
+                                        <div class="name">Founders:</div>
+                                        <div class="value">{{ $company['list_of_founders'] }} </div>
+                                    </div>
+                                </li>
+                            @empty
+                                NO matches found.
+                            @endforelse
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="detail-info-wrap">
+                    <div class="detail-anchor">
+                        <div class="small-button grey-yellow-btn balance-icon">10 Court cases</div>
+                    </div>
+                    <div class="detail-info">
+                        <div class="description balance-icon"><u>Disclaimer: These results are based on best match that
+                                we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.Please
+                                click <a
+                                        href="{{ route('contracts.linkage',['name'=>$contractor,'type' => 'courtCase']) }}">here</a>
+                                for more matches.</u></div>
+                        <ul>
+                            @forelse($courtCases as $case)
+                                <li>
+                                    <div class="title="> <a href="{{  $case['link'] }}">{{ $case['title'] }}</a> </div>
+                                    <div class="name-value-wrap">
+                                        <div class="name">Case type:</div>
+                                        <div class="value">{{ $case['case_type'] }} </div>
+                                    </div>
+
+                                    <div class="name-value-wrap">
+                                        <div class="name">Court name:</div>
+                                        <div class="value">{{ $case['court_name'] }} </div>
+                                    </div>
+                                </li>
+                            @empty
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+                <div class="detail-info-wrap">
+                    <div class="detail-anchor">
+                        <div class="small-button grey-yellow-btn {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">Black listed</div>
+                    </div>
+                    <div class="detail-info">
+                        <div class="description {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">This company is {{($blacklist)?'':'not'}} black listed.</div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 
 
@@ -28,79 +102,7 @@
             </div>
         </div>
     </div>
-
     <div class="row chart-section-wrap">
-        <div class="inner-wrap" data-equalizer="equal-chart-wrap">
-            <div data-equalizer="equal-header">
-                <div class="medium-6 small-12 columns">
-                    <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>@lang('contracts.company_information')</h3>
-                        </div>
-                        <table id="company-info">
-                            <thead>
-                            <th>Company name</th>
-                            <th>Leaders</th>
-                            <th>Founders</th>
-                            <th>Search Weight</th>
-                            </thead>
-                            <tbody>
-                            @forelse($companyData as $company)
-                                <tr>
-                                    <td>{{ $company['full_name'] }}</td>
-                                    <td>{{ $company['leaders_list'] }}</td>
-                                    <td>{{ $company['list_of_founders'] }}</td>
-                                    <td>{{ number_format($company['score'],2) }}</td>
-                                </tr>
-                            @empty
-                                No Data Found
-                            @endforelse
-                            </tbody>
-                        </table>
-                        <div style="background-color: #d3d3d3;">Disclaimer: These results are based on best match that
-                            we could find in the <a href="http://date.gov.md">date.gov.md</a>.Please click <a
-                                    href="{{ route('contracts.linkage', ['type' => 'company','name' => $contractor]) }}">here</a>
-                            for more matches.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="medium-6 small-12 columns">
-                    <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>@lang('contracts.court_cases')</h3>
-                        </div>
-                        <table id="court-case-info">
-                            <thead>
-                            <th>Case type</th>
-                            <th>Title</th>
-                            <th>Court name</th>
-                            <th>Search Weight</th>
-                            </thead>
-                            <tbody>
-                            @forelse($courtCases as $case)
-                                <tr>
-                                    <td>{{ $case['case_type'] }}</td>
-                                    <td><a href="{{  $case['link'] }}">{{ $case['title'] }}</a></td>
-                                    <td>{{ $case['court_name'] }}</td>
-                                    <td>{{ number_format($case['score'],2) }}</td>
-                                </tr>
-                            @empty
-                                No Data Found
-                            @endforelse
-                            </tbody>
-                        </table>
-                        <div style="background-color: #d3d3d3;">Disclaimer: These results are based on best match that
-                            we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.Please
-                            click <a
-                                    href="{{ route('contracts.linkage',['name'=>$contractor,'type' => 'courtCase']) }}">here</a>
-                            for more matches.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns">

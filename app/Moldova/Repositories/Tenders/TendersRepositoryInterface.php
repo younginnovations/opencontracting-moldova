@@ -31,5 +31,9 @@ interface TendersRepositoryInterface
      */
     public function getTenderDetailByID($tenderID);
 
+    /**
+     * @param $ref
+     * @return mixed
+     */
     public function getTenderFeedback($ref);
 }

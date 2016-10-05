@@ -156,7 +156,7 @@
     </div>
 
     <div class="row">
-        @forelse($feedbackData->toArray() as $key => $feedback)
+        @forelse($feedbackData as $key => $feedback)
             {{ $key.' => '.$feedback }} <br>
         @empty
         @endforelse

@@ -545,9 +545,10 @@ class ContractsRepository implements ContractsRepositoryInterface
     {
         return $this->courtCases->raw(function ($collection) use ($contractor, $limit) {
             $collection->createIndex(['title' => "text"]);
-            if('all' === $limit){
+            if ('all' === $limit) {
                 return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']]);
             }
+
             return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']])->limit(5);
         });
     }
@@ -555,9 +556,11 @@ class ContractsRepository implements ContractsRepositoryInterface
     public function getBlacklistCompany($contractor)
     {
         $blacklist = new Blacklist();
-        return $blacklist->raw(function ($collection) use ($contractor) {
-            $collection->createIndex(['organizationName' => "text"]);
-            return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']]);
-        });
+
+        return $blacklist->where('organizationName', '=', $contractor)->first();
+//        return $blacklist->raw(function ($collection) use ($contractor) {
+//            $collection->createIndex(['organizationName' => "text"]);
+//            return $collection->find(['$text' => ['$search' => $contractor]], ['score' => ['$meta' => 'textScore']])->sort(['score' => ['$meta' => 'textScore']]);
+//        });
     }
 }

@@ -1,37 +1,36 @@
-.name-value-section{
+.name-value-section {
   border-bottom: solid 1px #D5D5D5;
   padding: 30px;
   color: $dark-grey-color;
 
-  &:last-of-type{
+  &:last-of-type {
     border-bottom: none;
   }
 
-  .each-detail{
+  .each-detail {
     width: calc(100% - 80px);
     float: left;
     margin-top: 6px;
-    >div{
+    > div {
       padding: 0;
     }
   }
 
-
-  .name{
+  .name {
     margin-bottom: 6px;
   }
 
-  .value{
+  .value {
     font-size: 20px;
     line-height: 26px;
     margin-bottom: 7px;
-    a{
+    a {
       font-size: inherit;
     }
   }
 }
 
-.icon{
+.icon {
   width: 50px;
   height: 50px;
   margin-right: 10px;
@@ -39,7 +38,7 @@
   position: relative;
   text-indent: -999px;
   overflow: hidden;
-  &:before{
+  &:before {
     content: "";
     position: absolute;
     top: 0;
@@ -47,56 +46,56 @@
     height: 50px;
   }
 
-  &.contract-signed{
-    &:before{
+  &.contract-signed {
+    &:before {
       background: url(#{$img-path}/ic_sprite.svg) -11px -423px no-repeat;
       width: 25px;
       margin-left: -12.5px;
     }
   }
 
-  &.contract-period{
-    &:before{
+  &.contract-period {
+    &:before {
       background: url(#{$img-path}/ic_sprite.svg) -10px -170px no-repeat;
       width: 27px;
       margin-left: -13.5px;
     }
   }
 
-  &.contract-value{
-    &:before{
+  &.contract-value {
+    &:before {
       background: url(#{$img-path}/ic_sprite.svg) 0px -338px no-repeat;
       width: 45px;
       margin-left: -22.5px;
     }
   }
 
-  &.contract-goods-service{
-    &:before{
+  &.contract-goods-service {
+    &:before {
       background: url(#{$img-path}/ic_sprite.svg) -4px 0px no-repeat;
       width: 39px;
       margin-left: -19.5px;
     }
   }
 
-  &.contractor{
-    &:before{
+  &.contractor {
+    &:before {
       background: url(#{$img-path}/ic_sprite.svg) -2px -508px no-repeat;
       width: 43px;
       margin-left: -21.5px;
     }
   }
 
-  &.relatedtender{
-    &:before{
+  &.relatedtender {
+    &:before {
       background: url(#{$img-path}/ic_sprite.svg) -13px -253px no-repeat;
       width: 43px;
       margin-left: -21.5px;
     }
   }
 
-  &.procuring-agency{
-    &:before{
+  &.procuring-agency {
+    &:before {
       background: url(#{$img-path}/ic_sprite.svg) 0px -85px no-repeat;
       width: 47px;
       margin-left: -23.5px;
@@ -105,24 +104,24 @@
 
 }
 
-.description-summary{
+.description-summary {
 
-  .icon{
+  .icon {
     margin-left: 10px;
   }
 
-  .icon{
+  .icon {
 
-    &.tender-period{
-      &:before{
+    &.tender-period {
+      &:before {
         background: url(#{$img-path}/ic_sprite.svg) -10px -170px no-repeat;
         width: 27px;
         margin-left: -13.5px;
       }
     }
 
-    &.procurement-method{
-      &:before{
+    &.procurement-method {
+      &:before {
         background: url(#{$img-path}/ic_sprite.svg) -6px -591px no-repeat;
         width: 36px;
         margin-left: -18px;
@@ -132,7 +131,7 @@
 
 }
 
-.chart-section-wrap.push-up-block{
+.chart-section-wrap.push-up-block {
   background: transparent;
   border-radius: 0;
   box-shadow: none;
@@ -152,60 +151,60 @@
   }
 }*/
 
-.wide-header{
-  .section-header{
+.wide-header {
+  .section-header {
     margin-bottom: 25px;
   }
 
-  .chart-section-wrap{
+  .chart-section-wrap {
     margin-bottom: 0;
   }
 
-  .each-chart-section{
+  .each-chart-section {
     box-shadow: none;
     padding: 40px 20px 30px;
     margin-bottom: 0;
   }
 
-  ul.breadcrumbs{
+  ul.breadcrumbs {
     margin-bottom: 10px;
-     p{
-       @include inner-title();
-       display: block;
-       float: right;
-     }
+    p {
+      @include inner-title();
+      display: block;
+      float: right;
+    }
   }
 
-  .indicator{
-   padding-bottom: 3px;
+  .indicator {
+    padding-bottom: 3px;
     border-bottom: solid 2px $deep-yellow-color;
   }
 
-  .indicator.tender{
+  .indicator.tender {
     border-bottom: solid 2px #B8E986;
   }
 
-  .indicator.contracts{
+  .indicator.contracts {
     border-bottom: solid 2px $contract-color;
   }
 
 }
 
-.header-description{
+.header-description {
   padding: 40px 20px 30px;
 }
 
-.big-header{
+.big-header {
   margin-bottom: 15px;
-  .big-title{
+  .big-title {
     @include big-title();
   }
-  .number{
+  .number {
     font-size: 4.5rem;
     line-height: 4.875rem;
     font-family: RobotoCondensed-bold;
   }
-  p{
+  p {
     @include inner-title();
     margin: 0 0 10px;
   }
@@ -231,8 +230,8 @@
 
 /*style for custom switch*/
 
-.custom-switch-wrap{
-  .small-title{
+.custom-switch-wrap {
+  .small-title {
     float: left;
     padding-top: 8px;
   }
@@ -274,7 +273,7 @@
     transition: all 500ms;
   }
 
-  &:before{
+  &:before {
     display: block;
     position: absolute;
     top: 7px;
@@ -286,22 +285,24 @@
     text-align: center;
     font-size: 1rem;
     line-height: 1.250rem;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
   }
 }
+
 .toggle--on {
   &:after {
     content: 'Json View';
     border-radius: 4px;
   }
 
-  &:before{
+  &:before {
     content: 'Table View';
     position: absolute;
     right: 3px;
     left: auto;
   }
 }
+
 .toggle--off {
   &:after {
     content: 'Table view';
@@ -309,13 +310,14 @@
     border-radius: 4px;
     transform: translate(100%, 0);
   }
-  &:before{
+  &:before {
     content: 'Json View';
     position: absolute;
     left: 3px;
     right: auto;
   }
 }
+
 .toggle--moving {
   background-color: darken(#263238, 5%);
   &:after {
@@ -329,32 +331,32 @@
   }
 }
 
-.custom-switch-content{
+.custom-switch-content {
   margin-top: 30px;
   margin-bottom: 20px;
   background-color: #fff;
   border-radius: 4px;
-  .active{
+  .active {
     display: block;
   }
 }
 
-.table-view{
+.table-view {
   display: none;
 }
 
 /* ------------- style for expand and collapse section ----------- */
 
-.collapse-btn{
+.collapse-btn {
   display: none;
 }
 
-.button.collapse-btn,.button.expand-btn{
+.button.collapse-btn, .button.expand-btn {
   position: relative;
-  padding: 12px  1rem;
+  padding: 12px 1rem;
   width: 128px;
   text-align: left;
-  &:after{
+  &:after {
     position: absolute;
     top: 6px;
     right: 10px;
@@ -370,49 +372,187 @@
   content: "+";
 }
 
-.collapse-btn{
-  &:after{
+.collapse-btn {
+  &:after {
     content: "-";
   }
 }
 
 /* -------------- style for tooltip ------------- */
 
-.detail-info-wrap{
+.contract-info-wrap {
+  text-align: center;
+  > div {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  .detail-info-wrap {
+    .detail-anchor {
+      margin-bottom: 0;
+    }
+    height: 30px;
+    &:nth-of-type(1), &:nth-of-type(2) {
+      .detail-info {
+        width: 465px;
+        margin-left: -232px;
+      }
+    }
+
+    &:nth-of-type(3) {
+      .detail-info {
+        width: 210px;
+        margin-left: -105px;
+      }
+    }
+  }
+
+}
+
+.detail-info-wrap {
   position: relative;
   width: auto;
   display: table;
   margin: 0 auto;
-  min-width: 215px;
 
-  .detail-anchor{
+  .grey-yellow-btn {
+    min-width: 100px;
+  }
+  .detail-anchor {
     cursor: pointer;
     text-align: center;
-    margin-bottom: 0;
-    span{
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 20px;
+    span {
       font-family: Garamond;
       font-style: italic;
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 12px;
+      line-height: 16px;
       font-weight: bold;
       background: #333;
       color: #eee;
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       margin-right: 6px;
     }
   }
 }
 
-.detail-info{
+.detail-info .description span:first-of-type{
+  font-family: Garamond;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  background: #333;
+  color: #eee;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+  text-align: center;
+}
+
+.contract-info-wrap {
+  .detail-info {
+    text-align: left;
+    padding: 20px;
+    .description {
+      font-size: 14px;
+      line-height: 20px;
+      color: #4a4a4a;
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      margin-left: 10px;
+    }
+
+    ul li {
+      list-style: none;
+      position: relative;
+      padding-left: 10px;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        top: 7px;
+        left: 0;
+        background-color: $deep-yellow-color;
+      }
+    }
+
+    .name-value-wrap {
+      font-size: 12px;
+      line-height: 18px;
+      border: none !important;
+      display: inline-block;
+      padding: 0 10px 0 0;
+      margin-right: 10px;
+      position: relative;
+      vertical-align: top;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 18px;
+        width: 1px;
+        background: rgba(#0046ae, 0.4);
+      }
+
+      &:last-of-type {
+        &:after {
+          background: none;
+        }
+      }
+
+      .name {
+        font-size: 12px;
+        line-height: 18px;
+        width: auto;
+        min-height: 20px;
+        text-indent: 0;
+        overflow: visible;
+
+      }
+      .value {
+        width: auto;
+        padding-left: 3px;
+        font-size: 12px;
+        line-height: 18px;
+
+      }
+
+    }
+
+  }
+}
+
+.contract-info-wrap {
+  .detail-info .name-value-wrap:not(:last-of-type) {
+    border-bottom: none;
+    margin-bottom: 6px;
+  }
+  .detail-info {
+    top: calc(100% + 15px);
+  }
+}
+
+.detail-info {
   background: #fff;
   padding: 20px 0;
   border-radius: 4px;
   width: 400px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   position: absolute;
-  top: calc(100% + 15px);
+  top: calc(100% + 0px);
   left: 50%;
   z-index: 88;
   margin-left: -150px;
@@ -423,17 +563,17 @@
     margin-left: -90px;
   }
 
-  .name-value-wrap{
+  .name-value-wrap {
     clear: both;
     overflow: hidden;
     padding: 8px 20px;
 
-    &:not(:last-of-type){
+    &:not(:last-of-type) {
       border-bottom: solid 1px #f5f5f5;
       margin-bottom: 6px;
     }
 
-    .name{
+    .name {
       width: 40px;
       min-height: 30px;
       float: left;
@@ -442,7 +582,7 @@
       overflow: hidden;
     }
 
-    .value{
+    .value {
       font-size: 16px;
       width: calc(100% - 120px);
       line-height: 22px;
@@ -456,7 +596,14 @@
 
 /* ---------- add traingle above tooltip ------------- */
 
-.detail-info{
+.black-listed-show {
+  width: 211px;
+  height: 81px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.detail-info, .black-listed-show {
   visibility: hidden;
   opacity: 0;
   &:after {
@@ -478,12 +625,12 @@
 
 //show tooltip when hover in anchor
 
-.detail-info-wrap:hover  .detail-info{
+.detail-info-wrap:hover > .detail-info {
   opacity: 1;
   visibility: visible;
   margin-left: -200px;
 
-  &:after{
+  &:after {
     transform: translateY(0px);
   }
   @media (max-width: 480px) {
@@ -493,31 +640,68 @@
 
 /* ---------------- place icons for each information in detail section ---------------- */
 
-.detail-info{
-  .address{
+.detail-info {
+  .address {
     background: transparent url(#{$img-path}/ic_sprite.svg) -94px 0 no-repeat;
   }
 
-  .url{
+  .url {
     background: transparent url(#{$img-path}/ic_sprite.svg) -88px -61px no-repeat;
   }
 
-  .phone{
-    background: transparent url(#{$img-path}/ic_sprite.svg) -93px -130px  no-repeat;
+  .phone {
+    background: transparent url(#{$img-path}/ic_sprite.svg) -93px -130px no-repeat;
   }
 
-  .email{
-    background: transparent url(#{$img-path}/ic_sprite.svg) -90px -190px   no-repeat;
+  .email {
+    background: transparent url(#{$img-path}/ic_sprite.svg) -90px -190px no-repeat;
   }
 
-  .fax{
-    background: transparent url(#{$img-path}/ic_sprite.svg) -85px -250px  no-repeat;
+  .fax {
+    background: transparent url(#{$img-path}/ic_sprite.svg) -85px -250px no-repeat;
   }
 }
+
 .btn-view-json {
   padding: 12px 1rem;
   background-color: #E6E0E0;
   border-radius: 4px;
   float: right;
   color: #000;
+}
+
+.flag-icon-red, .flag-icon-green, .balance-icon {
+  padding-left: 36px;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.flag-icon-red:before {
+  background:transparent url(#{$img-path}/ic_sprite.svg) -6px -687px no-repeat;
+}
+
+.flag-icon-green:before {
+  background:transparent url(#{$img-path}/ic_sprite.svg) -6px -727px no-repeat;
+}
+
+.balance-icon:before {
+  width: 20px;
+  background:transparent url(#{$img-path}/ic_sprite.svg) -45px -688px no-repeat;
+}
+
+.description {
+  &.flag-icon-red:before,&.flag-icon-green:before, &.balance-icon:before {
+    left: -5px;
+    top: 4px;
+  }
+  >span{
+    margin-left: -20px;
+  }
 }

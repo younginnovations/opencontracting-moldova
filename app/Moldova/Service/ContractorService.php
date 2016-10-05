@@ -4,6 +4,7 @@ use App\Moldova\Entities\Blacklist;
 use App\Moldova\Entities\CompanyFeedback;
 use App\Moldova\Entities\Contractors;
 use App\Moldova\Entities\CourtCases;
+use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Repositories\Contracts\ContractsRepositoryInterface;
 use GuzzleHttp\Client;
 
@@ -29,7 +30,7 @@ class ContractorService
      */
     public function readExcel()
     {
-        $reader    = new \SpreadsheetReader(public_path('newcompany.csv'));
+        $reader = new \SpreadsheetReader(public_path('newcompany.csv'));
         $reader->ChangeSheet(0);
         $keys = [];
         echo date('Y-m-d H:i:s');
@@ -62,7 +63,7 @@ class ContractorService
 //        $contractor  = 'Deleu-Delev';
 
         $contractor  = $this->getTrimedCompanyName($contractor);
-        $companyData = $this->contracts->getCompanyData($contractor,$limit);
+        $companyData = $this->contracts->getCompanyData($contractor, $limit);
 
 //        if (sizeof($companyData) == 0) {
 //            $companyData = [];
@@ -139,7 +140,7 @@ class ContractorService
     {
         $contractor = $this->getTrimedCompanyName($contractor);
 
-        return ($this->contracts->getCourtCasesOfCompany($contractor,$limit));
+        return ($this->contracts->getCourtCasesOfCompany($contractor, $limit));
     }
 
     /**
@@ -203,8 +204,6 @@ class ContractorService
 
     public function fetchBlacklist($contractor)
     {
-        $contractor = $this->getTrimedCompanyName($contractor);
-
-        return ($this->contracts->getBlacklistCompany($contractor));
+        return (null !== $this->contracts->getBlacklistCompany($contractor)) ? true : false;
     }
 }
