@@ -12,30 +12,36 @@
                         <div class="small-button grey-yellow-btn"><span>i</span>More information</div>
                     </div>
                     <div class="detail-info">
-                        <div class="description"><span>i</span><u>Disclaimer: These results are based on best match that
+                        <div class="description info-icon">
+                            <p>
+                                <strong>Disclaimer </strong> : These results are based on best match that
                                 we could find in the <a href="http://date.gov.md">date.gov.md</a>.Please click <a
                                         href="{{ route('contracts.linkage', ['type' => 'company','name' => $contractor]) }}">here</a>
-                                for more matches.</u>
+                                for more matches.
+                            </p>
                         </div>
+                        @forelse($companyData as $company)
                         <ul>
-                            @forelse($companyData as $company)
-                                <li>
-                                    <div class="title="> {{ $company['full_name'] }} </div>
-                                    <div class="name-value-wrap">
-                                        <div class="name">Leaders:</div>
-                                        <div class="value">{{ $company['leaders_list'] }} </div>
-                                    </div>
+                            <li>
+                                <div class="title="> {{ $company['full_name'] }} </div>
+                                <div class="name-value-wrap">
+                                    <div class="name">Leaders:</div>
+                                    <div class="value">{{ $company['leaders_list'] }} </div>
+                                </div>
 
-                                    <div class="name-value-wrap">
-                                        <div class="name">Founders:</div>
-                                        <div class="value">{{ $company['list_of_founders'] }} </div>
-                                    </div>
-                                </li>
-                            @empty
-                                NO matches found.
-                            @endforelse
-
+                                <div class="name-value-wrap">
+                                    <div class="name">Founders:</div>
+                                    <div class="value">{{ $company['list_of_founders'] }} </div>
+                                </div>
+                            </li>
                         </ul>
+                        @empty
+                            <div class="empty-block">
+                                Currently there is no information about <strong> {{ $contractor }} </strong>.
+                            </div>
+                        @endforelse
+
+
 
                     </div>
                 </div>
@@ -45,28 +51,33 @@
                         <div class="small-button grey-yellow-btn balance-icon">10 Court cases</div>
                     </div>
                     <div class="detail-info">
-                        <div class="description balance-icon"><u>Disclaimer: These results are based on best match that
+                        <div class="description balance-icon">
+                            <strong>Disclaimer </strong>: These results are based on best match that
                                 we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.Please
                                 click <a
                                         href="{{ route('contracts.linkage',['name'=>$contractor,'type' => 'courtCase']) }}">here</a>
-                                for more matches.</u></div>
-                        <ul>
-                            @forelse($courtCases as $case)
-                                <li>
-                                    <div class="title="> <a href="{{  $case['link'] }}">{{ $case['title'] }}</a> </div>
-                                    <div class="name-value-wrap">
-                                        <div class="name">Case type:</div>
-                                        <div class="value">{{ $case['case_type'] }} </div>
-                                    </div>
+                                for more matches.
+                            </p>
+                        </div>
 
-                                    <div class="name-value-wrap">
-                                        <div class="name">Court name:</div>
-                                        <div class="value">{{ $case['court_name'] }} </div>
-                                    </div>
-                                </li>
-                            @empty
-                            @endforelse
+                        @forelse($courtCases as $case)
+                        <ul>
+                            <li>
+                                <div class="title="> <a href="{{  $case['link'] }}">{{ $case['title'] }}</a> </div>
+                                <div class="name-value-wrap">
+                                    <div class="name">Case type:</div>
+                                    <div class="value">{{ $case['case_type'] }} </div>
+                                </div>
+
+                                <div class="name-value-wrap">
+                                    <div class="name">Court name:</div>
+                                    <div class="value">{{ $case['court_name'] }} </div>
+                                </div>
+                            </li>
                         </ul>
+                        @empty
+                        @endforelse
+
                     </div>
                 </div>
                 <div class="detail-info-wrap">

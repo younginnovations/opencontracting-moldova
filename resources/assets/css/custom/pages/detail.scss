@@ -400,8 +400,8 @@
 
     &:nth-of-type(3) {
       .detail-info {
-        width: 210px;
-        margin-left: -105px;
+        width: 255px;
+        margin-left: -127px;
       }
     }
   }
@@ -416,6 +416,9 @@
 
   .grey-yellow-btn {
     min-width: 100px;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 7px 12px;
   }
   .detail-anchor {
     cursor: pointer;
@@ -436,6 +439,7 @@
       height: 16px;
       border-radius: 50%;
       margin-right: 6px;
+      text-align: center;
     }
   }
 }
@@ -670,36 +674,61 @@
   color: #000;
 }
 
-.flag-icon-red, .flag-icon-green, .balance-icon {
-  padding-left: 36px;
+
+
+.flag-icon-red, .flag-icon-green, .balance-icon, .info-icon {
+  padding-left: 40px !important;
   position: relative;
   &:before {
     content: "";
     position: absolute;
-    top: 10px;
-    left: 14px;
+    top: 0px;
+    left: 12px;
     width: 16px;
-    height: 16px;
+    height: 32px;
   }
 }
 
+.info-icon:before {
+  content: 'i';
+  font-family: Garamond;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  background: #333;
+  color: #eee;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+  text-align: center;
+}
+
+
 .flag-icon-red:before {
-  background:transparent url(#{$img-path}/ic_sprite.svg) -6px -687px no-repeat;
+  background:transparent url(#{$img-path}/ic_sprite.svg) -2px -680px no-repeat;
 }
 
 .flag-icon-green:before {
-  background:transparent url(#{$img-path}/ic_sprite.svg) -6px -727px no-repeat;
+  background:transparent url(#{$img-path}/ic_sprite.svg) -2px -721px no-repeat;
 }
 
 .balance-icon:before {
   width: 20px;
-  background:transparent url(#{$img-path}/ic_sprite.svg) -45px -688px no-repeat;
+  background:transparent url(#{$img-path}/ic_sprite.svg) -45px -680px no-repeat;
+}
+
+.detail-info{
+  .flag-icon-red, .flag-icon-green, .balance-icon {
+    padding-left: 30px !important;
+  }
 }
 
 .description {
   &.flag-icon-red:before,&.flag-icon-green:before, &.balance-icon:before {
-    left: -5px;
-    top: 4px;
+    left: 0px;
+    top: -10px;
   }
   >span{
     margin-left: -20px;

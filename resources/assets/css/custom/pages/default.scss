@@ -202,6 +202,24 @@ h2 {
 
 }
 
+strong{
+color: #000;
+}
+
+.empty-block{
+  text-align: center;
+  background: #eee;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #292929;
+
+ &:before{
+   display: none;
+ }
+
+}
+
 .push-up-block.small-push-up-block {
   margin-top: -77px;
 }
