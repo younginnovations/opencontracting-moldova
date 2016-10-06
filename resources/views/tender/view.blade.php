@@ -161,6 +161,25 @@
         @empty
         @endforelse
     </div>
+
+    <div class="block colored-block">
+        <div class="row clearfix">
+            <div class="section-header">Appeal</div>
+            <div class="name-value-warp">
+                <div class="name">test</div>
+                <div class="value">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A</div>
+            </div>
+            <div class="name-value-warp">
+                <div class="name">name</div>
+                <div class="value">periam architecto culpa, dolorem error iusto magni modi necessitatibus numquam odio porro quae quam quibusdam quis quisquam, reiciendis rem ullam. Molestiae, perspiciatis.</div>
+            </div>
+            <div class="name-value-warp">
+                <div class="name">this is test</div>
+                <div class="value">necessitatibus numquam odio porro quae quam quibusdam quis quisquam, reiciendis rem ullam. Molestiae, perspiciatis.</div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 @section('script')
     <script>
