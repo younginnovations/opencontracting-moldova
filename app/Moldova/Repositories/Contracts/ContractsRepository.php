@@ -487,7 +487,7 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getContractDataForJson($contractId)
     {
-        return $this->ocdsRelease->where('contracts.id', (int) $contractId)->project(['contracts' => 1, 'ocid' => 1, 'date' => 1, 'id' => 1, 'initiationType' => 1, 'tag' => 1, 'awards' => 1, 'tender' => 1, 'buyer' => 1])->first();
+        return $this->ocdsRelease->where('contracts.id', (int) $contractId)->first();
     }
 
     private function getContractsCount()

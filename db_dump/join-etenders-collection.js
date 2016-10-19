@@ -6,37 +6,51 @@
 
 
 //remove ocds_release collection
-db.ocds_release.remove({})
+db.ocds_release.remove({});
 // var bulk = db.ocds_release.initializeUnorderedBulkOp();
 
 db.tender_items_collection.createIndex({"fkTenderDataId": 1});
 db.contracts_collection.createIndex({"tender.id": 1});
 var start = new Date().getTime();
-print("starting Execution")
+print("starting Execution");
 db.tenders_collection.find({}).forEach(function(tender){
 
     //change date to UTC date format
     var changeToISO = function(dt){
-        if(dt!==''){
-            var newDt = dt.split('.');
-            var tm = newDt[2].split(' ');
 
-            if(tm.length >1){
-                newDt=tm[0]+'-'+newDt[1]+'-'+newDt[0]+'T'+tm[1]+':00Z';
-            }else{
-                newDt=newDt[2]+'-'+newDt[1]+'-'+newDt[0];
+        try {
+            if(dt!==''){
+                var newDt = dt.split('.');
+                var tm = newDt[2].split(' ');
+
+                if(tm.length >1){
+                    newDt=tm[0]+'-'+newDt[1]+'-'+newDt[0]+'T'+tm[1]+':00Z';
+                }else{
+                    newDt=newDt[2]+'-'+newDt[1]+'-'+newDt[0];
+                }
+
+                var isoDate = new Date(newDt).toISOString();
+                return isoDate;
             }
-
-            var isoDate = new Date(newDt).toISOString();
-            return isoDate;
+        }catch (err){
         }
 
         return dt;
 
-    }
+    };
+
+    var planningObj = {
+        "documents":{
+            "id":"",
+            "title":"",
+            "url":"",
+            "datePublished":""
+        }
+    };
+
 
     //prepare tendor object
-    var items = []
+    var items = [];
     db.tender_items_collection.find({"fkTenderDataId": tender.tenderData.id}).forEach(function(item) {
         var itm = {
             "id": item.id,
@@ -49,7 +63,7 @@ db.tenders_collection.find({}).forEach(function(tender){
             "additionalClassifications": [],
             "quantity": item.quantity,
             "unit":{"name":item.unitMeasure.mdValue}
-        }
+        };
 
         items.push(itm);
     });
@@ -83,8 +97,11 @@ db.tenders_collection.find({}).forEach(function(tender){
         "title": "Tender Ref " + tender.regNumber + " Bulletin " + tender.bulletin.bulletinNumb,
         "description": "",
         "status": tender.tenderStatus.mdValue,
-        "procurementMethod": tender.tenderType.mdValue,
         "items": items,
+        "value":{
+            "amount":"",
+            "currency":""
+        },
         "procurementMethod":tender.tenderType.mdValue,
         "procurementMethodRationale":"",
         "awardCriteria":"",
@@ -96,6 +113,7 @@ db.tenders_collection.find({}).forEach(function(tender){
             "endDate": changeToISO(tender.tenderData.openDateTime)
         },
         "eligibilityCriteria": "",
+        "numberOfTenders":"",
         "tenderers": [],
         "procuringEntity": procuringAgency,
         "documents": [],
@@ -108,17 +126,31 @@ db.tenders_collection.find({}).forEach(function(tender){
             "id": "award-" + NumberLong(contract.id),
             "title": "Award for " + contract.tender.tenderData.goodsDescr,
             "description": "",
+            "status":"",
+            "date":"",
             "value": {
                 "amount": contract.amount,
                 "currency": "mdl"
             },
             "suppliers": [{
+                "identifier":{
+                    "id":"",
+                    "legalName":""
+                },
                 "additionalIdentifiers": [{
                     "scheme": "eTenders",
                     "id": contract.participant.id,
                     "legalName": contract.participant.fullName
                 }],
                 "name": contract.participant.fullName,
+                "address":{
+                    "streetAddress":""
+                },
+                "contactPoint":{
+                    "name":"",
+                    "email":"",
+                    "telephone":""
+                }
             }],
             "items": [],
             "contractPeriod": {
@@ -135,6 +167,14 @@ db.tenders_collection.find({}).forEach(function(tender){
                     "scheme": "CPV",
                     "id": contract.goods.code,
                     "description": contract.goods.mdValue
+                },
+                "quantity":"",
+                "unit":{
+                    "name":"",
+                    "value":{
+                        "amount":"",
+                        "currency":""
+                    }
                 }
             }];
         }
@@ -156,6 +196,12 @@ db.tenders_collection.find({}).forEach(function(tender){
             },
             "dateSigned": changeToISO(contract.contractDate),
             "documents": [],
+            "amendment":{
+                "changes":[]
+            },
+            "implementation":{
+                "documents":[]
+            },
         };
         contractArray.push(contract);
     });
@@ -166,6 +212,7 @@ db.tenders_collection.find({}).forEach(function(tender){
         "id": (tender.id).toString(),
         "tag":['tender','award','contract'],
         "initiationType": "tender",
+        "planning":planningObj,
         "tender": tenderObj,
         "awards": awardArray,
         "contracts": contractArray,
