@@ -158,10 +158,11 @@
 
 <footer class="clearfix">
     <div class="row">
-        <form class="right-content custom-form medium-5">
+        <form id="subscribe-form" class="right-content custom-form medium-5">
             <div class="form-group">
                 <div class="suscribe-input">
-                    <input class="form-control" required="true" type="text" name="email"
+                    {{csrf_field()}}
+                    <input class="form-control" required="true" type="email" name="email"
                            placeholder="@lang('general.enter_your_email')"/>
                 </div>
                 <input class="button subscribe form-control" type="button" id="subscribe" name="subscribe"
@@ -177,16 +178,16 @@
     </div>
 </footer>
 <script>
-    var subscribeRoute = '{{ route("subscriptions.add") }}';
+var subscribeRoute = '{{ route("newsletter.subscribeUser") }}';
 </script>
 <script src="{{url('js/vendors.min.js')}}"></script>
-<script src="{{url('js/app.min.js')}}"></script>
+<script src="{{url('js/app.js')}}"></script>
 <script type="text/javascript">var switchTo5x = true;</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5743e070a2fa5f67"></script>
 <script type="text/javascript">
-    var addthis_share = {
-        title: "Moldova OCDS"
-    }
+var addthis_share = {
+    title: "Moldova OCDS"
+}
 </script>
 {{--<script type="text/javascript">--}}
 {{--stLight.options({--}}
