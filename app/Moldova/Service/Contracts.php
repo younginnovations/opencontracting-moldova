@@ -49,7 +49,7 @@ class Contracts
     {
         $contractsByOpenYear = [];
         foreach ($contracts as $tender) {
-            foreach ($tender['contracts'] as $contract) {
+            foreach ((array) $tender['contracts'] as $contract) {
 //                $year = explode(".", $contract['dateSigned']);
                 $year = date("Y", strtotime($contract['dateSigned']));
 

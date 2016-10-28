@@ -60,7 +60,7 @@ header{
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1270px) {
   .top-bar-right {
 
     .menu {
@@ -151,6 +151,8 @@ header{
   content: "";
   display: block;
 }
+
+
 .burger::after, .burger::before, .burger {
   transition: all .3s ease-in-out;
   -webkit-transition: all .3s ease-in-out;
@@ -223,4 +225,25 @@ footer{
     }
   }
 }
+
+@media (max-width: 480px){
+  .burger{
+    width: 22px;
+    height: 2px;
+    top: 29px;
+
+    &:before{
+      width: 22px;
+      height: 2px;
+      top: 8px;
+    }
+
+    &:after{
+      width: 22px;
+      height: 2px;
+      bottom: 8px;
+    }
+  }
+}
+
 
