@@ -211,6 +211,22 @@ Route::get(
     ]
 );
 
+Route::get(
+    '/newsletter/content',
+    [
+       'as' => 'newsletter.content',
+       'uses' => 'NewsletterController@getContentView'
+    ]
+);
+
+Route::post(
+    '/api/newsletter/subscribe',
+    [
+        'as' => 'newsletter.subscribeUser',
+        'uses'=> 'NewsletterController@subscribeUser'
+    ]
+);
+
 Route::get('/csv/download', function () {
     return response()->download(base_path('public') . '/csv/contracts_csv.csv');
 });

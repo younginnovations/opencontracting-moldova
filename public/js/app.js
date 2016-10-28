@@ -63,16 +63,27 @@ $('#select-goods, #select-goods-year').change(function () {
 
 $('#subscribe').click(function () {
     var email = $('input[name="email"]').val();
-    var data = {email: email};
-    API.post(subscribeRoute, data).success(function (response) {
+    if(!validateEmail(email)){
         $("#subscribeModal").css("display", "block");
-        if (response == "true") {
-            $("#showMsg").html('Thank you for subscribing.')
-        } else {
-            $("#showMsg").html('This email has already been used.');
-        }
-    })
+        $("#showMsg").html('Invalid email address.');
+        return false;
+    }
+    var csrf = $('input[name="csrf_token"]').val();
+    var data = {email: email,csrf_token:csrf};
+    API.post(subscribeRoute, data).success(function (response) {
+        console.log('true');
+        $("#subscribeModal").css("display", "block");
+        $("#showMsg").html(response.message);
+    }).error(function (error){
+        $("#subscribeModal").css("display", "block");
+        $("#showMsg").html(error.responseJSON.message);
+    });
 });
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 $(document).ready(function(){
     $(".burger-menu").click(function () {

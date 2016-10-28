@@ -16,7 +16,6 @@ elixir(function(mix){
 
     mix.sass([
         './resources/assets/css/vendor/foundation.min.css',
-        './resources/assets/css/vendor/jquery.dataTables.min.css',
         './resources/assets/css/vendor/responsive-tables.css',
         './resources/assets/css/vendor/cs-skin-elastic.css',
         './resources/assets/css/vendor/cs-select.css',
@@ -42,9 +41,7 @@ elixir(function(mix){
 
     mix.scripts([
         './resources/assets/js/vendor/jquery-2.2.2.min.js',
-        './resources/assets/js/vendor/foundation.min.js',
         './resources/assets/js/datatable/jquery.dataTables.min.js',
-        './resources/assets/js/vendor/responsive-tables.js',
         './resources/assets/js/vendor/moment.min.js',
         './resources/assets/js/vendor/number-format.js',
         './resources/assets/js/vendor/classie.js',
