@@ -1,4 +1,5 @@
 <?php
+
 return [
-    'userModel' => 'App\User'
+    'userModel' => 'App\User',
 ];

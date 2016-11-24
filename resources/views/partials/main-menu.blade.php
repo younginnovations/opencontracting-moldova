@@ -49,6 +49,11 @@
                     <option value="md" {{ (getLocalLang() === 'md')?'selected':'' }} class="moldova">Romanian</option>
                 </select>
             </div>
+            @if(auth()->check())
+                <div class="logout">
+                    <a href="/logout">Logout</a>
+                </div>
+            @endif
         </div>
 
 

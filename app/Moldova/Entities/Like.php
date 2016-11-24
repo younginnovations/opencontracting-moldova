@@ -4,6 +4,10 @@ namespace App\Moldova\Entities;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
+/**
+ * Class Like
+ * @package App\Moldova\Entities
+ */
 class Like extends Model
 {
 	/**

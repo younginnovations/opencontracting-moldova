@@ -3,6 +3,9 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Class CreateLaravellikecommentTotalLikesTable
+ */
 class CreateLaravellikecommentTotalLikesTable extends Migration
 {
     /**

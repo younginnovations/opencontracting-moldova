@@ -162,9 +162,8 @@
         </div>
     </div>
     <div class="custom-switch-wrap row">
-
-        @include('laravelLikeComment::like', ['like_item_id' => $contractDetail['id']])
-        @include('laravelLikeComment::comment', ['comment_item_id' => $contractDetail['id']])
+        @include('laravelLikeComment.like', ['like_item_id' => $contractDetail['id']])
+        @include('laravelLikeComment.comment', ['comment_item_id' => $contractDetail['id']])
     </div>
 
 @endsection
@@ -186,5 +185,4 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
     <script src="{{url('js/contracts.js')}}"></script>
-    <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
 @endsection

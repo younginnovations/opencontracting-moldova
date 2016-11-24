@@ -7,7 +7,7 @@ $('.laravelLike-icon').on('click', function(){
 
   $.ajax({
        method: "get",
-       url: "/laravellikecomment/like/vote",
+       url: "/comments/like/vote",
        data: {item_id: item_id, vote: vote},
        dataType: "json"
     })
@@ -50,7 +50,7 @@ $(document).on('submit', '.laravelComment-form', function(){
 
     $.ajax({
          method: "get",
-         url: "/laravellikecomment/comment/add",
+         url: "/comments/comment/add",
          data: {parent: parent, comment: comment, item_id: item_id},
          dataType: "json"
       })
@@ -59,6 +59,7 @@ $(document).on('submit', '.laravelComment-form', function(){
         var newComment = '<div class="comment show-'+ item_id +'-'+parent+'" id="comment-'+msg.id+'" style="display: block;"><a class="avatar"><img src="'+msg.userPic+'"></a><div class="content"><a class="author">'+msg.userName+'</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="text">'+msg.comment+'</div><div class="actions"><a class="reply reply-button" data-toggle="'+msg.id+'-reply-form">Reply</a></div><form class="ui laravelComment-form form" id="'+msg.id+'-reply-form" data-parent="'+msg.id+'" data-item="'+item_id+'" style="display: none;"><div class="field"><textarea id="'+msg.id+'-textarea" rows="2"></textarea></div><input type="submit" class="ui basic small submit button" value="Reply"></form></div><div class="ui threaded comments" id="'+item_id+'-comment-'+msg.id+'"></div></div>';
         $('#'+item_id+'-comment-'+parent).prepend(newComment);
         $('textarea#'+parent+'-textarea').val('');
+          autosize($('.laravelComment textarea'));
       })
       .fail(function(msg){
         alert(msg);

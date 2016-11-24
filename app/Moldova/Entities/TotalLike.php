@@ -4,6 +4,10 @@ namespace App\Moldova\Entities;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
+/**
+ * Class TotalLike
+ * @package App\Moldova\Entities
+ */
 class TotalLike extends Model
 {
 	/**

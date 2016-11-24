@@ -4,6 +4,10 @@ namespace App;
 
 use App\Moldova\Entities\Auth\User as Authenticatable;
 
+/**
+ * Class User
+ * @package App
+ */
 class User extends Authenticatable
 {
     /**
@@ -32,13 +36,14 @@ class User extends Authenticatable
     public static function getAuthor($id)
     {
         $user = self::find($id);
+
         return [
             'id'     => $user->id,
             'name'   => $user->name,
             'email'  => $user->email,
             'url'    => '',  // Optional
             'avatar' => 'gravatar',  // Default avatar
-            'admin'  => $user->role === 'admin', // bool
+            'admin'  => false, // bool
         ];
     }
 }
