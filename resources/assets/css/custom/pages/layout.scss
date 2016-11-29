@@ -1,9 +1,63 @@
+.login-bar{
+  background-color: #333;
+  padding: 10px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.top-bar ul.user-menu{
+  float: right;
+  background: none;
+  .user-logo{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 0 !important;
+    background: #fff url(#{$img-path}/ic_user.svg) center no-repeat;
+    background-size: 14px 14px;
+    &:after{
+      content: none !important;
+    }
+  }
+
+  .logout.menu{
+    right: 0px;
+    left: auto;
+    min-width: 110px;
+    padding-top: 10px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    background: #333;
+    border: none;
+
+    a{
+      padding: 10px 14px;
+      color: #fff;
+    }
+  }
+
+}
+
+.add-transform{
+  transform: translateY(-44px);
+  transition: all 0.3s ease;
+}
+
+.disapper{
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.reduce-padding{
+  padding-top: 76px;
+}
+
+
 .burger-menu-button{
   z-index: 9999;
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 9999;
-  right: 20px;
+  right: 0px;
   background: transparent;
   padding: 0;
   display: none;
@@ -12,8 +66,17 @@
 header{
   z-index: 8888;
   &.top-bar{
-    background-color: #0042B1;
+    padding: 0;
   }
+}
+
+.main-menu-wrap{
+  padding: 0.5em 0;
+  background: $link-color-blue;
+}
+
+.header-banner .main-menu-wrap{
+  background: transparent;
 }
 
 .fixed-header{

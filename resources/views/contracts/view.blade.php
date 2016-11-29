@@ -161,7 +161,7 @@
             </div>
         </div>
     </div>
-    <div class="custom-switch-wrap row">
+    <div class="row">
         @include('laravelLikeComment.like', ['like_item_id' => $contractDetail['id']])
         @include('laravelLikeComment.comment', ['comment_item_id' => $contractDetail['id']])
     </div>

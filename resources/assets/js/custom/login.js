@@ -10,7 +10,8 @@
 
             const pollTimer = window.setInterval(function () {
                 try {
-                    if (win.document.URL.replace(/[^A-Za-z0-9: \/]/g,'') === currentPageUrl) {
+                    console.log(win.document.URL.replace(/[^A-Za-z0-9: \.\/]/g,''));
+                    if (win.document.URL.replace(/[^A-Za-z0-9: \.\/]/g,'') === currentPageUrl) {
                         window.clearInterval(pollTimer);
                         win.close();
                         refreshPage();

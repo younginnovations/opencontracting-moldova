@@ -73,5 +73,5 @@ $(document).on('click', '#showComment', function(){
     var show = $(this).data("show-comment");
     $('.show-'+$(this).data("item-id")+'-'+show).fadeIn('normal');
     $(this).data("show-comment", show+1);
-    $(this).text("Show more");
+    $(this).text("Show more comments");
 });

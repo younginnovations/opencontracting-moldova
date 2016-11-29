@@ -1,7 +1,12 @@
 $(document).ready(function(){
+
+    if($(".login-bar").length > 0){
+        $("#main-content").css("padding-top","120px");
+    }
+
     $(".burger-menu").click(function () {
         $("#main-menu .menu").slideToggle(300);
-        $(".header-banner .fixed-header").toggleClass("add-background");
+        $(".header-banner .main-menu-wrap").toggleClass("add-background");
         $(this).toggleClass("menu-on");
     });
 
@@ -175,6 +180,47 @@ $(document).ready(function(){
         if (event.target.id === 'subscribeModal') {
             $("#subscribeModal").css("display","none");
         }
+    });
+
+
+    /* ---- hide and show login bar ----- */
+
+  /*  $(window).scroll(function(){
+        var element = $(".login-bar"),
+            element_height = element.outerHeight();
+
+        if ($(document).scrollTop() > element_height) {
+            $("#main-content").addClass("reduce-padding");
+            $(".fixed-header").addClass( "add-transform");
+            element.addClass("disapper");
+        } else {
+            $("#main-content").removeClass("reduce-padding");
+            $(".fixed-header").removeClass("add-transform");
+            element.removeClass("disapper");
+        }
+
+    });*/
+
+    $(function() {
+
+        $(window).on('wheel', function(e) {
+
+            var delta = e.originalEvent.deltaY;
+            var element = $(".login-bar"),
+                element_height = element.outerHeight();
+
+            if (delta > 0) {
+                $("#main-content").addClass("reduce-padding");
+                $(".fixed-header").addClass( "add-transform");
+                element.addClass("disapper");
+            }
+            else {
+                $("#main-content").removeClass("reduce-padding");
+                $(".fixed-header").removeClass("add-transform");
+                element.removeClass("disapper");
+            }
+
+        });
     });
 
     /* ------------ sticky header in tables ---------------- */

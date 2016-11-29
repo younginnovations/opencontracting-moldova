@@ -17,7 +17,8 @@
 }
 
 @media (max-width: 75rem) {
-  header.top-bar{
+  header .login-bar,
+  header .main-menu-wrap{
     padding-left: 20px;
     padding-right: 20px;
   }

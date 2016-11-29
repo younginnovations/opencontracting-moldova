@@ -11,7 +11,6 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
             y1 = 32;
     }
 
-
     //var divNode = d3.select("#main-content").node();
 
     var dataRange = d3.max(data, function (d) {
@@ -56,20 +55,6 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
                 return window.location.assign(window.location.origin + "/" + url + "/" + d.name);
             }
         })
-        /*.on("mouseover", function(d){
-            var mousePos = d3.mouse(divNode);
-            d3.select("#tooltip-wrap")
-                .style("left",mousePos[0] + "px")
-                .style("top",mousePos[1] + "px")
-                .select("#value")
-                .attr("text-anchor","middle")
-                .html(d.value);
-
-            d3.select("#tooltip-wrap").classed("hide", false);
-        })
-        .on("mouseout",function(d){
-            d3.select("#tooltip-wrap").classed("hide", true);
-        })*/
         .attr("width",0)
         .transition()
         .duration(900)
@@ -78,20 +63,6 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
             return x(d.value);
         })
         .attr("x",170);
-
-    //    .on("mousemove",function(d){
-    //         var absoluteMousePos = d3.mouse(bodyNode);
-    //         d3.select("#tooltip")
-    //             .style("left", absoluteMousePos[0] + "px")
-    //             .style("top", absoluteMousePos[1] + "px")
-    //             .select("#name")
-    //             .text(d.name);
-    //
-    //         d3.select("#tooltip").classed("hidden", false);
-    //     })
-    //     .on("mouseout",function(){
-    //         d3.select("#tooltip").classed("hidden", true);
-    //     });
 
     chart.selectAll("text.value")
         .data(data)

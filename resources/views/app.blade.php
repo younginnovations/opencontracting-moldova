@@ -21,12 +21,6 @@
 
 <body class="{{(\Request::segment(1) === "about" || \Request::segment(1) === "contact")?'one-pager':''}}">
 
-<div class="title-bar burger-menu-button">
-    <button class="burger-menu" type="button">
-        <div class="burger"></div>
-    </button>
-</div>
-
 @if(\Request::segment(1) === null)
     <div class="header-banner clearfix">
         @include("partials/main-menu")
