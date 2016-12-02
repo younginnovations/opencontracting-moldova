@@ -127,7 +127,6 @@
             <span id="value"></span>
         </p>
     </div>
-    @include('partials.notifications')
     @yield('content')
     <div class="share-wrap">
         <div class="row">

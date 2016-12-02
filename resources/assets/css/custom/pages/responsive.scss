@@ -1,7 +1,11 @@
 @media (max-width: 1260px) {
-  body:not(.one-pager) .main-content{
+  body:not(.one-pager) .main-content,.alert{
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  .alert{
+    width: calc(100% - 40px);
   }
 
   .one-pager .main-content{
@@ -78,7 +82,7 @@
       width: 100%;
       left: 0;
       right: 0;
-      top: 100%;
+      top: calc(100% + 0.5em);
       text-align: center;
       background-color: #005AF5;;
 

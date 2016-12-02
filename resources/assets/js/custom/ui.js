@@ -1,9 +1,5 @@
 $(document).ready(function(){
 
-    if($(".login-bar").length > 0){
-        $("#main-content").css("padding-top","120px");
-    }
-
     $(".burger-menu").click(function () {
         $("#main-menu .menu").slideToggle(300);
         $(".header-banner .main-menu-wrap").toggleClass("add-background");
@@ -176,42 +172,24 @@ $(document).ready(function(){
     });
 
 // When the user clicks anywhere outside of the modal, close it
-    $(window).click(function(event) {
-        if (event.target.id === 'subscribeModal') {
-            $("#subscribeModal").css("display","none");
-        }
-    });
+$(window).click(function(event) {
+    if (event.target.id === 'subscribeModal') {
+        $("#subscribeModal").css("display","none");
+    }
+});
 
 
-    /* ---- hide and show login bar ----- */
+$(function() {
 
-  /*  $(window).scroll(function(){
-        var element = $(".login-bar"),
-            element_height = element.outerHeight();
-
-        if ($(document).scrollTop() > element_height) {
-            $("#main-content").addClass("reduce-padding");
-            $(".fixed-header").addClass( "add-transform");
-            element.addClass("disapper");
-        } else {
-            $("#main-content").removeClass("reduce-padding");
-            $(".fixed-header").removeClass("add-transform");
-            element.removeClass("disapper");
-        }
-
-    });*/
-
-    $(function() {
-
-        $(window).on('wheel', function(e) {
-
+    $(window).on('wheel', function(e) {
+        if($(".login-bar").length > 0) {
             var delta = e.originalEvent.deltaY;
             var element = $(".login-bar"),
                 element_height = element.outerHeight();
 
             if (delta > 0) {
                 $("#main-content").addClass("reduce-padding");
-                $(".fixed-header").addClass( "add-transform");
+                $(".fixed-header").addClass("add-transform");
                 element.addClass("disapper");
             }
             else {
@@ -219,68 +197,34 @@ $(document).ready(function(){
                 $(".fixed-header").removeClass("add-transform");
                 element.removeClass("disapper");
             }
-
-        });
-    });
-
-    /* ------------ sticky header in tables ---------------- */
-
-/*    function UpdateTableHeaders() {
-        if($(window).width() > 768){
-            $(".persist-area").each(function() {
-
-                var el             = $(this),
-                    offset         = el.offset(),
-                    scrollTop      = $(window).scrollTop(),
-                    floatingHeader = $(".floatingHeader", this)
-
-                if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
-                    floatingHeader.css({
-                        "visibility": "visible"
-                    });
-                    var clonedHeader = $(".floatingHeader");
-                    var realHeader = clonedHeader.siblings('.persist-header');
-                    $('th', realHeader).each(function(index) {
-                        $('th', clonedHeader).eq(index).css('width', $(this).outerWidth());
-                    });
-                } else {
-                    floatingHeader.css({
-                        "visibility": "hidden"
-                    });
-                };
-            });
         }
-    }
-
-// DOM Ready
-    $(function() {
-        var clonedHeaderRow;
-
-        $(".persist-area").each(function() {
-            clonedHeaderRow = $(".persist-header", this);
-            clonedHeaderRow
-                .before(clonedHeaderRow.clone())
-                .css("width", clonedHeaderRow.width())
-                .addClass("floatingHeader");
-        });
-
-        $(window)
-            .scroll(UpdateTableHeaders)
-            .trigger("scroll");
-
-    });*/
-
-    $(document).ready(function(){
-        $('.chart-wrap').each(function() {
-            var el = $(this).find('svg');
-            if(el.length != 0) {
-                $(this).removeClass('default-view');
-                $(this).find(".filter-section").show();
-                $(this).find(".loader-text").hide();
-                $(".default-view").parents(".each-chart-section").css("height", "auto");
-            }
-        });
+        else{
+            return;
+        }
     });
+});
+
+$(function(){
+    $(".close-button").on("click", function(){
+      $(this).parent().hide();
+    });
+});
+
+if($(".login-bar").length > 0) {
+    $("#main-content").css("padding-top", "120px");
+}
+
+$(document).ready(function(){
+    $('.chart-wrap').each(function() {
+        var el = $(this).find('svg');
+        if(el.length != 0) {
+            $(this).removeClass('default-view');
+            $(this).find(".filter-section").show();
+            $(this).find(".loader-text").hide();
+            $(".default-view").parents(".each-chart-section").css("height", "auto");
+        }
+    });
+});
 
   /* ------  script for json table  ----- */
     $(".jTable .main-title").each(function(){

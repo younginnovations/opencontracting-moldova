@@ -74,5 +74,6 @@
 
     </div>
     </div>
+    @include('partials.notifications')
 </header>
 

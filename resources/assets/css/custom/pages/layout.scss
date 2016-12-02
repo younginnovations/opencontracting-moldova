@@ -53,10 +53,8 @@
 
 
 .burger-menu-button{
-  z-index: 9999;
   position: absolute;
   top: 0;
-  z-index: 9999;
   right: 0px;
   background: transparent;
   padding: 0;
@@ -64,7 +62,7 @@
 }
 
 header{
-  z-index: 8888;
+  z-index: 888;
   &.top-bar{
     padding: 0;
   }
@@ -102,7 +100,6 @@ header{
 }
 
 .main-content{
-  z-index: 1;
   padding-top: 76px;
 }
 
