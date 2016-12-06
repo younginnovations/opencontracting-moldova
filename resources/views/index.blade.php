@@ -13,7 +13,7 @@
                             <ul class="breadcrumbs">
                                 <li><span hre   f =  "#" class="indicator tender">@lang('general.tenders')</span> &nbsp; @lang('homepage.published')</li>
                                 <li> &nbsp; vs. &nbsp;</li>
-                                <li><span href="#" class="indicators">@lang('general.contracts')</span> &nbsp; @lang('homepage.issued')</li>
+                                <li><span href="#" class="indicator contracts">@lang('general.contracts')</span> &nbsp; @lang('homepage.issued')</li>
                             </ul>
                         </div>
                         <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">

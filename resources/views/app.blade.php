@@ -10,15 +10,16 @@
     <link href="{{url('css/vendors.css')}}" rel="stylesheet">
     {{--<link href="{{url('css/app.min.css')}}" rel="stylesheet">--}}
     <link href="{{url('css/app.css')}}" rel="stylesheet">
+
+    {{--Commenting System--}}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+    <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body class="{{(\Request::segment(1) === "about" || \Request::segment(1) === "contact")?'one-pager':''}}">
-
-<div class="title-bar burger-menu-button">
-    <button class="burger-menu" type="button">
-        <div class="burger"></div>
-    </button>
-</div>
 
 @if(\Request::segment(1) === null)
     <div class="header-banner clearfix">
@@ -181,6 +182,9 @@
 var subscribeRoute = '{{ route("newsletter.subscribeUser") }}';
 </script>
 <script src="{{url('js/vendors.min.js')}}"></script>
+
+{{--<script src="{{url('js/app.min.js')}}"></script>--}}
+
 <script src="{{url('js/app.js')}}"></script>
 <script type="text/javascript">var switchTo5x = true;</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5743e070a2fa5f67"></script>

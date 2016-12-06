@@ -184,7 +184,7 @@ class ContractController extends Controller
     {
         $input  = $request->all();
         $id     = $input['id'];
-        $msg    = 'Please verify the captcha';
+        $msg    = trans('general.verify_captcha');
         $status = 'Error';
         if ($this->checkFeedbackCaptcha($request, $client)) {
 

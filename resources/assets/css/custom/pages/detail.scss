@@ -521,3 +521,98 @@
   float: right;
   color: #000;
 }
+
+/* ------ style for comment section  ------- */
+
+.laravel-like{
+  display: none;
+}
+
+.laravelComment{
+  h3{
+    @extend .small-title;
+    margin-bottom: 20px;
+    float: none;
+  }
+}
+
+.comment-section{
+  @extend .block;
+  background-color: #fff;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 20px rgba(8, 8, 8, 0.11);
+
+  .ui.laravelComment-form{
+    max-width: 650px;
+  }
+
+}
+
+
+.ui.comments{
+  max-width: 100% !important;
+}
+
+.row .ui.comments > .comment{
+  margin-left: -25px;
+  margin-right: -25px;
+  padding-left: 25px;
+  padding-right: 25px;
+
+  &:not(:last-child){
+    border-bottom: solid 1px #d5d5d5 !important;
+  }
+}
+
+.ui.threaded.comments .comment .comments {
+  box-shadow: none !important;
+}
+
+.ui.comments .comment .avatar img, .ui.comments .comment img.avatar{
+  border-radius: 50% !important;
+}
+
+.ui.comments .comment a.author{
+  color: #484848;
+  margin-bottom: 6px;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: normal;
+}
+
+.ui.comments .comment .text{
+  color: #5a5a5a;
+}
+
+.comment-section{
+
+  .ui.laravelComment-form:not(:first-of-type){
+    margin-top: 20px;
+  }
+
+  .ui.laravelComment-form{
+    margin-top: 20px;
+  }
+
+  .ui.threaded.comments .comment .comments {
+    margin: 20px 0 1px 1.25em;
+    padding: 0px 0 0 2.25em;
+  }
+}
+
+.row .ui.basic.button{
+    color: #000 !important;
+    padding: 1em 1.429em !important;
+    overflow: hidden !important;
+    border-radius: 4px !important;
+    background-color: #ffd200 !important;
+    color: $darker-grey-color;
+    box-shadow: none;
+    &:hover {
+      background: #e5bd00 !important;
+      box-shadow: none !important;
+    }
+}
+

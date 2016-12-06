@@ -86,9 +86,10 @@ function validateEmail(email) {
 }
 
 $(document).ready(function(){
+
     $(".burger-menu").click(function () {
         $("#main-menu .menu").slideToggle(300);
-        $(".header-banner .fixed-header").toggleClass("add-background");
+        $(".header-banner .main-menu-wrap").toggleClass("add-background");
         $(this).toggleClass("menu-on");
     });
 
@@ -264,52 +265,41 @@ $(document).ready(function(){
         }
     });
 
-    /* ------------ sticky header in tables ---------------- */
 
-/*    function UpdateTableHeaders() {
-        if($(window).width() > 768){
-            $(".persist-area").each(function() {
-
-                var el             = $(this),
-                    offset         = el.offset(),
-                    scrollTop      = $(window).scrollTop(),
-                    floatingHeader = $(".floatingHeader", this)
-
-                if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
-                    floatingHeader.css({
-                        "visibility": "visible"
-                    });
-                    var clonedHeader = $(".floatingHeader");
-                    var realHeader = clonedHeader.siblings('.persist-header');
-                    $('th', realHeader).each(function(index) {
-                        $('th', clonedHeader).eq(index).css('width', $(this).outerWidth());
-                    });
-                } else {
-                    floatingHeader.css({
-                        "visibility": "hidden"
-                    });
-                };
-            });
-        }
-    }
-
-// DOM Ready
     $(function() {
-        var clonedHeaderRow;
 
-        $(".persist-area").each(function() {
-            clonedHeaderRow = $(".persist-header", this);
-            clonedHeaderRow
-                .before(clonedHeaderRow.clone())
-                .css("width", clonedHeaderRow.width())
-                .addClass("floatingHeader");
+        $(window).on('wheel', function(e) {
+            if($(".login-bar").length > 0) {
+                var delta = e.originalEvent.deltaY;
+                var element = $(".login-bar"),
+                    element_height = element.outerHeight();
+
+                if (delta > 0) {
+                    $("#main-content").addClass("reduce-padding");
+                    $(".fixed-header").addClass("add-transform");
+                    element.addClass("disapper");
+                }
+                else {
+                    $("#main-content").removeClass("reduce-padding");
+                    $(".fixed-header").removeClass("add-transform");
+                    element.removeClass("disapper");
+                }
+            }
+            else{
+                return;
+            }
         });
+    });
 
-        $(window)
-            .scroll(UpdateTableHeaders)
-            .trigger("scroll");
+    $(function(){
+        $(".close-button").on("click", function(){
+          $(this).parent().hide();
+        });
+    });
 
-    });*/
+if($(".login-bar").length > 0) {
+    $("#main-content").css("padding-top", "120px");
+}
 
     $(document).ready(function(){
         $('.chart-wrap').each(function() {
