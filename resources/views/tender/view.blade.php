@@ -154,8 +154,37 @@
 
         </div>
     </div>
-
-
+    @if(sizeof($feedbackData)>0)
+        <div class="block colored-block">
+            <div class="row clearfix">
+                <div class="section-header">Appeal</div>
+                <div class="name-value-warp">
+                    <div class="name">Document date</div>
+                    <div class="value">{{ ($feedbackData['date_of_document']) }}</div>
+                </div>
+                <div class="name-value-warp">
+                    <div class="name">AC-Challenge</div>
+                    <div class="value">{{ $feedbackData['ac_challenge'] }}</div>
+                </div>
+                <div class="name-value-warp">
+                    <div class="name">Issuer</div>
+                    <div class="value">{{ $feedbackData['issuer'] }}</div>
+                </div>
+                <div class="name-value-warp">
+                    <div class="name">Under Appeal</div>
+                    <div class="value">{{ $feedbackData['under_appeal'] }}</div>
+                </div>
+                <div class="name-value-warp">
+                    <div class="name">Procedure no.</div>
+                    <div class="value">{{ $feedbackData['procedure_no'] }}</div>
+                </div>
+                <div class="name-value-warp">
+                    <div class="name">Content Agency Decision</div>
+                    <div class="value">{{ $feedbackData['content_agency_decision'] }}</div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
 @section('script')
     <script>

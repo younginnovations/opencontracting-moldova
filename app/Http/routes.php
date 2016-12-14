@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get(
     '/',
     ['as' => '/', 'uses' => 'HomeController@index']
@@ -37,6 +38,14 @@ Route::get(
     [
         'as'   => 'contracts.contractor',
         'uses' => 'ContractController@show'
+    ]
+);
+
+Route::get(
+    '/contractor/{name}/{type}/list',
+    [
+        'as'   => 'contracts.linkage',
+        'uses' => 'ContractController@linkage'
     ]
 );
 
@@ -159,7 +168,6 @@ Route::post(
         'uses' => 'SubscriptionsController@add'
     ]
 );
-
 Route::get('/about',function(){
     return view('about');
 });

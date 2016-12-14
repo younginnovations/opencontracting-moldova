@@ -123,6 +123,39 @@ h2 {
     .block, .comment-section {
       padding: 20px 20px; } }
 
+.colored-block {
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 3.75em;
+  box-shadow: 0px 0px 20px rgba(8, 8, 8, 0.11); }
+  .colored-block .section-header {
+    margin-bottom: 20px; }
+  .colored-block .name-value-warp:not(:last-child) {
+    border-bottom: solid 1px rgba(204, 204, 204, 0.2);
+    margin-bottom: 10px;
+    padding-bottom: 10px; }
+  .colored-block .name {
+    width: 25%;
+    display: inline-block;
+    vertical-align: top; }
+  .colored-block .value {
+    width: 74%;
+    display: inline-block;
+    vertical-align: top; }
+
+strong {
+  color: #000; }
+
+.empty-block {
+  text-align: center;
+  background: #eee;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #292929; }
+  .empty-block:before {
+    display: none; }
+
 .push-up-block.small-push-up-block {
   margin-top: -77px; }
 
@@ -1820,7 +1853,7 @@ tfoot td, tfoot th, thead td, thead th {
 
 .button.collapse-btn, .button.expand-btn {
   position: relative;
-  padding: 12px  1rem;
+  padding: 12px 1rem;
   width: 128px;
   text-align: left; }
   .button.collapse-btn:after, .button.expand-btn:after {
@@ -1841,28 +1874,129 @@ tfoot td, tfoot th, thead td, thead th {
   content: "-"; }
 
 /* -------------- style for tooltip ------------- */
+.contract-info-wrap {
+  text-align: center; }
+  .contract-info-wrap > div {
+    display: inline-block;
+    margin-left: 10px; }
+  .contract-info-wrap .detail-info-wrap {
+    height: 30px; }
+    .contract-info-wrap .detail-info-wrap .detail-anchor {
+      margin-bottom: 0; }
+    .contract-info-wrap .detail-info-wrap:nth-of-type(1) .detail-info, .contract-info-wrap .detail-info-wrap:nth-of-type(2) .detail-info {
+      width: 465px;
+      margin-left: -232px; }
+    .contract-info-wrap .detail-info-wrap:nth-of-type(3) .detail-info {
+      width: 255px;
+      margin-left: -127px; }
+
 .detail-info-wrap {
   position: relative;
   width: auto;
   display: table;
-  margin: 0 auto;
-  min-width: 215px; }
+  margin: 0 auto; }
+  .detail-info-wrap .grey-yellow-btn {
+    min-width: 100px;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 7px 12px; }
   .detail-info-wrap .detail-anchor {
     cursor: pointer;
     text-align: center;
-    margin-bottom: 0; }
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 20px; }
     .detail-info-wrap .detail-anchor span {
       font-family: Garamond;
       font-style: italic;
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 12px;
+      line-height: 16px;
       font-weight: bold;
       background: #333;
       color: #eee;
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
-      margin-right: 6px; }
+      margin-right: 6px;
+      text-align: center; }
+
+.detail-info .description span:first-of-type {
+  font-family: Garamond;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  background: #333;
+  color: #eee;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+  text-align: center; }
+
+.contract-info-wrap .detail-info {
+  text-align: left;
+  padding: 20px; }
+  .contract-info-wrap .detail-info .description {
+    font-size: 14px;
+    line-height: 20px;
+    color: #4a4a4a;
+    padding-left: 20px;
+    margin-bottom: 15px; }
+  .contract-info-wrap .detail-info ul {
+    margin-left: 10px; }
+  .contract-info-wrap .detail-info ul li {
+    list-style: none;
+    position: relative;
+    padding-left: 10px; }
+    .contract-info-wrap .detail-info ul li:before {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      top: 7px;
+      left: 0;
+      background-color: #FFD200; }
+  .contract-info-wrap .detail-info .name-value-wrap {
+    font-size: 12px;
+    line-height: 18px;
+    border: none !important;
+    display: inline-block;
+    padding: 0 10px 0 0;
+    margin-right: 10px;
+    position: relative;
+    vertical-align: top; }
+    .contract-info-wrap .detail-info .name-value-wrap:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 18px;
+      width: 1px;
+      background: rgba(0, 70, 174, 0.4); }
+    .contract-info-wrap .detail-info .name-value-wrap:last-of-type:after {
+      background: none; }
+    .contract-info-wrap .detail-info .name-value-wrap .name {
+      font-size: 12px;
+      line-height: 18px;
+      width: auto;
+      min-height: 20px;
+      text-indent: 0;
+      overflow: visible; }
+    .contract-info-wrap .detail-info .name-value-wrap .value {
+      width: auto;
+      padding-left: 3px;
+      font-size: 12px;
+      line-height: 18px; }
+
+.contract-info-wrap .detail-info .name-value-wrap:not(:last-of-type) {
+  border-bottom: none;
+  margin-bottom: 6px; }
+
+.contract-info-wrap .detail-info {
+  top: calc(100% + 15px); }
 
 .detail-info {
   background: #fff;
@@ -1871,7 +2005,7 @@ tfoot td, tfoot th, thead td, thead th {
   width: 400px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   position: absolute;
-  top: calc(100% + 15px);
+  top: calc(100% + 0px);
   left: 50%;
   z-index: 88;
   margin-left: -150px;
@@ -1903,10 +2037,16 @@ tfoot td, tfoot th, thead td, thead th {
       padding-left: 15px; }
 
 /* ---------- add traingle above tooltip ------------- */
-.detail-info {
+.black-listed-show {
+  width: 211px;
+  height: 81px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); }
+
+.detail-info, .black-listed-show {
   visibility: hidden;
   opacity: 0; }
-  .detail-info:after {
+  .detail-info:after, .black-listed-show:after {
     position: absolute;
     top: -10px;
     left: 50%;
@@ -1923,15 +2063,15 @@ tfoot td, tfoot th, thead td, thead th {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }
 
-.detail-info-wrap:hover .detail-info {
+.detail-info-wrap:hover > .detail-info {
   opacity: 1;
   visibility: visible;
   margin-left: -200px; }
-  .detail-info-wrap:hover .detail-info:after {
+  .detail-info-wrap:hover > .detail-info:after {
     -webkit-transform: translateY(0px);
     transform: translateY(0px); }
   @media (max-width: 480px) {
-    .detail-info-wrap:hover .detail-info {
+    .detail-info-wrap:hover > .detail-info {
       margin-left: -150px; } }
 
 /* ---------------- place icons for each information in detail section ---------------- */
@@ -2022,6 +2162,58 @@ tfoot td, tfoot th, thead td, thead th {
   .row .ui.basic.button:hover {
     background: #e5bd00 !important;
     box-shadow: none !important; }
+
+.flag-icon-red, .flag-icon-green, .balance-icon, .info-icon {
+  padding-left: 40px !important;
+  position: relative; }
+  .flag-icon-red:before, .flag-icon-green:before, .balance-icon:before, .info-icon:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 12px;
+    width: 16px;
+    height: 32px; }
+
+.info-icon:before {
+  content: 'i';
+  font-family: Garamond;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  background: #333;
+  color: #eee;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+  text-align: center; }
+
+.flag-icon-red:before {
+  background: transparent url(/images/ic_sprite.svg) -2px -680px no-repeat; }
+
+.flag-icon-green:before {
+  background: transparent url(/images/ic_sprite.svg) -2px -721px no-repeat; }
+
+.balance-icon:before {
+  width: 20px;
+  background: transparent url(/images/ic_sprite.svg) -45px -680px no-repeat; }
+
+.detail-info .flag-icon-red, .detail-info .flag-icon-green, .detail-info .balance-icon {
+  padding-left: 30px !important; }
+
+.description.flag-icon-red:before, .description.flag-icon-green:before, .description.balance-icon:before {
+  left: 0px;
+  top: -10px; }
+
+.description > span {
+  margin-left: -20px; }
+
+.court-case-link {
+  color: rgba(255, 255, 255, 0.5); }
+
+.court-case-link:hover {
+  color: white; }
 
 .background {
   background-color: rgba(255, 255, 255, 0.1);

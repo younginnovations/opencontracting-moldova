@@ -15,8 +15,8 @@ set :repo_diff_path,  :'web-apps/moldova_ocds/compare/master...'
 
 # Multistage Deployment #
 #####################################################################################
-set :stages,              %w(dev staging prod)
-set :default_stage,       "staging"
+set :stages,              %w(demo staging prod)
+set :default_stage,       "demo"
 
 # Other Options #
 #####################################################################################
@@ -61,7 +61,7 @@ namespace :composer do
     task :install do
         on roles(:app) do
             within release_path do
-                execute :composer, "install --no-dev --quiet --no-scripts"
+                execute :composer, "install --no-dev --no-scripts"
                 execute :composer, "dumpautoload -o"
             end
         end
@@ -181,7 +181,7 @@ namespace :generate do
 end
 namespace :hipchat do
 
-    desc 'Notigy Hipchat'
+    desc 'Notify Hipchat'
     task :notify do
         on roles(:all) do
             execute "curl -s -H 'Content-Type: application/json' -X POST -d '{\"color\": \"#{fetch(:notify_color)}\", \"message_format\": \"text\", \"message\": \"#{fetch(:notify_message)}\", \"notify\": \"true\" }' https://api.hipchat.com/v2/room/#{fetch(:hipchat_room_name)}/notification?auth_token=#{fetch(:hipchat_token)}"

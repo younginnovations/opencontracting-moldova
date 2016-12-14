@@ -8,6 +8,7 @@ use Jenssegers\Mongodb\Eloquent\Model;
  * Class Comment
  * @package App\Moldova\Entities
  */
+
 class Comment extends Model
 {
 	/**

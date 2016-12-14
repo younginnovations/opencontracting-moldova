@@ -37,6 +37,7 @@ elixir(function(mix){
     ],'./public/js/comment.js');
 
     mix.scripts([
+
         './resources/assets/js/charts/custom/lineChart-homepage.js',
         './resources/assets/js/charts/custom/lineChart-rest.js',
         './resources/assets/js/charts/custom/horizontal-barChart.js',

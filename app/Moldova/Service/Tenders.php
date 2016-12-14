@@ -62,6 +62,7 @@ class Tenders
     public function getAllTenders($params)
     {
         $totalTenders = $this->tender->getTendersByOpenYear();
+
         return [
             'draw'            => (int) $params['draw'],
             'recordsTotal'    => count($totalTenders),
@@ -73,6 +74,18 @@ class Tenders
     public function getTenderDetailByID($tenderID)
     {
         return $this->tender->getTenderDetailByID($tenderID);
+    }
+
+    public function getTenderFeedback($tenderRef)
+    {
+        $splitTenderRef = explode(" ", $tenderRef);
+        $ref            = $splitTenderRef[2];
+
+        $feedback =  $this->tender->getTenderFeedback($ref);
+        if($feedback)
+            return $feedback->toArray();
+
+        return [];
     }
 
 }

@@ -62,6 +62,18 @@ $('#select-goods, #select-goods-year').change(function () {
 });
 
 $('#subscribe').click(function () {
+    subscribe();
+});
+
+$("#subscribe-form").submit(function(e){
+
+        subscribe();
+
+    e.preventDefault();
+   return false;
+});
+
+function subscribe(){
     var email = $('input[name="email"]').val();
     if(!validateEmail(email)){
         $("#subscribeModal").css("display", "block");
@@ -78,7 +90,7 @@ $('#subscribe').click(function () {
         $("#subscribeModal").css("display", "block");
         $("#showMsg").html(error.responseJSON.message);
     });
-});
+}
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -249,9 +261,19 @@ $(document).ready(function(){
         $("#myModal").css("display","block");
     });
 
+    $("#showLoginModal").click(function(){
+        console.log('here');
+        $("#loginModal").css("display","block");
+    });
+
+
 // When the user clicks on <span> (x), close the modal
     $(".close").click(function(){
         $("#myModal").css("display","none");
+    });
+
+    $(".closeLoginModal").click(function(){
+        $("#loginModal").css("display","none");
     });
 
     $(".alert .close").click(function(){
@@ -259,59 +281,59 @@ $(document).ready(function(){
     });
 
 // When the user clicks anywhere outside of the modal, close it
-    $(window).click(function(event) {
-        if (event.target.id === 'subscribeModal') {
-            $("#subscribeModal").css("display","none");
+$(window).click(function(event) {
+    if (event.target.id === 'subscribeModal') {
+        $("#subscribeModal").css("display","none");
+    }
+});
+
+
+$(function() {
+
+    $(window).on('wheel', function(e) {
+        if($(".login-bar").length > 0) {
+            var delta = e.originalEvent.deltaY;
+            var element = $(".login-bar"),
+                element_height = element.outerHeight();
+
+            if (delta > 0) {
+                $("#main-content").addClass("reduce-padding");
+                $(".fixed-header").addClass("add-transform");
+                element.addClass("disapper");
+            }
+            else {
+                $("#main-content").removeClass("reduce-padding");
+                $(".fixed-header").removeClass("add-transform");
+                element.removeClass("disapper");
+            }
+        }
+        else{
+            return;
         }
     });
+});
 
-
-    $(function() {
-
-        $(window).on('wheel', function(e) {
-            if($(".login-bar").length > 0) {
-                var delta = e.originalEvent.deltaY;
-                var element = $(".login-bar"),
-                    element_height = element.outerHeight();
-
-                if (delta > 0) {
-                    $("#main-content").addClass("reduce-padding");
-                    $(".fixed-header").addClass("add-transform");
-                    element.addClass("disapper");
-                }
-                else {
-                    $("#main-content").removeClass("reduce-padding");
-                    $(".fixed-header").removeClass("add-transform");
-                    element.removeClass("disapper");
-                }
-            }
-            else{
-                return;
-            }
-        });
+$(function(){
+    $(".close-button").on("click", function(){
+      $(this).parent().hide();
     });
-
-    $(function(){
-        $(".close-button").on("click", function(){
-          $(this).parent().hide();
-        });
-    });
+});
 
 if($(".login-bar").length > 0) {
     $("#main-content").css("padding-top", "120px");
 }
 
-    $(document).ready(function(){
-        $('.chart-wrap').each(function() {
-            var el = $(this).find('svg');
-            if(el.length != 0) {
-                $(this).removeClass('default-view');
-                $(this).find(".filter-section").show();
-                $(this).find(".loader-text").hide();
-                $(".default-view").parents(".each-chart-section").css("height", "auto");
-            }
-        });
+$(document).ready(function(){
+    $('.chart-wrap').each(function() {
+        var el = $(this).find('svg');
+        if(el.length != 0) {
+            $(this).removeClass('default-view');
+            $(this).find(".filter-section").show();
+            $(this).find(".loader-text").hide();
+            $(".default-view").parents(".each-chart-section").css("height", "auto");
+        }
     });
+});
 
   /* ------  script for json table  ----- */
     $(".jTable .main-title").each(function(){
