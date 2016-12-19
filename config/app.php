@@ -165,9 +165,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
-        //Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        //risul\LaravelLikeComment\LikeCommentServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -175,11 +172,9 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\DevelopmentServiceProvider::class,
         \App\Providers\RepositoryServiceProvider::class,
-
         Jenssegers\Mongodb\MongodbServiceProvider::class,
-//        Barryvdh\Debugbar\ServiceProvider::class
         App\Providers\LikeCommentServiceProvider::class
 
     ],

@@ -17,8 +17,8 @@
             <div class="section-wrap">
                 <h2>@lang('about.additional_resources_for_developers')</h2>
                 @lang('about.resources')
-                <img src="{{url('images/ppa_logo.png')}}">
-                <img style="margin-bottom: 20px;margin-left: 19px;" src="{{url('images/twb_logo.svg')}}">
+                <a href="http://tender.gov.md/en"><img src="{{url('images/ppa_logo.png')}}"></a>
+                <a href="http://www.worldbank.org/ "><img style="margin-bottom: 20px;margin-left: 19px;" src="{{url('images/twb_logo.png')}}"></a>
             </div>
 
             <div class="section-wrap">

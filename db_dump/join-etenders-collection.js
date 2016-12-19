@@ -82,7 +82,7 @@ db.tenders_collection.find({}).forEach(function(tender){
         "name": tender.stateOrg.orgName,
         "address": {
             "streetAddress": tender.stateOrg.address,
-            "locality":"",
+            "locality":""
         },
         "contactPoint": {
             "name": "",

@@ -3,7 +3,7 @@ To run this script, run the following command in the cli
 # mongo localhost:27017/etenders create_goods_csv.js
 */
 var start = new Date().getTime();
-print("starting Execution")
+print("starting Execution for Goods and Services")
 db.tmp_goods_summary.remove({})
 var goods = [];
 db.ocds_release.find().forEach(function(release){
@@ -28,6 +28,7 @@ db.ocds_release.find().forEach(function(release){
 var end = new Date().getTime();
 var time = end - start;
 print("Execution Time (seconds) ", time/1000);
+print("finished Execution for Goods and Services");
 
 //mongoexport -d etenders -c tmp_goods_summary --type=csv --fields id,goods_and_services,scheme,cpv_code --out goods_csv.csv
 

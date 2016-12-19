@@ -24,7 +24,7 @@
     "phpunit/phpunit": "~4.0",
     "symfony/css-selector": "2.8.*|3.0.*",
     "symfony/dom-crawler": "2.8.*|3.0.*",
-    "rap2hpoutre/laravel-log-viewer": "^0.7.0",
+    "rap2hpoutre/laravel-log-viewer": "^0.8.0",
     "barryvdh/laravel-debugbar": "^2.3"
   },
   "autoload": {

@@ -49,7 +49,9 @@ return [
             'driver'   => 'mongodb',
             'host'     => env('DB_HOST', 'localhost'),
             'port'     => env('DB_PORT', 27017),
-            'database' => env('DB_DATABASE', 'etenders')
+            'database' => env('DB_DATABASE', 'etenders'),
+            'username' => env('DB_USERNAME', 'moldovaocds'),
+            'password' => env('DB_PASSWORD', 'moldovaocds@123'),
         ],
         'sqlite' => [
             'driver' => 'sqlite',
