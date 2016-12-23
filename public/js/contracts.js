@@ -61,13 +61,19 @@ var showArray = function (table, arr, level) {
 showJsonTable();
 $(document).ready(function () {
     updateTables();
-    var titleOne, titleTwo, titleThree, titleFour;
+    //var titleOne, titleTwo, titleThree, titleFour;
+    var title =[];
 
     $('.toggle-switch').click(function (e) {
-        titleOne = $('#title1').offset().top - 158, // 76 + 41 + 41 (fixed header + height of td)
-            titleTwo = $('#title2').offset().top - 158,
-            titleThree = $('#title3').offset().top - 158,
-            titleFour = $('#title4').offset().top - 158;
+        var size = Object.keys(input).length;
+        for(var z = 1; z <= size; z++){
+            title[z] = $('#title' + z).offset().top - 158;
+        }
+
+        //titleOne = $('#title1').offset().top - 158, // 76 + 41 + 41 (fixed header + height of td)
+        //titleTwo = $('#title2').offset().top - 158,
+        //titleThree = $('#title3').offset().top - 158,
+        //titleFour = $('#title4').offset().top - 158;
     });
 
     $(window).scroll(function () {
@@ -77,6 +83,7 @@ $(document).ready(function () {
                 offset = el.offset(),
                 scrollTop = $(window).scrollTop();
 
+            //console.log("element is",el);
             if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
                 fixHeader();
             } else {
@@ -98,22 +105,29 @@ $(document).ready(function () {
 
         var scrollTop = $(window).scrollTop();
 
-        if (titleOne <= scrollTop && scrollTop < titleTwo) {
-            calcHeaderWidth($("#title1"));
-            $(".main-title").not('[id$="1"]').removeClass("floatingHeader");
-
-        } else if (titleTwo <= scrollTop && scrollTop < titleThree) {
-            calcHeaderWidth($("#title2"));
-            $(".main-title").not('[id$="2"]').removeClass("floatingHeader");
-
-        } else if (titleThree <= scrollTop && scrollTop < titleFour) {
-            calcHeaderWidth($("#title3"));
-            $(".main-title").not('[id$="3"]').removeClass("floatingHeader");
-
-        } else if (titleFour <= scrollTop) {
-            calcHeaderWidth($("#title4"));
-            $(".main-title").not('[id$="4"]').removeClass("floatingHeader");
+        for(var x = 1; x<= title.length-1; x++){
+            if (title[x] <= scrollTop && scrollTop < title[x+1]) {
+                calcHeaderWidth($("#title"+x));
+                $(".main-title").not('[id$="'+ x +'"]').removeClass("floatingHeader");
+            }
         }
+
+        //if (titleOne <= scrollTop && scrollTop < titleTwo) {
+        //    calcHeaderWidth($("#title1"));
+        //    $(".main-title").not('[id$="1"]').removeClass("floatingHeader");
+        //
+        //} else if (titleTwo <= scrollTop && scrollTop < titleThree) {
+        //    calcHeaderWidth($("#title2"));
+        //    $(".main-title").not('[id$="2"]').removeClass("floatingHeader");
+        //
+        //} else if (titleThree <= scrollTop && scrollTop < titleFour) {
+        //    calcHeaderWidth($("#title3"));
+        //    $(".main-title").not('[id$="3"]').removeClass("floatingHeader");
+        //
+        //} else if (titleFour <= scrollTop) {
+        //    calcHeaderWidth($("#title4"));
+        //    $(".main-title").not('[id$="4"]').removeClass("floatingHeader");
+        //}
     }
 });
 //Sending Contract Feed back

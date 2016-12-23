@@ -16,6 +16,10 @@
 
 }
 
+.search input,.search-warp input {
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 340px) {
   .search-wrap input{
     width: 100%;
@@ -179,7 +183,7 @@
     border: none;
     background: transparent;
     color: #fff;
-    padding: 8px 42px 8px 12px;
+    padding: 20px 42px 20px 12px;
     font-size: 16px;
     line-height: 22px;
     background: transparent;
@@ -188,6 +192,7 @@
       outline: none;
     }
   }
+
 
   .search-button {
     display: block;

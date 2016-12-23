@@ -356,9 +356,13 @@
   }
 
   .table-wrapper .export{
-    margin: 0;
-    top: 39px;
-    right: 0;
+    display: block;
+    width: auto;
+    max-width: 145px;
+    float: right;
+    position: relative;
+    margin-bottom: 15px;
+    top: 0;
   }
 
   .chart-wrap select{
@@ -412,6 +416,22 @@
 }
 
 @media (max-width: 390px){
+  .burger-menu-button{
+    top: -5px;
+  }
+
+  #Language-select{
+    width: 42px;
+  }
+
+  .language-selector{
+    right: 40px;
+  }
+
+  #main-menu .search{
+    right: 90px;
+  }
+
   .social-share{
     float: none;
 
