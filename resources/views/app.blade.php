@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Moldova</title>
+    <link rel="icon" type="image" href="{{url('images/moldova.ico')}}">
     {{--<link href="{{url('css/vendors.min.css')}}" rel="stylesheet">--}}
     <link href="{{url('css/vendors.css')}}" rel="stylesheet">
     {{--<link href="{{url('css/app.min.css')}}" rel="stylesheet">--}}
@@ -35,7 +36,7 @@
                 <div class="multiple-search-wrap medium-8 small-12 columns">
                     <form action="{{ route('search') }}" method="get" class="search-form">
                         <input name="q" type="search"
-                               placeholder="@lang('homepage.type_a_contractor')">
+                               placeholder="@lang('homepage.type_a_contractor')" title= "@lang('homepage.type_a_contractor')">
                     </form>
                     <div class="filter-wrap columns">
                         <div class="row">

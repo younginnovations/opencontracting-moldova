@@ -595,6 +595,7 @@ header {
 .fixed-header {
   position: fixed;
   width: 100%;
+  width: 100vw;
   top: 0; }
 
 .project-logo {
@@ -816,7 +817,8 @@ footer {
   line-height: 1.813rem;
   padding: 12px 0;
   color: #fff;
-  font-family: RobotoCondensed-bold; }
+  font-family: RobotoCondensed-bold;
+  text-overflow: ellipsis; }
 
 .multiple-search-wrap ::-webkit-input-placeholder,
 .search-form ::-webkit-input-placeholder,
@@ -1680,19 +1682,6 @@ tfoot td, tfoot th, thead td, thead th {
   border-radius: 0;
   box-shadow: none; }
 
-/*.push-up-block{
-  .name-value-wrap{
-    .name{
-      font-size: 28px;
-      line-height: 36px;
-    }
-
-    .value{
-      font-size: 45px;
-      line-height: 52px;
-    }
-  }
-}*/
 .wide-header .section-header {
   margin-bottom: 25px; }
 
@@ -1884,11 +1873,9 @@ tfoot td, tfoot th, thead td, thead th {
     .contract-info-wrap .detail-info-wrap .detail-anchor {
       margin-bottom: 0; }
     .contract-info-wrap .detail-info-wrap:nth-of-type(1) .detail-info, .contract-info-wrap .detail-info-wrap:nth-of-type(2) .detail-info {
-      width: 465px;
-      margin-left: -232px; }
+      width: 465px; }
     .contract-info-wrap .detail-info-wrap:nth-of-type(3) .detail-info {
-      width: 255px;
-      margin-left: -127px; }
+      width: 255px; }
 
 .detail-info-wrap {
   position: relative;
@@ -2006,15 +1993,15 @@ tfoot td, tfoot th, thead td, thead th {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   position: absolute;
   top: calc(100% + 0px);
-  left: 50%;
   z-index: 88;
-  margin-left: -150px;
+  left: calc(50% + 50px);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
   -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 1, 1);
   transition: all 0.4s cubic-bezier(0.4, 0, 1, 1); }
   @media (max-width: 480px) {
     .detail-info {
-      width: 300px;
-      margin-left: -90px; } }
+      width: 300px !important; } }
   .detail-info .name-value-wrap {
     clear: both;
     overflow: hidden;
@@ -2035,6 +2022,12 @@ tfoot td, tfoot th, thead td, thead th {
       line-height: 22px;
       float: left;
       padding-left: 15px; }
+
+.scroll-wrap {
+  max-height: 400px;
+  overflow-y: scroll;
+  margin: -20px -20px 0 0;
+  padding-top: 20px; }
 
 /* ---------- add traingle above tooltip ------------- */
 .black-listed-show {
@@ -2066,13 +2059,10 @@ tfoot td, tfoot th, thead td, thead th {
 .detail-info-wrap:hover > .detail-info {
   opacity: 1;
   visibility: visible;
-  margin-left: -200px; }
+  left: 50%; }
   .detail-info-wrap:hover > .detail-info:after {
     -webkit-transform: translateY(0px);
     transform: translateY(0px); }
-  @media (max-width: 480px) {
-    .detail-info-wrap:hover > .detail-info {
-      margin-left: -150px; } }
 
 /* ---------------- place icons for each information in detail section ---------------- */
 .detail-info .address {
@@ -2347,6 +2337,9 @@ form input[name="startDate"], form input[name="endDate"] {
   .search-wrap input:hover, .search-wrap input:focus, .search-wrap input:active {
     border: solid 2px rgba(0, 66, 177, 0.7); }
 
+.search input, .search-warp input {
+  text-overflow: ellipsis; }
+
 @media (max-width: 340px) {
   .search-wrap input {
     width: 100%; } }
@@ -2467,7 +2460,7 @@ form input[name="startDate"], form input[name="endDate"] {
     border: none;
     background: transparent;
     color: #fff;
-    padding: 8px 42px 8px 12px;
+    padding: 20px 42px 20px 12px;
     font-size: 16px;
     line-height: 22px;
     background: transparent;
@@ -2894,9 +2887,13 @@ p.disabled {
       float: none;
       width: 100%; }
   .table-wrapper .export {
-    margin: 0;
-    top: 39px;
-    right: 0; }
+    display: block;
+    width: auto;
+    max-width: 145px;
+    float: right;
+    position: relative;
+    margin-bottom: 15px;
+    top: 0; }
   .chart-wrap select:first-child {
     max-width: 90px; } }
 
@@ -2929,6 +2926,14 @@ p.disabled {
     max-width: 100% !important; } }
 
 @media (max-width: 390px) {
+  .burger-menu-button {
+    top: -5px; }
+  #Language-select {
+    width: 42px; }
+  .language-selector {
+    right: 40px; }
+  #main-menu .search {
+    right: 90px; }
   .social-share {
     float: none; }
     .social-share li:first-child {

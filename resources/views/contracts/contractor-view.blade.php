@@ -40,6 +40,7 @@
                         <div class="small-button grey-yellow-btn balance-icon">Court cases</div>
                     </div>
                     <div class="detail-info">
+                        <div class="scroll-wrap">
                         <div class="description balance-icon">
                             <strong>Disclaimer </strong>: These results are based on best match that
                             we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.Please
@@ -66,6 +67,7 @@
                             </ul>
                         @empty
                         @endforelse
+                    </div>
                     </div>
                 </div>
                 @if($blacklist)
