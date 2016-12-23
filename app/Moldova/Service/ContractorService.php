@@ -7,6 +7,7 @@ use App\Moldova\Entities\CourtCases;
 use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Repositories\Contracts\ContractsRepositoryInterface;
 use GuzzleHttp\Client;
+use Symfony\Component\HttpKernel\Tests\Config\EnvParametersResourceTest;
 
 
 class ContractorService
@@ -117,15 +118,13 @@ class ContractorService
     }
 
     /**
-     * @param        $contractor
-     * @param string $limit
+     * @param  $contractor
      * @return mixed
      */
-    public function fetchCourtData($contractor, $limit = '5')
+    public function fetchCourtData($contractor)
     {
-//        $contractor = $this->getTrimedCompanyName($contractor);
         $contractor = $this->contracts->getContractorClearName($contractor);
-        $cases = $this->contracts->getCourtCasesOfCompany($contractor, $limit);
+        $cases      = $this->contracts->getCourtCasesOfCompany($contractor);
 
         return ($cases);
     }
@@ -192,6 +191,7 @@ class ContractorService
     public function fetchBlacklist($contractor)
     {
         $contractor = $this->contracts->getContractorClearName($contractor);
+
         return (null !== $this->contracts->getBlacklistCompany($contractor)) ? true : false;
     }
 }

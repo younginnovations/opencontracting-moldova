@@ -115,10 +115,9 @@ interface ContractsRepositoryInterface
 
     /**
      * @param $contractor
-     * @param $limit
      * @return mixed
      */
-    public function getCourtCasesOfCompany($contractor, $limit);
+    public function getCourtCasesOfCompany($contractor);
 
     /**
      * @param $contractor

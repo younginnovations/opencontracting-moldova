@@ -14,6 +14,7 @@ class CourtCases extends Eloquent
         "court_name",
         "theme",
         "delivery_date",
-        "link"
+        "link",
+        "clear_name"
     ];
 }

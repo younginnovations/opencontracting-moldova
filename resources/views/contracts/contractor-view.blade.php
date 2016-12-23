@@ -40,44 +40,45 @@
                         <div class="small-button grey-yellow-btn balance-icon">Court cases</div>
                     </div>
                     <div class="detail-info">
-                        <div class="description balance-icon">
-                            <strong>Disclaimer </strong>: These results are based on best match that
-                            we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.Please
-                            click <a
-                                    href="{{ route('contracts.linkage',['name'=>$contractor,'type' => 'courtCase']) }}">here</a>
-                            for more matches.
-                            </p>
+                        <div class="scroll-wrap">
+                            <div class="description balance-icon">
+                                <strong>Disclaimer </strong>: These results are based on best match that
+                                we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.
+                                </p>
+                            </div>
+
+                            @forelse($courtCases as $case)
+                                <ul>
+                                    <li>
+                                        <div class="title="><a href="{{  $case['link'] }}">{{ $case['title'] }}</a>
+                                        </div>
+                                        <div class="name-value-wrap">
+                                            <div class="name">Case type:</div>
+                                            <div class="value">{{ $case['case_type'] }} </div>
+                                        </div>
+
+                                        <div class="name-value-wrap">
+                                            <div class="name">Court name:</div>
+                                            <div class="value">{{ $case['court_name'] }} </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            @empty
+                                No matching court informations were found.
+                            @endforelse
                         </div>
-
-                        @forelse($courtCases as $case)
-                            <ul>
-                                <li>
-                                    <div class="title="><a href="{{  $case['link'] }}">{{ $case['title'] }}</a></div>
-                                    <div class="name-value-wrap">
-                                        <div class="name">Case type:</div>
-                                        <div class="value">{{ $case['case_type'] }} </div>
-                                    </div>
-
-                                    <div class="name-value-wrap">
-                                        <div class="name">Court name:</div>
-                                        <div class="value">{{ $case['court_name'] }} </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        @empty
-                        @endforelse
                     </div>
                 </div>
                 @if($blacklist)
-                <div class="detail-info-wrap">
-                    <div class="detail-anchor">
-                        <div class="small-button grey-yellow-btn {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">Black listed</div>
-                    </div>
-                    {{--<div class="detail-info">--}}
+                    <div class="detail-info-wrap">
+                        <div class="detail-anchor">
+                            <div class="small-button grey-yellow-btn {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">Black listed</div>
+                        </div>
+                        {{--<div class="detail-info">--}}
                         {{--<div class="description {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">This company is {{($blacklist)?'':'not'}} black listed.</div>--}}
-                    {{--</div>--}}
-                </div>
-                    @endif
+                        {{--</div>--}}
+                    </div>
+                @endif
             </div>
         </div>
 

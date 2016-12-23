@@ -534,19 +534,18 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getCourtCasesOfCompany($contractor, $limit)
+    public function getCourtCasesOfCompany($contractor)
     {
-        if ($limit == 'all') {
-            return $this->courtCases->where('clear_name', '=', $contractor)->get();
-
-        }
-
-        return ($this->courtCases->where('clear_name', '=', $contractor)->take($limit)->get());
+        return $this->courtCases->raw(function ($collection) use ($contractor) {
+            return $collection->find(['clear_name' => $contractor], []);
+        });
+//        return $this->courtCases->where('clear_name', '=', $contractor)->get();
     }
 
     public function getBlacklistCompany($contractor)
     {
         $blacklist = new Blacklist();
+
         return ($blacklist->where('clear_name', '=', $contractor)->first());
     }
 

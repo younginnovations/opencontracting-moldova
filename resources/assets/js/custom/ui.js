@@ -221,7 +221,11 @@ $(function(){
 });
 
 if($(".login-bar").length > 0) {
-    $("#main-content").css("padding-top", "120px");
+    if($(window).width() > 640){
+        $("#main-content").css("padding-top", "120px");
+    }else{
+        $("#main-content").css("padding-top", "110px");
+    }
 }
 
 $(document).ready(function(){
@@ -235,6 +239,19 @@ $(document).ready(function(){
         }
     });
 });
+
+/* ------- shorten the text for small devices ------------ */
+
+    var shorterText = function() {
+        if ($(window).width() < 391) {
+            $('select option:contains("English")').text('EN');
+            $('select option:contains("Romanian")').text('RO');
+        }else{
+            $('select option:contains("EN")').text('English');
+            $('select option:contains("RO")').text('Romanian');
+        }
+    }
+    shorterText();
 
   /* ------  script for json table  ----- */
     $(".jTable .main-title").each(function(){
@@ -251,6 +268,7 @@ $(document).ready(function(){
         headerElementsAlign();
         tabResponsive();
         menuDisappear();
+        shorterText();
         var tableWidth = $("#table_id_wrapper").width();
         $(".persit-header").width(tableWidth);
         $(".custom-table").width(tableWidth);
