@@ -3,7 +3,7 @@
  # mongo localhost:27017/etenders create_contracts_csv.js
  */
 var start = new Date().getTime();
-print("starting Execution for Goods and Services");
+print("starting Execution for Contracts");
 db.tmp_contracts_summary.remove({});
 db.ocds_release.find().forEach(function (release) {
     release.contracts.forEach(function (contracts) {
@@ -39,5 +39,6 @@ db.ocds_release.find().forEach(function (release) {
 var end = new Date().getTime();
 var time = end - start;
 print("Execution Time (seconds) ", time / 1000);
+print("finished Execution for Contracts.");
 
-//mongoexport -d etenders -c tmp_contracts_summary --type=csv --fields id,title,description,status,tenderID,tenderTitle,goods,goodsCPV,contractorID,contractor,procuringAgencyID,procuringAgency,contractStartDate,contractEndDate,amount --out /Users/owner/homesteadSites/moldocds/public/csv/contracts_csv.csv
+//mongoexport -d etenders -c tmp_contracts_summary --type=csv --fields id,title,description,status,tenderID,tenderTitle,goods,goodsCPV,contractorID,contractor,procuringAgencyID,procuringAgency,contractStartDate,contractEndDate,amount --out /Users/owner/homesteadSites/moldova-ocds/public/csv/contracts_csv.csv

@@ -123,14 +123,14 @@ class Contracts
      */
     public function getContractsList($params)
     {
+//        dd($params);
         $tenders = $this->contracts->getContractsList($params);
+        $contracts = [];
 
         if ($params === "") {
             return $tenders;
         }
-        $contracts = [];
-//        $count     = 0;
-//
+
         foreach ($tenders as $key => $contract) {
             $contracts[$key] = [];
             array_push($contracts[$key], $contract['contractNumber']);
@@ -139,22 +139,8 @@ class Contracts
             array_push($contracts[$key], $contract['contractDate']);
             array_push($contracts[$key], $contract['finalDate']);
             array_push($contracts[$key], $contract['amount']);
-//            $contracts[$key]['goods']['mdValue'] = $contract['goods']['mdValue'];
         }
-//        foreach ($tenders as $key => $tender) {
-//            foreach ($tender['contracts'] as $k => $contract) {
-//                $contracts[$count]['id']             = $contract['id'];
-//                $contracts[$count]['contractNumber'] = getContractInfo($contract['title'], 'id');
-//                $contracts[$count]['contractDate']   = $contract['dateSigned'];
-//                $contracts[$count]['finalDate']      = $contract['period']['endDate'];
-//                $contracts[$count]['amount']         = $contract['value']['amount'];
-//                $contracts[$count]['status']         = $contract['status'];
-//                $contracts[$count]['goods']          = (!empty($tender['awards'][$k]['items'])) ? $tender['awards'][$k]['items'][0]['classification']['description'] : '-';
-//
-//                $count ++;
-//            }
-//        }
-//
+
         return [
             'draw'            => (int) $params['draw'],
             'recordsTotal'    => $this->contracts->getContractsList(""),

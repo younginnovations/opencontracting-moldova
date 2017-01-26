@@ -11,6 +11,9 @@
 |
 */
 
+if (getenv('APP_ENV') === 'local') {
+    \DB::connection('mongodb')->enableQueryLog();
+}
 
 Route::get(
     '/',
@@ -168,11 +171,11 @@ Route::post(
         'uses' => 'SubscriptionsController@add'
     ]
 );
-Route::get('/about',function(){
+Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/error',function(){
+Route::get('/error', function () {
     return view('error_404');
 });
 
@@ -218,46 +221,46 @@ Route::get(
 Route::get(
     '/newsletter/content',
     [
-       'as' => 'newsletter.content',
-       'uses' => 'NewsletterController@getContentView'
+        'as'   => 'newsletter.content',
+        'uses' => 'NewsletterController@getContentView'
     ]
 );
 
 Route::post(
     '/api/newsletter/subscribe',
     [
-        'as' => 'newsletter.subscribeUser',
-        'uses'=> 'NewsletterController@subscribeUser'
+        'as'   => 'newsletter.subscribeUser',
+        'uses' => 'NewsletterController@subscribeUser'
     ]
 );
 
 Route::get('/csv/download', function () {
     return response()->download(base_path('public') . '/csv/contracts_csv.csv');
 });
-Route::get('/csv/download/tenders',function(){
+Route::get('/csv/download/tenders', function () {
     return response()->download(base_path('public') . '/csv/tenders_csv.csv');
 });
 
-Route::get('/csv/download/goods',function(){
+Route::get('/csv/download/goods', function () {
     return response()->download(base_path('public') . '/csv/goods_csv.csv');
 });
 
-Route::get('/csv/download/agencies',function(){
+Route::get('/csv/download/agencies', function () {
     return response()->download(base_path('public') . '/csv/agencies_csv.csv');
 });
 
-Route::get('/csv/download/contractors',function(){
+Route::get('/csv/download/contractors', function () {
     return response()->download(base_path('public') . '/csv/contractors_csv.csv');
 });
 
-Route::group(['prefix'=>'comments'], function (){
-    Route::group(['middleware' => 'auth'], function (){
+Route::group(['prefix' => 'comments'], function () {
+    Route::group(['middleware' => 'auth'], function () {
         Route::get('/like/vote', 'LikeController@vote');
         Route::get('/comment/add', 'CommentController@add');
     });
 });
 
-Route::group(['namespace'=>'Auth', 'middleware' => 'guest'], function(){
+Route::group(['namespace' => 'Auth', 'middleware' => 'guest'], function () {
     Route::get('social/redirect/{provider}', 'SocialAuthController@redirect')->where(['provider' => '\b(?:facebook|google)\b']);;
     Route::get('social/callback/{provider}', 'SocialAuthController@callback')->where(['provider' => '\b(?:facebook|google)\b']);;
 });
