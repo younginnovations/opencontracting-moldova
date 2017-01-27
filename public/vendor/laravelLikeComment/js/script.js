@@ -69,10 +69,19 @@ $(document).on('submit', '.laravelComment-form', function () {
     return false;
 });
 
+window.onload = function(){
+    var url = window.location.href;
+    var value = url.substring(url.lastIndexOf('/') + 1);
+   $(".show-" + value + "-0").fadeIn('normal');
+};
 
 $(document).on('click', '#showComment', function () {
     var show = $(this).data("show-comment");
+    show = (show == 0)?show+1:show;
     $('.show-' + $(this).data("item-id") + '-' + show).fadeIn('normal');
     $(this).data("show-comment", show + 1);
+    if(show > (commentCount/5)){
+        $(this).addClass('hide');
+    }
     $(this).text("Show more comments");
 });

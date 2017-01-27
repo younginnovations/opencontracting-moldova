@@ -16,7 +16,8 @@
     "nuovo/spreadsheet-reader": "^0.5.11",
     "jenssegers/mongodb": "2.3.*",
     "laravel/socialite": "^2.0",
-    "risul/laravel-like-comment": "^1.0"
+    "risul/laravel-like-comment": "^1.0",
+    "zizaco/entrust": "5.2.x-dev"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

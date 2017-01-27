@@ -268,3 +268,27 @@ Route::group(['namespace' => 'Auth', 'middleware' => 'guest'], function () {
 Route::get('logout', 'Auth\AuthController@logout');
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('login',
+           [
+               'as' => 'login',
+               'uses' => 'Auth\AuthController@showLoginForm'
+           ]);
+
+Route::post('login',
+            [
+                'as' => 'login',
+                'uses' => 'Auth\AuthController@login'
+            ]);
+
+Route::get('logout',
+           [
+               'as' => 'logout',
+               'uses' => 'Auth\AuthController@logout'
+           ]);
+
+Route::get('admin',
+           [
+               'as' => 'admin',
+               'uses' => 'Admin\FeedbackController@index'
+           ]);
