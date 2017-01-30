@@ -22,5 +22,6 @@ return [
     'value'                            => 'Tender Value',
     'award_criteria'                   => 'Award Criteria',
     'eligibility_criteria'             => 'Eligibility Criteria',
-    'contractors'                      => 'Contractors'
+    'contractors'                      => 'Contractors',
+    'for_more_detail'                  => 'For more details'
 ];

@@ -306,7 +306,7 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         if ($search != '') {
             $filter = [
-                '$match' => ['awards.suppliers.name' => $search]
+                '$match' => ['awards.suppliers.name' => ['$gt' => $search]]
             ];
         }
 

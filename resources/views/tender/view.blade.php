@@ -182,7 +182,7 @@
                 <div class="section-header">Appeal</div>
                 <div class="name-value-warp">
                     <div class="name">Document date</div>
-                    <div class="value">{{ ($feedbackData['date_of_document']) }}</div>
+                    <div class="value change-format">{{ ($feedbackData['date_of_document']) }}</div>
                 </div>
                 <div class="name-value-warp">
                     <div class="name">AC-Challenge</div>
@@ -204,6 +204,7 @@
                     <div class="name">Content Agency Decision</div>
                     <div class="value">{{ $feedbackData['content_agency_decision'] }}</div>
                 </div>
+                <div class="name-value-warp">@lang('tender.for_more_detail') - <a target="_blank" href="http://tender.gov.md/ro/contestatii">http://tender.gov.md/ro/contestatii</a></div>
             </div>
         </div>
     @endif
@@ -217,6 +218,14 @@
                 }
                 return false;
             });
+
+            var dateFormat = $(".change-format").text().split(".");
+
+            if (dateFormat[1]) {
+                dateFormat = dateFormat[2] + '/' + dateFormat[1] + '/' + dateFormat[0];
+                var formatted = moment(dateFormat).format('ll');
+                $(".change-format").text(formatted);
+            }
         });
 
         $("#table_items").DataTable({"bFilter": false});
