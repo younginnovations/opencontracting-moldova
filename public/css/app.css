@@ -218,13 +218,15 @@ strong {
     color: #484848; }
 
 .name-value-wrap .name {
-  font-size: 17px;
+  font-size: 12px;
   line-height: 21px;
   margin-bottom: 8px;
-  color: rgba(72, 72, 72, 0.7); }
+  color: #4a4a4a;
+  padding: 0 5px;
+  cursor: inherit; }
 
 .name-value-wrap .value {
-  font-size: 2rem;
+  font-size: 1.4rem;
   line-height: 2.375rem; }
 
 .button {
@@ -526,6 +528,15 @@ a.item {
 
 .level-10 {
   padding-left: 240px; }
+
+.section-header-number {
+  font-weight: 600;
+  font-size: 50px;
+  margin-bottom: 10px;
+  margin-left: 31px; }
+
+.section-header-title {
+  margin-left: 31px; }
 
 .login-bar {
   background-color: #333;
@@ -1644,7 +1655,7 @@ tfoot td, tfoot th, thead td, thead th {
     width: 27px;
     margin-left: -13.5px; }
   .icon.contract-value:before {
-    background: url(/images/ic_sprite.svg) 0px -338px no-repeat;
+    background: url(/images/ic_sprite.svg) 0px -332px no-repeat;
     width: 45px;
     margin-left: -22.5px; }
   .icon.contract-goods-service:before {
@@ -1652,15 +1663,23 @@ tfoot td, tfoot th, thead td, thead th {
     width: 39px;
     margin-left: -19.5px; }
   .icon.contractor:before {
-    background: url(/images/ic_sprite.svg) -2px -508px no-repeat;
+    background: url(/images/ic_sprite.svg) -2px -501px no-repeat;
     width: 43px;
     margin-left: -21.5px; }
   .icon.relatedtender:before {
     background: url(/images/ic_sprite.svg) -13px -253px no-repeat;
     width: 43px;
     margin-left: -21.5px; }
+  .icon.eligibility-criteria:before {
+    background: url(/images/ic_sprite.svg) -79px -505px no-repeat;
+    width: 49px;
+    margin-left: -21.5px; }
+  .icon.award-criteria:before {
+    background: url(/images/ic_sprite.svg) -79px -421px no-repeat;
+    width: 43px;
+    margin-left: -21.5px; }
   .icon.procuring-agency:before {
-    background: url(/images/ic_sprite.svg) 0px -85px no-repeat;
+    background: url(/images/ic_sprite.svg) 0px -80px no-repeat;
     width: 47px;
     margin-left: -23.5px; }
 
@@ -1673,7 +1692,7 @@ tfoot td, tfoot th, thead td, thead th {
   margin-left: -13.5px; }
 
 .description-summary .icon.procurement-method:before {
-  background: url(/images/ic_sprite.svg) -6px -591px no-repeat;
+  background: url(/images/ic_sprite.svg) -6px -586px no-repeat;
   width: 36px;
   margin-left: -18px; }
 
@@ -2180,14 +2199,14 @@ tfoot td, tfoot th, thead td, thead th {
   text-align: center; }
 
 .flag-icon-red:before {
-  background: transparent url(/images/ic_sprite.svg) -2px -680px no-repeat; }
+  background: transparent url(/images/ic_sprite.svg) -2px -685px no-repeat; }
 
 .flag-icon-green:before {
   background: transparent url(/images/ic_sprite.svg) -2px -721px no-repeat; }
 
 .balance-icon:before {
   width: 20px;
-  background: transparent url(/images/ic_sprite.svg) -45px -680px no-repeat; }
+  background: transparent url(/images/ic_sprite.svg) -45px -686px no-repeat; }
 
 .detail-info .flag-icon-red, .detail-info .flag-icon-green, .detail-info .balance-icon {
   padding-left: 30px !important; }
@@ -2204,6 +2223,33 @@ tfoot td, tfoot th, thead td, thead th {
 
 .court-case-link:hover {
   color: white; }
+
+.court-case-dropdown:after {
+  padding-left: 5px;
+  content: url(/images/ic_arrow_down-blue.svg);
+  cursor: pointer; }
+
+.court-case-upArrow:after {
+  margin-left: 5px;
+  content: url(/images/ic_arrow_down-blue.svg);
+  display: inline-block;
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  cursor: pointer; }
+
+.court-case-list {
+  background: #fcfaf1;
+  margin: 0 -25px;
+  display: none;
+  padding: 25px; }
+  .court-case-list ul {
+    list-style: inherit;
+    margin: 20px 0px 0px 24px; }
+    .court-case-list ul .spanblock {
+      display: block; }
+
+.court-text {
+  font-size: 15px; }
 
 .background {
   background-color: rgba(255, 255, 255, 0.1);

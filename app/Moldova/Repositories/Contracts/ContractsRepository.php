@@ -557,12 +557,13 @@ class ContractsRepository implements ContractsRepositoryInterface
     {
         $ar = ($this->ocdsRelease->raw(function ($collection) use ($contractor) {
             return $collection->find(['awards.suppliers.name' => $contractor], ['awards.suppliers.name' => 1, 'awards.suppliers.clearName' => 1]);
-
         }));
+
         foreach ($ar[0]['awards'] as $item) {
-            if ($item['suppliers'][0]['name'] === $contractor) {
+            if ($item['suppliers'][0]['name'] === $contractor && isset($item['suppliers'][0]['clearName'])) {
                 return ($item['suppliers'][0]['clearName']);
             }
         }
+        return $contractor;
     }
 }

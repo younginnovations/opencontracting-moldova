@@ -19,4 +19,8 @@ return [
     'tender_start_date' => 'data începerii procedurii de achiziție',
     'tender_end_date' => 'data finisării procedurii de achiziție',
     'search_by_tender_title' => 'caută după titlul procedurii de achiziție',
+    'value' => 'Valoare ofertă',
+    'award_criteria' => 'criterii de atribuire',
+    'eligibility_criteria' => 'Criterii de eligibilitate',
+    'contractors' => 'antreprenori'
 ];

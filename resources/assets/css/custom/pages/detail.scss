@@ -64,7 +64,7 @@
 
   &.contract-value {
     &:before {
-      background: url(#{$img-path}/ic_sprite.svg) 0px -338px no-repeat;
+      background: url(#{$img-path}/ic_sprite.svg) 0px -332px no-repeat;
       width: 45px;
       margin-left: -22.5px;
     }
@@ -80,7 +80,7 @@
 
   &.contractor {
     &:before {
-      background: url(#{$img-path}/ic_sprite.svg) -2px -508px no-repeat;
+      background: url(#{$img-path}/ic_sprite.svg) -2px -501px no-repeat;
       width: 43px;
       margin-left: -21.5px;
     }
@@ -94,9 +94,25 @@
     }
   }
 
+  &.eligibility-criteria {
+    &:before {
+      background: url(#{$img-path}/ic_sprite.svg) -79px -505px no-repeat;
+      width: 49px;
+      margin-left: -21.5px;
+    }
+  }
+
+  &.award-criteria {
+    &:before {
+      background: url(#{$img-path}/ic_sprite.svg) -79px -421px no-repeat;
+      width: 43px;
+      margin-left: -21.5px;
+    }
+  }
+
   &.procuring-agency {
     &:before {
-      background: url(#{$img-path}/ic_sprite.svg) 0px -85px no-repeat;
+      background: url(#{$img-path}/ic_sprite.svg) 0px -80px no-repeat;
       width: 47px;
       margin-left: -23.5px;
     }
@@ -122,7 +138,7 @@
 
     &.procurement-method {
       &:before {
-        background: url(#{$img-path}/ic_sprite.svg) -6px -591px no-repeat;
+        background: url(#{$img-path}/ic_sprite.svg) -6px -586px no-repeat;
         width: 36px;
         margin-left: -18px;
       }
@@ -786,7 +802,7 @@
 
 
 .flag-icon-red:before {
-  background:transparent url(#{$img-path}/ic_sprite.svg) -2px -680px no-repeat;
+  background:transparent url(#{$img-path}/ic_sprite.svg) -2px -685px no-repeat;
 }
 
 .flag-icon-green:before {
@@ -795,7 +811,7 @@
 
 .balance-icon:before {
   width: 20px;
-  background:transparent url(#{$img-path}/ic_sprite.svg) -45px -680px no-repeat;
+  background:transparent url(#{$img-path}/ic_sprite.svg) -45px -686px no-repeat;
 }
 
 .detail-info{
@@ -821,4 +837,36 @@
 }
 .court-case-link:hover{
   color: rgba(255,255,255,1);
+}
+.court-case-dropdown:after{
+  padding-left: 5px;
+  content: url(#{$img-path}/ic_arrow_down-blue.svg);
+  cursor: pointer;
+}
+
+.court-case-upArrow:after{
+  margin-left: 5px;
+  content: url(#{$img-path}/ic_arrow_down-blue.svg);
+  display: inline-block;
+  transform: rotate(-180deg);
+  cursor: pointer;
+}
+
+.court-case-list{
+  background: #fcfaf1;
+  margin: 0 -25px;
+  display: none;
+  padding: 25px;
+
+  ul{
+    list-style: inherit;
+    margin: 20px 0px 0px 24px;
+
+    .spanblock{
+      display: block;
+    }
+  }
+}
+.court-text{
+  font-size: 15px;
 }

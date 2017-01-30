@@ -250,7 +250,7 @@ $(document).ready(function(){
     }
 
     $(".main-content").click(function () {
-        menuDisappear();
+        //menuDisappear();
     });
 
     menuDisappear();
