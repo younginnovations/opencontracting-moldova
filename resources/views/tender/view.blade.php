@@ -11,7 +11,7 @@
 
             <div>
                 <button class="small-button grey-yellow-btn"><span>Status:</span>
-                    <span>{{ $tenderDetail['tender']['status'] }}</span>
+                    <span>{{ $tenderDetail['tender']['status'] }} | Period: <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['startDate'] }}</span> - <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['endDate'] }}</span> </span>
                 </button>
             </div>
 
@@ -35,22 +35,44 @@
                 </div>
 
                 <div class="medium-6 small-12 columns each-detail-wrap">
-                    <span class="icon tender-period">icon</span>
+                    <span class="icon procurement-method">icon</span>
                     <span class="each-detail">
-                         <div class="name columns">@lang('tender.tender_period')</div>
-                        <div class="value columns"><span
-                                    class="dt">{{ $tenderDetail['tender']['tenderPeriod']['startDate'] }}</span>
-                            - <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['endDate'] }}</span></div>
+                         <div class="name columns">@lang('tender.procurement_method')</div>
+                        <div class="value columns">{{ $tenderDetail['tender']['procuringEntity']['identifier']['scheme'] }}</div>
                     </span>
                 </div>
             </div>
 
             <div class="name-value-section each-row clearfix">
                 <div class="medium-6 small-12 columns each-detail-wrap end">
-                    <span class="icon procurement-method">icon</span>
+                    <span class="icon contract-value">icon</span>
                     <span class="each-detail">
-                         <div class="name columns">@lang('tender.procurement_method')</div>
-                        <div class="value columns">{{ $tenderDetail['tender']['procuringEntity']['identifier']['scheme'] }}</div>
+                         <div class="name columns">@lang('tender.value')</div>
+                        <div class="value columns"> N/A </div>
+                    </span>
+                </div>
+                <div class="medium-6 small-12 columns each-detail-wrap end">
+                    <span class="icon award-criteria">icon</span>
+                    <span class="each-detail">
+                         <div class="name columns">@lang('tender.award_criteria')</div>
+                        <div class="value columns">{{ $tenderDetail['tender']['awardCriteria']?$tenderDetail['tender']['awardCriteria']:' N/A '}}</div>
+                    </span>
+                </div>
+            </div>
+
+            <div class="name-value-section each-row clearfix">
+                <div class="medium-6 small-12 columns each-detail-wrap end">
+                    <span class="icon contractor">icon</span>
+                    <span class="each-detail">
+                         <div class="name columns">@lang('tender.contractors')</div>
+                        <div class="value columns"> N/A </div>
+                    </span>
+                </div>
+                <div class="medium-6 small-12 columns each-detail-wrap end">
+                    <span class="icon eligibility-criteria">icon</span>
+                    <span class="each-detail">
+                         <div class="name columns">@lang('tender.eligibility_criteria')</div>
+                        <div class="value columns">{{ $tenderDetail['tender']['eligibilityCriteria']?$tenderDetail['tender']['eligibilityCriteria']:' N/A ' }}</div>
                     </span>
                 </div>
             </div>

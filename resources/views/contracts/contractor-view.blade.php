@@ -5,123 +5,85 @@
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
                 {{ $contractor }}
             </h2>
-
-            <div class="contract-info-wrap">
-                <div class="detail-info-wrap">
-                    <div class="detail-anchor">
-                        <div class="small-button grey-yellow-btn"><span>i</span>More information</div>
-                    </div>
-                    <div class="detail-info">
-                        <div class="description info-icon">
-                            <p>
-                                <strong>Disclaimer </strong> : These results are based on best match that
-                                we could find in the <a href="http://date.gov.md">date.gov.md</a>.
-                            </p>
-                        </div>
-                        @if(isset($companyData) && sizeof($companyData)>0)
-                            <div class="title="> {{ $companyData['full_name'] }} </div>
-                            <div class="name-value-wrap">
-                                <div class="name">Leaders:</div>
-                                <div class="value">{{ $companyData['leaders_list'] }} </div>
-                            </div>
-
-                            <div class="name-value-wrap">
-                                <div class="name">Founders:</div>
-                                <div class="value">{{ $companyData['list_of_founders'] }} </div>
-                            </div>
-                        @else
-                            No matching company informations were found.
-                        @endif
-                    </div>
-                </div>
-
-                <div class="detail-info-wrap">
-                    <div class="detail-anchor">
-                        <div class="small-button grey-yellow-btn balance-icon">Court cases</div>
-                    </div>
-                    <div class="detail-info">
-                        <div class="scroll-wrap">
-                            <div class="description balance-icon">
-                                <strong>Disclaimer </strong>: These results are based on best match that
-                                we could find in the <a href="http://instante.justice.md/">instante.justice.md</a>.
-                                </p>
-                            </div>
-
-                            @forelse($courtCases as $case)
-                                <ul>
-                                    <li>
-                                        <div class="title="><a href="{{  $case['link'] }}">{{ $case['title'] }}</a>
-                                        </div>
-                                        <div class="name-value-wrap">
-                                            <div class="name">Case type:</div>
-                                            <div class="value">{{ $case['case_type'] }} </div>
-                                        </div>
-
-                                        <div class="name-value-wrap">
-                                            <div class="name">Court name:</div>
-                                            <div class="value">{{ $case['court_name'] }} </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            @empty
-                                No matching court informations were found.
-                            @endforelse
-                        </div>
-                    </div>
-                </div>
-                @if($blacklist)
-                    <div class="detail-info-wrap">
-                        <div class="detail-anchor">
-                            <div class="small-button grey-yellow-btn {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">Black listed</div>
-                        </div>
-                        {{--<div class="detail-info">--}}
-                        {{--<div class="description {{($blacklist)?'flag-icon-red':'flag-icon-green'}}">This company is {{($blacklist)?'':'not'}} black listed.</div>--}}
-                        {{--</div>--}}
-                    </div>
-                @endif
-            </div>
         </div>
 
     </div>
+    @if(isset($companyData) && sizeof($companyData)>0 && $blacklist && sizeof($courtCases)>0 )
+        <div class="row medium-up-2 small-up-1 push-up-block small-push-up-block">
+            <div class="block name-value-wrap">
+                <div class="name">
+                    @if(isset($companyData) && sizeof($companyData)>0)
+                        <div class="title">
+                            <span class="info-icon"></span>
+                            <span class="value">{{ $companyData['full_name'] }}</span>
+                            <span class="name">@lang('contracts.leaders'):{{ $companyData['leaders_list']}}</span>|
+                            <span class="name">@lang('contracts.founders')
+                                :{{ ($companyData['list_of_founders'])?$companyData['list_of_founders']:'N/A' }} </span>
+                            <span class="name">(@lang('contracts.as_found_on') <a
+                                        href="http://date.gov.md">date.gov.md</a>)</span>
+                        </div>
 
+                    @else
+                        No matching company informations were found.
+                    @endif
+                </div>
+                <div class="name">
+                    @if($blacklist)
+                        <span class="flag-icon-red court-text">@lang('contracts.this_contractor_is_blacklisted')</span> |
+                    @endif
+                    @if(sizeof($courtCases)>0)
+                        <span class="balance-icon">{{sizeof($courtCases)." "}}<span class="court-text"> @lang('contracts.court_cases_found').</span>
+                    <span class="court-case-dropdown court-text"><a href="#">@lang('contracts.view_court_cases')</a></span>
+                </span>
+                    @endif
+                </div>
+                <div class="court-case-list">
+                <span class="balance-icon">@lang('contracts.result_based_on_match') <a
+                            href="http://instante.justice.md">instante.justice.md</a>.</span>
+                    @forelse($courtCases as $case)
+                        <ul>
+                            <li>
+                                <span class="title spanblock"><a
+                                            href="{{  $case['link'] }}">{{ $case['title'] }}</a></span>
+                            <span class="name-value-wrap">
+                                <span class="name">Case type:{{ $case['case_type'] }}</span>
+                            </span>
 
-    <div class="row medium-up-2 small-up-1 push-up-block small-push-up-block">
-        <div class="block name-value-wrap columns">
-            <div class="name">
-                @lang('contracts.total_contracts')
-            </div>
-            <div class="value">
-                {{ $totalContract }}
+                            <span class="name-value-wrap">
+                                <span class="name">Court:{{ $case['court_name'] }} </span>
+                            </span>
+                            </li>
+                        </ul>
+                    @empty
+                        No matching court informations were found.
+                    @endforelse
+                </div>
             </div>
         </div>
-
-        <div class="block name-value-wrap columns">
-            <div class="name">
-                @lang('contracts.total_contract_amount')
-            </div>
-            <div class="value">
-{{number_format($totalAmount)}} leu
-</div>
-        </div>
-    </div>
+    @endif
     <div class="row chart-section-wrap">
+
         <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>@lang('contracts.number_of_contracts')</h3>
+                            <h2 class="section-header-number">
+                                {{ $totalContract }}
+                            </h2>
+
+                            <h3 class="section-header-title">@lang('contracts.number_of_contracts')</h3>
                         </div>
                         <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-rest"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
                                     <span>
-                <div class="dot dot1"></div>
-                <div class="dot dot2"></div>
-                <div class="dot dot3"></div>
-                <div class="dot dot4"></div>
-            </span>
+                                        <div class="dot dot1"></div>
+                                        <div class="dot dot2"></div>
+                                        <div class="dot dot3"></div>
+                                        <div class="dot dot4"></div>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +93,11 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>@lang('contracts.contract_value')</h3>
+                            <h2 class="section-header-number">
+                                {{number_format($totalAmount)}} leu
+                            </h2>
+
+                            <h3 class="section-header-title">@lang('contracts.contract_value')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart"
                              data-equalizer-watch="equal-chart-wrap">
@@ -139,11 +105,11 @@
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
                                     <span>
-                <div class="dot dot1"></div>
-                <div class="dot dot2"></div>
-                <div class="dot dot3"></div>
-                <div class="dot dot4"></div>
-            </span>
+                                        <div class="dot dot1"></div>
+                                        <div class="dot dot2"></div>
+                                        <div class="dot dot3"></div>
+                                        <div class="dot dot4"></div>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -183,12 +149,12 @@
                             <div id="barChart-procuring"></div>
                             <div class="loader-text">
                                 <div class="text">Fetching data
-                 <span>
-                <div class="dot dot1"></div>
-                <div class="dot dot2"></div>
-                <div class="dot dot3"></div>
-                <div class="dot dot4"></div>
-            </span>
+                                     <span>
+                                        <div class="dot dot1"></div>
+                                        <div class="dot dot2"></div>
+                                        <div class="dot dot3"></div>
+                                        <div class="dot dot4"></div>
+                                    </span>
                                 </div>
                             </div>
                             <a href="{{ route('procuring-agency.index') }}"
@@ -228,11 +194,11 @@
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
                                     <span>
-                <div class="dot dot1"></div>
-                <div class="dot dot2"></div>
-                <div class="dot dot3"></div>
-                <div class="dot dot4"></div>
-            </span>
+                                        <div class="dot dot1"></div>
+                                        <div class="dot dot2"></div>
+                                        <div class="dot dot3"></div>
+                                        <div class="dot dot4"></div>
+                                    </span>
                                 </div>
                             </div>
                             <a href="{{ route('goods.index') }}"
@@ -348,6 +314,16 @@
             $("#linechart-rest").empty();
             $("#barChart-amount").empty();
             makeCharts();
+        });
+
+        var show = "@lang('contracts.view_court_cases')";
+        var hide = "@lang('contracts.hide_court_cases')";
+
+        $(".court-case-dropdown").click(function () {
+            $(this).toggleClass('court-case-upArrow');
+            var text = $(this).text();
+            $(this).find('a').html((text == hide) ? show : hide);
+            $(".court-case-list").slideToggle();
         });
 
     </script>

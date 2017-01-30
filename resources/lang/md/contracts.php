@@ -26,5 +26,13 @@ return [
     'search_by_contractors'             => 'caută după operator economic',
     'contractor_index_paragraph'        => '',
     'company_information'               => 'Informatiile Companiei',
-    'court_cases'                       => 'Curtea de cazuri'
+    'court_cases'                       => 'Curtea de cazuri',
+    'leaders'                           => 'Liderii',
+    'founders'                          => 'Fondatorii',
+    'as_found_on'                       => 'După cum sa constatat la',
+    'this_contractor_is_blacklisted'    => 'Contractantul este listat negru.',
+    'court_cases_found'                 => 'Curtea de cazuri găsite pentru acest contractant',
+    'view_court_cases'                  => 'Vizualizați Curtea de cazuri',
+    'hide_court_cases'                  => 'Cazuri ascunde instanță',
+    'result_based_on_match'             => 'Aceste rezultate sunt bazate pe cele mai bune meci pe care am putea găsi în dosarul '
 ];

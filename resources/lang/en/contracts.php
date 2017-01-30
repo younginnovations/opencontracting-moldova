@@ -26,7 +26,15 @@ return [
     'search_by_contractors'             => 'Search by contractors',
     'contractor_index_paragraph'        => '',
     'company_information'               => 'Company Information',
-    'court_cases'                       => 'Court Cases'
+    'court_cases'                       => 'Court Cases',
+    'leaders'                           => 'Leaders',
+    'founders'                          => 'Founders',
+    'as_found_on'                       => 'As found on',
+    'this_contractor_is_blacklisted'    => 'This contractor is blacklisted.',
+    'court_cases_found'                 => 'Court cases found for this contractor',
+    'view_court_cases'                  => 'View Court cases',
+    'hide_court_cases'                  => 'Hide Court cases',
+    'result_based_on_match'             => 'These results are based on best match that we could find in the '
 ];
 
 

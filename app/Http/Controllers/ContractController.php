@@ -82,7 +82,7 @@ class ContractController extends Controller
      */
     public function show(ContractorService $contractorService, $contractor)
     {
-        $contractor       = trim(urldecode($contractor));
+        $contractor       = (urldecode($contractor));
         $contractorDetail = $this->contracts->getDetailInfo($contractor, 'awards.suppliers.name');
 
         if ($contractorDetail->isEmpty()) {
