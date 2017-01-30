@@ -538,6 +538,13 @@ a.item {
 .section-header-title {
   margin-left: 31px; }
 
+.block-header--small {
+  background: transparent url(/images/yellow_background.png) 0 center repeat;
+  border: none;
+  min-height: 10vh;
+  padding: 50px 40px 32px;
+  margin-bottom: 54px; }
+
 .login-bar {
   background-color: #333;
   padding: 10px 0;

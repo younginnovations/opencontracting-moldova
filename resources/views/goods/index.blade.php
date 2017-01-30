@@ -86,7 +86,7 @@
     <script>
         var makeTable = $('#table_id').DataTable({
             "language": {
-                'searchPlaceholder': "Search by tender title",
+                'searchPlaceholder': "Search by goods and services",
                 "lengthMenu": "Show _MENU_ Tenders"
             },
             "processing": true,

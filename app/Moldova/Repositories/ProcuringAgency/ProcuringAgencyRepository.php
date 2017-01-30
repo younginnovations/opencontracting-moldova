@@ -39,7 +39,7 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
 
         if ($search != '') {
             $filter = [
-                '$match' => ['buyer.name' => $search]
+                '$match' => ['buyer.name' => ['$gt' => $search]]
             ];
         }
 
@@ -50,10 +50,10 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
         $groupBy =
             [
                 '$group' => [
-                    '_id'             => '$buyer.name',
-                    'tenders'         => ['$sum' => 1],
-                    'contracts' => ['$addToSet' => '$contracts'],
-                    'contract_value'  => ['$sum' => ['$sum' => '$contracts.value.amount']]
+                    '_id'            => '$buyer.name',
+                    'tenders'        => ['$sum' => 1],
+                    'contracts'      => ['$addToSet' => '$contracts'],
+                    'contract_value' => ['$sum' => ['$sum' => '$contracts.value.amount']]
                 ]
             ];
         array_push($query, $groupBy);

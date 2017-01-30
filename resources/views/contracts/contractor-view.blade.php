@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <div class="block header-block header-with-bg">
+    <div class="block header-block header-with-bg {{ ((isset($companyData) && sizeof($companyData)>0) || $blacklist || sizeof($courtCases)>0 )?'':'block-header--small' }}">
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
                 {{ $contractor }}
@@ -8,7 +8,7 @@
         </div>
 
     </div>
-    @if(isset($companyData) && sizeof($companyData)>0 && $blacklist && sizeof($courtCases)>0 )
+    @if((isset($companyData) && sizeof($companyData)>0) || $blacklist || sizeof($courtCases)>0 )
         <div class="row medium-up-2 small-up-1 push-up-block small-push-up-block">
             <div class="block name-value-wrap">
                 <div class="name">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="name">
                     @if($blacklist)
-                        <span class="flag-icon-red court-text">@lang('contracts.this_contractor_is_blacklisted')</span> |
+                        <span class="flag-icon-red court-text">@lang('contracts.this_contractor_is_blacklisted') <span class="name">@lang('tender.for_more_detail') <a href="http://tender.gov.md/ro/lista-de-interdictie" target="_blank">http://tender.gov.md/ro/lista-de-interdictie</a></span></span> |
                     @endif
                     @if(sizeof($courtCases)>0)
                         <span class="balance-icon">{{sizeof($courtCases)." "}}<span class="court-text"> @lang('contracts.court_cases_found').</span>
