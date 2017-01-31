@@ -322,7 +322,6 @@ footer {
     padding: 0 0 126px; } }
 
 .alert {
-  background: #333025 !important;
   padding: 15px 20px;
   border-radius: 4px;
   text-align: left;
@@ -552,6 +551,17 @@ td.admin-contract-list a {
   transition: all 0.2s ease-in-out; }
   td.admin-contract-list a:hover {
     color: #003179; }
+
+.download-json-link {
+  color: #5A5A5A;
+  font-size: 18px; }
+  .download-json-link:before {
+    content: "";
+    background: transparent url(/images/ic_download.svg) no-repeat;
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+    left: 10px; }
 
 .login-bar {
   background-color: #333;
@@ -1025,7 +1035,6 @@ footer {
       padding: 0 20px; } }
 
 .social-share {
-  margin: 10px auto;
   overflow: hidden;
   float: right; }
   .social-share li {
@@ -1035,6 +1044,9 @@ footer {
     .social-share li:first-child {
       margin-top: 0;
       margin-right: 15px; }
+  @media (max-width: 650px) {
+    .social-share {
+      float: none; } }
   .social-share .at-icon-wrapper {
     border-radius: 4px; }
 
@@ -1088,7 +1100,7 @@ html[lang='md'] .top-bar-right .menu > li:not(.menu-text) > a {
   margin-top: 6px;
   position: relative; }
   #Language-select option {
-    color: #fff;
+    color: #5A5A5A;
     display: block;
     padding: 10px 20px 10px 26px;
     position: relative; }
@@ -1473,8 +1485,6 @@ th.sorting {
 /* ------- style for overlay while processing --------- */
 .dataTables_wrapper {
   position: relative; }
-  .dataTables_wrapper tbody tr {
-    cursor: pointer; }
 
 .dataTables_processing {
   position: absolute;
@@ -2654,7 +2664,7 @@ p.disabled {
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
-  z-index: 1;
+  z-index: 99;
   /* Sit on top */
   padding-top: 100px;
   /* Location of the box */
@@ -2758,11 +2768,6 @@ p.disabled {
       margin-left: -40px; }
 
 @media (max-width: 1260px) {
-  body:not(.one-pager) .main-content, .alert {
-    margin-left: 20px;
-    margin-right: 20px; }
-  .alert {
-    width: calc(100% - 40px); }
   .one-pager .main-content {
     padding-left: 20px;
     padding-right: 20px; }

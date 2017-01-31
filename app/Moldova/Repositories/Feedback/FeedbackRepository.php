@@ -30,20 +30,8 @@ class FeedbackRepository implements FeedbackRepositoryInterface
      */
     public function __construct(Comment $comment, OcdsRelease $ocdsRelease)
     {
-        $this->comment = $comment;
+        $this->comment     = $comment;
         $this->ocdsRelease = $ocdsRelease;
-    }
-
-    /**
-     * Returns all the unique contracts that has  comments
-     *
-     * @return array
-     */
-    public function getUniqueContractsWithFeedback()
-    {
-        $comment = $this->comment->distinct('item_id')->get();
-
-        return $comment;
     }
 
     /**
@@ -51,22 +39,49 @@ class FeedbackRepository implements FeedbackRepositoryInterface
      *
      * @return array
      */
-    public function getContractWithFeedback()
+    public function getContractWithFeedback($params)
     {
-        $contractIds = $this->getUniqueContractsWithFeedback();
-        $comments=[];
-        foreach($contractIds as $key => $contractId){
-            $result= $this->ocdsRelease->where('contracts.id', (int) $contractId[0])->project([
-                                                                                                  'contracts.$'=>1,
-                                                                                                  'awards' => 1,
-                                                                                                  'tender.id' => 1,
-                                                                                                  'tender.title' => 1,
-                                                                                                  'buyer.name' => 1
-                                                                                              ])->first();
-            $comments[$key]['id']=$contractId[0];
-            $comments[$key]['title']=$result['contracts'][0]['title'];
+        if ($params === "") {
+            return $this->comment->count();
         }
 
-        return $comments;
+        $orderIndex = $params['order'][0]['column'];
+        $ordDir     = $params['order'][0]['dir'];
+        $column     = $this->getColumn($params['columns'][$orderIndex]['data']);
+        $startFrom  = $params['start'];
+        $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : - 1;
+        $search     = $params['search']['value'];
+
+        $result = $this->comment
+            ->where(function ($query) use ($search) {
+
+                if (!empty($search)) {
+                    return $query->where('comment', 'like', '%' . $search . '%');
+                }
+
+                return $query;
+            })
+            ->take($params['length'])
+            ->skip($startFrom)
+            ->orderBy($column, $ordDir)
+            ->get(['_id','item_id', 'comment', 'created_at', 'user_id','status']);
+
+        return ($result);
+    }
+
+    private function getColumn($column)
+    {
+        switch ($column) {
+            case '2':
+                $column = 'created_at';
+                break;
+            case '0':
+                $column = 'comment';
+                break;
+            default :
+                break;
+        }
+
+        return $column;
     }
 }

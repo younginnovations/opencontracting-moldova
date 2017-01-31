@@ -564,6 +564,7 @@ class ContractsRepository implements ContractsRepositoryInterface
                 return ($item['suppliers'][0]['clearName']);
             }
         }
+
         return $contractor;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Moldova\Entities\Comment;
 use App\Moldova\Service\FeedbackService;
 use Illuminate\Http\Request;
 
@@ -34,12 +35,32 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        if(!Auth::user()->admin){
+        if (!Auth::user()->admin) {
             return redirect('/');
         }
 
-        $contractsWithComments = $this->feedback->getContractWithFeedback();
+        return view('admin.index');
+    }
 
-        return view('admin.index', compact('contractsWithComments'));
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function getComments(Request $request)
+    {
+        $input = $request->all();
+
+        return $this->feedback->getContractWithFeedback($input);
+    }
+
+    public function showHideComment(Request $request)
+    {
+        $commentID = $request->get('commentID');
+        $status    = ($request->get('status') === 'hide') ? false : true;
+
+        $comment = Comment::find($commentID);
+        $comment->status = $status;
+        $comment->save();
+        return ($request->get('status') === 'hide') ? 'show' : 'hide';
     }
 }

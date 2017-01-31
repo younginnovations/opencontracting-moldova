@@ -346,7 +346,7 @@
 }
 
 .social-share {
-  margin: 10px auto;
+  //margin: 10px auto;
   overflow: hidden;
   float: right;
   li {
@@ -357,8 +357,11 @@
       margin-top: 0;
       margin-right: 15px;
     }
-  }
 
+  }
+  @media (max-width: 650px) {
+    float: none;
+  }
   .at-icon-wrapper {
     border-radius: 4px;
   }
@@ -427,7 +430,7 @@ html[lang='md'] {
   position: relative;
 
   option {
-    color: #fff;
+    color: #5A5A5A;
     display: block;
     padding: 10px 20px 10px 26px;
     position: relative;

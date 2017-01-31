@@ -288,7 +288,7 @@
     <script>
         $(document).ready(function () {
             if ($(window).width() > 768) {
-                new $.fn.dataTable.FixedHeader(makeTable);
+//                new $.fn.dataTable.FixedHeader(makeTable);
             }
         });
     </script>

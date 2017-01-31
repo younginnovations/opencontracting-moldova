@@ -22,7 +22,7 @@ db.ocds_release.find().forEach(function (release) {
             'amount'            : contracts['value']['amount']
         };
         var awardID     = contracts['awardID'];
-        var myCursor    = db.ocds_release.find({'awards.id': awardID}, {'awards.suppliers': 1, 'awards.items': 1});
+        var myCursor    = db.ocds_release.find({'awards.id': awardID}, {'awards.$': 1});
         var myDocument  = myCursor.hasNext() ? myCursor.next() : null;
 
         if (myDocument['awards'].length) {
@@ -41,4 +41,4 @@ var time = end - start;
 print("Execution Time (seconds) ", time / 1000);
 print("finished Execution for Contracts.");
 
-//mongoexport -d etenders -c tmp_contracts_summary --type=csv --fields id,title,description,status,tenderID,tenderTitle,goods,goodsCPV,contractorID,contractor,procuringAgencyID,procuringAgency,contractStartDate,contractEndDate,amount --out /Users/owner/homesteadSites/moldova-ocds/public/csv/contracts_csv.csv
+//mongoexport -d etenders -c tmp_contracts_summary --type=csv --fields id,title,description,status,tenderID,tenderTitle,goods,goodsCPV,contractorID,contractor,procuringAgencyID,procuringAgency,contractStartDate,contractEndDate,amount --out /Users/owner/homesteadSites/moldova-ocds/public/csv/contracts_csv.csv;

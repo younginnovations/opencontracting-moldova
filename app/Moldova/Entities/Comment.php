@@ -21,5 +21,5 @@ class Comment extends Model
     /**
 	 * Fillable array
      */
-    protected $fillable = ['user_id', 'parent_id', 'item_id', 'comment'];
+    protected $fillable = ['user_id', 'parent_id', 'item_id', 'comment','status'];
 }
