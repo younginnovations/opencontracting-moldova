@@ -234,6 +234,12 @@ Route::post(
     ]
 );
 
+Route::get('/multiple-file-api/releases.json', function () {
+    return response()->download(base_path('public') . '/jsons/releases.json');
+});
+Route::get('/ocds-api/year/{year}', function ($year) {
+    return response()->download(base_path('public') . '/jsons/releases-'.$year.'.json');
+});
 Route::get('/csv/download', function () {
     return response()->download(base_path('public') . '/csv/contracts_csv.csv');
 });

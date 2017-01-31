@@ -779,3 +779,15 @@ td.admin-contract-list a {
   }
 
 }
+.download-json-link{
+  color: #5A5A5A;
+  font-size: 18px;
+  &:before{
+    content: "";
+    background: transparent url(/images/ic_download.svg) no-repeat;
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+    left: 10px;
+  }
+}

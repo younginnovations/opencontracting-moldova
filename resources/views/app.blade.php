@@ -131,8 +131,13 @@
     @yield('content')
     <div class="share-wrap">
         <div class="row">
-            <div class="text-right sharing-title share-section">
+            <div class="sharing-title share-section">
+
+                <span class="download-json">
+                    <a href="/multiple-file-api/releases.json" class="download-json-link">Download JSON</a>
+                </span>
                 <ul class="social-share">
+
                     <li>
                         <span class="small-title">@lang('general.share_this')
                             <span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> @lang('general.in')</span>
