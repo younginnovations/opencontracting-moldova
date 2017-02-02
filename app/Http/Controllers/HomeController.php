@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Yajra\Datatables\Facades\Datatables;
 
-
 class HomeController extends Controller
 {
     /**
@@ -181,6 +180,9 @@ class HomeController extends Controller
     }
 
     /**
+     * @param $request
+     * @param $client
+     *
      * @return bool
      */
     public function checkCaptcha($request, $client)

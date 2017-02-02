@@ -34,7 +34,7 @@ return [
     'enter_your_email'                => 'întroduceți vă rog  adresă Dumneavoastră de e-mail',
     'enter_valid_email'               => 'întroduceți vă rog  o adresă de e-mail valabilă',
     'enter_your_message'              => 'întroduceți vă rog mesajul Dumneavoastră',
-    'verify_captcha'              => 'Vă rugăm să confirmați captcha',
+    'verify_captcha'                  => 'Vă rugăm să confirmați captcha',
     'email_sent_successfully'         => 'mesajul a fost transmis cu succes',
     'top_5_procuring_agencies'        => 'top 5 autorități contractante',
     'showing_procuring_agencies'      => 'prezentarea autorităților contractante',
@@ -55,5 +55,5 @@ return [
     'select_a_year'                   => 'Selectați un an',
     'subscribe'                       => 'subscrie',
     'show'                            => 'Spectacol',
-
+    'contracts_with_comments'         => 'Contracte cu comentarii'
 ];

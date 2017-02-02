@@ -2,8 +2,9 @@
 $GLOBALS['commentDisabled'] = "";
 if (!Auth::check())
     $GLOBALS['commentDisabled'] = "disabled";
-$GLOBALS['commentClass'] = -1;
+    $GLOBALS['commentClass'] = -1;
 ?>
+
 <div class="laravelComment" id="laravelComment-{{ $comment_item_id }}">
     <h3 class="ui dividing header">Comments</h3>
     <div class="comment-section box-comment">
@@ -23,13 +24,16 @@ $GLOBALS['commentClass'] = -1;
 
     <div class="comment-section">
         <div class="ui threaded comments" id="{{ $comment_item_id }}-comment-0">
+
             <?php
             $GLOBALS['commentVisit'] = array();
 
             function dfs($comments, $comment){
+
             $GLOBALS['commentVisit'][$comment->id] = 1;
             $GLOBALS['commentClass']++;
             ?>
+
             <div class="comment show-{{ $comment->item_id }}-{{ (int)($GLOBALS['commentClass'] / 5) }}"
                  id="comment-{{ $comment->id }}">
                 <a class="avatar">
@@ -45,6 +49,7 @@ $GLOBALS['commentClass'] = -1;
                     <div class="text">
                         {{ $comment->comment }}
                     </div>
+
                     <div class="actions">
                         <a class="{{ $GLOBALS['commentDisabled'] }} reply reply-button"
                            data-toggle="{{ $comment->id }}-reply-form">Reply</a>
@@ -67,6 +72,7 @@ $GLOBALS['commentClass'] = -1;
                                value="Comment" {{ $GLOBALS['commentDisabled'] }}>
                     </form>
                 </div>
+
                 <div class="comments" id="{{ $comment->item_id }}-comment-{{ $comment->id }}">
                     <?php
                     foreach ($comments as $child) {
@@ -77,8 +83,8 @@ $GLOBALS['commentClass'] = -1;
                     echo "</div>";
                     echo "</div>";
                     }
-
                     $comments = App\Http\Controllers\CommentController::getComments($comment_item_id);
+
                     foreach ($comments as $comment) {
                         if (!isset($GLOBALS['commentVisit'][$comment->id])) {
                             dfs($comments, $comment);
@@ -86,9 +92,13 @@ $GLOBALS['commentClass'] = -1;
                     }
                     ?>
                 </div>
-                <button class="ui basic button" id="showComment" data-show-comment="0"
-                        data-item-id="{{ $comment_item_id }}">Show more comments
-                </button>
+                @if(0 == count($comments))
+                    <p>No comments</p>
+                @elseif(5 <= count($comments))
+                    <button class="ui basic button" id="showComment" data-show-comment="0"
+                            data-item-id="{{ $comment_item_id }}">Show more comments
+                    </button>
+                @endif
             </div>
         </div>
     </div>
@@ -96,8 +106,12 @@ $GLOBALS['commentClass'] = -1;
     @section('script')
         @parent
         <script src="{{ asset('js/comment.js') }} " type="text/javascript"></script>
+        <script>
+            var commentCount = '{{ count($comments) }}';
+        </script>
         <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
         <script>
             autosize($('.laravelComment textarea'));
+            var commentCount = '{{ count($comments) }}';
         </script>
 @endsection

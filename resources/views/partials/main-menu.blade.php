@@ -48,6 +48,13 @@
                         <a href="/contact"
                            class="{{ (Request::segment(1) === 'contact')?'active':'' }}">@lang('general.contact')</a>
                     </li>
+                    @if(auth()->check())
+                        @if(Auth::user()->admin)
+                            <li>
+                                <a href="{{ url('/admin') }}" class="{{ (Request::segment(1) === 'admin')?'active':'' }}">Feedback</a>
+                            </li>
+                        @endif
+                    @endif
                 </ul>
                 <form action="{{ route('search') }}" method="get" class="search">
                     <input name="q" type="search" class="search-box"
