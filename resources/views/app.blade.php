@@ -240,6 +240,7 @@ var addthis_share = {
     var changeDateFormat = function () {
         $('.dt').each(function () {
             var dt = $(this).text().split("-");
+
             if (dt[1]) {
                 dt[2] = dt[2].split('T');
                 dt[2] = dt[2][0];
@@ -247,7 +248,6 @@ var addthis_share = {
                 var formatted = moment(dt).format('ll');
                 $(this).text(formatted);
             }
-
         });
     };
 

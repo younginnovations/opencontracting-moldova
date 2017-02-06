@@ -61,21 +61,14 @@ $('#select-goods, #select-goods-year').change(function () {
     });
 });
 
-$('#subscribe').click(function () {
-    subscribe();
-});
-
-$("#subscribe-form").submit(function(e){
-
-        subscribe();
-
-    e.preventDefault();
-   return false;
-});
+function validateSubscriberEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 function subscribe(){
     var email = $('input[name="email"]').val();
-    if(!validateEmail(email)){
+    if(!validateSubscriberEmail(email)){
         $("#subscribeModal").css("display", "block");
         $("#showMsg").html('Invalid email address.');
         return false;
@@ -92,7 +85,15 @@ function subscribe(){
     });
 }
 
-function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
+$('#subscribe').click(function () {
+    subscribe();
+});
+
+$("#subscribe-form").submit(function(e){
+
+    subscribe();
+
+    e.preventDefault();
+    return false;
+});
+

@@ -1,4 +1,4 @@
-server '128.199.73.92', user: 'moldova-ocds', roles: %w{web app}
+server '185.108.181.38', user: 'root', roles: %w{web app}
 
 # Directory to deploy
 # ===================

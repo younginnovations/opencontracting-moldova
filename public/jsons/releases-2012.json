@@ -2,17 +2,23 @@
 	"_id" : {
 		"year" : 2012
 	},
-	"tenders" : [
+	"publisher": {
+	        	"scheme": null, 
+	        	"name": "Public Procurement Agency", 
+	       	"uri": "https://tender.gov.md", 
+	        	"uid": null
+	}, 
+	"releases" : [
 		{
 			"ocid" : "ocds-ngfbwp-25613",
-			"date" : ISODate("2012-10-12T00:00:00Z"),
+			"date" : "2012-10-12T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(25613),
+				"id" : 25613,
 				"title" : "Tender Ref 12/00004 Bulletin 81",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -504,7 +510,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(79705),
+					"id" : 79705,
 					"awardID" : "award-79705",
 					"title" : "12/00004/001 anvelope, baterii de acumulatoare şi piese de schimb pentru ambarcaţiuni\n",
 					"description" : "",
@@ -521,7 +527,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(79706),
+					"id" : 79706,
 					"awardID" : "award-79706",
 					"title" : "12/00004/002 anvelope, baterii de acumulatoare şi piese de schimb pentru ambarcaţiuni\n",
 					"description" : "",
@@ -567,14 +573,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-25611",
-			"date" : ISODate("2012-11-13T00:00:00Z"),
+			"date" : "2012-11-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(25611),
+				"id" : 25611,
 				"title" : "Tender Ref 12/00002 Bulletin 90",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -786,7 +792,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(179740),
+					"id" : 179740,
 					"awardID" : "award-179740",
 					"title" : "12/00002/001 tehnică de calcul",
 					"description" : "",
@@ -803,7 +809,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(182020),
+					"id" : 182020,
 					"awardID" : "award-182020",
 					"title" : "12/00002/002 tehnică de calcul",
 					"description" : "",
@@ -849,14 +855,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-32595",
-			"date" : ISODate("2012-11-09T00:00:00Z"),
+			"date" : "2012-11-09T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(32595),
+				"id" : 32595,
 				"title" : "Tender Ref 12/00026 Bulletin 89",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -960,7 +966,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(189926),
+					"id" : 189926,
 					"awardID" : "award-189926",
 					"title" : "12/00026/001 setului chirurgical endoscopic de bază integral pentru chirurgie Video-Asistată Toracică (VATS),",
 					"description" : "",
@@ -1006,14 +1012,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-32591",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(32591),
+				"id" : 32591,
 				"title" : "Tender Ref 12/00022 Bulletin 88",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -1106,14 +1112,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27310",
-			"date" : ISODate("2012-10-23T00:00:00Z"),
+			"date" : "2012-10-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27310),
+				"id" : 27310,
 				"title" : "Tender Ref 12/00006 Bulletin 84",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -2391,7 +2397,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(217254),
+					"id" : 217254,
 					"awardID" : "award-217254",
 					"title" : "12/00006/001 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2408,7 +2414,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(217257),
+					"id" : 217257,
 					"awardID" : "award-217257",
 					"title" : "12/00006/004 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2425,7 +2431,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(217258),
+					"id" : 217258,
 					"awardID" : "award-217258",
 					"title" : "12/00006/005 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2442,7 +2448,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(217259),
+					"id" : 217259,
 					"awardID" : "award-217259",
 					"title" : "12/00006/006 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2459,7 +2465,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(218310),
+					"id" : 218310,
 					"awardID" : "award-218310",
 					"title" : "12/00006/007 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2476,7 +2482,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(218311),
+					"id" : 218311,
 					"awardID" : "award-218311",
 					"title" : "12/00006/008 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2493,7 +2499,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(218312),
+					"id" : 218312,
 					"awardID" : "award-218312",
 					"title" : "12/00006/009 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2510,7 +2516,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(218313),
+					"id" : 218313,
 					"awardID" : "award-218313",
 					"title" : "12/00006/010 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2527,7 +2533,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(218314),
+					"id" : 218314,
 					"awardID" : "award-218314",
 					"title" : "12/00006/011 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2544,7 +2550,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(218315),
+					"id" : 218315,
 					"awardID" : "award-218315",
 					"title" : "12/00006/012 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2561,7 +2567,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(218316),
+					"id" : 218316,
 					"awardID" : "award-218316",
 					"title" : "12/00006/013 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2578,7 +2584,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(238813),
+					"id" : 238813,
 					"awardID" : "award-238813",
 					"title" : "12/00006/014 Produse alimentare pentru prima jumătate a anului 2013",
 					"description" : "",
@@ -2624,14 +2630,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27984",
-			"date" : ISODate("2012-10-19T00:00:00Z"),
+			"date" : "2012-10-19T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27984),
+				"id" : 27984,
 				"title" : "Tender Ref 12/00015 Bulletin 83",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -2724,14 +2730,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60188",
-			"date" : ISODate("2012-11-16T00:00:00Z"),
+			"date" : "2012-11-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60188),
+				"id" : 60188,
 				"title" : "Tender Ref 12/00060 Bulletin 91",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -2978,14 +2984,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27313",
-			"date" : ISODate("2012-10-19T00:00:00Z"),
+			"date" : "2012-10-19T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27313),
+				"id" : 27313,
 				"title" : "Tender Ref 12/00009 Bulletin 83",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -3103,7 +3109,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(134568),
+					"id" : 134568,
 					"awardID" : "award-134568",
 					"title" : "12/00009/001 medicamente pentru tratamentul\tmaladiei rare Wilson pentru realizarea Programului Special de Sănătate în anul 2013",
 					"description" : "",
@@ -3149,14 +3155,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-35991",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(35991),
+				"id" : 35991,
 				"title" : "Tender Ref 12/00029 Bulletin 88",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -3864,7 +3870,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(183943),
+					"id" : 183943,
 					"awardID" : "award-183943",
 					"title" : "12/00029/001 Utilaj medical si reagenti pentru Laboratorul de Tipizare",
 					"description" : "",
@@ -3881,7 +3887,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(183944),
+					"id" : 183944,
 					"awardID" : "award-183944",
 					"title" : "12/00029/002 Utilaj medical si reagenti pentru Laboratorul de Tipizare",
 					"description" : "",
@@ -3898,7 +3904,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(183945),
+					"id" : 183945,
 					"awardID" : "award-183945",
 					"title" : "12/00029/003 Utilaj medical si reagenti pentru Laboratorul de Tipizare",
 					"description" : "",
@@ -3915,7 +3921,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(183946),
+					"id" : 183946,
 					"awardID" : "award-183946",
 					"title" : "12/00029/004 Utilaj medical si reagenti pentru Laboratorul de Tipizare",
 					"description" : "",
@@ -3961,14 +3967,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-125780",
-			"date" : ISODate("2012-11-27T00:00:00Z"),
+			"date" : "2012-11-27T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(125780),
+				"id" : 125780,
 				"title" : "Tender Ref 12/00110 Bulletin 94",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -4086,7 +4092,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(198254),
+					"id" : 198254,
 					"awardID" : "award-198254",
 					"title" : "12/00110/001 Sistemul informaţional \"Evidenţa contabilă în Aparatul Central al MAE IE şi Misiunile Diplomatice ale Republicii Moldova\"",
 					"description" : "",
@@ -4132,14 +4138,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-81527",
-			"date" : ISODate("2012-11-20T00:00:00Z"),
+			"date" : "2012-11-20T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(81527),
+				"id" : 81527,
 				"title" : "Tender Ref 12/00083 Bulletin 92",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -4243,7 +4249,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(185257),
+					"id" : 185257,
 					"awardID" : "award-185257",
 					"title" : "12/00083/001 lapte ",
 					"description" : "",
@@ -4289,14 +4295,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-184113",
-			"date" : ISODate("2012-12-21T00:00:00Z"),
+			"date" : "2012-12-21T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(184113),
+				"id" : 184113,
 				"title" : "Tender Ref 12/00153 Bulletin 101",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -4456,7 +4462,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(242245),
+					"id" : 242245,
 					"awardID" : "award-242245",
 					"title" : "12/00153/001 Produse petroliere pentru anul 2013",
 					"description" : "",
@@ -4502,14 +4508,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-106399",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(106399),
+				"id" : 106399,
 				"title" : "Tender Ref 12/00103 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -5655,7 +5661,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(227297),
+					"id" : 227297,
 					"awardID" : "award-227297",
 					"title" : "12/00103/001 Servicii de abonare pentru anul 2013 (ediţii periodice)",
 					"description" : "",
@@ -5672,7 +5678,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(227298),
+					"id" : 227298,
 					"awardID" : "award-227298",
 					"title" : "12/00103/002 Servicii de abonare pentru anul 2013 (ediţii periodice)",
 					"description" : "",
@@ -5689,7 +5695,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(227299),
+					"id" : 227299,
 					"awardID" : "award-227299",
 					"title" : "12/00103/003 Servicii de abonare pentru anul 2013 (ediţii periodice)",
 					"description" : "",
@@ -5735,14 +5741,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-32590",
-			"date" : ISODate("2012-10-19T00:00:00Z"),
+			"date" : "2012-10-19T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(32590),
+				"id" : 32590,
 				"title" : "Tender Ref 12/00021 Bulletin 83",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -5860,7 +5866,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(79703),
+					"id" : 79703,
 					"awardID" : "award-79703",
 					"title" : "12/00021/003 Produse petroliere",
 					"description" : "",
@@ -5906,14 +5912,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27985",
-			"date" : ISODate("2012-10-23T00:00:00Z"),
+			"date" : "2012-10-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27985),
+				"id" : 27985,
 				"title" : "Tender Ref 12/00016 Bulletin 84",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -6017,7 +6023,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(79700),
+					"id" : 79700,
 					"awardID" : "award-79700",
 					"title" : "12/00016/001 motorină în scopul încălzirii pentru CTAS Cantemir (în tichete)",
 					"description" : "",
@@ -6063,14 +6069,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-78195",
-			"date" : ISODate("2012-11-23T00:00:00Z"),
+			"date" : "2012-11-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(78195),
+				"id" : 78195,
 				"title" : "Tender Ref 12/00071 Bulletin 93",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -6174,7 +6180,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(236033),
+					"id" : 236033,
 					"awardID" : "award-236033",
 					"title" : "12/00071/001 serviciilor de pază şi sistem antiincendiar autonom, deservirea  tehnică a utilajului montat, pentru anul de activitate 2013",
 					"description" : "",
@@ -6220,14 +6226,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-35996",
-			"date" : ISODate("2012-10-26T00:00:00Z"),
+			"date" : "2012-10-26T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(35996),
+				"id" : 35996,
 				"title" : "Tender Ref 12/00034 Bulletin 85",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -6331,7 +6337,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(134563),
+					"id" : 134563,
 					"awardID" : "award-134563",
 					"title" : "12/00034/001 Lucrari de reparatie PAMU Cricova",
 					"description" : "",
@@ -6377,14 +6383,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-178121",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(178121),
+				"id" : 178121,
 				"title" : "Tender Ref 12/00136 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -6488,7 +6494,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(238817),
+					"id" : 238817,
 					"awardID" : "award-238817",
 					"title" : "12/00136/001 Medaliilor șablonate",
 					"description" : "",
@@ -6534,14 +6540,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60185",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60185),
+				"id" : 60185,
 				"title" : "Tender Ref 12/00057 Bulletin 88",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -6757,7 +6763,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(198259),
+					"id" : 198259,
 					"awardID" : "award-198259",
 					"title" : "12/00057/001 Uleiuri auto şi lichide de răcire",
 					"description" : "",
@@ -6803,14 +6809,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-120231",
-			"date" : ISODate("2012-11-27T00:00:00Z"),
+			"date" : "2012-11-27T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(120231),
+				"id" : 120231,
 				"title" : "Tender Ref 12/00105 Bulletin 94",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -7040,7 +7046,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(189923),
+					"id" : 189923,
 					"awardID" : "award-189923",
 					"title" : "12/00105/001 Mobilier",
 					"description" : "",
@@ -7086,14 +7092,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27312",
-			"date" : ISODate("2012-10-19T00:00:00Z"),
+			"date" : "2012-10-19T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27312),
+				"id" : 27312,
 				"title" : "Tender Ref 12/00008 Bulletin 83",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -7200,14 +7206,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53456",
-			"date" : ISODate("2012-11-09T00:00:00Z"),
+			"date" : "2012-11-09T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53456),
+				"id" : 53456,
 				"title" : "Tender Ref 12/00044 Bulletin 89",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -7364,7 +7370,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(225034),
+					"id" : 225034,
 					"awardID" : "award-225034",
 					"title" : "12/00044/001 servicii de elaborare a documentelor normative în construcții",
 					"description" : "",
@@ -7381,7 +7387,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(8120069),
+					"id" : 8120069,
 					"awardID" : "award-8120069",
 					"title" : "12/00044/001/001 servicii de elaborare a documentelor normative în construcții",
 					"description" : "",
@@ -7398,7 +7404,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(14885379),
+					"id" : 14885379,
 					"awardID" : "award-14885379",
 					"title" : "12/00044/001/002 servicii de elaborare a documentelor normative în construcții",
 					"description" : "",
@@ -7444,14 +7450,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-132906",
-			"date" : ISODate("2012-12-07T00:00:00Z"),
+			"date" : "2012-12-07T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(132906),
+				"id" : 132906,
 				"title" : "Tender Ref 12/00124 Bulletin 97",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -7677,7 +7683,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(241116),
+					"id" : 241116,
 					"awardID" : "award-241116",
 					"title" : "12/00124/001 Hârtie",
 					"description" : "",
@@ -7694,7 +7700,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(241117),
+					"id" : 241117,
 					"awardID" : "award-241117",
 					"title" : "12/00124/002 Hârtie",
 					"description" : "",
@@ -7740,14 +7746,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-177550",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(177550),
+				"id" : 177550,
 				"title" : "Tender Ref 12/00134 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -7854,14 +7860,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-70893",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(70893),
+				"id" : 70893,
 				"title" : "Tender Ref 12/00066 Bulletin 88",
 				"description" : "",
 				"status" : "Anulată",
@@ -7982,14 +7988,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-32593",
-			"date" : ISODate("2012-10-26T00:00:00Z"),
+			"date" : "2012-10-26T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(32593),
+				"id" : 32593,
 				"title" : "Tender Ref 12/00024 Bulletin 85",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -8093,7 +8099,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(185254),
+					"id" : 185254,
 					"awardID" : "award-185254",
 					"title" : "12/00024/001 servici de paza",
 					"description" : "",
@@ -8139,14 +8145,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-35997",
-			"date" : ISODate("2012-10-26T00:00:00Z"),
+			"date" : "2012-10-26T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(35997),
+				"id" : 35997,
 				"title" : "Tender Ref 12/00035 Bulletin 85",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -8634,7 +8640,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(179747),
+					"id" : 179747,
 					"awardID" : "award-179747",
 					"title" : "12/00035/001 Servicii de asigurare pentru anul 2013",
 					"description" : "",
@@ -8651,7 +8657,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(179748),
+					"id" : 179748,
 					"awardID" : "award-179748",
 					"title" : "12/00035/002 Servicii de asigurare pentru anul 2013",
 					"description" : "",
@@ -8668,7 +8674,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(179749),
+					"id" : 179749,
 					"awardID" : "award-179749",
 					"title" : "12/00035/003 Servicii de asigurare pentru anul 2013",
 					"description" : "",
@@ -8714,14 +8720,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27980",
-			"date" : ISODate("2012-10-19T00:00:00Z"),
+			"date" : "2012-10-19T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27980),
+				"id" : 27980,
 				"title" : "Tender Ref 12/00011 Bulletin 83",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -8814,14 +8820,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-188627",
-			"date" : ISODate("2012-12-21T00:00:00Z"),
+			"date" : "2012-12-21T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(188627),
+				"id" : 188627,
 				"title" : "Tender Ref 12/00164 Bulletin 101",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -8939,7 +8945,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(242249),
+					"id" : 242249,
 					"awardID" : "award-242249",
 					"title" : "12/00164/001 Achiziţionarea serviciilor de pază pentru anul 2013",
 					"description" : "",
@@ -8985,14 +8991,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27986",
-			"date" : ISODate("2012-10-19T00:00:00Z"),
+			"date" : "2012-10-19T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27986),
+				"id" : 27986,
 				"title" : "Tender Ref 12/00017 Bulletin 83",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -9110,7 +9116,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(198253),
+					"id" : 198253,
 					"awardID" : "award-198253",
 					"title" : "12/00017/001 achiziționarea automobilelor",
 					"description" : "",
@@ -9156,14 +9162,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-35995",
-			"date" : ISODate("2012-10-30T00:00:00Z"),
+			"date" : "2012-10-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(35995),
+				"id" : 35995,
 				"title" : "Tender Ref 12/00033 Bulletin 86",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -9319,7 +9325,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(183941),
+					"id" : 183941,
 					"awardID" : "award-183941",
 					"title" : "12/00033/001 Licitaţia publică pentru achiziţionarea serviciilor de tratament sanatorial\npentru persoane în vîrsta şi persoane cu disabilităţi\n",
 					"description" : "",
@@ -9336,7 +9342,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(183942),
+					"id" : 183942,
 					"awardID" : "award-183942",
 					"title" : "12/00033/002 Licitaţia publică pentru achiziţionarea serviciilor de tratament sanatorial\npentru persoane în vîrsta şi persoane cu disabilităţi\n",
 					"description" : "",
@@ -9382,14 +9388,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-181142",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(181142),
+				"id" : 181142,
 				"title" : "Tender Ref 12/00147 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -9493,7 +9499,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(241115),
+					"id" : 241115,
 					"awardID" : "award-241115",
 					"title" : "12/00147/001 cazare și alimentare în or. Vadul lui Vodă",
 					"description" : "",
@@ -9539,14 +9545,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27988",
-			"date" : ISODate("2012-10-26T00:00:00Z"),
+			"date" : "2012-10-26T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27988),
+				"id" : 27988,
 				"title" : "Tender Ref 12/00019 Bulletin 85",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -9898,7 +9904,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(174295),
+					"id" : 174295,
 					"awardID" : "award-174295",
 					"title" : "12/00019/001 Produse radioimunologice necesare IMSP Spitalul Clinic  Republican  pentru anul 2013.",
 					"description" : "",
@@ -9915,7 +9921,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(174296),
+					"id" : 174296,
 					"awardID" : "award-174296",
 					"title" : "12/00019/002 Produse radioimunologice necesare IMSP Spitalul Clinic  Republican  pentru anul 2013.",
 					"description" : "",
@@ -9961,14 +9967,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-106392",
-			"date" : ISODate("2012-12-07T00:00:00Z"),
+			"date" : "2012-12-07T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(106392),
+				"id" : 106392,
 				"title" : "Tender Ref 12/00096 Bulletin 97",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -10061,14 +10067,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27311",
-			"date" : ISODate("2012-10-16T00:00:00Z"),
+			"date" : "2012-10-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27311),
+				"id" : 27311,
 				"title" : "Tender Ref 12/00007 Bulletin 82",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -10340,7 +10346,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(134560),
+					"id" : 134560,
 					"awardID" : "award-134560",
 					"title" : "12/00007/001 reparaţie curentă a sediului Agenţiei teritoriale Cahul a Companiei Naţionale de Asigurări în Medicină",
 					"description" : "",
@@ -10386,14 +10392,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53458",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53458),
+				"id" : 53458,
 				"title" : "Tender Ref 12/00046 Bulletin 88",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -11116,14 +11122,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27982",
-			"date" : ISODate("2012-10-19T00:00:00Z"),
+			"date" : "2012-10-19T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27982),
+				"id" : 27982,
 				"title" : "Tender Ref 12/00013 Bulletin 83",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -11481,7 +11487,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(179741),
+					"id" : 179741,
 					"awardID" : "award-179741",
 					"title" : "12/00013/001 Mobilă",
 					"description" : "",
@@ -11498,7 +11504,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(179742),
+					"id" : 179742,
 					"awardID" : "award-179742",
 					"title" : "12/00013/002 Mobilă",
 					"description" : "",
@@ -11515,7 +11521,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(179743),
+					"id" : 179743,
 					"awardID" : "award-179743",
 					"title" : "12/00013/003 Mobilă",
 					"description" : "",
@@ -11532,7 +11538,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(179744),
+					"id" : 179744,
 					"awardID" : "award-179744",
 					"title" : "12/00013/004 Mobilă",
 					"description" : "",
@@ -11578,14 +11584,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-178124",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(178124),
+				"id" : 178124,
 				"title" : "Tender Ref 12/00139 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -11678,14 +11684,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-81523",
-			"date" : ISODate("2012-11-20T00:00:00Z"),
+			"date" : "2012-11-20T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(81523),
+				"id" : 81523,
 				"title" : "Tender Ref 12/00079 Bulletin 92",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -12235,7 +12241,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(183947),
+					"id" : 183947,
 					"awardID" : "award-183947",
 					"title" : "12/00079/001 Mobilier",
 					"description" : "",
@@ -12252,7 +12258,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(183948),
+					"id" : 183948,
 					"awardID" : "award-183948",
 					"title" : "12/00079/002 Mobilier",
 					"description" : "",
@@ -12269,7 +12275,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(183949),
+					"id" : 183949,
 					"awardID" : "award-183949",
 					"title" : "12/00079/003 Mobilier",
 					"description" : "",
@@ -12286,7 +12292,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(185250),
+					"id" : 185250,
 					"awardID" : "award-185250",
 					"title" : "12/00079/004 Mobilier",
 					"description" : "",
@@ -12303,7 +12309,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(185251),
+					"id" : 185251,
 					"awardID" : "award-185251",
 					"title" : "12/00079/005 Mobilier",
 					"description" : "",
@@ -12349,14 +12355,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-178123",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(178123),
+				"id" : 178123,
 				"title" : "Tender Ref 12/00138 Bulletin 99",
 				"description" : "",
 				"status" : "Anulată",
@@ -12505,14 +12511,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27981",
-			"date" : ISODate("2012-10-19T00:00:00Z"),
+			"date" : "2012-10-19T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27981),
+				"id" : 27981,
 				"title" : "Tender Ref 12/00012 Bulletin 83",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -12630,7 +12636,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(227293),
+					"id" : 227293,
 					"awardID" : "award-227293",
 					"title" : "12/00012/001 Achizitionarea Vaccinului Hepatitei B şi consumabilelor necesare vaccinării, conform necesităţilor solicitate de Centrul Naţional de Sănătate Publică pentru anul 2013",
 					"description" : "",
@@ -12676,14 +12682,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-81522",
-			"date" : ISODate("2012-11-20T00:00:00Z"),
+			"date" : "2012-11-20T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(81522),
+				"id" : 81522,
 				"title" : "Tender Ref 12/00078 Bulletin 92",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -12787,7 +12793,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(269527),
+					"id" : 269527,
 					"awardID" : "award-269527",
 					"title" : "12/00078/001 Servicii de proiectare pentru lucrările de constructie a drumului M3 Chișinău – Giurgiuleşti – frontieră cu România sectorul Porumbrei-Cimișlia, inclusiv ocolirea or. Cimișlia",
 					"description" : "",
@@ -12833,14 +12839,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-59116",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(59116),
+				"id" : 59116,
 				"title" : "Tender Ref 12/00048 Bulletin 87",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -12944,7 +12950,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(125694),
+					"id" : 125694,
 					"awardID" : "award-125694",
 					"title" : "12/00048/001 lucrări de reparaţie la CTAS Ciocana",
 					"description" : "",
@@ -12990,14 +12996,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-25614",
-			"date" : ISODate("2012-10-16T00:00:00Z"),
+			"date" : "2012-10-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(25614),
+				"id" : 25614,
 				"title" : "Tender Ref 12/00005 Bulletin 82",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -13090,14 +13096,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-25612",
-			"date" : ISODate("2012-10-16T00:00:00Z"),
+			"date" : "2012-10-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(25612),
+				"id" : 25612,
 				"title" : "Tender Ref 12/00003 Bulletin 82",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -13201,7 +13207,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(79704),
+					"id" : 79704,
 					"awardID" : "award-79704",
 					"title" : "12/00003/001 Bare automatizate",
 					"description" : "",
@@ -13247,14 +13253,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-32596",
-			"date" : ISODate("2012-10-26T00:00:00Z"),
+			"date" : "2012-10-26T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(32596),
+				"id" : 32596,
 				"title" : "Tender Ref 12/00027 Bulletin 85",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -13347,14 +13353,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-35994",
-			"date" : ISODate("2012-10-30T00:00:00Z"),
+			"date" : "2012-10-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(35994),
+				"id" : 35994,
 				"title" : "Tender Ref 12/00032 Bulletin 86",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -13500,7 +13506,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(189925),
+					"id" : 189925,
 					"awardID" : "award-189925",
 					"title" : "12/00032/001 Produse petroliere pentru anul de activitate 2013",
 					"description" : "",
@@ -13546,14 +13552,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84150",
-			"date" : ISODate("2012-11-23T00:00:00Z"),
+			"date" : "2012-11-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84150),
+				"id" : 84150,
 				"title" : "Tender Ref 12/00084 Bulletin 93",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -13657,7 +13663,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(185252),
+					"id" : 185252,
 					"awardID" : "award-185252",
 					"title" : "12/00084/001 Servicii de elborare a Planului de Amenajare a Teritoriului raional Edinet si Briceni",
 					"description" : "",
@@ -13703,14 +13709,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-35999",
-			"date" : ISODate("2012-10-26T00:00:00Z"),
+			"date" : "2012-10-26T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(35999),
+				"id" : 35999,
 				"title" : "Tender Ref 12/00037 Bulletin 85",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -13803,14 +13809,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-78198",
-			"date" : ISODate("2012-11-16T00:00:00Z"),
+			"date" : "2012-11-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(78198),
+				"id" : 78198,
 				"title" : "Tender Ref 12/00074 Bulletin 91",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -14362,7 +14368,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(210920),
+					"id" : 210920,
 					"awardID" : "award-210920",
 					"title" : "12/00074/001 Calculatoare şi echipament de periferie, conform necesităţilor Ministerului Afacerilor Interne.",
 					"description" : "",
@@ -14408,14 +14414,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-125784",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(125784),
+				"id" : 125784,
 				"title" : "Tender Ref 12/00114 Bulletin 96",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -14589,7 +14595,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(198255),
+					"id" : 198255,
 					"awardID" : "award-198255",
 					"title" : "12/00114/001 Cartușe și echipament pentru mijloace speciale",
 					"description" : "",
@@ -14635,14 +14641,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53450",
-			"date" : ISODate("2012-11-23T00:00:00Z"),
+			"date" : "2012-11-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53450),
+				"id" : 53450,
 				"title" : "Tender Ref 12/00038 Bulletin 93",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -14833,14 +14839,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53455",
-			"date" : ISODate("2012-10-30T00:00:00Z"),
+			"date" : "2012-10-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53455),
+				"id" : 53455,
 				"title" : "Tender Ref 12/00043 Bulletin 86",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -15184,7 +15190,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(174291),
+					"id" : 174291,
 					"awardID" : "award-174291",
 					"title" : "12/00043/001 Piese auto",
 					"description" : "",
@@ -15201,7 +15207,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(174292),
+					"id" : 174292,
 					"awardID" : "award-174292",
 					"title" : "12/00043/002 Piese auto",
 					"description" : "",
@@ -15218,7 +15224,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(174293),
+					"id" : 174293,
 					"awardID" : "award-174293",
 					"title" : "12/00043/003 Piese auto",
 					"description" : "",
@@ -15235,7 +15241,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(174294),
+					"id" : 174294,
 					"awardID" : "award-174294",
 					"title" : "12/00043/004 Piese auto",
 					"description" : "",
@@ -15281,14 +15287,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53451",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53451),
+				"id" : 53451,
 				"title" : "Tender Ref 12/00039 Bulletin 87",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -15381,14 +15387,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-125787",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(125787),
+				"id" : 125787,
 				"title" : "Tender Ref 12/00117 Bulletin 96",
 				"description" : "",
 				"status" : "Anulată",
@@ -15509,14 +15515,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-125781",
-			"date" : ISODate("2012-11-27T00:00:00Z"),
+			"date" : "2012-11-27T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(125781),
+				"id" : 125781,
 				"title" : "Tender Ref 12/00111 Bulletin 94",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -15874,7 +15880,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(389399),
+					"id" : 389399,
 					"awardID" : "award-389399",
 					"title" : "12/00111/001 Materiale de consum pentru hemodializă conform necesităţilor Serviciului de Dializă din Republica Moldova în anul 2013.",
 					"description" : "",
@@ -15891,7 +15897,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(395630),
+					"id" : 395630,
 					"awardID" : "award-395630",
 					"title" : "12/00111/002 Materiale de consum pentru hemodializă conform necesităţilor Serviciului de Dializă din Republica Moldova în anul 2013.",
 					"description" : "",
@@ -15908,7 +15914,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(395631),
+					"id" : 395631,
 					"awardID" : "award-395631",
 					"title" : "12/00111/003 Materiale de consum pentru hemodializă conform necesităţilor Serviciului de Dializă din Republica Moldova în anul 2013.",
 					"description" : "",
@@ -15925,7 +15931,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(395632),
+					"id" : 395632,
 					"awardID" : "award-395632",
 					"title" : "12/00111/004 Materiale de consum pentru hemodializă conform necesităţilor Serviciului de Dializă din Republica Moldova în anul 2013.",
 					"description" : "",
@@ -15971,14 +15977,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53452",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53452),
+				"id" : 53452,
 				"title" : "Tender Ref 12/00040 Bulletin 87",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -16082,7 +16088,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(89276),
+					"id" : 89276,
 					"awardID" : "award-89276",
 					"title" : "12/00040/001 Lucrări de reparație a ”Centrului Național de Coordonare”",
 					"description" : "",
@@ -16128,14 +16134,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-59117",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(59117),
+				"id" : 59117,
 				"title" : "Tender Ref 12/00049 Bulletin 88",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -16435,7 +16441,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(134569),
+					"id" : 134569,
 					"awardID" : "award-134569",
 					"title" : "12/00049/001 Echipament de calcul şi periferic",
 					"description" : "",
@@ -16481,14 +16487,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84153",
-			"date" : ISODate("2012-11-23T00:00:00Z"),
+			"date" : "2012-11-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84153),
+				"id" : 84153,
 				"title" : "Tender Ref 12/00087 Bulletin 93",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -16592,7 +16598,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(196579),
+					"id" : 196579,
 					"awardID" : "award-196579",
 					"title" : "12/00087/001 achiziţionarea medicamentelor (Factorul VIII de coagulare)  întru realizarea Programului Special de Sănătate pentru anul  2012\n",
 					"description" : "",
@@ -16638,14 +16644,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53454",
-			"date" : ISODate("2012-10-30T00:00:00Z"),
+			"date" : "2012-10-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53454),
+				"id" : 53454,
 				"title" : "Tender Ref 12/00042 Bulletin 86",
 				"description" : "",
 				"status" : "Anulată",
@@ -16738,14 +16744,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60187",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60187),
+				"id" : 60187,
 				"title" : "Tender Ref 12/00059 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -16849,7 +16855,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(254557),
+					"id" : 254557,
 					"awardID" : "award-254557",
 					"title" : "12/00059/001 Serviciile de pregătire a Declaraţiilor Financiare ale Administraţiei de Stat a Drumurilor bazate pe Standardele Internaţionale de Raportare Financiară pentru anii fiscali încheiat la 31.12.2012, 31.12.2013, 31.12.2014",
 					"description" : "",
@@ -16895,14 +16901,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60180",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60180),
+				"id" : 60180,
 				"title" : "Tender Ref 12/00052 Bulletin 87",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -17128,7 +17134,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(185259),
+					"id" : 185259,
 					"awardID" : "award-185259",
 					"title" : "12/00052/001 Servicii de deservire şi reparaţie a utilajului medical (repetat).",
 					"description" : "",
@@ -17145,7 +17151,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(189920),
+					"id" : 189920,
 					"awardID" : "award-189920",
 					"title" : "12/00052/002 Servicii de deservire şi reparaţie a utilajului medical (repetat).",
 					"description" : "",
@@ -17191,14 +17197,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60184",
-			"date" : ISODate("2012-11-16T00:00:00Z"),
+			"date" : "2012-11-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60184),
+				"id" : 60184,
 				"title" : "Tender Ref 12/00056 Bulletin 91",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -17620,7 +17626,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(376573),
+					"id" : 376573,
 					"awardID" : "award-376573",
 					"title" : "12/00056/001 achizitionarerea reactivelor pentru determinarea preparatelor imunosupresive în serul sanguin al pacientului,  reactive pentru investigarea pacienţilor din lista de aşteptare conform  Serviciului de Hemodializă şi Transplant.\n               ",
 					"description" : "",
@@ -17637,7 +17643,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(376574),
+					"id" : 376574,
 					"awardID" : "award-376574",
 					"title" : "12/00056/002 achizitionarerea reactivelor pentru determinarea preparatelor imunosupresive în serul sanguin al pacientului,  reactive pentru investigarea pacienţilor din lista de aşteptare conform  Serviciului de Hemodializă şi Transplant.\n               ",
 					"description" : "",
@@ -17683,14 +17689,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60182",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60182),
+				"id" : 60182,
 				"title" : "Tender Ref 12/00054 Bulletin 87",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -17822,7 +17828,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(174290),
+					"id" : 174290,
 					"awardID" : "award-174290",
 					"title" : "12/00054/001 achizitionarea vaccinurilor umane şi consumabilelor necesare vaccinării, conform necesităţilor solicitate de Centrul Naţional de Sănătate Publică pentru anul 2012 întru realizarea Programului Special \"Imunoprofilaxia şi măsurile antiepidemice\"",
 					"description" : "",
@@ -17868,14 +17874,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-172654",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(172654),
+				"id" : 172654,
 				"title" : "Tender Ref 12/00132 Bulletin 99",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -19753,7 +19759,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(256832),
+					"id" : 256832,
 					"awardID" : "award-256832",
 					"title" : "12/00132/001 produse petroliere (inclusiv lubrifianți)",
 					"description" : "",
@@ -19770,7 +19776,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(256833),
+					"id" : 256833,
 					"awardID" : "award-256833",
 					"title" : "12/00132/002 produse petroliere (inclusiv lubrifianți)",
 					"description" : "",
@@ -19816,14 +19822,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-59118",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(59118),
+				"id" : 59118,
 				"title" : "Tender Ref 12/00050 Bulletin 87",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -19979,7 +19985,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(251774),
+					"id" : 251774,
 					"awardID" : "award-251774",
 					"title" : "12/00050/001 Pieselor auto pentru deservirea tehnică a autosanitarelor, pentru anul de activitate 2013.  ",
 					"description" : "",
@@ -19996,7 +20002,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(251775),
+					"id" : 251775,
 					"awardID" : "award-251775",
 					"title" : "12/00050/002 Pieselor auto pentru deservirea tehnică a autosanitarelor, pentru anul de activitate 2013.  ",
 					"description" : "",
@@ -20042,14 +20048,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-27989",
-			"date" : ISODate("2012-10-23T00:00:00Z"),
+			"date" : "2012-10-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(27989),
+				"id" : 27989,
 				"title" : "Tender Ref 12/00020 Bulletin 84",
 				"description" : "",
 				"status" : "Anulată",
@@ -20142,14 +20148,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-67470",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(67470),
+				"id" : 67470,
 				"title" : "Tender Ref 12/00062 Bulletin 87",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -20253,7 +20259,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(89277),
+					"id" : 89277,
 					"awardID" : "award-89277",
 					"title" : "12/00062/001 Achiziționarea lucrărilor de acoperire a Sălii de protocol la sediul central al MAEIE.",
 					"description" : "",
@@ -20299,14 +20305,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-70891",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(70891),
+				"id" : 70891,
 				"title" : "Tender Ref 12/00064 Bulletin 88",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -20410,7 +20416,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(134564),
+					"id" : 134564,
 					"awardID" : "award-134564",
 					"title" : "12/00064/001 Servicii de supraveghere tehnică ale supraveghetorului tehnic la obiectul: Poligonul depozitării deşeurilor menajere solide din or. Nisporeni",
 					"description" : "",
@@ -20456,14 +20462,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84158",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84158),
+				"id" : 84158,
 				"title" : "Tender Ref 12/00092 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -20595,7 +20601,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(204840),
+					"id" : 204840,
 					"awardID" : "award-204840",
 					"title" : "12/00092/001 Sistemul centralizat multifuncţional (scanare, imprimare, copiere)",
 					"description" : "",
@@ -20641,14 +20647,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-70892",
-			"date" : ISODate("2012-11-13T00:00:00Z"),
+			"date" : "2012-11-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(70892),
+				"id" : 70892,
 				"title" : "Tender Ref 12/00065 Bulletin 90",
 				"description" : "",
 				"status" : "Anulată",
@@ -20811,14 +20817,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-59115",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(59115),
+				"id" : 59115,
 				"title" : "Tender Ref 12/00047 Bulletin 87",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -21068,7 +21074,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(89279),
+					"id" : 89279,
 					"awardID" : "award-89279",
 					"title" : "12/00047/001 Echipament medical",
 					"description" : "",
@@ -21085,7 +21091,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(125690),
+					"id" : 125690,
 					"awardID" : "award-125690",
 					"title" : "12/00047/002 Echipament medical",
 					"description" : "",
@@ -21102,7 +21108,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(125691),
+					"id" : 125691,
 					"awardID" : "award-125691",
 					"title" : "12/00047/003 Echipament medical",
 					"description" : "",
@@ -21148,14 +21154,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-72531",
-			"date" : ISODate("2012-11-09T00:00:00Z"),
+			"date" : "2012-11-09T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(72531),
+				"id" : 72531,
 				"title" : "Tender Ref 12/00067 Bulletin 89",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -21248,14 +21254,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-74412",
-			"date" : ISODate("2012-11-09T00:00:00Z"),
+			"date" : "2012-11-09T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(74412),
+				"id" : 74412,
 				"title" : "Tender Ref 12/00068 Bulletin 89",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -21359,7 +21365,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(125693),
+					"id" : 125693,
 					"awardID" : "award-125693",
 					"title" : "12/00068/001 Lucrări de reparaţie a „Centrului Operaţiuni la Frontieră”",
 					"description" : "",
@@ -21405,14 +21411,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-81524",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(81524),
+				"id" : 81524,
 				"title" : "Tender Ref 12/00080 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -21680,7 +21686,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(236036),
+					"id" : 236036,
 					"awardID" : "award-236036",
 					"title" : "12/00080/001 Produse petroliere",
 					"description" : "",
@@ -21697,7 +21703,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(236037),
+					"id" : 236037,
 					"awardID" : "award-236037",
 					"title" : "12/00080/002 Produse petroliere",
 					"description" : "",
@@ -21743,14 +21749,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-70890",
-			"date" : ISODate("2012-11-16T00:00:00Z"),
+			"date" : "2012-11-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(70890),
+				"id" : 70890,
 				"title" : "Tender Ref 12/00063 Bulletin 91",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -21854,7 +21860,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(183940),
+					"id" : 183940,
 					"awardID" : "award-183940",
 					"title" : "12/00063/001 Lucrari de reparatie AMU Botanica (repetat)",
 					"description" : "",
@@ -21900,14 +21906,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84151",
-			"date" : ISODate("2012-11-20T00:00:00Z"),
+			"date" : "2012-11-20T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84151),
+				"id" : 84151,
 				"title" : "Tender Ref 12/00085 Bulletin 92",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -22327,7 +22333,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(189929),
+					"id" : 189929,
 					"awardID" : "award-189929",
 					"title" : "12/00085/001 Echipament medical si tehnologic pentru farmacia institutiei",
 					"description" : "",
@@ -22344,7 +22350,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(195790),
+					"id" : 195790,
 					"awardID" : "award-195790",
 					"title" : "12/00085/002 Echipament medical si tehnologic pentru farmacia institutiei",
 					"description" : "",
@@ -22361,7 +22367,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(195791),
+					"id" : 195791,
 					"awardID" : "award-195791",
 					"title" : "12/00085/003 Echipament medical si tehnologic pentru farmacia institutiei",
 					"description" : "",
@@ -22378,7 +22384,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(195792),
+					"id" : 195792,
 					"awardID" : "award-195792",
 					"title" : "12/00085/004 Echipament medical si tehnologic pentru farmacia institutiei",
 					"description" : "",
@@ -22395,7 +22401,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(196571),
+					"id" : 196571,
 					"awardID" : "award-196571",
 					"title" : "12/00085/005 Echipament medical si tehnologic pentru farmacia institutiei",
 					"description" : "",
@@ -22412,7 +22418,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(196572),
+					"id" : 196572,
 					"awardID" : "award-196572",
 					"title" : "12/00085/006 Echipament medical si tehnologic pentru farmacia institutiei",
 					"description" : "",
@@ -22458,14 +22464,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-25610",
-			"date" : ISODate("2012-10-16T00:00:00Z"),
+			"date" : "2012-10-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(25610),
+				"id" : 25610,
 				"title" : "Tender Ref 12/00001 Bulletin 82",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -22621,7 +22627,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(89270),
+					"id" : 89270,
 					"awardID" : "award-89270",
 					"title" : "12/00001/001 Tractor si remorca",
 					"description" : "",
@@ -22638,7 +22644,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(89271),
+					"id" : 89271,
 					"awardID" : "award-89271",
 					"title" : "12/00001/002 Tractor si remorca",
 					"description" : "",
@@ -22684,14 +22690,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-32594",
-			"date" : ISODate("2012-10-26T00:00:00Z"),
+			"date" : "2012-10-26T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(32594),
+				"id" : 32594,
 				"title" : "Tender Ref 12/00025 Bulletin 85",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -22977,7 +22983,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(79702),
+					"id" : 79702,
 					"awardID" : "award-79702",
 					"title" : "12/00025/001 implantelor chirurgicale (pentru instrumentele Simplex Ti6A14 Veli, existente în IMSP ICŞDOSMşiC), cod CPV 33184100-4, REPETAT",
 					"description" : "",
@@ -23023,14 +23029,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-78194",
-			"date" : ISODate("2012-11-16T00:00:00Z"),
+			"date" : "2012-11-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(78194),
+				"id" : 78194,
 				"title" : "Tender Ref 12/00070 Bulletin 91",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -23123,14 +23129,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-81526",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(81526),
+				"id" : 81526,
 				"title" : "Tender Ref 12/00082 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -24430,7 +24436,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(213970),
+					"id" : 213970,
 					"awardID" : "award-213970",
 					"title" : "12/00082/001 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24447,7 +24453,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213971),
+					"id" : 213971,
 					"awardID" : "award-213971",
 					"title" : "12/00082/002 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24464,7 +24470,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213972),
+					"id" : 213972,
 					"awardID" : "award-213972",
 					"title" : "12/00082/003 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24481,7 +24487,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213973),
+					"id" : 213973,
 					"awardID" : "award-213973",
 					"title" : "12/00082/004 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24498,7 +24504,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213974),
+					"id" : 213974,
 					"awardID" : "award-213974",
 					"title" : "12/00082/005 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24515,7 +24521,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213975),
+					"id" : 213975,
 					"awardID" : "award-213975",
 					"title" : "12/00082/006 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24532,7 +24538,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213976),
+					"id" : 213976,
 					"awardID" : "award-213976",
 					"title" : "12/00082/007 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24549,7 +24555,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213977),
+					"id" : 213977,
 					"awardID" : "award-213977",
 					"title" : "12/00082/008 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24566,7 +24572,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213978),
+					"id" : 213978,
 					"awardID" : "award-213978",
 					"title" : "12/00082/009 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24583,7 +24589,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(213979),
+					"id" : 213979,
 					"awardID" : "award-213979",
 					"title" : "12/00082/010 Produse alimentare pentru semestrul I, anul 2013",
 					"description" : "",
@@ -24629,14 +24635,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53457",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53457),
+				"id" : 53457,
 				"title" : "Tender Ref 12/00045 Bulletin 87",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -25232,7 +25238,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(89272),
+					"id" : 89272,
 					"awardID" : "award-89272",
 					"title" : "12/00045/001 Carduri de plastic cu cip, scaner, imprimante și componente pentru tehnica de calcul",
 					"description" : "",
@@ -25249,7 +25255,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(89273),
+					"id" : 89273,
 					"awardID" : "award-89273",
 					"title" : "12/00045/002 Carduri de plastic cu cip, scaner, imprimante și componente pentru tehnica de calcul",
 					"description" : "",
@@ -25266,7 +25272,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(89275),
+					"id" : 89275,
 					"awardID" : "award-89275",
 					"title" : "12/00045/004 Carduri de plastic cu cip, scaner, imprimante și componente pentru tehnica de calcul",
 					"description" : "",
@@ -25283,7 +25289,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(134561),
+					"id" : 134561,
 					"awardID" : "award-134561",
 					"title" : "12/00045/005 Carduri de plastic cu cip, scaner, imprimante și componente pentru tehnica de calcul",
 					"description" : "",
@@ -25329,14 +25335,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-81521",
-			"date" : ISODate("2012-11-20T00:00:00Z"),
+			"date" : "2012-11-20T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(81521),
+				"id" : 81521,
 				"title" : "Tender Ref 12/00077 Bulletin 92",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -25457,14 +25463,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-120232",
-			"date" : ISODate("2012-11-27T00:00:00Z"),
+			"date" : "2012-11-27T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(120232),
+				"id" : 120232,
 				"title" : "Tender Ref 12/00106 Bulletin 94",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -25582,7 +25588,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(198252),
+					"id" : 198252,
 					"awardID" : "award-198252",
 					"title" : "12/00106/001 achiziţionarea produselor diagnostice predestinate asigurării investigaţiilor de confirmare a testelor iniţial reactive şi finalizare algoritm de testare donator de sânge necesare Centrului Naţional de Sănătate Publică pentru anul 2012",
 					"description" : "",
@@ -25628,14 +25634,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-35998",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(35998),
+				"id" : 35998,
 				"title" : "Tender Ref 12/00036 Bulletin 88",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -25753,7 +25759,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(189921),
+					"id" : 189921,
 					"awardID" : "award-189921",
 					"title" : "12/00036/001 Produse de panificaţie",
 					"description" : "",
@@ -25799,14 +25805,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-32592",
-			"date" : ISODate("2012-10-26T00:00:00Z"),
+			"date" : "2012-10-26T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(32592),
+				"id" : 32592,
 				"title" : "Tender Ref 12/00023 Bulletin 85",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -25899,14 +25905,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84152",
-			"date" : ISODate("2012-11-23T00:00:00Z"),
+			"date" : "2012-11-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84152),
+				"id" : 84152,
 				"title" : "Tender Ref 12/00086 Bulletin 93",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -25999,14 +26005,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84155",
-			"date" : ISODate("2012-11-20T00:00:00Z"),
+			"date" : "2012-11-20T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84155),
+				"id" : 84155,
 				"title" : "Tender Ref 12/00089 Bulletin 92",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -26110,7 +26116,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(196576),
+					"id" : 196576,
 					"awardID" : "award-196576",
 					"title" : "12/00089/001 servicii de proiectare pentru lucrările de reparație a drumului R30 Anenii Noi - Căușeni - Ștefan Vodă- fr. cu Ucraina, km 44,85-47,00",
 					"description" : "",
@@ -26156,14 +26162,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-35992",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(35992),
+				"id" : 35992,
 				"title" : "Tender Ref 12/00030 Bulletin 87",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -26487,7 +26493,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(282275),
+					"id" : 282275,
 					"awardID" : "award-282275",
 					"title" : "12/00030/001 Achizitionarea vaccinurilor umane şi consumabilelor necesare vaccinării, conform necesităţilor solicitate de Centrul Naţional de Sănătate Publică\npentru anul 2013 pentru realizarea\tProgramului Naţional de Imunizări",
 					"description" : "",
@@ -26504,7 +26510,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(335600),
+					"id" : 335600,
 					"awardID" : "award-335600",
 					"title" : "12/00030/002 Achizitionarea vaccinurilor umane şi consumabilelor necesare vaccinării, conform necesităţilor solicitate de Centrul Naţional de Sănătate Publică\npentru anul 2013 pentru realizarea\tProgramului Naţional de Imunizări",
 					"description" : "",
@@ -26550,14 +26556,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84157",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84157),
+				"id" : 84157,
 				"title" : "Tender Ref 12/00091 Bulletin 96",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -27231,7 +27237,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(225032),
+					"id" : 225032,
 					"awardID" : "award-225032",
 					"title" : "12/00091/001 produse petroliere",
 					"description" : "",
@@ -27248,7 +27254,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(225033),
+					"id" : 225033,
 					"awardID" : "award-225033",
 					"title" : "12/00091/002 produse petroliere",
 					"description" : "",
@@ -27294,14 +27300,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84159",
-			"date" : ISODate("2012-11-27T00:00:00Z"),
+			"date" : "2012-11-27T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84159),
+				"id" : 84159,
 				"title" : "Tender Ref 12/00093 Bulletin 94",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -28643,7 +28649,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(195798),
+					"id" : 195798,
 					"awardID" : "award-195798",
 					"title" : "12/00093/005 Produse alimentare",
 					"description" : "",
@@ -28660,7 +28666,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(204845),
+					"id" : 204845,
 					"awardID" : "award-204845",
 					"title" : "12/00093/006 Produse alimentare",
 					"description" : "",
@@ -28677,7 +28683,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(204846),
+					"id" : 204846,
 					"awardID" : "award-204846",
 					"title" : "12/00093/007 Produse alimentare",
 					"description" : "",
@@ -28694,7 +28700,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(204847),
+					"id" : 204847,
 					"awardID" : "award-204847",
 					"title" : "12/00093/008 Produse alimentare",
 					"description" : "",
@@ -28711,7 +28717,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(204848),
+					"id" : 204848,
 					"awardID" : "award-204848",
 					"title" : "12/00093/009 Produse alimentare",
 					"description" : "",
@@ -28728,7 +28734,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(204849),
+					"id" : 204849,
 					"awardID" : "award-204849",
 					"title" : "12/00093/010 Produse alimentare",
 					"description" : "",
@@ -28745,7 +28751,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(206040),
+					"id" : 206040,
 					"awardID" : "award-206040",
 					"title" : "12/00093/011 Produse alimentare",
 					"description" : "",
@@ -28762,7 +28768,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(206041),
+					"id" : 206041,
 					"awardID" : "award-206041",
 					"title" : "12/00093/012 Produse alimentare",
 					"description" : "",
@@ -28779,7 +28785,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(206043),
+					"id" : 206043,
 					"awardID" : "award-206043",
 					"title" : "12/00093/014 Produse alimentare",
 					"description" : "",
@@ -28796,7 +28802,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(227291),
+					"id" : 227291,
 					"awardID" : "award-227291",
 					"title" : "12/00093/015 Produse alimentare",
 					"description" : "",
@@ -28842,14 +28848,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-53453",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(53453),
+				"id" : 53453,
 				"title" : "Tender Ref 12/00041 Bulletin 87",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -28953,7 +28959,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(185253),
+					"id" : 185253,
 					"awardID" : "award-185253",
 					"title" : "12/00041/001 serviciilor de reparaţie auto şi deservirea tehnică a ambulanţelor, pentru anul de activitate 2013",
 					"description" : "",
@@ -28999,14 +29005,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-106390",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(106390),
+				"id" : 106390,
 				"title" : "Tender Ref 12/00094 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -29110,7 +29116,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(189924),
+					"id" : 189924,
 					"awardID" : "award-189924",
 					"title" : "12/00094/001 produse electrocasnice: frigidere cu congelator",
 					"description" : "",
@@ -29156,14 +29162,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-59119",
-			"date" : ISODate("2012-11-02T00:00:00Z"),
+			"date" : "2012-11-02T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(59119),
+				"id" : 59119,
 				"title" : "Tender Ref 12/00051 Bulletin 87",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -29295,7 +29301,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(179745),
+					"id" : 179745,
 					"awardID" : "award-179745",
 					"title" : "12/00051/001 materiale de constructie",
 					"description" : "",
@@ -29341,14 +29347,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60186",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60186),
+				"id" : 60186,
 				"title" : "Tender Ref 12/00058 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -29452,7 +29458,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(254552),
+					"id" : 254552,
 					"awardID" : "award-254552",
 					"title" : "12/00058/001 Sevicii de audit financiar al declaraţiilor financiare ale Proiectului (Proiectul de susținere a Programului din sectorul Drumurilor) şi a Administraţiei de Stat a Drumurilor pentru anii fiscali încheiat la 31.12.2012, 31.12.2013, 31.12.2014",
 					"description" : "",
@@ -29498,14 +29504,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-78199",
-			"date" : ISODate("2012-11-16T00:00:00Z"),
+			"date" : "2012-11-16T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(78199),
+				"id" : 78199,
 				"title" : "Tender Ref 12/00075 Bulletin 91",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -29598,14 +29604,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-106394",
-			"date" : ISODate("2012-11-23T00:00:00Z"),
+			"date" : "2012-11-23T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(106394),
+				"id" : 106394,
 				"title" : "Tender Ref 12/00098 Bulletin 93",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -29698,14 +29704,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-120238",
-			"date" : ISODate("2012-12-21T00:00:00Z"),
+			"date" : "2012-12-21T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(120238),
+				"id" : 120238,
 				"title" : "Tender Ref 12/00109 Bulletin 101",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -29837,7 +29843,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(251771),
+					"id" : 251771,
 					"awardID" : "award-251771",
 					"title" : "12/00109/001 Produse petrolere pentru anul 2013",
 					"description" : "",
@@ -29883,14 +29889,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-125786",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(125786),
+				"id" : 125786,
 				"title" : "Tender Ref 12/00116 Bulletin 96",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -30074,7 +30080,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(242246),
+					"id" : 242246,
 					"awardID" : "award-242246",
 					"title" : "12/00116/001 achiziţionarea medicamentelor psihotrope întru realizarea  Programului Naţional în anul 2013",
 					"description" : "",
@@ -30091,7 +30097,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(242247),
+					"id" : 242247,
 					"awardID" : "award-242247",
 					"title" : "12/00116/002 achiziţionarea medicamentelor psihotrope întru realizarea  Programului Naţional în anul 2013",
 					"description" : "",
@@ -30137,14 +30143,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-125783",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(125783),
+				"id" : 125783,
 				"title" : "Tender Ref 12/00113 Bulletin 96",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -30237,14 +30243,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-132904",
-			"date" : ISODate("2012-12-18T00:00:00Z"),
+			"date" : "2012-12-18T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(132904),
+				"id" : 132904,
 				"title" : "Tender Ref 12/00122 Bulletin 100",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -30393,14 +30399,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-132900",
-			"date" : ISODate("2012-12-07T00:00:00Z"),
+			"date" : "2012-12-07T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(132900),
+				"id" : 132900,
 				"title" : "Tender Ref 12/00118 Bulletin 97",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -30650,7 +30656,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(227294),
+					"id" : 227294,
 					"awardID" : "award-227294",
 					"title" : "12/00118/001 produse radiofarmaceutice",
 					"description" : "",
@@ -30667,7 +30673,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(227295),
+					"id" : 227295,
 					"awardID" : "award-227295",
 					"title" : "12/00118/002 produse radiofarmaceutice",
 					"description" : "",
@@ -30684,7 +30690,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(237806),
+					"id" : 237806,
 					"awardID" : "award-237806",
 					"title" : "12/00118/003 produse radiofarmaceutice",
 					"description" : "",
@@ -30730,14 +30736,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-178120",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(178120),
+				"id" : 178120,
 				"title" : "Tender Ref 12/00135 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -31991,7 +31997,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(242241),
+					"id" : 242241,
 					"awardID" : "award-242241",
 					"title" : "12/00135/002 Rechizite de birou",
 					"description" : "",
@@ -32008,7 +32014,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(242242),
+					"id" : 242242,
 					"awardID" : "award-242242",
 					"title" : "12/00135/003 Rechizite de birou",
 					"description" : "",
@@ -32025,7 +32031,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(256835),
+					"id" : 256835,
 					"awardID" : "award-256835",
 					"title" : "12/00135/004 Rechizite de birou",
 					"description" : "",
@@ -32042,7 +32048,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(256837),
+					"id" : 256837,
 					"awardID" : "award-256837",
 					"title" : "12/00135/005 Rechizite de birou",
 					"description" : "",
@@ -32088,14 +32094,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-132903",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(132903),
+				"id" : 132903,
 				"title" : "Tender Ref 12/00121 Bulletin 96",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -32342,14 +32348,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-132905",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(132905),
+				"id" : 132905,
 				"title" : "Tender Ref 12/00123 Bulletin 96",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -32621,7 +32627,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(189928),
+					"id" : 189928,
 					"awardID" : "award-189928",
 					"title" : "12/00123/001 servicii pentru repararea colonoscopului CF-40L",
 					"description" : "",
@@ -32667,14 +32673,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-172653",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(172653),
+				"id" : 172653,
 				"title" : "Tender Ref 12/00131 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -32778,7 +32784,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(242244),
+					"id" : 242244,
 					"awardID" : "award-242244",
 					"title" : "12/00131/001 achiziţionarea produselor lactate (lapte pasteurizat 2,5%, 0.5l) ",
 					"description" : "",
@@ -32824,14 +32830,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-132908",
-			"date" : ISODate("2012-12-07T00:00:00Z"),
+			"date" : "2012-12-07T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(132908),
+				"id" : 132908,
 				"title" : "Tender Ref 12/00126 Bulletin 97",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -32935,7 +32941,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(263283),
+					"id" : 263283,
 					"awardID" : "award-263283",
 					"title" : "12/00126/001 Achiziţionarea serviciilor de distribuire a pensiilor, alocaţiilor sociale de stat, indemnizaţiilor, plăţilor periodice capitalizate şi ajutoarelor de deces pentru anul 2013",
 					"description" : "",
@@ -32981,14 +32987,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-106396",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(106396),
+				"id" : 106396,
 				"title" : "Tender Ref 12/00100 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -34022,7 +34028,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(206044),
+					"id" : 206044,
 					"awardID" : "award-206044",
 					"title" : "12/00100/001 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34039,7 +34045,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(206045),
+					"id" : 206045,
 					"awardID" : "award-206045",
 					"title" : "12/00100/002 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34056,7 +34062,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(206046),
+					"id" : 206046,
 					"awardID" : "award-206046",
 					"title" : "12/00100/003 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34073,7 +34079,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(217250),
+					"id" : 217250,
 					"awardID" : "award-217250",
 					"title" : "12/00100/007 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34090,7 +34096,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(217253),
+					"id" : 217253,
 					"awardID" : "award-217253",
 					"title" : "12/00100/010 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34107,7 +34113,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(237807),
+					"id" : 237807,
 					"awardID" : "award-237807",
 					"title" : "12/00100/011 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34124,7 +34130,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(237808),
+					"id" : 237808,
 					"awardID" : "award-237808",
 					"title" : "12/00100/012 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34141,7 +34147,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(237809),
+					"id" : 237809,
 					"awardID" : "award-237809",
 					"title" : "12/00100/013 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34158,7 +34164,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(238810),
+					"id" : 238810,
 					"awardID" : "award-238810",
 					"title" : "12/00100/014 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34175,7 +34181,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(238811),
+					"id" : 238811,
 					"awardID" : "award-238811",
 					"title" : "12/00100/015 Achiziţionarea produselor alimentare trimestrul I anul 2013",
 					"description" : "",
@@ -34221,14 +34227,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60183",
-			"date" : ISODate("2012-11-06T00:00:00Z"),
+			"date" : "2012-11-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60183),
+				"id" : 60183,
 				"title" : "Tender Ref 12/00055 Bulletin 88",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -34321,14 +34327,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-172650",
-			"date" : ISODate("2012-12-18T00:00:00Z"),
+			"date" : "2012-12-18T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(172650),
+				"id" : 172650,
 				"title" : "Tender Ref 12/00128 Bulletin 100",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -34460,7 +34466,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(238814),
+					"id" : 238814,
 					"awardID" : "award-238814",
 					"title" : "12/00128/001 serviciilor pentru recepţionarea, \rtransportarea şi distribuirea corespondenţei de serviciu şi speciale\r",
 					"description" : "",
@@ -34506,14 +34512,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-188625",
-			"date" : ISODate("2012-12-21T00:00:00Z"),
+			"date" : "2012-12-21T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(188625),
+				"id" : 188625,
 				"title" : "Tender Ref 12/00162 Bulletin 101",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -34617,7 +34623,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(225031),
+					"id" : 225031,
 					"awardID" : "award-225031",
 					"title" : "12/00162/001 servicii pentru repararea fibrogastroscopului  OLYMPUS GIF-E",
 					"description" : "",
@@ -34663,14 +34669,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-172651",
-			"date" : ISODate("2012-12-11T00:00:00Z"),
+			"date" : "2012-12-11T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(172651),
+				"id" : 172651,
 				"title" : "Tender Ref 12/00129 Bulletin 98",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -35393,14 +35399,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-75416",
-			"date" : ISODate("2012-11-13T00:00:00Z"),
+			"date" : "2012-11-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(75416),
+				"id" : 75416,
 				"title" : "Tender Ref 12/00069 Bulletin 90",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -35532,7 +35538,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(198250),
+					"id" : 198250,
 					"awardID" : "award-198250",
 					"title" : "12/00069/001 Fotolii pentru holurile substaţiunilor Serviciul  Asistenţa Medicina Urgentă (SAMU) şi Serviciul Ambulatoriu de Traumatologie şi Ortopedie (SATO).",
 					"description" : "",
@@ -35578,14 +35584,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-106391",
-			"date" : ISODate("2012-11-30T00:00:00Z"),
+			"date" : "2012-11-30T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(106391),
+				"id" : 106391,
 				"title" : "Tender Ref 12/00095 Bulletin 95",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -35678,14 +35684,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-132909",
-			"date" : ISODate("2012-12-25T00:00:00Z"),
+			"date" : "2012-12-25T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(132909),
+				"id" : 132909,
 				"title" : "Tender Ref 12/00127 Bulletin 102",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -36142,14 +36148,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-172652",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(172652),
+				"id" : 172652,
 				"title" : "Tender Ref 12/00130 Bulletin 99",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -36253,7 +36259,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(236030),
+					"id" : 236030,
 					"awardID" : "award-236030",
 					"title" : "12/00130/001 Servicii de deservire tehnica partiala si reparatii generale  si reglamentare a ascensoarelor   pentru anul de activitate 2013.",
 					"description" : "",
@@ -36299,14 +36305,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-125782",
-			"date" : ISODate("2012-12-07T00:00:00Z"),
+			"date" : "2012-12-07T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(125782),
+				"id" : 125782,
 				"title" : "Tender Ref 12/00112 Bulletin 97",
 				"description" : "",
 				"status" : "Anulată",
@@ -36399,14 +36405,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-184114",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(184114),
+				"id" : 184114,
 				"title" : "Tender Ref 12/00154 Bulletin 99",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -36562,7 +36568,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(241118),
+					"id" : 241118,
 					"awardID" : "award-241118",
 					"title" : "12/00154/001 hirtie A4;A3",
 					"description" : "",
@@ -36579,7 +36585,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(241119),
+					"id" : 241119,
 					"awardID" : "award-241119",
 					"title" : "12/00154/002 hirtie A4;A3",
 					"description" : "",
@@ -36625,14 +36631,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-188622",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(188622),
+				"id" : 188622,
 				"title" : "Tender Ref 12/00159 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -36736,7 +36742,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(236032),
+					"id" : 236032,
 					"awardID" : "award-236032",
 					"title" : "12/00159/001 Servicii de editare, tipărire și livrare a Buletinului Achizițiilor Publice",
 					"description" : "",
@@ -36782,14 +36788,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-178122",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(178122),
+				"id" : 178122,
 				"title" : "Tender Ref 12/00137 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -36997,7 +37003,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(251779),
+					"id" : 251779,
 					"awardID" : "award-251779",
 					"title" : "12/00137/001 Cazare și alimentare",
 					"description" : "",
@@ -37014,7 +37020,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(254550),
+					"id" : 254550,
 					"awardID" : "award-254550",
 					"title" : "12/00137/002 Cazare și alimentare",
 					"description" : "",
@@ -37031,7 +37037,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(269521),
+					"id" : 269521,
 					"awardID" : "award-269521",
 					"title" : "12/00137/003 Cazare și alimentare",
 					"description" : "",
@@ -37077,14 +37083,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-176600",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(176600),
+				"id" : 176600,
 				"title" : "Tender Ref 12/00133 Bulletin 99",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -37188,7 +37194,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(251777),
+					"id" : 251777,
 					"awardID" : "award-251777",
 					"title" : "12/00133/001 Reparaţia capitală a secţiei Diagnostic Radionucleida ",
 					"description" : "",
@@ -37234,14 +37240,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-181144",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(181144),
+				"id" : 181144,
 				"title" : "Tender Ref 12/00149 Bulletin 99",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -37334,14 +37340,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-120234",
-			"date" : ISODate("2012-11-27T00:00:00Z"),
+			"date" : "2012-11-27T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(120234),
+				"id" : 120234,
 				"title" : "Tender Ref 12/00108 Bulletin 94",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -37434,14 +37440,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-78196",
-			"date" : ISODate("2012-11-13T00:00:00Z"),
+			"date" : "2012-11-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(78196),
+				"id" : 78196,
 				"title" : "Tender Ref 12/00072 Bulletin 90",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -37548,14 +37554,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-106393",
-			"date" : ISODate("2012-11-27T00:00:00Z"),
+			"date" : "2012-11-27T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(106393),
+				"id" : 106393,
 				"title" : "Tender Ref 12/00097 Bulletin 94",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -37715,7 +37721,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(198251),
+					"id" : 198251,
 					"awardID" : "award-198251",
 					"title" : "12/00097/001 Mobilier de birou",
 					"description" : "",
@@ -37761,14 +37767,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-194130",
-			"date" : ISODate("2012-12-21T00:00:00Z"),
+			"date" : "2012-12-21T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(194130),
+				"id" : 194130,
 				"title" : "Tender Ref 12/00167 Bulletin 101",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -37970,7 +37976,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(301784),
+					"id" : 301784,
 					"awardID" : "award-301784",
 					"title" : "12/00167/001 achiziţionarea necesarului de materiale consumabile şi reagenţi de laborator utilizaţi la recoltarea,  procesarea sîngelui de donator şi producerea produselor sanguine P/N Securitatea transfuzională şi autoasigurarea ţării cu produse sanguine",
 					"description" : "",
@@ -38016,14 +38022,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-178127",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(178127),
+				"id" : 178127,
 				"title" : "Tender Ref 12/00142 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -38116,14 +38122,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-120230",
-			"date" : ISODate("2012-11-27T00:00:00Z"),
+			"date" : "2012-11-27T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(120230),
+				"id" : 120230,
 				"title" : "Tender Ref 12/00104 Bulletin 94",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -38216,14 +38222,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-178128",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(178128),
+				"id" : 178128,
 				"title" : "Tender Ref 12/00143 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -39723,7 +39729,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(256838),
+					"id" : 256838,
 					"awardID" : "award-256838",
 					"title" : "12/00143/001 Servicii transport aerian",
 					"description" : "",
@@ -39740,7 +39746,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(256839),
+					"id" : 256839,
 					"awardID" : "award-256839",
 					"title" : "12/00143/002 Servicii transport aerian",
 					"description" : "",
@@ -39786,14 +39792,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-188621",
-			"date" : ISODate("2012-12-18T00:00:00Z"),
+			"date" : "2012-12-18T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(188621),
+				"id" : 188621,
 				"title" : "Tender Ref 12/00158 Bulletin 100",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -39900,14 +39906,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-60181",
-			"date" : ISODate("2012-11-20T00:00:00Z"),
+			"date" : "2012-11-20T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(60181),
+				"id" : 60181,
 				"title" : "Tender Ref 12/00053 Bulletin 92",
 				"description" : "",
 				"status" : "Anulată",
@@ -40000,14 +40006,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-106395",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(106395),
+				"id" : 106395,
 				"title" : "Tender Ref 12/00099 Bulletin 96",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -40651,7 +40657,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(237800),
+					"id" : 237800,
 					"awardID" : "award-237800",
 					"title" : "12/00099/003 reagenţilor pentru analize radioimunologice, preparate radiofarmaceutice în Vivo, în Vitro şi a  materialelor consumabile conform necesităţilor IMSP Centrul Republican de Diagnosticare Medicală pentru anul 2013",
 					"description" : "",
@@ -40668,7 +40674,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(237802),
+					"id" : 237802,
 					"awardID" : "award-237802",
 					"title" : "12/00099/005 reagenţilor pentru analize radioimunologice, preparate radiofarmaceutice în Vivo, în Vitro şi a  materialelor consumabile conform necesităţilor IMSP Centrul Republican de Diagnosticare Medicală pentru anul 2013",
 					"description" : "",
@@ -40685,7 +40691,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(237803),
+					"id" : 237803,
 					"awardID" : "award-237803",
 					"title" : "12/00099/006 reagenţilor pentru analize radioimunologice, preparate radiofarmaceutice în Vivo, în Vitro şi a  materialelor consumabile conform necesităţilor IMSP Centrul Republican de Diagnosticare Medicală pentru anul 2013",
 					"description" : "",
@@ -40702,7 +40708,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(256834),
+					"id" : 256834,
 					"awardID" : "award-256834",
 					"title" : "12/00099/007 reagenţilor pentru analize radioimunologice, preparate radiofarmaceutice în Vivo, în Vitro şi a  materialelor consumabile conform necesităţilor IMSP Centrul Republican de Diagnosticare Medicală pentru anul 2013",
 					"description" : "",
@@ -40719,7 +40725,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(378644),
+					"id" : 378644,
 					"awardID" : "award-378644",
 					"title" : "12/00099/008 reagenţilor pentru analize radioimunologice, preparate radiofarmaceutice în Vivo, în Vitro şi a  materialelor consumabile conform necesităţilor IMSP Centrul Republican de Diagnosticare Medicală pentru anul 2013",
 					"description" : "",
@@ -40736,7 +40742,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(378645),
+					"id" : 378645,
 					"awardID" : "award-378645",
 					"title" : "12/00099/009 reagenţilor pentru analize radioimunologice, preparate radiofarmaceutice în Vivo, în Vitro şi a  materialelor consumabile conform necesităţilor IMSP Centrul Republican de Diagnosticare Medicală pentru anul 2013",
 					"description" : "",
@@ -40782,14 +40788,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-184116",
-			"date" : ISODate("2012-12-21T00:00:00Z"),
+			"date" : "2012-12-21T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(184116),
+				"id" : 184116,
 				"title" : "Tender Ref 12/00156 Bulletin 101",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -41053,7 +41059,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(263281),
+					"id" : 263281,
 					"awardID" : "award-263281",
 					"title" : "12/00156/002 preparate biodistructive",
 					"description" : "",
@@ -41070,7 +41076,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(345765),
+					"id" : 345765,
 					"awardID" : "award-345765",
 					"title" : "12/00156/005 preparate biodistructive",
 					"description" : "",
@@ -41087,7 +41093,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(345768),
+					"id" : 345768,
 					"awardID" : "award-345768",
 					"title" : "12/00156/006 preparate biodistructive",
 					"description" : "",
@@ -41133,14 +41139,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-84156",
-			"date" : ISODate("2012-12-07T00:00:00Z"),
+			"date" : "2012-12-07T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(84156),
+				"id" : 84156,
 				"title" : "Tender Ref 12/00090 Bulletin 97",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -41496,7 +41502,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(189927),
+					"id" : 189927,
 					"awardID" : "award-189927",
 					"title" : "12/00090/001 TEHNICA DE CALCUL ",
 					"description" : "",
@@ -41542,14 +41548,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-178129",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(178129),
+				"id" : 178129,
 				"title" : "Tender Ref 12/00144 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -41653,7 +41659,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(238816),
+					"id" : 238816,
 					"awardID" : "award-238816",
 					"title" : "12/00144/001 servicii de alimentare a sportivilor pentru desfășurarea cantonamentelor",
 					"description" : "",
@@ -41699,14 +41705,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-78197",
-			"date" : ISODate("2012-11-13T00:00:00Z"),
+			"date" : "2012-11-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(78197),
+				"id" : 78197,
 				"title" : "Tender Ref 12/00073 Bulletin 90",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -41799,14 +41805,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-181140",
-			"date" : ISODate("2012-12-11T00:00:00Z"),
+			"date" : "2012-12-11T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(181140),
+				"id" : 181140,
 				"title" : "Tender Ref 12/00145 Bulletin 98",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -42316,7 +42322,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(238818),
+					"id" : 238818,
 					"awardID" : "award-238818",
 					"title" : "12/00145/001 Cupe",
 					"description" : "",
@@ -42362,14 +42368,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-188629",
-			"date" : ISODate("2012-12-25T00:00:00Z"),
+			"date" : "2012-12-25T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(188629),
+				"id" : 188629,
 				"title" : "Tender Ref 12/00166 Bulletin 102",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -42630,14 +42636,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-184110",
-			"date" : ISODate("2012-12-11T00:00:00Z"),
+			"date" : "2012-12-11T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(184110),
+				"id" : 184110,
 				"title" : "Tender Ref 12/00150 Bulletin 98",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -42730,14 +42736,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-184112",
-			"date" : ISODate("2012-12-14T00:00:00Z"),
+			"date" : "2012-12-14T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(184112),
+				"id" : 184112,
 				"title" : "Tender Ref 12/00152 Bulletin 99",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -42855,7 +42861,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(368580),
+					"id" : 368580,
 					"awardID" : "award-368580",
 					"title" : "12/00152/001 Tehnica de calcul",
 					"description" : "",
@@ -42901,14 +42907,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-181143",
-			"date" : ISODate("2012-12-11T00:00:00Z"),
+			"date" : "2012-12-11T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(181143),
+				"id" : 181143,
 				"title" : "Tender Ref 12/00148 Bulletin 98",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -43012,7 +43018,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(227290),
+					"id" : 227290,
 					"awardID" : "award-227290",
 					"title" : "12/00148/001 Servicii de proiectare pentru lucrările de reparație a drumului L559 R3 –drum de acces spre or. Hîncești, km 0-2,981",
 					"description" : "",
@@ -43058,14 +43064,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-184115",
-			"date" : ISODate("2012-12-18T00:00:00Z"),
+			"date" : "2012-12-18T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(184115),
+				"id" : 184115,
 				"title" : "Tender Ref 12/00155 Bulletin 100",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -43158,14 +43164,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-188628",
-			"date" : ISODate("2012-12-28T00:00:00Z"),
+			"date" : "2012-12-28T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(188628),
+				"id" : 188628,
 				"title" : "Tender Ref 12/00165 Bulletin 103",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -43258,14 +43264,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-132902",
-			"date" : ISODate("2012-12-04T00:00:00Z"),
+			"date" : "2012-12-04T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(132902),
+				"id" : 132902,
 				"title" : "Tender Ref 12/00120 Bulletin 96",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -43369,7 +43375,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(242248),
+					"id" : 242248,
 					"awardID" : "award-242248",
 					"title" : "12/00120/001 Oxigen medical",
 					"description" : "",
@@ -43415,14 +43421,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-188626",
-			"date" : ISODate("2012-12-21T00:00:00Z"),
+			"date" : "2012-12-21T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(188626),
+				"id" : 188626,
 				"title" : "Tender Ref 12/00163 Bulletin 101",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -43554,7 +43560,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(236031),
+					"id" : 236031,
 					"awardID" : "award-236031",
 					"title" : "12/00163/001 Servicii de pază",
 					"description" : "",
@@ -43600,14 +43606,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-188623",
-			"date" : ISODate("2012-12-18T00:00:00Z"),
+			"date" : "2012-12-18T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(188623),
+				"id" : 188623,
 				"title" : "Tender Ref 12/00160 Bulletin 100",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -43809,7 +43815,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(218319),
+					"id" : 218319,
 					"awardID" : "award-218319",
 					"title" : "12/00160/001 Echipament şi accesorii pentru computer",
 					"description" : "",
@@ -43855,14 +43861,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-194131",
-			"date" : ISODate("2012-12-28T00:00:00Z"),
+			"date" : "2012-12-28T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(194131),
+				"id" : 194131,
 				"title" : "Tender Ref 12/00168 Bulletin 103",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -44120,7 +44126,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(292960),
+					"id" : 292960,
 					"awardID" : "award-292960",
 					"title" : "12/00168/001 achiziționarea serviciilor de telefonie mobilă pentru anul 2013, conform necesităților MAI",
 					"description" : "",
@@ -44166,14 +44172,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-181141",
-			"date" : ISODate("2012-12-25T00:00:00Z"),
+			"date" : "2012-12-25T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(181141),
+				"id" : 181141,
 				"title" : "Tender Ref 12/00146 Bulletin 102",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -44577,7 +44583,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(401440),
+					"id" : 401440,
 					"awardID" : "award-401440",
 					"title" : "12/00146/001 filme şi materiale consumabile pentru RMN",
 					"description" : "",
@@ -44594,7 +44600,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(401441),
+					"id" : 401441,
 					"awardID" : "award-401441",
 					"title" : "12/00146/002 filme şi materiale consumabile pentru RMN",
 					"description" : "",
@@ -44611,7 +44617,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(401442),
+					"id" : 401442,
 					"awardID" : "award-401442",
 					"title" : "12/00146/003 filme şi materiale consumabile pentru RMN",
 					"description" : "",
@@ -44657,14 +44663,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-120233",
-			"date" : ISODate("2012-12-07T00:00:00Z"),
+			"date" : "2012-12-07T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(120233),
+				"id" : 120233,
 				"title" : "Tender Ref 12/00107 Bulletin 97",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -44883,14 +44889,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-81520",
-			"date" : ISODate("2012-11-20T00:00:00Z"),
+			"date" : "2012-11-20T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(81520),
+				"id" : 81520,
 				"title" : "Tender Ref 12/00076 Bulletin 92",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -45851,14 +45857,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-194133",
-			"date" : ISODate("2012-12-28T00:00:00Z"),
+			"date" : "2012-12-28T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(194133),
+				"id" : 194133,
 				"title" : "Tender Ref 12/00170 Bulletin 103",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -45962,7 +45968,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(345766),
+					"id" : 345766,
 					"awardID" : "award-345766",
 					"title" : "12/00170/001 achiziționarea serviciilor de proiectare a construcției turnurilor de radiocomunicații conform necesităților MAI, pentru proiectul ”Cross border infrastructure (communication infrastructure between Romania and Republic of Moldova)”",
 					"description" : "",
@@ -46008,14 +46014,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-194134",
-			"date" : ISODate("2012-12-25T00:00:00Z"),
+			"date" : "2012-12-25T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(194134),
+				"id" : 194134,
 				"title" : "Tender Ref 12/00171 Bulletin 102",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -46439,7 +46445,7 @@
 			],
 			"contracts" : [
 				{
-					"id" : NumberLong(415047),
+					"id" : 415047,
 					"awardID" : "award-415047",
 					"title" : "12/00171/006 filmelor şi materialelor consumabile pentru secţia radiologică pentru anul 2013",
 					"description" : "",
@@ -46456,7 +46462,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(415049),
+					"id" : 415049,
 					"awardID" : "award-415049",
 					"title" : "12/00171/008 filmelor şi materialelor consumabile pentru secţia radiologică pentru anul 2013",
 					"description" : "",
@@ -46473,7 +46479,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(417471),
+					"id" : 417471,
 					"awardID" : "award-417471",
 					"title" : "12/00171/010 filmelor şi materialelor consumabile pentru secţia radiologică pentru anul 2013",
 					"description" : "",
@@ -46490,7 +46496,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(429249),
+					"id" : 429249,
 					"awardID" : "award-429249",
 					"title" : "12/00171/013 filmelor şi materialelor consumabile pentru secţia radiologică pentru anul 2013",
 					"description" : "",
@@ -46507,7 +46513,7 @@
 					"documents" : [ ]
 				},
 				{
-					"id" : NumberLong(542821),
+					"id" : 542821,
 					"awardID" : "award-542821",
 					"title" : "12/00171/014 filmelor şi materialelor consumabile pentru secţia radiologică pentru anul 2013",
 					"description" : "",

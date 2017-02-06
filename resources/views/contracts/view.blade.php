@@ -119,7 +119,7 @@
                                            placeholder="@lang('general.your_name')" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="email" id="email" name="email"
+                                    <input class="form-control" type="email" id="email" name="feedback-email"
                                            placeholder="@lang('general.your_email')" required>
                                 </div>
                                 <div class="form-group">

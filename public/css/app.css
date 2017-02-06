@@ -322,7 +322,6 @@ footer {
     padding: 0 0 126px; } }
 
 .alert {
-  background: #333025 !important;
   padding: 15px 20px;
   border-radius: 4px;
   text-align: left;
@@ -1486,8 +1485,6 @@ th.sorting {
 /* ------- style for overlay while processing --------- */
 .dataTables_wrapper {
   position: relative; }
-  .dataTables_wrapper tbody tr {
-    cursor: pointer; }
 
 .dataTables_processing {
   position: absolute;
@@ -2667,7 +2664,7 @@ p.disabled {
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
-  z-index: 1;
+  z-index: 99;
   /* Sit on top */
   padding-top: 100px;
   /* Location of the box */
@@ -2771,11 +2768,6 @@ p.disabled {
       margin-left: -40px; }
 
 @media (max-width: 1260px) {
-  body:not(.one-pager) .main-content, .alert {
-    margin-left: 20px;
-    margin-right: 20px; }
-  .alert {
-    width: calc(100% - 40px); }
   .one-pager .main-content {
     padding-left: 20px;
     padding-right: 20px; }

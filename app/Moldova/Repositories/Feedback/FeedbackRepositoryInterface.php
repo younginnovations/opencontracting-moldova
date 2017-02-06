@@ -8,10 +8,5 @@ interface FeedbackRepositoryInterface
     /**
      * @return array
      */
-    public function getUniqueContractsWithFeedback();
-
-    /**
-     * @return array
-     */
-    public function getContractWithFeedback();
+    public function getContractWithFeedback($params);
 }

@@ -92,11 +92,13 @@ class HomeController extends Controller
         $trends = [];
         $count  = 0;
 
-        foreach ($tendersTrends as $key => $tender) {
+        $years = (array_unique(array_merge(array_keys($tendersTrends), array_keys($contractsTrends))));
+        asort($years);
 
-            $trends[$count]['xValue'] = $key;
-            $trends[$count]['chart1'] = $tender;
-            $trends[$count]['chart2'] = (!empty($contractsTrends[$key])) ? $contractsTrends[$key] : 0;
+        foreach ($years as $key => $year) {
+            $trends[$count]['xValue'] = $year;
+            $trends[$count]['chart1'] = isset($tendersTrends[$year]) ? $tendersTrends[$year] : 0;
+            $trends[$count]['chart2'] = isset($contractsTrends[$year]) ? $contractsTrends[$year] : 0;
             $count ++;
         }
 

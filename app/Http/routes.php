@@ -298,3 +298,19 @@ Route::get('admin',
                'as' => 'admin',
                'uses' => 'Admin\FeedbackController@index'
            ]);
+
+Route::get(
+    '/api/comments',
+    [
+        'as'   => 'comments.api',
+        'uses' => 'Admin\FeedbackController@getComments'
+    ]
+);
+
+Route::post(
+    '/comment/showHide',
+    [
+        'as'   => 'comments.showHide',
+        'uses' => 'Admin\FeedbackController@showHideComment'
+    ]
+);

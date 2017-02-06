@@ -1,12 +1,12 @@
 {
   "links": {
     "all": [
-      "http://localhost:8000/ocds-api/year/2017",
-      "http://localhost:8000/ocds-api/year/2016",
-      "http://localhost:8000/ocds-api/year/2015",
-      "http://localhost:8000/ocds-api/year/2014",
-      "http://localhost:8000/ocds-api/year/2013",
-      "http://localhost:8000/ocds-api/year/2012"
+      "http://moldova-demo.yipl.com.np/ocds-api/year/2017",
+      "http://moldova-demo.yipl.com.np/ocds-api/year/2016",
+      "http://moldova-demo.yipl.com.np/ocds-api/year/2015",
+      "http://moldova-demo.yipl.com.np/ocds-api/year/2014",
+      "http://moldova-demo.yipl.com.np/ocds-api/year/2013",
+      "http://moldova-demo.yipl.com.np/ocds-api/year/2012"
     ]
   }
 }

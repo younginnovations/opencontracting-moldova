@@ -2,17 +2,23 @@
 	"_id" : {
 		"year" : 2017
 	},
+	"publisher": {
+	        	"scheme": null, 
+	        	"name": "Public Procurement Agency", 
+	       	"uri": "https://tender.gov.md", 
+	        	"uid": null
+	}, 
 	"tenders" : [
 		{
 			"ocid" : "ocds-ngfbwp-15916533",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(15916533),
+				"id" : 15916533,
 				"title" : "Tender Ref 16/03187 Bulletin 1",
 				"description" : "",
 				"status" : "Procedura finalizată",
@@ -90,14 +96,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17239317",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17239317),
+				"id" : 17239317,
 				"title" : "Tender Ref 17/00085 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -175,14 +181,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17251390",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17251390),
+				"id" : 17251390,
 				"title" : "Tender Ref 17/00095 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -260,14 +266,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17289467",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17289467),
+				"id" : 17289467,
 				"title" : "Tender Ref 17/00117 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -345,14 +351,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-15915587",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(15915587),
+				"id" : 15915587,
 				"title" : "Tender Ref 16/03185 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -430,14 +436,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17099843",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17099843),
+				"id" : 17099843,
 				"title" : "Tender Ref 17/00010 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -515,14 +521,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16027446",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16027446),
+				"id" : 16027446,
 				"title" : "Tender Ref 16/03279 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -600,14 +606,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17095458",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17095458),
+				"id" : 17095458,
 				"title" : "Tender Ref 17/00009 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -685,14 +691,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16917332",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16917332),
+				"id" : 16917332,
 				"title" : "Tender Ref 16/03813 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -770,14 +776,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17175643",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17175643),
+				"id" : 17175643,
 				"title" : "Tender Ref 17/00049 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -855,14 +861,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17065673",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17065673),
+				"id" : 17065673,
 				"title" : "Tender Ref 16/03869 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -940,14 +946,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17249500",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17249500),
+				"id" : 17249500,
 				"title" : "Tender Ref 17/00093 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1025,14 +1031,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17131730",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17131730),
+				"id" : 17131730,
 				"title" : "Tender Ref 17/00031 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1110,14 +1116,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16492077",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16492077),
+				"id" : 16492077,
 				"title" : "Tender Ref 16/03580 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1195,14 +1201,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16526792",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16526792),
+				"id" : 16526792,
 				"title" : "Tender Ref 16/03607 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1280,14 +1286,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16998646",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16998646),
+				"id" : 16998646,
 				"title" : "Tender Ref 16/03842 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1365,14 +1371,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17319984",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17319984),
+				"id" : 17319984,
 				"title" : "Tender Ref 17/00139 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1450,14 +1456,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17106184",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17106184),
+				"id" : 17106184,
 				"title" : "Tender Ref 17/00014 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1535,14 +1541,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16727600",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16727600),
+				"id" : 16727600,
 				"title" : "Tender Ref 16/03726 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1620,14 +1626,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17249370",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17249370),
+				"id" : 17249370,
 				"title" : "Tender Ref 17/00092 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1705,14 +1711,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16746278",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16746278),
+				"id" : 16746278,
 				"title" : "Tender Ref 16/03736 Bulletin 3",
 				"description" : "",
 				"status" : "Anulată",
@@ -1790,14 +1796,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17243755",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17243755),
+				"id" : 17243755,
 				"title" : "Tender Ref 17/00089 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1875,14 +1881,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17050676",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17050676),
+				"id" : 17050676,
 				"title" : "Tender Ref 16/03864 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -1960,14 +1966,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17182802",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17182802),
+				"id" : 17182802,
 				"title" : "Tender Ref 17/00059 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2045,14 +2051,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17284577",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17284577),
+				"id" : 17284577,
 				"title" : "Tender Ref 17/00113 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2130,14 +2136,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16619242",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16619242),
+				"id" : 16619242,
 				"title" : "Tender Ref 16/03656 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2215,14 +2221,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17186322",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17186322),
+				"id" : 17186322,
 				"title" : "Tender Ref 17/00065 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2300,14 +2306,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16561834",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16561834),
+				"id" : 16561834,
 				"title" : "Tender Ref 16/03626 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2385,14 +2391,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16264034",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16264034),
+				"id" : 16264034,
 				"title" : "Tender Ref 16/03434 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2470,14 +2476,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16209113",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16209113),
+				"id" : 16209113,
 				"title" : "Tender Ref 16/03404 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2555,14 +2561,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17126282",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17126282),
+				"id" : 17126282,
 				"title" : "Tender Ref 17/00025 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2640,14 +2646,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16775843",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16775843),
+				"id" : 16775843,
 				"title" : "Tender Ref 16/03756 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2725,14 +2731,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16159737",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16159737),
+				"id" : 16159737,
 				"title" : "Tender Ref 16/03368 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2810,14 +2816,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16771579",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16771579),
+				"id" : 16771579,
 				"title" : "Tender Ref 16/03752 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2895,14 +2901,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16790942",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16790942),
+				"id" : 16790942,
 				"title" : "Tender Ref 16/03767 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -2980,14 +2986,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16804182",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16804182),
+				"id" : 16804182,
 				"title" : "Tender Ref 16/03774 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3065,14 +3071,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16696701",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16696701),
+				"id" : 16696701,
 				"title" : "Tender Ref 16/03707 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3150,14 +3156,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17127522",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17127522),
+				"id" : 17127522,
 				"title" : "Tender Ref 17/00026 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -3235,14 +3241,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16963067",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16963067),
+				"id" : 16963067,
 				"title" : "Tender Ref 16/03832 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3320,14 +3326,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17237733",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17237733),
+				"id" : 17237733,
 				"title" : "Tender Ref 17/00083 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3405,14 +3411,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16829422",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16829422),
+				"id" : 16829422,
 				"title" : "Tender Ref 16/03784 Bulletin 1",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -3490,14 +3496,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16879940",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16879940),
+				"id" : 16879940,
 				"title" : "Tender Ref 16/03799 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3575,14 +3581,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16914128",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16914128),
+				"id" : 16914128,
 				"title" : "Tender Ref 16/03810 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3660,14 +3666,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17065781",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17065781),
+				"id" : 17065781,
 				"title" : "Tender Ref 16/03870 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3745,14 +3751,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17087483",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17087483),
+				"id" : 17087483,
 				"title" : "Tender Ref 17/00007 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3830,14 +3836,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17220256",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17220256),
+				"id" : 17220256,
 				"title" : "Tender Ref 17/00076 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -3915,14 +3921,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16949496",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16949496),
+				"id" : 16949496,
 				"title" : "Tender Ref 16/03822 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4000,14 +4006,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17196064",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17196064),
+				"id" : 17196064,
 				"title" : "Tender Ref 17/00068 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4085,14 +4091,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17238247",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17238247),
+				"id" : 17238247,
 				"title" : "Tender Ref 17/00084 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4170,14 +4176,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17087101",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17087101),
+				"id" : 17087101,
 				"title" : "Tender Ref 17/00004 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4255,14 +4261,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17115486",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17115486),
+				"id" : 17115486,
 				"title" : "Tender Ref 17/00016 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4340,14 +4346,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17218956",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17218956),
+				"id" : 17218956,
 				"title" : "Tender Ref 17/00074 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4425,14 +4431,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16959645",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16959645),
+				"id" : 16959645,
 				"title" : "Tender Ref 16/03828 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4510,14 +4516,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17196219",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17196219),
+				"id" : 17196219,
 				"title" : "Tender Ref 17/00069 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4595,14 +4601,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-15416078",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(15416078),
+				"id" : 15416078,
 				"title" : "Tender Ref 16/02825 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4680,14 +4686,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16511542",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16511542),
+				"id" : 16511542,
 				"title" : "Tender Ref 16/03596 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4765,14 +4771,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16971249",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16971249),
+				"id" : 16971249,
 				"title" : "Tender Ref 16/03837 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4850,14 +4856,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16691810",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16691810),
+				"id" : 16691810,
 				"title" : "Tender Ref 16/03703 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -4935,14 +4941,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16963330",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16963330),
+				"id" : 16963330,
 				"title" : "Tender Ref 16/03833 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5020,14 +5026,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16952551",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16952551),
+				"id" : 16952551,
 				"title" : "Tender Ref 16/03823 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5105,14 +5111,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16969385",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16969385),
+				"id" : 16969385,
 				"title" : "Tender Ref 16/03835 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5190,14 +5196,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16909226",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16909226),
+				"id" : 16909226,
 				"title" : "Tender Ref 16/03805 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5275,14 +5281,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17010307",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17010307),
+				"id" : 17010307,
 				"title" : "Tender Ref 16/03846 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5360,14 +5366,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17171098",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17171098),
+				"id" : 17171098,
 				"title" : "Tender Ref 17/00046 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5445,14 +5451,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16955562",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16955562),
+				"id" : 16955562,
 				"title" : "Tender Ref 16/03826 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -5530,14 +5536,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16673127",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16673127),
+				"id" : 16673127,
 				"title" : "Tender Ref 16/03693 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5615,14 +5621,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16982937",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16982937),
+				"id" : 16982937,
 				"title" : "Tender Ref 16/03840 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5700,14 +5706,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16984487",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16984487),
+				"id" : 16984487,
 				"title" : "Tender Ref 16/03841 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -5785,14 +5791,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17087312",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17087312),
+				"id" : 17087312,
 				"title" : "Tender Ref 17/00005 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5870,14 +5876,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17090664",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17090664),
+				"id" : 17090664,
 				"title" : "Tender Ref 17/00008 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -5955,14 +5961,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17175950",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17175950),
+				"id" : 17175950,
 				"title" : "Tender Ref 17/00050 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6040,14 +6046,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17000631",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17000631),
+				"id" : 17000631,
 				"title" : "Tender Ref 16/03843 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6125,14 +6131,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16849189",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16849189),
+				"id" : 16849189,
 				"title" : "Tender Ref 16/03786 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6210,14 +6216,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17043553",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17043553),
+				"id" : 17043553,
 				"title" : "Tender Ref 16/03857 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6295,14 +6301,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17073924",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17073924),
+				"id" : 17073924,
 				"title" : "Tender Ref 16/03871 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6380,14 +6386,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17310246",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17310246),
+				"id" : 17310246,
 				"title" : "Tender Ref 17/00130 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6465,14 +6471,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17075570",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17075570),
+				"id" : 17075570,
 				"title" : "Tender Ref 16/03872 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -6550,14 +6556,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17136748",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17136748),
+				"id" : 17136748,
 				"title" : "Tender Ref 17/00035 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -6635,14 +6641,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17341906",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17341906),
+				"id" : 17341906,
 				"title" : "Tender Ref 17/00150 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6720,14 +6726,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17010999",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17010999),
+				"id" : 17010999,
 				"title" : "Tender Ref 16/03847 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6805,14 +6811,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17022022",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17022022),
+				"id" : 17022022,
 				"title" : "Tender Ref 16/03849 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6890,14 +6896,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17022726",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17022726),
+				"id" : 17022726,
 				"title" : "Tender Ref 16/03850 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -6975,14 +6981,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16679439",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16679439),
+				"id" : 16679439,
 				"title" : "Tender Ref 16/03695 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -7060,14 +7066,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17133639",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17133639),
+				"id" : 17133639,
 				"title" : "Tender Ref 17/00033 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -7145,14 +7151,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17022926",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17022926),
+				"id" : 17022926,
 				"title" : "Tender Ref 16/03851 Bulletin 1",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -7230,14 +7236,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16152089",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16152089),
+				"id" : 16152089,
 				"title" : "Tender Ref 16/03360 Bulletin 1",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -7315,14 +7321,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17027596",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17027596),
+				"id" : 17027596,
 				"title" : "Tender Ref 16/03853 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -7400,14 +7406,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17292829",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17292829),
+				"id" : 17292829,
 				"title" : "Tender Ref 17/00118 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -7485,14 +7491,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17155309",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17155309),
+				"id" : 17155309,
 				"title" : "Tender Ref 17/00041 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -7570,14 +7576,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17048955",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17048955),
+				"id" : 17048955,
 				"title" : "Tender Ref 16/03863 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -7655,14 +7661,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-15938289",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(15938289),
+				"id" : 15938289,
 				"title" : "Tender Ref 16/03212 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -7740,14 +7746,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17288640",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17288640),
+				"id" : 17288640,
 				"title" : "Tender Ref 17/00116 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -7825,14 +7831,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17057912",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17057912),
+				"id" : 17057912,
 				"title" : "Tender Ref 16/03867 Bulletin 1",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -7910,14 +7916,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17086886",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17086886),
+				"id" : 17086886,
 				"title" : "Tender Ref 17/00003 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -7995,14 +8001,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17161932",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17161932),
+				"id" : 17161932,
 				"title" : "Tender Ref 17/00043 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -8080,14 +8086,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17075576",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17075576),
+				"id" : 17075576,
 				"title" : "Tender Ref 16/03873 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -8165,14 +8171,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17260347",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17260347),
+				"id" : 17260347,
 				"title" : "Tender Ref 17/00098 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -8250,14 +8256,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17022931",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17022931),
+				"id" : 17022931,
 				"title" : "Tender Ref 16/03852 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -8335,14 +8341,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17308327",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17308327),
+				"id" : 17308327,
 				"title" : "Tender Ref 17/00126 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -8420,14 +8426,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17104776",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17104776),
+				"id" : 17104776,
 				"title" : "Tender Ref 17/00012 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -8505,14 +8511,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17272388",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17272388),
+				"id" : 17272388,
 				"title" : "Tender Ref 17/00106 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -8590,14 +8596,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17047741",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17047741),
+				"id" : 17047741,
 				"title" : "Tender Ref 16/03861 Bulletin 1",
 				"description" : "",
 				"status" : "Executarea contractului",
@@ -8675,14 +8681,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17104040",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17104040),
+				"id" : 17104040,
 				"title" : "Tender Ref 17/00011 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -8760,14 +8766,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17307591",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17307591),
+				"id" : 17307591,
 				"title" : "Tender Ref 17/00125 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -8845,14 +8851,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17326730",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17326730),
+				"id" : 17326730,
 				"title" : "Tender Ref 17/00143 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -8930,14 +8936,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17105233",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17105233),
+				"id" : 17105233,
 				"title" : "Tender Ref 17/00013 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9015,14 +9021,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17081640",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17081640),
+				"id" : 17081640,
 				"title" : "Tender Ref 17/00002 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9100,14 +9106,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17120967",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17120967),
+				"id" : 17120967,
 				"title" : "Tender Ref 17/00021 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9185,14 +9191,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17269066",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17269066),
+				"id" : 17269066,
 				"title" : "Tender Ref 17/00103 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9270,14 +9276,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16808644",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16808644),
+				"id" : 16808644,
 				"title" : "Tender Ref 16/03775 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -9355,14 +9361,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17081535",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17081535),
+				"id" : 17081535,
 				"title" : "Tender Ref 17/00001 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9440,14 +9446,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17114359",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17114359),
+				"id" : 17114359,
 				"title" : "Tender Ref 17/00015 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9525,14 +9531,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17137988",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17137988),
+				"id" : 17137988,
 				"title" : "Tender Ref 17/00036 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9610,14 +9616,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17133317",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17133317),
+				"id" : 17133317,
 				"title" : "Tender Ref 17/00032 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9695,14 +9701,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17270401",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17270401),
+				"id" : 17270401,
 				"title" : "Tender Ref 17/00105 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9780,14 +9786,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17359537",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17359537),
+				"id" : 17359537,
 				"title" : "Tender Ref 17/00162 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9865,14 +9871,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17150557",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17150557),
+				"id" : 17150557,
 				"title" : "Tender Ref 17/00040 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -9950,14 +9956,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17118604",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17118604),
+				"id" : 17118604,
 				"title" : "Tender Ref 17/00019 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -10035,14 +10041,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17130253",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17130253),
+				"id" : 17130253,
 				"title" : "Tender Ref 17/00030 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10120,14 +10126,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16717418",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16717418),
+				"id" : 16717418,
 				"title" : "Tender Ref 16/03721 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10205,14 +10211,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17123760",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17123760),
+				"id" : 17123760,
 				"title" : "Tender Ref 17/00022 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10290,14 +10296,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17126274",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17126274),
+				"id" : 17126274,
 				"title" : "Tender Ref 17/00024 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10375,14 +10381,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17183100",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17183100),
+				"id" : 17183100,
 				"title" : "Tender Ref 17/00060 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10460,14 +10466,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17127666",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17127666),
+				"id" : 17127666,
 				"title" : "Tender Ref 17/00028 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -10545,14 +10551,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17051699",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17051699),
+				"id" : 17051699,
 				"title" : "Tender Ref 16/03866 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -10630,14 +10636,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16922095",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16922095),
+				"id" : 16922095,
 				"title" : "Tender Ref 16/03815 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10715,14 +10721,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17128721",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17128721),
+				"id" : 17128721,
 				"title" : "Tender Ref 17/00029 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10800,14 +10806,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17186334",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17186334),
+				"id" : 17186334,
 				"title" : "Tender Ref 17/00066 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10885,14 +10891,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17173089",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17173089),
+				"id" : 17173089,
 				"title" : "Tender Ref 17/00048 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -10970,14 +10976,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17177637",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17177637),
+				"id" : 17177637,
 				"title" : "Tender Ref 17/00051 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11055,14 +11061,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17230789",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17230789),
+				"id" : 17230789,
 				"title" : "Tender Ref 17/00081 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11140,14 +11146,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17170304",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17170304),
+				"id" : 17170304,
 				"title" : "Tender Ref 17/00045 Bulletin 2",
 				"description" : "",
 				"status" : "Anulată",
@@ -11225,14 +11231,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17181161",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17181161),
+				"id" : 17181161,
 				"title" : "Tender Ref 17/00055 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11310,14 +11316,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17274041",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17274041),
+				"id" : 17274041,
 				"title" : "Tender Ref 17/00107 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11395,14 +11401,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17319953",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17319953),
+				"id" : 17319953,
 				"title" : "Tender Ref 17/00138 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11480,14 +11486,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17181559",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17181559),
+				"id" : 17181559,
 				"title" : "Tender Ref 17/00057 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11565,14 +11571,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17243939",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17243939),
+				"id" : 17243939,
 				"title" : "Tender Ref 17/00090 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11650,14 +11656,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17185180",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17185180),
+				"id" : 17185180,
 				"title" : "Tender Ref 17/00061 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11735,14 +11741,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17217149",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17217149),
+				"id" : 17217149,
 				"title" : "Tender Ref 17/00073 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11820,14 +11826,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17363895",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17363895),
+				"id" : 17363895,
 				"title" : "Tender Ref 17/00163 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11905,14 +11911,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17356076",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17356076),
+				"id" : 17356076,
 				"title" : "Tender Ref 17/00160 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -11990,14 +11996,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17347239",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17347239),
+				"id" : 17347239,
 				"title" : "Tender Ref 17/00153 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12075,14 +12081,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17220068",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17220068),
+				"id" : 17220068,
 				"title" : "Tender Ref 17/00075 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12160,14 +12166,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17231780",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17231780),
+				"id" : 17231780,
 				"title" : "Tender Ref 17/00082 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12245,14 +12251,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17220579",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17220579),
+				"id" : 17220579,
 				"title" : "Tender Ref 17/00077 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12330,14 +12336,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17223542",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17223542),
+				"id" : 17223542,
 				"title" : "Tender Ref 17/00079 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12415,14 +12421,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17284731",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17284731),
+				"id" : 17284731,
 				"title" : "Tender Ref 17/00114 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12500,14 +12506,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17266638",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17266638),
+				"id" : 17266638,
 				"title" : "Tender Ref 17/00100 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12585,14 +12591,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17142954",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17142954),
+				"id" : 17142954,
 				"title" : "Tender Ref 17/00037 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12670,14 +12676,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17167241",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17167241),
+				"id" : 17167241,
 				"title" : "Tender Ref 17/00044 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12755,14 +12761,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17308546",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17308546),
+				"id" : 17308546,
 				"title" : "Tender Ref 17/00127 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12840,14 +12846,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17351639",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17351639),
+				"id" : 17351639,
 				"title" : "Tender Ref 17/00158 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -12925,14 +12931,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17340421",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17340421),
+				"id" : 17340421,
 				"title" : "Tender Ref 17/00149 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13010,14 +13016,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17120627",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17120627),
+				"id" : 17120627,
 				"title" : "Tender Ref 17/00020 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -13095,14 +13101,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17239665",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17239665),
+				"id" : 17239665,
 				"title" : "Tender Ref 17/00088 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13180,14 +13186,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17267021",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17267021),
+				"id" : 17267021,
 				"title" : "Tender Ref 17/00101 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13265,14 +13271,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17185847",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17185847),
+				"id" : 17185847,
 				"title" : "Tender Ref 17/00064 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13350,14 +13356,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-16901238",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(16901238),
+				"id" : 16901238,
 				"title" : "Tender Ref 16/03804 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13435,14 +13441,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17080232",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17080232),
+				"id" : 17080232,
 				"title" : "Tender Ref 16/03875 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13520,14 +13526,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17195661",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17195661),
+				"id" : 17195661,
 				"title" : "Tender Ref 17/00067 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13605,14 +13611,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17211467",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17211467),
+				"id" : 17211467,
 				"title" : "Tender Ref 17/00071 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13690,14 +13696,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17311379",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17311379),
+				"id" : 17311379,
 				"title" : "Tender Ref 17/00132 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13775,14 +13781,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17266351",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17266351),
+				"id" : 17266351,
 				"title" : "Tender Ref 17/00099 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13860,14 +13866,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17308585",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17308585),
+				"id" : 17308585,
 				"title" : "Tender Ref 17/00128 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -13945,14 +13951,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17293382",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17293382),
+				"id" : 17293382,
 				"title" : "Tender Ref 17/00119 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14030,14 +14036,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17294271",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17294271),
+				"id" : 17294271,
 				"title" : "Tender Ref 17/00120 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14115,14 +14121,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17047704",
-			"date" : ISODate("2017-01-03T00:00:00Z"),
+			"date" : "2017-01-03T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17047704),
+				"id" : 17047704,
 				"title" : "Tender Ref 16/03860 Bulletin 1",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14200,14 +14206,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17310815",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17310815),
+				"id" : 17310815,
 				"title" : "Tender Ref 17/00131 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14285,14 +14291,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17317511",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17317511),
+				"id" : 17317511,
 				"title" : "Tender Ref 17/00136 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14370,14 +14376,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17146984",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17146984),
+				"id" : 17146984,
 				"title" : "Tender Ref 17/00039 Bulletin 2",
 				"description" : "",
 				"status" : "Evaluarea ofertelor",
@@ -14455,14 +14461,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17287482",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17287482),
+				"id" : 17287482,
 				"title" : "Tender Ref 17/00115 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14540,14 +14546,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17281763",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17281763),
+				"id" : 17281763,
 				"title" : "Tender Ref 17/00110 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14625,14 +14631,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17124196",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17124196),
+				"id" : 17124196,
 				"title" : "Tender Ref 17/00023 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14710,14 +14716,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17185688",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17185688),
+				"id" : 17185688,
 				"title" : "Tender Ref 17/00062 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14795,14 +14801,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17229521",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17229521),
+				"id" : 17229521,
 				"title" : "Tender Ref 17/00080 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14880,14 +14886,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17182334",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17182334),
+				"id" : 17182334,
 				"title" : "Tender Ref 17/00058 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -14965,14 +14971,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17048831",
-			"date" : ISODate("2017-01-10T00:00:00Z"),
+			"date" : "2017-01-10T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17048831),
+				"id" : 17048831,
 				"title" : "Tender Ref 16/03862 Bulletin 3",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -15050,14 +15056,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17355216",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17355216),
+				"id" : 17355216,
 				"title" : "Tender Ref 17/00159 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -15135,14 +15141,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17350171",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17350171),
+				"id" : 17350171,
 				"title" : "Tender Ref 17/00155 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -15220,14 +15226,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17358630",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17358630),
+				"id" : 17358630,
 				"title" : "Tender Ref 17/00161 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -15305,14 +15311,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17145224",
-			"date" : ISODate("2017-01-13T00:00:00Z"),
+			"date" : "2017-01-13T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17145224),
+				"id" : 17145224,
 				"title" : "Tender Ref 17/00038 Bulletin 4",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -15390,14 +15396,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17076334",
-			"date" : ISODate("2017-01-06T00:00:00Z"),
+			"date" : "2017-01-06T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17076334),
+				"id" : 17076334,
 				"title" : "Tender Ref 16/03874 Bulletin 2",
 				"description" : "",
 				"status" : "Primirea ofertelor",
@@ -15475,14 +15481,14 @@
 		},
 		{
 			"ocid" : "ocds-ngfbwp-17346757",
-			"date" : ISODate("2017-01-17T00:00:00Z"),
+			"date" : "2017-01-17T00:00:00Z",
 			"tag" : [
 				"tender",
 				"award",
 				"contract"
 			],
 			"tender" : {
-				"id" : NumberLong(17346757),
+				"id" : 17346757,
 				"title" : "Tender Ref 17/00152 Bulletin 5",
 				"description" : "",
 				"status" : "Primirea ofertelor",
