@@ -7,7 +7,7 @@ return [
 
 <p>Datele de pe acest portal acoperă procesele guvernamentale de contractare colectate de AAP. Ele sunt puse la dispoziția publicului general în baza Licenței ”Creative Commons” cu indicarea autorului. Aceasta oferă oricărui utilizator libertatea de a explora, încărca, monitoriza și re-utiliza datele. AAP încurajează utilizatorii să se aboneze la actualizări ale anumitor contracte și să viziteze site-ul web regulat, deoarece datele sunt actualizate în timp real.</p>
 
-<p>Ai văzut ceva neobișnuit la date? Ai întrebări despre modul de utilizare a portalului? Spune-ne. Poți să ne contactezi la <a href="mailto:data@opencontracting.etenders.gov.md">data@opencountracting.etenders.gov.md)</a> sau să utilizezi formularul online.</p>
+<p>Ai văzut ceva neobișnuit la date? Ai întrebări despre modul de utilizare a portalului? Spune-ne. Poți să ne contactezi la <a href="mailto:office@egov.md">office@egov.md</a> sau să utilizezi formularul online.</p>
 
 <p>Abonează-te la actualizările speciale aici. Alătură-te conversației pe twitter #open contracting.</p>',
 

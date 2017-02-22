@@ -7,7 +7,7 @@ return [
 
             <p>The data in this portal covers government contracting processes collected by the PPA. It is made available to the public under a <a target="_blank" href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License (CC-BY)</a> . This grants any user the freedom to explore, download, monitor and re-use the data. The PPA encourages users to subscribe to updates on specific contracts and to visit the website regularly as data is updated in real-time.</p>
 
-            <p>See anything unusual with the data? Do you have specific questions on how to use the portal? Let us know. You can contact us on <a href="mailto:data@opencontracting.etenders.gov.md">data@opencontracting.etenders.gov.md</a> or use the online form.</p>
+            <p>See anything unusual with the data? Do you have specific questions on how to use the portal? Let us know. You can contact us on <a href="mailto:office@egov.md">office@egov.md</a> or use the online form.</p>
 
             <p>Subscribe to special updates here. Join conversation on twitter #opencontracting</p>',
 

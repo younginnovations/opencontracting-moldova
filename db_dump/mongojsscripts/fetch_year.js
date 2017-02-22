@@ -1,23 +1,19 @@
-/**
- * Created by owner on 1/2/17.
- */
-
-    var years = "";
+var years = "";
 var cursor = (db.ocds_release.aggregate([
-        {
-            $project: {
-                year: {$year: "$date"}
+            {
+                $project: {
+                    year: {$year: "$date"}
+                }
+            },
+            {
+                $group: {
+                    "_id": "$year",
+                    "count": {$sum: 1}
+                }
             }
-        },
-        {
-            $group: {
-                "_id": "$year",
-                "count": {$sum: 1}
-            }
-        }
-    ]
-).forEach(function (doc) {
-        years = years+" "+doc._id;
+        ]
+    ).forEach(function (doc) {
+        years = years + " " + doc._id;
     })
 );
 print(years);
