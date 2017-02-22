@@ -38,10 +38,16 @@ class LocalizationService
     {
 
         $availableLang = config('language');
-        $browserLang   = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-        if (!isset($_COOKIE[$this->key]) && array_key_exists($browserLang, $availableLang)) {
-            $lang = $browserLang;
+
+        if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+            $browserLang   = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
+            if (!isset($_COOKIE[$this->key]) && array_key_exists($browserLang, $availableLang)) {
+                $lang = $browserLang;
+            }
+
         }
+
         if (is_null($lang)) {
             $lang = isset($_COOKIE[$this->key]) ? $_COOKIE[$this->key] : $this->defaultLang;
         }

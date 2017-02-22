@@ -2,10 +2,20 @@
 <html class="no-js" lang="{{getLocalLang()}}">
 
 <head>
+    <title>{{ $metaTag['title'] }}</title>
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Moldova</title>
+    <meta name="description" content="Moldova Open Contracting"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ $metaTag['og-title'] }}"/>
+    <meta name="og:image" content="http://opencontracting.date.gov.md/images/main_background.jpg"/>
+    <meta property="og:description" content="{{ $metaTag['og-desc'] }}"/>
+    <meta property="og:url" content="{{ app('request')->url() }}"/>
+
+    <meta name="twitter:title" ccontent="{{ $metaTag['twitter-title'] }}"/>
+    <meta name="twitter:image" content="http://opencontracting.date.gov.md/images/main_background.jpg"/>
+
     <link rel="icon" type="image" href="{{url('images/moldova.ico')}}">
     {{--<link href="{{url('css/vendors.min.css')}}" rel="stylesheet">--}}
     <link href="{{url('css/vendors.css')}}" rel="stylesheet">
@@ -131,8 +141,13 @@
     @yield('content')
     <div class="share-wrap">
         <div class="row">
-            <div class="text-right sharing-title share-section">
+            <div class="sharing-title share-section">
+
+                <span class="download-json">
+                    <a href="/multiple-file-api/releases.json" class="download-json-link">Download JSON</a>
+                </span>
                 <ul class="social-share">
+
                     <li>
                         <span class="small-title">@lang('general.share_this')
                             <span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> @lang('general.in')</span>
@@ -235,6 +250,7 @@ var addthis_share = {
     var changeDateFormat = function () {
         $('.dt').each(function () {
             var dt = $(this).text().split("-");
+
             if (dt[1]) {
                 dt[2] = dt[2].split('T');
                 dt[2] = dt[2][0];
@@ -242,7 +258,6 @@ var addthis_share = {
                 var formatted = moment(dt).format('ll');
                 $(this).text(formatted);
             }
-
         });
     };
 

@@ -486,7 +486,7 @@ footer {
 //style for modal
 
 .alert {
-  background: #333025 !important;
+  //background: #333025 !important;
   padding: 15px 20px;
   border-radius: 4px;
   text-align: left;
@@ -778,4 +778,16 @@ td.admin-contract-list a {
     color: $link-hover-color;
   }
 
+}
+.download-json-link{
+  color: #5A5A5A;
+  font-size: 18px;
+  &:before{
+    content: "";
+    background: transparent url(/images/ic_download.svg) no-repeat;
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+    left: 10px;
+  }
 }

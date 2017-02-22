@@ -46,4 +46,8 @@ class User extends Authenticatable
             'admin'  => false, // bool
         ];
     }
+
+    public static function getUserDetail($id){
+        return self::find($id);
+    }
 }

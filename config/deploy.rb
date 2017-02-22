@@ -1,4 +1,4 @@
-lock '3.4.0'
+lock '3.7.2'
 
 # Application #
 #####################################################################################
@@ -231,7 +231,7 @@ namespace :php5fpm do
     desc 'Restart php5fpm'
         task :restart do
             on roles(:all) do
-            execute :sudo, :service, "php5-fpm restart"
+            execute :sudo, :service, "php-fpm restart"
         end
     end
 end

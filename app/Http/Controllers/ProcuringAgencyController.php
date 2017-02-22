@@ -67,8 +67,8 @@ class ProcuringAgencyController extends Controller
 
     public function show($procuringAgency)
     {
-        $procuringAgency       = urldecode($procuringAgency);
-        $agencyData            = $this->procuringAgency->getAgencyData($procuringAgency);
+        $procuringAgency = urldecode($procuringAgency);
+        $agencyData      = $this->procuringAgency->getAgencyData($procuringAgency);
 
         if (empty($agencyData)) {
             return view('error_404');
@@ -106,10 +106,13 @@ class ProcuringAgencyController extends Controller
         $trends = [];
         $count  = 0;
 
-        foreach ($tendersTrends as $key => $tender) {
-            $trends[$count]['xValue'] = $key;
-            $trends[$count]['chart1'] = $tender;
-            $trends[$count]['chart2'] = $contractsTrends[$key];
+        $years = (array_unique(array_merge(array_keys($tendersTrends), array_keys($contractsTrends))));
+        asort($years);
+
+        foreach ($years as $key => $year) {
+            $trends[$count]['xValue'] = $year;
+            $trends[$count]['chart1'] = isset($tendersTrends[$year]) ? $tendersTrends[$year] : 0;
+            $trends[$count]['chart2'] = isset($contractsTrends[$year]) ? $contractsTrends[$year] : 0;
             $count ++;
         }
 
