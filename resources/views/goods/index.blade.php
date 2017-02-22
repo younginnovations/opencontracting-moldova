@@ -3,8 +3,11 @@
 @section('content')
     <div class="block header-block header-with-bg">
         <div class="row header-with-icon">
-            <h2><span><img src="{{url('images/ic_good_service.svg')}}"/></span>
-                @lang('goods.goods_and_services')</h2>
+            <h2>
+                <span><img src="{{url('images/ic_good_service.svg')}}"/></span>
+                @lang('goods.goods_and_services')
+                <span class="wiki-link"><a href="https://github.com/egovmd/opencontracting/wiki/Goods_Services_Works" target="_blank"><img src="{{url('images/ic_link.svg')}}"/></a></span>
+            </h2>
         </div>
     </div>
 
