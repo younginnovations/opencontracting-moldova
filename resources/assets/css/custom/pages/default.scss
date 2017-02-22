@@ -159,6 +159,19 @@ h2 {
     line-height: 2.375rem;
     vertical-align: bottom;
   }
+
+  .wiki-link {
+    vertical-align: top;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.25s ease-in;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
 }
 
 @mixin big-title() {
@@ -779,10 +792,11 @@ td.admin-contract-list a {
   }
 
 }
-.download-json-link{
+
+.download-json-link {
   color: #5A5A5A;
   font-size: 18px;
-  &:before{
+  &:before {
     content: "";
     background: transparent url(/images/ic_download.svg) no-repeat;
     width: 30px;
