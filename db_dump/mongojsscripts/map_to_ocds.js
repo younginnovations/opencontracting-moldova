@@ -146,10 +146,10 @@ db.tenders_collection.find({}).forEach(function (tender) {
             "format": ""
         }],
         "milestones": [{
-            "documents": ""
+            "documents": {}
         }],
         "amendment": {
-            "changes": ""
+            "changes": {}
         }
     };
     var awardArray = [];

@@ -471,35 +471,47 @@ class ContractsRepository implements ContractsRepositoryInterface
         $startDate  = (!empty($search['startDate'])) ? $search['startDate'] : '';// (!empty($search['startDate'])) ? $this->formatDate($search['startDate']) : '';
         $endDate    = (!empty($search['endDate'])) ? $search['endDate'] : '';//(!empty($search['endDate'])) ? $this->formatDate($search['endDate']) : '';
 
-        if (!empty($q)) {
-            $search = StringUtil::accentToRegex($q);
-            $query  = ['awards.items.classification.description' => new Regex(".*$search.*", 'i')];
-            $query2 = ['awards.suppliers.name' => new Regex(".*$search.*", 'i')];
-            $query3 = ['buyer.name' => new Regex(".*$search.*", 'i')];
-            $query4 = ['contracts.dateSigned' => new Regex(".*$search.*", 'i')];
-            $query5 = ['contracts.period.endDate' => new Regex(".*$search.*", 'i')];
+//        if (!empty($q)) {
+//            $search = StringUtil::accentToRegex($q);
+//            $query  = ['goods.mdValue' => new Regex(".*$search.*", 'i')];
+//            $query2 = ['participant.fullName' => new Regex(".*$search.*", 'i')];
+//            $query3 = ['tender.stateOrg.orgName' => new Regex(".*$search.*", 'i')];
+//            $query4 = ['contractDate' => new Regex(".*$search.*", 'i')];
+//            $query5 = ['finalDate' => new Regex(".*$search.*", 'i')];
+//
+//            $cursor = Contracts::raw(
+//                function ($collection) use ($query, $query2, $query3, $query4, $query5) {
+//                    return $collection->find(
+//                        [
+//                            '$or' => [
+//                                $query,
+//                                $query2,
+//                                $query3,
+//                                $query4,
+//                                $query5,
+//                            ],
+//                        ],
+//                        [
+//                            "id"                           => 1,
+//                            "contractNumber"               => 1,
+//                            "tender.tenderData.goodsDescr" => 1,
+//                            "tender.stateOrg.orgName"      => 1,
+//                            "contractDate"                 => 1,
+//                            "finalDate"                    => 1,
+//                            "amount"                       => 1,
+//                            "goods.mdValue"                => 1,
+//                            'participant.fullName'         => 1,
+//                            'status.mdValue'               => 1,
+//                        ]
+//                    );
+//                }
+//            );
+//
+//            dd($cursor);
+//        }
 
-            $cursor = OcdsRelease::raw(
-                function ($collection) use ($query, $query2, $query3, $query4, $query5) {
-                    return $collection->find(
-                        [
-                            '$or' => [
-                                $query,
-                                $query2,
-                                $query3,
-                                $query4,
-                                $query5,
-                            ],
-                        ]
-                    );
-                }
-            );
 
-            return ($cursor);
-        }
-
-
-        if (!empty($agency) || !empty($contractor) || !empty($search['amount']) || !empty($startDate) || !empty($endDate)) {
+        if (!empty($q) || !empty($agency) || !empty($contractor) || !empty($search['amount']) || !empty($startDate) || !empty($endDate)) {
 
             $query   = [];
             $project = [
@@ -519,6 +531,23 @@ class ContractsRepository implements ContractsRepositoryInterface
                 ],
             ];
             array_push($query, $project);
+
+            if (!empty($q)) {
+                $search = StringUtil::accentToRegex($q);
+
+                $match = [
+                    '$match' => [
+                        '$or' => [
+                            ['goods' => new Regex(".*$search.*", 'i')],
+                            ['participant' => new Regex(".*$search.*", 'i')],
+                            ['agency' => new Regex(".*$search.*", 'i')],
+                            ['contractDate' => new Regex(".*$search.*", 'i')],
+                            ['finalDate' => new Regex(".*$search.*", 'i')],
+                        ],
+                    ],
+                ];
+                array_push($query, $match);
+            }
 
             if (!empty($agency)) {
                 $match = ['$match' => ['agency' => $agency]];
