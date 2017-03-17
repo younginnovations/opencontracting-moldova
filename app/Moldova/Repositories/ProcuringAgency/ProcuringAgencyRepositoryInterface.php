@@ -13,6 +13,14 @@ interface ProcuringAgencyRepositoryInterface
     public function getAllProcuringAgency($params);
 
     /**
+     * Get count of procuring Agencies
+     * @param $params
+     *
+     * @return mixed
+     */
+    public function getProcuringAgenciesCount($params);
+
+    /**
      * @return mixed
      */
     public function getAllProcuringAgencyTitle();

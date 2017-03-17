@@ -12,4 +12,12 @@ interface GoodsRepositoryInterface
      * @return mixed
      */
     public function getAllGoods($params);
+
+    /**
+     * Get count of goods
+     * @param $params
+     *
+     * @return mixed
+     */
+    public function getGoodsCount($params);
 }

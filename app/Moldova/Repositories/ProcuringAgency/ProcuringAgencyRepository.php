@@ -87,19 +87,50 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
         return $result['result'];
     }
 
+    public function getProcuringAgenciesCount($params)
+    {
+        $search = "";
+        if($params != ""){
+            $search = $params['search']['value'];
+        }
+
+        $query  = [];
+
+        if ($search != "") {
+            $filter = [
+                '$match' => ['buyer.name' => ['$gt' => $search]]
+            ];
+            array_push($query, $filter);
+        }
+
+        $groupBy =
+            [
+                '$group' => [
+                    '_id'            => '$buyer.name',
+                ]
+            ];
+        array_push($query, $groupBy);
+
+        $result = OcdsRelease::raw(function ($collection) use ($query) {
+            return $collection->aggregate($query);
+        });
+
+        return count($result['result']);
+    }
+
     protected function getColumnTitle($column)
     {
         switch ($column) {
-            case 0:
+            case '0':
                 $column = '_id';
                 break;
-            case 1:
+            case '1':
                 $column = 'tenders';
                 break;
-            case 2:
+            case '2':
                 $column = 'contracts_count';
                 break;
-            case 3:
+            case '3':
                 $column = 'contract_value';
                 break;
             default:

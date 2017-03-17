@@ -40,7 +40,7 @@ class Goods
         if (!empty($data)) {
             foreach ($data as $key => $good) {
                 $goods[$count] = [];
-                array_push($goods[$count], (!empty($good)) ? $good['_id'][0] : '-');
+                array_push($goods[$count], (!empty($good['_id'][0])) ? $good['_id'][0] : '-');
                 array_push($goods[$count], (!empty($good['cpv_value'][0])) ? $good['cpv_value'][0][0] : '-');
                 array_push($goods[$count], (!empty($good['unit'][0])) ? $good['unit'][0][0] : '-');
                 $count ++;
@@ -49,9 +49,19 @@ class Goods
 
         return [
             'draw'            => (int) $params['draw'],
-            'recordsTotal'    => count($this->goods->getAllGoods("")),
-            "recordsFiltered" => count($this->goods->getAllGoods("")),
+            'recordsTotal'    => $this->getGoodsCount(""),
+            "recordsFiltered" => $this->getGoodsCount($params),
             "data"            => array_values($goods)
         ];
+    }
+
+    /**
+     * @param $params
+     *
+     * @return mixed
+     */
+    public function getGoodsCount($params)
+    {
+        return $this->goods->getGoodsCount($params);
     }
 }

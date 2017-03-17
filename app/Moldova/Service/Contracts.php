@@ -143,10 +143,14 @@ class Contracts
 
         return [
             'draw'            => (int) $params['draw'],
-            'recordsTotal'    => $this->contracts->getContractsList(""),
-            "recordsFiltered" => $this->contracts->getContractsList(""),
+            'recordsTotal'    => $this->getContractsCount(""),
+            "recordsFiltered" => $this->getContractsCount($params),
             'data'            => array_values($contracts)
         ];
+    }
+
+    public function getContractsCount($params){
+        return $this->contracts->getContractsCount($params);
     }
 
     /**

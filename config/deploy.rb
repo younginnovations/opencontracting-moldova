@@ -1,4 +1,4 @@
-lock '3.7.2'
+lock '3.8.0'
 
 # Application #
 #####################################################################################
@@ -8,10 +8,10 @@ set :user,            ENV["user"] || ENV["USER"] || "moldova"
 
 # SCM #
 #####################################################################################
-set :repo_url,        'git@gitlab.yipl.com.np:web-apps/moldova_ocds.git'
+set :repo_url,        'git@github.com:younginnovations/opencontracting-moldova.git'
 set :scm,             :git
-set :repo_base_url,   :'http://gitlab.yipl.com.np/'
-set :repo_diff_path,  :'web-apps/moldova_ocds/compare/master...'
+set :repo_base_url,   :'http://github.com/'
+set :repo_diff_path,  :'younginnovations/opencontracting-moldova/compare/master...'
 
 # Multistage Deployment #
 #####################################################################################

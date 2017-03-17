@@ -17,6 +17,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer(
             ['index', 'tender.*', 'about', 'contracts.*', 'agency.*', 'goods.*', 'contact', 'search', 'wiki.*'],
+
             MetaTagComposer::class
         );
     }

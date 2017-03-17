@@ -61,14 +61,21 @@ class Tenders
      */
     public function getAllTenders($params)
     {
-        $totalTenders = $this->tender->getTendersByOpenYear();
-
         return [
             'draw'            => (int) $params['draw'],
-            'recordsTotal'    => count($totalTenders),
-            "recordsFiltered" => count($totalTenders),
+            'recordsTotal'    => $this->getTendersCount(""),
+            "recordsFiltered" => $this->getTendersCount($params),
             "data"            => $this->tender->getAllTenders($params)
         ];
+    }
+
+    /**
+     * @param $params
+     *
+     * @return mixed
+     */
+    public function getTendersCount($params){
+        return $this->tender->getTendersCount($params);
     }
 
     public function getTenderDetailByID($tenderID)
