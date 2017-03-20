@@ -314,3 +314,19 @@ Route::post(
         'uses' => 'Admin\FeedbackController@showHideComment'
     ]
 );
+
+Route::get(
+    '/help',
+    [
+        'as'    => 'help.index',
+        'uses'  =>  'WikiController@index'
+    ]
+);
+
+Route::get(
+    '/help/{page}',
+    [
+        'as'   => 'help.wiki',
+        'uses' => 'WikiController@getWiki'
+    ]
+);

@@ -48,6 +48,9 @@
                         <a href="/contact"
                            class="{{ (Request::segment(1) === 'contact')?'active':'' }}">@lang('general.contact')</a>
                     </li>
+                    <li><a href="{{ route('help.index') }}"
+                           class="{{ (Request::segment(1) === 'help')?'active':'' }}">@lang('general.help')</a>
+                    </li>
                     @if(auth()->check())
                         @if(Auth::user()->admin)
                             <li>

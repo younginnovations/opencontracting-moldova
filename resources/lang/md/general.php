@@ -18,6 +18,7 @@ return [
     'agencies'                        => 'autorități contractante',
     'goods'                           => 'Bunuri / Servicii / Muncă',
     'contact'                         => 'contacte',
+    'help'                            => 'Ajutor',
     'in'                              => 'în',
     'us'                              => 'Us',
     'contract_number'                 => 'număr de contact',
