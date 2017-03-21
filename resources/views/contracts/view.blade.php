@@ -29,10 +29,9 @@
 
             <div class="medium-6 small-12 columns each-detail-wrap">
                 <span class="icon contract-period">icon</span>
-
                 <div class="each-detail">
                     <div class="name  columns">@lang('contracts.contract_period')</div>
-                    <div class="value columns dt">{{ $contractDetail['period']['startDate'] }}</div>
+                    <div class="value columns dt">{{ $contractDetail['period']['startDate']->toDateTime()->format('c')}}</div>
                     <div class="value columns dt">{{ ($contractDetail['period']['endDate']) }}</div>
                 </div>
             </div>
@@ -51,7 +50,7 @@
                 <span class="icon contract-signed">icon</span>
                     <span class="each-detail">
                          <div class="name  columns">@lang('contracts.contract_signed')</div>
-                        <div class="value columns dt">{{ $contractDetail['dateSigned'] }}</div>
+                        <div class="value columns dt">{{ $contractDetail['dateSigned']->toDateTime()->format('c') }}</div>
                     </span>
             </div>
         </div>

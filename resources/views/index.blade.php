@@ -250,6 +250,7 @@
         var procuringAgencies = {!! $procuringAgency  !!};
         var contractors = {!! $contractors  !!};
         var goodsAndServices = {!! $goodsAndServices  !!};
+
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createLineChart(trends, widthOfParent);

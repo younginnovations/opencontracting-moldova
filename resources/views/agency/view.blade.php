@@ -200,7 +200,7 @@
                         <td class="hide">{{ $agency['id'] }}</td>
                         <td>{{ ($tender['awards'][$key]['items'])?$tender['awards'][$key]['items'][0]['classification']['description']:'-' }}</td>
                         <td>{{ $agency['status'] }}</td>
-                        <td class="dt">{{ $agency['dateSigned'] }}</td>
+                        <td class="dt">{{ $agency['dateSigned']->toDateTime()->format('c') }}</td>
                         <td class="dt">{{ $agency['period']['endDate'] }}</td>
                         <td>{{ number_format($agency['value']['amount']) }}</td>
                     </tr>
@@ -216,7 +216,7 @@
 @section('script')
     <script src="{{url('js/vendorChart.min.js')}}"></script>
     <script src="{{url('js/responsive-tables.min.js')}}"></script>
-    <script src="{{url('js/customChart.min.js')}}"></script>
+    <script src="{{url('js/customChart.js')}}"></script>
     <script>
         $(document).ready(function () {
             updateTables();
@@ -267,6 +267,8 @@
         var amountTrend = '{!! $amountTrend !!}';
         var contractors = '{!! $contractors  !!}';
         var goodsAndServices = '{!! $goodsAndServices  !!}';
+
+        console.log(amountTrend);
 
         var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();

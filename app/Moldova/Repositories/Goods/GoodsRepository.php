@@ -4,6 +4,8 @@ namespace App\Moldova\Repositories\Goods;
 
 
 use App\Moldova\Entities\OcdsRelease;
+use App\Moldova\Service\StringUtil;
+use MongoDB\BSON\Regex;
 
 class GoodsRepository implements GoodsRepositoryInterface
 {
@@ -43,8 +45,9 @@ class GoodsRepository implements GoodsRepositoryInterface
         array_push($query, $unwind);
 
         if ($search != '') {
+            $search = StringUtil::accentToRegex($search);
             $filter = [
-                '$match' => ['awards.items.classification.description' => ['$gt' => $search]]
+                '$match' => ['awards.items.classification.description' => new Regex(".*$search.*",'i')],
             ];
         }
 
@@ -75,7 +78,7 @@ class GoodsRepository implements GoodsRepositoryInterface
             return $collection->aggregate($query);
         });
 
-        return ($result['result']);
+        return ($result);
 
 
 //        $agencies = $this->ocdsRelease
@@ -138,8 +141,9 @@ class GoodsRepository implements GoodsRepositoryInterface
 
         if ($params != "") {
             $search = $params['search']['value'];
+            $search = StringUtil::accentToRegex($search);
             $filter = [
-                '$match' => ['awards.items.classification.description' => ['$gt' => $search]]
+                '$match' => ['awards.items.classification.description' => new Regex(".*$search.*",'i')],
             ];
             array_push($query, $filter);
         }
@@ -158,6 +162,7 @@ class GoodsRepository implements GoodsRepositoryInterface
             return $collection->aggregate($query);
         });
 
-        return count($result['result']);
+
+        return (count($result));
     }
 }

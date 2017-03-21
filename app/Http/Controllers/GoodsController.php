@@ -25,6 +25,7 @@ class GoodsController extends Controller
 
     /**
      * ContractController constructor.
+     *
      * @param Contracts      $contracts
      * @param Goods          $goods
      * @param StreamExporter $exporter
@@ -46,7 +47,9 @@ class GoodsController extends Controller
 
     /**
      * Fetch all Goods
+     *
      * @param Request $request
+     *
      * @return mixed
      */
     public function getAllGoods(Request $request)
@@ -59,6 +62,7 @@ class GoodsController extends Controller
 
     /**
      * @param $goods
+     *
      * @return \Illuminate\View\View
      */
     public function show($goods)
@@ -70,9 +74,13 @@ class GoodsController extends Controller
             return view('error_404');
         }
 
-        $totalAmount     = $this->getTotalAmount($goodsDetail);
-        $contractTrend   = $this->getTrend($this->contracts->aggregateContracts($goodsDetail));
-        $amountTrend     = $this->contracts->encodeToJson($this->contracts->aggregateContracts($goodsDetail, 'amount'), 'trend');
+        $totalAmount    = $this->getTotalAmount($goodsDetail);
+        $contractsTrend = $this->contracts->getProcuringAgencyContractsByOpenYear($goods, 'goods');
+
+        $contractTrend  = $this->getTrend($this->contracts->aggregateContracts($contractsTrend));
+
+
+        $amountTrend     = $this->contracts->encodeToJson($contractsTrend, 'amount', 'view');
         $contractors     = $this->contracts->getContractors('amount', 5, date('Y'), $goods, "awards.items.classification.description");
         $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, date('Y'), $goods, 'awards.items.classification.description');
 
@@ -81,6 +89,7 @@ class GoodsController extends Controller
 
     /**
      * @param $contracts
+     *
      * @return int
      */
     private function getTotalAmount($contracts)
@@ -98,6 +107,7 @@ class GoodsController extends Controller
 
     /**
      * @param $contracts
+     *
      * @return string
      */
     private function getTrend($contracts)
@@ -110,7 +120,7 @@ class GoodsController extends Controller
             $trends[$count]['xValue'] = $key;
             $trends[$count]['chart1'] = 0;
             $trends[$count]['chart2'] = $contract;
-            $count ++;
+            $count++;
         }
 
         return json_encode($trends);
@@ -118,6 +128,7 @@ class GoodsController extends Controller
 
     /**
      * @param                $goodsId
+     *
      * @return \Symfony\Component\HttpFoundation\StreamedResponse
      */
     public function goodsDetailExport($goodsId)

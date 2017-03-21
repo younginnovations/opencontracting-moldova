@@ -4,6 +4,9 @@ namespace App\Moldova\Repositories\ProcuringAgency;
 
 
 use App\Moldova\Entities\OcdsRelease;
+use App\Moldova\Service\StringUtil;
+use MongoDB\BSON\Regex;
+
 
 class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
 {
@@ -14,6 +17,7 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
 
     /**
      * ProcuringAgencyRepository constructor.
+     *
      * @param OcdsRelease $ocdsRelease
      */
     public function __construct(OcdsRelease $ocdsRelease)
@@ -28,18 +32,27 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
     public function getAllProcuringAgency($params)
     {
         $orderIndex  = $params['order'][0]['column'];
-        $ordDir      = (strtolower($params['order'][0]['dir']) == 'asc') ? 1 : - 1;
+        $ordDir      = (strtolower($params['order'][0]['dir']) == 'asc') ? 1 : -1;
         $column      = $this->getColumnTitle($params['columns'][$orderIndex]['data']);
         $startFrom   = $params['start'];
         $search      = $params['search']['value'];
         $limitResult = $params['length'];
 
+        $search = StringUtil::accentToRegex($search);
+
+
         $query  = [];
         $filter = [];
 
+        $unwind = [
+            '$unwind' => '$contracts',
+        ];
+        array_push($query, $unwind);
+
+
         if ($search != '') {
             $filter = [
-                '$match' => ['buyer.name' => ['$gt' => $search]]
+                '$match' => ['buyer.name' => new Regex(".*$search.*",'i')],
             ];
         }
 
@@ -47,31 +60,25 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
             array_push($query, $filter);
         }
 
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'            => '$buyer.name',
-                    'tenders'        => ['$sum' => 1],
-                    'contracts'      => ['$addToSet' => '$contracts'],
-                    'contract_value' => ['$sum' => ['$sum' => '$contracts.value.amount']]
-                ]
-            ];
+        $groupBy = [
+            '$group' => [
+                '_id'            => '$buyer.name',
+                'tenders'        => ['$sum' => 1],
+                'contracts'      => ['$addToSet' => '$contracts'],
+                'contract_value' => ['$sum' => ['$sum' => '$contracts.value.amount']],
+            ],
+        ];
         array_push($query, $groupBy);
 
-        $unwind = [
-            '$unwind' => '$contracts'
-        ];
-        array_push($query, $unwind);
 
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'             => '$_id',
-                    'tenders'         => ['$addToSet' => '$tenders'],
-                    'contracts_count' => ['$sum' => 1],
-                    'contract_value'  => ['$addToSet' => '$contract_value']
-                ]
-            ];
+        $groupBy = [
+            '$group' => [
+                '_id'             => '$_id',
+                'tenders'         => ['$addToSet' => '$tenders'],
+                'contracts_count' => ['$sum' => 1],
+                'contract_value'  => ['$addToSet' => '$contract_value'],
+            ],
+        ];
         array_push($query, $groupBy);
         $sort = ['$sort' => [$column => $ordDir]];
         array_push($query, $sort);
@@ -80,42 +87,46 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
         $limit = ['$limit' => (int) $limitResult];
         array_push($query, $limit);
 
-        $result = OcdsRelease::raw(function ($collection) use ($query) {
-            return $collection->aggregate($query);
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
 
-        return $result['result'];
+        return $result;
     }
 
     public function getProcuringAgenciesCount($params)
     {
         $search = "";
-        if($params != ""){
+        if ($params != "") {
             $search = $params['search']['value'];
+            $search = StringUtil::accentToRegex($search);
         }
 
-        $query  = [];
+        $query = [];
 
         if ($search != "") {
             $filter = [
-                '$match' => ['buyer.name' => ['$gt' => $search]]
+                '$match' => ['buyer.name' => new Regex(".*$search.*",'i')],
             ];
             array_push($query, $filter);
         }
 
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'            => '$buyer.name',
-                ]
-            ];
+        $groupBy = [
+            '$group' => [
+                '_id' => '$buyer.name',
+            ],
+        ];
         array_push($query, $groupBy);
 
-        $result = OcdsRelease::raw(function ($collection) use ($query) {
-            return $collection->aggregate($query);
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
 
-        return count($result['result']);
+        return count($result);
     }
 
     protected function getColumnTitle($column)
@@ -145,21 +156,16 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
      */
     public function getAllProcuringAgencyTitle()
     {
-        return $this->ocdsRelease
-            ->distinct('buyer.name')
-            ->orderBy('buyer.name', 'ASC')
-            ->get();
+        return $this->ocdsRelease->distinct('buyer.name')->orderBy('buyer.name', 'ASC')->get();
     }
 
     /**
      * @param $procuringAgency
+     *
      * @return mixed
      */
     public function getAgencyData($procuringAgency)
     {
-        return $this->ocdsRelease
-            ->select(['buyer'])
-            ->where('buyer.name', '=', $procuringAgency)
-            ->first();
+        return $this->ocdsRelease->select(['buyer'])->where('buyer.name', '=', $procuringAgency)->first();
     }
 }

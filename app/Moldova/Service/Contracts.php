@@ -15,6 +15,7 @@ class Contracts
 
     /**
      * Contracts constructor.
+     *
      * @param ContractsRepositoryInterface $contracts
      */
     public function __construct(ContractsRepositoryInterface $contracts)
@@ -43,23 +44,21 @@ class Contracts
     /**
      * @param        $contracts
      * @param string $type
+     *
      * @return array
      */
     public function aggregateContracts($contracts, $type = '')
     {
         $contractsByOpenYear = [];
-        foreach ($contracts as $tender) {
-            foreach ((array) $tender['contracts'] as $contract) {
-//                $year = explode(".", $contract['dateSigned']);
-                $year = date("Y", strtotime($contract['dateSigned']));
 
-                if (array_key_exists($year, $contractsByOpenYear)) {
-                    $contractsByOpenYear[$year] += ('amount' == $type) ? $contract['value']['amount'] : 1;
-                } else {
-                    $contractsByOpenYear[$year] = ('amount' == $type) ? $contract['value']['amount'] : 1;
-                }
+
+        foreach ($contracts as $contract) {
+            if (isset($contract['_id']['year'])) {
+                $year                       = $contract['_id']['year'];
+                $contractsByOpenYear[$year] = ('amount' == $type) ? $contract['amount'] : $contract['count'];
             }
         }
+
         ksort($contractsByOpenYear);
 
         return $contractsByOpenYear;
@@ -67,11 +66,13 @@ class Contracts
 
     /**
      * Get Procuring Agency by amount/count according to type and by limit given
+     *
      * @param        $type
      * @param        $limit
      * @param        $year
      * @param string $condition
      * @param string $column
+     *
      * @return mixed
      */
     public function getProcuringAgency($type, $limit, $year, $condition = '', $column = '')
@@ -81,11 +82,13 @@ class Contracts
 
     /**
      * Get Contractors by amount/count according to type and by limit given
+     *
      * @param        $type
      * @param        $limit
      * @param        $year
      * @param string $condition
      * @param string $column
+     *
      * @return mixed
      */
     public function getContractors($type, $limit, $year, $condition = '', $column = '')
@@ -95,10 +98,12 @@ class Contracts
 
     /**
      * Get Goods And Services by amount/count according to type and by limit given
+     *
      * @param        $type
      * @param        $limit
      * @param string $condition
      * @param        $column
+     *
      * @return mixed
      */
     public function getGoodsAndServices($type, $limit, $year, $condition = '', $column = '')
@@ -114,17 +119,17 @@ class Contracts
     {
         $total = $this->contracts->getTotalContractAmount();
 
-        return $total['result'][0]['amount'];
+        return $total[0]['amount'];
     }
 
     /**
      * @param $params
+     *
      * @return mixed
      */
     public function getContractsList($params)
     {
-//        dd($params);
-        $tenders = $this->contracts->getContractsList($params);
+        $tenders   = $this->contracts->getContractsList($params);
         $contracts = [];
 
         if ($params === "") {
@@ -136,7 +141,7 @@ class Contracts
             array_push($contracts[$key], $contract['contractNumber']);
             array_push($contracts[$key], $contract['id']);
             array_push($contracts[$key], $contract['goods']['mdValue']);
-            array_push($contracts[$key], $contract['contractDate']);
+            array_push($contracts[$key], $contract['contractDate']->toDateTime()->format('c'));
             array_push($contracts[$key], $contract['finalDate']);
             array_push($contracts[$key], $contract['amount']);
         }
@@ -146,6 +151,7 @@ class Contracts
             'recordsTotal'    => $this->getContractsCount(""),
             "recordsFiltered" => $this->getContractsCount($params),
             'data'            => array_values($contracts)
+
         ];
     }
 
@@ -155,6 +161,7 @@ class Contracts
 
     /**
      * @param $params
+     *
      * @return mixed
      */
     public function getContractorsList($params)
@@ -164,8 +171,10 @@ class Contracts
 
     /**
      * Find Contractor or Procuring Agency Info according to params provided
+     *
      * @param $parameter
      * @param $column
+     *
      * @return mixed
      */
     public function getDetailInfo($parameter, $column)
@@ -176,27 +185,31 @@ class Contracts
     /**
      * @param        $data
      * @param        $type
+     *
      * @return string
      */
-    public function encodeToJson($data, $type = '')
+    public function encodeToJson($data, $type = '', $page = '')
     {
         $jsonData = [];
-        $count    = 0;
-        $data     = ('trend' == $type) ? $data : $data['result'];
-
-        ksort($data);
 
         foreach ($data as $key => $val) {
-            $jsonData[$count]['name']  = ('trend' == $type) ? $key : $val['_id'];
-            $jsonData[$count]['value'] = ('trend' == $type) ? $val : $val[$type];
-            $count ++;
+            if ($val) {
+
+                $jsonData[$key]['name']  = ($page === 'view') ? $val['_id']['year'] : ('trend' == $type) ? $val['_id']['year'] : $val['_id']['buyer'];
+                $jsonData[$key]['value'] = ('trend' == $type) ? $val['count'] : $val[$type];
+            }
         }
+
+        $jsonData = ($page === 'view') ? collect($jsonData)->sortBy('name')->toArray() : ('trend' == $type) ? collect($jsonData)->sortBy('name')->toArray() : collect($jsonData)->sortByDesc('value')
+            ->toArray();
+        $jsonData = array_values($jsonData);
 
         return json_encode($jsonData);
     }
 
     /**
      * @param $contractId
+     *
      * @return mixed
      */
     public function getContractDetailById($contractId)
@@ -206,6 +219,7 @@ class Contracts
 
     /**
      * @param $search
+     *
      * @return mixed
      */
     public function search($search)
@@ -223,11 +237,25 @@ class Contracts
 
     /**
      * @param $contractId
+     *
      * @return mixed
      */
     public function getContractDataForJson($contractId)
     {
-        $response = $this->contracts->getContractDataForJson($contractId);
+        $response                                        = $this->contracts->getContractDataForJson($contractId);
+        $response['date']                                = $response['date']->toDateTime()->format('c');
+        $response['tender']['tenderPeriod']['startDate'] = $response['tender']['tenderPeriod']['startDate']->toDateTime()->format('c');
+        $response['tender']['tenderPeriod']['endDate']   = $response['tender']['tenderPeriod']['endDate']->toDateTime()->format('c');
+
+        foreach ($response['awards'] as $key => $award) {
+            $response['awards'][$key]['contractPeriod']['startDate'] = $award['contractPeriod']['startDate']->toDateTime()->format('c');
+        }
+
+        foreach ($response['contracts'] as $key => $contract) {
+            $response['contracts'][$key]['period']['startDate'] = $contract['period']['startDate']->toDateTime()->format('c');
+            $response['contracts'][$key]['dateSigned']          = $contract['dateSigned']->toDateTime()->format('c');
+        }
+
         unset($response['_id']);
 
         return $response;
@@ -236,5 +264,17 @@ class Contracts
     public function getContractorsCount()
     {
         return $this->contracts->getContractorsCount();
+    }
+
+    /**
+     * @param        $procuringAgency
+     *
+     * @param string $type
+     *
+     * @return string
+     */
+    public function getProcuringAgencyContractsByOpenYear($procuringAgency, $type = '')
+    {
+        return $this->contracts->getProcuringAgencyContractsByOpenYear($procuringAgency, $type);
     }
 }

@@ -29,7 +29,7 @@ db.tenders_collection.find({}).forEach(function (tender) {
                 }
 
                 var isoDate = new Date(newDt).toISOString();
-                return isoDate;
+                return new Date(isoDate);
             }
         } catch (err) {
         }

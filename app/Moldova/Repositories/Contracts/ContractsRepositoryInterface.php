@@ -15,20 +15,24 @@ interface ContractsRepositoryInterface
 
     /**
      * Get Procuring Agency by amount/count according to type and by limit given
+     *
      * @param $type
      * @param $limit
      * @param $condition
      * @param $column
+     *
      * @return mixed
      */
     public function getProcuringAgency($type, $limit, $year, $condition, $column);
 
     /**
      * Get Contracts by amount/count according to type and by limit given
+     *
      * @param $type
      * @param $limit
      * @param $condition
      * @param $column
+     *
      * @return mixed
      */
     public function getContractors($type, $limit, $year, $condition, $column);
@@ -41,17 +45,21 @@ interface ContractsRepositoryInterface
 
     /**
      * Get Goods And Services by amount/count according to type and by limit given
+     *
      * @param $type
      * @param $limit
      * @param $condition
      * @param $column
+     *
      * @return mixed
      */
     public function getGoodsAndServices($type, $limit, $year, $condition, $column);
 
     /**
      * Get list of contracts
+     *
      * @param $params
+     *
      * @return mixed
      */
     public function getContractsList($params);
@@ -65,7 +73,9 @@ interface ContractsRepositoryInterface
     public function getContractsCount($params);
     /**
      * Get list of contractors
+     *
      * @param $params
+     *
      * @return mixed
      */
     public function getContractorsList($params);
@@ -73,8 +83,10 @@ interface ContractsRepositoryInterface
 
     /**
      * Get detail of Contractor or Procuring Agency by name
+     *
      * @param $parameter
      * @param $column
+     *
      * @return mixed
      */
 
@@ -82,12 +94,14 @@ interface ContractsRepositoryInterface
 
     /**
      * @param $contractId
+     *
      * @return mixed
      */
     public function getContractDetailById($contractId);
 
     /**
      * @param $search
+     *
      * @return mixed
      */
     public function search($search);
@@ -99,6 +113,7 @@ interface ContractsRepositoryInterface
 
     /**
      * @param $contractId
+     *
      * @return mixed
      */
     public function getContractDataForJson($contractId);
@@ -116,26 +131,39 @@ interface ContractsRepositoryInterface
     /**
      * @param $contractor
      * @param $limit
+     *
      * @return mixed
      */
     public function getCompanyData($contractor);
 
     /**
      * @param $contractor
+     *
      * @return mixed
      */
     public function getCourtCasesOfCompany($contractor);
 
     /**
      * @param $contractor
+     *
      * @return mixed
      */
     public function getBlacklistCompany($contractor);
 
     /**
      * @param $contractor
+     *
      * @return mixed
      */
     public function getContractorClearName($contractor);
+
+    /**
+     * @param        $procuringAgency
+     *
+     * @param string $type
+     *
+     * @return mixed
+     */
+    public function getProcuringAgencyContractsByOpenYear($procuringAgency, $type = '');
 
 }
