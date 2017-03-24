@@ -18,6 +18,7 @@ return [
     'agencies'                        => 'Agencies',
     'goods'                           => 'Goods/Services/Work',
     'contact'                         => 'Contact',
+    'help'                            => 'Help',
     'in'                              => 'in',
     'us'                              => 'Us',
     'contract_number'                 => 'Contract number',

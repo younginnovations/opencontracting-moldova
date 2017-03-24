@@ -1,0 +1,40 @@
+
+.wiki-page{
+    padding: 20px;
+    margin-bottom: 36px;
+    min-height: calc(100vh - 250px);
+}
+
+#wiki{
+    
+    h1{
+        font-size: 2rem;
+        line-height: 2.375rem;
+        margin-bottom: 16px;
+        color: $light-grey-color;
+        display: block;
+    }
+
+    h3{
+       font-size: 1.4rem;
+        line-height: 2.375rem;
+        margin-bottom: 16px;
+        color: $light-grey-color;
+        display: block;  
+    }
+
+    p{
+        margin-bottom: 8px;
+
+        img{
+            margin: 16px 0;
+        }
+
+    }
+
+    ul{
+        list-style: inherit;
+        margin-left: 1.25rem;
+    }
+
+}

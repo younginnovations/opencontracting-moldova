@@ -4106,4 +4106,39 @@ p.disabled {
   /* thx @HugoGiraudel */
 }
 
+.wiki-page {
+  padding: 20px;
+  margin-bottom: 36px;
+  min-height: calc(100vh - 250px);
+}
+
+#wiki h1 {
+  font-size: 2rem;
+  line-height: 2.375rem;
+  margin-bottom: 16px;
+  color: #484848;
+  display: block;
+}
+
+#wiki h3 {
+  font-size: 1.4rem;
+  line-height: 2.375rem;
+  margin-bottom: 16px;
+  color: #484848;
+  display: block;
+}
+
+#wiki p {
+  margin-bottom: 8px;
+}
+
+#wiki p img {
+  margin: 16px 0;
+}
+
+#wiki ul {
+  list-style: inherit;
+  margin-left: 1.25rem;
+}
+
 /*# sourceMappingURL=app.css.map */

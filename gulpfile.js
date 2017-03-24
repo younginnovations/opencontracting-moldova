@@ -59,4 +59,11 @@ elixir(function(mix){
         './resources/assets/js/vendor/jquery.json-viewer.js'
     ],'./public/js/vendor.js');
 
+    mix.scripts([
+        './resources/assets/js/custom/wiki.js'
+    ],'./public/js/wiki.js');
+
+    mix.scripts([
+        './resources/assets/js/vendor/markdown-it.js'
+    ],'./public/js/vendorMarkdown.js');
 });
