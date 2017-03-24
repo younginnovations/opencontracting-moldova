@@ -231,7 +231,7 @@ class ContractsRepository implements ContractsRepositoryInterface
     public function getContractsList($params)
     {
         if ($params === "") {
-            return $this->getContractsCount();
+            return $this->getContractsCount("");
 
         }
 
@@ -479,24 +479,24 @@ class ContractsRepository implements ContractsRepositoryInterface
         return $this->ocdsRelease->where('contracts.id', (int) $contractId)->first();
     }
 
-    private function getContractsCount()
+    public function getContractsCount($params)
     {
-        $groupBy =
-            [
-                '$group' => [
-                    '_id' => '$contracts.title'
-                ]
-            ];
-        $result  = OcdsRelease::raw(function ($collection) use ($groupBy) {
-            return $collection->aggregate($groupBy);
-        });
-        $total   = 0;
-
-        foreach ($result['result'] as $item) {
-            $total = $total + count($item['_id']);
+        $search = "";
+        if($params != "") {
+            $search = $params['search']['value'];
         }
 
-        return ($total);
+        $result = $this->contracts
+            ->where(function ($query) use ($search) {
+
+                if (!empty($search)) {
+                    return $query->where('goods.mdValue', 'like', '%' . $search . '%');
+                }
+
+                return $query;
+            })->count();
+
+        return ($result);
     }
 
     public function getContractorsCount()

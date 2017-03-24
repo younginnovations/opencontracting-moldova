@@ -7,6 +7,11 @@ var createLineChart = function(data,parentWidth){
         var height = 300;
     }
 
+    //fix for error on lineChart with single data
+    if(data.length == 1){
+        data.push(data[0]) ;
+    }
+
     var divNode = d3.select("#main-content").node(),
         width = parentWidth;
     var svg = d3.select("#linechart-homepage")

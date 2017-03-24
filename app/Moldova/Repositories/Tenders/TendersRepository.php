@@ -86,6 +86,28 @@ class TendersRepository implements TendersRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    public function getTendersCount($params)
+    {
+        $search = "";
+        if($params != ""){
+            $search = $params['search']['value'];
+        }
+
+        return $this->ocdsRelease
+            ->select(['tender'])
+            ->where(function ($query) use ($search) {
+
+                if (!empty($search)) {
+                    return $query->where('tender.title', 'like', '%' . $search . '%');
+                }
+
+                return $query;
+            })->count();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getTenderDetailByID($tenderID)
     {
         return ($this->ocdsRelease->where('tender.id', '=', (int) $tenderID)->first());

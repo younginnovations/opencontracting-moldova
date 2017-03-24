@@ -27,10 +27,6 @@ class GoodsRepository implements GoodsRepositoryInterface
      */
     public function getAllGoods($params)
     {
-        if ($params === "") {
-            return $this->getGoodsCount();
-        }
-
         $orderIndex  = $params['order'][0]['column'];
         $ordDir      = $params['order'][0]['dir'];
         $column      = $this->getColumn($params['columns'][$orderIndex]['data']);
@@ -115,14 +111,14 @@ class GoodsRepository implements GoodsRepositoryInterface
     protected function getColumn($column)
     {
         switch ($column) {
-            case(0):
-                $column = 'awards.items.classification.description';
+            case '0':
+                $column = '_id';
                 break;
-            case(1):
-                $column = 'awards.items.classification.id';
+            case '1':
+                $column = 'goods';
                 break;
-            case(2):
-                $column = 'awards.items.classification.scheme';
+            case '2':
+                $column = 'cpv_value';
                 break;
         }
 
@@ -130,15 +126,24 @@ class GoodsRepository implements GoodsRepositoryInterface
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
-    private function getGoodsCount()
+    public function getGoodsCount($params)
     {
         $query  = [];
         $unwind = [
             '$unwind' => '$awards'
         ];
         array_push($query, $unwind);
+
+        if ($params != "") {
+            $search = $params['search']['value'];
+            $filter = [
+                '$match' => ['awards.items.classification.description' => ['$gt' => $search]]
+            ];
+            array_push($query, $filter);
+        }
+
         $groupBy =
             [
                 '$group' => [
@@ -153,6 +158,6 @@ class GoodsRepository implements GoodsRepositoryInterface
             return $collection->aggregate($query);
         });
 
-        return $result['result'];
+        return count($result['result']);
     }
 }

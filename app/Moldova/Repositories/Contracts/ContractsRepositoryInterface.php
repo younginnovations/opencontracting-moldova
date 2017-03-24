@@ -57,6 +57,13 @@ interface ContractsRepositoryInterface
     public function getContractsList($params);
 
     /**
+     * Get count of contracts
+     * @param $params
+     *
+     * @return mixed
+     */
+    public function getContractsCount($params);
+    /**
      * Get list of contractors
      * @param $params
      * @return mixed

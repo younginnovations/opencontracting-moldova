@@ -27,13 +27,17 @@ class ProcuringAgency
      */
     public function getAllProcuringAgency($params)
     {
-        $totalAgencies = count($this->procuringAgency->getAllProcuringAgencyTitle());
         return [
             'draw'            => (int) $params['draw'],
-            'recordsTotal'    => $totalAgencies,
-            "recordsFiltered" => $totalAgencies,
+            'recordsTotal'    => $this->getAgenciesCount(""),
+            "recordsFiltered" => $this->getAgenciesCount($params),
             "data"            => $this->procuringAgency->getAllProcuringAgency($params)
         ];
+    }
+
+    public function getAgenciesCount($params)
+    {
+        return $this->procuringAgency->getProcuringAgenciesCount($params);
     }
 
     public function getAllProcuringAgencyTitle()

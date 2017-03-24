@@ -70,9 +70,9 @@ class Newsletter
     public function getContentView()
     {
         $totalContractAmount      = round($this->contracts->getTotalContractAmount());
-        $totalContractCount       = $this->contracts->getContractsList("");
+        $totalContractCount       = $this->contracts->getContractsCount("");
         $totalAgency              = count($this->procuringAgency->getAllProcuringAgencyTitle());
-        $totalGoods               = $this->goods->getAllGoods("");
+        $totalGoods               = $this->goods->getGoodsCount("");
         $totalContractorsCount    = $this->contracts->getContractorsCount();
         $procuringAgencyByAmount  = json_decode($this->contracts->getProcuringAgency('amount', 5, date('Y')));
         $contractorsByAmount      = json_decode($this->contracts->getContractors('amount', 5, date('Y')));

@@ -26,6 +26,14 @@ interface TendersRepositoryInterface
     public function getAllTenders($params);
 
     /**
+     * Get count of tenders
+     * @param $params
+     *
+     * @return mixed
+     */
+    public function getTendersCount($params);
+
+    /**
      * @param $tenderID
      * @return mixed
      */

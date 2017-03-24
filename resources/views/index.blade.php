@@ -212,11 +212,11 @@
                 numericFormat();
                 createLinks();
                 updateTables();
-                if ($('#table_id tr').length < 10) {
-                    $('.dataTables_paginate').hide();
-                } else {
-                    $('.dataTables_paginate').show();
-                }
+//                if ($('#table_id tr').length < 10) {
+//                    $('.dataTables_paginate').hide();
+//                } else {
+//                    $('.dataTables_paginate').show();
+//                }
             }
         });
         var createLinks = function () {
@@ -246,16 +246,16 @@
     <script src="{{url('js/customChart.min.js')}}"></script>
     <script>
         var route = '{{ route("filter") }}';
-        var trends = '{!! $trends  !!}';
-        var procuringAgencies = '{!! $procuringAgency  !!}';
-        var contractors = '{!! $contractors  !!}';
-        var goodsAndServices = '{!! $goodsAndServices  !!}';
+        var trends = {!! $trends  !!};
+        var procuringAgencies = {!! $procuringAgency  !!};
+        var contractors = {!! $contractors  !!};
+        var goodsAndServices = {!! $goodsAndServices  !!};
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
-            createLineChart(JSON.parse(trends), widthOfParent);
-            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');
-            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthOfParent, 'amount');
-            createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthOfParent, 'amount');
+            createLineChart(trends, widthOfParent);
+            createBarChartProcuring(procuringAgencies, "barChart-procuring", "procuring-agency", widthOfParent, 'amount');
+            createBarChartProcuring(contractors, "barChart-contractors", "contracts/contractor", widthOfParent, 'amount');
+            createBarChartProcuring(goodsAndServices, "barChart-goods", "goods", widthOfParent, 'amount');
         };
 
         makeCharts();

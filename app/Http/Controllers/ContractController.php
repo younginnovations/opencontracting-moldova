@@ -40,7 +40,7 @@ class ContractController extends Controller
     public function index()
     {
         $contractsTrends = $this->getTrend($this->contracts->getContractsByOpenYear());
-        $totalContracts  = $this->contracts->getContractsList("");
+        $totalContracts  = $this->contracts->getContractsCount("");
 
         return view('contracts.index', compact('contractsTrends', 'totalContracts'));
     }

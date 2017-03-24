@@ -39,7 +39,7 @@ class GoodsController extends Controller
     public function index()
     {
         $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, date('Y'));
-        $totalGoods       = $this->goods->getAllGoods("");
+        $totalGoods       = $this->goods->getGoodsCount("");
 
         return view('goods.index', compact('goodsAndServices', 'totalGoods'));
     }
