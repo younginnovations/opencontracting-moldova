@@ -61,7 +61,7 @@ class FeedbackRepository implements FeedbackRepositoryInterface
 
                 return $query;
             })
-            ->take($params['length'])
+            ->take((int) $params['length'])
             ->skip($startFrom)
             ->orderBy($column, $ordDir)
             ->get(['_id','item_id', 'comment', 'created_at', 'user_id','status']);

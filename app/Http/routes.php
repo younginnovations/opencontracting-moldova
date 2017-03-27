@@ -296,6 +296,14 @@ Route::get('logout',
 Route::get('admin',
            [
                'as' => 'admin',
+               'middleware' => 'admin',
+               'uses' => 'Admin\DashboardController@index'
+           ]);
+
+Route::get('feedback',
+           [
+               'as' => 'feedback',
+               'middleware' => 'auth',
                'uses' => 'Admin\FeedbackController@index'
            ]);
 
@@ -328,5 +336,14 @@ Route::get(
     [
         'as'   => 'help.wiki',
         'uses' => 'WikiController@getWiki'
+    ]
+);
+
+Route::get(
+    'dashboard',
+    [
+        'as'    => 'dashboard',
+        'middleware' => 'admin',
+        'uses'  =>  'Admin\DashboardController@index'
     ]
 );

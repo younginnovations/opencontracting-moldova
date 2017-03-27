@@ -11,7 +11,10 @@
 
             <div>
                 <button class="small-button grey-yellow-btn"><span>Status:</span>
-                    <span>{{ $tenderDetail['tender']['status'] }} | Period: <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['startDate'] }}</span> - <span class="dt">{{ $tenderDetail['tender']['tenderPeriod']['endDate'] }}</span> </span>
+                    <span>{{ $tenderDetail['tender']['status'] }} | Period: <span class="dt">{{
+                    $tenderDetail['tender']['tenderPeriod']['startDate']->toDateTime()->format('c') }}</span> - <span
+                                class="dt">{{
+                    $tenderDetail['tender']['tenderPeriod']['endDate']->toDateTime()->format('c') }}</span> </span>
                 </button>
             </div>
 
@@ -159,7 +162,8 @@
                                 <tr href="/contracts/{{$contract['id']}}">
                                     <td>{{ getContractInfo($tenderDetail['contracts'][$key]['title'],'id') }}</td>
                                     <td>{{ ($tenderDetail['awards'][$key]['items'])?$tenderDetail['awards'][$key]['items'][0]['classification']['description']:'-' }}</td>
-                                    <td class="dt">{{ (!empty($contract['period']['startDate']))?$contract['period']['startDate']:'-' }}</td>
+                                    <td class="dt">{{ (!empty($contract['period']['startDate']))
+                                    ?$contract['period']['startDate']->toDateTime()->format('c'):'-' }}</td>
                                     <td class="dt">{{ $contract['period']['endDate'] }}</td>
                                     <td>{{ number_format($contract['value']['amount']) }}</td>
                                 </tr>

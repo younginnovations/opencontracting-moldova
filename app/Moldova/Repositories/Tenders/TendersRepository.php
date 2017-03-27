@@ -99,6 +99,7 @@ class TendersRepository implements TendersRepositoryInterface
         $startFrom  = $params['start'];
         $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : -1;
         $search     = $params['search']['value'];
+        $length     = (int) $params['length'];
 
         return $this->ocdsRelease->select(['tender'])->where(
             function ($query) use ($search) {
@@ -109,7 +110,7 @@ class TendersRepository implements TendersRepositoryInterface
 
                 return $query;
             }
-        )->take($params['length'])->skip($startFrom)->orderBy($column, $ordDir)->get();
+        )->take($length)->skip($startFrom)->orderBy($column, $ordDir)->get();
 
     }
 
