@@ -17,7 +17,8 @@
     "jenssegers/mongodb": "3.2.*",
     "laravel/socialite": "^2.0",
     "risul/laravel-like-comment": "^1.0",
-    "zizaco/entrust": "5.2.x-dev"
+    "zizaco/entrust": "5.2.x-dev",
+    "maatwebsite/excel": "^2.1"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

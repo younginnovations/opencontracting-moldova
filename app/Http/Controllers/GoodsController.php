@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Excel;
 use App\Moldova\Service\Contracts;
 use App\Moldova\Service\Goods;
 use App\Moldova\Service\StreamExporter;
@@ -54,11 +55,23 @@ class GoodsController extends Controller
      */
     public function getAllGoods(Request $request)
     {
-        $input = $request->all();
-
-        return $this->goods->getAllGoods($input);
+        return $this->goods->getAllGoods($request);
     }
 
+    public function downloadCsv(Request $request)
+    {
+        $input = $request->all();
+        $input['length'] = 10000000;
+
+        $result = (array) $this->goods->getAllGoods($input);
+        $result = $result["data"];
+
+        $header = ['name', 'cpv_code', 'scheme'];
+
+        arrayToCsv($result, 'temp', $header);
+        $file = base_path('public') .'/temp';
+        return response()->download($file, 'goods.csv');
+    }
 
     /**
      * @param $goods

@@ -46,6 +46,21 @@ class ContractController extends Controller
         return view('contracts.index', compact('contractsTrends', 'totalContracts'));
     }
 
+    public function downloadCsv(Request $request)
+    {
+        $input = $request->all();
+        $input['length'] = 10000000;
+
+        $result = (array) $this->contracts->getContractsList($input);
+        $result = $result["data"];
+
+        $header = ['contract_number', 'id', 'goods_and_services', 'start_date', 'end_date', 'amount'];
+
+        arrayToCsv($result, 'temp', $header);
+        $file = base_path('public') .'/temp';
+        return response()->download($file, 'contracts.csv');
+    }
+
     public function jsonView($contractId)
     {
         $contractJson = $this->contracts->getContractDataForJson($contractId);
@@ -121,6 +136,28 @@ class ContractController extends Controller
                 'blacklist'
             )
         );
+    }
+
+    public function downloadContractorsCsv(Request $request)
+    {
+        $input = $request->all();
+        $input['length'] = 10000000;
+
+        $result = $this->contracts->getContractorsList($input)->toArray();
+
+        //make array for csv
+        $mResult = [];
+        foreach($result as $row){
+            $temp = [];
+            $temp['name'] = $row['_id'][0];
+            $temp['tenders'] = $row['count'];
+            $temp['scheme'] = $row['scheme'][0][0][0];
+            array_push($mResult, $temp);
+        }
+
+        arrayToCsv($mResult, 'temp');
+        $file = base_path('public') .'/temp';
+        return response()->download($file, 'contractors.csv');
     }
 
     /**

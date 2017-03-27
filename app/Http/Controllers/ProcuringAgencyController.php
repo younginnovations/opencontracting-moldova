@@ -67,6 +67,23 @@ class ProcuringAgencyController extends Controller
         return $this->procuringAgency->getAllProcuringAgency($input);
     }
 
+    public function downloadCsv(Request $request)
+    {
+        $input = $request->all();
+        $input['length'] = 10000000;
+
+        $result = (array) $this->procuringAgency->getAllProcuringAgency($input);
+        $result = $result["data"]->toArray();
+        foreach ($result as &$row){
+            $row['tenders'] = $row['tenders'][0];
+            $row['contract_value'] = $row['contract_value'][0];
+        }
+
+        arrayToCsv($result, 'temp');
+        $file = base_path('public') .'/temp';
+        return response()->download($file, 'agency.csv');
+    }
+
     /**
      * @param $procuringAgency
      *

@@ -109,7 +109,7 @@ class TendersRepository implements TendersRepositoryInterface
 
                 return $query;
             }
-        )->take($params['length'])->skip($startFrom)->orderBy($column, $ordDir)->get();
+        )->take((int) $params['length'])->skip($startFrom)->orderBy($column, $ordDir)->get();
 
     }
 

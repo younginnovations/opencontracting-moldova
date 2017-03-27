@@ -237,27 +237,30 @@ Route::post(
 Route::get('/multiple-file-api/releases.json', function () {
     return response()->download(base_path('public') . '/jsons/releases.json');
 });
+
 Route::get('/ocds-api/year/{year}', function ($year) {
     return response()->download(base_path('public') . '/jsons/releases-'.$year.'.json');
 });
-Route::get('/csv/download', function () {
-    return response()->download(base_path('public') . '/csv/contracts_csv.csv');
-});
-Route::get('/csv/download/tenders', function () {
-    return response()->download(base_path('public') . '/csv/tenders_csv.csv');
-});
 
-Route::get('/csv/download/goods', function () {
-    return response()->download(base_path('public') . '/csv/goods_csv.csv');
-});
+Route::get('/csv/download', [
+    "uses" => "ContractController@downloadCsv"
+]);
 
-Route::get('/csv/download/agencies', function () {
-    return response()->download(base_path('public') . '/csv/agencies_csv.csv');
-});
+Route::get('/csv/download/tenders', [
+    "uses" => "TenderController@downloadCsv"
+]);
 
-Route::get('/csv/download/contractors', function () {
-    return response()->download(base_path('public') . '/csv/contractors_csv.csv');
-});
+Route::get('/csv/download/goods', [
+    "uses" => "GoodsController@downloadCsv"
+]);
+
+Route::get('/csv/download/agencies', [
+    "uses" => "ProcuringAgencyController@downloadCsv"
+]);
+
+Route::get('/csv/download/contractors', [
+    "uses" => "ContractController@downloadContractorsCsv"
+]);
 
 Route::group(['prefix' => 'comments'], function () {
     Route::group(['middleware' => 'auth'], function () {

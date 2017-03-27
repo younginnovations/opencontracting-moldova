@@ -161,7 +161,7 @@
     </div>
 
     <div class="row table-wrapper persist-area">
-        <a target="_blank" class="export" href="/csv/download">@lang('general.export_as_csv')</a>
+        <button class="export">@lang('general.export_as_csv')</button>
         <table id="table_id" class="responsive hover custom-table display">
             <thead class="persist-header">
             <tr>
@@ -219,6 +219,12 @@
 //                }
             }
         });
+
+        $(".export").click(function () {
+            var params = makeTable.ajax.params();
+            window.location.assign("/csv/download?"+$.param(params));
+        });
+
         var createLinks = function () {
             $('#table_id tbody tr').each(function () {
                 $(this).css('cursor', 'pointer');

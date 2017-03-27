@@ -51,3 +51,18 @@ function getLocalLang()
 {
     return app('translator')->getLocale();
 }
+
+function arrayToCsv($data, $filename, $headers = NULL)
+{
+    $handle = fopen($filename, 'w+');
+    //add headers for csv
+    if (isset($headers)) {
+        fputcsv($handle, $headers);
+    }else{
+        fputcsv($handle, array_keys($data[0]));
+    }
+    foreach ($data as $line) {
+        fputcsv($handle, $line);
+    }
+    fclose($handle);
+}

@@ -66,7 +66,7 @@
 	</div>
 
 	<div class="row table-wrapper persist-area">
-		<a target="_blank" class="export" href="/csv/download/agencies">@lang('general.export_as_csv')</a>
+		<button class="export">@lang('general.export_as_csv')</button>
 		<table id="table_id" class="hover responsive custom-table display">
 			<thead class="persist-header">
 			<tr>
@@ -106,6 +106,11 @@
                 createLinks();
                 updateTables();
             }
+        });
+
+        $(".export").click(function () {
+            var params = makeTable.ajax.params();
+            window.location.assign("/csv/download/agencies?"+$.param(params));
         });
 
         var createLinks = function () {
