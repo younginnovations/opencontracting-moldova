@@ -52,6 +52,31 @@ class TenderController extends Controller
         return $this->tenders->getAllTenders($input);
     }
 
+    public function downloadCsv(Request $request)
+    {
+        $input = $request->all();
+        $input['length'] = 10000000;
+
+        $result = (array) $this->tenders->getAllTenders($input);
+        $result = $result["data"]->toArray();
+        //temp array to construct array for csv
+        $mResult = [];
+
+        foreach ($result as $row) {
+            $temp = [];
+            $temp['id'] = $row["tender"]["id"];
+            $temp['title'] = $row["tender"]["title"];
+            $temp['status'] = $row["tender"]["status"];
+            $temp['procuring_agency'] = $row["tender"]["procuringEntity"]["name"];
+            $temp['start_date'] = $row["tender"]["tenderPeriod"]["startDate"]->toDateTime()->format('c');
+            $temp['end_date'] = $row["tender"]["tenderPeriod"]["endDate"]->toDateTime()->format('c');
+            array_push($mResult, $temp);
+        }
+
+        arrayToCsv($mResult, 'temp');
+        $file = base_path('public').'/temp';
+        return response()->download($file, 'tenders.csv');
+    }
 
     /**
      * @param $tenderID
