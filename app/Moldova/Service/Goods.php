@@ -14,6 +14,7 @@ class Goods
 
     /**
      * Goods constructor.
+     *
      * @param GoodsRepositoryInterface $goods
      */
     public function __construct(GoodsRepositoryInterface $goods)
@@ -23,7 +24,9 @@ class Goods
 
     /**
      * Get all Goods list
+     *
      * @param $params
+     *
      * @return mixed
      */
     public function getAllGoods($params)
@@ -40,10 +43,10 @@ class Goods
         if (!empty($data)) {
             foreach ($data as $key => $good) {
                 $goods[$count] = [];
-                array_push($goods[$count], (!empty($good['_id'][0])) ? $good['_id'][0] : '-');
-                array_push($goods[$count], (!empty($good['cpv_value'][0])) ? $good['cpv_value'][0][0] : '-');
-                array_push($goods[$count], (!empty($good['unit'][0])) ? $good['unit'][0][0] : '-');
-                $count ++;
+                array_push($goods[$count], (isset($good['_id'][0])) ? $good['_id'][0] : '-');
+                array_push($goods[$count], (isset($good['cpv_value'][0][0])) ? $good['cpv_value'][0][0] : '-');
+                array_push($goods[$count], (isset($good['unit'][0][0])) ? $good['unit'][0][0] : '-');
+                $count++;
             }
         }
 
@@ -51,7 +54,7 @@ class Goods
             'draw'            => (int) $params['draw'],
             'recordsTotal'    => $this->getGoodsCount(""),
             "recordsFiltered" => $this->getGoodsCount($params),
-            "data"            => array_values($goods)
+            "data"            => array_values($goods),
         ];
     }
 

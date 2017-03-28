@@ -6,6 +6,7 @@ use App\Moldova\Entities\Contracts;
 use App\Moldova\Entities\CourtCases;
 use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Service\StringUtil;
+use MongoDB\BSON\Regex;
 use MongoRegex;
 
 class ContractsRepository implements ContractsRepositoryInterface
@@ -29,6 +30,7 @@ class ContractsRepository implements ContractsRepositoryInterface
 
     /**
      * ContractsRepository constructor.
+     *
      * @param Contracts   $contracts
      * @param Contractors $contractors
      * @param OcdsRelease $ocdsRelease
@@ -47,15 +49,33 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getContractsByOpenYear()
     {
-        $result = OcdsRelease::raw(function ($collection) {
-            return $collection->find([], [
-                    "contracts.dateSigned" => 1,
-                    "_id"                  => 1
-                ]
-            );
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) {
+                return $collection->aggregate(
+                    [
+                        [
+                            '$unwind' => '$contracts',
+                        ],
+                        [
+                            '$project' => [
+                                "year"   => ['$year' => '$contracts.dateSigned'],
+                                "id"     => '$id',
+                                "amount" => '$contracts.value.amount',
+                            ],
+                        ],
+                        [
+                            '$group' => [
+                                "_id"    => ["year" => '$year'],
+                                'count'  => ['$sum' => 1],
+                                "amount" => ['$sum' => '$amount'],
+                            ],
+                        ],
+                    ]
+                );
+            }
+        );
 
-        return $result;
+        return ($result);
     }
 
     /**
@@ -63,12 +83,16 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getContractorsByOpenYear()
     {
-        $result = OcdsRelease::raw(function ($collection) {
-            return $collection->find([], [
-                    "buyer" => 1
-                ]
-            );
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) {
+                return $collection->find(
+                    [],
+                    [
+                        "buyer" => 1,
+                    ]
+                );
+            }
+        );
 
         return $result;
     }
@@ -79,36 +103,58 @@ class ContractsRepository implements ContractsRepositoryInterface
     public function getProcuringAgency($type, $limit, $year, $condition, $column)
     {
         $query  = [];
-        $filter = ['$match' => ['tender.tenderPeriod.startDate' => ['$regex' => (string) $year, '$options' => 'g']]];
-        array_push($query, $filter);
+        $unwind = [
+            '$unwind' => '$awards',
+        ];
+        array_push($query, $unwind);
 
-        if ($condition !== '') {
-            $filter = [
-                '$match' => [
-                    $column => $condition
-                ]
+
+        $project = [
+            '$project' => [
+                "year"   => ['$year' => '$awards.contractPeriod.startDate'],
+                "buyer"  => '$buyer.name',
+                "amount" => '$awards.value.amount',
+            ],
+        ];
+
+
+        if ($column === 'awards.items.classification.description' || $column === 'awards.suppliers.name') {
+            $match   = ['$match' => [$column => ['$in' => [$condition]]]];
+            $project = [
+                '$project' => [
+                    "year"   => ['$year' => '$awards.contractPeriod.startDate'],
+                    "buyer"  => '$buyer.name',
+                    "amount" => '$awards.value.amount',
+                ],
             ];
+            array_push($query, $match);
         }
 
-        if (!empty($filter)) {
-            array_push($query, $filter);
-        }
+        array_push($query, $project);
+
 
         $groupBy = [
             '$group' => [
-                '_id'    => '$buyer.name',
+                '_id'    => ['buyer' => '$buyer', 'year' => '$year'],
                 'count'  => ['$sum' => 1],
-                'amount' => ['$sum' => ['$sum' => '$contracts.value.amount']]
-            ]
+                'amount' => ['$sum' => '$amount'],
+            ],
         ];
         array_push($query, $groupBy);
-        $sort = ['$sort' => [$type => - 1]];
+
+        $filter = ['$match' => ['_id.year' => intval($year)]];
+        array_push($query, $filter);
+
+        $sort = ['$sort' => [$type => -1]];
         array_push($query, $sort);
         $limit = ['$limit' => $limit];
         array_push($query, $limit);
-        $result = OcdsRelease::raw(function ($collection) use ($query) {
-            return $collection->aggregate($query);
-        });
+
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
 
         return ($result);
     }
@@ -119,41 +165,56 @@ class ContractsRepository implements ContractsRepositoryInterface
     public function getContractors($type, $limit, $year, $condition, $column)
     {
         $query  = [];
-        $filter = ['$match' => ['contracts.dateSigned' => ['$regex' => (string) $year, '$options' => 'g']]];
-        array_push($query, $filter);
-        if ($condition !== '') {
-            $filter = [
-                '$match' => [
-                    $column => $condition
-                ]
-            ];
-        }
-
         $unwind = [
-            '$unwind' => '$awards'
+            '$unwind' => '$awards',
         ];
         array_push($query, $unwind);
+        $project = [
+            '$project' => [
+                "year"   => ['$year' => '$awards.contractPeriod.startDate'],
+                "buyer"  => '$awards.suppliers.name',
+                "amount" => '$awards.value.amount',
+            ],
+        ];
 
-        if (!empty($filter)) {
-            array_push($query, $filter);
+
+        if ($column === 'tender.procuringEntity.name' || $column === 'awards.items.classification.description') {
+            $match   = ['$match' => [$column => ['$in' => [$condition]]]];
+            $project = [
+                '$project' => [
+                    "year"   => ['$year' => '$awards.contractPeriod.startDate'],
+                    "buyer"  => '$awards.suppliers.name',
+                    "amount" => '$awards.value.amount',
+                ],
+            ];
+            array_push($query, $match);
         }
 
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'    => '$awards.suppliers.name',
-                    'count'  => ['$sum' => 1],
-                    'amount' => ['$sum' => '$awards.value.amount']
-                ]
-            ];
+        array_push($query, $project);
+
+        $groupBy = [
+            '$group' => [
+                '_id'    => ['buyer' => '$buyer', 'year' => '$year'],
+                'count'  => ['$sum' => 1],
+                'amount' => ['$sum' => '$amount'],
+            ],
+        ];
         array_push($query, $groupBy);
-        $sort = ['$sort' => [$type => - 1]];
+
+        $filter = ['$match' => ['_id.year' => intval($year)]];
+        array_push($query, $filter);
+
+        $sort = ['$sort' => [$type => -1]];
         array_push($query, $sort);
         $limit = ['$limit' => $limit];
         array_push($query, $limit);
-        $result = OcdsRelease::raw(function ($collection) use ($query) {
-            return $collection->aggregate($query);
-        });
+
+
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
 
         return ($result);
     }
@@ -163,17 +224,18 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getTotalContractAmount()
     {
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'    => null,
-                    'amount' => ['$sum' => ['$sum' => '$contracts.value.amount']]
-                ]
-            ];
+        $groupBy = [
+            '$group' => [
+                '_id'    => null,
+                'amount' => ['$sum' => ['$sum' => '$contracts.value.amount']],
+            ],
+        ];
 
-        $result = OcdsRelease::raw(function ($collection) use ($groupBy) {
-            return $collection->aggregate($groupBy);
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) use ($groupBy) {
+                return $collection->aggregate([$groupBy]);
+            }
+        );
 
         return ($result);
     }
@@ -184,43 +246,57 @@ class ContractsRepository implements ContractsRepositoryInterface
     public function getGoodsAndServices($type, $limit, $year, $condition, $column)
     {
         $query  = [];
-        $filter = ['$match' => ['contracts.dateSigned' => ['$regex' => (string) $year, '$options' => 'g']]];
-        array_push($query, $filter);
-
-        if ($condition !== '') {
-            $filter = [
-                '$match' => [
-                    $column => $condition
-                ]
-            ];
-        }
-
         $unwind = [
-            '$unwind' => '$awards'
+            '$unwind' => '$awards',
         ];
         array_push($query, $unwind);
 
-        if (!empty($filter)) {
-            array_push($query, $filter);
+        $project = [
+            '$project' => [
+                "year"   => ['$year' => '$awards.contractPeriod.startDate'],
+                "buyer"  => '$awards.items.classification.description',
+                "amount" => '$awards.value.amount',
+            ],
+        ];
+
+        if ($column === 'tender.procuringEntity.name' || $column === 'awards.suppliers.name') {
+            $match   = ['$match' => [$column => ['$in' => [$condition]]]];
+            $project = [
+                '$project' => [
+                    "year"   => ['$year' => '$awards.contractPeriod.startDate'],
+                    "buyer"  => '$awards.items.classification.description',
+                    "amount" => '$awards.value.amount',
+                ],
+            ];
+            array_push($query, $match);
         }
 
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'    => '$awards.items.classification.description',
-                    'count'  => ['$sum' => 1],
-                    'amount' => ['$sum' => '$awards.value.amount']
-                ]
-            ];
+
+        array_push($query, $project);
+
+
+        $groupBy = [
+            '$group' => [
+                '_id'    => ['buyer' => '$buyer', 'year' => '$year'],
+                'count'  => ['$sum' => 1],
+                'amount' => ['$sum' => '$amount'],
+            ],
+        ];
         array_push($query, $groupBy);
-        $sort = ['$sort' => [$type => - 1]];
+
+        $filter = ['$match' => ['_id.year' => intval($year)]];
+        array_push($query, $filter);
+
+        $sort = ['$sort' => [$type => -1]];
         array_push($query, $sort);
         $limit = ['$limit' => $limit];
         array_push($query, $limit);
 
-        $result = OcdsRelease::raw(function ($collection) use ($query) {
-            return $collection->aggregate($query);
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
 
         return ($result);
     }
@@ -238,23 +314,20 @@ class ContractsRepository implements ContractsRepositoryInterface
         $orderIndex = $params['order'][0]['column'];
         $ordDir     = $params['order'][0]['dir'];
         $column     = $this->getColumn($params['columns'][$orderIndex]['data']);
-        $startFrom  = $params['start'];
-        $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : - 1;
+        $startFrom  = (int) $params['start'];
+        $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : -1;
         $search     = $params['search']['value'];
 
-        $result = $this->contracts
-            ->where(function ($query) use ($search) {
+        $result = $this->contracts->where(
+            function ($query) use ($search) {
 
                 if (!empty($search)) {
-                    return $query->where('goods.mdValue', 'like', '%' . $search . '%');
+                    return $query->where('goods.mdValue', 'like', '%'.$search.'%');
                 }
 
                 return $query;
-            })
-            ->take($params['length'])
-            ->skip($startFrom)
-            ->orderBy($column, $ordDir)
-            ->get(["contractNumber", "id", "contractDate", "finalDate", "amount", "goods.mdValue"]);
+            }
+        )->take((int) $params['length'])->skip($startFrom)->orderBy($column, $ordDir)->get(["contractNumber", "id", "contractDate", "finalDate", "amount", "goods.mdValue"]);
 
         return ($result);
     }
@@ -293,20 +366,21 @@ class ContractsRepository implements ContractsRepositoryInterface
         $ordDir      = $params['order'][0]['dir'];
         $column      = $params['columns'][$orderIndex]['data'];
         $startFrom   = $params['start'];
-        $ordDir      = (strtolower($ordDir) == 'asc') ? 1 : - 1;
+        $ordDir      = (strtolower($ordDir) == 'asc') ? 1 : -1;
         $search      = $params['search']['value'];
         $limitResult = $params['length'];
 
         $query  = [];
         $filter = [];
         $unwind = [
-            '$unwind' => '$awards'
+            '$unwind' => '$awards',
         ];
         array_push($query, $unwind);
 
         if ($search != '') {
+            $search = StringUtil::accentToRegex($search);
             $filter = [
-                '$match' => ['awards.suppliers.name' => ['$gt' => $search]]
+                '$match' => ['awards.suppliers.name' => new Regex(".*$search.*", 'i')],
             ];
         }
 
@@ -314,14 +388,13 @@ class ContractsRepository implements ContractsRepositoryInterface
             array_push($query, $filter);
         }
 
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'    => '$awards.suppliers.name',
-                    'count'  => ['$sum' => 1],
-                    'scheme' => ['$addToSet' => '$awards.suppliers.additionalIdentifiers.scheme'],
-                ]
-            ];
+        $groupBy = [
+            '$group' => [
+                '_id'    => '$awards.suppliers.name',
+                'count'  => ['$sum' => 1],
+                'scheme' => ['$addToSet' => '$awards.suppliers.additionalIdentifiers.scheme'],
+            ],
+        ];
         array_push($query, $groupBy);
         $sort = ['$sort' => [$column => $ordDir]];
         array_push($query, $sort);
@@ -330,11 +403,13 @@ class ContractsRepository implements ContractsRepositoryInterface
         $limit = ['$limit' => (int) $limitResult];
         array_push($query, $limit);
 
-        $result = OcdsRelease::raw(function ($collection) use ($query) {
-            return $collection->aggregate($query);
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
 
-        return ($result['result']);
+        return ($result);
     }
 
     /**
@@ -342,7 +417,11 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getDetailInfo($parameter, $column)
     {
-        return ($this->ocdsRelease->where($column, $parameter)->project(['contracts' => 1, 'awards' => 1])->get());
+        if ($column === 'buyer.name') {
+            return ($this->ocdsRelease->where($column, $parameter)->get());
+        }
+
+        return ($this->ocdsRelease->where($column, $parameter)->project(['awards.$' => 1, 'contracts' => 1])->get());
     }
 
     /**
@@ -394,30 +473,35 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         if (!empty($q)) {
             $search = StringUtil::accentToRegex($q);
-            $query  = array('awards.items.classification.description' => new MongoRegex("/.*{$search}.*/i"));
-            $query2 = array('awards.suppliers.name' => new MongoRegex("/.*{$search}.*/i"));
-            $query3 = array('buyer.name' => new MongoRegex("/.*{$search}.*/i"));
-            $query4 = array('contracts.dateSigned' => new MongoRegex("/.*{$search}.*/i"));
-            $query5 = array('contracts.period.endDate' => new MongoRegex("/.*{$search}.*/i"));
+            $query  = ['awards.items.classification.description' => new MongoRegex("/.*{$search}.*/i")];
+            $query2 = ['awards.suppliers.name' => new MongoRegex("/.*{$search}.*/i")];
+            $query3 = ['buyer.name' => new MongoRegex("/.*{$search}.*/i")];
+            $query4 = ['contracts.dateSigned' => new MongoRegex("/.*{$search}.*/i")];
+            $query5 = ['contracts.period.endDate' => new MongoRegex("/.*{$search}.*/i")];
 
-            $cursor = OcdsRelease::raw(function ($collection) use ($query, $query2, $query3, $query4, $query5) {
-                return $collection->find([
-                    '$or' => [
-                        $query,
-                        $query2,
-                        $query3,
-                        $query4,
-                        $query5
-                    ]
-                ]);
-            });
+            $cursor = OcdsRelease::raw(
+                function ($collection) use ($query, $query2, $query3, $query4, $query5) {
+                    return $collection->find(
+                        [
+                            '$or' => [
+                                $query,
+                                $query2,
+                                $query3,
+                                $query4,
+                                $query5,
+                            ],
+                        ]
+                    );
+                }
+            );
 
             return ($cursor);
         }
 
-        return ($this->ocdsRelease
-            ->project(['contracts.id' => 1, 'contracts.title' => 1, 'contracts.dateSigned' => 1, 'contracts.status' => 1, 'contracts.period.endDate' => 1, 'contracts.value.amount' => 1, 'awards' => 1])
-            ->where(function ($query) use ($contractor, $range, $agency, $search, $startDate, $endDate) {
+        return ($this->ocdsRelease->project(
+            ['contracts.id' => 1, 'contracts.title' => 1, 'contracts.dateSigned' => 1, 'contracts.status' => 1, 'contracts.period.endDate' => 1, 'contracts.value.amount' => 1, 'awards' => 1]
+        )->where(
+            function ($query) use ($contractor, $range, $agency, $search, $startDate, $endDate) {
 
                 if (!empty($contractor)) {
                     $query->where('awards.suppliers.name', "=", $contractor);
@@ -434,15 +518,16 @@ class ContractsRepository implements ContractsRepositoryInterface
                 }
 
                 if (!empty($startDate)) {
-                    $query->where('contracts.dateSigned', "like", $startDate . "-%");
+                    $query->where('contracts.dateSigned', "like", $startDate."-%");
                 }
 
                 if (!empty($endDate)) {
-                    $query->where('contracts.period.endDate', "like", $endDate . '-%');
+                    $query->where('contracts.period.endDate', "like", $endDate.'-%');
                 }
 
                 return $query;
-            })->get());
+            }
+        )->get());
     }
 
     /**
@@ -452,22 +537,23 @@ class ContractsRepository implements ContractsRepositoryInterface
     {
         $query  = [];
         $unwind = [
-            '$unwind' => '$awards'
+            '$unwind' => '$awards',
         ];
         array_push($query, $unwind);
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'   => '$awards.suppliers.name',
-                    'count' => ['$sum' => 1]
-                ]
-            ];
+        $groupBy = [
+            '$group' => [
+                '_id'   => '$awards.suppliers.name',
+                'count' => ['$sum' => 1],
+            ],
+        ];
         array_push($query, $groupBy);
-        $result = OcdsRelease::raw(function ($collection) use ($query) {
-            return $collection->aggregate($query);
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
 
-        return ($result['result']);
+        return ($result);
 
     }
 
@@ -476,25 +562,34 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getContractDataForJson($contractId)
     {
-        return $this->ocdsRelease->where('contracts.id', (int) $contractId)->first();
+        $result = OcdsRelease::raw(
+            function ($collection) use ($contractId) {
+                return $collection->find(['contracts.id' => (int) $contractId]);
+            }
+        );
+
+        return ($result[0]);
+
+//        return $this->ocdsRelease->where('contracts.id', (int) $contractId)->first();
     }
 
     public function getContractsCount($params)
     {
         $search = "";
-        if($params != "") {
+        if ($params != "") {
             $search = $params['search']['value'];
         }
 
-        $result = $this->contracts
-            ->where(function ($query) use ($search) {
+        $result = $this->contracts->where(
+                function ($query) use ($search) {
 
-                if (!empty($search)) {
-                    return $query->where('goods.mdValue', 'like', '%' . $search . '%');
+                    if (!empty($search)) {
+                        return $query->where('goods.mdValue', 'like', '%'.$search.'%');
+                    }
+
+                    return $query;
                 }
-
-                return $query;
-            })->count();
+            )->count();
 
         return ($result);
     }
@@ -503,24 +598,25 @@ class ContractsRepository implements ContractsRepositoryInterface
     {
         $query  = [];
         $unwind = [
-            '$unwind' => '$awards'
+            '$unwind' => '$awards',
         ];
         array_push($query, $unwind);
-        $groupBy =
-            [
-                '$group' => [
-                    '_id'    => '$awards.suppliers.name',
-                    'count'  => ['$sum' => 1],
-                    'scheme' => ['$addToSet' => '$awards.suppliers.additionalIdentifiers.scheme'],
-                ]
-            ];
+        $groupBy = [
+            '$group' => [
+                '_id'    => '$awards.suppliers.name',
+                'count'  => ['$sum' => 1],
+                'scheme' => ['$addToSet' => '$awards.suppliers.additionalIdentifiers.scheme'],
+            ],
+        ];
 
         array_push($query, $groupBy);
-        $result = OcdsRelease::raw(function ($collection) use ($query) {
-            return $collection->aggregate($query);
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
 
-        return (count($result['result']));
+        return (count($result));
     }
 
     /**
@@ -536,9 +632,11 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getCourtCasesOfCompany($contractor)
     {
-        return $this->courtCases->raw(function ($collection) use ($contractor) {
-            return $collection->find(['clear_name' => $contractor], []);
-        });
+        return $this->courtCases->raw(
+            function ($collection) use ($contractor) {
+                return $collection->find(['clear_name' => $contractor], []);
+            }
+        );
 //        return $this->courtCases->where('clear_name', '=', $contractor)->get();
     }
 
@@ -551,13 +649,16 @@ class ContractsRepository implements ContractsRepositoryInterface
 
     /**
      * @param $contractor
+     *
      * @return mixed
      */
     public function getContractorClearName($contractor)
     {
-        $ar = ($this->ocdsRelease->raw(function ($collection) use ($contractor) {
-            return $collection->find(['awards.suppliers.name' => $contractor], ['awards.suppliers.name' => 1, 'awards.suppliers.clearName' => 1]);
-        }));
+        $ar = ($this->ocdsRelease->raw(
+            function ($collection) use ($contractor) {
+                return $collection->find(['awards.suppliers.name' => $contractor], ['awards.suppliers.name' => 1, 'awards.suppliers.clearName' => 1]);
+            }
+        ));
 
         foreach ($ar[0]['awards'] as $item) {
             if ($item['suppliers'][0]['name'] === $contractor && isset($item['suppliers'][0]['clearName'])) {
@@ -566,5 +667,83 @@ class ContractsRepository implements ContractsRepositoryInterface
         }
 
         return $contractor;
+    }
+
+    /**
+     * @param        $procuringAgency
+     *
+     * @param string $type
+     *
+     * @return mixed
+     */
+    public function getProcuringAgencyContractsByOpenYear($procuringAgency, $type = '')
+    {
+
+        if ($type === 'goods') {
+            $get = '$awards.items.classification.description';
+        } elseif ($type === 'buyer') {
+            $get = '$buyer.name';
+        } elseif ($type === 'contractor') {
+            $get = '$awards.suppliers.name';
+        }
+
+        $result = OcdsRelease::raw(
+            function ($collection) use ($procuringAgency, $get) {
+                return $collection->aggregate(
+                    [
+                        [
+                            '$unwind' => '$awards',
+                        ],
+                        [
+                            '$project' => [
+                                "year"   => ['$year' => '$awards.contractPeriod.startDate'],
+                                "id"     => '$id',
+                                "buyer"  => $get,
+                                "amount" => '$awards.value.amount',
+                            ],
+                        ],
+                        [
+                            '$group' => [
+                                "_id"    => ['buyer' => '$buyer', "year" => '$year'],
+                                'count'  => ['$sum' => 1],
+                                "amount" => ['$sum' => '$amount'],
+                            ],
+                        ],
+                        [
+                            '$match' => [
+                                "_id.buyer" => $procuringAgency,
+                            ],
+                        ],
+                    ]
+                );
+            }
+        );
+
+        return ($result);
+    }
+
+    private function getFilterColumn($column)
+    {
+        switch ($column) {
+            case '5':
+                $column = 'amount';
+                break;
+            case '4':
+                $column = 'finalDate';
+                break;
+            case '3':
+                $column = 'contractDate';
+                break;
+            case '2':
+                $column = 'goods.mdValue';
+                break;
+            case '0':
+                $column = 'contractNumber';
+                break;
+            default :
+                break;
+        }
+
+        return $column;
     }
 }

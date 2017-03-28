@@ -17,7 +17,7 @@ def pullJson(url, folder):
     nextPage = 1
     while(nextPage == 1 or nextPage <= totalPage):
         print "requesting ", url
-
+        r = requests.post(url, data = {"rows": 200, "page": nextPage});
         saveJson(folder, r.content, nextPage)
         totalPage = r.json().get("total")
         nextPage += 1

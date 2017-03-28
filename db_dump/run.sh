@@ -10,5 +10,5 @@ mongo localhost:27017/etenders mongojsscripts/change_contracts_date.js
 
 sh ./createCsv.sh
 
-cd mongojsscripts
-sh ./generate_json_file.sh
+#cd mongojsscripts
+#sh ./generate_json_file.sh

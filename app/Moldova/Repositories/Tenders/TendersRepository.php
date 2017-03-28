@@ -16,6 +16,7 @@ class TendersRepository implements TendersRepositoryInterface
 
     /**
      * TendersRepository constructor.
+     *
      * @param Tenders     $tenders
      * @param OcdsRelease $ocdsRelease
      */
@@ -30,26 +31,59 @@ class TendersRepository implements TendersRepositoryInterface
      */
     public function getTendersByOpenYear()
     {
-        $result = OcdsRelease::raw(function ($collection) {
-            return $collection->find([], [
-                    "tender.tenderPeriod.startDate" => 1,
-                    "_id"                           => 1
-                ]
-            );
-        });
+        $result = OcdsRelease::raw(
+            function ($collection) {
+                return $collection->aggregate(
+                    [
+                        [
+                            '$project' => [
+                                "year" => ['$year' => '$tender.tenderPeriod.startDate'],
+                                "id"   => '$id',
+                            ],
+                        ],
+                        [
+                            '$group' => [
+                                "_id"   => ["year" => '$year'],
+                                'count' => ['$sum' => 1],
+                            ],
+                        ],
+                    ]
+                );
+            }
+        );
 
         return $result;
     }
 
     public function getProcuringAgencyTenderByOpenYear($procuringAgency)
     {
-        $result = OcdsRelease::raw(function ($collection) use ($procuringAgency) {
-            return $collection->find(['tender.procuringEntity.name' => $procuringAgency], [
-                    "tender.tenderPeriod.startDate" => 1,
-                    "_id"                           => 1
-                ]
-            );
-        });
+
+        $result = OcdsRelease::raw(
+            function ($collection) use ($procuringAgency) {
+                return $collection->aggregate(
+                    [
+                        [
+                            '$project' => [
+                                "year"  => ['$year' => '$tender.tenderPeriod.startDate'],
+                                "id"    => '$id',
+                                "buyer" => '$tender.procuringEntity.name',
+                            ],
+                        ],
+                        [
+                            '$group' => [
+                                "_id"   => ['buyer' => '$buyer', "year" => '$year'],
+                                'count' => ['$sum' => 1],
+                            ],
+                        ],
+                        [
+                            '$match' => [
+                                "_id.buyer" => $procuringAgency,
+                            ],
+                        ],
+                    ]
+                );
+            }
+        );
 
         return $result;
     }
@@ -63,23 +97,19 @@ class TendersRepository implements TendersRepositoryInterface
         $ordDir     = $params['order'][0]['dir'];
         $column     = $params['columns'][$orderIndex]['data'];
         $startFrom  = $params['start'];
-        $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : - 1;
+        $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : -1;
         $search     = $params['search']['value'];
 
-        return $this->ocdsRelease
-            ->select(['tender'])
-            ->where(function ($query) use ($search) {
+        return $this->ocdsRelease->select(['tender'])->where(
+            function ($query) use ($search) {
 
                 if (!empty($search)) {
-                    return $query->where('tender.title', 'like', '%' . $search . '%');
+                    return $query->where('tender.title', 'like', '%'.$search.'%');
                 }
 
                 return $query;
-            })
-            ->take($params['length'])
-            ->skip($startFrom)
-            ->orderBy($column, $ordDir)
-            ->get();
+            }
+        )->take($params['length'])->skip($startFrom)->orderBy($column, $ordDir)->get();
 
     }
 
@@ -117,6 +147,6 @@ class TendersRepository implements TendersRepositoryInterface
     {
         $feedback = new CompanyFeedback();
 
-        return $feedback->where('procedure_no','=',$ref)->first();
+        return $feedback->where('procedure_no', '=', $ref)->first();
     }
 }

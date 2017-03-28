@@ -25,6 +25,7 @@ class Tenders
 
     /**
      * @param $tenders
+     *
      * @return array
      */
     protected function filterByYear($tenders)
@@ -32,15 +33,10 @@ class Tenders
         $tenderByOpenYear = [];
 
         foreach ($tenders as $tender) {
-            $year = date('Y', strtotime($tender['tender']['tenderPeriod']['startDate']));
-
-            if (array_key_exists($year, $tenderByOpenYear)) {
-                $tenderByOpenYear[$year] += 1;
-            } else {
-                $tenderByOpenYear[$year] = 1;
-            }
-
+            $year                    = $tender['_id']['year'];
+            $tenderByOpenYear[$year] = $tender['count'];
         }
+
         ksort($tenderByOpenYear);
 
         return $tenderByOpenYear;
@@ -48,6 +44,7 @@ class Tenders
 
     /**
      * @param $procuringAgency
+     *
      * @return array
      */
     public function getProcuringAgencyTenderByOpenYear($procuringAgency)
@@ -57,6 +54,7 @@ class Tenders
 
     /**
      * @param $params
+     *
      * @return mixed
      */
     public function getAllTenders($params)
@@ -88,9 +86,10 @@ class Tenders
         $splitTenderRef = explode(" ", $tenderRef);
         $ref            = $splitTenderRef[2];
 
-        $feedback =  $this->tender->getTenderFeedback($ref);
-        if($feedback)
+        $feedback = $this->tender->getTenderFeedback($ref);
+        if ($feedback) {
             return $feedback->toArray();
+        }
 
         return [];
     }

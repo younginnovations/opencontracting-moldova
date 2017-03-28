@@ -24,6 +24,7 @@ class ContractController extends Controller
 
     /**
      * ContractController constructor.
+     *
      * @param Contracts      $contracts
      * @param StreamExporter $exporter
      */
@@ -49,15 +50,15 @@ class ContractController extends Controller
     {
         $contractJson = $this->contracts->getContractDataForJson($contractId);
         $response     = [
-            "uri"           => URL::to('/') . "/contracts/" . $contractId . "/json",
+            "uri"           => URL::to('/')."/contracts/".$contractId."/json",
             "publishedDate" => "2016-06-10T10:30:00Z",
             "publisher"     => [
                 "scheme" => "MD-PPA",
                 "uid"    => "00000",
                 "name"   => "Moldova Public Procurement Agency",
-                "uri"    => "http://tender.gov.md/"
+                "uri"    => "http://tender.gov.md/",
             ],
-            'releases'      => [$contractJson]
+            'releases'      => [$contractJson],
         ];
 
         return response()->json($response, 200)->header('Content-Type', 'application/json');
@@ -78,6 +79,7 @@ class ContractController extends Controller
     /**
      * @param ContractorService $contractorService
      * @param                   $contractor
+     *
      * @return \Illuminate\View\View
      */
     public function show(ContractorService $contractorService, $contractor)
@@ -89,22 +91,41 @@ class ContractController extends Controller
             return view('error_404');
         }
 
-        $companyData      = $contractorService->fetchInfo($contractor);
-        $courtCases       = $contractorService->fetchCourtData($contractor);
-        $blacklist        = $contractorService->fetchBlacklist($contractor);
-        $total            = $this->getTotal($contractorDetail);
-        $totalContract    = $total['totalContract'];
-        $totalAmount      = $total['totalAmount'];
-        $contractTrend    = $this->getTrend($this->contracts->aggregateContracts($contractorDetail));
-        $amountTrend      = $this->contracts->encodeToJson($this->contracts->aggregateContracts($contractorDetail, 'amount'), 'trend');
-        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, 2014, $contractor, 'awards.suppliers.name');
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, 2014, $contractor, 'awards.suppliers.name');
+        $companyData   = $contractorService->fetchInfo($contractor);
+        $courtCases    = $contractorService->fetchCourtData($contractor);
+        $blacklist     = $contractorService->fetchBlacklist($contractor);
+        $total         = $this->getTotal($contractorDetail);
+        $totalContract = $total['totalContract'];
+        $totalAmount   = $total['totalAmount'];
 
-        return view('contracts.contractor-view', compact('contractor', 'contractorDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'procuringAgency', 'goodsAndServices', 'totalContract', 'companyData', 'courtCases','blacklist'));
+        $contractsTrend = $this->contracts->getProcuringAgencyContractsByOpenYear($contractor, 'contractor');
+
+        $contractTrend    = $this->getTrend($this->contracts->aggregateContracts($contractsTrend));
+        $amountTrend      = $this->contracts->encodeToJson($contractsTrend, 'amount', 'view');
+        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, date('Y'), $contractor, 'awards.suppliers.name');
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, date('Y'), $contractor, 'awards.suppliers.name');
+
+        return view(
+            'contracts.contractor-view',
+            compact(
+                'contractor',
+                'contractorDetail',
+                'totalAmount',
+                'contractTrend',
+                'amountTrend',
+                'procuringAgency',
+                'goodsAndServices',
+                'totalContract',
+                'companyData',
+                'courtCases',
+                'blacklist'
+            )
+        );
     }
 
     /**
      * @param $contracts
+     *
      * @return int
      */
     private function getTotal($contracts)
@@ -113,8 +134,8 @@ class ContractController extends Controller
         $totalContract = 0;
 
         foreach ($contracts as $key => $tender) {
-            foreach ($tender['contracts'] as $contract) {
-                $totalContract ++;
+            foreach ($tender['awards'] as $contract) {
+                $totalContract++;
                 $totalAmount += $contract['value']['amount'];
             }
         }
@@ -125,6 +146,7 @@ class ContractController extends Controller
 
     /**
      * @param $contracts
+     *
      * @return string
      */
     private function getTrend($contracts)
@@ -137,7 +159,7 @@ class ContractController extends Controller
             $trends[$count]['xValue'] = $key;
             $trends[$count]['chart1'] = 0;
             $trends[$count]['chart2'] = $contract;
-            $count ++;
+            $count++;
         }
 
         return json_encode($trends);
@@ -146,6 +168,7 @@ class ContractController extends Controller
 
     /**
      * @param $contractId
+     *
      * @return \Illuminate\View\View
      */
     public function view($contractId)
@@ -164,6 +187,7 @@ class ContractController extends Controller
     /**
      * @param $request
      * @param $client
+     *
      * @return bool
      */
     public function checkFeedbackCaptcha($request, $client)
@@ -183,6 +207,7 @@ class ContractController extends Controller
      * @param Request $request
      * @param Email   $email
      * @param Client  $client
+     *
      * @return $this
      */
     public function sendMessage(Request $request, Email $email, Client $client)
@@ -202,16 +227,17 @@ class ContractController extends Controller
                 $msg    = "Email sending failed";
             }
         }
-        $response = array(
+        $response = [
             'status' => $status,
             'msg'    => $msg,
-        );
+        ];
 
         return $response;
     }
 
     /**
      * @param $contractorId
+     *
      * @return \Symfony\Component\HttpFoundation\StreamedResponse
      */
     public function contractorDetailExport($contractorId)
@@ -229,6 +255,7 @@ class ContractController extends Controller
      * @param ContractorService $contractorService
      * @param                   $name
      * @param                   $type
+     *
      * @return \Illuminate\View\View
      */
     public function linkage(ContractorService $contractorService, $name, $type)

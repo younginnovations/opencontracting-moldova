@@ -1,261 +1,267 @@
 @extends('app')
 @section('content')
-    <div class="block header-block header-with-bg {{ ((isset($companyData) && sizeof($companyData)>0) || $blacklist || sizeof($courtCases)>0 )?'':'block-header--small' }}">
-        <div class="row header-with-icon">
-            <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
-                {{ $contractor }}
-            </h2>
-        </div>
+	<div class="block header-block header-with-bg {{ ((isset($companyData) && sizeof($companyData)>0) || $blacklist || sizeof($courtCases)>0 )?'':'block-header--small' }}">
+		<div class="row header-with-icon">
+			<h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
+				{{ $contractor }}
+			</h2>
+		</div>
 
-    </div>
-    @if((isset($companyData) && sizeof($companyData)>0) || $blacklist || sizeof($courtCases)>0 )
-        <div class="row medium-up-2 small-up-1 push-up-block small-push-up-block">
-            <div class="block name-value-wrap">
-                <div class="name">
-                    @if(isset($companyData) && sizeof($companyData)>0)
-                        <div class="title">
-                            <span class="info-icon"></span>
-                            <span class="value">{{ $companyData['full_name'] }}</span>
-                            <span class="name">@lang('contracts.leaders'):{{ $companyData['leaders_list']}}</span>|
-                            <span class="name">@lang('contracts.founders')
-                                :{{ ($companyData['list_of_founders'])?$companyData['list_of_founders']:'N/A' }} </span>
-                            <span class="name">(@lang('contracts.as_found_on') <a
-                                        href="http://date.gov.md">date.gov.md</a>)</span>
-                        </div>
+	</div>
+	@if((isset($companyData) && sizeof($companyData)>0) || $blacklist || sizeof($courtCases)>0 )
+		<div class="row medium-up-2 small-up-1 push-up-block small-push-up-block">
+			<div class="block name-value-wrap">
+				<div class="name">
+					@if(isset($companyData) && sizeof($companyData)>0)
+						<div class="title">
+							<span class="info-icon"></span>
+							<span class="value">{{ $companyData['full_name'] }}</span>
+							<span class="name">@lang('contracts.leaders'):{{ $companyData['leaders_list']}}</span>|
+							<span class="name">@lang('contracts.founders')
+								:{{ ($companyData['list_of_founders'])?$companyData['list_of_founders']:'N/A' }} </span>
+							<span class="name">(@lang('contracts.as_found_on') <a
+										href="http://date.gov.md">date.gov.md</a>)</span>
+						</div>
 
-                    @else
-                        No matching company informations were found.
-                    @endif
-                </div>
-                <div class="name">
-                    @if($blacklist)
-                        <span class="flag-icon-red court-text">@lang('contracts.this_contractor_is_blacklisted') <span class="name">@lang('tender.for_more_detail') <a href="http://tender.gov.md/ro/lista-de-interdictie" target="_blank">http://tender.gov.md/ro/lista-de-interdictie</a></span></span> |
-                    @endif
-                    @if(sizeof($courtCases)>0)
-                        <span class="balance-icon">{{sizeof($courtCases)." "}}<span class="court-text"> @lang('contracts.court_cases_found').</span>
+					@else
+						No matching company informations were found.
+					@endif
+				</div>
+				<div class="name">
+					@if($blacklist)
+						<span class="flag-icon-red court-text">@lang('contracts.this_contractor_is_blacklisted') <span class="name">@lang('tender.for_more_detail') <a
+										href="http://tender.gov.md/ro/lista-de-interdictie" target="_blank">http://tender.gov.md/ro/lista-de-interdictie</a></span></span> |
+					@endif
+					@if(sizeof($courtCases)>0)
+						<span class="balance-icon">{{sizeof($courtCases)." "}}<span class="court-text"> @lang('contracts.court_cases_found').</span>
                     <span class="court-case-dropdown court-text"><a href="#">@lang('contracts.view_court_cases')</a></span>
                 </span>
-                    @endif
-                </div>
-                <div class="court-case-list">
+					@endif
+				</div>
+				<div class="court-case-list">
                 <span class="balance-icon">@lang('contracts.result_based_on_match') <a
-                            href="http://instante.justice.md">instante.justice.md</a>.</span>
-                    @forelse($courtCases as $case)
-                        <ul>
-                            <li>
+							href="http://instante.justice.md">instante.justice.md</a>.</span>
+					@forelse($courtCases as $case)
+						<ul>
+							<li>
                                 <span class="title spanblock"><a
-                                            href="{{  $case['link'] }}">{{ $case['title'] }}</a></span>
-                            <span class="name-value-wrap">
+											href="{{  $case['link'] }}">{{ $case['title'] }}</a></span>
+								<span class="name-value-wrap">
                                 <span class="name">Case type:{{ $case['case_type'] }}</span>
                             </span>
 
-                            <span class="name-value-wrap">
+								<span class="name-value-wrap">
                                 <span class="name">Court:{{ $case['court_name'] }} </span>
                             </span>
-                            </li>
-                        </ul>
-                    @empty
-                        No matching court informations were found.
-                    @endforelse
-                </div>
-            </div>
-        </div>
-    @endif
-    <div class="row chart-section-wrap">
+							</li>
+						</ul>
+					@empty
+						No matching court informations were found.
+					@endforelse
+				</div>
+			</div>
+		</div>
+	@endif
+	<div class="row chart-section-wrap">
 
-        <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
-            <div data-equalizer="equal-header">
-                <div class="medium-6 small-12 columns">
-                    <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h2 class="section-header-number">
-                                {{ $totalContract }}
-                            </h2>
+		<div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
+			<div data-equalizer="equal-header">
+				<div class="medium-6 small-12 columns">
+					<div class="each-chart-section">
+						<div class="section-header clearfix" data-equalizer-watch="equal-header">
+							<h2 class="section-header-number">
+								{{ $totalContract }}
+							</h2>
 
-                            <h3 class="section-header-title">@lang('contracts.number_of_contracts')</h3>
-                        </div>
-                        <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
-                            <div id="linechart-rest"></div>
-                            <div class="loader-text">
-                                <div class="text">@lang('general.fetching_data')
-                                    <span>
+							<h3 class="section-header-title">@lang('contracts.number_of_contracts')</h3>
+						</div>
+						<div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
+							<div id="linechart-rest"></div>
+							<div class="loader-text">
+								<div class="text">@lang('general.fetching_data')
+									<span>
                                         <div class="dot dot1"></div>
                                         <div class="dot dot2"></div>
                                         <div class="dot dot3"></div>
                                         <div class="dot dot4"></div>
                                     </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <div class="medium-6 small-12 columns">
-                    <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h2 class="section-header-number">
-                                {{number_format($totalAmount)}} leu
-                            </h2>
+				<div class="medium-6 small-12 columns">
+					<div class="each-chart-section">
+						<div class="section-header clearfix" data-equalizer-watch="equal-header">
+							<h2 class="section-header-number">
+								{{number_format($totalAmount)}} leu
+							</h2>
 
-                            <h3 class="section-header-title">@lang('contracts.contract_value')</h3>
-                        </div>
-                        <div class="chart-wrap default-view default-barChart"
-                             data-equalizer-watch="equal-chart-wrap">
-                            <div id="barChart-amount"></div>
-                            <div class="loader-text">
-                                <div class="text">@lang('general.fetching_data')
-                                    <span>
+							<h3 class="section-header-title">@lang('contracts.contract_value')</h3>
+						</div>
+						<div class="chart-wrap default-view default-barChart"
+							 data-equalizer-watch="equal-chart-wrap">
+							<div id="barChart-amount"></div>
+							<div class="loader-text">
+								<div class="text">@lang('general.fetching_data')
+									<span>
                                         <div class="dot dot1"></div>
                                         <div class="dot dot2"></div>
                                         <div class="dot dot3"></div>
                                         <div class="dot dot4"></div>
                                     </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
-            <div data-equalizer="equal-header">
-                <div class="medium-6 small-12 columns">
-                    <div class="each-chart-section">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="inner-wrap clearfix" data-equalizer="equal-chart-wrap">
+			<div data-equalizer="equal-header">
+				<div class="medium-6 small-12 columns">
+					<div class="each-chart-section">
 
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>@lang('general.top_5_procuring_agencies')</h3>
-                        </div>
-                        <div class="chart-wrap default-view default-barChart"
-                             data-equalizer-watch="equal-chart-wrap">
-                            <div class="filter-section">
-                                <form>
-                                    <div>
-                                        <label>
-                                            <span class="inner-title">@lang('general.showing_procuring_agencies')</span>
-                                            <select id="select-agency-year">
-                                                @include('selectYear')
-                                            </select>
-                                            <select id="select-agency" data-for="contractor"
-                                                    data="{{ $contractor }}">
-                                                <option value="amount"
-                                                        selected>@lang('general.based_on_value')</option>
-                                                <option value="count">@lang('general.based_on_count')</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
-                            <div id="barChart-procuring"></div>
-                            <div class="loader-text">
-                                <div class="text">Fetching data
-                                     <span>
+						<div class="section-header clearfix" data-equalizer-watch="equal-header">
+							<h3>@lang('general.top_5_procuring_agencies')</h3>
+						</div>
+						<div class="chart-wrap default-view default-barChart"
+							 data-equalizer-watch="equal-chart-wrap">
+							<div class="filter-section">
+								<form>
+									<div>
+										<label>
+											<span class="inner-title">@lang('general.showing_procuring_agencies')</span>
+											<select id="select-agency-year">
+												@include('selectYear')
+											</select>
+											<select id="select-agency" data-for="contractor"
+													data="{{ $contractor }}">
+												<option value="amount"
+														selected>@lang('general.based_on_value')</option>
+												<option value="count">@lang('general.based_on_count')</option>
+											</select>
+										</label>
+									</div>
+								</form>
+							</div>
+							<div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
+							<div id="barChart-procuring"></div>
+							<div class="loader-text">
+								<div class="text">Fetching data
+									<span>
                                         <div class="dot dot1"></div>
                                         <div class="dot dot2"></div>
                                         <div class="dot dot3"></div>
                                         <div class="dot dot4"></div>
                                     </span>
-                                </div>
-                            </div>
-                            <a href="{{ route('procuring-agency.index') }}"
-                               class="anchor">@lang('general.view_all_procuring_agencies')<span>  &rarr; </span></a>
-                        </div>
-                    </div>
-                </div>
+								</div>
+							</div>
+							<a href="{{ route('procuring-agency.index') }}"
+							   class="anchor">@lang('general.view_all_procuring_agencies')<span>  &rarr; </span></a>
+						</div>
+					</div>
+				</div>
 
-                <div class="medium-6 small-12 columns">
-                    <div class="each-chart-section">
+				<div class="medium-6 small-12 columns">
+					<div class="each-chart-section">
 
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
-                            <h3>@lang('general.top_5_goods_&_services_procured')</h3>
-                        </div>
-                        <div class="chart-wrap default-view default-barChart"
-                             data-equalizer-watch="equal-chart-wrap">
-                            <div class="filter-section">
-                                <form>
-                                    <div>
-                                        <label>
-                                            <span class="inner-title">@lang('general.showing_goods_and_services')</span>
-                                            <select id="select-goods-year">
-                                                @include('selectYear')
-                                            </select>
-                                            <select id="select-goods" data-for="contractor"
-                                                    data="{{ $contractor }}">
-                                                <option value="amount"
-                                                        selected>@lang('general.based_on_value')</option>
-                                                <option value="count">@lang('general.based_on_count')</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
-                            <div id="barChart-goods"></div>
-                            <div class="loader-text">
-                                <div class="text">@lang('general.fetching_data')
-                                    <span>
+						<div class="section-header clearfix" data-equalizer-watch="equal-header">
+							<h3>@lang('general.top_5_goods_&_services_procured')</h3>
+						</div>
+						<div class="chart-wrap default-view default-barChart"
+							 data-equalizer-watch="equal-chart-wrap">
+							<div class="filter-section">
+								<form>
+									<div>
+										<label>
+											<span class="inner-title">@lang('general.showing_goods_and_services')</span>
+											<select id="select-goods-year">
+												@include('selectYear')
+											</select>
+											<select id="select-goods" data-for="contractor"
+													data="{{ $contractor }}">
+												<option value="amount"
+														selected>@lang('general.based_on_value')</option>
+												<option value="count">@lang('general.based_on_count')</option>
+											</select>
+										</label>
+									</div>
+								</form>
+							</div>
+							<div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
+							<div id="barChart-goods"></div>
+							<div class="loader-text">
+								<div class="text">@lang('general.fetching_data')
+									<span>
                                         <div class="dot dot1"></div>
                                         <div class="dot dot2"></div>
                                         <div class="dot dot3"></div>
                                         <div class="dot dot4"></div>
                                     </span>
-                                </div>
-                            </div>
-                            <a href="{{ route('goods.index') }}"
-                               class="anchor">@lang('general.view_all_goods_services')
-                                <span>  &rarr; </span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+								</div>
+							</div>
+							<a href="{{ route('goods.index') }}"
+							   class="anchor">@lang('general.view_all_goods_services')
+								<span>  &rarr; </span></a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-        </div>
-    </div>
-    <div class="row table-wrapper">
-        <a target="_blank" class="export"
-           href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>
-        <table id="table_id" class="responsive hover custom-table persist-area">
+		</div>
+	</div>
+	<div class="row table-wrapper">
+		<a target="_blank" class="export"
+		   href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>
+		<table id="table_id" class="responsive hover custom-table persist-area">
 
-            <thead class="persist-header">
-            <th>@lang('general.contract_number')</th>
-            <th class="hide">@lang('general.contract_id')</th>
-            <th>@lang('general.goods_and_services_contracted')</th>
-            <th>@lang('contracts.contract_status')</th>
-            <th width="150px">@lang('general.contract_start_date')</th>
-            <th width="150px">@lang('general.contract_end_date')</th>
-            <th>@lang('general.amount')</th>
-            </thead>
-            <tbody>
-            @forelse($contractorDetail as $key => $tender)
-                @foreach($tender['contracts'] as $contract)
-                    <tr>
-                        <td>{{ getContractInfo($contract['title'],'id') }}</td>
-                        <td class="hide">{{ $contract['id'] }}</td>
-                        <td>{{ (!empty($tender['awards'][$key]['items']))?$tender['awards'][$key]['items'][0]['classification']['description']:'-' }}</td>
-                        <td>{{ $contract['status'] }}</td>
-                        <td class="dt">{{ $contract['dateSigned'] }}</td>
-                        <td class="dt">{{ $contract['period']['endDate'] }}</td>
-                        <td>{{ number_format($contract['value']['amount']) }}</td>
-                    </tr>
-                @endforeach
-            @empty
-            @endforelse
+			<thead class="persist-header">
+			<th>@lang('general.contract_number')</th>
+			<th class="hide">@lang('general.contract_id')</th>
+			<th>@lang('general.goods_and_services_contracted')</th>
+			<th>@lang('contracts.contract_status')</th>
+			<th width="150px">@lang('general.contract_start_date')</th>
+			<th width="150px">@lang('general.contract_end_date')</th>
+			<th>@lang('general.amount')</th>
+			</thead>
+			<tbody>
 
-            </tbody>
-        </table>
-    </div>
+			@forelse($contractorDetail as $key => $tender)
+				@foreach($tender['awards'] as $award)
+					@foreach($tender['contracts'] as $contract)
+						@if($award && $award['id'] === $contract['awardID'])
+							<tr>
+								<td>{{ getContractInfo($contract['title'],'id') }}</td>
+								<td class="hide">{{ $contract['id'] }}</td>
+								<td>{{ (!empty($award['items']))?$award['items'][0]['classification']['description']:'-' }}</td>
+								<td>{{ $contract['status'] }}</td>
+								<td class="dt">{{ $award['contractPeriod']['startDate']->toDateTime()->format('c') }}</td>
+								<td class="dt">{{ $award['contractPeriod']['endDate'] }}</td>
+								<td>{{ number_format($award['value']['amount']) }}</td>
+							</tr>
+						@endif
+					@endforeach
+				@endforeach
+			@empty
+			@endforelse
+
+			</tbody>
+		</table>
+	</div>
 @stop
 @section('script')
-    <script src="{{url('js/vendorChart.min.js')}}"></script>
-    <script src="{{url('js/responsive-tables.min.js')}}"></script>
-    <script src="{{url('js/customChart.min.js')}}"></script>
-    <script>
+	<script src="{{url('js/vendorChart.min.js')}}"></script>
+	<script src="{{url('js/responsive-tables.min.js')}}"></script>
+	<script src="{{url('js/customChart.min.js')}}"></script>
+	<script>
         $(document).ready(function () {
             updateTables();
         })
-    </script>
-    <script src="{{url('js/responsive-tables.min.js')}}"></script>
-    <script>
+	</script>
+	<script src="{{url('js/responsive-tables.min.js')}}"></script>
+	<script>
 
         var createLinks = function () {
 
@@ -283,16 +289,16 @@
         });
 
         createLinks();
-    </script>
-    <script src="{{url('js/fixedHeader.min.js')}}"></script>
-    <script>
+	</script>
+	<script src="{{url('js/fixedHeader.min.js')}}"></script>
+	<script>
         $(document).ready(function () {
             if ($(window).width() > 768) {
 //                new $.fn.dataTable.FixedHeader(makeTable);
             }
         });
-    </script>
-    <script>
+	</script>
+	<script>
         var route = '{{ route("filter") }}';
         var contracts = '{!! $contractTrend  !!}';
         var amountTrend = '{!! $amountTrend !!}';
@@ -326,5 +332,5 @@
             $(".court-case-list").slideToggle();
         });
 
-    </script>
+	</script>
 @endsection
