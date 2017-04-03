@@ -118,10 +118,10 @@ class GoodsRepository implements GoodsRepositoryInterface
                 $column = '_id';
                 break;
             case '1':
-                $column = 'goods';
+                $column = 'cpv_value';
                 break;
             case '2':
-                $column = 'cpv_value';
+                $column = 'unit';
                 break;
         }
 

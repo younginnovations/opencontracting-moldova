@@ -90,8 +90,16 @@
                 {'data': 'tender.title'},
                 {'data': 'tender.status'},
                 {'data': 'tender.procuringEntity.name'},
-                {'data': 'tender.tenderPeriod.startDate', 'className': 'dt'},
-                {'data': 'tender.tenderPeriod.endDate', 'className': 'dt'},
+                {'data': 'tender.tenderPeriod.startDate.$date.$numberLong', 'className': 'dt',
+					'render': function (value) {
+                        return new Date(Number(value)).toISOString();
+                    }
+                },
+                {'data': 'tender.tenderPeriod.endDate.$date.$numberLong', 'className': 'dt',
+                    'render': function (value) {
+                        return new Date(Number(value)).toISOString();
+                    }
+				}
             ],
             "fnDrawCallback": function () {
                 changeDateFormat();

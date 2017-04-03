@@ -6,6 +6,10 @@
                     <li>
                         <a title="user image" class="user-logo"></a>
                         <ul class="menu logout">
+							@if(auth()->user()->admin)
+                                <li><a href="/dashboard">Dashboard</a></li>
+                                <li><a href="/feedback">Feedback</a></li>
+                            @endif
                             <li><a href="/logout">Logout</a></li>
                         </ul>
                     </li>
@@ -51,13 +55,6 @@
                     <li><a href="{{ route('help.index') }}"
                            class="{{ (Request::segment(1) === 'help')?'active':'' }}">@lang('general.help')</a>
                     </li>
-                    @if(auth()->check())
-                        @if(Auth::user()->admin)
-                            <li>
-                                <a href="{{ url('/admin') }}" class="{{ (Request::segment(1) === 'admin')?'active':'' }}">Feedback</a>
-                            </li>
-                        @endif
-                    @endif
                 </ul>
                 <form action="{{ route('search') }}" method="get" class="search">
                     <input name="q" type="search" class="search-box"

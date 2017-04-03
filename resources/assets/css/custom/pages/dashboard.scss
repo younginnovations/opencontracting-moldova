@@ -1,0 +1,89 @@
+.spanblock{
+    display: block;
+}
+
+
+.dashboard-highlight{
+
+    .big-header{
+        span:nth-of-type(3){
+            font-size: 14px;
+ 
+        }
+
+         span:nth-of-type(4){
+            color: rgba(74, 74, 74, 0.71);
+            font-size: 12px;
+ 
+        }
+
+     
+        
+    }
+
+}
+
+
+.dashboard-detials{
+    background-color: rgba(73, 73, 73, 0.04);
+    padding: 20px 68px 50px 68px;
+
+    .last-data-import{
+
+        margin-bottom: 90px;
+
+        >span{
+            font-size: 14px;
+             color: rgba(74, 74, 74, 0.71);
+        }
+
+    }
+
+    .external-links{
+
+        .columns{
+            margin-bottom: 28px;
+        }
+
+        ul{
+            list-style: inherit;
+            padding-left: 20px;
+
+            >li{
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(73, 73, 73, 0.22);
+                border-bottom-style: dashed;
+
+                span{
+                    display: inline-block;
+
+                    &:fist-child{
+                        float: left;
+                    }
+                    
+                    &:last-child{
+                        float:right;
+                    }
+
+                }
+
+            }
+
+           
+
+        }
+
+        .external-links-title{
+            margin-bottom: 20px;
+        }
+
+        .external-links-services{
+            ul li span:last-child{
+                 background: url(#{$img-path}/ic_tick.svg) no-repeat left center;
+                 background-size: 14px;
+                 padding-left: 20px;
+            }
+        }
+    }
+
+}
