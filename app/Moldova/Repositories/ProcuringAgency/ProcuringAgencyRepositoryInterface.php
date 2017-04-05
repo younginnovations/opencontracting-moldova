@@ -30,4 +30,11 @@ interface ProcuringAgencyRepositoryInterface
      * @return mixed
      */
     public function getAgencyData($procuringAgency);
+
+    /**
+     * @param $agency
+     *
+     * @return mixed
+     */
+    public function getTendersCount($agency);
 }

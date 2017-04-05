@@ -44,15 +44,9 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
         $query  = [];
         $filter = [];
 
-        $unwind = [
-            '$unwind' => '$contracts',
-        ];
-        array_push($query, $unwind);
-
-
         if ($search != '') {
             $filter = [
-                '$match' => ['buyer.name' => new Regex(".*$search.*",'i')],
+                '$match' => ['buyer.name' => new Regex(".*$search.*", 'i')],
             ];
         }
 
@@ -60,26 +54,54 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
             array_push($query, $filter);
         }
 
-        $groupBy = [
-            '$group' => [
-                '_id'            => '$buyer.name',
-                'tenders'        => ['$sum' => 1],
-                'contracts'      => ['$addToSet' => '$contracts'],
-                'contract_value' => ['$sum' => ['$sum' => '$contracts.value.amount']],
+        $project = [
+            '$project' => [
+                'buyer'          => '$buyer.name',
+                'awards'         => ['$size' => '$awards'],
+                'contract_value' => '$contracts.value.amount',
             ],
         ];
-        array_push($query, $groupBy);
 
 
         $groupBy = [
             '$group' => [
-                '_id'             => '$_id',
-                'tenders'         => ['$addToSet' => '$tenders'],
-                'contracts_count' => ['$sum' => 1],
+                '_id'             => '$buyer',
+                'tenders'         => ['$sum' => 1],
+                'contracts_count' => ['$sum' => '$awards'],
                 'contract_value'  => ['$addToSet' => '$contract_value'],
             ],
         ];
+
+
+        if ($column === 'contract_value') {
+            $unwind = [
+                '$unwind' => '$contracts',
+            ];
+            array_push($query, $unwind);
+
+            $project = [
+                '$project' => [
+                    'buyer'          => '$buyer.name',
+                    //                    'awards'         => ['$size' => '$awards'],
+                    'contract_value' => '$contracts.value.amount',
+                ],
+            ];
+
+            $groupBy = [
+                '$group' => [
+                    '_id'             => '$buyer',
+                    'tenders'         => ['$sum' => 1],
+                    'contracts_count' => ['$sum' => 1],
+                    'contract_value'  => ['$sum' => '$contract_value'],
+                ],
+            ];
+
+        }
+
+        array_push($query, $project);
         array_push($query, $groupBy);
+
+
         $sort = ['$sort' => [$column => $ordDir]];
         array_push($query, $sort);
         $skip = ['$skip' => (int) $startFrom];
@@ -93,7 +115,7 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
             }
         );
 
-        return $result;
+        return ($result);
     }
 
     public function getProcuringAgenciesCount($params)
@@ -108,7 +130,7 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
 
         if ($search != "") {
             $filter = [
-                '$match' => ['buyer.name' => new Regex(".*$search.*",'i')],
+                '$match' => ['buyer.name' => new Regex(".*$search.*", 'i')],
             ];
             array_push($query, $filter);
         }
@@ -167,5 +189,31 @@ class ProcuringAgencyRepository implements ProcuringAgencyRepositoryInterface
     public function getAgencyData($procuringAgency)
     {
         return $this->ocdsRelease->select(['buyer'])->where('buyer.name', '=', $procuringAgency)->first();
+    }
+
+    /**
+     * @param $agency
+     *
+     * @return mixed
+     */
+    public function getTendersCount($agency)
+    {
+        $result = OcdsRelease::raw(
+            function ($collection) use ($agency) {
+                return $collection->aggregate(
+                    [
+                        ['$match' => ['buyer.name' => $agency]],
+                        [
+                            '$group' => [
+                                '_id'     => 'buyer.name',
+                                'tenders' => ['$sum' => 1],
+                            ],
+                        ],
+                    ]
+                );
+            }
+        );
+
+        return ($result[0]['tenders']);
     }
 }
