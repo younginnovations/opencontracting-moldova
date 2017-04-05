@@ -1,8 +1,8 @@
-.search-wrap input{
+.search-wrap input {
   float: left;
   width: 300px;
   background: url("#{$img-path}/ic_search-blue.svg") 12px center no-repeat;
-  border: solid 2px rgba(0,66,177,0.7);
+  border: solid 2px rgba(0, 66, 177, 0.7);
   border-radius: 4px;
   padding: 12px 24px 12px 38px;
   height: auto;
@@ -10,18 +10,18 @@
   margin: 0;
   color: #484848;
 
-  &:hover,&:focus,&:active{
-    border: solid 2px rgba(0,66,177,0.7);
+  &:hover, &:focus, &:active {
+    border: solid 2px rgba(0, 66, 177, 0.7);
   }
 
 }
 
-.search input,.search-warp input {
+.search input, .search-warp input {
   text-overflow: ellipsis;
 }
 
 @media (max-width: 340px) {
-  .search-wrap input{
+  .search-wrap input {
     width: 100%;
   }
 }
@@ -59,27 +59,27 @@
   }
 }
 
-.advance-search-wrap{
+.advance-search-wrap {
   display: none;
-  background: rgba(0,65,179,0.6);
+  background: rgba(0, 65, 179, 0.6);
   padding: 20px 5px;
   margin-top: 20px;
   border-radius: 4px;
 }
 
-.search-result-wrap{
+.search-result-wrap {
   background: #f7f7f7;
   padding: 20px;
   border-radius: 8px;
 
-  .title{
+  .title {
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: solid 1px #ccc;
     font-size: 1rem;
   }
 
-  .negative-result{
+  .negative-result {
     font-size: 16px;
     font-style: italic;
     text-align: center;
@@ -89,12 +89,12 @@
 
 }
 
-.search-token{
+.search-token {
   border-bottom: solid 1px #ccc;
   margin-bottom: 15px;
   padding-bottom: 5px;
 
- & > span{
+  & > span {
     padding: 4px 10px 4px 32px;
     background: #aaa;
     -webkit-border-radius: 4px;
@@ -106,7 +106,7 @@
     position: relative;
 
   }
-  .cancel{
+  .cancel {
     padding: 0;
     cursor: pointer;
     position: absolute;
@@ -117,26 +117,26 @@
     border-radius: 4px 0 0 4px;
     height: 100%;
 
-    &:hover{
+    &:hover {
       background: #888;
     }
   }
 }
 
-.blue-button{
+.blue-button {
   background: hsl(218, 100%, 35%);
   color: #fff;
   width: 100%;
   padding: 1em;
   font-size: 16px;
 
-  &:hover,&:active,&:focus{
+  &:hover, &:active, &:focus {
     background: $link-hover-color;
     color: #fff;
   }
 }
 
-.cs-select span{
+.cs-select span {
   color: $darker-grey-color;
 }
 
@@ -183,8 +183,9 @@
     border: none;
     background: transparent;
     color: #fff;
-    padding: 20px 42px 20px 12px;
+    padding: 0 20px;
     font-size: 16px;
+    height: 100%;
     line-height: 22px;
     background: transparent;
     transition: all 0.3s ease-in-out;
@@ -192,7 +193,6 @@
       outline: none;
     }
   }
-
 
   .search-button {
     display: block;
@@ -209,7 +209,7 @@
     width: 28px;
     height: 28px;
     display: block;
-   background: url(#{$img-path}/ic_search-white.svg) center right no-repeat;
+    background: url(#{$img-path}/ic_search-white.svg) center right no-repeat;
 
     .open & {
       margin: 0;
@@ -221,63 +221,63 @@
 
 }
 
-.search{
+.search {
   input:-moz-placeholder {
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
   }
   input::-webkit-input-placeholder {
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
   }
 
 }
 
 /* ---------- style for advance search in homepage ---------- */
 
-.multiple-search-wrap{
+.multiple-search-wrap {
   position: absolute;
   right: 0;
   bottom: 0;
   float: left;
 
-  &.position{
+  &.position {
     bottom: -40px;
   }
 
-  .filter-wrap .filter-toggler a{
+  .filter-wrap .filter-toggler a {
     color: #fff;
   }
 
-  .filter-wrap .filter-toggler{
+  .filter-wrap .filter-toggler {
     float: right;
     margin: 0 15px;
 
-    a:after{
+    a:after {
       background: transparent url(#{$img-path}/ic_arrow_down-white.svg) center no-repeat;
     }
   }
 }
 
 @media (min-width: 768px) {
-  .multiple-search-wrap{
+  .multiple-search-wrap {
     bottom: -30px;
   }
 }
 
-@media (max-width: 1270px){
+@media (max-width: 1270px) {
 
-  .top-bar-right .menu{
+  .top-bar-right .menu {
     padding-right: 0;
   }
 
-  .fixed-header .row{
+  .fixed-header .row {
     position: relative;
   }
-  #main-menu{
+  #main-menu {
     position: static;
-    .search{
+    .search {
       right: 150px;
       top: 2px;
-      &.open{
+      &.open {
         right: 0;
       }
     }

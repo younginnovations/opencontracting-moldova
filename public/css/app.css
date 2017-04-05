@@ -3288,8 +3288,9 @@ form input[name="startDate"], form input[name="endDate"] {
   border: none;
   background: transparent;
   color: #fff;
-  padding: 20px 42px 20px 12px;
+  padding: 0 20px;
   font-size: 16px;
+  height: 100%;
   line-height: 22px;
   background: transparent;
   -webkit-transition: all 0.3s ease-in-out;
