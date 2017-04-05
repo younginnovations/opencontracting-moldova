@@ -142,7 +142,7 @@ class Contracts
             array_push($contracts[$key], $contract['id']);
             array_push($contracts[$key], $contract['goods']['mdValue']);
             array_push($contracts[$key], $contract['contractDate']->toDateTime()->format('c'));
-            array_push($contracts[$key], $contract['finalDate']);
+            array_push($contracts[$key], $contract['finalDate']->toDateTime()->format('c'));
             array_push($contracts[$key], $contract['amount']);
         }
 

@@ -473,11 +473,11 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         if (!empty($q)) {
             $search = StringUtil::accentToRegex($q);
-            $query  = ['awards.items.classification.description' => new MongoRegex("/.*{$search}.*/i")];
-            $query2 = ['awards.suppliers.name' => new MongoRegex("/.*{$search}.*/i")];
-            $query3 = ['buyer.name' => new MongoRegex("/.*{$search}.*/i")];
-            $query4 = ['contracts.dateSigned' => new MongoRegex("/.*{$search}.*/i")];
-            $query5 = ['contracts.period.endDate' => new MongoRegex("/.*{$search}.*/i")];
+            $query  = ['awards.items.classification.description' => new Regex(".*$search.*", 'i')];
+            $query2 = ['awards.suppliers.name' => new Regex(".*$search.*", 'i')];
+            $query3 = ['buyer.name' => new Regex(".*$search.*", 'i')];
+            $query4 = ['contracts.dateSigned' => new Regex(".*$search.*", 'i')];
+            $query5 = ['contracts.period.endDate' => new Regex(".*$search.*", 'i')];
 
             $cursor = OcdsRelease::raw(
                 function ($collection) use ($query, $query2, $query3, $query4, $query5) {
@@ -498,36 +498,68 @@ class ContractsRepository implements ContractsRepositoryInterface
             return ($cursor);
         }
 
-        return ($this->ocdsRelease->project(
-            ['contracts.id' => 1, 'contracts.title' => 1, 'contracts.dateSigned' => 1, 'contracts.status' => 1, 'contracts.period.endDate' => 1, 'contracts.value.amount' => 1, 'awards' => 1]
-        )->where(
-            function ($query) use ($contractor, $range, $agency, $search, $startDate, $endDate) {
 
-                if (!empty($contractor)) {
-                    $query->where('awards.suppliers.name', "=", $contractor);
-                }
+        if (!empty($agency) || !empty($contractor) || !empty($search['amount']) || !empty($startDate) || !empty($endDate)) {
 
-                if (!empty($agency)) {
-                    $query->where('buyer.name', "=", $agency);
-                }
+            $query   = [];
+            $project = [
+                '$project' => [
+                    "syear"          => ['$year' => '$contractDate'],
+                    "fyear"          => ['$year' => '$finalDate'],
+                    "id"             => '$id',
+                    "contractNumber" => '$contractNumber',
+                    "tender"         => '$tender.tenderData.goodsDescr',
+                    "agency"         => '$tender.stateOrg.orgName',
+                    "contractDate"   => '$contractDate',
+                    "finalDate"      => '$finalDate',
+                    "amount"         => '$amount',
+                    "goods"          => '$goods.mdValue',
+                    'participant'    => '$participant.fullName',
+                    'status'         => '$status.mdValue',
+                ],
+            ];
+            array_push($query, $project);
 
-                if (!empty($search['amount']) && $range[1] != 'Above') {
-                    $range[0] = (int) $range[0];
-                    $range[1] = (int) $range[1];
-                    $query->whereBetween('contracts.value.amount', $range);
-                }
-
-                if (!empty($startDate)) {
-                    $query->where('contracts.dateSigned', "like", $startDate."-%");
-                }
-
-                if (!empty($endDate)) {
-                    $query->where('contracts.period.endDate', "like", $endDate.'-%');
-                }
-
-                return $query;
+            if (!empty($agency)) {
+                $match = ['$match' => ['agency' => $agency]];
+                array_push($query, $match);
             }
-        )->get());
+
+            if (!empty($contractor)) {
+                $match = ['$match' => ['participant' => $contractor]];
+                array_push($query, $match);
+            }
+            if (!empty($search['amount']) && $range[1] != 'Above') {
+                $range[0] = (int) $range[0];
+                $range[1] = (int) $range[1];
+
+                $match = ['$match' => ['amount' => ['$gte' => $range[0], '$lte' => $range[1]]]];
+                array_push($query, $match);
+            } elseif (!empty($search['amount']) && $range[1] === 'Above') {
+                $match = ['$match' => ['amount' => ['$gte' => (int) $range[0]]]];
+                array_push($query, $match);
+            }
+
+            if (!empty($startDate)) {
+                $match = ['$match' => ['syear' => ['$gte' => (int) $startDate]]];
+                array_push($query, $match);
+            }
+
+            if (!empty($endDate)) {
+                $match = ['$match' => ['fyear' => ['$lte' => (int) $endDate]]];
+                array_push($query, $match);
+            }
+
+
+            $res = Contracts::raw(
+                function ($collection) use ($query) {
+                    return $collection->aggregate($query);
+                }
+            );
+
+            return ($res);
+
+        }
     }
 
     /**
@@ -581,15 +613,15 @@ class ContractsRepository implements ContractsRepositoryInterface
         }
 
         $result = $this->contracts->where(
-                function ($query) use ($search) {
+            function ($query) use ($search) {
 
-                    if (!empty($search)) {
-                        return $query->where('goods.mdValue', 'like', '%'.$search.'%');
-                    }
-
-                    return $query;
+                if (!empty($search)) {
+                    return $query->where('goods.mdValue', 'like', '%'.$search.'%');
                 }
-            )->count();
+
+                return $query;
+            }
+        )->count();
 
         return ($result);
     }
