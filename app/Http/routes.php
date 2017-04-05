@@ -198,6 +198,9 @@ Route::post(
         'uses' => 'ContractController@sendMessage'
     ]
 );
+
+Route::get('/search-export', ['as' => 'home.searchExport', 'uses' => 'HomeController@searchExport']);
+
 Route::get('/export', ['as' => 'home.export', 'uses' => 'HomeController@export']);
 Route::get('contractor-detail/export/{name}', ['as' => 'contractorDetail.export', 'uses' => 'ContractController@contractorDetailExport']);
 Route::get('agency-detail/export/{name}', ['as' => 'agencyDetail.export', 'uses' => 'ProcuringAgencyController@agencyDetailExport']);

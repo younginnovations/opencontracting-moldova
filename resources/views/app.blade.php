@@ -71,7 +71,7 @@
                                         <select name="agency" class="cs-select2 cs-skin-elastic">
                                             <option value="" disabled selected>@lang('general.select_a_buyer')</option>
                                             @forelse($procuringAgencies as $procuringAgency)
-                                                <option value="{{ $procuringAgency[0] }}">{{ $procuringAgency[0] }}</option>
+                                                <option value="{{ $procuringAgency->toArray()[0] }}">{{ $procuringAgency->toArray()[0] }}</option>
                                             @empty
                                             @endforelse
                                         </select>

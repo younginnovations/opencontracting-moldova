@@ -32,6 +32,7 @@ class HomeController extends Controller
 
     /**
      * ExampleController constructor.
+     *
      * @param Tenders         $tenders
      * @param Contracts       $contracts
      * @param ProcuringAgency $procuringAgency
@@ -65,6 +66,7 @@ class HomeController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return mixed
      */
     public function getData(Request $request)
@@ -77,6 +79,7 @@ class HomeController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return mixed
      */
     public function getContractorData(Request $request)
@@ -99,7 +102,7 @@ class HomeController extends Controller
             $trends[$count]['xValue'] = $year;
             $trends[$count]['chart1'] = isset($tendersTrends[$year]) ? $tendersTrends[$year] : 0;
             $trends[$count]['chart2'] = isset($contractsTrends[$year]) ? $contractsTrends[$year] : 0;
-            $count ++;
+            $count++;
         }
 
         return json_encode($trends);
@@ -107,7 +110,9 @@ class HomeController extends Controller
 
     /**
      * API call to sort data by count or amount
+     *
      * @param Request $request
+     *
      * @return mixed
      */
     public function filter(Request $request)
@@ -136,7 +141,9 @@ class HomeController extends Controller
 
     /**
      * Get column name to search for according to sort data
+     *
      * @param $type
+     *
      * @return string
      */
     protected function getColumnName($type)
@@ -160,6 +167,7 @@ class HomeController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\View\View
      */
     public function search(Request $request)
@@ -169,12 +177,14 @@ class HomeController extends Controller
         $contracts         = [];
         $params            = $request->all();
 
-        if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount')) || !empty($request->get('startDate')) || !empty($request->get('endDate'))) {
-            $contracts = $this->contracts->search($params);
 
-            if ($request->get('export')) {
-                return $this->exporter->exportSearch($contracts);
-            }
+        if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount')) || !empty(
+            $request->get(
+                'startDate'
+            )
+            ) || !empty($request->get('endDate'))
+        ) {
+            $contracts = $this->contracts->search($params);
 
         }
 
@@ -204,6 +214,7 @@ class HomeController extends Controller
      * @param Request $request
      * @param Email   $email
      * @param Client  $client
+     *
      * @return $this
      */
     public function sendMessage(Request $request, Email $email, Client $client)
@@ -223,12 +234,30 @@ class HomeController extends Controller
             }
         }
 
-        $response = array(
+        $response = [
             'status' => $status,
             'msg'    => $msg,
-        );
+        ];
 
         return $response;
+    }
+
+    public function searchExport(Request $request)
+    {
+        $params = $request->all();
+
+
+        if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount')) || !empty(
+            $request->get(
+                'startDate'
+            )
+            ) || !empty($request->get('endDate'))
+        ) {
+            $contracts = $this->contracts->search($params);
+
+            return $this->exporter->exportSearch($contracts);
+
+        }
     }
 
 

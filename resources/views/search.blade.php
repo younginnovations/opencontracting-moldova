@@ -1,169 +1,168 @@
 @extends('app')
 
 @section('content')
-    <div class="buffer-top">
-        <div class="block-with-margin filter-wrap">
-            <div class="row">
-                <div class="filter-inner clearfix">
-                    <form class="search-wrap" action="{{ route('search') }}" method="get">
-                        <div class="search-wrap">
-                            <input type="search" name="q" class="" placeholder="Search">
-                        </div>
-                    </form>
-                     <span class="filter-toggler">
+	<div class="buffer-top">
+		<div class="block-with-margin filter-wrap">
+			<div class="row">
+				<div class="filter-inner clearfix">
+					<form class="search-wrap" action="{{ route('search') }}" method="get">
+						<div class="search-wrap">
+							<input type="search" name="q" class="" placeholder="Search">
+						</div>
+					</form>
+					<span class="filter-toggler">
                         <a class="show-filter">@lang('general.advance-filter')</a>
                     </span>
-                </div>
-                <form action="{{ route('search') }}" method="get" class="custom-form advance-search-wrap">
-                    <div class="form-inner clearfix">
-                        <div class="form-group medium-4 columns end">
-                            <select name="contractor" class="cs-select2 cs-skin-elastic">
-                                <option value="" disabled selected>@lang('general.select_a_contractor')</option>
-                                @forelse($contractTitles as $contractTitle)
-                                    <option value="{{ $contractTitle['_id'][0] }}">{{ $contractTitle['_id'][0] }}</option>
-                                @empty
-                                @endforelse
-                            </select>
-                        </div>
-                        <div class="form-group medium-4 columns end">
-                            <select name="agency" class="cs-select2 cs-skin-elastic">
-                                <option value="" disabled selected>@lang('general.select_a_buyer')</option>
-                                @forelse($procuringAgencies as $procuringAgency)
-                                    <option value="{{ $procuringAgency[0] }}">{{ $procuringAgency[0] }}</option>
-                                @empty
-                                @endforelse
-                            </select>
-                        </div>
-                        <div class="form-group medium-4 columns end">
-                            <select name="amount" class="cs-select2 cs-skin-elastic">
-                                <option value="" disabled selected>@lang('general.select_a_range')</option>
-                                <option value="0-10000">0-10000</option>
-                                <option value="10000-100000">10000-100000</option>
-                                <option value="100000-200000">100000-200000</option>
-                                <option value="200000-500000">200000-500000</option>
-                                <option value="500000-1000000">500000-1000000</option>
-                                <option value="1000000-Above">1000000-@lang('general.above')</option>
-                            </select>
-                        </div>
+				</div>
+				<form action="{{ route('search') }}" method="get" class="custom-form advance-search-wrap">
+					<div class="form-inner clearfix">
+						<div class="form-group medium-4 columns end">
+							<select name="contractor" class="cs-select2 cs-skin-elastic">
+								<option value="" disabled selected>@lang('general.select_a_contractor')</option>
+								@forelse($contractTitles as $contractTitle)
+									<option value="{{ $contractTitle['_id'][0] }}">{{ $contractTitle['_id'][0] }}</option>
+								@empty
+								@endforelse
+							</select>
+						</div>
+						<div class="form-group medium-4 columns end">
+							<select name="agency" class="cs-select2 cs-skin-elastic">
+								<option value="" disabled selected>@lang('general.select_a_buyer')</option>
+								@forelse($procuringAgencies as $procuringAgency)
+									<option value="{{ $procuringAgency->toArray()[0] }}">{{ $procuringAgency->toArray()[0] }}</option>
+								@empty
+								@endforelse
+							</select>
+						</div>
+						<div class="form-group medium-4 columns end">
+							<select name="amount" class="cs-select2 cs-skin-elastic">
+								<option value="" disabled selected>@lang('general.select_a_range')</option>
+								<option value="0-10000">0-10000</option>
+								<option value="10000-100000">10000-100000</option>
+								<option value="100000-200000">100000-200000</option>
+								<option value="200000-500000">200000-500000</option>
+								<option value="500000-1000000">500000-1000000</option>
+								<option value="1000000-Above">1000000-@lang('general.above')</option>
+							</select>
+						</div>
 
-                        <div class="form-group medium-4 columns end">
-                            <select name="startDate" class="cs-select2 cs-skin-elastic">
-                                @foreach(range(date('Y'), date('Y')-100) as $year)
-                                    <option value="" disabled selected>@lang('general.select_a_year')</option>
-                                    <option value="{{$year}}">{{$year}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group medium-4 columns end">
-                            <select name="endDate" class="cs-select2 cs-skin-elastic">
-                                @foreach(range(date('Y'), date('Y')-100) as $year)
-                                    <option value="" disabled selected>@lang('general.select_a_year')</option>
-                                    <option value="{{$year}}">{{$year}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+						<div class="form-group medium-4 columns end">
+							<select name="startDate" class="cs-select2 cs-skin-elastic">
+								@foreach(range(date('Y'), date('Y')-100) as $year)
+									<option value="" disabled selected>@lang('general.select_a_year')</option>
+									<option value="{{$year}}">{{$year}}</option>
+								@endforeach
+							</select>
+						</div>
+						<div class="form-group medium-4 columns end">
+							<select name="endDate" class="cs-select2 cs-skin-elastic">
+								@foreach(range(date('Y'), date('Y')-100) as $year)
+									<option value="" disabled selected>@lang('general.select_a_year')</option>
+									<option value="{{$year}}">{{$year}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
 
-                    <div class="input-group-button medium-12 clearfix">
-                        <div class="medium-4 columns">
-                            <input type="submit" class="button yellow-button" value="Submit">
-                        </div>
-                        <div class="medium-4 columns end">
-                            <div class="button cancel-btn">@lang('general.cancel')</div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+					<div class="input-group-button medium-12 clearfix">
+						<div class="medium-4 columns">
+							<input type="submit" class="button yellow-button" value="Submit">
+						</div>
+						<div class="medium-4 columns end">
+							<div class="button cancel-btn">@lang('general.cancel')</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	@if(!empty($params))
+		<div class="block-with-margin">
+			<div class="row">
+				<div class="search-result-wrap block">
+					<div class="title">@lang('search.showing_search_result_for'):</div>
+					<div class="search-token">
+						{!! (!empty($params['q']))?'<span><span class="cancel">x</span>'.$params['q'].'</span>':'' !!}
+						{!! (!empty($params['contractor'])) ?'<span><span class="cancel">x</span>Contractor :  '.$params['contractor'].' </span>': ''!!}
+						{!! (!empty($params['agency'])) ? '<span><span class="cancel">x</span>Procuring Agency : '.$params['agency'].' </span>': '' !!}
+						{!! (!empty($params['amount'])) ?'<span><span class="cancel">x</span>Amount :  '.$params['amount'].' </span>' : '' !!}
+						{!! (!empty($params['startDate'])) ?'<span><span class="cancel">x</span>Start Date :  '.$params['startDate'].' </span>' : '' !!}
+						{!! (!empty($params['endDate'])) ?'<span><span class="cancel">x</span>End Date :  '.$params['endDate'].' </span>' : '' !!}
+					</div>
+					{{--<div class="button-group clearfix">--}}
+						{{--<div class="button btn cancel-btn">@lang('general.cancel')</div>--}}
+						{{--<div class="button btn reset-btn">@lang('search.reset')</div>--}}
+					</div>
+				</div>
+			</div>
+		</div>
+	@endif
+	{{--@if(sizeof($contracts)==0)--}}
+	{{--<div class="block-with-margin">--}}
+	{{--<div class="row">--}}
+	{{--<div class="search-result-wrap block">--}}
+	{{--<div class="negative-result">@lang('search.no_results_found')</div>--}}
+	{{--</div>--}}
+	{{--</div>--}}
+	{{--</div>--}}
+	{{--@else--}}
 
-    <div class="block-with-margin">
-        <div class="row">
-            <div class="search-result-wrap block">
-                <div class="title">@lang('search.showing_search_result_for'):</div>
-                <div class="search-token">
-                    {!! (!empty($params['q']))?'<span><span class="cancel">x</span>'.$params['q'].'</span>':'' !!}
-                    {!! (!empty($params['contractor'])) ?'<span><span class="cancel">x</span>Contractor :  '.$params['contractor'].' </span>': ''!!}
-                    {!! (!empty($params['agency'])) ? '<span><span class="cancel">x</span>Procuring Agency : '.$params['agency'].' </span>': '' !!}
-                    {!! (!empty($params['amount'])) ?'<span><span class="cancel">x</span>Amount :  '.$params['amount'].' </span>' : '' !!}
-                    {!! (!empty($params['startDate'])) ?'<span><span class="cancel">x</span>Start Date :  '.$params['startDate'].' </span>' : '' !!}
-                    {!! (!empty($params['endDate'])) ?'<span><span class="cancel">x</span>End Date :  '.$params['endDate'].' </span>' : '' !!}
-                </div>
-                <div class="button-group clearfix">
-                    <div class="button btn cancel-btn">@lang('general.cancel')</div>
-                    <div class="button btn reset-btn">@lang('search.reset')</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @if(sizeof($contracts)==0)
-        <div class="block-with-margin">
-            <div class="row">
-                <div class="search-result-wrap block">
-                    <div class="negative-result">@lang('search.no_results_found')</div>
-                </div>
-            </div>
-        </div>
-    @else
+	<div class="row table-wrapper persist-area">
+		<a target="_blank" class="export" href="{{route('home.searchExport',$params)}}">@lang('general.export_as_csv')</a>
+		<table id="table_id" class="responsive hover custom-table display">
+			<thead class="persist-header">
+			<tr>
+				<th class="contract-number">@lang('general.contract_number')</th>
+				<th class="hide">@lang('general.contract_id')</th>
+				<th>@lang('general.goods_and_services_contracted')</th>
+				<th>@lang('general.contract_status')</th>
+				<th width="150px">@lang('general.contract_start_date')</th>
+				<th width="150px">@lang('general.contract_end_date')</th>
+				<th>@lang('general.amount')</th>
+			</tr>
+			</thead>
+			<tbody>
+			@forelse($contracts as $contract)
+				<tr>
+					<td>{{ $contract['contractNumber'] }}</td>
+					<td class="hide">{{ (int) $contract['id'] }}</td>
+					<td>{{ (isset($contract['goods']))?$contract['goods']:'-' }}</td>
+					<td>{{ print_r($contract['status']) }}</td>
+					<td class="dt">{{ $contract['contractDate']->toDateTime()->format('c') }}</td>
+					<td class="dt">{{ $contract['finalDate']->toDateTime()->format('c') }}</td>
+					<td class="numeric-data">{{ $contract['amount'] }}</td>
+				</tr>
 
-        <div class="row table-wrapper persist-area">
-            <a target="_blank" class="export" href="{{route('home.export')}}">@lang('general.export_as_csv')</a>
-            <table id="table_id" class="responsive hover custom-table display">
-                <thead class="persist-header">
-                <tr>
-                    <th class="contract-number">@lang('general.contract_number')</th>
-                    <th class="hide">@lang('general.contract_id')</th>
-                    <th>@lang('general.goods_and_services_contracted')</th>
-                    <th>@lang('general.contract_status')</th>
-                    <th width="150px">@lang('general.contract_start_date')</th>
-                    <th width="150px">@lang('general.contract_end_date')</th>
-                    <th>@lang('general.amount')</th>
-                </tr>
-                </thead>
-                <tbody>
-                @forelse($contracts as $tender)
+			@empty
 
-                    @foreach($tender['contracts'] as $key => $contract)
-                        <tr>
-                            <td>{{ getContractInfo($contract['title'],'id') }}</td>
-                            <td class="hide">{{ $contract['id'] }}</td>
-                            <td>{{ ($tender['awards'][$key]['items'])?$tender['awards'][$key]['items'][0]['classification']['description']:'-' }}</td>
-                            <td>{{ print_r($contract['status']) }}</td>
-                            <td class="dt">{{ $contract['dateSigned'] }}</td>
-                            <td class="dt">{{ $contract['period']['endDate'] }}</td>
-                            <td class="numeric-data">{{ $contract['value']['amount'] }}</td>
-                        </tr>
-                    @endforeach
-                @empty
-                    <span>No results found.</span>
-                @endforelse
-                </tbody>
-            </table>
-        </div>
-    @endif
+			@endforelse
+			</tbody>
+		</table>
+	</div>
+	{{--@endif--}}
 
 @endsection
 
 @section('script')
-    <script src="{{url('js/responsive-tables.min.js')}}"></script>
-    <script src="{{url('js/foundation-datepicker.js')}}"></script>
-    <link href="{{url('css/foundation-datepicker.css')}}" rel="stylesheet"/>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-    <script type="text/javascript">
+	<script src="{{url('js/responsive-tables.min.js')}}"></script>
+	<script src="{{url('js/foundation-datepicker.js')}}"></script>
+	<link href="{{url('css/foundation-datepicker.css')}}" rel="stylesheet"/>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+	<script type="text/javascript">
         $(document).ready(function () {
             $(".cs-select2").select2();
         });
-    </script>
-    <script>
+	</script>
+	<script>
         $(function () {
             $('#dpMonths').fdatepicker();
             $('#dpMonth').fdatepicker();
         });
-    </script>
-    <script>
+	</script>
+	<script>
         $(document).ready(function () {
             $(".custom-form").submit(function () {
                 if ($("input[name='startDate']").val() == "") {
@@ -174,8 +173,8 @@
                 }
             });
         });
-    </script>
-    <script>
+	</script>
+	<script>
         var createLinks = function () {
             $('#table_id tbody tr').each(function () {
                 $(this).css('cursor', 'pointer');
@@ -205,9 +204,9 @@
         });
 
         createLinks();
-    </script>
-    <script src="{{url('js/fixedHeader.min.js')}}"></script>
-    <script>
+	</script>
+	<script src="{{url('js/fixedHeader.min.js')}}"></script>
+	<script>
         $(document).ready(function () {
             if ($(window).width() > 768) {
                 new $.fn.dataTable.FixedHeader(makeTable);
@@ -217,16 +216,16 @@
 //                new $.fn.dataTable.FixedHeader(makeTable);
 //            });
 
-            $('.cancel').each(function(){
+            $('.cancel').each(function () {
                 $(this).click(
-                function(e) {
-                    e.preventDefault(); // prevent the default action
-                    e.stopPropagation(); // stop the click from bubbling
-                    $(this).parent().addClass('hide');
-                });
+                    function (e) {
+                        e.preventDefault(); // prevent the default action
+                        e.stopPropagation(); // stop the click from bubbling
+                        $(this).parent().addClass('hide');
+                    });
 
             });
 
         });
-    </script>
+	</script>
 @endsection
