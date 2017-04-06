@@ -27,4 +27,3 @@ if __name__ == "__main__":
     pullJson("http://etender.gov.md/json/contractList", os.path.join(myconfig.jsonfolder,"contracts"))
     pullJson("http://etender.gov.md/json/intentionAnounceList", os.path.join(myconfig.jsonfolder,"announcements"))
     pullJson("http://etender.gov.md/json/tenderList", os.path.join(myconfig.jsonfolder,"tenders"))
-

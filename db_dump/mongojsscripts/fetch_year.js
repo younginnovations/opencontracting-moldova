@@ -1,4 +1,5 @@
 var years = "";
+
 var cursor = (db.ocds_release.aggregate([
             {
                 $project: {

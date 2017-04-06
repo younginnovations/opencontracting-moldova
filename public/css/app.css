@@ -1354,9 +1354,39 @@ footer form {
   }
 }
 
+.json-link-wrap {
+  margin-bottom: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .json-link-wrap {
+    float: left;
+    margin-bottom: 0;
+  }
+}
+
+.download-json-link {
+  color: #5A5A5A;
+  font-size: 18px;
+}
+
+.download-json-link:before {
+  content: "";
+  background: transparent url(/images/ic_download.svg) no-repeat;
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+  left: 10px;
+}
+
+.refresh-info-date {
+  display: block;
+  font-size: 14px;
+  line-height: 15px;
+}
+
 .social-share {
   overflow: hidden;
-  float: right;
 }
 
 .social-share li {
@@ -1370,9 +1400,9 @@ footer form {
   margin-right: 15px;
 }
 
-@media (max-width: 650px) {
+@media (min-width: 768px) {
   .social-share {
-    float: none;
+    float: right;
   }
 }
 
@@ -1380,7 +1410,7 @@ footer form {
   border-radius: 4px;
 }
 
-.sharing-title {
+.social-share .small-title, .social-share .laravelComment h3, .laravelComment .social-share h3 {
   color: #4A4A4A;
   font-size: 1.5rem;
   height: auto;
@@ -4153,6 +4183,10 @@ p.disabled {
 .dashboard-highlight .big-header span:nth-of-type(4) {
   color: rgba(74, 74, 74, 0.71);
   font-size: 12px;
+}
+
+.dashboard-highlight-import {
+  margin-bottom: 10px;
 }
 
 .dashboard-detials {

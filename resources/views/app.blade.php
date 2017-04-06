@@ -2,55 +2,55 @@
 <html class="no-js" lang="{{getLocalLang()}}">
 
 <head>
-    <title>{{ $metaTag['title'] }}</title>
-    <meta charset="utf-8"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Moldova Open Contracting"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="{{ $metaTag['og-title'] }}"/>
-    <meta name="og:image" content="http://opencontracting.date.gov.md/images/main_background.jpg"/>
-    <meta property="og:description" content="{{ $metaTag['og-desc'] }}"/>
-    <meta property="og:url" content="{{ app('request')->url() }}"/>
+	<title>{{ $metaTag['title'] }}</title>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Moldova Open Contracting"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="{{ $metaTag['og-title'] }}"/>
+	<meta name="og:image" content="http://opencontracting.date.gov.md/images/main_background.jpg"/>
+	<meta property="og:description" content="{{ $metaTag['og-desc'] }}"/>
+	<meta property="og:url" content="{{ app('request')->url() }}"/>
 
-    <meta name="twitter:title" ccontent="{{ $metaTag['twitter-title'] }}"/>
-    <meta name="twitter:image" content="http://opencontracting.date.gov.md/images/main_background.jpg"/>
+	<meta name="twitter:title" ccontent="{{ $metaTag['twitter-title'] }}"/>
+	<meta name="twitter:image" content="http://opencontracting.date.gov.md/images/main_background.jpg"/>
 
-    <link rel="icon" type="image" href="{{url('images/moldova.ico')}}">
-    {{--<link href="{{url('css/vendors.min.css')}}" rel="stylesheet">--}}
-    <link href="{{url('css/vendors.css')}}" rel="stylesheet">
-    {{--<link href="{{url('css/app.min.css')}}" rel="stylesheet">--}}
-    <link href="{{url('css/app.css')}}" rel="stylesheet">
+	<link rel="icon" type="image" href="{{url('images/moldova.ico')}}">
+	{{--<link href="{{url('css/vendors.min.css')}}" rel="stylesheet">--}}
+	<link href="{{url('css/vendors.css')}}" rel="stylesheet">
+	{{--<link href="{{url('css/app.min.css')}}" rel="stylesheet">--}}
+	<link href="{{url('css/app.css')}}" rel="stylesheet">
 
-    {{--Commenting System--}}
-    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
-    <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
+	{{--Commenting System--}}
+	<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+	<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+	<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+	<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+	<link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body class="{{(\Request::segment(1) === "about" || \Request::segment(1) === "contact")?'one-pager':''}}">
 
 @if(\Request::segment(1) === null)
-    <div class="header-banner clearfix">
-        @include("partials/main-menu")
-        <div class="callout banner-section">
-            <div class="row banner-inner">
-                <p class="banner-text medium-4 small-12 columns">@lang('homepage.search_through')
-                    <span class="amount big-amount">{{ $totalContractAmount }} </span>
-                    Leu
-                    @lang('homepage.worth_of_contracts')
-                </p>
+	<div class="header-banner clearfix">
+		@include("partials/main-menu")
+		<div class="callout banner-section">
+			<div class="row banner-inner">
+				<p class="banner-text medium-4 small-12 columns">@lang('homepage.search_through')
+					<span class="amount big-amount">{{ $totalContractAmount }} </span>
+					Leu
+					@lang('homepage.worth_of_contracts')
+				</p>
 
-                <div class="multiple-search-wrap medium-8 small-12 columns">
-                    <form action="{{ route('search') }}" method="get" class="search-form">
-                        <input name="q" type="search"
-                               placeholder="@lang('homepage.type_a_contractor')" title= "@lang('homepage.type_a_contractor')">
-                    </form>
-                    <div class="filter-wrap columns">
-                        <div class="row">
-                            <div class="filter-inner clearfix">
+				<div class="multiple-search-wrap medium-8 small-12 columns">
+					<form action="{{ route('search') }}" method="get" class="search-form">
+						<input name="q" type="search"
+							   placeholder="@lang('homepage.type_a_contractor')" title="@lang('homepage.type_a_contractor')">
+					</form>
+					<div class="filter-wrap columns">
+						<div class="row">
+							<div class="filter-inner clearfix">
                      <span class="filter-toggler">
                         <a class="show-filter" id="home-show-filter">@lang('general.advance-filter')</a>
                     </span>
@@ -89,113 +89,120 @@
                                     <div class="form-group medium-4 columns end">
                                         <select name="startDate" class="cs-select2 cs-skin-elastic">
                                             @foreach(range(date('Y'), 2012) as $year)
+												<option value="" disabled
+														selected>@lang('general.select_a_year')</option>
+												<option value="{{$year}}">{{$year}}</option>
+											@endforeach
+										</select>
+									</div>
+									<div class="form-group medium-4 columns end">
+										<select name="endDate" class="cs-select2 cs-skin-elastic">
+											@foreach(range(date('Y'), 2012) as $year)
 
-                                                <option value="" disabled
-                                                        selected>@lang('general.select_a_year')</option>
-                                                <option value="{{$year}}">{{$year}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group medium-4 columns end">
-                                        <select name="endDate" class="cs-select2 cs-skin-elastic">
-                                            @foreach(range(date('Y'), 2012) as $year)
+												<option value="" disabled
+														selected>@lang('general.select_a_year')</option>
+												<option value="{{$year}}">{{$year}}</option>
+											@endforeach
+										</select>
+									</div>
+								</div>
 
-                                                <option value="" disabled
-                                                        selected>@lang('general.select_a_year')</option>
-                                                <option value="{{$year}}">{{$year}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+								<div class="input-group-button medium-12 clearfix">
+									<div class="medium-4 columns">
+										<input type="submit" class="button yellow-button" value="Submit">
+									</div>
+									<div class="medium-4 columns end">
+										<div class="button cancel-btn">@lang('general.cancel')</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 
-                                <div class="input-group-button medium-12 clearfix">
-                                    <div class="medium-4 columns">
-                                        <input type="submit" class="button yellow-button" value="Submit">
-                                    </div>
-                                    <div class="medium-4 columns end">
-                                        <div class="button cancel-btn">@lang('general.cancel')</div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 @else
-    @include("partials/main-menu")
+	@include("partials/main-menu")
 @endif
 <section id="main-content" class="main-content">
-    <div id="tooltip-wrap" class="hide">
-        <p>
-            <span id="value"></span>
-        </p>
-    </div>
-    <div id="tooltip-no-tip" class="hide">
-        <p>
-            <span id="value"></span>
-        </p>
-    </div>
-    @yield('content')
-    <div class="share-wrap">
-        <div class="row">
-            <div class="sharing-title share-section">
+	<div id="tooltip-wrap" class="hide">
+		<p>
+			<span id="value"></span>
+		</p>
+	</div>
+	<div id="tooltip-no-tip" class="hide">
+		<p>
+			<span id="value"></span>
+		</p>
+	</div>
+	@yield('content')
 
-                <span class="download-json">
+	<div class="share-wrap">
+		<div class="row">
+			{{--<div class="sharing-title share-section">--}}
+
+				<div class="json-link-wrap">
+					<span class="download-json">
                     <a href="/multiple-file-api/releases.json" class="download-json-link">Download JSON</a>
                 </span>
-                <ul class="social-share">
+					<span class="refresh-info-date">
+						Last data refresh date : <span class="dt">{{ env("REFRESH_DATE") }}</span>
+                </span>
+				</div>
 
-                    <li>
+
+				<ul class="social-share">
+
+					<li>
                         <span class="small-title">@lang('general.share_this')
-                            <span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> @lang('general.in')</span>
-                    </li>
-                    <li>
-                        <div class="addthis_sharing_toolbox"></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+							<span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> @lang('general.in')</span>
+					</li>
+					<li>
+						<div class="addthis_sharing_toolbox"></div>
+					</li>
+				</ul>
+			</div>
+		{{--</div>--}}
+	</div>
 
 </section>
 
 <div id="subscribeModal" class="modal alert">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">×</span>
+	<!-- Modal content -->
+	<div class="modal-content">
+		<span class="close">×</span>
 
-        <div class="modal__content">
-            <i id="showMsg"></i>
-        </div>
-    </div>
+		<div class="modal__content">
+			<i id="showMsg"></i>
+		</div>
+	</div>
 </div>
 
 <footer class="clearfix">
-    <div class="row">
-        <form id="subscribe-form" class="right-content custom-form medium-5">
-            <div class="form-group">
-                <div class="suscribe-input">
-                    {{csrf_field()}}
-                    <input class="form-control" id="subscriptionEmail" required="true" type="email" name="email"
-                           placeholder="@lang('general.enter_your_email')"/>
-                </div>
-                <input class="button subscribe form-control" type="button" id="subscribe" name="subscribe"
-                       value="@lang('general.subscribe')"/>
-            </div>
-        </form>
-        <div class="top-bar-left left-content">
-            <div class="project-logo">
-                <div class="first-section">@lang('general.moldova_contract')</div>
-                <div class="second-section">@lang('general.data_visualization')</div>
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<form id="subscribe-form" class="right-content custom-form medium-5">
+			<div class="form-group">
+				<div class="suscribe-input">
+					{{csrf_field()}}
+					<input class="form-control" id="subscriptionEmail" required="true" type="email" name="email"
+						   placeholder="@lang('general.enter_your_email')"/>
+				</div>
+				<input class="button subscribe form-control" type="button" id="subscribe" name="subscribe"
+					   value="@lang('general.subscribe')"/>
+			</div>
+		</form>
+		<div class="top-bar-left left-content">
+			<div class="project-logo">
+				<div class="first-section">@lang('general.moldova_contract')</div>
+				<div class="second-section">@lang('general.data_visualization')</div>
+			</div>
+		</div>
+	</div>
 </footer>
 <script>
-var subscribeRoute = '{{ route("newsletter.subscribeUser") }}';
+    var subscribeRoute = '{{ route("newsletter.subscribeUser") }}';
 </script>
 <script src="{{url('js/vendors.min.js')}}"></script>
 
@@ -205,9 +212,9 @@ var subscribeRoute = '{{ route("newsletter.subscribeUser") }}';
 <script type="text/javascript">var switchTo5x = true;</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5743e070a2fa5f67"></script>
 <script type="text/javascript">
-var addthis_share = {
-    title: "Moldova OCDS"
-}
+    var addthis_share = {
+        title: "Moldova OCDS"
+    }
 </script>
 {{--<script type="text/javascript">--}}
 {{--stLight.options({--}}
@@ -282,7 +289,7 @@ var addthis_share = {
             new SelectFx(el);
         });
     })();
-    /* -------- convert the amount to kilo and milllion --------- */
+	/* -------- convert the amount to kilo and milllion --------- */
     $(".big-amount").each(function () {
         var formatted = number_format($(this).text());
         $(this).text(formatted);
@@ -298,10 +305,10 @@ var addthis_share = {
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
         a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
+            m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
