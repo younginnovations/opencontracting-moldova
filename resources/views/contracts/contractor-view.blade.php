@@ -214,7 +214,7 @@
 	</div>
 	<div class="row table-wrapper">
 		<a target="_blank" class="export"
-		   href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>
+		   {{--href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>--}}
 		<table id="table_id" class="responsive hover custom-table persist-area">
 
 			<thead class="persist-header">
@@ -228,22 +228,17 @@
 			</thead>
 			<tbody>
 
-			@forelse($contractorDetail as $key => $tender)
-				@foreach($tender['awards'] as $award)
-					@foreach($tender['contracts'] as $contract)
-						@if($award && $award['id'] === $contract['awardID'])
-							<tr>
-								<td>{{ getContractInfo($contract['title'],'id') }}</td>
-								<td class="hide">{{ $contract['id'] }}</td>
-								<td>{{ (!empty($award['items']))?$award['items'][0]['classification']['description']:'-' }}</td>
-								<td>{{ $contract['status'] }}</td>
-								<td class="dt">{{ $award['contractPeriod']['startDate']->toDateTime()->format('c') }}</td>
-								<td class="dt">{{ $award['contractPeriod']['endDate'] }}</td>
-								<td>{{ number_format($award['value']['amount']) }}</td>
-							</tr>
-						@endif
-					@endforeach
-				@endforeach
+			@forelse($contractorDetail as $key => $contract)
+				<tr>
+					<td>{{ $contract['contractNumber'] }}</td>
+					<td class="hide">{{ (int) $contract['id'] }}</td>
+					<td>{{ (!empty($contract['goods']['mdValue']))?$contract['goods']['mdValue']:'-' }}</td>
+					<td>{{ $contract['status']['mdValue'] }}</td>
+					<td class="dt">{{ $contract['contractDate']->toDateTime()->format('c') }}</td>
+					<td class="dt">{{ $contract['finalDate']->toDateTime()->format('c') }}</td>
+					<td>{{ number_format($contract['amount'],2) }}</td>
+				</tr>
+
 			@empty
 			@endforelse
 

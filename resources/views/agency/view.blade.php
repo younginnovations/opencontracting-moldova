@@ -181,7 +181,7 @@
 
     </div>
     <div class="row table-wrapper">
-        <a target="_blank" class="export" href="{{route('agencyDetail.export',['name'=>$procuringAgency])}}">@lang('general.export_as_csv')</a>
+{{--        <a target="_blank" class="export" href="{{route('agencyDetail.export',['name'=>$procuringAgency])}}">@lang('general.export_as_csv')</a>--}}
         <table id="table_id" class="responsive hover custom-table persist-area">
             <thead class="persist-header">
             <th class="contract-number">@lang('general.contract_number')</th>
@@ -202,7 +202,7 @@
                         <td>{{ $agency['status'] }}</td>
                         <td class="dt">{{ $agency['dateSigned']->toDateTime()->format('c') }}</td>
                         <td class="dt">{{ $agency['period']['endDate'] }}</td>
-                        <td>{{ number_format($agency['value']['amount']) }}</td>
+                        <td>{{ number_format($agency['value']['amount'],2) }}</td>
                     </tr>
                 @endforeach
             @empty

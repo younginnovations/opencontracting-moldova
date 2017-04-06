@@ -56,5 +56,7 @@ return [
     'select_a_year'                   => 'Selectați un an',
     'subscribe'                       => 'subscrie',
     'show'                            => 'Spectacol',
-    'contracts_with_comments'         => 'Contracte cu comentarii'
+    'contracts_with_comments'         => 'Contracte cu comentarii',
+    'download'                        => 'Descarca',
+    'data_refresh_date'               => 'Data de reîmprospătare Ultimele date',
 ];

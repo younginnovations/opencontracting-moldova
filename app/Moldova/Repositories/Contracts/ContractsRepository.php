@@ -421,7 +421,9 @@ class ContractsRepository implements ContractsRepositoryInterface
             return ($this->ocdsRelease->where($column, $parameter)->get());
         }
 
-        return ($this->ocdsRelease->where($column, $parameter)->project(['awards.$' => 1, 'contracts' => 1])->get());
+        $column = ($column === 'awards.suppliers.name') ? 'participant.fullName' : 'goods.mdValue';
+
+        return ($this->contracts->where($column, $parameter)->get(['id','amount','contractDate','finalDate','contractNumber','status.mdValue','goods.mdValue']));
     }
 
     /**

@@ -16,7 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            ['index', 'tender.*', 'about', 'contracts.*', 'agency.*', 'goods.*', 'contact', 'search', 'wiki.*', 'admin.*'],
+            ['index', 'tender.*', 'about', 'contracts.*', 'agency.*', 'goods.*', 'contact', 'search', 'wiki.*', 'admin.*','downloads'],
 
             MetaTagComposer::class
         );

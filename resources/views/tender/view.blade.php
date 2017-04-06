@@ -41,7 +41,7 @@
                     <span class="icon procurement-method">icon</span>
                     <span class="each-detail">
                          <div class="name columns">@lang('tender.procurement_method')</div>
-                        <div class="value columns">{{ $tenderDetail['tender']['procuringEntity']['identifier']['scheme'] }}</div>
+                        <div class="value columns">{{ $tenderDetail['tender']['procurementMethod'] }}</div>
                     </span>
                 </div>
             </div>

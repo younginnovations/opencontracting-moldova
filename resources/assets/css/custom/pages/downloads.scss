@@ -1,0 +1,64 @@
+.downloads {
+  .header-with-icon span {
+    img {
+      transform: scale(1.5);
+    }
+  }
+}
+
+.data-downloads {
+  padding: 30px 20px 25px;
+
+  .data-downloads-tag {
+    margin-bottom: 28px;
+  }
+
+  .data-downloads-json {
+    margin-bottom: 36px;
+
+    div {
+      margin-bottom: 16px;
+    }
+
+    > h1 {
+      background: url(#{$img-path}/ic_json.svg) no-repeat center left;
+      padding-left: 36px;
+    }
+
+  }
+
+  .data-downloads-csv {
+
+    > h1 {
+      background: url(#{$img-path}/ic_csv.svg) no-repeat center left;
+      padding-left: 36px;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2.375rem;
+    margin-bottom: 16px;
+    color: $light-grey-color;
+    display: block;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    line-height: 2.375rem;
+    margin-bottom: 16px;
+    color: $light-grey-color;
+    display: block;
+  }
+
+  p {
+    margin-bottom: 8px;
+
+  }
+
+  ul {
+    list-style: inherit;
+    margin-left: 1.25rem;
+  }
+
+}

@@ -806,3 +806,18 @@ td.admin-contract-list a {
   }
 }
 
+.footer-menu {
+  text-align: center;
+  margin-top: 18px;
+  ul li {
+    display: inline-block;
+    margin-left: 18px;
+    a {
+      color: #FFFFFF;
+      &:hover {
+        color: #909094;
+      }
+    }
+  }
+}
+

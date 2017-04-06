@@ -741,6 +741,24 @@ td.admin-contract-list a:hover {
   left: 10px;
 }
 
+.footer-menu {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.footer-menu ul li {
+  display: inline-block;
+  margin-left: 18px;
+}
+
+.footer-menu ul li a {
+  color: #FFFFFF;
+}
+
+.footer-menu ul li a:hover {
+  color: #909094;
+}
+
 .login-bar {
   background-color: #333;
   padding: 10px 0;
@@ -1651,7 +1669,6 @@ circle {
   display: inline-block;
   margin-left: 15px;
   margin-top: 18px;
-  margin-right: 145px;
 }
 
 .dataTables_length label {
@@ -4238,6 +4255,62 @@ p.disabled {
   background: url(/images/ic_tick.svg) no-repeat left center;
   background-size: 14px;
   padding-left: 20px;
+}
+
+.downloads .header-with-icon span img {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.data-downloads {
+  padding: 30px 20px 25px;
+}
+
+.data-downloads .data-downloads-tag {
+  margin-bottom: 28px;
+}
+
+.data-downloads .data-downloads-json {
+  margin-bottom: 36px;
+}
+
+.data-downloads .data-downloads-json div {
+  margin-bottom: 16px;
+}
+
+.data-downloads .data-downloads-json > h1 {
+  background: url(/images/ic_json.svg) no-repeat center left;
+  padding-left: 36px;
+}
+
+.data-downloads .data-downloads-csv > h1 {
+  background: url(/images/ic_csv.svg) no-repeat center left;
+  padding-left: 36px;
+}
+
+.data-downloads h1 {
+  font-size: 2rem;
+  line-height: 2.375rem;
+  margin-bottom: 16px;
+  color: #484848;
+  display: block;
+}
+
+.data-downloads h3 {
+  font-size: 1.4rem;
+  line-height: 2.375rem;
+  margin-bottom: 16px;
+  color: #484848;
+  display: block;
+}
+
+.data-downloads p {
+  margin-bottom: 8px;
+}
+
+.data-downloads ul {
+  list-style: inherit;
+  margin-left: 1.25rem;
 }
 
 /*# sourceMappingURL=app.css.map */

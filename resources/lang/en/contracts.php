@@ -10,7 +10,7 @@ return [
     'contract_period'                   => 'Contract Period',
     'contract_value'                    => 'Contract Value',
     'contract_signed'                   => 'Contract Signed',
-    'contractors'                       => 'contractors',
+    'contractors'                       => 'Contractors',
     'goods_services'                    => 'Goods / Service',
     'related_tender'                    => 'Related Tender',
     'send_a_feedback_for_this_contract' => 'Send a feedback for this contract',

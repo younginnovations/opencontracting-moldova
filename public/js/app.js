@@ -344,11 +344,11 @@ $(document).ready(function(){
 
     var shorterText = function() {
         if ($(window).width() < 391) {
-            $('select option:contains("English")').text('EN');
-            $('select option:contains("Romanian")').text('RO');
+            $('.language-selector option:contains("English")').text('EN');
+            $('.language-selector option:contains("Romanian")').text('RO');
         }else{
-            $('select option:contains("EN")').text('English');
-            $('select option:contains("RO")').text('Romanian');
+            $('.language-selector option:contains("EN")').text('English');
+            $('.language-selector option:contains("RO")').text('Romanian');
         }
     }
     shorterText();

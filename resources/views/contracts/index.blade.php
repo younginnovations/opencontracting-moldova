@@ -6,7 +6,7 @@
             <h2>
                 <span><img src="{{url('images/ic_contractor.svg')}}"/></span>
                 @lang('general.contracts')
-                <span class="wiki-link"><a href="https://github.com/egovmd/opencontracting/wiki/contracts" target="_blank"><img src="{{url('images/ic_link.svg')}}"/></a></span>
+                {{--<span class="wiki-link"><a href="https://github.com/egovmd/opencontracting/wiki/contracts" target="_blank"><img src="{{url('images/ic_link.svg')}}"/></a></span>--}}
 
             </h2>
         </div>
@@ -55,7 +55,7 @@
 
     <div class="row table-wrapper ">
 
-        <a target="_blank" class="export" href="/csv/download">@lang('general.export_as_csv')</a>
+        {{--<a target="_blank" class="export" href="/csv/download">@lang('general.export_as_csv')</a>--}}
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
