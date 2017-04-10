@@ -54,41 +54,41 @@
                      <span class="filter-toggler">
                         <a class="show-filter" id="home-show-filter">@lang('general.advance-filter')</a>
                     </span>
-                            </div>
-                            <form action="{{ route('search') }}" method="get" class="custom-form advance-search-wrap">
-                                <div class="form-inner clearfix">
-                                    <div class="form-group medium-4 columns end">
-                                        <select name="contractor" class="cs-select2 cs-skin-elastic">
-                                            <option value="" disabled
-                                                    selected>@lang('general.select_a_contractor')</option>
-                                            @forelse($contractTitles as $contractTitle)
-                                                <option value="{{ $contractTitle['_id'][0] }}">{{ $contractTitle['_id'][0] }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                    <div class="form-group medium-4 columns end">
-                                        <select name="agency" class="cs-select2 cs-skin-elastic">
-                                            <option value="" disabled selected>@lang('general.select_a_buyer')</option>
-                                            @forelse($procuringAgencies as $procuringAgency)
-                                                <option value="{{ $procuringAgency->toArray()[0] }}">{{ $procuringAgency->toArray()[0] }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
-                                    </div>
-                                    <div class="form-group medium-4 columns end">
-                                        <select name="amount" class="cs-select2 cs-skin-elastic">
-                                            <option value="" disabled selected>@lang('general.select_a_range')</option>
-                                            <option value="0-10000">0-10000</option>
-                                            <option value="10000-200000">10000-200000</option>
-                                            <option value="200000-500000">200000-500000</option>
-                                            <option value="500000-1000000">500000-1000000</option>
-                                            <option value="1000000-Above">1000000-@lang('general.above')</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group medium-4 columns end">
-                                        <select name="startDate" class="cs-select2 cs-skin-elastic">
-                                            @foreach(range(date('Y'), 2012) as $year)
+							</div>
+							<form action="{{ route('search') }}" method="get" class="custom-form advance-search-wrap">
+								<div class="form-inner clearfix">
+									<div class="form-group medium-4 columns end">
+										<select name="contractor" class="cs-select2 cs-skin-elastic">
+											<option value="" disabled
+													selected>@lang('general.select_a_contractor')</option>
+											@forelse($contractTitles as $contractTitle)
+												<option value="{{ $contractTitle['_id'][0] }}">{{ $contractTitle['_id'][0] }}</option>
+											@empty
+											@endforelse
+										</select>
+									</div>
+									<div class="form-group medium-4 columns end">
+										<select name="agency" class="cs-select2 cs-skin-elastic">
+											<option value="" disabled selected>@lang('general.select_a_buyer')</option>
+											@forelse($procuringAgencies as $procuringAgency)
+												<option value="{{ $procuringAgency->toArray()[0] }}">{{ $procuringAgency->toArray()[0] }}</option>
+											@empty
+											@endforelse
+										</select>
+									</div>
+									<div class="form-group medium-4 columns end">
+										<select name="amount" class="cs-select2 cs-skin-elastic">
+											<option value="" disabled selected>@lang('general.select_a_range')</option>
+											<option value="0-10000">0-10000</option>
+											<option value="10000-200000">10000-200000</option>
+											<option value="200000-500000">200000-500000</option>
+											<option value="500000-1000000">500000-1000000</option>
+											<option value="1000000-Above">1000000-@lang('general.above')</option>
+										</select>
+									</div>
+									<div class="form-group medium-4 columns end">
+										<select name="startDate" class="cs-select2 cs-skin-elastic">
+											@foreach(range(date('Y'), 2012) as $year)
 												<option value="" disabled
 														selected>@lang('general.select_a_year')</option>
 												<option value="{{$year}}">{{$year}}</option>
@@ -143,27 +143,23 @@
 		<div class="row">
 			{{--<div class="sharing-title share-section">--}}
 
-				<div class="json-link-wrap">
-					<span class="download-json">
-                    <a href="/multiple-file-api/releases.json" class="download-json-link">Download JSON</a>
-                </span>
+			<div class="json-link-wrap">
 					<span class="refresh-info-date">
-						Last data refresh date : <span class="dt">{{ env("REFRESH_DATE") }}</span>
+						@lang('general.data_refresh_date') : <span class="dt">{{ env("REFRESH_DATE") }}</span>
                 </span>
-				</div>
+			</div>
 
 
-				<ul class="social-share">
-
-					<li>
+			<ul class="social-share">
+				<li>
                         <span class="small-title">@lang('general.share_this')
 							<span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> @lang('general.in')</span>
-					</li>
-					<li>
-						<div class="addthis_sharing_toolbox"></div>
-					</li>
-				</ul>
-			</div>
+				</li>
+				<li>
+					<div class="addthis_sharing_toolbox"></div>
+				</li>
+			</ul>
+		</div>
 		{{--</div>--}}
 	</div>
 
@@ -189,8 +185,7 @@
 					<input class="form-control" id="subscriptionEmail" required="true" type="email" name="email"
 						   placeholder="@lang('general.enter_your_email')"/>
 				</div>
-				<input class="button subscribe form-control" type="button" id="subscribe" name="subscribe"
-					   value="@lang('general.subscribe')"/>
+				<input class="button subscribe form-control" type="button" id="subscribe" name="subscribe" value="@lang('general.subscribe')"/>
 			</div>
 		</form>
 		<div class="top-bar-left left-content">
@@ -198,6 +193,22 @@
 				<div class="first-section">@lang('general.moldova_contract')</div>
 				<div class="second-section">@lang('general.data_visualization')</div>
 			</div>
+		</div>
+		<div class="footer-menu">
+			<ul>
+				<li>
+					<a href="/about">@lang('general.about')</a>
+				</li>
+				<li>
+					<a href="{{ route('home.downloads') }}">@lang('general.download')s</a>
+				</li>
+				<li>
+					<a href="/contact">@lang('general.contact')</a>
+				</li>
+				<li>
+					<a href="{{ route('help.index') }}">@lang('general.help')</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </footer>

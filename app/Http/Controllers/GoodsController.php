@@ -96,10 +96,10 @@ class GoodsController extends Controller
     {
         $total = 0;
 
-        foreach ($contracts as $key => $tender) {
-            foreach ($tender['contracts'] as $contract) {
-                $total += $contract['value']['amount'];
-            }
+        foreach ($contracts as $key => $contract) {
+
+                $total += $contract['amount'];
+
         }
 
         return ($total);

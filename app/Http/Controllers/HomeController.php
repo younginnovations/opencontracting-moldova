@@ -242,6 +242,11 @@ class HomeController extends Controller
         return $response;
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
     public function searchExport(Request $request)
     {
         $params = $request->all();
@@ -268,5 +273,10 @@ class HomeController extends Controller
     {
         return $this->exporter->getAllContracts();
 
+    }
+
+    public function downloads()
+    {
+        return view('downloads');
     }
 }

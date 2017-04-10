@@ -65,7 +65,7 @@
     </div>
 
     <div class="row table-wrapper ">
-        <a target="_blank" class="export" href="/csv/download/contractors">@lang('general.export_as_csv')</a>
+        {{--<a target="_blank" class="export" href="/csv/download/contractors">@lang('general.export_as_csv')</a>--}}
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>

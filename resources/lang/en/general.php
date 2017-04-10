@@ -56,5 +56,7 @@ return [
     'select_a_year'                   => 'Select a year',
     'subscribe'                       => 'Subscribe',
     'show'                            => 'Show',
-    'contracts_with_comments'         => 'Contracts with comments'
+    'contracts_with_comments'         => 'Contracts with comments',
+    'download'                        => 'Download',
+    'data_refresh_date'               => 'Last data refresh date'
 ];

@@ -161,7 +161,7 @@
     </div>
 
     <div class="row table-wrapper persist-area">
-        <a target="_blank" class="export" href="/csv/download">@lang('general.export_as_csv')</a>
+        {{--<a target="_blank" class="export" href="/csv/download">@lang('general.export_as_csv')</a>--}}
         <table id="table_id" class="responsive hover custom-table display">
             <thead class="persist-header">
             <tr>

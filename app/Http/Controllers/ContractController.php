@@ -134,10 +134,9 @@ class ContractController extends Controller
         $totalContract = 0;
 
         foreach ($contracts as $key => $tender) {
-            foreach ($tender['awards'] as $contract) {
-                $totalContract++;
-                $totalAmount += $contract['value']['amount'];
-            }
+            $totalContract++;
+            $totalAmount += $tender['amount'];
+
         }
         $total = ['totalAmount' => $totalAmount, 'totalContract' => $totalContract];
 
