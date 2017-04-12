@@ -1,3 +1,4 @@
+
 @extends('app')
 
 @section('content')
@@ -27,21 +28,25 @@
             <div class="chart-section-wrap">
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
-                        <form class="left-content">
+                        <form>
                             <label>
-                                <select id="select-contractor-year">
-                                    @include('selectYear')
-                                </select>
+                                {{--<select id="select-contractor-year">--}}
+                                    {{--@include('selectYear')--}}
+                                {{--</select>--}}
+                                <p class="inner-title"><span>@lang('general.top_5') </span> <span class="indicator">@lang('contracts.contractors')</span></p>
+                                <input type="hidden" id="select-year-contractor">
                                 <select id="select-contractor">
                                     <option value="amount" selected>@lang('general.based_on_value')</option>
                                     <option value="count">@lang('general.based_on_count')</option>
                                 </select>
+                                {{--<div><input type="text" id="contractor-range" value=""/></div>--}}
                             </label>
                         </form>
-                        <ul class="breadcrumbs right-content">
-                            <p>@lang('general.top_5') &nbsp;<span href="#" class="indicator">@lang('contracts.contractors')</span>
-                            </p>
-                        </ul>
+                        <div id="contractors-slider"></div>
+                        {{--<ul class="breadcrumbs right-content">--}}
+                            {{--<p>@lang('general.top_5') &nbsp;<span href="#" class="indicator">@lang('contracts.contractors')</span>--}}
+                            {{--</p>--}}
+                        {{--</ul>--}}
                     </div>
                     <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                     <div class="chart-wrap default-view header-chart">
@@ -116,6 +121,7 @@
     </script>
 
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script src="{{url('js/customChart.js')}}"></script>
     <script>
         $(document).ready(function() {
             if($(window).width() > 768){
@@ -133,6 +139,7 @@
 
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
+            createSlider(route, 'contractor', widthOfParent, "barChart-contractors", "contractors","#contractors-slider");
             createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthOfParent, 'amount');
         };
 
@@ -140,6 +147,7 @@
 
         $(window).resize(function () {
             $("#linechart-homepage").empty();
+            $("#contractors-slider").empty();
             makeCharts();
         });
 

@@ -124,6 +124,7 @@
 					<div class="each-chart-section">
 
 						<div class="section-header clearfix" data-equalizer-watch="equal-header">
+							<span class="icon procuring-agency">icon</span>
 							<h3>@lang('general.top_5_procuring_agencies')</h3>
 						</div>
 						<div class="chart-wrap default-view default-barChart"
@@ -131,20 +132,23 @@
 							<div class="filter-section">
 								<form>
 									<div>
-										<label>
+										<label>-
 											<span class="inner-title">@lang('general.showing_procuring_agencies')</span>
-											<select id="select-agency-year">
-												@include('selectYear')
-											</select>
+											{{--<select id="select-agency-year">--}}
+												{{--@include('selectYear')--}}
+											{{--</select>--}}
+											<input type="hidden" id="select-year-agency">
 											<select id="select-agency" data-for="contractor"
 													data="{{ $contractor }}">
 												<option value="amount"
 														selected>@lang('general.based_on_value')</option>
 												<option value="count">@lang('general.based_on_count')</option>
 											</select>
+											{{--<div><input type="text" id="procuring-agency-range" value=""/></div>--}}
 										</label>
 									</div>
 								</form>
+								<div id="procuring-agency-slider"></div>
 							</div>
 							<div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
 							<div id="barChart-procuring"></div>
@@ -168,6 +172,7 @@
 					<div class="each-chart-section">
 
 						<div class="section-header clearfix" data-equalizer-watch="equal-header">
+							<span class="icon goods-service">icon</span>
 							<h3>@lang('general.top_5_goods_&_services_procured')</h3>
 						</div>
 						<div class="chart-wrap default-view default-barChart"
@@ -177,18 +182,21 @@
 									<div>
 										<label>
 											<span class="inner-title">@lang('general.showing_goods_and_services')</span>
-											<select id="select-goods-year">
-												@include('selectYear')
-											</select>
+											{{--<select id="select-goods-year">--}}
+												{{--@include('selectYear')--}}
+											{{--</select>--}}
+											<input type="hidden" id="select-year-goods">
 											<select id="select-goods" data-for="contractor"
 													data="{{ $contractor }}">
 												<option value="amount"
 														selected>@lang('general.based_on_value')</option>
 												<option value="count">@lang('general.based_on_count')</option>
 											</select>
+											{{--<div><input type="text" id="goods-range" value=""/></div>--}}
 										</label>
 									</div>
 								</form>
+								<div id="goods-slider"></div>
 							</div>
 							<div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
 							<div id="barChart-goods"></div>
@@ -213,7 +221,7 @@
 		</div>
 	</div>
 	<div class="row table-wrapper">
-		<a target="_blank" class="export"
+		{{--<a target="_blank" class="export"--}}
 		   {{--href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>--}}
 		<table id="table_id" class="responsive hover custom-table persist-area">
 
@@ -286,6 +294,7 @@
         createLinks();
 	</script>
 	<script src="{{url('js/fixedHeader.min.js')}}"></script>
+	<script src="{{url('js/customChart.js')}}"></script>
 	<script>
         $(document).ready(function () {
             if ($(window).width() > 768) {
@@ -304,8 +313,11 @@
         var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();
             createLineChartRest(JSON.parse(contracts), widthofParent);
-            createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
-            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthofParent, 'amount');
+			createSlider(route, 'agency', widthOfParent, "barChart-procuring", "contractors","#procuring-agency-slider");
+			createSlider(route, 'goods', widthOfParent, "barChart-goods", "contractors","#goods-slider");
+
+			createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
+            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring","procuring-agency", widthofParent, 'amount');
             createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthofParent, 'amount');
         };
 
@@ -314,7 +326,9 @@
         $(window).resize(function () {
             $("#linechart-rest").empty();
             $("#barChart-amount").empty();
-            makeCharts();
+			$('#procuring-agency-slider').empty();
+			$('#goods-slider').empty();
+			makeCharts();
         });
 
         var show = "@lang('contracts.view_court_cases')";

@@ -70,7 +70,7 @@ class ContractController extends Controller
      */
     public function contractorIndex()
     {
-        $contractorsTrends = $this->contracts->getContractors('amount', 5, date('Y'));
+        $contractorsTrends = $this->contracts->getContractors('amount', 5, ['from' => date('Y'), 'to' => date('Y')]);
         $contractorsCount  = $this->contracts->getContractorsCount();
 
         return view('contracts.contractor-index', compact('contractorsTrends', 'contractorsCount'));
@@ -102,8 +102,8 @@ class ContractController extends Controller
 
         $contractTrend    = $this->getTrend($this->contracts->aggregateContracts($contractsTrend));
         $amountTrend      = $this->contracts->encodeToJson($contractsTrend, 'amount', 'view');
-        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, date('Y'), $contractor, 'awards.suppliers.name');
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, date('Y'), $contractor, 'awards.suppliers.name');
+        $procuringAgency  = $this->contracts->getProcuringAgency('amount', 5, ['from' => date('Y'), 'to' => date('Y')], $contractor, 'awards.suppliers.name');
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, ['from' => date('Y'), 'to' => date('Y')], $contractor, 'awards.suppliers.name');
 
         return view(
             'contracts.contractor-view',

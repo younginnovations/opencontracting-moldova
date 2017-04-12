@@ -55,9 +55,9 @@ class HomeController extends Controller
         $tendersTrends       = $this->tenders->getTendersByOpenYear();
         $contractsTrends     = $this->contracts->getContractsByOpenYear();
         $trends              = $this->mergeContractAndTenderTrends($tendersTrends, $contractsTrends);
-        $procuringAgency     = $this->contracts->getProcuringAgency('amount', 5, date('Y'));
-        $contractors         = $this->contracts->getContractors('amount', 5, date('Y'));
-        $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5, date('Y'));
+        $procuringAgency     = $this->contracts->getProcuringAgency('amount', 5, ['from' => date('Y'), 'to' => date('Y')]);
+        $contractors         = $this->contracts->getContractors('amount', 5, ['from' => date('Y'), 'to' => date('Y')]);
+        $goodsAndServices    = $this->contracts->getGoodsAndServices('amount', 5, ['from' => date('Y'), 'to' => date('Y')]);
         $contractTitles      = $this->contracts->getAllContractTitle();
         $procuringAgencies   = $this->procuringAgency->getAllProcuringAgencyTitle();
 
@@ -121,7 +121,7 @@ class HomeController extends Controller
         $type     = $request->get('type');
         $dataFor  = ($request->get('dataFor')) ? $this->getColumnName($request->get('dataFor')) : '';
         $param    = ($request->get('param')) ? $request->get('param') : '';
-        $year     = ($request->get('year')) ? $request->get('year') : date('Y');
+        $year     = ($request->get('from')) ? ['from' => $request->get('from'), 'to' => $request->get('to')] : ['from' => date('Y'), 'to' => date('Y')];
 
         switch ($type) {
             case ('contractor'):

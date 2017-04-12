@@ -132,18 +132,20 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         array_push($query, $project);
 
+        $filter = ['$match' => ['year' => ['$gte' => (int) $year['from'], '$lte' => (int) $year['to']]]];
+        array_push($query, $filter);
 
         $groupBy = [
             '$group' => [
-                '_id'    => ['buyer' => '$buyer', 'year' => '$year'],
+                '_id'    => ['buyer' => '$buyer'],
                 'count'  => ['$sum' => 1],
                 'amount' => ['$sum' => '$amount'],
             ],
         ];
         array_push($query, $groupBy);
 
-        $filter = ['$match' => ['_id.year' => intval($year)]];
-        array_push($query, $filter);
+//        $filter = ['$match' => ['_id.year' => intval($year)]];
+
 
         $sort = ['$sort' => [$type => -1]];
         array_push($query, $sort);
@@ -192,6 +194,9 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         array_push($query, $project);
 
+        $filter = ['$match' => ['year' => ['$gte' => (int) $year['from'], '$lte' => (int) $year['to']]]];
+        array_push($query, $filter);
+
         $groupBy = [
             '$group' => [
                 '_id'    => ['buyer' => '$buyer', 'year' => '$year'],
@@ -201,8 +206,8 @@ class ContractsRepository implements ContractsRepositoryInterface
         ];
         array_push($query, $groupBy);
 
-        $filter = ['$match' => ['_id.year' => intval($year)]];
-        array_push($query, $filter);
+//        $filter = ['$match' => ['_id.year' => intval($year)]];
+//        array_push($query, $filter);
 
         $sort = ['$sort' => [$type => -1]];
         array_push($query, $sort);
@@ -271,9 +276,10 @@ class ContractsRepository implements ContractsRepositoryInterface
             array_push($query, $match);
         }
 
-
         array_push($query, $project);
 
+        $filter = ['$match' => ['year' => ['$gte' => (int) $year['from'], '$lte' => (int) $year['to']]]];
+        array_push($query, $filter);
 
         $groupBy = [
             '$group' => [
@@ -284,8 +290,8 @@ class ContractsRepository implements ContractsRepositoryInterface
         ];
         array_push($query, $groupBy);
 
-        $filter = ['$match' => ['_id.year' => intval($year)]];
-        array_push($query, $filter);
+//        $filter = ['$match' => ['_id.year' => intval($year)]];
+//        array_push($query, $filter);
 
         $sort = ['$sort' => [$type => -1]];
         array_push($query, $sort);
@@ -423,7 +429,7 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         $column = ($column === 'awards.suppliers.name') ? 'participant.fullName' : 'goods.mdValue';
 
-        return ($this->contracts->where($column, $parameter)->get(['id','amount','contractDate','finalDate','contractNumber','status.mdValue','goods.mdValue']));
+        return ($this->contracts->where($column, $parameter)->get(['id', 'amount', 'contractDate', 'finalDate', 'contractNumber', 'status.mdValue', 'goods.mdValue']));
     }
 
     /**

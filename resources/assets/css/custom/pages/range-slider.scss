@@ -1,0 +1,47 @@
+// style for range slider in homepage
+
+#procuring-agency-slider,
+#goods-slider,
+#contractors-slider
+{
+  .axis {
+    fill: #c4c4c4;
+    font-size: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+    .tick text{
+      fill: #656262
+    }
+
+  }
+  .main-line {
+    stroke: #c4c4c4;
+    stroke-width: 6px;
+    stroke-linecap: round;
+  }
+  .slider-circle {
+    fill: #0046ae;
+    stroke: #c7c7c7;
+    stroke-width: 5px;
+  }
+  .slider .handle1 text, .slider .handle2 text {
+    fill: #848484;
+    text-align: center;
+    font-size: 14px;
+  }
+  .x.axis path {
+    display: none;
+  }
+  .x.axis line {
+    stroke: black;
+    stroke-width: 1px;
+  }
+  .slider-inset {
+    stroke: #2374ec;
+    stroke-width: 4px;
+    stroke-linecap: round;
+  }
+
+}

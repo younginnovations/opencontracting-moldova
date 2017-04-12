@@ -25,6 +25,7 @@
 				<h1>JSON Downloads</h1>
 
 				<div>
+
 					<p>Links to JSON data according to the year can be downloaded from</p>
 
 					<ul>
@@ -51,7 +52,7 @@
 				</ul>
 			</div>
 		</div>
-
-
 	</div>
+
 @endsection
+

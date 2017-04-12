@@ -30,22 +30,26 @@
             <div class="chart-section-wrap">
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
-                        <form class="left-content">
+                        <form>
                             <label>
-                                <select id="select-goods-year">
-                                    @include('selectYear')
-                                </select>
+                                {{--<select id="select-goods-year">--}}
+                                    {{--@include('selectYear')--}}
+                                {{--</select>--}}
+                                <p class="inner-title"><span>@lang('general.top_5') </span> <span class="indicator">@lang('goods.goods_slash_services')</span></p>
+                                <input type="hidden" id="select-year-goods">
                                 <select id="select-goods">
                                     <option value="amount" selected>@lang('general.based_on_value')</option>
                                     <option value="count">@lang('general.based_on_count')</option>
                                 </select>
+                                {{--<div><input type="text" id="goods-range" value=""/></div>--}}
                             </label>
                         </form>
-                        <ul class="breadcrumbs right-content">
-                            <p>@lang('general.top_5') &nbsp;<span href="#"
-                                                                  class="indicator">@lang('goods.goods_slash_services')</span>
-                            </p>
-                        </ul>
+                        <div id="goods-slider"></div>
+                        {{--<ul class="breadcrumbs right-content">--}}
+                            {{--<p>@lang('general.top_5') &nbsp;<span href="#"--}}
+                                                                  {{--class="indicator">@lang('goods.goods_slash_services')</span>--}}
+                            {{--</p>--}}
+                        {{--</ul>--}}
                     </div>
                     <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                     <div class="chart-wrap default-view header-chart">
@@ -121,6 +125,7 @@
 
     </script>
     <script src="{{url('js/fixedHeader.min.js')}}"></script>
+    <script src="{{url('js/customChart.js')}}"></script>
     <script>
         $(document).ready(function () {
             if ($(window).width() > 768) {
@@ -136,12 +141,14 @@
 
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
+            createSlider(route, 'goods', widthOfParent, "barChart-goods", "goods","#goods-slider");
             createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthOfParent, 'amount');
         };
 
         makeCharts();
 
         $(window).resize(function () {
+            $("#goods-slider").empty();
             makeCharts();
         });
 

@@ -166,6 +166,20 @@
     box-shadow: none;
     padding: 40px 20px 30px;
     margin-bottom: 0;
+
+
+    .section-header .inner-title{
+
+      display: inline;
+      margin-right: 24px;
+
+      span{
+        font-size: 14px;
+        line-height: 20px;
+        color: rgba(74, 74, 74, 0.7);
+      }
+    }
+
   }
 
   ul.breadcrumbs {
