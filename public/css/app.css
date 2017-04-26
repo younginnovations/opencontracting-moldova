@@ -759,6 +759,26 @@ td.admin-contract-list a:hover {
   color: #909094;
 }
 
+span[data-tooltip] {
+  font-family: Garamond;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  background: #333;
+  color: #eee;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.record-info {
+  font-size: 15px;
+}
+
 .login-bar {
   background-color: #333;
   padding: 10px 0;
