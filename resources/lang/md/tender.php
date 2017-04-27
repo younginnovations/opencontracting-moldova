@@ -23,5 +23,6 @@ return [
     'award_criteria'                   => 'criterii de atribuire',
     'eligibility_criteria'             => 'Criterii de eligibilitate',
     'contractors'                      => 'antreprenori',
-    'for_more_detail'                  => 'Pentru mai multe detalii'
+    'for_more_detail'                  => 'Pentru mai multe detalii',
+    'appeal'                           => 'Informațiile referitoare la plângeri acoperă perioada până la 1 mai 2016 începând cu această dată - plângerile sunt soluționate de un organism separat de reclamații',
 ];

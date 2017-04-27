@@ -813,7 +813,7 @@ td.admin-contract-list a {
     display: inline-block;
     margin-left: 18px;
     a {
-      color: #FFFFFF;
+      color: #FFFFFF;phpphp
       &:hover {
         color: #909094;
       }
@@ -821,3 +821,21 @@ td.admin-contract-list a {
   }
 }
 
+span[data-tooltip] {
+  font-family: Garamond;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  background: #333;
+  color: #eee;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+  text-align: center;
+  vertical-align: middle;
+}
+.record-info{
+  font-size: 15px;
+}
