@@ -400,6 +400,15 @@ Route::get(
     ]
 );
 
+Route::post(
+    '/api/importData',
+    [
+        'as'         => 'importData.api',
+        'middleware' => 'admin',
+        'uses'       => 'Admin\DashboardController@importData',
+    ]
+);
+
 Route::get(
     'downloads',
     [

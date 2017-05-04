@@ -4,6 +4,8 @@ namespace App\Console;
 
 use App\Console\Commands\SendNewsletter;
 use App\Console\Commands\StoreCompanyInformation;
+use App\Console\Commands\ImportData;
+
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -17,7 +19,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         // Commands\Inspire::class,
         SendNewsletter::class,
-        StoreCompanyInformation::class
+        StoreCompanyInformation::class,
+        ImportData::class
     ];
 
     /**
@@ -31,5 +34,6 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->command('newsletter',['send'])->weekly();
+        $schedule->command('import',['run'])->daily();
     }
 }
