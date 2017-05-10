@@ -755,7 +755,7 @@ td.admin-contract-list a:hover {
   color: #FFFFFF;
 }
 
-.footer-menu ul li a:hover {
+phpphp .footer-menu ul li a:hover {
   color: #909094;
 }
 
@@ -1190,11 +1190,33 @@ footer form {
   box-shadow: 0px 0px 20px rgba(8, 8, 8, 0.11);
 }
 
+.each-chart-section .section-header {
+  height: 70px;
+}
+
 .each-chart-section .section-header h3 {
   font-size: 1.5rem;
   line-height: 1.875rem;
   color: #5A5A5A;
   margin-bottom: 25px;
+}
+
+.each-chart-section .section-header .icon.procuring-agency:before {
+  background: url(/images/ic_sprite.svg) -1px -84px no-repeat;
+  width: 47px;
+  margin-left: -23.5px;
+}
+
+.each-chart-section .section-header .icon.contractor:before {
+  background: url(/images/ic_sprite.svg) -2px -508px no-repeat;
+  width: 47px;
+  margin-left: -23.5px;
+}
+
+.each-chart-section .section-header .icon.goods-service:before {
+  background: url(/images/ic_sprite.svg) -4px 0px no-repeat;
+  width: 47px;
+  margin-left: -23.5px;
 }
 
 .each-chart-section .chart-wrap {
@@ -1218,6 +1240,10 @@ footer form {
   font-size: 14px;
   line-height: 20px;
   color: rgba(74, 74, 74, 0.7);
+}
+
+.each-chart-section .chart-wrap .filter-section label span.inner-title {
+  margin-right: 24px;
 }
 
 .each-chart-section .chart-wrap .anchor {
@@ -1516,10 +1542,6 @@ html[lang='md'] .top-bar-right .menu > li:not(.menu-text) > a {
   position: relative;
 }
 
-.chart-wrap select:nth-of-type(1) {
-  max-width: 90px;
-}
-
 .axis path, .axis line {
   fill: none;
   stroke: lightgrey;
@@ -1626,6 +1648,70 @@ circle {
 
 .verticalBar-value {
   fill: #4A4A4A;
+}
+
+#procuring-agency-slider .axis,
+#goods-slider .axis,
+#contractors-slider .axis {
+  fill: #c4c4c4;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#procuring-agency-slider .axis .tick text,
+#goods-slider .axis .tick text,
+#contractors-slider .axis .tick text {
+  fill: #656262;
+}
+
+#procuring-agency-slider .main-line,
+#goods-slider .main-line,
+#contractors-slider .main-line {
+  stroke: #c4c4c4;
+  stroke-width: 6px;
+  stroke-linecap: round;
+}
+
+#procuring-agency-slider .slider-circle,
+#goods-slider .slider-circle,
+#contractors-slider .slider-circle {
+  fill: #0046ae;
+  stroke: #c7c7c7;
+  stroke-width: 5px;
+}
+
+#procuring-agency-slider .slider .handle1 text, #procuring-agency-slider .slider .handle2 text,
+#goods-slider .slider .handle1 text,
+#goods-slider .slider .handle2 text,
+#contractors-slider .slider .handle1 text,
+#contractors-slider .slider .handle2 text {
+  fill: #848484;
+  text-align: center;
+  font-size: 14px;
+}
+
+#procuring-agency-slider .x.axis path,
+#goods-slider .x.axis path,
+#contractors-slider .x.axis path {
+  display: none;
+}
+
+#procuring-agency-slider .x.axis line,
+#goods-slider .x.axis line,
+#contractors-slider .x.axis line {
+  stroke: black;
+  stroke-width: 1px;
+}
+
+#procuring-agency-slider .slider-inset,
+#goods-slider .slider-inset,
+#contractors-slider .slider-inset {
+  stroke: #2374ec;
+  stroke-width: 4px;
+  stroke-linecap: round;
 }
 
 /*style for persist header for table*/
@@ -2331,6 +2417,17 @@ tfoot td, tfoot th, thead td, thead th {
   box-shadow: none;
   padding: 40px 20px 30px;
   margin-bottom: 0;
+}
+
+.wide-header .each-chart-section .section-header .inner-title {
+  display: inline;
+  margin-right: 24px;
+}
+
+.wide-header .each-chart-section .section-header .inner-title span {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(74, 74, 74, 0.7);
 }
 
 .wide-header ul.breadcrumbs {

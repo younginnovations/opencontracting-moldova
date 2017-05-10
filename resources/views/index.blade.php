@@ -11,16 +11,18 @@
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
                             <ul class="breadcrumbs">
-                                <li><span hre   f =  "#" class="indicator tender">@lang('general.tenders')</span> &nbsp; @lang('homepage.published')</li>
+                                <li><span hre f="#" class="indicator tender">@lang('general.tenders')</span>
+                                    &nbsp; @lang('homepage.published')</li>
                                 <li> &nbsp; vs. &nbsp;</li>
-                                <li><span href="#" class="indicator contracts">@lang('general.contracts')</span> &nbsp; @lang('homepage.issued')</li>
+                                <li><span href="#" class="indicator contracts">@lang('general.contracts')</span>
+                                    &nbsp; @lang('homepage.issued')</li>
                             </ul>
                         </div>
                         <div class="chart-wrap default-view" data-equalizer-watch="equal-chart-wrap">
                             <div id="linechart-homepage"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
+                                    <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
                                     <div class="dot dot3"></div>
@@ -35,6 +37,7 @@
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <span class="icon procuring-agency">icon</span>
                             <h3>@lang('general.top_5_procuring_agencies')</h3>
                         </div>
                         <div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
@@ -42,23 +45,24 @@
                                 <form>
                                     <label>
                                         <span class="inner-title">@lang('general.showing_procuring_agencies')</span>
-                                        <select id="select-agency-year">
-                                            @include('selectYear')
-                                        </select>
+                                        {{--<select id="select-agency-year">--}}
+                                        {{--@include('selectYear')--}}
+                                        {{--</select>--}}
+                                        <input type="hidden" id="select-year-agency">
 
                                         <select id="select-agency">
                                             <option value="amount" selected>@lang('general.based_on_value')</option>
                                             <option value="count">@lang('general.based_on_count')</option>
                                         </select>
-
                                     </label>
                                 </form>
+                                <div id="procuring-agency-slider"></div>
                             </div>
                             <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-procuring"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
+                                    <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
                                     <div class="dot dot3"></div>
@@ -66,7 +70,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('procuring-agency.index') }}" class="anchor">@lang('general.view_all_procuring_agencies') <span>  &rarr; </span></a>
+                            <a href="{{ route('procuring-agency.index') }}"
+                               class="anchor">@lang('general.view_all_procuring_agencies') <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -80,6 +85,7 @@
                 <div class="medium-6 small-12 columns ">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <span class="icon contractor">icon</span>
                             <h3>@lang('homepage.top_5_contractors')</h3>
                         </div>
 
@@ -89,22 +95,24 @@
                                     <label>
                                         <span class="inner-title">@lang('homepage.showing_contractors')</span>
 
-                                        <select id="select-contractor-year">
-                                            @include('selectYear')
-                                        </select>
-
+                                        {{--<select id="select-contractor-year">--}}
+                                        {{--@include('selectYear')--}}
+                                        {{--</select>--}}
+                                        <input type="hidden" id="select-year-contractor">
                                         <select id="select-contractor">
                                             <option value="amount" selected>@lang('general.based_on_value')</option>
                                             <option value="count">@lang('general.based_on_count')</option>
                                         </select>
+                                        {{--<div><input type="text" id="contractor-range" value=""/></div>--}}
                                     </label>
                                 </form>
+                                <div id="contractors-slider"></div>
                             </div>
                             <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-contractors"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
+                                    <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
                                     <div class="dot dot3"></div>
@@ -112,7 +120,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('contracts.contractorIndex') }}" class="anchor">@lang('homepage.view_all_contractors') <span>  &rarr; </span></a>
+                            <a href="{{ route('contracts.contractorIndex') }}"
+                               class="anchor">@lang('homepage.view_all_contractors') <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -120,6 +129,7 @@
                 <div class="medium-6 small-12 columns ">
                     <div class="each-chart-section">
                         <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                            <span class="icon goods-service">icon</span>
                             <h3>@lang('general.top_5_goods_&_services_procured')</h3>
                         </div>
 
@@ -129,22 +139,25 @@
                                     <label>
                                         <span class="inner-title">@lang('general.showing_goods_and_services')</span>
 
-                                        <select id="select-goods-year">
-                                            @include('selectYear')
-                                        </select>
+                                        {{--<select id="select-goods-year">--}}
+                                        {{--@include('selectYear')--}}
+                                        {{--</select>--}}
+                                        <input type="hidden" id="select-year-goods">
 
                                         <select id="select-goods">
                                             <option value="amount" selected>@lang('general.based_on_value')</option>
                                             <option value="count">@lang('general.based_on_count')</option>
                                         </select>
+                                        {{--<div><input type="text" id="goods-range" value=""/></div>--}}
                                     </label>
                                 </form>
+                                <div id="goods-slider"></div>
                             </div>
                             <div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
                             <div id="barChart-goods"></div>
                             <div class="loader-text">
                                 <div class="text">@lang('general.fetching_data')
-                                     <span>
+                                    <span>
                                     <div class="dot dot1"></div>
                                     <div class="dot dot2"></div>
                                     <div class="dot dot3"></div>
@@ -152,7 +165,8 @@
                                 </span>
                                 </div>
                             </div>
-                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services') <span>  &rarr; </span></a>
+                            <a href="{{ route('goods.index') }}" class="anchor">@lang('general.view_all_goods_services')
+                                <span>  &rarr; </span></a>
                         </div>
                     </div>
                 </div>
@@ -243,7 +257,7 @@
 //            });
         });
     </script>
-    <script src="{{url('js/customChart.min.js')}}"></script>
+    <script src="{{url('js/customChart.js')}}"></script>
     <script>
         var route = '{{ route("filter") }}';
         var trends = {!! $trends  !!};
@@ -254,6 +268,11 @@
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
             createLineChart(trends, widthOfParent);
+
+            createSlider(route, 'agency', widthOfParent, "barChart-procuring", "procuring-agency","#procuring-agency-slider");
+            createSlider(route, 'contractor', widthOfParent, "barChart-contractors", "contracts/contractor","#contractors-slider");
+            createSlider(route, 'goods', widthOfParent, "barChart-goods", "goods","#goods-slider");
+
             createBarChartProcuring(procuringAgencies, "barChart-procuring", "procuring-agency", widthOfParent, 'amount');
             createBarChartProcuring(contractors, "barChart-contractors", "contracts/contractor", widthOfParent, 'amount');
             createBarChartProcuring(goodsAndServices, "barChart-goods", "goods", widthOfParent, 'amount');
@@ -263,6 +282,9 @@
 
         $(window).resize(function () {
             $("#linechart-homepage").empty();
+            $("#procuring-agency-slider").empty();
+            $("#contractors-slider").empty();
+            $("#goods-slider").empty();
             makeCharts();
         });
 

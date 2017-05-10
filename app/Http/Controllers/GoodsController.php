@@ -39,7 +39,7 @@ class GoodsController extends Controller
 
     public function index()
     {
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, date('Y'));
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, ['from' => date('Y'), 'to' => date('Y')]);
         $totalGoods       = $this->goods->getGoodsCount("");
 
         return view('goods.index', compact('goodsAndServices', 'totalGoods'));
@@ -81,8 +81,8 @@ class GoodsController extends Controller
 
 
         $amountTrend     = $this->contracts->encodeToJson($contractsTrend, 'amount', 'view');
-        $contractors     = $this->contracts->getContractors('amount', 5, date('Y'), $goods, "awards.items.classification.description");
-        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, date('Y'), $goods, 'awards.items.classification.description');
+        $contractors     = $this->contracts->getContractors('amount', 5, ['from' => date('Y'), 'to' => date('Y')], $goods, "awards.items.classification.description");
+        $procuringAgency = $this->contracts->getProcuringAgency('amount', 5, ['from' => date('Y'), 'to' => date('Y')], $goods, 'awards.items.classification.description');
 
         return view('goods.view', compact('goods', 'goodsDetail', 'totalAmount', 'contractTrend', 'amountTrend', 'contractors', 'procuringAgency'));
     }

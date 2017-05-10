@@ -79,6 +79,7 @@
 				<div class="medium-6 small-12 columns">
 					<div class="each-chart-section ">
 						<div class="section-header clearfix" data-equalizer-watch="equal-header">
+							<span class="icon contractor">icon</span>
 							<h3>@lang('homepage.top_5_contractors')</h3>
 						</div>
 						<div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
@@ -87,16 +88,19 @@
 									<div>
 										<label>
 											<span class="inner-title">@lang('homepage.showing_contractors')</span>
-											<select id="select-contractor-year">
-												@include('selectYear')
-											</select>
+											{{--<select id="select-contractor-year">--}}
+												{{--@include('selectYear')--}}
+											{{--</select>--}}
+											<input type="hidden" id="select-year-contractor">
 											<select id="select-contractor" data-for="goods" data="{{ $goods }}">
 												<option value="amount" selected>Based on value</option>
 												<option value="count">Based on count</option>
 											</select>
+											{{--<div><input type="text" id="contractor-range" value=""/></div>--}}
 										</label>
 									</div>
 								</form>
+								<div id="contractors-slider"></div>
 							</div>
 							<div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
 							<div id="barChart-contractors"></div>
@@ -118,6 +122,7 @@
 				<div class="medium-6 small-12 columns">
 					<div class="each-chart-section">
 						<div class="section-header clearfix" data-equalizer-watch="equal-header">
+							<span class="icon procuring-agency">icon</span>
 							<h3>@lang('general.top_5_procuring_agencies')</h3>
 						</div>
 						<div class="chart-wrap default-view default-barChart" data-equalizer-watch="equal-chart-wrap">
@@ -126,16 +131,19 @@
 									<div>
 										<label>
 											<span class="inner-title">@lang('general.showing_procuring_agencies')</span>
-											<select id="select-agency-year">
-												@include('selectYear')
-											</select>
+											{{--<select id="select-agency-year">--}}
+												{{--@include('selectYear')--}}
+											{{--</select>--}}
+											<input type="hidden" id="select-year-agency">
 											<select id="select-agency" data-for="goods" data="{{ $goods }}">
 												<option value="amount" selected>Based on value</option>
 												<option value="count">Based on count</option>
 											</select>
+											{{--<div><input type="text" id="procuring-agency-range" value=""/></div>--}}
 										</label>
 									</div>
 								</form>
+								<div id="procuring-agency-slider"></div>
 							</div>
 							<div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
 							<div id="barChart-procuring"></div>
@@ -230,6 +238,7 @@
         createLinks();
 	</script>
 	<script src="{{url('js/fixedHeader.min.js')}}"></script>
+	<script src="{{url('js/customChart.js')}}"></script>
 	<script>
         $(document).ready(function () {
             if ($(window).width() > 768) {
@@ -251,16 +260,21 @@
         var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();
             createLineChartRest(JSON.parse(contracts), widthofParent);
-            createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
-            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthofParent, 'amount');
-            createBarChartProcuring(JSON.parse(procuringAgency), "barChart-procuring", "procuring-agency", widthofParent, 'amount');
+			createSlider(route, 'contractor', widthOfParent, "barChart-contractors", "goods","#contractors-slider");
+			createSlider(route, 'agency', widthOfParent, "barChart-procuring", "goods","#procuring-agency-slider");
+
+			createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
+//            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthofParent, 'amount');
+//            createBarChartProcuring(JSON.parse(procuringAgency), "barChart-procuring", "procuring-agency", widthofParent, 'amount');
         };
 
         makeCharts();
 
         $(window).resize(function () {
             $("#linechart-rest").empty();
-            $("#barChart-amount").empty();
+			$('#contractors-slider').empty();
+			$('#procuring-agency-slider').empty();
+			$("#barChart-amount").empty();
             makeCharts();
         });
 

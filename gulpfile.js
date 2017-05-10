@@ -11,7 +11,7 @@ var elixir = require('laravel-elixir');
  |
  */
 
-elixir(function(mix){
+elixir(function (mix) {
     mix.sass('./resources/assets/css/custom/app.scss', './public/css/app.css');
 
     mix.sass([
@@ -20,21 +20,21 @@ elixir(function(mix){
         './resources/assets/css/vendor/cs-skin-elastic.css',
         './resources/assets/css/vendor/cs-select.css',
         './resources/assets/css/vendor/jquery.json-viewer.css'
-    ],'./public/css/vendors.css');
+    ], './public/css/vendors.css');
 
     mix.scripts([
         './resources/assets/js/custom/api.js',
         './resources/assets/js/custom/ui.js'
-    ],'./public/js/app.js');
+    ], './public/js/app.js');
 
     mix.scripts([
         './resources/assets/js/custom/contracts.js'
-    ],'./public/js/contracts.js');
+    ], './public/js/contracts.js');
 
     mix.scripts([
         './resources/assets/js/custom/login.js',
         './resources/assets/js/vendor/autosize.min.js'
-    ],'./public/js/comment.js');
+    ], './public/js/comment.js');
 
     mix.scripts([
 
@@ -43,11 +43,12 @@ elixir(function(mix){
         './resources/assets/js/charts/custom/horizontal-barChart.js',
         './resources/assets/js/charts/custom/barChart-contract.js',
         './resources/assets/js/charts/custom/lineChart-header.js',
-    ],'./public/js/customChart.js');
+        './resources/assets/js/charts/custom/range-slider.js',
+    ], './public/js/customChart.js');
 
     mix.scripts([
         './resources/assets/js/charts/vendor/d3.min.js'
-    ],'./public/js/vendorChart.js');
+    ], './public/js/vendorChart.js');
 
     mix.scripts([
         './resources/assets/js/vendor/jquery-2.2.2.min.js',
@@ -57,13 +58,14 @@ elixir(function(mix){
         './resources/assets/js/vendor/classie.js',
         './resources/assets/js/vendor/selectFx.js',
         './resources/assets/js/vendor/jquery.json-viewer.js'
-    ],'./public/js/vendor.js');
+
+    ], './public/js/vendor.js');
 
     mix.scripts([
         './resources/assets/js/custom/wiki.js'
-    ],'./public/js/wiki.js');
+    ], './public/js/wiki.js');
 
     mix.scripts([
         './resources/assets/js/vendor/markdown-it.js'
-    ],'./public/js/vendorMarkdown.js');
+    ], './public/js/vendorMarkdown.js');
 });

@@ -18,6 +18,7 @@ interface ContractsRepositoryInterface
      *
      * @param $type
      * @param $limit
+     * @param $year
      * @param $condition
      * @param $column
      *
@@ -30,6 +31,7 @@ interface ContractsRepositoryInterface
      *
      * @param $type
      * @param $limit
+     * @param $year
      * @param $condition
      * @param $column
      *
@@ -48,6 +50,7 @@ interface ContractsRepositoryInterface
      *
      * @param $type
      * @param $limit
+     * @param $year
      * @param $condition
      * @param $column
      *

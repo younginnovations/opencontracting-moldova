@@ -57,7 +57,7 @@
 
 		<div class="name-value-section each-row clearfix">
 			<div class="medium-6 small-12 columns each-detail-wrap">
-				<span class="icon contract-period">icon</span>
+				<span class="icon contractor">icon</span>
 				<span class="each-detail">
                          <div class="name  columns">@lang('general.contractor')</div>
                         <div class="value columns">

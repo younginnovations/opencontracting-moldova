@@ -30,21 +30,27 @@
 			<div class="chart-section-wrap">
 				<div class="each-chart-section">
 					<div class="section-header clearfix">
-						<form class="left-content">
+						<form>
 							<label>
-								<select id="select-agency-year">
-									@include('selectYear')
-								</select>
+								{{--<select id="select-agency-year">--}}
+									{{--@include('selectYear')--}}
+								{{--</select>--}}
+								{{--<ul class="breadcrumbs right-content">--}}
+									{{--<p>@lang('general.top_5') &nbsp;<span href="#" class="indicator">@lang('agency.agencies')</span>--}}
+									{{--</p>--}}
+								{{--</ul>--}}
+								<p class="inner-title"><span>@lang('general.top_5') </span> <span class="indicator">@lang('agency.agencies')</span></p>
+
+
+								<input type="hidden" id="select-year-agency">
 								<select id="select-agency">
 									<option value="amount" selected>@lang('general.based_on_value')</option>
 									<option value="count">@lang('general.based_on_count')</option>
 								</select>
+								{{--<div><input type="text" id="procuring-agency-range" value=""/></div>--}}
 							</label>
 						</form>
-						<ul class="breadcrumbs right-content">
-							<p>@lang('general.top_5') &nbsp;<span href="#" class="indicator">@lang('agency.agencies')</span>
-							</p>
-						</ul>
+						<div id="procuring-agency-slider"></div>
 					</div>
 					<div class="disabled-text">@lang('general.click_on_label_or_graph')</div>
 					<div class="chart-wrap default-view header-chart">
@@ -122,6 +128,7 @@
 
 	</script>
 	<script src="{{url('js/fixedHeader.min.js')}}"></script>
+	<script src="{{url('js/customChart.js')}}"></script>
 	<script>
         $(document).ready(function () {
             if ($(window).width() > 768) {
@@ -135,14 +142,16 @@
         var procuringAgencies = '{!! $procuringAgency  !!}';
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
-            createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');
+			createSlider(route, 'agency', widthOfParent, "barChart-procuring", "procuring-agency","#procuring-agency-slider");
+			createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');
 
-        };
+		};
 
         makeCharts();
 
         $(window).resize(function () {
-            makeCharts();
+			$("#procuring-agency-slider").empty();
+			makeCharts();
         });
 
 	</script>

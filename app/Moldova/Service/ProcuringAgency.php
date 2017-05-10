@@ -4,7 +4,7 @@ namespace App\Moldova\Service;
 
 
 use App\Moldova\Repositories\ProcuringAgency\ProcuringAgencyRepositoryInterface;
-use function MongoDB\BSON\toPHP;
+//use function MongoDB\BSON\toPHP;
 use MongoDB\Model\BSONArray;
 
 class ProcuringAgency
@@ -37,7 +37,7 @@ class ProcuringAgency
         if ($params['order'][0]['column'] != 3) {
             foreach ($agencyList as $key => $agency) {
                 $sum                                = $this->getContractsValue($agency['contract_value']);
-                $agencyList[$key]['contract_value'] = number_format($sum,2);
+                $agencyList[$key]['contract_value'] = number_format($sum, 2);
             }
         } else {
             foreach ($agencyList as $key => $agency) {
