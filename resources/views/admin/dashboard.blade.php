@@ -54,7 +54,14 @@
 		<div class="clearfix"></div>
 
 		<div class="text-center dashboard-highlight-import">
-			<a class="button yellow-btn">Import data now</a>
+			{{csrf_field()}}
+			<button id="import-data" class="button yellow-btn" @if ($import_running == true)
+			disabled
+			@endif
+			>
+				{{$import_running==true?"Importing":"Import data now"}}
+			</button>
+			<div class="typing_loader"></div>
 		</div>
 
 
@@ -83,7 +90,7 @@
 				<div class="columns medium-6 small-12 external-links-links">
 					<h4 class="external-links-title">Useful links</h4>
 					<ul>
-						<li><a href="">View data assessment</a></li>
+						<li><a href="/assessment.csv">View data assessment</a></li>
 						<li><a href="/help">General IT troubleshooting guide</a></li>
 					</ul>
 				</div>
@@ -92,4 +99,16 @@
 		</div>
 
 	</div>
+@endsection
+@section('script')
+	<script type="text/javascript">
+		$('#import-data').click(function (e) {
+            var csrf = $('input[name="_token"]').val();
+            var data = {_token:csrf};
+			API.post('{{route('importData.api')}}', data).success(function () {
+				$('#import-data').text('Importing');
+                $('#import-data').attr('disabled', true);
+            })
+        })
+	</script>
 @endsection

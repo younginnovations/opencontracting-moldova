@@ -30,6 +30,8 @@ db.contracts_collection.find({}).forEach(function(contract){
 
     contract.contractDate = changeToISO(contract.contractDate);
     contract.finalDate    = changeToISO(contract.finalDate);
+    contract.contractDate    = new Date(contract.contractDate);
+    contract.finalDate    = new Date(contract.finalDate);
     var id = contract._id;
     delete contract._id;
     contracts.push(contract);

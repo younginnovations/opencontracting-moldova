@@ -90,6 +90,13 @@ namespace :moldova do
         end
     end
 
+    task :create_data_folder do
+        on roles(:all) do
+            execute "mkdir #{current_path}/db_dump/data"
+            execute :chmod, "-R 777 #{current_path}/db_dump/data"
+        end
+    end
+
     desc "Symbolic link for shared folders"
     task :create_symlink do
         on roles(:app) do
@@ -155,6 +162,7 @@ namespace :moldova do
         on roles(:all) do
             invoke "moldova:create_storage_folder"
             invoke "moldova:create_uploads_folder"
+            invoke "moldova:create_data_folder"
         end
     end
 end
