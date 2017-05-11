@@ -223,7 +223,7 @@
 	<div class="row table-wrapper">
 		{{--<a target="_blank" class="export"--}}
 		   {{--href="{{route('contractorDetail.export',['name'=>$contractor])}}">@lang('general.export_as_csv')</a>--}}
-		<table id="table_id" class="responsive hover custom-table persist-area">
+		<table id="table_id" class="data_table responsive hover custom-table persist-area">
 
 			<thead class="persist-header">
 			<th>@lang('general.contract_number')</th>
@@ -242,8 +242,8 @@
 					<td class="hide">{{ (int) $contract['id'] }}</td>
 					<td>{{ (!empty($contract['goods']['mdValue']))?$contract['goods']['mdValue']:'-' }}</td>
 					<td>{{ $contract['status']['mdValue'] }}</td>
-					<td class="dt">{{ $contract['contractDate']->toDateTime()->format('c') }}</td>
-					<td class="dt">{{ $contract['finalDate']->toDateTime()->format('c') }}</td>
+					<td class="dt">{{ $contract['contractDate']->toDateTime()->format('Y-m-d') }}</td>
+					<td class="dt">{{ $contract['finalDate']->toDateTime()->format('Y-m-d') }}</td>
 					<td>{{ number_format($contract['amount'],2) }}</td>
 				</tr>
 
@@ -268,7 +268,7 @@
 
         var createLinks = function () {
 
-            $('#table_id tbody tr').each(function () {
+            $('#table_id').find('tbody tr').each(function () {
                 $(this).css('cursor', 'pointer');
                 $(this).click(function () {
                     var contractId = $(this).find("td:nth-child(2)").text();
@@ -278,12 +278,12 @@
             });
         };
 
-        var makeTable = $("#table_id").DataTable({
+        var makeTable = $(".data_table").DataTable({
             "bFilter": false,
             "fnDrawCallback": function () {
                 changeDateFormat();
                 createLinks();
-                if ($('#table_id tr').length < 10 && $('a.current').text() === "1") {
+                if ($('#table_id').find('tr').length < 10 && $('a.current').text() === "1") {
                     $('.dataTables_paginate').hide();
                 } else {
                     $('.dataTables_paginate').show();

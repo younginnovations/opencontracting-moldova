@@ -166,7 +166,12 @@ class Contracts
      */
     public function getContractorsList($params)
     {
-        return $this->contracts->getContractorsList($params);
+        return [
+            'draw' => (int) $params['draw'],
+            'recordsTotal' => $this->getContractorsCount(""),
+            'recordsFiltered' => $this->getContractorsCount($params),
+            'data' => $this->contracts->getContractorsList($params)
+        ];
     }
 
     /**
@@ -261,9 +266,9 @@ class Contracts
         return $response;
     }
 
-    public function getContractorsCount()
+    public function getContractorsCount($params)
     {
-        return $this->contracts->getContractorsCount();
+        return $this->contracts->getContractorsCount($params);
     }
 
     /**
