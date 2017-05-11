@@ -94,11 +94,11 @@
             "processing": true,
             "serverSide": true,
             "ajax": '/api/contactorData',
-            "ajaxDataProp": '',
+           // "ajaxDataProp": '',
             "columns": [
                 {'data': '_id'},
                 {'data': 'count'},
-                {'data': 'scheme'},
+                {'data': 'scheme'}
             ],
             "fnDrawCallback": function () {
                 changeDateFormat();
@@ -109,7 +109,7 @@
 
         var createLinks = function () {
 
-            $('#table_id tbody tr').each(function () {
+            $('#table_id').find('tbody tr').each(function () {
                 $(this).css('cursor', 'pointer');
                 $(this).click(function () {
                     var contractId = $(this).find("td:first").text();

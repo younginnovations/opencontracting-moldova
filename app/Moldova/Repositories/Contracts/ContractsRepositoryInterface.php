@@ -127,9 +127,10 @@ interface ContractsRepositoryInterface
     public function getContractorsByOpenYear();
 
     /**
+     * @param $params
      * @return mixed
      */
-    public function getContractorsCount();
+    public function getContractorsCount($params);
 
     /**
      * @param $contractor

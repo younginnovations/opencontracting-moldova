@@ -663,29 +663,45 @@ class ContractsRepository implements ContractsRepositoryInterface
         return ($result);
     }
 
-    public function getContractorsCount()
+    public function getContractorsCount($params)
     {
+        $search = "";
+        if ($params != "") {
+            $search      = $params['search']['value'];
+        }
+
         $query  = [];
+        $filter = [];
         $unwind = [
             '$unwind' => '$awards',
         ];
         array_push($query, $unwind);
+
+        if ($search != '') {
+            $search = StringUtil::accentToRegex($search);
+            $filter = [
+                '$match' => ['awards.suppliers.name' => new Regex(".*$search.*", 'i')],
+            ];
+        }
+
+        if (!empty($filter)) {
+            array_push($query, $filter);
+        }
+
         $groupBy = [
             '$group' => [
-                '_id'    => '$awards.suppliers.name',
-                'count'  => ['$sum' => 1],
-                'scheme' => ['$addToSet' => '$awards.suppliers.additionalIdentifiers.scheme'],
+                '_id'    => '$awards.suppliers.name'
             ],
         ];
-
         array_push($query, $groupBy);
+
         $result = OcdsRelease::raw(
             function ($collection) use ($query) {
                 return $collection->aggregate($query);
             }
-        );
+        )->count();
 
-        return (count($result));
+        return $result;
     }
 
     /**
