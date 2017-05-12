@@ -9,15 +9,17 @@ db.tmp_tenders_summary.remove({});
 db.ocds_release.find().forEach(function(release){
 	
             var t = {
-                    'tender_id'         : release.tender['id'],
-                    'title'         	: release.tender['title'],
-                    'description'    	: release.tender['description'],
-                    'procuringEntity' 	: release.tender['procuringEntity']['name'],
-                    'status'          	: release.tender['status'],
-                    'procurementMethod'	: release.tender['procurementMethod'],
-                    'tender_start_date'	: release.tender['tenderPeriod']['startDate'],
-                    'tender_end_date' 	: release.tender['tenderPeriod']['endDate']
-            };
+                    'ocid'                  : release.ocid,
+                    'id'                    : release.tender['id'],
+                    'title'         	    : release.tender['title'],
+                    'description'    	    : release.tender['description'],
+                    'status'          	    : release.tender['status'],
+                    'procurementMethod'	    : release.tender['procurementMethod'],
+                    'tenderPeriod/startDate': release.tender['tenderPeriod']['startDate'],
+                    'tenderPeriod/endDate' 	: release.tender['tenderPeriod']['endDate'],
+                    'procuringEntity/name' 	: release.tender['procuringEntity']['name'],
+                    'procuringEntity/id' 	: release.tender['procuringEntity']['identifier']['id']
+            };
             db.tmp_tenders_summary.insert(t);            
        
 });
