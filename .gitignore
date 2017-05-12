@@ -9,6 +9,8 @@ Homestead.json
 /public/blacklist.csv
 /public/company08.xlsx
 /public/feedback.csv
+/public/csv
+/public/jsons
 /public/newcompany.csv
 /db_dump/data
 /go-pear.phar

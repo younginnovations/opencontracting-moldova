@@ -1,4 +1,4 @@
-lock '3.8.0'
+lock '3.8.1'
 
 # Application #
 #####################################################################################
@@ -9,7 +9,6 @@ set :user,            ENV["user"] || ENV["USER"] || "moldova"
 # SCM #
 #####################################################################################
 set :repo_url,        'git@github.com:younginnovations/opencontracting-moldova.git'
-set :scm,             :git
 set :repo_base_url,   :'http://github.com/'
 set :repo_diff_path,  :'younginnovations/opencontracting-moldova/compare/master...'
 
@@ -74,26 +73,34 @@ namespace :moldova do
     task :create_storage_folder do
         on roles(:all) do
             execute "mkdir -p #{shared_path}/storage"
-            execute "mkdir #{shared_path}/storage/app"
-            execute "mkdir #{shared_path}/storage/framework"
-            execute "mkdir #{shared_path}/storage/framework/cache"
-            execute "mkdir #{shared_path}/storage/framework/sessions"
-            execute "mkdir #{shared_path}/storage/framework/views"
-            execute "mkdir #{shared_path}/storage/logs"
+            execute "mkdir -p #{shared_path}/storage/app"
+            execute "mkdir -p #{shared_path}/storage/framework"
+            execute "mkdir -p #{shared_path}/storage/framework/cache"
+            execute "mkdir -p #{shared_path}/storage/framework/sessions"
+            execute "mkdir -p #{shared_path}/storage/framework/views"
+            execute "mkdir -p #{shared_path}/storage/logs"
             execute :chmod, "-R 777 #{shared_path}/storage"
         end
     end
+
+    task :create_json_csv_folder do
+        on roles(:all) do
+            execute "mkdir -p #{shared_path}/jsons"
+            execute "mkdir -p #{shared_path}/csv"
+        end
+    end
+
     task :create_uploads_folder do
         on roles(:all) do
-            execute "mkdir #{shared_path}/uploads"
+            execute "mkdir -p #{shared_path}/uploads"
             execute :chmod, "-R 777 #{shared_path}/uploads/"
         end
     end
 
     task :create_data_folder do
         on roles(:all) do
-            execute "mkdir #{current_path}/db_dump/data"
-            execute :chmod, "-R 777 #{current_path}/db_dump/data"
+            execute "mkdir -p #{shared_path}/data"
+            execute :chmod, "-R 777 #{shared_path}/data/"
         end
     end
 
@@ -104,6 +111,9 @@ namespace :moldova do
                 execute "rm -r #{release_path}/storage"
                 execute "ln -s #{shared_path}/storage/ #{release_path}"
                 execute "ln -s #{shared_path}/uploads #{release_path}/public"
+                execute "ln -s #{shared_path}/jsons #{release_path}/public"
+                execute "ln -s #{shared_path}/csv #{release_path}/public"
+                execute "ln -s #{shared_path}/data #{release_path}/public"
             end
         end
     end
@@ -157,12 +167,14 @@ namespace :moldova do
                 execute "find #{release_path}/public -type f -name 'ver.txt' -exec chmod 664 {} \\;"
             end
         end
+
     desc " Set up project "
     task :set_up do
         on roles(:all) do
             invoke "moldova:create_storage_folder"
             invoke "moldova:create_uploads_folder"
             invoke "moldova:create_data_folder"
+            invoke "moldova:create_json_csv_folder"
         end
     end
 end
@@ -244,12 +256,22 @@ namespace :php5fpm do
     end
 end
 
+namespace :supervisor do
+    desc 'Restart supervisor'
+        task :restart do
+            on roles(:all) do
+            execute :sudo, :supervisorctl, "restart laravel-worker:"
+        end
+    end
+end
+
 namespace :deploy do
     after :starting, "hipchat:start"
     after :updated, "vendor:copy"
     after :updated, "composer:install"
     ##after :updated, "moldova:optimize"
     after :updated, "environment:set_variables"
+    after :published, "moldova:set_up"
     after :published, "moldova:create_symlink"
     after :published, "generate:key"
     after :finished, "hipchat:deployed"
@@ -258,6 +280,8 @@ end
 
 after "deploy",   "nginx:reload"
 after "deploy",   "php5fpm:restart"
+after "deploy",   "supervisor:restart"
+
 if Rake::Task.task_defined? 'deploy:failed'
     after 'deploy:failed', :send_for_help do
        invoke "hipchat:notify_deploy_reverted"
