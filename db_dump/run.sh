@@ -1,6 +1,8 @@
+echo `date`
 cd `dirname $0`
 
 export DATABASE=`awk 'BEGIN{FS="="} {if(/DB_DATABASE/) print $2}' ././../.env`
+export PUBLIC_PATH=`readlink -e ../public`
 
 cd etender2mongoscripts
 
@@ -16,10 +18,11 @@ mongo localhost:27017/$DATABASE mongojsscripts/change_contracts_date.js
 
 sh ./createCsv.sh
 
-#cd mongojsscripts
+cd mongojsscripts
 #
 #mongo localhost:27017/etenders change_type_of_ocds_release_date.js
-#sh ./generate_json_file.sh
+sh ./generate_json_file.sh
+cd ..
 
 #cd ../linkage
 #
@@ -37,9 +40,10 @@ sh ./createCsv.sh
 cd assessmentscripts
 
 mongo localhost:27017/$DATABASE prepare.js
-mongo localhost:27017/$DATABASE --quiet summarize.js > ../../public/assessment.csv
+mongo localhost:27017/$DATABASE --quiet summarize.js > $PUBLIC_PATH/csv/assessment.csv
 
 cd ..
 
 sed -i.bak '/REFRESH_DATE/d' ././../.env
 echo "REFRESH_DATE=$(date +%F)" >> ././../.env
+echo `date`

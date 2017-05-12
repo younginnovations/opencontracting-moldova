@@ -90,7 +90,7 @@
 				<div class="columns medium-6 small-12 external-links-links">
 					<h4 class="external-links-title">Useful links</h4>
 					<ul>
-						<li><a href="/assessment.csv">View data assessment</a></li>
+						<li><a href="/csv/assessment.csv">View data assessment</a></li>
 						<li><a href="/help">General IT troubleshooting guide</a></li>
 					</ul>
 				</div>
