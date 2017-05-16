@@ -3,6 +3,7 @@
 namespace App\Moldova\Service;
 
 
+use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Repositories\Goods\GoodsRepositoryInterface;
 
 class Goods
@@ -66,5 +67,30 @@ class Goods
     public function getGoodsCount($params)
     {
         return $this->goods->getGoodsCount($params);
+    }
+
+    //to get list of all goods/services
+    public function allGoods()
+    {
+        $query  = [];
+        $unwind = [
+            '$unwind' => '$awards',
+        ];
+        array_push($query, $unwind);
+       $groupBy = [
+            '$group' => [
+                '_id'   => '$awards.items.classification.description',
+                'count' => ['$sum' => 1],
+            ],
+        ];
+        array_push($query, $groupBy);
+        $result = OcdsRelease::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        );
+
+        return ($result);
+
     }
 }

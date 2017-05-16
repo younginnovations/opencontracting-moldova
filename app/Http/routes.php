@@ -15,6 +15,8 @@ if (getenv('APP_ENV') === 'local') {
     \DB::connection('mongodb')->enableQueryLog();
 }
 
+
+
 Route::get(
     '/',
     ['as' => '/', 'uses' => 'HomeController@index']

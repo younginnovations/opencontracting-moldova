@@ -476,6 +476,7 @@ class ContractsRepository implements ContractsRepositoryInterface
         $contractor = (!empty($search['contractor'])) ? $search['contractor'] : '';
         $agency     = (!empty($search['agency'])) ? $search['agency'] : '';
         $range      = (!empty($search['amount'])) ? explode("-", $search['amount']) : '';
+        $goods = (!empty($search['goods'])) ? $search['goods'] : '';
         $startDate  = (!empty($search['startDate'])) ? $search['startDate'] : '';// (!empty($search['startDate'])) ? $this->formatDate($search['startDate']) : '';
         $endDate    = (!empty($search['endDate'])) ? $search['endDate'] : '';//(!empty($search['endDate'])) ? $this->formatDate($search['endDate']) : '';
 
@@ -519,23 +520,23 @@ class ContractsRepository implements ContractsRepositoryInterface
 //        }
 
 
-        if (!empty($q) || !empty($agency) || !empty($contractor) || !empty($search['amount']) || !empty($startDate) || !empty($endDate)) {
+        if (!empty($q) || !empty($agency) || !empty($contractor) || !empty($search['amount']) || !empty($startDate) || !empty($endDate) || !empty($goods)) {
 
-            $query   = [];
+            $query = [];
             $project = [
                 '$project' => [
-                    "syear"          => ['$year' => '$contractDate'],
-                    "fyear"          => ['$year' => '$finalDate'],
-                    "id"             => '$id',
+                    "syear" => ['$year' => '$contractDate'],
+                    "fyear" => ['$year' => '$finalDate'],
+                    "id" => '$id',
                     "contractNumber" => '$contractNumber',
-                    "tender"         => '$tender.tenderData.goodsDescr',
-                    "agency"         => '$tender.stateOrg.orgName',
-                    "contractDate"   => '$contractDate',
-                    "finalDate"      => '$finalDate',
-                    "amount"         => '$amount',
-                    "goods"          => '$goods.mdValue',
-                    'participant'    => '$participant.fullName',
-                    'status'         => '$status.mdValue',
+                    "tender" => '$tender.tenderData.goodsDescr',
+                    "agency" => '$tender.stateOrg.orgName',
+                    "contractDate" => '$contractDate',
+                    "finalDate" => '$finalDate',
+                    "amount" => '$amount',
+                    "goods" => '$goods.mdValue',
+                    'participant' => '$participant.fullName',
+                    'status' => '$status.mdValue',
                 ],
             ];
             array_push($query, $project);
@@ -561,29 +562,33 @@ class ContractsRepository implements ContractsRepositoryInterface
                 $match = ['$match' => ['agency' => $agency]];
                 array_push($query, $match);
             }
+            if (!empty($goods)) {
+                $match = ['$match' => ['goods' => $goods]];
+                array_push($query, $match);
+            }
 
             if (!empty($contractor)) {
                 $match = ['$match' => ['participant' => $contractor]];
                 array_push($query, $match);
             }
             if (!empty($search['amount']) && $range[1] != 'Above') {
-                $range[0] = (int) $range[0];
-                $range[1] = (int) $range[1];
+                $range[0] = (int)$range[0];
+                $range[1] = (int)$range[1];
 
                 $match = ['$match' => ['amount' => ['$gte' => $range[0], '$lte' => $range[1]]]];
                 array_push($query, $match);
             } elseif (!empty($search['amount']) && $range[1] === 'Above') {
-                $match = ['$match' => ['amount' => ['$gte' => (int) $range[0]]]];
+                $match = ['$match' => ['amount' => ['$gte' => (int)$range[0]]]];
                 array_push($query, $match);
             }
 
             if (!empty($startDate)) {
-                $match = ['$match' => ['syear' => ['$gte' => (int) $startDate]]];
+                $match = ['$match' => ['syear' => ['$gte' => (int)$startDate]]];
                 array_push($query, $match);
             }
 
             if (!empty($endDate)) {
-                $match = ['$match' => ['fyear' => ['$lte' => (int) $endDate]]];
+                $match = ['$match' => ['syear' => ['$lte' => (int)$endDate]]];
                 array_push($query, $match);
             }
 
@@ -597,6 +602,7 @@ class ContractsRepository implements ContractsRepositoryInterface
             return ($res);
 
         }
+        return [];
     }
 
     /**

@@ -165,4 +165,5 @@ class GoodsRepository implements GoodsRepositoryInterface
 
         return (count($result));
     }
+
 }
