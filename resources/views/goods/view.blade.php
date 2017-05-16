@@ -260,8 +260,10 @@
         var makeCharts = function () {
             var widthofParent = $('.chart-wrap').width();
             createLineChartRest(JSON.parse(contracts), widthofParent);
-			createSlider(route, 'contractor', widthOfParent, "barChart-contractors", "goods","#contractors-slider");
-			createSlider(route, 'agency', widthOfParent, "barChart-procuring", "goods","#procuring-agency-slider");
+			createSlider(route, 'contractor', widthOfParent, "barChart-contractors", "contracts/contractor",
+				"#contractors-slider");
+			createSlider(route, 'agency', widthOfParent, "barChart-procuring", "procuring-agency",
+				"#procuring-agency-slider");
 
 			createBarChartContract(JSON.parse(amountTrend), "barChart-amount");
 //            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthofParent, 'amount');

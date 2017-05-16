@@ -139,8 +139,8 @@
 
         var makeCharts = function () {
             var widthOfParent = $('.chart-wrap').width();
-            createSlider(route, 'contractor', widthOfParent, "barChart-contractors", "contractors","#contractors-slider");
-            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "contracts/contractor", widthOfParent, 'amount');
+            createSlider(route, 'contractor', widthOfParent, "barChart-contractors", "contracts/contractor", "#contractors-slider");
+            createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "procuring-agency", widthOfParent, 'amount');
         };
 
         makeCharts();
