@@ -29,7 +29,7 @@
 		<div class="columns medium-6 small-12">
 			<div class="chart-section-wrap">
 				<div class="each-chart-section">
-					<div class="section-header clearfix">
+					<div class="section-header section-header-services clearfix">
 						<form>
 							<label>
 								{{--<select id="select-agency-year">--}}
@@ -141,7 +141,7 @@
         var route = '{{ route("filter") }}';
         var procuringAgencies = '{!! $procuringAgency  !!}';
         var makeCharts = function () {
-            var widthOfParent = $('.chart-wrap').width();
+            var widthOfParent = $('.chart-wrap').width() - 12;
 			createSlider(route, 'agency', widthOfParent, "barChart-procuring", "procuring-agency","#procuring-agency-slider");
 			createBarChartProcuring(JSON.parse(procuringAgencies), "barChart-procuring", "procuring-agency", widthOfParent, 'amount');
 

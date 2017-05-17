@@ -53,10 +53,14 @@ return [
     'select_a_contractor'             => 'Select a contractor',
     'select_a_buyer'                  => 'Select a buyer',
     'select_a_range'                  => 'Select a range',
-    'select_a_year'                   => 'Select a year',
+    'select_year'                     => 'Select year',
+    'search_contracts'                => 'Search Contracts',
     'subscribe'                       => 'Subscribe',
     'show'                            => 'Show',
     'contracts_with_comments'         => 'Contracts with comments',
     'download'                        => 'Download',
-    'data_refresh_date'               => 'Last data refresh date'
+    'data_refresh_date'               => 'Last data refresh date',
+    'contract_explorer_title'         => 'Contract explorer',
+    'contract_explorer_desc'          => 'Explore through contracts based on contractors, procuring agencies, goods/services/work.',
+
 ];

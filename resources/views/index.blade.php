@@ -36,7 +36,7 @@
 
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <div class="section-header section-header-home clearfix" data-equalizer-watch="equal-header">
                             <span class="icon procuring-agency">icon</span>
                             <h3>@lang('general.top_5_procuring_agencies')</h3>
                         </div>
@@ -84,7 +84,7 @@
 
                 <div class="medium-6 small-12 columns ">
                     <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <div class="section-header section-header-home clearfix" data-equalizer-watch="equal-header">
                             <span class="icon contractor">icon</span>
                             <h3>@lang('homepage.top_5_contractors')</h3>
                         </div>
@@ -128,7 +128,7 @@
 
                 <div class="medium-6 small-12 columns ">
                     <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <div class="section-header section-header-home clearfix" data-equalizer-watch="equal-header">
                             <span class="icon goods-service">icon</span>
                             <h3>@lang('general.top_5_goods_&_services_procured')</h3>
                         </div>
@@ -266,7 +266,7 @@
         var goodsAndServices = {!! $goodsAndServices  !!};
 
         var makeCharts = function () {
-            var widthOfParent = $('.chart-wrap').width();
+            var widthOfParent = $('.chart-wrap').width() - 12;
             createLineChart(trends, widthOfParent);
 
             createSlider(route, 'agency', widthOfParent, "barChart-procuring", "procuring-agency","#procuring-agency-slider");

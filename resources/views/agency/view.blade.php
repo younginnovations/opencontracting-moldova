@@ -102,7 +102,7 @@
             <div data-equalizer="equal-header">
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <div class="section-header section-header-home clearfix" data-equalizer-watch="equal-header">
                             <span class="icon contractor">icon</span>
                             <h3>@lang('agency.top_5_contractor')</h3>
                         </div>
@@ -144,7 +144,7 @@
 
                 <div class="medium-6 small-12 columns">
                     <div class="each-chart-section">
-                        <div class="section-header clearfix" data-equalizer-watch="equal-header">
+                        <div class="section-header section-header-home clearfix" data-equalizer-watch="equal-header">
                             <span class="icon goods-service">icon</span>
                             <h3>@lang('general.top_5_goods_&_services_procured')</h3>
                         </div>

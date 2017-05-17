@@ -458,6 +458,7 @@ strong {
   font-size: 12px;
   line-height: 18px;
   margin-top: -20px;
+  margin-bottom: 12px;
   color: rgba(74, 74, 74, 0.7);
 }
 
@@ -482,13 +483,23 @@ footer {
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 92px;
+  //height: 92px;
   width: 100%;
+
+
+  .top-bar-left{
+
+    @media (max-width: 956px){
+      float: none;
+    }
+
+  }
+
 }
 
 @media (max-width: 650px) {
   footer {
-    height: 126px;
+    //height: 126px;
   }
 
   body {
@@ -807,18 +818,29 @@ td.admin-contract-list a {
 }
 
 .footer-menu {
-  text-align: center;
+
   margin-top: 18px;
   ul li {
     display: inline-block;
     margin-left: 18px;
+
+    &:first-child{
+      margin-left: 0;
+    }
+
     a {
-      color: #FFFFFF;phpphp
+      color: #FFFFFF;
       &:hover {
         color: #909094;
       }
     }
   }
+
+  @media (min-width: 956px) {
+    float: left;
+    margin-left: 48px;
+  }
+
 }
 
 span[data-tooltip] {
