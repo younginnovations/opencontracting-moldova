@@ -175,6 +175,7 @@ class HomeController extends Controller
         $contractTitles    = $this->contracts->getAllContractTitle();
         $procuringAgencies = $this->procuringAgency->getAllProcuringAgencyTitle();
         $contracts         = [];
+        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, ['from' => date('Y'), 'to' => date('Y')]);
         $params            = $request->all();
 
 
@@ -182,13 +183,13 @@ class HomeController extends Controller
             $request->get(
                 'startDate'
             )
-            ) || !empty($request->get('endDate'))
+            ) || !empty($request->get('endDate') || !empty($request->get('goods')))
         ) {
             $contracts = $this->contracts->search($params);
 
         }
 
-        return view('search', compact('contracts', 'contractTitles', 'procuringAgencies', 'params'));
+        return view('search', compact('contracts', 'contractTitles', 'procuringAgencies', 'goodsAndServices','params'));
     }
 
     /**

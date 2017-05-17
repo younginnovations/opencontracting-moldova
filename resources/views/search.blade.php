@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-	<div class="buffer-top">
+	{{--<div class="buffer-top">
 		<div class="block-with-margin filter-wrap">
 			<div class="row">
 				<div class="filter-inner clearfix">
@@ -75,19 +75,20 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	</div>--}}
 	@if(!empty($params))
 		<div class="block-with-margin">
 			<div class="row">
 				<div class="search-result-wrap block">
 					<div class="title">@lang('search.showing_search_result_for'):</div>
 					<div class="search-token">
-						{!! (!empty($params['q']))?'<span><span class="cancel">x</span>'.$params['q'].'</span>':'' !!}
-						{!! (!empty($params['contractor'])) ?'<span><span class="cancel">x</span>Contractor :  '.$params['contractor'].' </span>': ''!!}
-						{!! (!empty($params['agency'])) ? '<span><span class="cancel">x</span>Procuring Agency : '.$params['agency'].' </span>': '' !!}
-						{!! (!empty($params['amount'])) ?'<span><span class="cancel">x</span>Amount :  '.$params['amount'].' </span>' : '' !!}
-						{!! (!empty($params['startDate'])) ?'<span><span class="cancel">x</span>Start Date :  '.$params['startDate'].' </span>' : '' !!}
-						{!! (!empty($params['endDate'])) ?'<span><span class="cancel">x</span>End Date :  '.$params['endDate'].' </span>' : '' !!}
+						{!! (!empty($params['q']))?'<span>'.$params['q'].'</span>':'' !!}
+						{!! (!empty($params['contractor'])) ?'<span>Contractor :  '.$params['contractor'].' </span>': ''!!}
+						{!! (!empty($params['agency'])) ? '<span>Procuring Agency : '.$params['agency'].' </span>': '' !!}
+						{!! (!empty($params['amount'])) ?'<span>Amount :  '.$params['amount'].' </span>' : '' !!}
+						{!! (!empty($params['startDate'])) ?'<span>Start Date :  '.$params['startDate'].' </span>' : '' !!}
+						{!! (!empty($params['endDate'])) ?'<span>End Date :  '.$params['endDate'].' </span>' : '' !!}
+						{!! (!empty($params['goods'])) ?'<span>Goods/Services:  '.$params['goods'].' </span>' : '' !!}
 					</div>
 					{{--<div class="button-group clearfix">--}}
 						{{--<div class="button btn cancel-btn">@lang('general.cancel')</div>--}}
@@ -188,7 +189,7 @@
 
         var makeTable = $("#table_id").DataTable({
             "language": {
-                "lengthMenu": "Show _MENU_ Contracts"
+                "lengthMenu": ""
             },
             "bFilter": false,
             "fnDrawCallback": function () {
@@ -216,7 +217,7 @@
 //                new $.fn.dataTable.FixedHeader(makeTable);
 //            });
 
-            $('.cancel').each(function () {
+           /* $('.cancel').each(function () {
                 $(this).click(
                     function (e) {
                         e.preventDefault(); // prevent the default action
@@ -224,7 +225,7 @@
                         $(this).parent().addClass('hide');
                     });
 
-            });
+            });*/
 
         });
 	</script>

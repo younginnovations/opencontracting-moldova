@@ -1,0 +1,127 @@
+
+
+.advanced-filter{
+  bottom: 0;
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+
+
+
+  &__header{
+    background-color: #4f4d46;
+    cursor: pointer;
+    padding: 16px;
+    position: relative;
+
+
+
+
+
+   >span{
+      &:nth-of-type(1){
+        color: #fff;
+        font-size: 14px;
+        padding: 0 12px 0 61px;
+        text-transform: uppercase;
+      }
+
+      &:nth-of-type(2){
+        color: rgba(#fff,0.5);
+        font-size: 14px;
+
+      }
+    }
+
+  }
+
+  &__body{
+    display: none;
+    padding: 32px 16px;
+  }
+
+  &__header-btn{
+    //background: #ffd200;
+    //background: #ffd200 url(#{$img-path}/ic_arrowdown.svg) center center no-repeat;
+    background-color: #ffd200;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    width: 46px;
+    height: 42px;
+    position: absolute;
+    top: 0;
+
+    img{
+      transition: all 0.5s ease-in;
+    }
+
+    >i{
+      color: #4a4a4a !important;
+    }
+  }
+    form{
+
+      .form-group{
+        margin-bottom: 30px;
+      }
+
+      .form-group-title{
+        color: rgba(#4a4a4a, 0.7);
+        font-size: 13px;
+
+      }
+      .input-box{
+        font-size: 14px;
+        width: 100%;
+        border: none;
+        color: #444;
+        line-height: 28px;
+        padding: 5px;
+        border-bottom: 1px solid #4a4a4a;
+      }
+      /*input::-webkit-input-placeholder {
+        color: #444 !important;
+      }
+      input::-moz-placeholder {
+        color: #444 !important;
+      }
+      input:-ms-input-placeholder {
+        color: #444 !important;
+      }*/
+
+      .radio-group {
+        label{
+          color: #4A4A4A;
+          font-size: 14px;
+        }
+      }
+    }
+
+
+  .select2-container--default .select2-selection--single{
+    border: none;
+    border-bottom: 1px solid #4a4a4a;
+    border-radius: 0;
+  }
+
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 14px;
+  }
+}
+
+  .select2-dropdown{
+    z-index: 10000 !important;
+  }
+
+  footer{
+    margin-bottom: 50px;
+  }
+
+
+  .rotate{
+    transform: rotate(180deg);
+  }
+
+

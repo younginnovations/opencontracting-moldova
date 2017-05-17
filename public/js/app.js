@@ -373,6 +373,18 @@ $(document).ready(function(){
         $(".persit-header").width(tableWidth);
         $(".custom-table").width(tableWidth);
     });
+
+    $('.advanced-filter__header').click(function(){
+        $('.advanced-filter__body').slideToggle("fast",function(){
+        });
+
+        $('.advanced-filter__header-btn img').toggleClass('rotate');
+
+    });
+
+    //for select2 form
+    $(".advanced-filter-form__name").select2();
+    $(".advanced-filter-form__agency").select2();
 });
 
 //# sourceMappingURL=app.js.map
