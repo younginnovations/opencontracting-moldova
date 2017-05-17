@@ -27,7 +27,7 @@
         <div class="columns medium-6 small-12">
             <div class="chart-section-wrap">
                 <div class="each-chart-section">
-                    <div class="section-header clearfix">
+                    <div class="section-header section-header-services clearfix">
                         <form>
                             <label>
                                 {{--<select id="select-contractor-year">--}}
@@ -138,7 +138,7 @@
         var contractors = '{!! $contractorsTrends  !!}';
 
         var makeCharts = function () {
-            var widthOfParent = $('.chart-wrap').width();
+            var widthOfParent = $('.chart-wrap').width() - 12;
             createSlider(route, 'contractor', widthOfParent, "barChart-contractors", "contracts/contractor", "#contractors-slider");
             createBarChartProcuring(JSON.parse(contractors), "barChart-contractors", "procuring-agency", widthOfParent, 'amount');
         };

@@ -212,12 +212,13 @@
 		</div>
 	</div>
 </footer>
-@include('partials.sticky-footer')
+
 
 <script>
     var subscribeRoute = '{{ route("newsletter.subscribeUser") }}';
 </script>
 <script src="{{url('js/vendor.js')}}"></script>
+@include('partials.sticky-footer')
 
 {{--<script src="{{url('js/app.min.js')}}"></script>--}}
 

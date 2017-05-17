@@ -58,5 +58,8 @@ return [
     'show'                            => 'Show',
     'contracts_with_comments'         => 'Contracts with comments',
     'download'                        => 'Download',
-    'data_refresh_date'               => 'Last data refresh date'
+    'data_refresh_date'               => 'Last data refresh date',
+    'contract_explorer_title'         => 'Contract explorer',
+    'contract_explorer_desc'          => 'Explore through contracts based on contractors, procuring agencies, goods/services/work.'
+
 ];

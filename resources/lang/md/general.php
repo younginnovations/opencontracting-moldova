@@ -59,4 +59,6 @@ return [
     'contracts_with_comments'         => 'Contracte cu comentarii',
     'download'                        => 'Descarca',
     'data_refresh_date'               => 'Data de reîmprospătare Ultimele date',
+    'contract_explorer_title'         => 'Contract explorer',
+    'contract_explorer_desc'         =>  'Explorați prin contracte bazate pe contractori, agenți de achiziție, bunuri / servicii / muncă.'
 ];

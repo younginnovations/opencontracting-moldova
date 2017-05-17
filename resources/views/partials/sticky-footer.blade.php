@@ -1,21 +1,26 @@
+
 <div class="advanced-filter">
     <div class="advanced-filter__header">
 
         <button class="advanced-filter__header-btn">
             <span><img src="{{url('/images/ic_arrowdown.svg')}}" alt="" class="rotate"></span>
         </button>
-        <span>Contract Explorer</span>
-        <span>Explore through contracts based on contractors, procuring agencies, goods/services/work.</span>
+
+        <div class="advanced-filter_header-title">
+            <span>@lang('general.contract_explorer_title')</span>
+            <span>@lang('general.contract_explorer_desc')</span>
+        </div>
+
     </div>
     <div class="advanced-filter__body clearfix">
 
                 <form action="{{ route('search') }}" method="get" class="custom-form advanced-filter-form">
                     <div class="form-inner clearfix">
                         <div class="row">
-                            <div class="form-group small-6 medium-4 columns end">
-                                <input placeholder="Type a contractor, procuring agency or goods/services" name="q" class="input-box">
+                            <div class="form-group small-12 medium-12 large-4 columns end" >
+                                <input placeholder="Type a contractor, procuring agency or goods/services" name="q" class="input-box" >
                             </div>
-                            <div class="form-group small-6 medium-4 columns end">
+                            <div class="form-group small-6 medium-6 large-4 columns end">
                                 <select name="contractor" class="cs-select2 cs-skin-elastic">
                                     <option value="" disabled selected>@lang('general.select_a_contractor')</option>
                                     @forelse($all_contracts as $contractTitle)
@@ -24,7 +29,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <div class="form-group small-6 medium-4 columns end">
+                            <div class="form-group small-6 medium-6 large-4 columns end">
                                 <select name="agency" class="cs-select2 cs-skin-elastic">
                                     <option value="" disabled selected>@lang('general.select_a_buyer')</option>
                                     @forelse($procurings as $procuring)
@@ -34,7 +39,7 @@
                                 </select>
                             </div>
 
-                            {{--<div class="form-group small-6 medium-4 columns end">
+                            {{--<div class="form-group small-12 medium-6 large-4 columns end">
                                 <select name="agency" class="cs-select2 cs-skin-elastic">
                                     <option value="" disabled selected>Procuring Agency</option>
                                     @forelse($procurings as $procuringAgency)
@@ -48,7 +53,7 @@
 
 
                         <div class="row">
-                            <div class="form-group small-6 medium-4 columns end">
+                            <div class="form-group small-12 medium-6 large-4 columns end">
                                 <label class="form-group-title">Select a range</label>
 
                                 <div class="radio-group">
@@ -74,13 +79,13 @@
                                 </div>
 
                             </div>
-                            <div id="year_select" class="form-group small-6 medium-4 columns end">
+                            <div id="year_select" class="form-group small-12 medium-6 large-4 columns end">
                                 <label class="form-group-title">Select Year</label>
                                 <div id="year_slider"></div>
                             </div>
 
 
-                            <div class="form-group small-6 medium-4 columns end">
+                            <div class="form-group small-12 medium-6 large-4 columns end">
                                 <select name="goods" class="cs-select2 cs-skin-elastic">
                                     <option value="" disabled selected>Goods/services/work</option>
                                     @foreach($goodsList as $key => $value)
@@ -97,8 +102,9 @@
                         <input type="hidden" name="endDate" id="endDate">
 
                         <div class="row">
-                            <div class="small-6 medium-4 columns clearfix">
-                                <input type="submit" class="button yellow-button advanced-filter-btn" value="Search Contracts">
+                            <div class="small-12 medium-6 large-4 columns clearfix">
+                                <input type="submit" class="button yellow-button advanced-filter-btn" value="Search Contracts" >
+
                             </div>
                         </div>
 
@@ -110,28 +116,40 @@
     </div>
 </div>
 
+
 <script src="{{url('js/vendorChart.min.js')}}"></script>
 
 <script src="{{url('js/customChart.js')}}"></script>
 <script>
     //similar to $.ready function
-    document.onreadystatechange = function () {
-        var state = document.readyState;
-        var widthOfParent = 370;
 
-        var makeCharts = function () {
-            only_slider( widthOfParent,"#year_slider");
-        };
+  $( document ).ready(function() {
 
-        if (state === 'interactive') {
-            makeCharts();
+             var state = document.readyState;
 
-        } else if (state === 'complete') {
-            $(window).resize(function () {
-                widthOfParent = $('#year_select').width();
-                $("#year_slider").empty();
-                makeCharts();
-            });
-        }
-    };
+             var widthOfParent;
+
+             if($(window).width() < 380){
+                widthOfParent = 300;
+             } else{
+                 widthOfParent = 370;
+             }
+
+             var makeCharts = function () {
+                 only_slider( widthOfParent,"#year_slider");
+             };
+
+             if (state === 'interactive') {
+                 makeCharts();
+
+             } else if (state === 'complete') {
+                 $(window).resize(function () {
+                     widthOfParent = $('#year_select').width();
+                     $("#year_slider").empty();
+                     makeCharts();
+                 });
+             }
+
+  });
+
 </script>

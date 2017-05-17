@@ -402,6 +402,7 @@ strong {
   font-size: 12px;
   line-height: 18px;
   margin-top: -20px;
+  margin-bottom: 12px;
   color: rgba(74, 74, 74, 0.7);
 }
 
@@ -422,14 +423,16 @@ footer {
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 92px;
   width: 100%;
 }
 
-@media (max-width: 650px) {
-  footer {
-    height: 126px;
+@media (max-width: 956px) {
+  footer .top-bar-left {
+    float: none;
   }
+}
+
+@media (max-width: 650px) {
   body {
     padding: 0 0 126px;
   }
@@ -742,7 +745,6 @@ td.admin-contract-list a:hover {
 }
 
 .footer-menu {
-  text-align: center;
   margin-top: 18px;
 }
 
@@ -751,12 +753,23 @@ td.admin-contract-list a:hover {
   margin-left: 18px;
 }
 
+.footer-menu ul li:first-child {
+  margin-left: 0;
+}
+
 .footer-menu ul li a {
   color: #FFFFFF;
 }
 
-phpphp .footer-menu ul li a:hover {
+.footer-menu ul li a:hover {
   color: #909094;
+}
+
+@media (min-width: 956px) {
+  .footer-menu {
+    float: left;
+    margin-left: 48px;
+  }
 }
 
 span[data-tooltip] {
@@ -1194,11 +1207,24 @@ footer form {
   height: 70px;
 }
 
+.each-chart-section .section-header.section-header-home {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.each-chart-section .section-header.section-header-services {
+  background-color: whitesmoke;
+  padding: 12px 10px;
+  height: auto;
+}
+
 .each-chart-section .section-header h3 {
   font-size: 1.5rem;
   line-height: 1.875rem;
   color: #5A5A5A;
-  margin-bottom: 25px;
 }
 
 .each-chart-section .section-header .icon.procuring-agency:before {
@@ -1214,7 +1240,7 @@ footer form {
 }
 
 .each-chart-section .section-header .icon.goods-service:before {
-  background: url(/images/ic_sprite.svg) -4px 0px no-repeat;
+  background: url(/images/ic_sprite.svg) -4px 4px no-repeat;
   width: 47px;
   margin-left: -23.5px;
 }
@@ -1447,6 +1473,7 @@ footer form {
   display: block;
   font-size: 14px;
   line-height: 15px;
+  padding: 8px 0;
 }
 
 .social-share {
@@ -3779,10 +3806,6 @@ p.disabled {
     padding-left: 20px;
     padding-right: 20px;
   }
-  .header-with-bg {
-    margin-left: -20px;
-    margin-right: -20px;
-  }
 }
 
 @media (max-width: 75rem) {
@@ -4455,12 +4478,20 @@ p.disabled {
   bottom: 0;
   background-color: #fff;
   position: fixed;
+  max-height: 100%;
+  overflow-y: auto;
   width: 100%;
   z-index: 9999;
 }
 
+.advanced-filter .rotate {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 .advanced-filter__header {
-  background-color: #4f4d46;
+  background-color: rgba(74, 74, 74, 0.95);
+  box-shadow: 0 -2px 10px 0 rgba(0, 0, 0, 0.5);
   cursor: pointer;
   padding: 16px;
   position: relative;
@@ -4471,6 +4502,13 @@ p.disabled {
   font-size: 14px;
   padding: 0 12px 0 61px;
   text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .advanced-filter__header > span:nth-of-type(1) {
+    display: block;
+    padding-left: 0;
+  }
 }
 
 .advanced-filter__header > span:nth-of-type(2) {
@@ -4494,12 +4532,33 @@ p.disabled {
 }
 
 .advanced-filter__header-btn img {
-  -webkit-transition: all 0.5s ease-in;
-  transition: all 0.5s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
-.advanced-filter__header-btn > i {
-  color: #4a4a4a !important;
+.advanced-filter_header-title span:first-child {
+  color: #fff;
+  font-size: 14px;
+  padding: 0 12px 0 61px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .advanced-filter_header-title span:first-child {
+    display: block;
+    padding-left: 0;
+  }
+}
+
+.advanced-filter_header-title span:nth-child(2) {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .advanced-filter_header-title {
+    padding-left: 60px;
+  }
 }
 
 .advanced-filter form {
@@ -4516,6 +4575,12 @@ p.disabled {
 
 .advanced-filter form .form-group {
   margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .advanced-filter form .form-group {
+    margin-bottom: 16px;
+  }
 }
 
 .advanced-filter form .form-group-title {
@@ -4550,15 +4615,6 @@ p.disabled {
 
 .select2-dropdown {
   z-index: 10000 !important;
-}
-
-footer {
-  margin-bottom: 50px;
-}
-
-.rotate {
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 
 /*# sourceMappingURL=app.css.map */

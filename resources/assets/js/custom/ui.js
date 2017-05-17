@@ -282,6 +282,22 @@ $(document).ready(function(){
 
     });
 
+
+    var handleFooterSpacing = function(){
+        var filterHeaderHeight = $('.advanced-filter__header').outerHeight();
+        var footerHeight = $('footer').outerHeight();
+        var totalHeight = filterHeaderHeight + footerHeight;
+        $('footer').css("marginBottom", filterHeaderHeight + "px");
+        $('body').css("paddingBottom", totalHeight+ "px");
+    }
+
+    handleFooterSpacing();
+
+
+    $(window).resize(function () {
+        handleFooterSpacing();
+    });
+
     //for select2 form
     $(".advanced-filter-form__name").select2();
     $(".advanced-filter-form__agency").select2();

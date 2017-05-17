@@ -29,7 +29,7 @@
         <div class="columns medium-6 small-12">
             <div class="chart-section-wrap">
                 <div class="each-chart-section">
-                    <div class="section-header clearfix">
+                    <div class="section-header section-header-services clearfix">
                         <form>
                             <label>
                                 {{--<select id="select-goods-year">--}}
@@ -140,7 +140,7 @@
         var newGoodsAndServices = JSON.parse(goodsAndServices);
 
         var makeCharts = function () {
-            var widthOfParent = $('.chart-wrap').width();
+            var widthOfParent = $('.chart-wrap').width() - 12;
             createSlider(route, 'goods', widthOfParent, "barChart-goods", "goods","#goods-slider");
             createBarChartProcuring(JSON.parse(goodsAndServices), "barChart-goods", "goods", widthOfParent, 'amount');
         };
