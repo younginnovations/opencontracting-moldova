@@ -132,9 +132,22 @@
 
     height:70px;
 
+    &.section-header-home{
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    &.section-header-services{
+      background-color: whitesmoke;
+      padding: 12px 10px;
+      height: auto;
+    }
+
+
     h3 {
       @include small-title();
-      margin-bottom: 25px;
+      //margin-bottom: 25px;
     }
     .icon.procuring-agency:before {
       background: url(/images/ic_sprite.svg) -1px -84px no-repeat;
@@ -147,7 +160,7 @@
       margin-left: -23.5px;
     }
     .icon.goods-service:before {
-      background: url(/images/ic_sprite.svg) -4px -0px no-repeat;
+      background: url(/images/ic_sprite.svg) -4px 4px no-repeat;
       width: 47px;
       margin-left: -23.5px;
     }
@@ -407,6 +420,7 @@
   display: block;
   font-size: 14px;
   line-height: 15px;
+  padding: 8px 0;
 }
 
 .social-share {
