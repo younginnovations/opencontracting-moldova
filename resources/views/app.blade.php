@@ -55,67 +55,6 @@
                         <a class="show-filter" id="home-show-filter">@lang('general.advance-filter')</a>
                     </span>
 							</div>
-							<form action="{{ route('search') }}" method="get" class="custom-form advance-search-wrap">
-								<div class="form-inner clearfix">
-									<div class="form-group medium-4 columns end">
-										<select name="contractor" class="cs-select2 cs-skin-elastic">
-											<option value="" disabled
-													selected>@lang('general.select_a_contractor')</option>
-											@forelse($contractTitles as $contractTitle)
-												<option value="{{ $contractTitle['_id'][0] }}">{{ $contractTitle['_id'][0] }}</option>
-											@empty
-											@endforelse
-										</select>
-									</div>
-									<div class="form-group medium-4 columns end">
-										<select name="agency" class="cs-select2 cs-skin-elastic">
-											<option value="" disabled selected>@lang('general.select_a_buyer')</option>
-											@forelse($procuringAgencies as $procuringAgency)
-												<option value="{{ $procuringAgency->toArray()[0] }}">{{ $procuringAgency->toArray()[0] }}</option>
-											@empty
-											@endforelse
-										</select>
-									</div>
-									<div class="form-group medium-4 columns end">
-										<select name="amount" class="cs-select2 cs-skin-elastic">
-											<option value="" disabled selected>@lang('general.select_a_range')</option>
-											<option value="0-10000">0-10000</option>
-											<option value="10000-200000">10000-200000</option>
-											<option value="200000-500000">200000-500000</option>
-											<option value="500000-1000000">500000-1000000</option>
-											<option value="1000000-Above">1000000-@lang('general.above')</option>
-										</select>
-									</div>
-									<div class="form-group medium-4 columns end">
-										<select name="startDate" class="cs-select2 cs-skin-elastic">
-											@foreach(range(date('Y'), 2012) as $year)
-												<option value="" disabled
-														selected>@lang('general.select_a_year')</option>
-												<option value="{{$year}}">{{$year}}</option>
-											@endforeach
-										</select>
-									</div>
-									<div class="form-group medium-4 columns end">
-										<select name="endDate" class="cs-select2 cs-skin-elastic">
-											@foreach(range(date('Y'), 2012) as $year)
-
-												<option value="" disabled
-														selected>@lang('general.select_a_year')</option>
-												<option value="{{$year}}">{{$year}}</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-
-								<div class="input-group-button medium-12 clearfix">
-									<div class="medium-4 columns">
-										<input type="submit" class="button yellow-button" value="Submit">
-									</div>
-									<div class="medium-4 columns end">
-										<div class="button cancel-btn">@lang('general.cancel')</div>
-									</div>
-								</div>
-							</form>
 						</div>
 					</div>
 				</div>

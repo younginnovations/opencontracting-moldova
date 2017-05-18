@@ -71,14 +71,7 @@ $(document).ready(function(){
    /* toggle filter section*/
 
     $(".show-filter").click(function(){
-        var element = $(this);
-        $(".advance-search-wrap").slideToggle();
-        $(".filter-toggler a").toggleClass("active");
-
-        if($(window).width() > 768 ){
-            $(".multiple-search-wrap").toggleClass("position");
-        }
-
+        toogleFilter();
     });
 
   /*  hide advance search when cancel is clicked*/
@@ -275,12 +268,15 @@ $(document).ready(function(){
     });
 
     $('.advanced-filter__header').click(function(){
+        toogleFilter();
+    });
+
+    function toogleFilter() {
         $('.advanced-filter__body').slideToggle("fast",function(){
         });
 
         $('.advanced-filter__header-btn img').toggleClass('rotate');
-
-    });
+    }
 
 
     var handleFooterSpacing = function(){

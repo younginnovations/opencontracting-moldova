@@ -135,6 +135,14 @@ Route::get(
 );
 
 Route::get(
+    '/api/search',
+    [
+        'as'   => 'search.data',
+        'uses' => 'HomeController@searchData',
+    ]
+);
+
+Route::get(
     '/tenders',
     [
         'as'   => 'tenders.index',

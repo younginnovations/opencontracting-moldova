@@ -232,6 +232,11 @@ class Contracts
         return $this->contracts->search($search);
     }
 
+    public function searchCount($params)
+    {
+        return $this->contracts->searchCount($params);
+    }
+
     /**
      * @return mixed
      */

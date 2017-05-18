@@ -470,15 +470,24 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function search($search)
+    public function search($params)
     {
-        $q          = (!empty($search['q'])) ? $search['q'] : '';
-        $contractor = (!empty($search['contractor'])) ? $search['contractor'] : '';
-        $agency     = (!empty($search['agency'])) ? $search['agency'] : '';
-        $range      = (!empty($search['amount'])) ? explode("-", $search['amount']) : '';
-        $goods = (!empty($search['goods'])) ? $search['goods'] : '';
-        $startDate  = (!empty($search['startDate'])) ? $search['startDate'] : '';// (!empty($search['startDate'])) ? $this->formatDate($search['startDate']) : '';
-        $endDate    = (!empty($search['endDate'])) ? $search['endDate'] : '';//(!empty($search['endDate'])) ? $this->formatDate($search['endDate']) : '';
+
+        $orderIndex  = $params['order'][0]['column'];
+        $ordDir      = $params['order'][0]['dir'];
+        $column      = $this->getColumn($params['columns'][$orderIndex]['data']);
+        $startFrom   = $params['start'];
+        $ordDir      = (strtolower($ordDir) == 'asc') ? 1 : - 1;
+        $search      = $params['search']['value'];
+        $limitResult = $params['length'];
+
+        $q          = (!empty($params['q'])) ? $params['q'] : '';
+        $contractor = (!empty($params['contractor'])) ? $params['contractor'] : '';
+        $agency     = (!empty($params['agency'])) ? $params['agency'] : '';
+        $range      = (!empty($params['amount'])) ? explode("-", $params['amount']) : '';
+        $goods = (!empty($params['goods'])) ? $params['goods'] : '';
+        $startDate  = (!empty($params['startDate'])) ? $params['startDate'] : '';// (!empty($search['startDate'])) ? $this->formatDate($search['startDate']) : '';
+        $endDate    = (!empty($params['endDate'])) ? $params['endDate'] : '';//(!empty($search['endDate'])) ? $this->formatDate($search['endDate']) : '';
 
 //        if (!empty($q)) {
 //            $search = StringUtil::accentToRegex($q);
@@ -520,7 +529,7 @@ class ContractsRepository implements ContractsRepositoryInterface
 //        }
 
 
-        if (!empty($q) || !empty($agency) || !empty($contractor) || !empty($search['amount']) || !empty($startDate) || !empty($endDate) || !empty($goods)) {
+        if (!empty($q) || !empty($agency) || !empty($contractor) || !empty($params['amount']) || !empty($startDate) || !empty($endDate) || !empty($goods)) {
 
             $query = [];
             $project = [
@@ -571,13 +580,13 @@ class ContractsRepository implements ContractsRepositoryInterface
                 $match = ['$match' => ['participant' => $contractor]];
                 array_push($query, $match);
             }
-            if (!empty($search['amount']) && $range[1] != 'Above') {
+            if (!empty($params['amount']) && $range[1] != 'Above') {
                 $range[0] = (int)$range[0];
                 $range[1] = (int)$range[1];
 
                 $match = ['$match' => ['amount' => ['$gte' => $range[0], '$lte' => $range[1]]]];
                 array_push($query, $match);
-            } elseif (!empty($search['amount']) && $range[1] === 'Above') {
+            } elseif (!empty($params['amount']) && $range[1] === 'Above') {
                 $match = ['$match' => ['amount' => ['$gte' => (int)$range[0]]]];
                 array_push($query, $match);
             }
@@ -592,6 +601,12 @@ class ContractsRepository implements ContractsRepositoryInterface
                 array_push($query, $match);
             }
 
+            $sort = ['$sort' => [$column => $ordDir]];
+            array_push($query, $sort);
+            $skip = ['$skip' => (int) $startFrom];
+            array_push($query, $skip);
+            $limit = ['$limit' => (int) $limitResult];
+            array_push($query, $limit);
 
             $res = Contracts::raw(
                 function ($collection) use ($query) {
@@ -603,6 +618,102 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         }
         return [];
+    }
+
+    /**
+     * @param $params
+     *
+     * @return mixed
+     */
+    public function searchCount($params)
+    {
+
+        $q          = (!empty($params['q'])) ? $params['q'] : '';
+        $contractor = (!empty($params['contractor'])) ? $params['contractor'] : '';
+        $agency     = (!empty($params['agency'])) ? $params['agency'] : '';
+        $range      = (!empty($params['amount'])) ? explode("-", $params['amount']) : '';
+        $goods = (!empty($params['goods'])) ? $params['goods'] : '';
+        $startDate  = (!empty($params['startDate'])) ? $params['startDate'] : '';// (!empty($search['startDate'])) ? $this->formatDate($search['startDate']) : '';
+        $endDate    = (!empty($params['endDate'])) ? $params['endDate'] : '';//(!empty($search['endDate'])) ? $this->formatDate($search['endDate']) : '';
+        $query   = [];
+        $project = [
+            '$project' => [
+                "syear"          => ['$year' => '$contractDate'],
+                "fyear"          => ['$year' => '$finalDate'],
+                "id"             => '$id',
+                "contractNumber" => '$contractNumber',
+                "tender"         => '$tender.tenderData.goodsDescr',
+                "agency"         => '$tender.stateOrg.orgName',
+                "contractDate"   => '$contractDate',
+                "finalDate"      => '$finalDate',
+                "amount"         => '$amount',
+                "goods"          => '$goods.mdValue',
+                'participant'    => '$participant.fullName',
+                'status'         => '$status.mdValue',
+            ],
+        ];
+        array_push($query, $project);
+
+        if (!empty($params['q'])) {
+            $search = StringUtil::accentToRegex($q);
+
+            $match = [
+                '$match' => [
+                    '$or' => [
+                        ['goods' => new Regex(".*$search.*", 'i')],
+                        ['participant' => new Regex(".*$search.*", 'i')],
+                        ['agency' => new Regex(".*$search.*", 'i')],
+                        ['contractDate' => new Regex(".*$search.*", 'i')],
+                        ['finalDate' => new Regex(".*$search.*", 'i')],
+                    ],
+                ],
+            ];
+            array_push($query, $match);
+        }
+
+        if (!empty($agency)) {
+            $match = ['$match' => ['agency' => $agency]];
+            array_push($query, $match);
+        }
+        if (!empty($goods)) {
+            $match = ['$match' => ['goods' => $goods]];
+            array_push($query, $match);
+        }
+
+        if (!empty($contractor)) {
+            $match = ['$match' => ['participant' => $contractor]];
+            array_push($query, $match);
+        }
+        if (!empty($params['amount']) && $range[1] != 'Above') {
+            $range[0] = (int) $range[0];
+            $range[1] = (int) $range[1];
+
+            $match = ['$match' => ['amount' => ['$gte' => $range[0], '$lte' => $range[1]]]];
+            array_push($query, $match);
+        } elseif (!empty($params['amount']) && $range[1] === 'Above') {
+            $match = ['$match' => ['amount' => ['$gte' => (int) $range[0]]]];
+            array_push($query, $match);
+        }
+
+        if (!empty($startDate)) {
+            $match = ['$match' => ['syear' => ['$gte' => (int) $startDate]]];
+            array_push($query, $match);
+        }
+
+        if (!empty($endDate)) {
+            $match = ['$match' => ['syear' => ['$lte' => (int) $endDate]]];
+            array_push($query, $match);
+        }
+
+
+        $res = Contracts::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        )->count();
+
+        return ($res);
+
     }
 
     /**
