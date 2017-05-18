@@ -19,24 +19,25 @@ if (!function_exists('config_path')) {
     /**
      *      * Get the configuration path.
      *      *
-     *      * @param  string  $path
+     *      * @param  string   $path
      *      * @return string
      *      */
 
     function config_path($path = '')
     {
-        return base_path() . DIRECTORY_SEPARATOR . 'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+        return base_path().DIRECTORY_SEPARATOR.'config'.($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
-if(!function_exists('public_path'))
-{
+if (!function_exists('public_path')) {
     /**
      * Return the path to public dir
+     *
      * @param null $path
+     *
      * @return string
      */
-    function public_path($path=null)
+    function public_path($path = null)
     {
         return rtrim(app()->basePath('public/'.$path), '/');
     }
@@ -44,10 +45,15 @@ if(!function_exists('public_path'))
 
 function getSearchExport()
 {
-    return app('request')->fullUrl() . '&export=1';
+    return app('request')->fullUrl().'&export=1';
 }
 
 function getLocalLang()
 {
     return app('translator')->getLocale();
+}
+
+function listFounders($founders)
+{
+    return implode(",", $founders);
 }

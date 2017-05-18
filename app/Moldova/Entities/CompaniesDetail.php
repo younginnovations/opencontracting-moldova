@@ -2,8 +2,8 @@
 
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Contractors extends Eloquent
+class CompaniesDetail extends Eloquent
 {
-    protected $collection = "contractors";
+    protected $collection = "companies_detail";
 
 }

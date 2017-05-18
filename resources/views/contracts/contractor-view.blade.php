@@ -15,10 +15,10 @@
 					@if(isset($companyData) && sizeof($companyData)>0)
 						<div class="title">
 							<span class="info-icon"></span>
-							<span class="value">{{ $companyData['full_name'] }}</span>
-							<span class="name">@lang('contracts.leaders'):{{ $companyData['leaders_list']}}</span>|
+							<span class="value">{{ $companyData['name'] }}</span>
+							<span class="name">@lang('contracts.leaders'): {{ $companyData['director'][0]}}</span>|
 							<span class="name">@lang('contracts.founders')
-								:{{ ($companyData['list_of_founders'])?$companyData['list_of_founders']:'N/A' }} </span>
+								:{{ ($companyData['founders'])?listFounders($companyData['founders']):'N/A' }} </span>
 							<span class="name">(@lang('contracts.as_found_on') <a
 										href="http://date.gov.md">date.gov.md</a>)</span>
 						</div>

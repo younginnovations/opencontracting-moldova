@@ -89,7 +89,7 @@
         var makeTable = $('#table_id').DataTable({
             "language": {
                 'searchPlaceholder': "@lang('contracts.search_by_contractors')",
-                "lengthMenu": "Show _MENU_ Contractors"
+                "lengthMenu": "Show _MENU_ CompaniesDetail"
             },
             "processing": true,
             "serverSide": true,

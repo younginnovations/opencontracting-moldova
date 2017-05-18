@@ -81,7 +81,7 @@ class Contracts
     }
 
     /**
-     * Get Contractors by amount/count according to type and by limit given
+     * Get CompaniesDetail by amount/count according to type and by limit given
      *
      * @param        $type
      * @param        $limit

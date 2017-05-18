@@ -65,7 +65,7 @@ class ContractController extends Controller
     }
 
     /**
-     * Contractors Index function
+     * CompaniesDetail Index function
      * @return \Illuminate\View\View
      */
     public function contractorIndex()
