@@ -172,24 +172,30 @@ class HomeController extends Controller
      */
     public function search(Request $request)
     {
-        $contractTitles    = $this->contracts->getAllContractTitle();
-        $procuringAgencies = $this->procuringAgency->getAllProcuringAgencyTitle();
-        $contracts         = [];
-        $goodsAndServices = $this->contracts->getGoodsAndServices('amount', 5, ['from' => date('Y'), 'to' => date('Y')]);
-        $params            = $request->all();
+        $params = $request->all();
+        return view('search', compact('params'));
+    }
 
+    public function searchData(Request $request)
+    {
+
+        $params = $request->all();
 
         if (!empty($request->get('q')) || !empty($request->get('contractor')) || !empty($request->get('agency')) || !empty($request->get('amount')) || !empty(
             $request->get(
                 'startDate'
             )
-            ) || !empty($request->get('endDate') || !empty($request->get('goods')))
+            ) || !empty($request->get('endDate'))
         ) {
-            $contracts = $this->contracts->search($params);
+
+            return [
+                'draw' => (int) $params['draw'],
+                'recordsTotal' => $this->contracts->searchCount(""),
+                'recordsFiltered' => $this->contracts->searchCount($params),
+                'data' => $this->contracts->search($params)
+            ];
 
         }
-
-        return view('search', compact('contracts', 'contractTitles', 'procuringAgencies', 'goodsAndServices','params'));
     }
 
     /**

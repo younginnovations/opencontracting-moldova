@@ -110,6 +110,13 @@ interface ContractsRepositoryInterface
     public function search($search);
 
     /**
+     * @param $params
+     *
+     * @return mixed
+     */
+    public function searchCount($params);
+
+    /**
      * @return mixed
      */
     public function getAllContractTitle();

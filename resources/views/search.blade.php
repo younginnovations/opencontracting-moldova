@@ -109,7 +109,8 @@
 	{{--@else--}}
 
 	<div class="row table-wrapper persist-area">
-		<a target="_blank" class="export" href="{{route('home.searchExport',$params)}}">@lang('general.export_as_csv')</a>
+		<a target="_blank" class="export hide" href="{{route('home.searchExport',$params)}}">@lang('general
+		.export_as_csv')</a>
 		<table id="table_id" class="responsive hover custom-table display">
 			<thead class="persist-header">
 			<tr>
@@ -123,20 +124,6 @@
 			</tr>
 			</thead>
 			<tbody>
-			@forelse($contracts as $contract)
-				<tr>
-					<td>{{ $contract['contractNumber'] }}</td>
-					<td class="hide">{{ (int) $contract['id'] }}</td>
-					<td>{{ (isset($contract['goods']))?$contract['goods']:'-' }}</td>
-					<td>{{ print_r($contract['status']) }}</td>
-					<td class="dt">{{ $contract['contractDate']->toDateTime()->format('c') }}</td>
-					<td class="dt">{{ $contract['finalDate']->toDateTime()->format('c') }}</td>
-					<td class="numeric-data">{{ $contract['amount'] }}</td>
-				</tr>
-
-			@empty
-
-			@endforelse
 			</tbody>
 		</table>
 	</div>
@@ -176,6 +163,9 @@
         });
 	</script>
 	<script>
+
+		var params = {!! json_encode($params) !!};
+
         var createLinks = function () {
             $('#table_id tbody tr').each(function () {
                 $(this).css('cursor', 'pointer');
@@ -192,6 +182,30 @@
                 "lengthMenu": ""
             },
             "bFilter": false,
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                url: '/api/search',
+				data: function (d) {
+					return $.extend(d, params);
+                }
+            },
+            "columns": [
+                {"data": 'contractNumber'},
+                {"data": 'id', className: 'hide'},
+                {"render": function (data,type, row) {
+                    return row.goods || '-';
+                }},
+                {"data": 'status'},
+                {"render": function (data, type, row) {
+					console.log(row.contractDate);
+					return new Date(Number(row.contractDate.$date.$numberLong)).toDateString();
+                }},
+                {"render": function (data, type, row) {
+                    return new Date(Number(row.finalDate.$date.$numberLong)).toDateString();
+                }},
+                {"data": 'amount'}
+			],
             "fnDrawCallback": function () {
                 changeDateFormat();
                 createLinks();
