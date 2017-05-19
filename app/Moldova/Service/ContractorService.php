@@ -2,7 +2,7 @@
 
 use App\Moldova\Entities\Blacklist;
 use App\Moldova\Entities\CompanyFeedback;
-use App\Moldova\Entities\Contractors;
+use App\Moldova\Entities\CompaniesDetail;
 use App\Moldova\Entities\CourtCases;
 use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Repositories\Contracts\ContractsRepositoryInterface;
@@ -40,7 +40,7 @@ class ContractorService
                 $keys = $Row;
                 continue;
             }
-            $contractors = new Contractors();
+            $contractors = new CompaniesDetail();
             foreach ($Row as $i => $val) {
                 $contractors->$keys[$i] = $val;
             }

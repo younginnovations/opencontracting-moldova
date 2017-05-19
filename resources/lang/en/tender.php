@@ -22,7 +22,7 @@ return [
     'value'                            => 'Tender Value',
     'award_criteria'                   => 'Award Criteria',
     'eligibility_criteria'             => 'Eligibility Criteria',
-    'contractors'                      => 'Contractors',
+    'contractors'                      => 'CompaniesDetail',
     'for_more_detail'                  => 'For more details',
     'appeal'                           => 'The information on the complaints covers the period until May 1, 2016 as from this date onward -complaints are handled by a separate complaint body',
 ];

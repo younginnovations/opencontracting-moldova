@@ -1,7 +1,8 @@
 <?php namespace App\Moldova\Repositories\Contracts;
 
 use App\Moldova\Entities\Blacklist;
-use App\Moldova\Entities\Contractors;
+use App\Moldova\Entities\CompaniesDetail;
+use App\Moldova\Entities\CompaniesEtenders;
 use App\Moldova\Entities\Contracts;
 use App\Moldova\Entities\CourtCases;
 use App\Moldova\Entities\OcdsRelease;
@@ -20,7 +21,7 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     private $ocdsRelease;
     /**
-     * @var Contractors
+     * @var CompaniesDetail
      */
     private $contractors;
     /**
@@ -31,12 +32,12 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * ContractsRepository constructor.
      *
-     * @param Contracts   $contracts
-     * @param Contractors $contractors
-     * @param OcdsRelease $ocdsRelease
-     * @param CourtCases  $courtCases
+     * @param Contracts       $contracts
+     * @param CompaniesDetail $contractors
+     * @param OcdsRelease     $ocdsRelease
+     * @param CourtCases      $courtCases
      */
-    public function __construct(Contracts $contracts, Contractors $contractors, OcdsRelease $ocdsRelease, CourtCases $courtCases)
+    public function __construct(Contracts $contracts, CompaniesDetail $contractors, OcdsRelease $ocdsRelease, CourtCases $courtCases)
     {
         $this->contracts   = $contracts;
         $this->ocdsRelease = $ocdsRelease;
@@ -477,7 +478,7 @@ class ContractsRepository implements ContractsRepositoryInterface
         $ordDir      = $params['order'][0]['dir'];
         $column      = $this->getColumn($params['columns'][$orderIndex]['data']);
         $startFrom   = $params['start'];
-        $ordDir      = (strtolower($ordDir) == 'asc') ? 1 : - 1;
+        $ordDir      = (strtolower($ordDir) == 'asc') ? 1 : -1;
         $search      = $params['search']['value'];
         $limitResult = $params['length'];
 
@@ -485,67 +486,27 @@ class ContractsRepository implements ContractsRepositoryInterface
         $contractor = (!empty($params['contractor'])) ? $params['contractor'] : '';
         $agency     = (!empty($params['agency'])) ? $params['agency'] : '';
         $range      = (!empty($params['amount'])) ? explode("-", $params['amount']) : '';
-        $goods = (!empty($params['goods'])) ? $params['goods'] : '';
+        $goods      = (!empty($params['goods'])) ? $params['goods'] : '';
         $startDate  = (!empty($params['startDate'])) ? $params['startDate'] : '';// (!empty($search['startDate'])) ? $this->formatDate($search['startDate']) : '';
         $endDate    = (!empty($params['endDate'])) ? $params['endDate'] : '';//(!empty($search['endDate'])) ? $this->formatDate($search['endDate']) : '';
 
-//        if (!empty($q)) {
-//            $search = StringUtil::accentToRegex($q);
-//            $query  = ['goods.mdValue' => new Regex(".*$search.*", 'i')];
-//            $query2 = ['participant.fullName' => new Regex(".*$search.*", 'i')];
-//            $query3 = ['tender.stateOrg.orgName' => new Regex(".*$search.*", 'i')];
-//            $query4 = ['contractDate' => new Regex(".*$search.*", 'i')];
-//            $query5 = ['finalDate' => new Regex(".*$search.*", 'i')];
-//
-//            $cursor = Contracts::raw(
-//                function ($collection) use ($query, $query2, $query3, $query4, $query5) {
-//                    return $collection->find(
-//                        [
-//                            '$or' => [
-//                                $query,
-//                                $query2,
-//                                $query3,
-//                                $query4,
-//                                $query5,
-//                            ],
-//                        ],
-//                        [
-//                            "id"                           => 1,
-//                            "contractNumber"               => 1,
-//                            "tender.tenderData.goodsDescr" => 1,
-//                            "tender.stateOrg.orgName"      => 1,
-//                            "contractDate"                 => 1,
-//                            "finalDate"                    => 1,
-//                            "amount"                       => 1,
-//                            "goods.mdValue"                => 1,
-//                            'participant.fullName'         => 1,
-//                            'status.mdValue'               => 1,
-//                        ]
-//                    );
-//                }
-//            );
-//
-//            dd($cursor);
-//        }
-
-
         if (!empty($q) || !empty($agency) || !empty($contractor) || !empty($params['amount']) || !empty($startDate) || !empty($endDate) || !empty($goods)) {
 
-            $query = [];
+            $query   = [];
             $project = [
                 '$project' => [
-                    "syear" => ['$year' => '$contractDate'],
-                    "fyear" => ['$year' => '$finalDate'],
-                    "id" => '$id',
+                    "syear"          => ['$year' => '$contractDate'],
+                    "fyear"          => ['$year' => '$finalDate'],
+                    "id"             => '$id',
                     "contractNumber" => '$contractNumber',
-                    "tender" => '$tender.tenderData.goodsDescr',
-                    "agency" => '$tender.stateOrg.orgName',
-                    "contractDate" => '$contractDate',
-                    "finalDate" => '$finalDate',
-                    "amount" => '$amount',
-                    "goods" => '$goods.mdValue',
-                    'participant' => '$participant.fullName',
-                    'status' => '$status.mdValue',
+                    "tender"         => '$tender.tenderData.goodsDescr',
+                    "agency"         => '$tender.stateOrg.orgName',
+                    "contractDate"   => '$contractDate',
+                    "finalDate"      => '$finalDate',
+                    "amount"         => '$amount',
+                    "goods"          => '$goods.mdValue',
+                    'participant'    => '$participant.fullName',
+                    'status'         => '$status.mdValue',
                 ],
             ];
             array_push($query, $project);
@@ -581,23 +542,23 @@ class ContractsRepository implements ContractsRepositoryInterface
                 array_push($query, $match);
             }
             if (!empty($params['amount']) && $range[1] != 'Above') {
-                $range[0] = (int)$range[0];
-                $range[1] = (int)$range[1];
+                $range[0] = (int) $range[0];
+                $range[1] = (int) $range[1];
 
                 $match = ['$match' => ['amount' => ['$gte' => $range[0], '$lte' => $range[1]]]];
                 array_push($query, $match);
             } elseif (!empty($params['amount']) && $range[1] === 'Above') {
-                $match = ['$match' => ['amount' => ['$gte' => (int)$range[0]]]];
+                $match = ['$match' => ['amount' => ['$gte' => (int) $range[0]]]];
                 array_push($query, $match);
             }
 
             if (!empty($startDate)) {
-                $match = ['$match' => ['syear' => ['$gte' => (int)$startDate]]];
+                $match = ['$match' => ['syear' => ['$gte' => (int) $startDate]]];
                 array_push($query, $match);
             }
 
             if (!empty($endDate)) {
-                $match = ['$match' => ['syear' => ['$lte' => (int)$endDate]]];
+                $match = ['$match' => ['syear' => ['$lte' => (int) $endDate]]];
                 array_push($query, $match);
             }
 
@@ -617,6 +578,7 @@ class ContractsRepository implements ContractsRepositoryInterface
             return ($res);
 
         }
+
         return [];
     }
 
@@ -632,11 +594,11 @@ class ContractsRepository implements ContractsRepositoryInterface
         $contractor = (!empty($params['contractor'])) ? $params['contractor'] : '';
         $agency     = (!empty($params['agency'])) ? $params['agency'] : '';
         $range      = (!empty($params['amount'])) ? explode("-", $params['amount']) : '';
-        $goods = (!empty($params['goods'])) ? $params['goods'] : '';
+        $goods      = (!empty($params['goods'])) ? $params['goods'] : '';
         $startDate  = (!empty($params['startDate'])) ? $params['startDate'] : '';// (!empty($search['startDate'])) ? $this->formatDate($search['startDate']) : '';
         $endDate    = (!empty($params['endDate'])) ? $params['endDate'] : '';//(!empty($search['endDate'])) ? $this->formatDate($search['endDate']) : '';
-        $query   = [];
-        $project = [
+        $query      = [];
+        $project    = [
             '$project' => [
                 "syear"          => ['$year' => '$contractDate'],
                 "fyear"          => ['$year' => '$finalDate'],
@@ -784,7 +746,7 @@ class ContractsRepository implements ContractsRepositoryInterface
     {
         $search = "";
         if ($params != "") {
-            $search      = $params['search']['value'];
+            $search = $params['search']['value'];
         }
 
         $query  = [];
@@ -807,7 +769,7 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         $groupBy = [
             '$group' => [
-                '_id'    => '$awards.suppliers.name'
+                '_id' => '$awards.suppliers.name',
             ],
         ];
         array_push($query, $groupBy);
@@ -826,7 +788,7 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getCompanyData($contractor)
     {
-        return $this->contractors->where('clearName', '=', $contractor)->first();
+        return $this->contractors->where('cleanname', '=', $contractor)->first();
     }
 
     /**
@@ -856,19 +818,23 @@ class ContractsRepository implements ContractsRepositoryInterface
      */
     public function getContractorClearName($contractor)
     {
-        $ar = ($this->ocdsRelease->raw(
-            function ($collection) use ($contractor) {
-                return $collection->find(['awards.suppliers.name' => $contractor], ['awards.suppliers.name' => 1, 'awards.suppliers.clearName' => 1]);
-            }
-        ));
+//        $ar = ($this->ocdsRelease->raw(
+//            function ($collection) use ($contractor) {
+//                return $collection->find(['awards.suppliers.name' => $contractor], ['awards.suppliers.name' => 1, 'awards.suppliers.clearName' => 1]);
+//            }
+//        ));
+//
+//        foreach ($ar[0]['awards'] as $item) {
+//            if ($item['suppliers'][0]['name'] === $contractor && isset($item['suppliers'][0]['clearName'])) {
+//                return ($item['suppliers'][0]['clearName']);
+//            }
+//        }
 
-        foreach ($ar[0]['awards'] as $item) {
-            if ($item['suppliers'][0]['name'] === $contractor && isset($item['suppliers'][0]['clearName'])) {
-                return ($item['suppliers'][0]['clearName']);
-            }
-        }
+        $companiesEtenders = new CompaniesEtenders();
 
-        return $contractor;
+        $contractor = $companiesEtenders->where('name', "=", $contractor)->first();
+
+        return $contractor->cleanname;
     }
 
     /**
@@ -922,30 +888,5 @@ class ContractsRepository implements ContractsRepositoryInterface
         );
 
         return ($result);
-    }
-
-    private function getFilterColumn($column)
-    {
-        switch ($column) {
-            case '5':
-                $column = 'amount';
-                break;
-            case '4':
-                $column = 'finalDate';
-                break;
-            case '3':
-                $column = 'contractDate';
-                break;
-            case '2':
-                $column = 'goods.mdValue';
-                break;
-            case '0':
-                $column = 'contractNumber';
-                break;
-            default :
-                break;
-        }
-
-        return $column;
     }
 }
