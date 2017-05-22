@@ -8,6 +8,7 @@
 			<h2>
 				<span><img src="{{ url("images/ic_download.svg") }}"/></span>
 				Data Downloads
+				
 			</h2>
 		</div>
 	</div>

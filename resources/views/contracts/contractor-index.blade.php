@@ -6,8 +6,10 @@
         <div class="row header-with-icon">
             <h2><span><img src="{{url('images/ic_contractor.svg')}}"/></span>
 
-                @lang('contracts.contractors')</h2>
-        </div>
+                @lang('contracts.contractors')
+                     
+                </h2>
+         </div>
     </div>
 
     <div class="push-up-block  wide-header row">
@@ -89,7 +91,7 @@
         var makeTable = $('#table_id').DataTable({
             "language": {
                 'searchPlaceholder': "@lang('contracts.search_by_contractors')",
-                "lengthMenu": "Show _MENU_ CompaniesDetail"
+                "lengthMenu": "Show _MENU_ Contractors"
             },
             "processing": true,
             "serverSide": true,
