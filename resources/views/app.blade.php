@@ -147,9 +147,18 @@
 				<li>
 					<a href="{{ route('help.index') }}">@lang('general.help')</a>
 				</li>
+
+				<li>
+					<a href="https://github.com/younginnovations/opencontracting-moldova" target="_blank">Github</a>
+				</li>
+
 			</ul>
 		</div>
+
+		
 	</div>
+
+
 </footer>
 
 
