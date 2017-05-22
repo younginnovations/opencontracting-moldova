@@ -1,5 +1,3 @@
-load("dbconfig.js")
-
 var count = 0;
 var found = 0;
 

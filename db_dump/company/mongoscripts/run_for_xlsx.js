@@ -1,4 +1,3 @@
-load("dbconfig.js")
 load("helper.js")
 
 remove_dups(db.companies_detail);

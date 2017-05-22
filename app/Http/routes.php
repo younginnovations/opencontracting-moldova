@@ -419,6 +419,15 @@ Route::post(
     ]
 );
 
+Route::post(
+    '/api/uploadExcel',
+    [
+        'as'         => 'dashboard.uploadExcel',
+        'middleware' => 'admin',
+        'uses'       => 'Admin\DashboardController@uploadCompanyExcel',
+    ]
+);
+
 Route::get(
     'downloads',
     [

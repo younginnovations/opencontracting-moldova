@@ -1,4 +1,3 @@
-load("dbconfig.js")
 load("helper.js")
 
 // dumps unique companies names from ocds_release 

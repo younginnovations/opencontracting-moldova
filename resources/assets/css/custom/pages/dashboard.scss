@@ -2,6 +2,10 @@
     display: block;
 }
 
+.bar {
+    height: 18px;
+    background: green;
+}
 
 .dashboard-highlight{
 
@@ -33,7 +37,16 @@
 }
 
 .dashboard-highlight-import{
-    margin-bottom: 10px;
+    margin-bottom: 22px;
+
+    button{
+        display: block;
+        margin: 0 auto;
+    }
+
+    span{
+        font-size: 13px;
+    }
 }
 
 
@@ -43,7 +56,7 @@
 
     .last-data-import{
 
-        margin-bottom: 90px;
+        margin-bottom: 36px;
 
         >span{
             font-size: 14px;
@@ -100,3 +113,122 @@
     }
 
 }
+
+.excel-upload{
+    max-width: 400px;
+    margin: 0 auto 36px auto;
+
+     &.importing{
+      opacity: 0.4;
+
+      .file-upload-wrapper:hover {
+    &:before {
+       background: #FFD200;;
+        
+    }
+  }
+
+
+  }
+
+}
+
+.excel-upload-done{
+    margin-bottom: 16px;
+}
+
+
+
+.file-upload-wrapper {
+  
+  position: relative;
+  width: 100%;
+  height: 60px;
+
+    &.importing{
+        opacity: 0.4;
+
+        &:hover{
+            &:before{
+                background: #FFD200;
+            }
+        }
+            
+    }
+ 
+  
+  &:after {
+    content: attr(data-text);
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    padding: 10px 15px;
+    display: block;
+    width: calc(100% - 40px);
+    pointer-events: none;
+    z-index: 20;
+    height: 42px;
+    line-height: 22px;
+    color: $light-grey-color;
+    border-radius: 5px 10px 10px 5px;
+    font-weight: 300;
+  }
+  
+  &:before {
+    
+    
+    color: $light-grey-color;
+    content: 'Upload';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    height: 42px;
+    background: #FFD200;
+    z-index: 25;
+    font-size: 16px;
+    line-height: 42px;
+    padding: 0 15px;
+    pointer-events: none;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  &:hover {
+    &:before {
+       background: #e5bd00;
+        
+    }
+  }
+   .file-upload-field {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    height: 60px - 20px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+  }
+
+
+}
+
+.excel-upload-label{
+    margin-bottom: 16px;
+}
+
+#excel-upload-progress{
+    font-weight: 600;
+}
+
+#excel-upload-error{
+    color: #c14d4d;
+}
+

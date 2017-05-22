@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         '/api/newsletter/subscribe',
-        '/comment/showHide'
+        '/comment/showHide',
+        '/api/uploadExcel'
     ];
 }

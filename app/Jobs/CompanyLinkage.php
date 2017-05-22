@@ -7,11 +7,12 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Symfony\Component\Process\Process;
+
 use Illuminate\Support\Facades\Cache;
 
 use Illuminate\Support\Facades\Log;
 
-class ImportData extends Job implements ShouldQueue
+class CompanyLinkage extends Job implements ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
@@ -32,27 +33,20 @@ class ImportData extends Job implements ShouldQueue
      */
     public function handle()
     {
-        Log::info('import started');
-        $file = fopen(public_path("import-status.txt"),"w");
-        $command = base_path('db_dump/run.sh');
+        Log::info('Company details import started');
+        $file = fopen(public_path("company-status.txt"),"w");
+        $command = base_path('db_dump/company/companyDetails.sh');
         $process = new Process($command);
-        $process->setTimeout(7200);
+        $process->setTimeout(3600);
         $process->start();
         while($process->isRunning()){
             $message = $process->getOutput();
-            $message = explode("\n", $message);
-            $message = array_reverse($message);
-            $message = implode($message, "\n");
             fwrite($file, $message);
             sleep(120);
         }
-        Cache::forever('REFRESH_DATE', date('Y-m-d'));
-        $message = $process->getOutput();
-        $message = explode("\n", $message);
-        $message = array_reverse($message);
-        $message = implode($message, "\n");
-        Log::info($message);
-        fwrite($file, $message);
-        Log::info("import completed");
+        Cache::forever('COMPANY_LINKAGE', date('Y-m-d'));
+        Log::info($process->getOutput());
+        fwrite($file, $process->getOutput());
+        Log::info("Company details import completed");
     }
 }
