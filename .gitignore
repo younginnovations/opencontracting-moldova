@@ -11,6 +11,7 @@ Homestead.json
 /public/feedback.csv
 /public/csv
 /public/jsons
+/public/uploads
 /public/newcompany.csv
 /db_dump/data
 /go-pear.phar

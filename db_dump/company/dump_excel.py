@@ -53,7 +53,7 @@ def dumpExcelDataToMongo(xlfile, companies_detail_coll):
     print "Data inserts complete."
     # companies_detail_coll.create_index([("name",pymongo.TEXT)])
 
-xlfile = "data/company.xlsx"
+xlfile = "../../public/uploads/company.xlsx"
 db = getMongoDb()
 dumpExcelDataToMongo(xlfile, db.companies_detail)
 

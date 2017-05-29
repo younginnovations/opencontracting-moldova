@@ -7,6 +7,9 @@ use App\Moldova\Service\Tenders;
 use App\Http\Controllers\Controller;
 use App\Moldova\Service\Dashboard;
 
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+
 class DashboardController extends Controller
 {
 
@@ -39,13 +42,34 @@ class DashboardController extends Controller
         $next_import_days   = 1;
         $total_rows         = $this->tenders->getTendersCount('');
         $import_running     = $this->dashboard->importStatus();
+        $company_import_running     = $this->dashboard->companyImportStatus();
 
         return view('admin.dashboard', compact('last_imported_date','last_imported_days', 'next_import_date',
-                                               'next_import_days', 'total_rows', 'import_running'));
+                                               'next_import_days', 'total_rows', 'import_running', 'company_import_running'));
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return string
+     */
     public function importData(Request $request){
         $status = $this->dashboard->importData();
         return $status == true ? 'true' : 'false';
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function uploadCompanyExcel(Request $request){
+
+        if($request->file('excel')->isValid() && $this->dashboard->validateCompanyExcel($request)){
+            $status = $this->dashboard->runCompanyLinkage();
+            return Response::json(array('code' => 200, 'message' => 'file uploaded'), 200);
+        } else{
+            return Response::json(array('code' => 401, 'message' => 'invalid file'),401);
+        }
     }
 }

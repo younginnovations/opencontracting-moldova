@@ -13,14 +13,20 @@ class WikiController extends Controller {
     }
 
     public function index(){
-        $link = $this->baseWikiUrlEn.'user-manual.md';
+        $link = $this->baseWikiUrlEn.'Home.md';
         return view('wiki.index', compact('link'));
     }
     /**
      * Get wiki page from github wiki
      */
     public function getWiki(Request $request, $title){
-        $link = $this->baseWikiUrlEn.strtolower($title).'.md';
+        //set proper format for title
+        $title = explode('-', $title);
+        foreach ($title as &$row) {
+            $row = ucfirst($row);
+        }
+        $title = implode("-", $title);
+        $link = $this->baseWikiUrlEn.$title.'.md';
         return view('wiki.index', compact('link'));
     }
 }

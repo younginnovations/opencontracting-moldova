@@ -260,7 +260,7 @@ namespace :supervisor do
     desc 'Restart supervisor'
         task :restart do
             on roles(:all) do
-            execute :sudo, :supervisorctl, "restart laravel-worker:"
+            execute :sudo, :supervisorctl, "restart laravel-worker-#{fetch(:env)}:"
         end
     end
 end

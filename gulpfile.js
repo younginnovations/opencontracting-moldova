@@ -62,6 +62,14 @@ elixir(function (mix) {
     ], './public/js/vendor.js');
 
     mix.scripts([
+        './resources/assets/js/vendor/jquery.ui.widget.js',
+        './resources/assets/js/vendor/jquery.iframe-transport.js',
+        './resources/assets/js/vendor/jquery.fileupload.js',
+        './resources/assets/js/vendor/jquery.fileupload-process.js',
+        './resources/assets/js/vendor/jquery.fileupload-validate.js'
+    ], './public/js/vendorFileUpload.js');
+
+    mix.scripts([
         './resources/assets/js/custom/wiki.js'
     ], './public/js/wiki.js');
 
