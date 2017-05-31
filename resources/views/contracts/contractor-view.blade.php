@@ -44,14 +44,13 @@
 					@forelse($courtCases as $case)
 						<ul>
 							<li>
-                                <span class="title spanblock"><a
-											href="{{  $case['link'] }}">{{ $case['title'] }}</a></span>
+                                <span class="title spanblock">{{ $case['title'] }}</span>
 								<span class="name-value-wrap">
-                                <span class="name">Case type:{{ $case['case_type'] }}</span>
+                                <span class="name">Case type:{{ $case['caseType'] }}</span>
                             </span>
 
 								<span class="name-value-wrap">
-                                <span class="name">Court:{{ $case['court_name'] }} </span>
+                                <span class="name">Court:{{ $case['court'] }} </span>
                             </span>
 							</li>
 						</ul>

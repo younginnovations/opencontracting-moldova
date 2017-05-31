@@ -7,6 +7,7 @@ use App\Moldova\Entities\CourtCases;
 use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Repositories\Contracts\ContractsRepositoryInterface;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Symfony\Component\HttpKernel\Tests\Config\EnvParametersResourceTest;
 
 
@@ -17,13 +18,22 @@ class ContractorService
      */
     private $contracts;
 
+    private $client;
+
+    private $base_uri;
     /**
      * ContractorService constructor.
      * @param ContractsRepositoryInterface $contracts
      */
     public function __construct(ContractsRepositoryInterface $contracts)
     {
+        $this->base_uri=env('COURT_CASES_URL');
         $this->contracts = $contracts;
+        $this->client = new Client(
+            [
+                'base_uri' => $this->base_uri,
+            ]
+        );
     }
 
     /**
@@ -124,7 +134,13 @@ class ContractorService
     public function fetchCourtData($contractor)
     {
         $contractor = $this->contracts->getContractorClearName($contractor);
-        $cases      = $this->contracts->getCourtCasesOfCompany($contractor);
+        $cases = [];
+        try{
+            $res      = $this->client->get($this->base_uri.'/courtcases?q='.$contractor);
+            $cases      = json_decode($res->getBody()->getContents(), true);
+        }catch (RequestException $e) {
+
+        }
 
         return ($cases);
     }
