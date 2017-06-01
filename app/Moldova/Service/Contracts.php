@@ -123,6 +123,17 @@ class Contracts
     }
 
     /**
+     * @param $year
+     * @return mixed
+     */
+    public function getYearContractAmount($year)
+    {
+        $total = $this->contracts->getYearContractAmount($year);
+
+        return $total[0];
+    }
+
+    /**
      * @param $params
      *
      * @return mixed
@@ -155,8 +166,35 @@ class Contracts
         ];
     }
 
+    /**
+     * @param $params
+     * @return int
+     */
     public function getContractsCount($params){
         return $this->contracts->getContractsCount($params);
+    }
+
+    /**
+     * @param $year
+     * @return int
+     */
+    public function getYearContractorsCount($year)
+    {
+        return $this->contracts->getYearContractorsCount(($year));
+    }
+
+    /**
+     * @return array
+     */
+    public function getEndingSoon(){
+        return $this->contracts->getEndingSoon();
+    }
+
+    /**
+     * @return array
+     */
+    public function getRecentlySigned(){
+        return $this->contracts->getRecentlySigned();
     }
 
     /**
@@ -232,6 +270,10 @@ class Contracts
         return $this->contracts->search($search);
     }
 
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function searchCount($params)
     {
         return $this->contracts->searchCount($params);
@@ -271,6 +313,10 @@ class Contracts
         return $response;
     }
 
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function getContractorsCount($params)
     {
         return $this->contracts->getContractorsCount($params);
