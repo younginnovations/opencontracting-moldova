@@ -100,7 +100,7 @@
         @foreach($recentlySigned as $item)
             <tr>
                 <td style="font-size: 14px; color: #5A5A5A; padding: 12px 0;"><a href="{{ route('contracts.view', [$item->id]) }}">{{ $item->contractNumber . " " . $item->tender['tenderData']['goodsDescr'] }} </a></td>
-                <td style="font-size: 14px; color: #5A5A5A; padding: 12px 0;">{{ $item->contractDate->format('Y-m-d') }} ({{ $item->contractDate->diffForHumans() }})</td>
+                <td style="font-size: 14px; color: #5A5A5A; padding: 12px 0;">{{ $item->contractDate->toDateTime()->format('Y-m-d') }} ({{ mongoToDate($item->contractDate)  }})</td>
             </tr>
         @endforeach
 
@@ -127,7 +127,7 @@
         @foreach($endingSoon as $item)
         <tr>
             <td style="font-size: 14px; color: #5A5A5A; padding: 12px 0;"><a href="{{ route('contracts.view', [$item->id]) }}">{{ $item->contractNumber . " " . $item->tender['tenderData']['goodsDescr'] }} </a></td>
-            <td style="font-size: 14px; color: #5A5A5A; padding: 12px 0;"> {{ $item->finalDate->format('Y-m-d') }} ({{ $item->finalDate->diffForHumans() }})</td>
+            <td style="font-size: 14px; color: #5A5A5A; padding: 12px 0;"> {{ $item->finalDate->toDateTime()->format('Y-m-d') }} ({{ mongoToDate($item->finalDate) }})</td>
         </tr>
             @endforeach
         </tbody>

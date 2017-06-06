@@ -113,7 +113,7 @@ namespace :moldova do
                 execute "ln -s #{shared_path}/uploads #{release_path}/public"
                 execute "ln -s #{shared_path}/jsons #{release_path}/public"
                 execute "ln -s #{shared_path}/csv #{release_path}/public"
-                execute "ln -s #{shared_path}/data #{release_path}/public"
+                execute "ln -s #{shared_path}/data #{release_path}/db_dump"
             end
         end
     end

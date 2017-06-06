@@ -57,7 +57,7 @@
 			{{csrf_field()}}
 			<button id="import-data" class="button yellow-btn" @if ($import_running == true)
 			disabled
-			@endif
+					@endif
 			>
 				{{$import_running==true?"Importing":"Import data now"}}
 			</button>
@@ -65,10 +65,9 @@
 			<span>See import status <a href="/import-status.txt" target="_blank">here</a></span>
 
 
-		
 		</div>
 
-		
+
 		<div class="dashboard-detials clearfix">
 
 			<div class="last-data-import text-center">
@@ -76,105 +75,132 @@
 				<span>On {{$last_imported_date}}</span>
 			</div>
 
-			<div class="excel-upload">
+			<div class="row">
 
-				<div class="excel-upload-label text-center">
+				<div class="columns small-6 medium-6">
+					<div class="row">
+						<div class="excel-upload company-upload">
+
+							<div class="excel-upload-label">
 					<span>
 						@if($company_import_running)
 							Importing company details. See logs <a href="/company-status.txt">here</a>
-							@else
+						@else
 							Please upload the company details excel from <a target="_blank" href="http://date.gov
 							.md/ckan/ro/dataset/11736-date-din-registrul-de-stat-al-unitatilor-de-drept-privind-intreprinderile-inregistrate-in-repu">here</a>
 						@endif
 					</span>
-				</div>
-			
-				<form class="form">
+							</div>
 
-					<div class="file-upload-wrapper {{$company_import_running==true?"importing":""}}" data-text="Select file!">
-						<input name="excel" type="file"
-							   class="file-upload-field {{$company_import_running==true?"importing":""}}"
-							   id="fileupload"
-							   {{$company_import_running==true?'disabled':''}}
-							   data-url="{{route('dashboard.uploadExcel')
-				}}" value="">
+							<form class="form">
+
+								<div class="file-upload-wrapper {{$company_import_running==true?"importing":""}}"
+									 data-text="Select file!">
+									<input name="excel" type="file"
+										   class="file-upload-field {{$company_import_running==true?"importing":""}}"
+										   id="company-upload"
+										   {{$company_import_running==true?'disabled':''}}
+										   data-url="{{route('dashboard.uploadExcel') }}" value="">
+								</div>
+								<div id="progress">
+                                                                <span class='spanblock last-imported'>
+                                                    @if($last_blacklist_import!=null)Last imported on {{$last_company_import}}
+																	@else
+																		Not imported
+																	@endif
+                                                                </span>
+									<span class="excel-upload-progress"></span>
+									<span class="excel-upload-error"></span>
+									<div class="bar" style="width: 0%;"></div>
+								</div>
+							</form>
+						</div>
+
 					</div>
-				<div id="progress" class="text-center">
-					
-					<span id="excel-upload-progress"></span>
-					<span id="excel-upload-error"></span>
-					<div class="bar" style="width: 0%;"></div>
+
+					<div class="row">
+						<div class="excel-upload blacklist-upload">
+
+							<div class="excel-upload-label">
+						<span>
+								Please upload the blacklist excel from <a target="_blank" href="http://etender.gov
+								.md/blackList">here</a>
+						</span>
+							</div>
+
+							<form class="form">
+
+								<div class="file-upload-wrapper" data-text="Select file!">
+									<input name="excel" type="file"
+										   class="file-upload-field"
+										   id="blacklist-upload"
+										   data-url="{{route('dashboard.blacklist.uploadExcel')}}" value="">
+								</div>
+								<div id="progress">
+                                                <span class='spanblock last-imported'>
+                                                    @if($last_blacklist_import!=null)Last imported on {{$last_blacklist_import}}
+													@else
+														Not imported
+													@endif
+                                                </span>
+									<span class="excel-upload-progress"></span>
+									<span class="excel-upload-error"></span>
+									<div class="bar" style="width: 0%;"></div>
+								</div>
+							</form>
+						</div>
+
+					</div>
 				</div>
-			  </form>
-			</div>
-
-
-			<div class="external-links">
-				<div class="columns medium-6 small-12 external-links-services">
-					<h4 class="external-links-title">Status of services</h4>
-					<ul>
-						<li>
-							<span>MongoDB</span>
-							<span>Running</span>
-						</li>
-						<li>
-							<span>NGINX</span>
-							<span>Running</span>
-						</li>
-					</ul>
-				</div>
-
-				<div class="columns medium-6 small-12 external-links-links">
-					<h4 class="external-links-title">Useful links</h4>
-					<ul>
-						<li><a href="/csv/assessment.csv">View data assessment</a></li>
-						<li><a href="/help">General IT troubleshooting guide</a></li>
-					</ul>
+				<div class="external-links columns medium-6 small-6">
+						<h4 class="external-links-title">Useful links</h4>
+						<ul>
+							<li><a href="/company-example.xlsx">View company excel example</a></li>
+							<li><a href="/blacklist-example.csv">View blacklist csv example</a></li>
+							<li><a href="/csv/assessment.csv">View data assessment</a></li>
+							<li><a href="/help/troubleshooting">General IT troubleshooting guide</a></li>
+						</ul>
 				</div>
 			</div>
 
 		</div>
-
 	</div>
 @endsection
 @section('script')
 	<script src="{{url('js/vendorFileUpload.js')}}"></script>
 	<script type="text/javascript">
-		$('#import-data').click(function (e) {
+        $('#import-data').click(function (e) {
             var csrf = $('input[name="_token"]').val();
-            var data = {_token:csrf};
-			API.post('{{route('importData.api')}}', data).success(function () {
-				$('#import-data').text('Importing');
+            var data = {_token: csrf};
+            API.post('{{route('importData.api')}}', data).success(function () {
+                $('#import-data').text('Importing');
                 $('#import-data').attr('disabled', true);
             });
 
-		});
+        });
 
         $(function () {
-            $('#fileupload').fileupload({
-                acceptFileTypes: /(\.|\/)(xlsx)$/i,
+            $('#blacklist-upload').fileupload({
+                acceptFileTypes: /(\.|\/)(csv)$/i,
                 progressall: function (e, data) {
                     var progress = parseInt(data.loaded / data.total * 100, 10);
-                    $('#excel-upload-label').text("Uploading ");
-                    $('#excel-upload-progress').text(progress + "%");
+                    $('.blacklist-upload .excel-upload-label').text("Uploading ");
+                    $('.blacklist-upload .excel-upload-progress').text(progress + "%");
                 },
                 change: function (e, data) {
-					$(this).parent(".file-upload-wrapper").attr("data-text",data.files[0].name);
+                    $(this).parent(".file-upload-wrapper").attr("data-text", data.files[0].name);
                 },
                 fail: function (e, data) {
-                    $('#excel-upload-error').text('Error in excel validation');
-                    $('#excel-upload-label').text("");
-                    $('#excel-upload-progress').text("");
+                    $('.blacklist-upload .excel-upload-error').text('Error in excel validation');
+                    $('.blacklist-upload .excel-upload-label').text("");
+                    $('.blacklist-upload .excel-upload-progress').text("");
                 },
                 done: function (e, data) {
-                    $('.file-upload-wrapper').addClass("importing");
-                    $('#excel-upload-progress').text("");
-                    $('#excel-upload-progress').text("");
-                    $('#excel-upload-error').text("");
-                    $('.excel-upload-label > span').html("Your file is uploaded. See logs <a href='/company-status" +
-						".txt'>here</a>");
-                    $('#fileupload').addClass('importing');
-                    $('#fileupload').attr('disabled', true);
+                    $('.blacklist-upload .excel-upload-progress').text("");
+                    $('.blacklist-upload .excel-upload-error').text("");
+                    $('.blacklist-upload .excel-upload-label').text("Completed blacklist import");
+                    $('#company-upload').addClass('importing');
+                    $('#company-upload').attr('disabled', true);
 
                 },
                 processfail: function (e, data) {
@@ -183,8 +209,45 @@
                 processalways: function (e, data) {
                     var file = data.files[0];
                     if (file.error) {
-                        $('#excel-upload-label').text("");
-                        $('#excel-upload-error').text(file.error);
+                        $('.blacklist-upload .excel-upload-label').text("");
+                        $('.blacklist-upload .excel-upload-error').text(file.error);
+                    }
+                }
+            });
+
+            $('#company-upload').fileupload({
+                acceptFileTypes: /(\.|\/)(xlsx)$/i,
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('.company-upload .excel-upload-label').text("Uploading ");
+                    $('.company-upload .excel-upload-progress').text(progress + "%");
+                },
+                change: function (e, data) {
+                    $(this).parent(".file-upload-wrapper").attr("data-text", data.files[0].name);
+                },
+                fail: function (e, data) {
+                    $('.company-upload  .excel-upload-error').text('Error in excel validation');
+                    $('.company-upload .excel-upload-label').text("");
+                    $('.company-upload .excel-upload-progress').text("");
+                },
+                done: function (e, data) {
+                    $('.company-upload .file-upload-wrapper').addClass("importing");
+                    $('.company-upload .excel-upload-progress').text("");
+                    $('.company-upload .excel-upload-error').text("");
+                    $('.company-upload .excel-upload-label').html("Your file is uploaded. See logs <a href='/company-status" +
+                        ".txt'>here</a>");
+                    $('#company-upload').addClass('importing');
+                    $('#company-upload').attr('disabled', true);
+
+                },
+                processfail: function (e, data) {
+//					$('#excel-upload-error').text("");
+                },
+                processalways: function (e, data) {
+                    var file = data.files[0];
+                    if (file.error) {
+                        $('.company-upload .excel-upload-label').text("");
+                        $('.company-upload .excel-upload-error').text(file.error);
                     }
                 }
             });

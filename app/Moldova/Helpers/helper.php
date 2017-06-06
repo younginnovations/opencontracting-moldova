@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Request;
 
 
@@ -56,4 +57,16 @@ function getLocalLang()
 function listFounders($founders)
 {
     return implode(",", $founders);
+}
+
+/**
+ * Convert mongo date to human readable date
+ *
+ * @param $mongoDate
+ * @return string
+ */
+function mongoToDate($mongoDate) {
+    $date = $mongoDate->toDateTime();
+    $carbonDate = Carbon::instance($date);
+    return $carbonDate->diffForHumans();
 }

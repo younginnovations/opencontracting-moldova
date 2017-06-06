@@ -5,6 +5,7 @@ cd `dirname $0`
 export DATABASE=`awk 'BEGIN{FS="="} {if(/DB_DATABASE/) print $2}' ././../.env`
 export PUBLIC_PATH=`readlink -e ../public`
 
+rm -rf data/*
 cd etender2mongoscripts
 
 python pulldata.py
