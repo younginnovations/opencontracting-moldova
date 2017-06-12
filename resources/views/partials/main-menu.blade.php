@@ -9,6 +9,9 @@
 							@if(auth()->user()->admin)
 								<li><a href="/dashboard">Dashboard</a></li>
 								<li><a href="/feedback">Feedback</a></li>
+							@if(auth()->user()->superadmin)
+								<li><a href="{{ route('userManager') }}">User</a></li>
+								@endif
 							@endif
 							<li><a href="/logout">Logout</a></li>
 						</ul>
