@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('newsletter:send')->weekly();
+        $schedule->command('newsletter:send')->monthly();
         $schedule->command('import:run')->daily();
     }
 }

@@ -7,7 +7,10 @@ use App\Moldova\Entities\Contracts;
 use App\Moldova\Entities\CourtCases;
 use App\Moldova\Entities\OcdsRelease;
 use App\Moldova\Service\StringUtil;
+use Carbon\Carbon;
+use MongoDate;
 use MongoDB\BSON\Regex;
+use MongoDB\BSON\UTCDateTime;
 use MongoRegex;
 
 class ContractsRepository implements ContractsRepositoryInterface
@@ -228,6 +231,8 @@ class ContractsRepository implements ContractsRepositoryInterface
     /**
      * {@inheritdoc}
      */
+
+
     public function getTotalContractAmount()
     {
         $groupBy = [
@@ -245,6 +250,83 @@ class ContractsRepository implements ContractsRepositoryInterface
 
         return ($result);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getYearContractAmount($year)
+    {
+        $query = [];
+
+        $project = [
+            '$project' => [
+                "year"   => ['$year' => '$contractDate'],
+                "amount" => '$amount'
+            ],
+        ];
+
+        array_push($query, $project);
+
+        $groupBy = [
+            '$group' => [
+                '_id'    => ['year' => '$year'],
+                'amount' => ['$sum' => '$amount'],
+            ],
+        ];
+        array_push($query, $groupBy);
+
+        $filter = ['$match' => ['_id.year' => (int) $year ]];
+
+        array_push($query, $filter);
+
+
+        $result = Contracts::raw(
+            function ($collection) use ($query) {
+                return $collection->aggregate($query);
+            }
+        )->pluck('amount');
+
+
+        return $result;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getYearContractorsCount($year) {
+       $ISODate = new \DateTime(date('c', strtotime("$year-01-01")));
+
+       $contracts = Contracts::where('contractDate', '>=', $ISODate)->count();
+
+        return $contracts;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getEndingSoon(){
+        //get last month
+        $last_month = new \DateTime(date('c', strtotime("first day of next month")));
+
+        $contracts = Contracts::where('finalDate', '>=', $last_month)
+            ->orderBy('finalDate')
+            ->limit(3)
+            ->get();
+
+        return $contracts;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRecentlySigned(){
+        $contracts = Contracts::orderBy('contractDate', 'desc')
+            ->limit(3)
+            ->get();
+
+        return $contracts;
+    }
+
 
     /**
      * {@inheritdoc}
@@ -339,6 +421,10 @@ class ContractsRepository implements ContractsRepositoryInterface
         return ($result);
     }
 
+    /**
+     * @param $column
+     * @return string
+     */
     protected function getColumn($column)
     {
         switch ($column) {

@@ -360,6 +360,27 @@ Route::get(
     ]
 );
 
+/**
+ *  User Manger Section
+ */
+Route::group(['middleware' => 'superadmin', 'prefix' => 'admin'], function(){
+    //all users
+    Route::get('user',['as' => 'userManager', 'uses' => 'Admin\UserManagerController@index']);
+
+    //add new users
+    Route::get('user/add', ['as'=> 'userManager.add', 'uses' => 'Admin\UserManagerController@add']);
+    Route::post('user/add', ['uses' => 'Admin\UserManagerController@postAdd']);
+
+    //edit new users
+    Route::get('user/edit/{id}', ['as'=> 'userManager.edit', 'uses' => 'Admin\UserManagerController@edit']);
+    Route::patch('user/edit/{id}', ['uses' => 'Admin\UserManagerController@patchEdit']);
+
+    //activate and deactivate user
+    ROute::get('user/{id}/status', ['as' => 'userManager.status', 'uses' => 'Admin\UserManagerController@changeStatus']);
+
+
+});
+
 Route::get(
     'feedback',
     [

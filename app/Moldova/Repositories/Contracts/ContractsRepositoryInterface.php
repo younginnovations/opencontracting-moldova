@@ -46,6 +46,36 @@ interface ContractsRepositoryInterface
     public function getTotalContractAmount();
 
     /**
+     * Get particular year total amount of contracts
+     * @param $year
+     * @return int
+     */
+    public function getYearContractAmount($year);
+
+    /**
+     * Get particular year count of total contractors
+     *
+     * @param $year
+     * @return int
+     */
+    public function getYearContractorsCount($year);
+
+
+    /**
+     * List of contracts ending soon
+     *
+     * @return array
+     */
+    public function getEndingSoon();
+
+    /**
+     * List of contracts signed recently
+     *
+     * @return array
+     */
+    public function getRecentlySigned();
+
+        /**
      * Get Goods And Services by amount/count according to type and by limit given
      *
      * @param $type
