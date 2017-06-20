@@ -96,7 +96,7 @@ class TendersRepository implements TendersRepositoryInterface
         $orderIndex = $params['order'][0]['column'];
         $ordDir     = $params['order'][0]['dir'];
         $column     = $params['columns'][$orderIndex]['data'];
-        $startFrom  = $params['start'];
+        $startFrom  = (int) $params['start'];
         $ordDir     = (strtolower($ordDir) == 'asc') ? 1 : -1;
         $search     = $params['search']['value'];
         $length     = (int) $params['length'];

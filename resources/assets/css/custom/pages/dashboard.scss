@@ -133,6 +133,10 @@
 
 }
 
+.last-imported {
+  font-size: 12px;
+}
+
 .excel-upload-done{
     margin-bottom: 16px;
 }
@@ -222,13 +226,16 @@
 
 .excel-upload-label{
     margin-bottom: 16px;
+  span {
+    font-size: 14px;
+  }
 }
 
-#excel-upload-progress{
+.excel-upload-progress{
     font-weight: 600;
 }
 
-#excel-upload-error{
+.excel-upload-error{
     color: #c14d4d;
 }
 

@@ -164,10 +164,11 @@ class ContractorService
      */
     public function storeBlacklistData()
     {
-        $reader = new \SpreadsheetReader(public_path('blacklist.csv'));
+        $reader = new \SpreadsheetReader(public_path('uploads/blacklist.csv'));
         $reader->ChangeSheet(0);
         $blacklist = new Blacklist();
 
+        $blacklist->truncate();
         return $this->save($reader, $blacklist, "Blacklist");
     }
 
@@ -179,7 +180,6 @@ class ContractorService
      */
     protected function save($reader, $model, $title)
     {
-        echo "Data import started";
         $start = date('Y-m-d H:i:s');
 
         foreach ($reader as $key => $Row) {
@@ -196,7 +196,6 @@ class ContractorService
             } catch (\Exception $e) {
                 echo $e->getMessage();
             }
-            echo "#";
         }
 
         $end = date('Y-m-d H:i:s');

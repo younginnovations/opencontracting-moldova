@@ -449,6 +449,15 @@ Route::post(
     ]
 );
 
+Route::post(
+    '/api/blacklist/uploadExcel',
+    [
+        'as'         => 'dashboard.blacklist.uploadExcel',
+        'middleware' => 'admin',
+        'uses'       => 'Admin\DashboardController@uploadBlacklistExcel',
+    ]
+);
+
 Route::get(
     'downloads',
     [

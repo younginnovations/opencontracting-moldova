@@ -9,5 +9,5 @@ class Contracts extends Eloquent
 {
     protected $collection = "contracts_collection";
 
-    protected $dates = ['finalDate', 'contractDate'];
+//    protected $dates = ['finalDate', 'contractDate'];
 }

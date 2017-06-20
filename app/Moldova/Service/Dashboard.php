@@ -9,14 +9,28 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use App\Moldova\Entities\Jobs;
 
+use Symfony\Component\Process\Process;
+
 use Maatwebsite\Excel\Facades\Excel;
 
 class Dashboard
 {
 
+    /**
+     * @var string
+     */
     var $cacheKey;
+
+    /**
+     * @var Jobs
+     */
     var $jobs;
 
+    /**
+     * Dashboard constructor.
+     *
+     * @param Jobs $jobs
+     */
     public function __construct(Jobs $jobs)
     {
          $this->jobs = $jobs;
@@ -55,6 +69,16 @@ class Dashboard
     /**
      * @return bool
      */
+    public function runBlacklistImport()
+    {
+        $process = new Process('../db_dump/company/blacklist.sh');
+        $process->run();
+        Cache::forever('BLACKLIST_IMPORT', date('Y-m-d'));
+    }
+
+    /**
+     * @return bool
+     */
     public function importStatus()
     {
         $running = $this->jobs->where("queue", "=", "default")->count();
@@ -70,8 +94,34 @@ class Dashboard
         return $running > 0;
     }
 
+    /**
+     * @return bool
+     */
+    public function blacklistImportStatus()
+    {
+        $running = $this->jobs->where("queue", "=", "blacklist")->count();
+        return $running > 0;
+    }
+
+    /**
+     * @return bool
+     */
     public function getLastImportDate(){
         return Cache::get('REFRESH_DATE', env('REFRESH_DATE'));
+    }
+
+    /**
+     * @return bool
+     */
+    public function getLastCompanyImportDate(){
+        return Cache::get('COMPANY_LINKAGE', null);
+    }
+
+    /**
+     * @return bool
+     */
+    public function getLastBlackListImportDate(){
+        return Cache::get('BLACKLIST_IMPORT', null);
     }
 
     /**
@@ -105,6 +155,18 @@ class Dashboard
         if(count($header) < 10) {
             return false;
         }
+
+        return true;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return bool
+     */
+    public function validateBlacklistExcel(Request $request)
+    {
+        $request->excel->move('uploads','blacklist.csv');
 
         return true;
     }
