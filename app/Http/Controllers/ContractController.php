@@ -178,7 +178,7 @@ class ContractController extends Controller
             return view('error_404');
         }
 
-        $contractData = $this->contracts->getContractDataForJson($contractId);
+        $contractData = json_encode($this->contracts->getContractDataForJson($contractId), $depth=512);
 
         return view('contracts.view', compact('contractDetail', 'contractData'));
     }

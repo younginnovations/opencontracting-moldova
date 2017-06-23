@@ -23,14 +23,18 @@ db.ocds_release.find().forEach(function (release) {
             'procuringEntity/id'    : release['buyer']['identifier']['id']
         };
         var awardID     = contracts['awardID'];
-        var myCursor    = db.ocds_release.find({'awards.id': awardID}, {'awards.$': 1});
-        var myDocument  = myCursor.hasNext() ? myCursor.next() : null;
 
-        if (myDocument['awards'].length) {
-            t['suppliers/id']  = (myDocument['awards'][0]['suppliers']) ? myDocument['awards'][0]['suppliers'][0]['additionalIdentifiers'][0]['id'] : '-';
-            t['suppliers/name']    = (myDocument['awards'][0]['suppliers']) ? myDocument['awards'][0]['suppliers'][0]['name'] : '-';
-            t['items/description']         = (typeof myDocument['awards'][0]['items'][0] !== 'undefined') ? myDocument['awards'][0]['items'][0]['classification']['description'] : '-';
-            t['items/id']      = (typeof myDocument['awards'][0]['items'][0] !== 'undefined') ? myDocument['awards'][0]['items'][0]['classification']['id'] : '-';
+        var awards = release.awards;
+        var myDocument = awards.filter(function (award) {
+            return award.id == contracts['awardID'];
+        });
+
+        if (myDocument.length) {
+            myDocument = myDocument[0];
+            t['suppliers/id']  = (myDocument['suppliers']) ? myDocument['suppliers'][0]['additionalIdentifiers'][0]['id'] : '-';
+            t['suppliers/name']    = (myDocument['suppliers']) ? myDocument['suppliers'][0]['name'] : '-';
+            t['items/description']         = (typeof myDocument['items'][0] !== 'undefined') ? myDocument['items'][0]['classification']['description'] : '-';
+            t['items/id']      = (typeof myDocument['items'][0] !== 'undefined') ? myDocument['items'][0]['classification']['id'] : '-';
         }
 
         db.tmp_contracts_summary.insert(t);

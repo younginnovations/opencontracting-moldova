@@ -2,15 +2,18 @@
  To run this script, run the following command in the cli
  # mongo localhost:27017/etenders change_contracts_date.js
  */
-var contracts =[];
 db.contracts_collection.find({}).forEach(function(contract){
     var changeToISO = function(dt){
 
         if(dt!==''){
-            var newDt = dt.split('.');
+            try {
+                var newDt = dt.split('.');
+            } catch (err) {
+                return dt;
+            }
 
             if(typeof newDt[2] !== 'undefined'){
-                print(newDt);
+                // print(newDt);
                 var tm = newDt[2].split(' ');
 
                 if(tm.length >1){
@@ -32,16 +35,8 @@ db.contracts_collection.find({}).forEach(function(contract){
     contract.finalDate    = changeToISO(contract.finalDate);
     contract.contractDate    = new Date(contract.contractDate);
     contract.finalDate    = new Date(contract.finalDate);
-    var id = contract._id;
-    delete contract._id;
-    contracts.push(contract);
     // // printjson(contract);
     //    db.contracts_collection.insert(contract);
 
-    db.contracts_collection.remove({_id: id});
-
-});
-
-contracts.forEach(function(contract){
-    db.contracts_collection.insert(contract);
+    db.contracts_collection.save(contract)
 });

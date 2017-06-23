@@ -62,6 +62,7 @@ for tender_obj in tenders_collection.find():
     else:
       r = requests.post(url, data = {"rows": "ALL", "page": 1, "id": _id});
       pulldata.saveJson(folder, r.content, _id)
+      tender_items_collection.insert_many(r.json().get("rows"))
       print "Pulling ", _id, " ", r.json().get("records"), " records"
     # break
 
