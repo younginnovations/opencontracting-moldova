@@ -10,7 +10,7 @@ mongoexport -d $DATABASE -c tmp_agencies_summary --type=csv --fields name,addres
 mongoexport -d $DATABASE -c tmp_contractors_summary --type=csv --fields name,scheme --out $PUBLIC_PATH/csv/contractors_csv.csv
 mongoexport -d $DATABASE -c tmp_contracts_summary --type=csv --fields ocid,id,title,description,status,period/startDate,period/endDate,value/amount,value/currency,dateSigned,items/description,items/id,procuringEntity/name,procuringEntity/id,suppliers/name,suppliers/id --out $PUBLIC_PATH/csv/contracts_csv.csv
 mongoexport -d $DATABASE -c tmp_goods_summary --type=csv --fields id,goods_and_services,scheme,cpv_code --out $PUBLIC_PATH/csv/goods_csv.csv
-mongoexport -d $DATABASE -c tmp_tenders_summary --type=csv --fields ocid,id,title,description,status,procurementMethod,tenderPeroid/startDate,tenderPeroid/endDate,procuringEntity/name,procuringEntity/id --out $PUBLIC_PATH/csv/tenders_csv.csv
+mongoexport -d $DATABASE -c tmp_tenders_summary --type=csv --fields ocid,id,title,description,status,procurementMethod,tenderPeriod/startDate,tenderPeriod/endDate,procuringEntity/name,procuringEntity/id --out $PUBLIC_PATH/csv/tenders_csv.csv
 
 #mongoexport -d etenders -c tmp_agencies_summary --type=csv --fields name,address,email,phone,url --out /Users/yipl/Projects/opencontracting-moldova/db_dump/csv/agencies_csv.csv
 #mongoexport -d etenders -c tmp_contractors_summary --type=csv --fields name,scheme --out /Users/yipl/Projects/opencontracting-moldova/db_dump/csv/contractors_csv.csv
