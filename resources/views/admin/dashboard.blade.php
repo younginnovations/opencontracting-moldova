@@ -104,9 +104,9 @@
 								</div>
 								<div id="progress">
                                                                 <span class='spanblock last-imported'>
-                                                    @if($last_blacklist_import!=null)Last imported on {{$last_company_import}}
-																	@else
-																		Not imported
+                                                    @if($last_company_import !=null)Last imported on {{$last_company_import}}
+																	@elseif($company_import_running == false)
+																		No document uploaded till date.
 																	@endif
                                                                 </span>
 									<span class="excel-upload-progress"></span>
@@ -140,7 +140,7 @@
                                                 <span class='spanblock last-imported'>
                                                     @if($last_blacklist_import!=null)Last imported on {{$last_blacklist_import}}
 													@else
-														Not imported
+														No document uploaded till date.
 													@endif
                                                 </span>
 									<span class="excel-upload-progress"></span>
@@ -198,6 +198,9 @@
                 done: function (e, data) {
                     $('.blacklist-upload .excel-upload-progress').text("");
                     $('.blacklist-upload .excel-upload-error').text("");
+                    $('.blacklist-upload .last-imported').text("Last imported on "+(new Date()).toISOString()
+                            .slice(0,10));
+                    $(this).parent(".file-upload-wrapper").attr("data-text","Select file!");
                     $('.blacklist-upload .excel-upload-label').text("Completed blacklist import");
                     $('#company-upload').addClass('importing');
                     $('#company-upload').attr('disabled', true);
@@ -236,6 +239,8 @@
                     $('.company-upload .excel-upload-error').text("");
                     $('.company-upload .excel-upload-label').html("Your file is uploaded. See logs <a href='/company-status" +
                         ".txt'>here</a>");
+                    $('.company-upload .last-imported').text("");
+                    $(this).parent(".file-upload-wrapper").attr("data-text","Select file!");
                     $('#company-upload').addClass('importing');
                     $('#company-upload').attr('disabled', true);
 

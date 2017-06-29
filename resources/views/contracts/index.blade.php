@@ -83,6 +83,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": '/api/data',
+            "order": [[3, 'desc']],
 //            "ajaxDataProp": '',
             "columns": [
                 {'className': ''},
