@@ -72,6 +72,8 @@ namespace :moldova do
     desc "Create shared folders"
     task :create_storage_folder do
         on roles(:all) do
+            execute "touch #{shared_path}/import-status.txt"
+            execute "touch #{shared_path}/company-status.txt"
             execute "mkdir -p #{shared_path}/storage"
             execute "mkdir -p #{shared_path}/storage/app"
             execute "mkdir -p #{shared_path}/storage/framework"
@@ -109,6 +111,8 @@ namespace :moldova do
         on roles(:app) do
             within release_path do
                 execute "rm -r #{release_path}/storage"
+                execute "ln -s #{shared_path}/import-status.txt #{release_path}/public"
+                execute "ln -s #{shared_path}/company-status.txt #{release_path}/public"
                 execute "ln -s #{shared_path}/storage/ #{release_path}"
                 execute "ln -s #{shared_path}/uploads #{release_path}/public"
                 execute "ln -s #{shared_path}/jsons #{release_path}/public"
