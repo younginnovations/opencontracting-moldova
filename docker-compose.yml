@@ -1,0 +1,31 @@
+version: '2.0'
+services:
+    nginx:
+        image: nginx:1.13.1-alpine
+        container_name: nginx_moldova
+        volumes:
+            - ./docker/nginx_config/default.conf:/etc/nginx/conf.d/default.conf
+        environment:
+          - VIRTUAL_HOST=moldova.local
+        volumes_from:
+            - app
+        links:
+            - app
+        ports:
+            - 8989:80
+
+    app:
+        build:
+            context: ./
+            dockerfile: docker/php.docker
+        container_name: php5.6_moldova
+        volumes:
+             - .:/var/www
+        links:
+            - mongodb
+
+    mongodb:
+        image: yipl/mongo
+        container_name: mongodb_moldova
+        volumes:
+            - /data:/var/lib/mongodb

@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\DevelopmentServiceProvider::class,
         \App\Providers\RepositoryServiceProvider::class,
-        Jenssegers\Mongodb\MongodbServiceProvider::class,
+        //Jenssegers\Mongodb\MongodbServiceProvider::class,
         App\Providers\LikeCommentServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
 
