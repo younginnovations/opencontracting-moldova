@@ -1,7 +1,7 @@
 <?php
 namespace App\Moldova\Entities\Auth;
 
-use App\User;
+use App\User as AppUser;
 use Jenssegers\Mongodb\Eloquent\Model;
 
 /**
@@ -26,6 +26,6 @@ class SocialAccount extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(AppUser::class);
     }
 }

@@ -71,6 +71,10 @@ class SocialAuthController extends Controller
             return redirect('/')->withError(sprintf('There was an error communication with %s', ucfirst($provider)));
         }
 
+        $state = $request->get('state');
+        $request->session()->put('state',$state);
+        session()->regenerate();
+
         $user = $this->socialAccount->getOrCreateUser($this->socialite->driver($provider));
         auth()->login($user, true);
 

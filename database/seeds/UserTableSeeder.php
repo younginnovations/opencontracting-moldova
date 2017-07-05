@@ -18,7 +18,6 @@ class UserTableSeeder extends Seeder
 //        \DB::table('users')->delete();
 
         User::insert([
-            'id' => 1,
             'name' => 'Moldova OCDS',
             'username' => 'superadmin',
             'password' => bcrypt('@-admin'),
@@ -29,7 +28,6 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::insert([
-            'id' => 2,
             'name' => 'PPA Admin',
             'username' => 'ppa-admin',
             'password' => bcrypt('@-admin'),
@@ -40,7 +38,6 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::insert([
-            'id' => 3,
             'name' => 'WB Admin',
             'username' => 'wb-admin',
             'password' => bcrypt('@-admin'),
@@ -51,7 +48,6 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::insert([
-            'id' => 4,
             'name' => 'Comms Admin',
             'username' => 'comms-admin',
             'password' => bcrypt('@-admin'),
@@ -62,7 +58,6 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::insert([
-            'id' => 5,
             'name' => 'IT Admin',
             'username' => 'it-admin',
             'password' => bcrypt('@-admin'),
