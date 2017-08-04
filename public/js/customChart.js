@@ -479,7 +479,7 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
         .append("text")
         .text(function (d) {
             if(type === 'amount') {
-                return d3.format(",")(Math.round(d.value)) + ' leu';
+                return d3.format(",")(Math.round(d.value)) + ' MDL';
             }else{
                 return d3.format(",")(Math.round(d.value));
             }

@@ -2,7 +2,7 @@
 return [
     'moldova_contract'                => 'MOLDOVA CONTRACT',
     'data_visualization'              => 'DATA VISUALISATION',
-    'share_this'                      => 'Share this',
+    'share_this'                      => 'Share this page',
     'fetching_data'                   => 'Fetching data',
     'export_as_csv'                   => 'Export as CSV',
     'amount'                          => 'Amount',

@@ -39,14 +39,14 @@
 			<div class="row banner-inner">
 				<p class="banner-text medium-4 small-12 columns">@lang('homepage.search_through')
 					<span class="amount big-amount">{{ $totalContractAmount }} </span>
-					Leu
+					MDL
 					@lang('homepage.worth_of_contracts')
 				</p>
 
 				<div class="multiple-search-wrap medium-8 small-12 columns">
 					<form action="{{ route('search') }}" method="get" class="search-form">
 						<input name="q" type="search"
-							   placeholder="@lang('homepage.type_a_contractor')" title="@lang('homepage.type_a_contractor')">
+							   placeholder="@lang('homepage.search')" title="@lang('homepage.search')">
 					</form>
 					<div class="filter-wrap columns">
 						<div class="row">
@@ -92,7 +92,7 @@
 			<ul class="social-share">
 				<li>
                         <span class="small-title">@lang('general.share_this')
-							<span>{{(\Request::segment(1) === "contracts")?'contract':'page'}}</span> @lang('general.in')</span>
+							<span>{{(\Request::segment(1) === "contracts")?'contract':' '}}</span> </span>
 				</li>
 				<li>
 					<div class="addthis_sharing_toolbox"></div>
@@ -233,7 +233,7 @@
     var numericFormat = function () {
         $('.numeric-data').each(function () {
             if (parseInt($(this).text())) {
-                var formatted = number_format($(this).text());
+                var formatted = ($(this).text());
                 $(this).text(formatted);
             }
         });
@@ -253,7 +253,7 @@
     })();
 	/* -------- convert the amount to kilo and milllion --------- */
     $(".big-amount").each(function () {
-        var formatted = number_format($(this).text());
+        var formatted = ($(this).text());
         $(this).text(formatted);
     });
 

@@ -31,7 +31,7 @@
                 <div class="each-chart-section">
                     <div class="section-header clearfix">
                         <ul class="breadcrumbs right-content">
-                            <p><span href="#" class="indicator contracts">@lang('general.contracts')</span> &nbsp; @lang('contracts.issued_over_the_years')
+                            <p><span href="#" class="indicator contracts">@lang('general.contracts')</span> &nbsp;
                             </p>
                         </ul>
                     </div>

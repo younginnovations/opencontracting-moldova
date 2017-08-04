@@ -1,5 +1,6 @@
 <?php
 return [
+	'search' => 'Search',
     'search_through' => 'Search through',
     'worth_of_contracts'=> 'worth of contracts',
     'type_a_contractor' => 'Type a contractor, procuring agency or goods & services ...',

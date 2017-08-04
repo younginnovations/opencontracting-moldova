@@ -42,7 +42,7 @@
 				<span class="icon contract-value">icon</span>
 				<span class="each-detail">
                          <div class="name  columns">@lang('contracts.contract_value')</div>
-                        <div class="value columns">{{ number_format($contractDetail['value']['amount']) }} leu</div>
+                        <div class="value columns">{{ ($contractDetail['value']['amount']) }} MDL</div>
                     </span>
 			</div>
 

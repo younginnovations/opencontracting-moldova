@@ -76,9 +76,9 @@
         <table id="table_id" class="responsive hover custom-table display persist-area">
             <thead class="persist-header">
             <tr>
-                <th>@lang('general.name')</th>
-                <th>@lang('general.tenders')</th>
-                <th>@lang('general.scheme')</th>
+                <th>@lang('general.contractor')</th>
+                <th>@lang('contracts.number_of_contracts')</th>
+               <!--  <th>@lang('general.scheme')</th> -->
             </tr>
             </thead>
             <tbody>
@@ -99,8 +99,8 @@
            // "ajaxDataProp": '',
             "columns": [
                 {'data': '_id'},
-                {'data': 'count'},
-                {'data': 'scheme'}
+                {'data': 'count'}//,
+               // {'data': 'scheme'}
             ],
             "fnDrawCallback": function () {
                 changeDateFormat();
