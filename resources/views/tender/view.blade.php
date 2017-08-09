@@ -149,7 +149,7 @@
 								<th>@lang('general.goods_and_services_contracted')</th>
 								<th width="150px">@lang('general.contract_start_date')</th>
 								<th width="150px">@lang('general.contract_end_date')</th>
-								<th>@lang('general.amount')</th>
+								<th>@lang('general.amount')(MDL)</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -161,7 +161,7 @@
 									<td class="dt">{{ (!empty($contract['period']['startDate']))
                                     ?$contract['period']['startDate']->toDateTime()->format('c'):'-' }}</td>
 									<td class="dt">{{ $contract['period']['endDate'] }}</td>
-									<td>{{ ($contract['value']['amount']) }}</td>
+									<td class="numeric-data">{{ ($contract['value']['amount']) }}</td>
 								</tr>
 								{{--@endif--}}
 							@empty

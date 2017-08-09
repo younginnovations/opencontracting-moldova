@@ -22,7 +22,7 @@
 				@lang('goods.total_contract_amount')
 			</div>
 			<div class="value">
-				{{($totalAmount)}} MDL
+				{{number_format($totalAmount)}} MDL
 			</div>
 		</div>
 	</div>
@@ -178,7 +178,7 @@
 			<th>@lang('general.contract_status')</th>
 			<th width="150px">@lang('general.contract_start_date')</th>
 			<th width="150px">@lang('general.contract_end_date')</th>
-			<th>@lang('general.amount')</th>
+			<th>@lang('general.amount') (MDL)</th>
 			</thead>
 			<tbody>
 				@forelse($goodsDetail as $key => $contract)
@@ -189,7 +189,7 @@
 						<td>{{ $contract['status']['mdValue'] }}</td>
 						<td class="dt">{{ $contract['contractDate']->toDateTime()->format('c') }}</td>
 						<td class="dt">{{ $contract['finalDate']->toDateTime()->format('c') }}</td>
-						<td>{{ number_format($contract['amount'],2) }}</td>
+						<td class="numeric-data">{{ ($contract['amount']) }}</td>
 					</tr>
 
 				@empty

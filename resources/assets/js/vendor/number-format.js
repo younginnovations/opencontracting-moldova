@@ -48,12 +48,12 @@ function number_format (number, decimals, dec_point, thousands_sep) {
     //  returns 13: '100 050.00'
     //  example 14: number_format(1e-8, 8, '.', '');
     //  returns 14: '0.00000001'
-    if (Math.round(number).toString().length > 6) {
-        number = number / (1000000);
-        return (number).toLocaleString() + ' M';
-
-
-    } else {
+    // if (Math.round(number).toString().length > 6) {
+    //     number = number / (1000000);
+    //     return (number).toLocaleString() + ' M';
+    //
+    //
+    // } else {
         number = (number + '')
             .replace(/[^0-9+\-Ee.]/g, '')
         var n = !isFinite(+number) ? 0 : +number,
@@ -67,8 +67,7 @@ function number_format (number, decimals, dec_point, thousands_sep) {
                         .toFixed(prec)
             }
         // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n))
-            .split('.')
+        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.')
         if (s[0].length > 3) {
             s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep)
         }
@@ -79,5 +78,5 @@ function number_format (number, decimals, dec_point, thousands_sep) {
                 .join('0')
         }
         return s.join(dec)
-    }
+    // }
 }

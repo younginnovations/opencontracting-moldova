@@ -198,7 +198,7 @@
             <th>@lang('general.contract_status')</th>
             <th class="long-th">@lang('general.contract_start_date')</th>
             <th class="long-th">@lang('general.contract_end_date')</th>
-            <th>@lang('general.amount')</th>
+            <th>@lang('general.amount') (MDL)</th>
             </thead>
             <tbody>
             @forelse($procuringAgencyDetail as $tender)
@@ -210,7 +210,7 @@
                         <td>{{ $agency['status'] }}</td>
                         <td class="dt">{{ $agency['dateSigned']->toDateTime()->format('c') }}</td>
                         <td class="dt">{{ $agency['period']['endDate'] }}</td>
-                        <td>{{ ($agency['value']['amount']) }}</td>
+                        <td class="numeric-data">{{ ($agency['value']['amount']) }}</td>
                     </tr>
                 @endforeach
             @empty

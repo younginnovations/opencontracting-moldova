@@ -118,8 +118,7 @@ class Contracts
     public function getTotalContractAmount()
     {
         $total = $this->contracts->getTotalContractAmount();
-
-        return $total[0]['amount'];
+        return empty($total) ? 0 : $total->amount;
     }
 
     /**

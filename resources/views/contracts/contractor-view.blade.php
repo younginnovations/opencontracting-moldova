@@ -231,7 +231,7 @@
 			<th>@lang('contracts.contract_status')</th>
 			<th width="150px">@lang('general.contract_start_date')</th>
 			<th width="150px">@lang('general.contract_end_date')</th>
-			<th>@lang('general.amount')</th>
+			<th>@lang('general.amount') (MDL)</th>
 			</thead>
 			<tbody>
 
@@ -243,7 +243,7 @@
 					<td>{{ $contract['status']['mdValue'] }}</td>
 					<td class="dt">{{ $contract['contractDate']->toDateTime()->format('Y-m-d') }}</td>
 					<td class="dt">{{ $contract['finalDate']->toDateTime()->format('Y-m-d') }}</td>
-					<td>{{ ($contract['amount']) }}</td>
+					<td class="numeric-data">{{ ($contract['amount']) }}</td>
 				</tr>
 
 			@empty
