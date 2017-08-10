@@ -6,6 +6,8 @@
         var heightContainer = 300;
     }
 
+    console.log("test");
+    
     var divNode = d3.select("#main-content").node();
     var divId = "#" + definedId;
     var widthOfParent = $(divId).parent().width();

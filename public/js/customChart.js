@@ -1,3 +1,33 @@
+function wrap(text, width) {
+
+  text.each(function() {
+    var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "px");
+    while (word = words.pop()) { 
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + ( 2 * dy ) - 8 + "px").text(word);
+      }
+    }
+  });
+}
+function type(d) {
+  d.value = +d.value;
+  return d;
+}
+
+
 var createLineChart = function (data, parentWidth) {
 
     if ($(window).width() < 768) {
@@ -449,7 +479,7 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
         .data(data)
         .enter()
         .append("rect")
-        .attr("x", 170)
+        .attr("x", 200)
         .attr("y", function (d, i) {
             return i * (height / data.length);
         })
@@ -471,7 +501,7 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
         .attr("width", function (d) {
             return x(d.value);
         })
-        .attr("x",170);
+        .attr("x",200);
 
     chart.selectAll("text.value")
         .data(data)
@@ -487,7 +517,7 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
         .attr("y", function (d, i) {
             return i * (height / data.length);
         })
-        .attr("dx", 173)
+        .attr("dx", 203)
         .attr("dy", barHeight - y1)
         .attr("class","value")
         .on("click", function (d) {
@@ -504,11 +534,11 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
         .append("text")
         .text(function (d) {
             if ((d.name) != null) {
-                if ((d.name).length > 20) {
-                    return (String(d.name).slice(0, 21) + "...");
+                if ((d.name).length > 45) {
+                    return (String(d.name).slice(0, 45) + "...");
                 }
                 else {
-                    return (String(d.name).slice(0, 21));
+                    return (String(d.name).slice(0, 45));
                 }
             }
             else {
@@ -533,7 +563,10 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
         .attr("id", function (d, i) {
             return d.name;
         });
+
+        chart.selectAll("text.name").call(wrap,200);
 };
+
 
 
 
@@ -1054,14 +1087,14 @@ var createSlider = function (route, type, widthOfParent, definedId, url, element
         }
 
 // 2017
-        else if (cValue > 201612 && cValue < 201706) {
+        else if (cValue > 201612 && cValue < 202006) {
             value = new Date('2016-12-30');
             if (flag == 2) {
                 handle2.attr("transform", "translate(" + timeScale(value) + ",0)");
                 flag = "handle2";
             }
         }
-        else if (cValue >= 201706 && cValue <= 201712) {
+        else if (cValue >= 202006 && cValue <= 201712) {
             value = new Date('2017-12-30');
             if (flag == 2) {
                 handle2.attr("transform", "translate(" + timeScale(value) + ",0)");
@@ -1355,14 +1388,14 @@ var only_slider = function (widthOfParent, element) {
         }
 
 // 2017
-        else if (cValue > 201612 && cValue < 201706) {
+        else if (cValue > 201612 && cValue < 202006) {
             value = new Date('2016-12-30');
             if (flag === 2) {
                 handle2.attr("transform", "translate(" + timeScale(value) + ",0)");
                 flag = "handle2";
             }
         }
-        else if (cValue >= 201706 && cValue <= 201712) {
+        else if (cValue >= 202006 && cValue <= 201712) {
             value = new Date('2017-12-30');
             if (flag === 2) {
                 handle2.attr("transform", "translate(" + timeScale(value) + ",0)");
