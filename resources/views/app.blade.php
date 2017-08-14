@@ -253,7 +253,7 @@
     })();
 	/* -------- convert the amount to kilo and milllion --------- */
     $(".big-amount").each(function () {
-        var formatted = ($(this).text());
+        var formatted = number_format($(this).text());
         $(this).text(formatted);
     });
 
