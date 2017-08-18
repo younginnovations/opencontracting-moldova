@@ -94,7 +94,7 @@
 					<div class="each-chart-section">
 						<div class="section-header clearfix" data-equalizer-watch="equal-header">
 							<h2 class="section-header-number">
-								{{number_format($totalAmount)}} leu
+								{{($totalAmount)}} MDL
 							</h2>
 
 							<h3 class="section-header-title">@lang('contracts.contract_value')</h3>
@@ -243,7 +243,7 @@
 					<td>{{ $contract['status']['mdValue'] }}</td>
 					<td class="dt">{{ $contract['contractDate']->toDateTime()->format('Y-m-d') }}</td>
 					<td class="dt">{{ $contract['finalDate']->toDateTime()->format('Y-m-d') }}</td>
-					<td>{{ number_format($contract['amount'],2) }}</td>
+					<td>{{ ($contract['amount']) }}</td>
 				</tr>
 
 			@empty

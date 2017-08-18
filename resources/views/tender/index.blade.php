@@ -87,7 +87,15 @@
             //"ajaxDataProp": '',
             "columns": [
                 {'data': 'tender.id'},
-                {'data': 'tender.title'},
+                {'data': 'tender.title' , 
+                	//change the title from this format : 
+                	// Tender Ref 12/00001 Bulletin 82
+                	// to
+                	// 12/00001 Buletin 82/2012 (yyyy)
+                	'render': function(value) {
+                		return  value.replace("Bulletin", "Buletin").slice(10) ;
+                	}
+            	},
                 {'data': 'tender.status'},
                 {'data': 'tender.procuringEntity.name'},
                 {'data': 'tender.tenderPeriod.startDate.$date.$numberLong', 'className': 'dt',
@@ -105,6 +113,8 @@
                 changeDateFormat();
                 createLinks();
                 updateTables();
+                updateTenderId();
+                updateTenderTitle();
                 if ($('#table_id tr').length < 10) {
                     $('.dataTables_paginate').hide();
                 } else {
@@ -112,6 +122,27 @@
                 }
             }
         });
+
+        var updateTenderId = function () {
+
+            $('#table_id tbody tr').each(function () {
+                var curr =  $(this).find("td:first").text();
+                var yr =  $(this).find("td:nth-child(5)").text().slice(-4);
+                $(this).find("td:first").text(curr + "/" + yr);
+              
+            });
+        };
+
+         var updateTenderTitle = function () {
+
+            $('#table_id tbody tr').each(function () {
+                var curr =  $(this).find("td:nth-child(2)").text();
+                var yr =  $(this).find("td:nth-child(5)").text().slice(-4);
+                $(this).find("td:nth-child(2)").text(curr + "/" + yr );
+              
+            });
+        };
+
 
         var createLinks = function () {
 

@@ -14,5 +14,6 @@ return [
     'agency_paragraph' => '',
     'agencies' => 'autorități contractante',
     'procuring_agency_title' => 'denumirea autorității contractante',
-    'search_by_procuring_agency_name' => 'căutare după denumirea autorității contractante'
+    // 'search_by_procuring_agency_name' => 'căutare după denumirea autorității contractante'
+    'search_by_procuring_agency_name' => 'căutare'
 ];

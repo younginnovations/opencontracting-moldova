@@ -37,7 +37,7 @@ class ProcuringAgency
         if ($params['order'][0]['column'] != 3) {
             foreach ($agencyList as $key => $agency) {
                 $sum                                = $this->getContractsValue($agency['contract_value']);
-                $agencyList[$key]['contract_value'] = number_format($sum, 2);
+                $agencyList[$key]['contract_value'] = $sum;
             }
         } else {
             foreach ($agencyList as $key => $agency) {

@@ -57,7 +57,7 @@
 					</ul>
 					<form action="{{ route('search') }}" method="get" class="search">
 						<input name="q" type="search" class="search-box"
-							   placeholder="Type a contractor, procuring agency or goods & services ..." title="Type a contractor, procuring agency or goods & services ...">
+							   placeholder="@lang('homepage.search')" title="Type a contractor, procuring agency or goods & services ...">
 						<span class="search-button">
                     <span class="search-icon"></span>
                 </span>

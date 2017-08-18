@@ -22,7 +22,7 @@
 				@lang('goods.total_contract_amount')
 			</div>
 			<div class="value">
-				{{number_format($totalAmount)}} leu
+				{{($totalAmount)}} MDL
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 				<div class="medium-6 small-12 columns">
 					<div class="each-chart-section">
 						<div class="section-header clearfix" data-equalizer-watch="equal-header">
-							<h3>@lang('general.contract_value')</h3>
+							<h3>@lang('goods.total_contract_amount')</h3>
 						</div>
 						<div class="chart-wrap default-view default-view" data-equalizer-watch="equal-chart-wrap">
 							<div id="barChart-amount"></div>
@@ -93,8 +93,8 @@
 											{{--</select>--}}
 											<input type="hidden" id="select-year-contractor">
 											<select id="select-contractor" data-for="goods" data="{{ $goods }}">
-												<option value="amount" selected>Based on value</option>
-												<option value="count">Based on count</option>
+												<option value="amount" selected>@lang('general.based_on_value')</option>
+												<option value="count">@lang('general.based_on_count')</option>
 											</select>
 											{{--<div><input type="text" id="contractor-range" value=""/></div>--}}
 										</label>
@@ -136,8 +136,8 @@
 											{{--</select>--}}
 											<input type="hidden" id="select-year-agency">
 											<select id="select-agency" data-for="goods" data="{{ $goods }}">
-												<option value="amount" selected>Based on value</option>
-												<option value="count">Based on count</option>
+												<option value="amount" selected>@lang('general.based_on_value')</option>
+												<option value="count">@lang('general.based_on_count')</option>
 											</select>
 											{{--<div><input type="text" id="procuring-agency-range" value=""/></div>--}}
 										</label>

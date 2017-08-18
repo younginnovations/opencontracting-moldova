@@ -210,7 +210,7 @@
                         <td>{{ $agency['status'] }}</td>
                         <td class="dt">{{ $agency['dateSigned']->toDateTime()->format('c') }}</td>
                         <td class="dt">{{ $agency['period']['endDate'] }}</td>
-                        <td>{{ number_format($agency['value']['amount'],2) }}</td>
+                        <td>{{ ($agency['value']['amount']) }}</td>
                     </tr>
                 @endforeach
             @empty

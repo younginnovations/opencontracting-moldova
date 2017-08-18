@@ -161,7 +161,7 @@
 									<td class="dt">{{ (!empty($contract['period']['startDate']))
                                     ?$contract['period']['startDate']->toDateTime()->format('c'):'-' }}</td>
 									<td class="dt">{{ $contract['period']['endDate'] }}</td>
-									<td>{{ number_format($contract['value']['amount']) }}</td>
+									<td>{{ ($contract['value']['amount']) }}</td>
 								</tr>
 								{{--@endif--}}
 							@empty

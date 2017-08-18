@@ -34,7 +34,7 @@
 
         <tbody>
         <tr>
-            <td style="font-weight: 600; font-size:24px; color: #5A5A5A;">{{number_format($totalContractAmount)}} Leu</td>
+            <td style="font-weight: 600; font-size:24px; color: #5A5A5A;">{{number_format($totalContractAmount)}} MDL</td>
             <td style="font-weight: 600; font-size:24px; color: #5A5A5A;">{{number_format($totalContractCount)}}</td>
         </tr>
         </tbody>
@@ -56,7 +56,7 @@
 
         <tbody>
         <tr>
-            <td style="font-weight: 600; font-size:24px; color: #5A5A5A;">{{number_format($yearTotalContracts)}} Leu</td>
+            <td style="font-weight: 600; font-size:24px; color: #5A5A5A;">{{number_format($yearTotalContracts)}} MDL</td>
             <td style="font-weight: 600; font-size:24px; color: #5A5A5A;">{{number_format($getYearContractorsCount)}}</td>
         </tr>
         </tbody>

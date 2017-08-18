@@ -11,6 +11,7 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
             y1 = 32;
     }
 
+    console.log("test");
     //var divNode = d3.select("#main-content").node();
 
     var dataRange = d3.max(data, function (d) {
@@ -70,7 +71,7 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
         .append("text")
         .text(function (d) {
             if(type === 'amount') {
-                return d3.format(",")(Math.round(d.value)) + ' leu';
+                return d3.format(",")(Math.round(d.value)) + ' MDL';
             }else{
                 return d3.format(",")(Math.round(d.value));
             }
@@ -110,7 +111,7 @@ var createBarChartProcuring = function (data, definedId, url, widthParent, type)
             return i * (height / data.length);
         })
         .attr("dx", 0)
-        .attr("dy", barHeight - y1)
+        .attr("dy", barHeight + y1)
         .attr("class", function(d){
             if(d.name !== null) {
                 return "name";
