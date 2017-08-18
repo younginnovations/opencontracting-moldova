@@ -9,7 +9,7 @@ var collections = [
 collections.forEach(function (collection) {
     db[collection].drop();
 });
-db.copyDatabase("etenders_stage","etenders","localhost");
+db.copyDatabase("etenders_stage",DATABASE,"localhost");
 var end = new Date().getTime();
 var time = end - start;
 print("Execution Time (seconds) ", time/1000);

@@ -1,6 +1,11 @@
+#!/usr/bin/env python
+
 import os
 import requests
 import myconfig
+
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 def makeFolder(folder):
     if not os.path.isdir(folder):
@@ -12,18 +17,20 @@ def saveJson(folder, content, page):
     with open(filepath, 'w') as _file:
         _file.write(content);
 
-def pullJson(url, folder):    
-    totalPage = 1
-    nextPage = 1
-    while(nextPage == 1 or nextPage <= totalPage):
+def pullJson(type, folder):    
+    nextMonth = datetime.strptime(os.environ["import_start_date"], '%Y-%m-%d')
+    endMonth = datetime.today()
+
+    while(nextMonth <= endMonth):
+        url = 'http://etender.gov.md/json/'+nextMonth.strftime('%Y/%m')+"/"+type
         print "requesting ", url
-        r = requests.post(url, data = {"rows": 200, "page": nextPage});
-        saveJson(folder, r.content, nextPage)
+        r = requests.post(url);
+        saveJson(folder, r.content, nextMonth.strftime('%Y-%m'))
         totalPage = r.json().get("total")
-        nextPage += 1
+        nextMonth = nextMonth + relativedelta(months=1)
 
 if __name__ == "__main__":
-    # pull all contracts data
-    pullJson("http://etender.gov.md/json/contractList", os.path.join(myconfig.jsonfolder,"contracts"))
-    pullJson("http://etender.gov.md/json/intentionAnounceList", os.path.join(myconfig.jsonfolder,"announcements"))
-    pullJson("http://etender.gov.md/json/tenderList", os.path.join(myconfig.jsonfolder,"tenders"))
+    pullJson("contractList", os.path.join(myconfig.jsonfolder,"contracts"))
+    pullJson("budgetList", os.path.join(myconfig.jsonfolder,"announcements"))
+    pullJson("tenderList", os.path.join(myconfig.jsonfolder,"tenders"))
+    pullJson("statistics", os.path.join(myconfig.jsonfolder,"statistics"))

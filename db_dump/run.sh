@@ -2,22 +2,28 @@
 echo `date`
 cd `dirname $0`
 
-export DATABASE=`awk 'BEGIN{FS="="} {if(/DB_DATABASE/) print $2}' ././../.env`
+set -e;
+set -a; . ../.env; set +a;
+
+## REFRESH_DATE should be kept 2012-11-01 for the first import
+export DATABASE=$DB_DATABASE
+export import_start_date=$REFRESH_DATE
 export PUBLIC_PATH=`readlink -e ../public`
 
-rm -rf data/*
 cd etender2mongoscripts
 
 python pulldata.py
 python dumpdata.py
 python pulltenderitems.py
-python dumptenderitems.py
+#python dumptenderitems.py
 cd ..
 mongo localhost:27017/etenders_stage mongojsscripts/map_to_ocds.js
 mongo localhost:27017/etenders_stage mongojsscripts/change_contracts_date.js
-mongo localhost:27017/$DATABASE mongojsscripts/rename.js
+set +e;
+mongo localhost:27017/$DATABASE mongojsscripts/rename.js --eval "var DATABASE='$DATABASE'"
 mongo localhost:27017/$DATABASE mongojsscripts/change_contracts_date.js
 
+echo creating csv files
 sh ./createCsv.sh
 
 cd mongojsscripts
@@ -32,10 +38,6 @@ cd ..
 #python contractors_script.py
 #python courtcases_script.py
 #python ocds_script.py
-
-
-#sed -i.bak '/REFRESH_DATE/d' /home/moldova-ocds/demo/current/.env
-#echo "REFRESH_DATE=$(date +%F)" >> /home/moldova-ocds/demo/current/.env
 
 #assesment of data
 

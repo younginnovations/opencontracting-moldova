@@ -40,19 +40,21 @@ db.tenders_collection.find({}).forEach(function (tender) {
 
     var planningObj = {
         "budget": {
-            "source": ""
         },
-        "documents": {
-            "id": "",
-            "title": "",
-            "url": "",
-            "datePublished": "",
-            "format": ""
-        }
+        "documents": [
+            // {
+            //     "id": "",
+            //     "title": "",
+            //     "url": "",
+            //     "datePublished": "",
+            //     "format": ""
+            // }
+        ]
     };
 
-    //prepare tendor object
-    var items = []
+    //prepare tender object
+    var items = [];
+
     db.tender_items_collection.find({"fkTenderDataId": tender.tenderData.id}).forEach(function (item) {
         var itm = {
             "id": item.id,
@@ -63,7 +65,7 @@ db.tenders_collection.find({}).forEach(function (tender) {
                 "description": item.goods.mdValue
             },
             "additionalClassifications": [],
-            "quantity": item.quantity,
+            "quantity": parseInt(item.quantity),
             "unit": {"name": item.unitMeasure.mdValue}
         };
 
@@ -87,12 +89,52 @@ db.tenders_collection.find({}).forEach(function (tender) {
             "locality": ""
         },
         "contactPoint": {
-            "name": "",
+            "name": tender.stateOrg.orgName,
             "email": tender.stateOrg.email,
             "telephone": tender.stateOrg.phone,
             "faxNumber": tender.stateOrg.fax
         }
     };
+
+    var tenderers = [];
+    tender.tenderers.forEach(function (tenderer) {
+        var tdr = {
+            "identifier": {
+                "id": tenderer.id,
+                "legalName": tenderer.fullName
+            },
+            "additionalIdentifiers": [{
+                "scheme": "eTenders",
+                "id": "",
+                "legalName": ""
+            }],
+            "name": "",
+            "address": {
+                "streetAddress": tenderer.cAddress
+            },
+            contactPoint: {
+                "name": tenderer.director,
+                "email": tenderer.email,
+                "telephone": tenderer.phone,
+                "faxNumber": tenderer.fax
+            }
+        }
+
+        tenderers.push(tdr);
+    });
+
+    var documents = [];
+    tender.documents.forEach(function (document) {
+        var doc = {
+            "id": document.id,
+            "title": document.docName,
+            "url": document.url,
+            "datePublished": changeToISO(document.currentStatusDate),
+            "format": document.fileName
+        };
+
+        documents.push(doc);
+    });
 
     var tenderObj = {
         "id": NumberLong(tender.id),
@@ -100,10 +142,10 @@ db.tenders_collection.find({}).forEach(function (tender) {
         "description": "",
         "status": tender.tenderStatus.mdValue,
         "items": items,
-        "value": {
-            "amount": "",
-            "currency": ""
-        },
+        // "value": {
+        //     "amount": "",
+        //     "currency": ""
+        // },
         "procurementMethod": tender.tenderType.mdValue,
         "procurementMethodRationale": "",
         "awardCriteria": "",
@@ -115,60 +157,60 @@ db.tenders_collection.find({}).forEach(function (tender) {
             "endDate": changeToISO(tender.tenderData.openDateTime)
         },
         "eligibilityCriteria": "",
-        "numberOfTenders": "",
-        "tenderers": [{
-            "identifier": {
-                "id": "",
-                "legalName": ""
-            },
-            "additionalIdentifiers": {
-                "scheme": "eTenders",
-                "id": "",
-                "legalName": ""
-            },
-            "name": "",
-            "address": {
-                "streetAddress": ""
-            },
-            contactPoint: {
-                "name": "",
-                "email": "",
-                "telephone": "",
-                "faxNumber": ""
-            }
-        }],
+        "numberOfTenderers": tenderers.length,
+        "tenderers": tenderers,
         "procuringEntity": procuringAgency,
-        "documents": [{
-            "id": "",
-            "title": "",
-            "url": "",
-            "datePublished": "",
-            "format": ""
-        }],
-        "milestones": [{
-            "documents": {}
-        }],
+        "documents": documents,
+        // "milestones": [{
+        //     "documents": []
+        // }],
         "amendment": {
-            "changes": {}
+            "changes": []
         }
     };
+
     var awardArray = [];
     var contractArray = [];
     db.contracts_collection.find({"tender.id": tender.id}).forEach(function (contract) {
+
+        var awardItems = [];
+        contract.winningPositions.forEach(function (item) {
+            var itm = {
+                "id": item.id,
+                "description": item.offerPosition.goodsName + " " + item.description,
+                "classification": {
+                    "scheme": "CPV",
+                    "id": item.offerPosition.goods.code,
+                    "description": item.offerPosition.goods.mdValue
+                },
+                "additionalClassifications": [],
+                "quantity": item.offerPosition.quantityAwarded,
+                "unit": {
+                    "name": item.offerPosition.unitMeasure.mdValue,
+                    // "value": {
+                    //     "amount": "",
+                    //     "currency": ""
+                    // }
+                }
+            };
+
+            awardItems.push(itm);
+        });
+
         var award = {
             "id": "award-" + NumberLong(contract.id),
             "title": "Award for " + contract.tender.tenderData.goodsDescr,
             "description": "",
             "status": "",
-            "date": "",
+            "date": changeToISO(contract.contractDate),
             "value": {
                 "amount": contract.amount,
                 "currency": "mdl"
             },
             "suppliers": [{
                 "identifier": {
-                    "id": "",
-                    "legalName": ""
+                    "id": contract.participant.id,
+                    "legalName": contract.participant.fullName
                 },
                 "additionalIdentifiers": [{
                     "scheme": "eTenders",
@@ -177,12 +219,12 @@ db.tenders_collection.find({}).forEach(function (tender) {
                 }],
                 "name": contract.participant.fullName,
                 "address": {
-                    "streetAddress": ""
+                    "streetAddress": contract.participant.address
                 },
                 "contactPoint": {
-                    "name": "",
-                    "email": "",
-                    "telephone": ""
+                    "name": contract.participant.director,
+                    "email": contract.participant.email,
+                    "telephone": contract.participant.phone
                 }
             }],
             "items": [],
@@ -190,12 +232,12 @@ db.tenders_collection.find({}).forEach(function (tender) {
                 "startDate": changeToISO(contract.contractDate),
                 "endDate": changeToISO(contract.finalDate)
             },
-            "documents": [{
-                "id": "",
-                "title": "",
-                "url": "",
-                "datePublished": ""
-            }]
+            // "documents": [{
+            //     "id": "",
+            //     "title": "",
+            //     "url": "",
+            //     "datePublished": ""
+            // }]
         };
         if (contract.goods) {
             award["items"] = [{
@@ -206,19 +248,43 @@ db.tenders_collection.find({}).forEach(function (tender) {
                     "id": contract.goods.code,
                     "description": contract.goods.mdValue
                 },
-                "quantity": "",
-                "unit": {
-                    "name": "",
-                    "value": {
-                        "amount": "",
-                        "currency": ""
-                    }
-                }
+                // "quantity": "",
+                // "unit": {
+                //     "name": "",
+                    // "value": {
+                    //     "amount": "",
+                    //     "currency": ""
+                    // }
+                // }
             }];
         }
         awardArray.push(award);
 
-        var contract = {
+        // var contractItems = [];
+        // contract.winningPositions.forEach(function (item) {
+        //     var itm = {
+        //         "id": item.id,
+        //         "description": item.offerPosition.goodsName + " " + item.description,
+        //         "classification": {
+        //             "scheme": "CPV",
+        //             "id": item.offerPosition.goods.code,
+        //             "description": item.offerPosition.goods.mdValue
+        //         },
+        //         "additionalClassifications": [],
+        //         "quantity": parseInt(item.offerPosition.quantityAwarded),
+        //         "unit": {
+        //             "name": item.offerPosition.unitMeasure.mdValue,
+        //             // "value": {
+        //             //     "amount": "",
+        //             //     "currency": ""
+        //             // }
+        //         }
+        //     };
+        //
+        //     contractItems.push(itm);
+        // });
+
+        var contractItem = {
             "id": NumberLong(contract.id),
             "awardID": award.id,
             "title": contract.contractNumber + " " + contract.tender.tenderData.goodsDescr,
@@ -233,25 +299,37 @@ db.tenders_collection.find({}).forEach(function (tender) {
                 "currency": "mdl"
             },
             "dateSigned": changeToISO(contract.contractDate),
-            "documents": [{
-                "id": "",
-                "title": "",
-                "url": "",
-                "datePublished": ""
-            }],
-            "amendment": {
-                "changes": []
-            },
-            "implementation": {
-                "documents": [{
-                    "id": "",
-                    "title": "",
-                    "url": "",
-                    "datePublished": ""
-                }]
-            }
+            // "items": contractItems
+            // "documents": [
+                // {
+                //     "id": "",
+                //     "title": "",
+                //     "url": "",
+                //     "datePublished": ""
+                // }
+            // ],
+            // "amendments": [
+                // {
+                //     "date": '',
+                //     "rationale": '',
+                //     "id": '',
+                //     "amendsReleaseID": '',
+                //     "releaseID": '',
+                //     "changes": []
+                // }
+            // ],
+            // "implementation": {
+            //     "documents": [
+                    // {
+                    //     "id": "",
+                    //     "title": "",
+                    //     "url": "",
+                    //     "datePublished": ""
+                    // }
+                // ]
+            // }
         };
-        contractArray.push(contract);
+        contractArray.push(contractItem);
     });
 
     db.ocds_release.insert({

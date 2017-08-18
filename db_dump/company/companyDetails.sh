@@ -11,7 +11,6 @@ then
      python dump_excel.py
      mongo localhost:27017/$DATABASE run_for_xlsx.js
      mongo localhost:27017/$DATABASE run_for_etenders.js
-     mongo localhost:27017/$DATABASE run_for_xlsx.js
      mongo localhost:27017/$DATABASE verify.js > $PUBLIC_PATH/non-valid.txt
      cd ..
 fi

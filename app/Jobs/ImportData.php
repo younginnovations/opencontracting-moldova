@@ -33,7 +33,7 @@ class ImportData extends Job implements ShouldQueue
     public function handle()
     {
         Log::info('import started');
-        $file = fopen(public_path("import-status.txt"),"w");
+        $file = public_path("import-status.txt");
         $command = base_path('db_dump/run.sh');
         $process = new Process($command);
         $process->setTimeout(7200);
@@ -43,7 +43,7 @@ class ImportData extends Job implements ShouldQueue
             $message = explode("\n", $message);
             $message = array_reverse($message);
             $message = implode($message, "\n");
-            fwrite($file, $message);
+            file_put_contents($file, $message);
             sleep(120);
         }
         Cache::forever('REFRESH_DATE', date('Y-m-d'));
@@ -52,7 +52,7 @@ class ImportData extends Job implements ShouldQueue
         $message = array_reverse($message);
         $message = implode($message, "\n");
         Log::info($message);
-        fwrite($file, $message);
+        file_put_contents($file, $message);
         Log::info("import completed");
     }
 }

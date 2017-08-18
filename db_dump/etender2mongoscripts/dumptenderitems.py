@@ -22,7 +22,6 @@ def dumpAllJsonFiles(jsonfolder, collection):
     print "dumping json from " + jsonfolder
     for jsonfile in os.listdir(jsonfolder):
         if os.path.isfile(jsonfolder + os.sep + jsonfile):
-            print "dumping ", jsonfile
             dumpJsonFileToDatabase(jsonfolder + os.sep + jsonfile, collection)
 
 dumpAllJsonFiles(os.path.join(myconfig.jsonfolder,"tenderitems"), tender_items_collection)
