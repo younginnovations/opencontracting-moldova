@@ -184,7 +184,7 @@
                 <th>@lang('general.goods_and_services_contracted')</th>
                 <th class="long-th">@lang('general.contract_start_date')</th>
                 <th class="long-th">@lang('general.contract_end_date')</th>
-                <th>@lang('general.amount')</th>
+                <th>@lang('general.amount') (MDL)</th>
             </tr>
             </thead>
             <tbody>

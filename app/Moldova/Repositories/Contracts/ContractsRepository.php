@@ -248,7 +248,7 @@ class ContractsRepository implements ContractsRepositoryInterface
             }
         );
 
-        return ($result);
+        return ($result->first());
     }
 
     /**

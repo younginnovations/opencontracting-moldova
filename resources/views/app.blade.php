@@ -233,7 +233,8 @@
     var numericFormat = function () {
         $('.numeric-data').each(function () {
             if (parseInt($(this).text())) {
-                var formatted = ($(this).text());
+                console.log('here');
+                var formatted = Number($(this).text()).toLocaleString();
                 $(this).text(formatted);
             }
         });
@@ -253,7 +254,7 @@
     })();
 	/* -------- convert the amount to kilo and milllion --------- */
     $(".big-amount").each(function () {
-        var formatted = number_format($(this).text());
+        var formatted = Number($(this).text()).toLocaleString();
         $(this).text(formatted);
     });
 

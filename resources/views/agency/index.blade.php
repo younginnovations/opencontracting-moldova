@@ -79,7 +79,7 @@
 				<th>@lang('agency.procuring_agency_title')</th>
 				<th>@lang('general.tenders')</th>
 				<th>@lang('general.contracts')</th>
-				<th>@lang('general.contract_value')</th>
+				<th>@lang('general.contract_value') (MDL)</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -109,6 +109,7 @@
                 {'data': 'contract_value', "className": 'numeric-data'}
             ],
             "fnDrawCallback": function () {
+                numericFormat()
                 createLinks();
                 updateTables();
             }

@@ -1,4 +1,4 @@
-@extends('app')
+	@extends('app')
 @section('content')
 	<div class="block header-block header-with-bg">
 		<div class="row clearfix">
@@ -42,7 +42,7 @@
 				<span class="icon contract-value">icon</span>
 				<span class="each-detail">
                          <div class="name  columns">@lang('contracts.contract_value')</div>
-                        <div class="value columns">{{ ($contractDetail['value']['amount']) }} MDL</div>
+                        <div class="value columns">{{ number_format($contractDetail['value']['amount']) }} MDL</div>
                     </span>
 			</div>
 
