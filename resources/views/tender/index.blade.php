@@ -150,7 +150,7 @@
                 $(this).css('cursor', 'pointer');
                 $(this).click(function () {
                     var tenderId = $(this).find("td:first").text();
-                    return window.location.assign(window.location.origin + "/tenders/" + tenderId);
+                    return window.location.assign(window.location.origin + "/tenders/" + tenderId.substr(0,tenderId.lastIndexOf("/")));
                 });
 
             });
