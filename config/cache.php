@@ -25,6 +25,7 @@ return [
     | same cache driver to group types of items stored in your caches.
     |
     */
+    'time' => 60*24, //cache expiry
 
     'stores' => [
 

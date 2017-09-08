@@ -2,6 +2,7 @@
 
 namespace App\Moldova\Service;
 
+
 use Illuminate\Http\Request;
 use App\Jobs\CompanyLinkage;
 use App\Jobs\ImportData;
@@ -11,7 +12,6 @@ use App\Moldova\Entities\Jobs;
 
 use Symfony\Component\Process\Process;
 
-use Maatwebsite\Excel\Facades\Excel;
 
 class Dashboard
 {
@@ -44,6 +44,7 @@ class Dashboard
     {
         if (!$this->importStatus()) {
             dispatch(new ImportData());
+
             return true;
         } else {
             Log::info('import already started');
