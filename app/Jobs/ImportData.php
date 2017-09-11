@@ -53,6 +53,18 @@ class ImportData extends Job implements ShouldQueue
         $message = implode($message, "\n");
         Log::info($message);
         file_put_contents($file, $message);
+
+        //clear all cache after new data has been imported
+        if (Cache::has('routes')) {
+            $cache_array = array_unique(str_getcsv(Cache::get('routes')));
+            foreach ($cache_array as $key) {
+                if (Cache::has($key)) {
+                    Cache::forget($key);
+                }
+            }
+            Cache::forget('routes');
+        }
+
         Log::info("import completed");
     }
 }

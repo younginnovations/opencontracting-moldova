@@ -20,7 +20,7 @@ if (getenv('APP_ENV') === 'local') {
 Route::get(
     '/',
     ['as' => '/', 'uses' => 'HomeController@index']
-);
+)->middleware(['before', 'after']);
 
 Route::get(
     '/contracts',
@@ -28,7 +28,7 @@ Route::get(
         'as'   => 'contracts',
         'uses' => 'ContractController@index',
     ]
-);
+)->middleware(['before', 'after']);
 
 Route::get(
     '/contracts/contractor',
@@ -36,7 +36,7 @@ Route::get(
         'as'   => 'contracts.contractorIndex',
         'uses' => 'ContractController@contractorIndex',
     ]
-);
+)->middleware(['before', 'after']);
 
 Route::get(
     '/contracts/contractor/{name}',
@@ -84,7 +84,7 @@ Route::get(
         'as'   => 'procuring-agency.index',
         'uses' => 'ProcuringAgencyController@index',
     ]
-);
+)->middleware(['before', 'after']);
 
 Route::get(
     '/api/procuring-agency',
@@ -100,7 +100,7 @@ Route::get(
         'as'   => 'goods.index',
         'uses' => 'GoodsController@index',
     ]
-);
+)->middleware(['before', 'after']);
 
 Route::get(
     '/filter',
@@ -148,7 +148,7 @@ Route::get(
         'as'   => 'tenders.index',
         'uses' => 'TenderController@index',
     ]
-);
+)->middleware(['before', 'after']);
 
 Route::get(
     '/api/tenders',
